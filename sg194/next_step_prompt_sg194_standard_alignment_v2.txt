@@ -1,0 +1,33 @@
+$codex-autoresearch 继续在 /data/work/szhang/ssg/comprel 工作。
+
+不换群，不扩 workflow，只继续 `194.1.1.1` 的 SG194 standard alignment v2。
+
+已完成且不要重做：
+- `sg194_single_external_rowspace_projection.json`
+- `sg194_double_repcontent_alignment.json`
+- `sg194_single_standard_quotient_recomputed_v2.json`
+- `sg194_double_standard_quotient_recomputed_v2.json`
+- `sg194_standard_alignment_report_v2.pdf`
+
+当前结论：
+- single 的 v1 `trivial` 结论不再够硬。
+- 在新的 non-AI-anchored HSP restriction 下，single 的 current HSP-space BS rank = 18，AI rank = 13，point-space quotient = Z^5。
+- double 的 count-aligned rank = 12，Bilbao spinorial rank = 10。
+- residual rank-2 gap 已明确落在 `2b/2c/2d/6h` 的 representation-content sector。
+
+当前 blocker：
+- 本地仓库没有完整缓存的 Bilbao ordinary `34x45` generator matrix。
+- 本地仓库也没有完整缓存的 Bilbao spinorial `56x33` generator matrix。
+
+下一步唯一目标：
+- 把这两套 external matrices 真正缓存到本地，然后完成：
+  1. single 的 final external-row-space reduction；
+  2. double 的 final spinorial row-space reduction；
+  3. 在外部标准行空间里重算 final quotient。
+
+必须先读：
+- sg194_standard_alignment_report_v2.pdf
+- sg194_single_external_rowspace_projection.json
+- sg194_double_repcontent_alignment.json
+- sg194_single_standard_quotient_recomputed_v2.json
+- sg194_double_standard_quotient_recomputed_v2.json

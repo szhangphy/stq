@@ -1,0 +1,239 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "current_raw_ai_rank": 13,
+  "current_count_aligned_rank": 12,
+  "external_spinorial_rank": 10,
+  "problem_sector_current_rank": 6,
+  "problem_sector_external_rank": 6,
+  "problem_sector_union_rank": 8,
+  "problem_sector_intersection_rank": 4,
+  "delta_c1_minus_b1": {
+    "id": "delta_c1_minus_b1",
+    "current_generator_support": [
+      {
+        "generator_id": "c_proj_doubleprime_1d_1",
+        "coeff": 1,
+        "family_id": "c",
+        "local_object_label": "proj_doubleprime_1d_1"
+      },
+      {
+        "generator_id": "c_proj_doubleprime_1d_2",
+        "coeff": 1,
+        "family_id": "c",
+        "local_object_label": "proj_doubleprime_1d_2"
+      },
+      {
+        "generator_id": "b_proj_doubleprime_1d_1",
+        "coeff": -1,
+        "family_id": "b",
+        "local_object_label": "proj_doubleprime_1d_1"
+      },
+      {
+        "generator_id": "b_proj_doubleprime_1d_2",
+        "coeff": -1,
+        "family_id": "b",
+        "local_object_label": "proj_doubleprime_1d_2"
+      }
+    ],
+    "merged_channel_support": [
+      {
+        "label": "c:E1",
+        "coeff": 1
+      },
+      {
+        "label": "b:E1",
+        "coeff": -1
+      }
+    ],
+    "relevant_families": [
+      "2c",
+      "2b"
+    ],
+    "relevant_local_coreps": [
+      "proj_doubleprime_1d_1",
+      "proj_doubleprime_1d_2"
+    ],
+    "support_on_current_hsp_rows": [
+      {
+        "label": "P3_R1",
+        "coeff": -2
+      },
+      {
+        "label": "P3_R3",
+        "coeff": -2
+      },
+      {
+        "label": "P3_R5",
+        "coeff": 2
+      },
+      {
+        "label": "B1_R1",
+        "coeff": 2
+      },
+      {
+        "label": "B1_R3",
+        "coeff": -2
+      }
+    ],
+    "support_blocks": {
+      "K": 3,
+      "L": 2
+    },
+    "diagnosis": "Exact delta direction between the site-merged E1 channel at 2c and the corresponding 2b reference channel."
+  },
+  "delta_d1_minus_b1": {
+    "id": "delta_d1_minus_b1",
+    "current_generator_support": [
+      {
+        "generator_id": "d_proj_doubleprime_1d_1",
+        "coeff": 1,
+        "family_id": "d",
+        "local_object_label": "proj_doubleprime_1d_1"
+      },
+      {
+        "generator_id": "d_proj_doubleprime_1d_2",
+        "coeff": 1,
+        "family_id": "d",
+        "local_object_label": "proj_doubleprime_1d_2"
+      },
+      {
+        "generator_id": "b_proj_doubleprime_1d_1",
+        "coeff": -1,
+        "family_id": "b",
+        "local_object_label": "proj_doubleprime_1d_1"
+      },
+      {
+        "generator_id": "b_proj_doubleprime_1d_2",
+        "coeff": -1,
+        "family_id": "b",
+        "local_object_label": "proj_doubleprime_1d_2"
+      }
+    ],
+    "merged_channel_support": [
+      {
+        "label": "d:E1",
+        "coeff": 1
+      },
+      {
+        "label": "b:E1",
+        "coeff": -1
+      }
+    ],
+    "relevant_families": [
+      "2d",
+      "2b"
+    ],
+    "relevant_local_coreps": [
+      "proj_doubleprime_1d_1",
+      "proj_doubleprime_1d_2"
+    ],
+    "support_on_current_hsp_rows": [
+      {
+        "label": "P3_R1",
+        "coeff": -2
+      },
+      {
+        "label": "P3_R3",
+        "coeff": -2
+      },
+      {
+        "label": "P3_R5",
+        "coeff": 2
+      },
+      {
+        "label": "B1_R2",
+        "coeff": 2
+      },
+      {
+        "label": "B1_R3",
+        "coeff": -2
+      }
+    ],
+    "support_blocks": {
+      "K": 3,
+      "L": 2
+    },
+    "diagnosis": "Exact delta direction between the site-merged E1 channel at 2d and the corresponding 2b reference channel."
+  },
+  "exact_problem_sector_current_only_basis": [
+    [
+      {
+        "label": "2b:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2c:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2d:E3",
+        "coeff": 1
+      },
+      {
+        "label": "6h:E",
+        "coeff": 2
+      }
+    ],
+    [
+      {
+        "label": "2c:E1",
+        "coeff": -2
+      },
+      {
+        "label": "2c:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2d:E1",
+        "coeff": -2
+      },
+      {
+        "label": "2d:E3",
+        "coeff": 1
+      }
+    ]
+  ],
+  "exact_problem_sector_external_only_basis": [
+    [
+      {
+        "label": "2b:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2c:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2d:E3",
+        "coeff": 1
+      },
+      {
+        "label": "6h:E",
+        "coeff": 1
+      }
+    ],
+    [
+      {
+        "label": "2c:E1",
+        "coeff": 1
+      },
+      {
+        "label": "2c:E3",
+        "coeff": -1
+      },
+      {
+        "label": "2d:E2",
+        "coeff": 1
+      },
+      {
+        "label": "2d:E3",
+        "coeff": -1
+      }
+    ]
+  ],
+  "common_vs_independent_diagnosis": {
+    "exact_part": "The two delta vectors are linearly independent current-only AI directions.",
+    "heuristic_part": "Both deltas look like one common convention failure in the 2b/2c/2d E1 merge rule, with 2b acting as the anchor and 2c/2d misassigned relative to it."
+  }
+}

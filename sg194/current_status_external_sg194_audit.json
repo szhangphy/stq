@@ -1,0 +1,12 @@
+{
+  "target_group": "194.1.1.1",
+  "single_external_rank": 13,
+  "single_current_rank": 13,
+  "single_status": "externally aligned at AI rank/inventory level",
+  "double_external_spinorial_rank_candidate": 10,
+  "double_external_mixed_rank": 23,
+  "double_current_rank": 13,
+  "double_status": "not yet externally aligned to Bilbao physically irreducible spinorial basis",
+  "main_blocker": "194.1.1.1 single points to a quotient/BS-layer mismatch, not AI incompleteness. 194.1.1.1 double still mixes AI-basis mismatch with quotient-layer mismatch.",
+  "next_step": "Fix the standard-space mapping for double first; do not interpret the current double Z^16 physically until the Bilbao spinorial alignment is complete."
+}

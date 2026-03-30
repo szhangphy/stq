@@ -1,0 +1,17 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "global_complement_residual_localization",
+  "status": "completed",
+  "full_33_decomposition_completed": true,
+  "complement_rank_tuple": [
+    9,
+    7,
+    12,
+    4
+  ],
+  "complement_lift_exists": false,
+  "residual_classification": "wrong_ambient_space_construction_or_missing_complement_row_basis_translation",
+  "next_patch_source_file": "debug_workflow_portability_stage2_194.1.1.1.py",
+  "next_patch_function": "build_sg194_double_spinorial_generators"
+}

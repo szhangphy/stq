@@ -1,0 +1,510 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "comparison_kind": "BS-only",
+  "compared_objects": {
+    "current": "current double BS basis projected to the 34-row current HSP point space",
+    "external": "external spinorial standard row-space language"
+  },
+  "current_hsp_labels": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P1_R9",
+    "P1_R10",
+    "P1_R11",
+    "P1_R12",
+    "P2_R1",
+    "P2_R2",
+    "P2_R3",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P5_R1",
+    "P5_R2",
+    "P5_R3",
+    "P5_R4",
+    "P5_R5",
+    "P5_R6",
+    "P5_R7",
+    "P5_R8",
+    "P6_R1",
+    "P6_R2",
+    "B1_R1",
+    "B1_R2",
+    "B1_R3"
+  ],
+  "external_spinorial_row_labels": [
+    "A:A1",
+    "A:A2",
+    "A:A3",
+    "A:A5",
+    "A:A4",
+    "A:A6",
+    "\u0393:\u03931+",
+    "\u0393:\u03933+",
+    "\u0393:\u03931-",
+    "\u0393:\u03933-",
+    "\u0393:\u03932+",
+    "\u0393:\u03934+",
+    "\u0393:\u03932-",
+    "\u0393:\u03934-",
+    "\u0393:\u03935+",
+    "\u0393:\u03936+",
+    "\u0393:\u03935-",
+    "\u0393:\u03936-",
+    "\u0393:\u03937",
+    "\u0393:\u039310",
+    "\u0393:\u03938",
+    "\u0393:\u03939",
+    "\u0393:\u039311",
+    "\u0393:\u039312",
+    "H:H3",
+    "H:H1",
+    "H:H2",
+    "H:H5",
+    "H:H7",
+    "H:H4",
+    "H:H6",
+    "H:H8",
+    "H:H9",
+    "K:K1",
+    "K:K2",
+    "K:K3",
+    "K:K4",
+    "K:K5",
+    "K:K6",
+    "K:K7",
+    "K:K8",
+    "K:K9",
+    "L:L1",
+    "L:L2",
+    "L:L4",
+    "L:L3",
+    "M:M1+",
+    "M:M3+",
+    "M:M1-",
+    "M:M3-",
+    "M:M2+",
+    "M:M4+",
+    "M:M2-",
+    "M:M4-",
+    "M:M5",
+    "M:M6"
+  ],
+  "current_bs_image_shape": [
+    34,
+    29
+  ],
+  "current_bs_image_rank_in_current_hsp_space": 18,
+  "current_ai_image_rank_in_same_hsp_space": 13,
+  "external_spinorial_generator_matrix_shape": [
+    56,
+    33
+  ],
+  "external_spinorial_generator_rank": 10,
+  "union_rank": null,
+  "intersection_rank": null,
+  "exact_lift_to_external_spinorial_row_space_exists": false,
+  "bs_only_comparison_status": "blocked",
+  "blocker": "A BS-only external comparison cannot yet be completed. The cached external spinorial object is a generator matrix in a 56-row Bilbao basis, whereas the current BS basis lives in a 34-row current point-space after restriction. No BS-only lift from the current 34-row point coordinates to the 56-row Bilbao spinorial basis is available without reusing AI/generator alignment machinery.",
+  "what_is_still_known_locally": {
+    "current_hsp_extra_bs_over_current_ai_rank": 5,
+    "current_hsp_extra_bs_over_current_ai_basis": [
+      {
+        "bs_basis_id": "194_1_1_1_single_bs_raw_basis_04",
+        "hsp_vector": [
+          0,
+          2,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "support_on_hsp_rows": [
+          {
+            "label": "P1_R2",
+            "coeff": 2
+          },
+          {
+            "label": "P1_R3",
+            "coeff": -1
+          },
+          {
+            "label": "P1_R6",
+            "coeff": 1
+          },
+          {
+            "label": "P2_R1",
+            "coeff": 1
+          },
+          {
+            "label": "P5_R2",
+            "coeff": 2
+          },
+          {
+            "label": "P5_R3",
+            "coeff": -1
+          },
+          {
+            "label": "P5_R6",
+            "coeff": 1
+          },
+          {
+            "label": "P6_R1",
+            "coeff": 1
+          }
+        ]
+      },
+      {
+        "bs_basis_id": "194_1_1_1_single_bs_raw_basis_06",
+        "hsp_vector": [
+          0,
+          -1,
+          1,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "support_on_hsp_rows": [
+          {
+            "label": "P1_R2",
+            "coeff": -1
+          },
+          {
+            "label": "P1_R3",
+            "coeff": 1
+          },
+          {
+            "label": "P1_R6",
+            "coeff": -1
+          },
+          {
+            "label": "P1_R7",
+            "coeff": 1
+          },
+          {
+            "label": "P5_R2",
+            "coeff": -1
+          },
+          {
+            "label": "P5_R3",
+            "coeff": 1
+          },
+          {
+            "label": "P5_R6",
+            "coeff": -1
+          },
+          {
+            "label": "P5_R7",
+            "coeff": 1
+          }
+        ]
+      },
+      {
+        "bs_basis_id": "194_1_1_1_single_bs_raw_basis_07",
+        "hsp_vector": [
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "support_on_hsp_rows": [
+          {
+            "label": "P1_R2",
+            "coeff": -1
+          },
+          {
+            "label": "P1_R3",
+            "coeff": 1
+          },
+          {
+            "label": "P5_R2",
+            "coeff": -1
+          },
+          {
+            "label": "P5_R3",
+            "coeff": 1
+          }
+        ]
+      },
+      {
+        "bs_basis_id": "194_1_1_1_single_bs_raw_basis_13",
+        "hsp_vector": [
+          -1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "support_on_hsp_rows": [
+          {
+            "label": "P1_R1",
+            "coeff": -1
+          },
+          {
+            "label": "P1_R4",
+            "coeff": 1
+          },
+          {
+            "label": "P1_R6",
+            "coeff": 1
+          },
+          {
+            "label": "P1_R7",
+            "coeff": -1
+          }
+        ]
+      },
+      {
+        "bs_basis_id": "194_1_1_1_single_bs_raw_basis_14",
+        "hsp_vector": [
+          -2,
+          1,
+          0,
+          1,
+          -1,
+          2,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "support_on_hsp_rows": [
+          {
+            "label": "P1_R1",
+            "coeff": -2
+          },
+          {
+            "label": "P1_R2",
+            "coeff": 1
+          },
+          {
+            "label": "P1_R4",
+            "coeff": 1
+          },
+          {
+            "label": "P1_R5",
+            "coeff": -1
+          },
+          {
+            "label": "P1_R6",
+            "coeff": 2
+          },
+          {
+            "label": "P1_R7",
+            "coeff": -1
+          },
+          {
+            "label": "P2_R1",
+            "coeff": 1
+          },
+          {
+            "label": "P2_R2",
+            "coeff": -1
+          }
+        ]
+      }
+    ],
+    "relation_to_problem_sector_ai_blocker": [
+      {
+        "id": "delta_c1_minus_b1",
+        "support_on_current_hsp_rows": [
+          {
+            "label": "P3_R1",
+            "coeff": -2
+          },
+          {
+            "label": "P3_R3",
+            "coeff": -2
+          },
+          {
+            "label": "P3_R5",
+            "coeff": 2
+          },
+          {
+            "label": "B1_R1",
+            "coeff": 2
+          },
+          {
+            "label": "B1_R3",
+            "coeff": -2
+          }
+        ]
+      },
+      {
+        "id": "delta_d1_minus_b1",
+        "support_on_current_hsp_rows": [
+          {
+            "label": "P3_R1",
+            "coeff": -2
+          },
+          {
+            "label": "P3_R3",
+            "coeff": -2
+          },
+          {
+            "label": "P3_R5",
+            "coeff": 2
+          },
+          {
+            "label": "B1_R2",
+            "coeff": 2
+          },
+          {
+            "label": "B1_R3",
+            "coeff": -2
+          }
+        ]
+      }
+    ]
+  },
+  "diagnosis": "Previous external_matrix_final did not establish a BS-space mismatch for double. After separating objects correctly, the BS-only external comparison is still blocked; the currently proven issue is at the AI/generator alignment layer."
+}

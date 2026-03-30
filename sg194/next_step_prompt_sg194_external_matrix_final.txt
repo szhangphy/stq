@@ -1,0 +1,27 @@
+$codex-autoresearch 继续在 /data/work/szhang/ssg/comprel 工作。
+
+不换群，不扩 workflow，只继续 `194.1.1.1` 的 final external reduction after full matrix caching。
+
+已完成且不要重做：
+- `sg194_external_ordinary_generator_matrix.json`
+- `sg194_external_spinorial_generator_matrix.json`
+- `sg194_single_final_external_reduction.json`
+- `sg194_double_final_external_reduction.json`
+- `sg194_external_matrix_final_report.pdf`
+
+当前结论：
+- ordinary 34x45 external matrix 已完整缓存。
+- spinorial 56x33 external matrix 已完整缓存。
+- single 仍 blocked：current ordinary AI row space 与 external ordinary row space 只在 rank 12 相交，union rank = 14。
+- double 仍 blocked：2b/2c/2d/6h problem sector 的 current / external spinorial row spaces 各 rank 6，但 union rank = 8。
+- `delta_c1_minus_b1` 与 `delta_d1_minus_b1` 仍是 current-only excess directions。
+
+下一步唯一目标：
+- 如果还要继续推进，必须重建 current single / double generator images，使它们先真正落到 Bilbao standard row spaces，再重新取 BS/AI。
+
+必须先读：
+- sg194_external_matrix_final_report.pdf
+- sg194_single_final_external_reduction.json
+- sg194_double_final_external_reduction.json
+- sg194_external_ordinary_generator_matrix.json
+- sg194_external_spinorial_generator_matrix.json

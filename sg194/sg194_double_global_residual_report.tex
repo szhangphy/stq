@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\title{SG194 Double Global Residual Report}
+\author{Codex Complement Residual Round}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{1. What is already solved: trusted 10-generator sector}
+The trusted \texttt{2b/2c/2d/6h} sector has already been solved and is not re-analysed here.
+
+\section*{2. Full 33-generator decomposition}
+Trusted common indices are
+\begin{quote}
+[6, 7, 8, 9, 10, 11, 12, 13, 14, 25]
+\end{quote}
+and complement common indices are
+\begin{quote}
+[0, 1, 2, 3, 4, 5, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32]
+\end{quote}
+
+\section*{3. Complement-only comparison}
+Exact complement ranks are current = \texttt{9}, external = \texttt{7}, union = \texttt{12}, intersection = \texttt{4}. Therefore the unresolved complement has current-only dimension \texttt{5} and external-only dimension \texttt{3}.
+
+\section*{4. Complement lift or obstruction}
+No complement lift exists, even over \texttt{Q}. The exact obstruction is row-space containment failure on the complement.
+
+\section*{5. Residual mismatch localization}
+The complement residual is cross-family. Current witness row blocks are ['P1']. External witness row blocks are ['A', 'Gamma'].
+
+\section*{6. Next source-level patch target}
+The next patch target is file \texttt{debug\_workflow\_portability\_stage2\_194.1.1.1.py}, function \texttt{build\_sg194\_double\_spinorial\_generators}. The unresolved complement families are
+\begin{quote}
+['a', 'e', 'f', 'g', 'i', 'j', 'k', 'l']
+\end{quote}
+and the change should replace the untouched identity one-to-one reuse with a complement-specific channel assembly / row-basis translation.
+
+\end{document}

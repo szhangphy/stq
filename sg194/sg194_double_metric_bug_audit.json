@@ -1,0 +1,76 @@
+{
+  "group": "194.1.1.1",
+  "bug_kind": "row-space vs column-space generator-span confusion",
+  "wrong_function": {
+    "name": "row_rank_union_intersection",
+    "wrong_operation": "used `vstack(current, external)` on the original matrices and described the result as a generator-span comparison",
+    "why_wrong": [
+      "The columns are the generators.",
+      "The verdict should therefore be stated in terms of generator-span / column-space logic.",
+      "The old helper name and its report language described a row-space comparison, which is not the right semantic object for the patch verdict."
+    ]
+  },
+  "directly_impacted_old_fields": {
+    "sg194_double_ai_patch_before_after.json": [
+      "before.global_union_rank",
+      "before.global_intersection_rank",
+      "before.problem_sector_union_rank",
+      "before.problem_sector_intersection_rank",
+      "after.global_union_rank",
+      "after.global_intersection_rank",
+      "after.problem_sector_union_rank",
+      "after.problem_sector_intersection_rank",
+      "after.delta_c1_minus_b1_disappeared",
+      "after.delta_d1_minus_b1_disappeared",
+      "targets.wanted_problem_union_drop_8_to_6",
+      "targets.wanted_global_rank_drop_12_to_10",
+      "exact_outcome.problem_sector_exact_identification_after_patch",
+      "exact_outcome.global_rank_drop_achieved"
+    ],
+    "sg194_double_patch_summary.json": [
+      "old_problem_sector_union_rank",
+      "new_problem_sector_union_rank",
+      "delta_c1_minus_b1_disappeared",
+      "delta_d1_minus_b1_disappeared",
+      "bs_only_after_patch_reason"
+    ],
+    "markdown_reports": [
+      "sg194_double_patch_audit.md",
+      "sg194_double_patch_report.md"
+    ]
+  },
+  "old_fields_not_polluted_by_the_bug": [
+    "before.current_rank",
+    "after.current_rank",
+    "before.external_rank",
+    "after.external_rank",
+    "before.problem_sector_current_rank",
+    "after.problem_sector_current_rank",
+    "before.problem_sector_external_rank",
+    "after.problem_sector_external_rank"
+  ],
+  "corrected_metric_setup": {
+    "generator_verdict_helper": "column_space_union_intersection",
+    "row_diagnostic_helper": "row_space_union_intersection",
+    "why_transpose_is_needed": "The original matrices do not share a row ambient, but their transposes share the same generator-label row dimension. So the corrected generator-span comparison is the column-space comparison of the transposed matrices.",
+    "delta_recheck_rule": "The `delta disappeared` flag is now determined by an explicit current-side ambient membership test of the named delta vectors, not by the shortcut `problem_sector_union_rank == external_rank`."
+  },
+  "numerical_revalidation": {
+    "old_buggy_global_union_rank": 21,
+    "corrected_global_union_rank": 21,
+    "old_buggy_problem_union_rank": 6,
+    "corrected_problem_union_rank": 6,
+    "union_numbers_changed": false,
+    "delta_verdict_changed": true
+  },
+  "claims_downgraded_or_withdrawn": [
+    "The old `delta_c1_minus_b1 disappeared` claim.",
+    "The old `delta_d1_minus_b1 disappeared` claim.",
+    "Any old statement that equated `problem_sector_union_rank == external_rank` with explicit delta elimination."
+  ],
+  "claims_revalidated": [
+    "The generator patch still shrinks the trusted 2b/2c/2d/6h problem-sector mismatch from union rank 8 to 6.",
+    "The global 33-generator mismatch is not reduced."
+  ],
+  "next_step_after_revalidation": "No. The corrected generator-span metric still shows only a trusted problem-sector improvement, not a global collapse. Also, the explicit delta vectors remain in the patched current generator span, so the old `delta disappeared` claim is withdrawn."
+}

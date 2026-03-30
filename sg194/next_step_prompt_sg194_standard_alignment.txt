@@ -1,0 +1,29 @@
+$codex-autoresearch 继续在 /data/work/szhang/ssg/comprel 工作。
+
+不换群，不扩 workflow，只继续 `194.1.1.1` 的 double standard-space alignment。
+
+已完成且不要重做：
+- `sg194_standard_alignment_report.pdf`
+- `sg194_single_standard_space_map.json`
+- `sg194_double_spinorial_alignment.json`
+- `sg194_single_standard_quotient_recomputed.json`
+- `sg194_double_standard_quotient_recomputed.json`
+
+当前结论：
+- single 已对齐到 ordinary SG 194 standard symmetry-data space；raw `Z^16` 被显式投影杀掉 16 个 enlarged-space directions，standard-space quotient 为 trivial。
+- double 已完成 explicit 45 -> 33 count alignment：
+  - 2b/2c/2d: (1,2), (3,4), (5,6) -> E1/E2/E3
+  - 6h: 4 -> 1
+- 但 count-aligned current AI rank 仍为 12，而 Bilbao spinorial rank 是 10，所以 double standard-space quotient 仍 blocked。
+
+下一步唯一目标：
+- 只解决 double 的 residual rank-2 mismatch。
+- 必须在 Bilbao spinorial row basis 下继续工作。
+- 不要再引用 raw `Z^16` 作为 user-facing 结果。
+
+必须先读：
+- sg194_standard_alignment_report.pdf
+- sg194_double_spinorial_alignment.json
+- sg194_external_ai_standard.json
+- sg194_external_vs_current_ai_comparison.json
+- sg194_final_correction_judgment.json

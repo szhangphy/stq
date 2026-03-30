@@ -1,0 +1,28 @@
+{
+  "group": "194.1.1.1",
+  "single_main_issue": "both",
+  "single_ai_mismatch_dimension": 1,
+  "single_bs_ai_induced_dimension": 9,
+  "single_bs_independent_residual_dimension": 4,
+  "double_main_issue": "AI",
+  "double_delta_ids": [
+    "delta_c1_minus_b1",
+    "delta_d1_minus_b1"
+  ],
+  "double_delta_classification": "current-only AI excess directions in the 2b/2c/2d/6h problem sector",
+  "double_minimal_fix_target": "double AI merge/typing layer",
+  "old_conclusions_to_retire": [
+    "Do not treat the old single `trivial` claim as established.",
+    "Do not treat the double line as a proven BS mismatch."
+  ],
+  "updated_conclusions": [
+    "single has a 1D AI mismatch, 9 AI-induced BS-mismatch dimensions, and 4 independent BS residual dimensions.",
+    "double has two localized AI excess directions, both tied to the 2b/2c/2d E1 merge rule and the 6h normalization convention."
+  ],
+  "confidence": {
+    "single_ai_localization": "high",
+    "single_bs_causal_decomposition": "high",
+    "double_delta_localization": "high",
+    "double_correction_plan": "medium"
+  }
+}

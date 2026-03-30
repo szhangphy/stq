@@ -1,0 +1,15 @@
+{
+  "target_group": "194.1.1.1",
+  "single_status": {
+    "raw_quotient": "Z^16",
+    "standard_space_quotient": "trivial",
+    "status": "aligned"
+  },
+  "double_status": {
+    "raw_quotient": "Z^16",
+    "standard_space_quotient": null,
+    "status": "partially_aligned_but_blocked"
+  },
+  "main_blocker": "After explicit 2b/2c/2d/6h count alignment, the current double AI still has rank 12 versus Bilbao's physically irreducible spinorial rank 10. The double standard-space BS/AI quotient cannot be recomputed honestly until that residual rank-2 mismatch is resolved and the BS projection is put in the same standard spinorial space.",
+  "next_step": "Fix the remaining double spinorial rank mismatch before attempting a standard-space quotient."
+}

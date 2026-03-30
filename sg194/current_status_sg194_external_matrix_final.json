@@ -1,0 +1,19 @@
+{
+  "target_group": "194.1.1.1",
+  "ordinary_external_matrix_cached": true,
+  "spinorial_external_matrix_cached": true,
+  "single_status": {
+    "finalized": false,
+    "rowspace_union_rank": 14,
+    "current_vs_external_intersection_rank": 12,
+    "final_external_quotient": null
+  },
+  "double_status": {
+    "finalized": false,
+    "problem_sector_union_rank": 8,
+    "problem_sector_intersection_rank": 4,
+    "final_external_quotient": null
+  },
+  "main_blocker": "Current internal SG194 generator images do not land in the cached external standard row spaces.",
+  "next_step": "Rebuild the internal single and double generator images so that they match the cached external ordinary/spinorial matrices before retaking BS/AI."
+}

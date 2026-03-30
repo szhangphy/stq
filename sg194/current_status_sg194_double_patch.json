@@ -1,0 +1,11 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "patch real SG194 double generator-construction source and recompare",
+  "status": "patched_and_recompared",
+  "patched_profile": "sg194_double_anchor_patch_v1",
+  "problem_sector_union_after_patch": 6,
+  "problem_sector_exact_after_patch": true,
+  "global_rank_after_patch": 12,
+  "ready_for_bs_only": false
+}

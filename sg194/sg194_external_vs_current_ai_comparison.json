@@ -1,0 +1,88 @@
+{
+  "single": {
+    "rank_ai_standard": 13,
+    "rank_ai_raw_current": 13,
+    "external_candidate_count": 45,
+    "current_candidate_count": 45,
+    "inventory_match_exact": true,
+    "missing_generators": [],
+    "extra_generators": [],
+    "external_counts_by_wp": {
+      "24l": 1,
+      "12k": 2,
+      "12j": 2,
+      "12i": 2,
+      "6h": 4,
+      "6g": 4,
+      "4f": 3,
+      "4e": 3,
+      "2d": 6,
+      "2c": 6,
+      "2b": 6,
+      "2a": 6
+    },
+    "current_counts_by_wp": {
+      "2a": 6,
+      "2b": 6,
+      "2c": 6,
+      "2d": 6,
+      "4e": 3,
+      "4f": 3,
+      "6g": 4,
+      "6h": 4,
+      "12i": 2,
+      "12j": 2,
+      "12k": 2,
+      "24l": 1
+    },
+    "main_issue_location": "Current single AI is externally aligned; the unresolved inflation is at the BS/quotient layer rather than at the atomic-generator inventory layer."
+  },
+  "double": {
+    "rank_ai_standard_spinorial_candidate": 10,
+    "rank_ai_standard_mixed_bandrep_space": 23,
+    "rank_ai_raw_current": 13,
+    "current_candidate_count": 45,
+    "external_spinorial_candidate_count": 33,
+    "external_mixed_candidate_count": 78,
+    "current_counts_by_wp": {
+      "2a": 6,
+      "2b": 6,
+      "2c": 6,
+      "2d": 6,
+      "4e": 3,
+      "4f": 3,
+      "6g": 4,
+      "6h": 4,
+      "12i": 2,
+      "12j": 2,
+      "12k": 2,
+      "24l": 1
+    },
+    "external_spinorial_counts_by_wp": {
+      "2a": 6,
+      "2b": 3,
+      "2c": 3,
+      "2d": 3,
+      "4e": 3,
+      "4f": 3,
+      "6g": 4,
+      "6h": 1,
+      "12i": 2,
+      "12j": 2,
+      "12k": 2,
+      "24l": 1
+    },
+    "overexpanded_wp_counts": {
+      "2b": 3,
+      "2c": 3,
+      "2d": 3,
+      "6h": 3
+    },
+    "missing_generators": [],
+    "collapsed_or_redundant_generators": [
+      "Bilbao physically irreducible spinorial generators count 3 at each of 2b/2c/2d, whereas the current library carries 6 labels at each site.",
+      "Bilbao treats 6h through one spinorial E channel, whereas the current library carries 4 projective labels there."
+    ],
+    "main_issue_location": "The current double AI is not aligned to Bilbao's physically irreducible spinorial generator convention; the quotient layer is also non-standard because the current BS lives in a larger raw space."
+  }
+}

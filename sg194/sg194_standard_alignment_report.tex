@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+        \usepackage[margin=1in]{geometry}
+        \usepackage[T1]{fontenc}
+        \usepackage[utf8]{inputenc}
+        \usepackage{lmodern}
+        \usepackage{amsmath,amssymb}
+        \usepackage{hyperref}
+        \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+        \begin{document}
+        \title{SG194 Standard Alignment Report}
+        \date{2026-03-30}
+        \maketitle
+        \section*{SG194 Standard Alignment Report}
+
+\subsection*{1. Task Background And Current State}
+
+The prior external SG 194 AI audit already established that the ordinary single-valued AI inventory is externally complete at rank 13, while the double-valued current library is not aligned to Bilbao's physically irreducible spinorial generator convention. This report resolves the next two hard problems:
+
+1. Single: replace the current enlarged 29-dimensional raw BS ambient space by a standard SG 194 symmetry-data layer.
+2. Double: replace the current 45-label local-corep inventory by an explicit Bilbao-style spinorial count convention and measure the remaining mismatch.
+
+\subsection*{2. External SG194 AI Audit Recap}
+
+\begin{itemize}
+\item Single external AI rank: `13`
+\begin{itemize}
+\item Double external spinorial AI rank: `10`
+\begin{itemize}
+\item Current raw single AI rank: `13`
+\begin{itemize}
+\item Current raw double AI rank: `13`
+
+The single mismatch is therefore not at the AI layer, while the double mismatch still mixes AI-basis inflation with a non-standard BS ambient space.
+
+\subsection*{3. Single: Raw BS vs Standard Symmetry-Data Space}
+
+Let the current raw BS basis coordinates be `x \textbackslash\{\}in \textbackslash\{\}mathbb\{Q\}\textasciicircum{}\{29\}`, the current `AI \textbackslash\{\}to BS` matrix be `M \textbackslash\{\}in \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{29 \textbackslash\{\}times 13\}`, and the external ordinary SG 194 AI basis be `B\_\{std\} \textbackslash\{\}in \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{34 \textbackslash\{\}times 13\}`. We extend the AI columns of `M` to a full basis `[M\textbackslash\{\};C]` of the raw BS coordinate space and define
+
+\textbackslash\{\}[
+P\_\{\textbackslash\{\}mathrm\{single\}\} = B\_\{\textbackslash\{\}mathrm\{std\}\}
+\textbackslash\{\}begin\{bmatrix\} I\_\{13\} \& 0 \textbackslash\{\}end\{bmatrix\}
+[M\textbackslash\{\};C]\textasciicircum{}\{-1\}.
+\textbackslash\{\}]
+
+This exact rational map satisfies
+
+\textbackslash\{\}[
+P\_\{\textbackslash\{\}mathrm\{single\}\} M = B\_\{\textbackslash\{\}mathrm\{std\}\}, \textbackslash\{\}qquad
+P\_\{\textbackslash\{\}mathrm\{single\}\} C = 0.
+\textbackslash\{\}]
+
+Hence the 16 complement columns in `C` are the explicit enlarged-space directions that were responsible for the raw `Z\textasciicircum{}\{16\}`.
+
+Single recomputed result:
+
+\begin{itemize}
+\item Raw quotient: `Z\textasciicircum{}16`
+\begin{itemize}
+\item Standard-space quotient: `trivial`
+
+\subsection*{4. Double: Current Basis vs Bilbao Spinorial Basis}
+
+Bilbao's physically irreducible spinorial BANDREP inventory for ordinary SG 194 contains 33 generators with global rank 10. The current `194.1.1.1` double library contains 45 generators and rank 13.
+
+The explicit count alignment constructed here is:
+
+\begin{itemize}
+\item `2b`, `2c`, `2d`: merge current `6` labels into Bilbao-style `3` channels by pairing `(1,2)`, `(3,4)`, and `(5,6)`.
+\begin{itemize}
+\item `6h`: merge current `4` labels into one Bilbao-style `E` channel.
+\begin{itemize}
+\item `2a`, `4e`, `4f`, `6g`, `12i`, `12j`, `12k`, `24l`: keep one-to-one.
+
+This yields an explicit `45 \textbackslash\{\}to 33` alignment matrix, but the resulting current span still has rank `12` rather than Bilbao's rank `10`. Therefore the current basis mismatch is only partially removed.
+
+\subsection*{5. Standard-Space Quotient Recomputation}
+
+Single:
+
+\begin{itemize}
+\item `rank(BS\_\{std\}) = 13`
+\begin{itemize}
+\item `rank(AI\_\{std\}) = 13`
+\begin{itemize}
+\item `BS\_\{std\} / AI\_\{std\} = trivial`
+
+Double:
+
+\begin{itemize}
+\item count-aligned current AI rank = `12`
+\begin{itemize}
+\item Bilbao spinorial standard AI rank = `10`
+\begin{itemize}
+\item standard-space quotient = blocked
+
+\subsection*{6. User-Facing Conclusions}
+
+\begin{itemize}
+\item Single should no longer be described by the raw `Z\textasciicircum{}16`; the ordinary standard-space quotient is `trivial` after removing the 16 enlarged-space directions explicitly.
+\begin{itemize}
+\item Double should still not be described by the raw `Z\textasciicircum{}16`; even after explicit 2b/2c/2d/6h count alignment, the AI layer remains rank-12 vs rank-10 and the BS projection is therefore still not settled.
+
+\subsection*{7. Remaining Blocker And Next Step}
+
+\begin{itemize}
+\item Single blocker: none at the ordinary standard-space level.
+\begin{itemize}
+\item Double blocker: resolve the remaining rank-2 gap after count alignment, then build the double standard-space BS projection in the same Bilbao spinorial row basis.
+
+\subsection*{8. Implementation Mapping}
+
+\begin{itemize}
+\item Single projection matrix and complement basis: `sg194\_single\_standard\_space\_map.json`
+\begin{itemize}
+\item Double 45 -> 33 alignment matrix and sitewise merges: `sg194\_double\_spinorial\_alignment.json`
+\begin{itemize}
+\item Recomputed standard-space quotient summaries: `sg194\_single\_standard\_quotient\_recomputed.json`, `sg194\_double\_standard\_quotient\_recomputed.json`
+\begin{itemize}
+\item Consolidated audit: `sg194\_standard\_alignment\_audit.md`, `sg194\_standard\_alignment\_summary.json`
+        \end{document}

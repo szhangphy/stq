@@ -1,0 +1,22 @@
+{
+  "target_group": "194.1.1.1",
+  "ordinary_external_matrix_cached": true,
+  "spinorial_external_matrix_cached": true,
+  "single_finalized": false,
+  "double_finalized": false,
+  "single_main_issue": "current ordinary AI row space differs from the external ordinary row space by one dimension",
+  "double_main_issue": "problematic 2b/2c/2d/6h spinorial sector still has a genuine rank-2 mismatch",
+  "current_alignment_to_external_language": false,
+  "single_final_external_quotient": null,
+  "double_final_external_quotient": null,
+  "discarded_old_conclusions": [
+    "single v1 standard-space quotient = trivial",
+    "single raw Z^16 as a user-facing standard quotient",
+    "double raw Z^16 as a user-facing standard quotient"
+  ],
+  "retained_new_conclusions": [
+    "full Bilbao ordinary and spinorial matrices are now cached locally",
+    "single is blocked by a genuine external ordinary row-space mismatch, not by missing matrix data",
+    "double is blocked by a genuine rank-2 spinorial mismatch in the 2b/2c/2d/6h sector, not by missing matrix data"
+  ]
+}

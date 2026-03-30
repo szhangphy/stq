@@ -1,0 +1,28 @@
+Continue from the completed SG194 mismatch-localization audit. Do not redo raw audits or external-matrix acquisition.
+
+Fixed scope:
+- group: 194.1.1.1 only
+- goal: implement the minimal correction plan, not new quotient interpretation
+
+Trusted inputs to read first:
+- sg194_single_ai_mismatch_localization.json
+- sg194_single_bs_mismatch_localization.json
+- sg194_double_delta_localization.json
+- sg194_double_minimal_correction_plan.json
+- sg194_mismatch_localization_summary.json
+- handoff_sg194_mismatch_localization.md
+
+Key facts already established:
+- single has a 1D AI mismatch
+- single BS mismatch splits into 9 AI-induced dimensions plus 4 independent residual BS directions
+- the 4 residual BS directions match current raw BS basis ids 04, 06, 19, 14
+- double delta_c1_minus_b1 = c:E1 - b:E1
+- double delta_d1_minus_b1 = d:E1 - b:E1
+- both double deltas are current-only AI excess directions, not proven BS excess
+- minimal correction plan points to the 2b/2c/2d E1 merge rule and the 6h normalization
+
+Next task:
+1. Patch the double merge/alignment logic so the 2c/2d E1 assignment becomes Bilbao-content matched.
+2. Patch the 6h four-way merge normalization in the same logic.
+3. Re-run only the limited AI-only problem-sector alignment checks.
+4. Report whether the count-aligned rank drops from 12 to 10.

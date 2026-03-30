@@ -1,0 +1,68 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\title{SG194 Double Patch Report}
+\author{Codex Local Patch Round}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{1. Problem History and Why Audits Alone Were Insufficient}
+Previous SG194 rounds localized the double mismatch to the \texttt{2b/2c/2d/6h} sector, but the local package still had no source-of-truth builder for the current \texttt{33}-column spinorial generators. The only source-level object was the \texttt{45}-candidate local-irrep induction output, and every later SG194 double file compensated with downstream hardcoded merges. That is why the mismatch could be diagnosed repeatedly without actually shrinking.
+
+\section*{2. Finding the Real Bug Source}
+The raw writer \texttt{debug\_raw\_matrix\_audit.py} was not the real bug source. It serializes whatever the stage-2 induction layer gives it. The real missing layer sat in \texttt{debug\_workflow\_portability\_stage2\_194.1.1.1.py}: stage-2 could induce the \texttt{45} local-irrep candidates, but it could not yet build the current SG194 double spinorial generators themselves.
+
+\section*{3. Concrete Code Patches}
+The patch adds \texttt{build\_sg194\_double\_spinorial\_generators(...)} to the stage-2 source layer. Two profiles now exist:
+\begin{itemize}
+\item \texttt{legacy}: the old pair-sum / four-way-sum channelization.
+\item \texttt{sg194\_double\_anchor\_patch\_v1}: the patched SG194 channelization.
+\end{itemize}
+The exact structured solve showed that the heuristic ``fix only \texttt{2c/2d E1} and rescale \texttt{6h}'' did not have an exact local-block solution. The smallest exact source-level fix that kills the trusted problem-sector mismatch is:
+\begin{itemize}
+\item \texttt{c:E3 -> 2*c:E3 - b:E3}
+\item \texttt{d:E3 -> 2*d:E3 - b:E3}
+\item \texttt{6h:E -> 6h:E - b:E3}
+\end{itemize}
+
+\section*{4. Before/After AI Comparison}
+Trusted problem-sector metrics:
+\begin{itemize}
+\item before: current/external/problem-union/problem-intersection = \texttt{6 / 6 / 8 / 4}
+\item after: current/external/problem-union/problem-intersection = \texttt{6 / 6 / 6 / 6}
+\end{itemize}
+Therefore the explicit trusted SG194 double problem-sector mismatch is removed exactly. In particular:
+\begin{itemize}
+\item \texttt{delta\_c1\_minus\_b1} disappears: \texttt{True}
+\item \texttt{delta\_d1\_minus\_b1} disappears: \texttt{True}
+\end{itemize}
+
+\section*{5. Problem-Sector Rank Changes}
+The hoped-for direct full-rank collapse from \texttt{12} to \texttt{10} was \textbf{not} achieved in the broader \texttt{33}-column current-HSP comparison:
+\begin{itemize}
+\item before full current rank: \texttt{12}
+\item after full current rank: \texttt{12}
+\end{itemize}
+So the patched current builder removes the trusted localized SG194 bug, but a wider all-sector current/external row-language gap still remains.
+
+\section*{6. Updated Diagnosis and Next Step}
+The current round finally moved beyond audit-only work:
+\begin{itemize}
+\item the real source patch is in the stage-2 generator-construction code;
+\item patched raw artifacts were regenerated;
+\item the trusted SG194 double problem sector is fixed.
+\end{itemize}
+However BS-only is still not the next justified step. The next step is to finish the all-sector current-to-external spinorial canonicalization outside the already fixed \texttt{2b/2c/2d/6h} sector, then re-evaluate whether BS-only has become meaningful.
+
+\section*{Implementation Mapping}
+\begin{itemize}
+\item source patch: \texttt{debug\_workflow\_portability\_stage2\_194.1.1.1.py}
+\item patched driver: \texttt{debug\_sg194\_double\_patch.py}
+\item patched raw artifacts: \texttt{raw\_194\_1\_1\_1\_double\_ai\_candidates\_patched.json}, \texttt{raw\_194\_1\_1\_1\_double\_ai\_basis\_patched.json}, \texttt{raw\_194\_1\_1\_1\_double\_ai\_in\_bs\_matrix\_patched.json}
+\item before/after comparison: \texttt{sg194\_double\_ai\_patch\_before\_after.json}
+\end{itemize}
+
+\end{document}

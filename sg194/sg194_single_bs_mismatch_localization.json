@@ -1,0 +1,3259 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 1,
+  "current_bs_image_rank": 18,
+  "external_standard_span_rank": 13,
+  "union_rank": 26,
+  "intersection_rank": 5,
+  "current_only_bs_difference_dimension": 13,
+  "external_only_bs_difference_dimension": 8,
+  "current_only_bs_difference_basis": [
+    {
+      "id": "single_current_bs_extra_01",
+      "vector_on_34_point_space": [
+        0,
+        2,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P1_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1-",
+          "coeff": 2
+        },
+        {
+          "label": "GM:*GM_2+",
+          "coeff": -1
+        },
+        {
+          "label": "GM:*GM_3-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": 2
+        },
+        {
+          "label": "H:*H_2",
+          "coeff": -1
+        },
+        {
+          "label": "M:*M_2+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_3-",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 3,
+        "H": 3,
+        "M": 1
+      }
+    },
+    {
+      "id": "single_current_bs_extra_02",
+      "vector_on_34_point_space": [
+        0,
+        -1,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1-",
+          "coeff": -1
+        },
+        {
+          "label": "GM:*GM_2+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_3-",
+          "coeff": -1
+        },
+        {
+          "label": "GM:*GM_4+",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": -1
+        },
+        {
+          "label": "H:*H_2",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_2+",
+          "coeff": -1
+        },
+        {
+          "label": "M:*M_2-",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "GM": 4,
+        "H": 4
+      }
+    },
+    {
+      "id": "single_current_bs_extra_03",
+      "vector_on_34_point_space": [
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1-",
+          "coeff": -1
+        },
+        {
+          "label": "GM:*GM_2+",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": -1
+        },
+        {
+          "label": "H:*H_2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "GM": 2,
+        "H": 2
+      }
+    },
+    {
+      "id": "single_current_bs_extra_04",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P3_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "K:*K_1",
+          "coeff": -1
+        },
+        {
+          "label": "K:*K_3",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "K": 2
+      }
+    },
+    {
+      "id": "single_current_bs_extra_05",
+      "vector_on_34_point_space": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P1_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": -1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1+",
+          "coeff": -1
+        },
+        {
+          "label": "GM:*GM_2-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_3-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4+",
+          "coeff": -1
+        }
+      ],
+      "support_blocks": {
+        "GM": 4
+      }
+    },
+    {
+      "id": "single_current_bs_extra_06",
+      "vector_on_34_point_space": [
+        -2,
+        1,
+        0,
+        1,
+        -1,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P1_R1",
+          "coeff": -2
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R7",
+          "coeff": -1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": -1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1+",
+          "coeff": -2
+        },
+        {
+          "label": "GM:*GM_1-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_2-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_3+",
+          "coeff": -1
+        },
+        {
+          "label": "GM:*GM_3-",
+          "coeff": 2
+        },
+        {
+          "label": "GM:*GM_4+",
+          "coeff": -1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_2",
+          "coeff": -1
+        }
+      ],
+      "support_blocks": {
+        "A": 2,
+        "GM": 6
+      }
+    },
+    {
+      "id": "single_current_bs_extra_07",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R3",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "K": 2,
+        "L": 1
+      }
+    },
+    {
+      "id": "single_current_bs_extra_08",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R2",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "K:*K_5",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "K": 1,
+        "L": 1
+      }
+    },
+    {
+      "id": "single_current_bs_extra_09",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R1",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "K:*K_5",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4-",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "K": 1,
+        "L": 1
+      }
+    },
+    {
+      "id": "single_current_bs_extra_10",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": -1
+        },
+        {
+          "label": "M:*M_1-",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_2+",
+          "coeff": -1
+        },
+        {
+          "label": "M:*M_3-",
+          "coeff": -1
+        },
+        {
+          "label": "M:*M_4+",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "H": 4,
+        "M": 2
+      }
+    },
+    {
+      "id": "single_current_bs_extra_11",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "H:*H_1",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_2",
+          "coeff": -1
+        },
+        {
+          "label": "M:*M_1-",
+          "coeff": -1
+        },
+        {
+          "label": "M:*M_3+",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "H": 4
+      }
+    },
+    {
+      "id": "single_current_bs_extra_12",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P3_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "K:*K_4",
+          "coeff": -1
+        },
+        {
+          "label": "K:*K_2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "K": 2
+      }
+    },
+    {
+      "id": "single_current_bs_extra_13",
+      "vector_on_34_point_space": [
+        0,
+        -1,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1-",
+          "coeff": -1
+        },
+        {
+          "label": "GM:*GM_2+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_3-",
+          "coeff": -1
+        },
+        {
+          "label": "GM:*GM_4+",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": -1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": -1
+        },
+        {
+          "label": "H:*H_2",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "GM": 4,
+        "H": 4
+      }
+    }
+  ],
+  "external_only_bs_difference_basis": [
+    {
+      "id": "single_external_bs_extra_01",
+      "vector_on_34_point_space": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "GM:*GM_1+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_3+",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_2",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_3+",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_3+",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_2",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_3+",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A:*A": 1,
+        "GM:*GM": 2,
+        "H:*H": 1,
+        "K:*K": 2,
+        "L:*L": 1,
+        "M:*M": 2
+      }
+    },
+    {
+      "id": "single_external_bs_extra_02",
+      "vector_on_34_point_space": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "GM:*GM_1-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_3-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_2",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_2",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1-",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_3-",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_3-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_2",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_2",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1-",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_3-",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A:*A": 1,
+        "GM:*GM": 2,
+        "H:*H": 1,
+        "K:*K": 2,
+        "L:*L": 1,
+        "M:*M": 2
+      }
+    },
+    {
+      "id": "single_external_bs_extra_03",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "GM:*GM_2+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4+",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_2",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_3",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_2+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4+",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_2+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4+",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_2",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_3",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_2+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4+",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A:*A": 1,
+        "GM:*GM": 2,
+        "H:*H": 1,
+        "K:*K": 2,
+        "L:*L": 1,
+        "M:*M": 2
+      }
+    },
+    {
+      "id": "single_external_bs_extra_04",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "GM:*GM_2-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_3",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_2-",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4-",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_2-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_3",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_2-",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4-",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A:*A": 1,
+        "GM:*GM": 2,
+        "H:*H": 1,
+        "K:*K": 2,
+        "L:*L": 1,
+        "M:*M": 2
+      }
+    },
+    {
+      "id": "single_external_bs_extra_05",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "GM:*GM_5+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_6+",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_3",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_5",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_6",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_2",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_2+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_3+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4+",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_5+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_6+",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_3",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_5",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_6",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_2",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_2+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_3+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4+",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A:*A": 1,
+        "GM:*GM": 2,
+        "H:*H": 2,
+        "K:*K": 2,
+        "L:*L": 2,
+        "M:*M": 4
+      }
+    },
+    {
+      "id": "single_external_bs_extra_06",
+      "vector_on_34_point_space": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "GM:*GM_1+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4-",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4-",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A:*A": 1,
+        "GM:*GM": 2,
+        "H:*H": 1,
+        "K:*K": 2,
+        "L:*L": 1,
+        "M:*M": 2
+      }
+    },
+    {
+      "id": "single_external_bs_extra_07",
+      "vector_on_34_point_space": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "GM:*GM_1-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4+",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_2",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_2",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_3",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1-",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4+",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1-",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4+",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_2",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_2",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_3",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_3",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1-",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4+",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A:*A": 1,
+        "GM:*GM": 2,
+        "H:*H": 1,
+        "K:*K": 2,
+        "L:*L": 1,
+        "M:*M": 2
+      }
+    },
+    {
+      "id": "single_external_bs_extra_08",
+      "vector_on_34_point_space": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "support_on_current_hsp_labels": [
+        {
+          "label": "GM:*GM_1+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_5",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4-",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_on_external_row_labels_by_position": [
+        {
+          "label": "GM:*GM_1+",
+          "coeff": 1
+        },
+        {
+          "label": "GM:*GM_4-",
+          "coeff": 1
+        },
+        {
+          "label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "label": "K:*K_5",
+          "coeff": 1
+        },
+        {
+          "label": "H:*H_1",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "label": "M:*M_4-",
+          "coeff": 1
+        },
+        {
+          "label": "L:*L_1",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A:*A": 1,
+        "GM:*GM": 2,
+        "H:*H": 1,
+        "K:*K": 1,
+        "L:*L": 1,
+        "M:*M": 2
+      }
+    }
+  ],
+  "current_ai_image_rank_in_same_point_space": 13,
+  "external_plus_current_ai_span_rank": 22,
+  "intersection_rank_after_ai_fix": 14,
+  "union_rank_after_ai_fix": 26,
+  "ai_induced_bs_mismatch_dimension": 9,
+  "ai_induced_bs_difference_basis": [
+    {
+      "id": "single_bs_ai_induced_01",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R3",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 2,
+        "K": 2,
+        "L": 1,
+        "M": 1
+      },
+      "matching_current_ai_generators": [
+        "a_A1g"
+      ]
+    },
+    {
+      "id": "single_bs_ai_induced_02",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R3",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 2,
+        "K": 2,
+        "L": 1,
+        "M": 1
+      },
+      "matching_current_ai_generators": [
+        "a_A1u"
+      ]
+    },
+    {
+      "id": "single_bs_ai_induced_03",
+      "vector_on_34_point_space": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R3",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 2,
+        "K": 2,
+        "L": 1,
+        "M": 1
+      },
+      "matching_current_ai_generators": [
+        "a_A2g"
+      ]
+    },
+    {
+      "id": "single_bs_ai_induced_04",
+      "vector_on_34_point_space": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R3",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 2,
+        "K": 2,
+        "L": 1,
+        "M": 1
+      },
+      "matching_current_ai_generators": [
+        "a_A2u"
+      ]
+    },
+    {
+      "id": "single_bs_ai_induced_05",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 4,
+        "K": 2,
+        "L": 2,
+        "M": 2
+      },
+      "matching_current_ai_generators": [
+        "a_Eg"
+      ]
+    },
+    {
+      "id": "single_bs_ai_induced_06",
+      "vector_on_34_point_space": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R3",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 2,
+        "K": 2,
+        "L": 1,
+        "M": 1
+      },
+      "matching_current_ai_generators": [
+        "b_A1'"
+      ]
+    },
+    {
+      "id": "single_bs_ai_induced_07",
+      "vector_on_34_point_space": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R3",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 2,
+        "K": 2,
+        "L": 1,
+        "M": 1
+      },
+      "matching_current_ai_generators": [
+        "b_A1''"
+      ]
+    },
+    {
+      "id": "single_bs_ai_induced_08",
+      "vector_on_34_point_space": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 4,
+        "K": 1,
+        "L": 2,
+        "M": 2
+      },
+      "matching_current_ai_generators": [
+        "b_E'"
+      ]
+    },
+    {
+      "id": "single_bs_ai_induced_09",
+      "vector_on_34_point_space": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        },
+        {
+          "label": "B1_R2",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 2,
+        "H": 2,
+        "K": 1,
+        "L": 1,
+        "M": 1
+      },
+      "matching_current_ai_generators": [
+        "c_A1'"
+      ]
+    }
+  ],
+  "independent_bs_residual_dimension": 4,
+  "single_bs_residual_after_ai_fix": [
+    {
+      "id": "single_bs_residual_after_ai_fix_01",
+      "vector_on_34_point_space": [
+        0,
+        2,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "A": 1,
+        "GM": 3,
+        "H": 3,
+        "M": 1
+      },
+      "matching_current_raw_bs_basis_id": "194_1_1_1_single_bs_raw_basis_04"
+    },
+    {
+      "id": "single_bs_residual_after_ai_fix_02",
+      "vector_on_34_point_space": [
+        0,
+        -1,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "GM": 4,
+        "H": 4
+      },
+      "matching_current_raw_bs_basis_id": "194_1_1_1_single_bs_raw_basis_06"
+    },
+    {
+      "id": "single_bs_residual_after_ai_fix_03",
+      "vector_on_34_point_space": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": -1
+        }
+      ],
+      "support_blocks": {
+        "GM": 4
+      },
+      "matching_current_raw_bs_basis_id": "194_1_1_1_single_bs_raw_basis_19"
+    },
+    {
+      "id": "single_bs_residual_after_ai_fix_04",
+      "vector_on_34_point_space": [
+        -2,
+        1,
+        0,
+        1,
+        -1,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_hsp_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": -2
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R7",
+          "coeff": -1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": -1
+        }
+      ],
+      "support_blocks": {
+        "A": 2,
+        "GM": 6
+      },
+      "matching_current_raw_bs_basis_id": "194_1_1_1_single_bs_raw_basis_14"
+    }
+  ],
+  "diagnosis": {
+    "summary": "The current-only BS difference has dimension 13. Once the current AI image is added to the external span, 9 of those directions are absorbed and 4 residual BS directions remain.",
+    "independent_residual_bs_basis_ids": [
+      "194_1_1_1_single_bs_raw_basis_04",
+      "194_1_1_1_single_bs_raw_basis_06",
+      "194_1_1_1_single_bs_raw_basis_19",
+      "194_1_1_1_single_bs_raw_basis_14"
+    ],
+    "strongest_blocks_in_current_only_difference": {
+      "A": 3,
+      "GM": 23,
+      "H": 21,
+      "K": 8,
+      "L": 3,
+      "M": 3
+    }
+  }
+}

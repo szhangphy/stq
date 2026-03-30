@@ -1,0 +1,110 @@
+\documentclass[11pt]{article}
+        \usepackage[margin=1in]{geometry}
+        \usepackage{hyperref}
+        \usepackage{amsmath,amssymb}
+        \usepackage{longtable}
+        \usepackage{enumitem}
+        \setlength{\parskip}{0.6em}
+        \setlength{\parindent}{0pt}
+        \begin{document}
+        \begin{center}
+        {\LARGE SG194 External Matrix Final Report}
+        \end{center}
+        \section*{1. Problem Background And Historical Error Chain}
+
+Previous SG194 stages stopped at a point where the local repository did not cache the full external Bilbao ordinary and spinorial generator matrices. That made the final standard reduction underdetermined. This stage closes that specific blocker by caching:\\
+
+- ordinary external matrix: `34 x 45`\\
+- spinorial external matrix: `56 x 33`\\
+
+but it also shows that the remaining obstruction is **not** missing external data anymore.\\
+
+\section*{2. External Matrix Acquisition}
+
+Ordinary route:\\
+- landing page: `https://cryst.ehu.es/rep/sitesym.html`\\
+- CGI: `https://cryst.ehu.es/cgi-bin/rep/programs/sitesym/sitesym\_cgi.py`\\
+- workflow: showwp -> showorbit -> calcsim\\
+
+Spinorial route:\\
+- CGI: `https://cryst.ehu.es/cgi-bin/cryst/programs/bandrep.pl`\\
+- workflow: Wyckoff table fetch -> mixed 56x78 parse -> spinorial 56x33 extraction\\
+
+Raw HTML fetches are cached under `sg194\_external\_matrix\_cache/ordinary` and `sg194\_external\_matrix\_cache/spinorial`.\\
+
+\section*{3. Single Final Ordinary Reduction}
+
+Let\\
+\textbackslash\{\}[\\
+E\_\{\textbackslash\{\}mathrm\{ord\}\} \textbackslash\{\}in \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{34 \textbackslash\{\}times 45\}\\
+\textbackslash\{\}]\\
+be the cached Bilbao ordinary generator matrix, with rows indexed by ordinary high-symmetry irreps at `GM, A, K, H, M, L`.\\
+
+Let\\
+\textbackslash\{\}[\\
+C\_\{\textbackslash\{\}mathrm\{cur\}\}\textasciicircum{}\{\textbackslash\{\}mathrm\{full\}\} \textbackslash\{\}in \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{62 \textbackslash\{\}times 45\}, \textbackslash\{\}qquad\\
+C\_\{\textbackslash\{\}mathrm\{cur\}\}\textasciicircum{}\{\textbackslash\{\}mathrm\{HSP\}\} \textbackslash\{\}in \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{34 \textbackslash\{\}times 45\}\\
+\textbackslash\{\}]\\
+be the current internal generator matrices in the full raw unknown basis and in the selected HSP restriction, respectively.\\
+
+After exact column reordering by generator id, one finds:\\
+
+- `rank Row(C\_cur\textasciicircum{}full) = 13`\\
+- `rank Row(E\_ord) = 13`\\
+- `rank(Row(C\_cur\textasciicircum{}full) + Row(E\_ord)) = 14`\\
+
+The same union rank `14` is obtained for the HSP-restricted current matrix. Therefore no exact row map\\
+\textbackslash\{\}[\\
+P\_\{\textbackslash\{\}mathrm\{single\}\} C\_\{\textbackslash\{\}mathrm\{cur\}\} = E\_\{\textbackslash\{\}mathrm\{ord\}\}\\
+\textbackslash\{\}]\\
+exists, neither from the full raw current matrix nor from the HSP restriction.\\
+
+The single line is therefore still blocked. The old v1 `trivial` conclusion must be discarded, and the v2 `Z\textasciicircum{}5` should only be kept as an intermediate HSP-space diagnostic.\\
+
+\section*{4. Double Final Spinorial Reduction}
+
+Let\\
+\textbackslash\{\}[\\
+E\_\{\textbackslash\{\}mathrm\{spin\}\} \textbackslash\{\}in \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{56 \textbackslash\{\}times 33\}\\
+\textbackslash\{\}]\\
+be the cached Bilbao physically irreducible spinorial generator matrix.\\
+
+The unambiguous problematic sector consists of the ten channels\\
+`2b:E1,E2,E3`, `2c:E1,E2,E3`, `2d:E1,E2,E3`, `6h:E`.\\
+After merging the current internal labels as in the v2 representation-content stage, the current and external problem-sector matrices satisfy:\\
+
+- `rank Row(C\_prob) = 6`\\
+- `rank Row(E\_prob) = 6`\\
+- `rank(Row(C\_prob) + Row(E\_prob)) = 8`\\
+
+Thus the residual mismatch survives even after the full external spinorial matrix is cached. The current-only and external-only problem-sector difference spaces are both two-dimensional.\\
+
+This proves that `delta\_c1\_minus\_b1` and `delta\_d1\_minus\_b1` are not just missing lifts caused by unavailable external data; they remain current-only excess directions relative to the external spinorial problem-sector row space.\\
+
+\section*{5. Updated Final Conclusions}
+
+- Single is **not** finalized.\\
+- Double is **not** finalized.\\
+- SG194 is **not yet** aligned to the final external standard language.\\
+
+What is now final is the diagnosis:\\
+
+- single blocker = genuine ordinary row-space mismatch\\
+- double blocker = genuine rank-2 spinorial mismatch in the `2b/2c/2d/6h` sector\\
+
+\section*{6. Implementation Mapping}
+
+- ordinary matrix cache: `sg194\_external\_ordinary\_generator\_matrix.json`\\
+- spinorial matrix cache: `sg194\_external\_spinorial\_generator\_matrix.json`\\
+- acquisition audit: `sg194\_external\_matrix\_acquisition.md`\\
+- single final reduction: `sg194\_single\_final\_external\_reduction.json`\\
+- double final reduction: `sg194\_double\_final\_external\_reduction.json`\\
+- final stage summary: `sg194\_external\_matrix\_final\_summary.json`\\
+
+\section*{7. Confidence}
+
+- ordinary matrix cached: `True`\\
+- spinorial matrix cached: `True`\\
+- single finalized: `False`\\
+- double finalized: `False`\\
+        \end{document}

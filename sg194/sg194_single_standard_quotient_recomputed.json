@@ -1,0 +1,14 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 1,
+  "raw_quotient": "Z^16",
+  "standard_space_basis": "Bilbao ordinary SITESYM high-symmetry irrep rows at GM, A, K, H, M, L",
+  "standard_bs_rank": 13,
+  "standard_ai_rank": 13,
+  "standard_space_quotient": "trivial",
+  "free_part": "0",
+  "finite_part": [],
+  "confidence": "high",
+  "remaining_blocker": null,
+  "user_facing_rewrite": "Do not quote the raw Z^16. After projecting the current 29-dimensional raw BS layer onto the ordinary SG 194 standard symmetry-data space, the BS image collapses onto the same 13-dimensional layer already spanned by the externally aligned AI, so the ordinary standard-space quotient is trivial in this constructed alignment."
+}

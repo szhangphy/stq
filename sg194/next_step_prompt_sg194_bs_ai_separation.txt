@@ -1,0 +1,23 @@
+$codex-autoresearch 继续在 /data/work/szhang/ssg/comprel 工作。
+
+不换群，不扩 workflow。只继续 `194.1.1.1` 的 BS-vs-AI separation 之后的剩余 blocker。
+
+已完成且不要重做：
+- `sg194_single_ai_vs_external.json`
+- `sg194_single_bs_vs_external.json`
+- `sg194_double_ai_vs_external.json`
+- `sg194_double_bs_vs_external.json`
+- `sg194_bs_ai_separation_report.pdf`
+
+当前已钉死的结论：
+- previous external_matrix_final mixed up AI-image comparison with BS-space comparison.
+- single: `both`
+  - AI-only mismatch: rank 13 vs 13, union rank 14, intersection 12
+  - BS-only mismatch: current rank 18 vs external rank 13, union rank 26, intersection 5
+- double: `AI`
+  - AI-only mismatch proven in the 2b/2c/2d/6h problem sector: rank 6 vs 6, union rank 8, intersection 4
+  - BS-only external comparison still blocked; no BS-only lift to the 56-row Bilbao spinorial basis is fixed yet
+- `delta_c1_minus_b1` / `delta_d1_minus_b1` are AI excess directions, not separately proven BS excess directions.
+
+下一步唯一目标：
+- 如果还要推进 double 的 BS line，只能去构造一个不依赖 AI anchoring 的 BS-only current->Bilbao spinorial row-basis lift，或者拿到独立 external BS object。

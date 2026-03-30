@@ -1,0 +1,38 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\title{SG194 Double Patch Report V2}
+\author{Codex Metric-Fix Round}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{1. Metric-layer bug in previous patch audit}
+The previous \texttt{debug\_sg194\_double\_patch.py} labeled its core generator verdict helper as \texttt{row\_rank\_union\_intersection(...)} and described the result as a generator comparison. That was semantically wrong. The verdict should be phrased in terms of generator-span / column-space logic.
+
+\section*{2. Correct column-space comparison setup}
+Current SG194 double generators live in a \texttt{34}-row current-HSP ambient, while the cached external spinorial generators live in a \texttt{56}-row Bilbao ambient. Direct column-space hstack on the original matrices is therefore ill-typed. The corrected generator-span comparison uses the column spaces of the transposed matrices in the common generator-label ambient.
+
+\section*{3. Before/after revalidation under corrected metric}
+Global old/patched/external ranks are \texttt{12 / 12 / 10}. The global union stays \texttt{21 -> 21}. The trusted problem-sector union improves \texttt{8 -> 6}. So the patch remains effective, but only in the trusted problem sector.
+
+\section*{4. Delta membership re-check}
+The old patch audit incorrectly treated \texttt{problem\_sector\_union\_rank == external\_rank} as evidence that the named deltas had disappeared. The corrected explicit membership re-check gives:
+\begin{itemize}
+\item \texttt{delta\_c1\_minus\_b1}: legacy contains = \texttt{True}, patched contains = \texttt{True}, disappeared = \texttt{False}
+\item \texttt{delta\_d1\_minus\_b1}: legacy contains = \texttt{True}, patched contains = \texttt{True}, disappeared = \texttt{False}
+\end{itemize}
+Therefore the old delta-disappearance claims are withdrawn.
+
+\section*{5. Updated patch verdict}
+Patch effective under corrected metric: \texttt{True}. Effect scope: \texttt{trusted\_problem\_sector\_only}. Global mismatch shrunk: \texttt{False}. Explicit deltas disappeared: \texttt{c=False, d=False}.
+
+\section*{6. Next engineering step}
+BS-only comparison is still not the next justified step. The corrected reason is:
+\begin{quote}
+No. The corrected generator-span metric still shows only a trusted problem-sector improvement, not a global collapse. Also, the explicit delta vectors remain in the patched current generator span, so the old `delta disappeared` claim is withdrawn.
+\end{quote}
+
+\end{document}

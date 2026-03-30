@@ -1,0 +1,13 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "metric-layer fix and SG194 double patch revalidation",
+  "status": "revalidated_under_corrected_metric",
+  "patch_effective_under_corrected_metric": true,
+  "problem_sector_mismatch_shrunk": true,
+  "delta_disappeared": {
+    "delta_c1_minus_b1": false,
+    "delta_d1_minus_b1": false
+  },
+  "ready_for_bs_only": false
+}

@@ -1,0 +1,727 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "remaining_23_generator_complement_lift_or_obstruction",
+  "matrix_shapes": {
+    "current_complement": [
+      34,
+      23
+    ],
+    "external_complement": [
+      56,
+      23
+    ]
+  },
+  "lift_exists": false,
+  "integer_lift_exists": false,
+  "rational_lift_exists": false,
+  "coefficient_field": null,
+  "why_no_lift": "No exact rational lift can exist because the external complement row space is not contained in the current complement row space. Exact ranks are current=9, external=7, union=12.",
+  "obstruction": {
+    "kind": "row_space_containment_failure",
+    "minimal_rational_obstruction_dimension": 3,
+    "external_only_basis": [
+      {
+        "witness_row_index": 3,
+        "witness_row_label": "A:A5",
+        "witness_row_block": "A",
+        "vector_support": [
+          {
+            "index": 0,
+            "label": "a:1Eg\u2191G(2)",
+            "coeff": 1
+          },
+          {
+            "index": 1,
+            "label": "a:1Eu\u2191G(2)",
+            "coeff": 1
+          },
+          {
+            "index": 6,
+            "label": "e:1E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 7,
+            "label": "e:2E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 9,
+            "label": "f:1E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 10,
+            "label": "f:2E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 14,
+            "label": "g:2Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 15,
+            "label": "g:2Eu\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 17,
+            "label": "i:2E\u2191G(12)",
+            "coeff": 2
+          },
+          {
+            "index": 18,
+            "label": "j:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 19,
+            "label": "j:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 20,
+            "label": "k:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 21,
+            "label": "k:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 22,
+            "label": "l:A\u2191G(24)",
+            "coeff": 2
+          }
+        ],
+        "summary": {
+          "families": [
+            "a",
+            "e",
+            "f",
+            "g",
+            "i",
+            "j",
+            "k",
+            "l"
+          ],
+          "channels": [
+            "a:1Eg\u2191G(2)",
+            "a:1Eu\u2191G(2)",
+            "e:1E\u2191G(4)",
+            "e:2E\u2191G(4)",
+            "f:1E\u2191G(4)",
+            "f:2E\u2191G(4)",
+            "g:2Eg\u2191G(6)",
+            "g:2Eu\u2191G(6)",
+            "i:2E\u2191G(12)",
+            "j:1E\u2191G(12)",
+            "j:2E\u2191G(12)",
+            "k:1E\u2191G(12)",
+            "k:2E\u2191G(12)",
+            "l:A\u2191G(24)"
+          ],
+          "support_size": 14
+        }
+      },
+      {
+        "witness_row_index": 18,
+        "witness_row_label": "\u0393:\u03937",
+        "witness_row_block": "\u0393",
+        "vector_support": [
+          {
+            "index": 0,
+            "label": "a:1Eg\u2191G(2)",
+            "coeff": 1
+          },
+          {
+            "index": 2,
+            "label": "a:2Eg\u2191G(2)",
+            "coeff": 1
+          },
+          {
+            "index": 6,
+            "label": "e:1E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 7,
+            "label": "e:2E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 9,
+            "label": "f:1E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 10,
+            "label": "f:2E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 12,
+            "label": "g:1Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 14,
+            "label": "g:2Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 16,
+            "label": "i:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 17,
+            "label": "i:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 18,
+            "label": "j:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 19,
+            "label": "j:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 20,
+            "label": "k:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 21,
+            "label": "k:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 22,
+            "label": "l:A\u2191G(24)",
+            "coeff": 2
+          }
+        ],
+        "summary": {
+          "families": [
+            "a",
+            "e",
+            "f",
+            "g",
+            "i",
+            "j",
+            "k",
+            "l"
+          ],
+          "channels": [
+            "a:1Eg\u2191G(2)",
+            "a:2Eg\u2191G(2)",
+            "e:1E\u2191G(4)",
+            "e:2E\u2191G(4)",
+            "f:1E\u2191G(4)",
+            "f:2E\u2191G(4)",
+            "g:1Eg\u2191G(6)",
+            "g:2Eg\u2191G(6)",
+            "i:1E\u2191G(12)",
+            "i:2E\u2191G(12)",
+            "j:1E\u2191G(12)",
+            "j:2E\u2191G(12)",
+            "k:1E\u2191G(12)",
+            "k:2E\u2191G(12)",
+            "l:A\u2191G(24)"
+          ],
+          "support_size": 15
+        }
+      },
+      {
+        "witness_row_index": 20,
+        "witness_row_label": "\u0393:\u03938",
+        "witness_row_block": "\u0393",
+        "vector_support": [
+          {
+            "index": 4,
+            "label": "a:E1g\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 8,
+            "label": "e:E1\u2191G(8)",
+            "coeff": 1
+          },
+          {
+            "index": 11,
+            "label": "f:E1\u2191G(8)",
+            "coeff": 1
+          },
+          {
+            "index": 12,
+            "label": "g:1Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 14,
+            "label": "g:2Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 16,
+            "label": "i:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 17,
+            "label": "i:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 18,
+            "label": "j:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 19,
+            "label": "j:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 20,
+            "label": "k:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 21,
+            "label": "k:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 22,
+            "label": "l:A\u2191G(24)",
+            "coeff": 2
+          }
+        ],
+        "summary": {
+          "families": [
+            "a",
+            "e",
+            "f",
+            "g",
+            "i",
+            "j",
+            "k",
+            "l"
+          ],
+          "channels": [
+            "a:E1g\u2191G(4)",
+            "e:E1\u2191G(8)",
+            "f:E1\u2191G(8)",
+            "g:1Eg\u2191G(6)",
+            "g:2Eg\u2191G(6)",
+            "i:1E\u2191G(12)",
+            "i:2E\u2191G(12)",
+            "j:1E\u2191G(12)",
+            "j:2E\u2191G(12)",
+            "k:1E\u2191G(12)",
+            "k:2E\u2191G(12)",
+            "l:A\u2191G(24)"
+          ],
+          "support_size": 12
+        }
+      }
+    ],
+    "current_only_basis": [
+      {
+        "witness_row_index": 0,
+        "witness_row_label": "P1_R1",
+        "witness_row_block": "P1",
+        "vector_support": [
+          {
+            "index": 0,
+            "label": "a:1Eg\u2191G(2)",
+            "coeff": 1
+          },
+          {
+            "index": 7,
+            "label": "e:2E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 10,
+            "label": "f:2E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 12,
+            "label": "g:1Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 16,
+            "label": "i:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 19,
+            "label": "j:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 21,
+            "label": "k:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 22,
+            "label": "l:A\u2191G(24)",
+            "coeff": 1
+          }
+        ],
+        "summary": {
+          "families": [
+            "a",
+            "e",
+            "f",
+            "g",
+            "i",
+            "j",
+            "k",
+            "l"
+          ],
+          "channels": [
+            "a:1Eg\u2191G(2)",
+            "e:2E\u2191G(4)",
+            "f:2E\u2191G(4)",
+            "g:1Eg\u2191G(6)",
+            "i:1E\u2191G(12)",
+            "j:2E\u2191G(12)",
+            "k:2E\u2191G(12)",
+            "l:A\u2191G(24)"
+          ],
+          "support_size": 8
+        }
+      },
+      {
+        "witness_row_index": 1,
+        "witness_row_label": "P1_R2",
+        "witness_row_block": "P1",
+        "vector_support": [
+          {
+            "index": 3,
+            "label": "a:2Eu\u2191G(2)",
+            "coeff": 1
+          },
+          {
+            "index": 6,
+            "label": "e:1E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 9,
+            "label": "f:1E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 14,
+            "label": "g:2Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 16,
+            "label": "i:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 18,
+            "label": "j:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 20,
+            "label": "k:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 22,
+            "label": "l:A\u2191G(24)",
+            "coeff": 1
+          }
+        ],
+        "summary": {
+          "families": [
+            "a",
+            "e",
+            "f",
+            "g",
+            "i",
+            "j",
+            "k",
+            "l"
+          ],
+          "channels": [
+            "a:2Eu\u2191G(2)",
+            "e:1E\u2191G(4)",
+            "f:1E\u2191G(4)",
+            "g:2Eg\u2191G(6)",
+            "i:1E\u2191G(12)",
+            "j:1E\u2191G(12)",
+            "k:1E\u2191G(12)",
+            "l:A\u2191G(24)"
+          ],
+          "support_size": 8
+        }
+      },
+      {
+        "witness_row_index": 2,
+        "witness_row_label": "P1_R3",
+        "witness_row_block": "P1",
+        "vector_support": [
+          {
+            "index": 1,
+            "label": "a:1Eu\u2191G(2)",
+            "coeff": 1
+          },
+          {
+            "index": 6,
+            "label": "e:1E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 9,
+            "label": "f:1E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 13,
+            "label": "g:1Eu\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 17,
+            "label": "i:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 18,
+            "label": "j:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 21,
+            "label": "k:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 22,
+            "label": "l:A\u2191G(24)",
+            "coeff": 1
+          }
+        ],
+        "summary": {
+          "families": [
+            "a",
+            "e",
+            "f",
+            "g",
+            "i",
+            "j",
+            "k",
+            "l"
+          ],
+          "channels": [
+            "a:1Eu\u2191G(2)",
+            "e:1E\u2191G(4)",
+            "f:1E\u2191G(4)",
+            "g:1Eu\u2191G(6)",
+            "i:2E\u2191G(12)",
+            "j:1E\u2191G(12)",
+            "k:2E\u2191G(12)",
+            "l:A\u2191G(24)"
+          ],
+          "support_size": 8
+        }
+      },
+      {
+        "witness_row_index": 4,
+        "witness_row_label": "P1_R5",
+        "witness_row_block": "P1",
+        "vector_support": [
+          {
+            "index": 0,
+            "label": "a:1Eg\u2191G(2)",
+            "coeff": 1
+          },
+          {
+            "index": 7,
+            "label": "e:2E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 10,
+            "label": "f:2E\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 12,
+            "label": "g:1Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 16,
+            "label": "i:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 19,
+            "label": "j:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 20,
+            "label": "k:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 22,
+            "label": "l:A\u2191G(24)",
+            "coeff": 1
+          }
+        ],
+        "summary": {
+          "families": [
+            "a",
+            "e",
+            "f",
+            "g",
+            "i",
+            "j",
+            "k",
+            "l"
+          ],
+          "channels": [
+            "a:1Eg\u2191G(2)",
+            "e:2E\u2191G(4)",
+            "f:2E\u2191G(4)",
+            "g:1Eg\u2191G(6)",
+            "i:1E\u2191G(12)",
+            "j:2E\u2191G(12)",
+            "k:1E\u2191G(12)",
+            "l:A\u2191G(24)"
+          ],
+          "support_size": 8
+        }
+      },
+      {
+        "witness_row_index": 8,
+        "witness_row_label": "P1_R9",
+        "witness_row_block": "P1",
+        "vector_support": [
+          {
+            "index": 4,
+            "label": "a:E1g\u2191G(4)",
+            "coeff": 1
+          },
+          {
+            "index": 8,
+            "label": "e:E1\u2191G(8)",
+            "coeff": 1
+          },
+          {
+            "index": 11,
+            "label": "f:E1\u2191G(8)",
+            "coeff": 1
+          },
+          {
+            "index": 12,
+            "label": "g:1Eg\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 13,
+            "label": "g:1Eu\u2191G(6)",
+            "coeff": 1
+          },
+          {
+            "index": 16,
+            "label": "i:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 17,
+            "label": "i:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 18,
+            "label": "j:1E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 19,
+            "label": "j:2E\u2191G(12)",
+            "coeff": 1
+          },
+          {
+            "index": 21,
+            "label": "k:2E\u2191G(12)",
+            "coeff": 2
+          },
+          {
+            "index": 22,
+            "label": "l:A\u2191G(24)",
+            "coeff": 2
+          }
+        ],
+        "summary": {
+          "families": [
+            "a",
+            "e",
+            "f",
+            "g",
+            "i",
+            "j",
+            "k",
+            "l"
+          ],
+          "channels": [
+            "a:E1g\u2191G(4)",
+            "e:E1\u2191G(8)",
+            "f:E1\u2191G(8)",
+            "g:1Eg\u2191G(6)",
+            "g:1Eu\u2191G(6)",
+            "i:1E\u2191G(12)",
+            "i:2E\u2191G(12)",
+            "j:1E\u2191G(12)",
+            "j:2E\u2191G(12)",
+            "k:2E\u2191G(12)",
+            "l:A\u2191G(24)"
+          ],
+          "support_size": 11
+        }
+      }
+    ],
+    "support_blocks": {
+      "current_witness_row_blocks": [
+        "P1"
+      ],
+      "external_witness_row_blocks": [
+        "A",
+        "\u0393"
+      ]
+    },
+    "support_families": [
+      "a",
+      "e",
+      "f",
+      "g",
+      "i",
+      "j",
+      "k",
+      "l"
+    ]
+  }
+}

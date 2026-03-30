@@ -1,0 +1,12 @@
+Continue from the completed SG194 trusted-sector explicit-lift round.
+
+Fixed facts:
+- do not reopen generator patch design or mismatch localization
+- the trusted `2b/2c/2d/6h` sector now has an explicit row-basis lift with exact `L * C = E`
+- the lift exists over `Q`, not over `Z`; integer lift is blocked by the recorded Smith parity obstruction
+- `delta_c1_minus_b1` and `delta_d1_minus_b1` remain nonzero, but only as ordinary external-span directions, not as residual mismatches
+- trusted-sector BS-only is now justified, but full global BS-only is still not certified in this round
+
+Next step if continuing:
+- either perform the BS-only comparison restricted to the now-closed trusted sector,
+- or build the analogous explicit lift outside the trusted sector before making a full 33-generator global BS-only claim.

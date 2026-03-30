@@ -1,0 +1,11 @@
+Continue from the completed SG194 double patch round.
+
+Fixed facts:
+- real source patch landed in `debug_workflow_portability_stage2_194.1.1.1.py`
+- patched profile = `sg194_double_anchor_patch_v1`
+- trusted problem-sector union rank already dropped from `8` to `6`
+- `delta_c1_minus_b1` and `delta_d1_minus_b1` are gone in the trusted `2b/2c/2d/6h` sector
+- full current rank in the 33-column comparison is still `12`, not `10`
+
+Do not reopen raw localization.
+The next task is to finish the all-sector current-to-external spinorial row-language canonicalization outside the already fixed SG194 problem sector, and only then decide whether BS-only comparison is finally justified.

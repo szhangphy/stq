@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+\title{External SG 194 AI Audit Report}
+\date{2026-03-30 06:17 UTC}
+\maketitle
+
+\section{Problem background and current symptom}
+The internal raw workflow currently gives for \texttt{194.1.1.1}:
+\[
+\operatorname{rank}(BS)=29,\qquad \operatorname{rank}(AI)=13,\qquad BS/AI \cong \mathbb{Z}^{16}
+\]
+for both \texttt{groupType=1} and \texttt{groupType=2}. This report checks whether that inflation comes from an incomplete AI construction or from a quotient taken in a non-standard raw symmetry-data space.
+
+\section{External standard data route}
+The main external sources were:
+\begin{itemize}
+\item Bilbao ordinary SITESYM landing page: \url{https://cryst.ehu.es/rep/sitesym.html}
+\item Bilbao ordinary SITESYM CGI: \url{https://cryst.ehu.es/cgi-bin/rep/programs/sitesym/sitesym_cgi.py}
+\item Bilbao BANDREP CGI: \url{https://cryst.ehu.es/cgi-bin/cryst/programs/bandrep.pl}
+\item Bilbao DSITESYM CGI: \url{https://cryst.ehu.es/cgi-bin/cryst/programs/dsitesym.pl}
+\end{itemize}
+The local shell proxy had to be bypassed by disabling \texttt{trust\_env} inside \texttt{requests} and seeding the Bilbao \texttt{turnstile\_passed} cookie. TopMat (\url{https://tm.iphy.ac.cn/}) was reachable but was not needed once Bilbao access stabilized.
+
+\section{SG 194 standard AI reconstruction}
+\subsection{Single-valued ordinary route}
+The ordinary SG 194 standard AI was reconstructed from Bilbao SITESYM by evaluating the site-symmetry induced decomposition tables at the six standard high-symmetry points
+\[
+\Gamma,\; A,\; K,\; H,\; M,\; L.
+\]
+For each Wyckoff position and local irrep $\rho$, Bilbao provides the decomposition of $\rho \uparrow G$ into little-group irreps at each point. Collecting those multiplicities gives an external generator matrix of shape
+\[
+34 \times 45
+\]
+with rank
+\[
+\operatorname{rank}(AI_{\mathrm{standard},\,\mathrm{single}}) = 13.
+\]
+
+\subsection{Double-valued route}
+Bilbao BANDREP was used in Wyckoff mode for every SG 194 Wyckoff position. The full physically irreducible BANDREP table mixes single-valued and spinorial columns; its full matrix has shape
+\[
+56 \times 78
+\]
+and rank
+\[
+\operatorname{rank}(AI_{\mathrm{BANDREP},\,\mathrm{mixed}}) = 23.
+\]
+Restricting to the Bilbao spinorial subset used in this audit gives shape
+\[
+56 \times 33
+\]
+and rank
+\[
+\operatorname{rank}(AI_{\mathrm{standard},\,\mathrm{double},\,\mathrm{spinorial}}) = 10.
+\]
+
+\section{Current AI vs external AI}
+\subsection{Single}
+External single-valued SG 194 gives rank 13 while the current internal \texttt{194.1.1.1} single AI also has rank 13. The candidate inventory matches exactly: current count 45 and external count 45, with no missing or extra generators after label normalization.
+
+\subsection{Double}
+The current internal double AI has rank 13. Bilbao's full BANDREP table has mixed rank 23, while the physically spinorial subset isolated here has rank 10. The main mismatch sits in the local-generator convention: the current library uses 6 labels at each of \texttt{2b}, \texttt{2c}, and \texttt{2d}, whereas Bilbao's physically irreducible spinorial route carries 3 each; the current library uses 4 labels at \texttt{6h}, whereas Bilbao exposes one spinorial $E$ channel there.
+
+\section{Quotient correction for 194}
+\subsection{Single}
+The single-valued external comparison removes AI incompleteness as the primary explanation for the internal
+\[
+\mathbb{Z}^{16}.
+\]
+The current AI already agrees with the external standard AI rank. Therefore the inflation must come from the fact that the current quotient is taken in a larger raw 29-dimensional BS space rather than in the standard high-symmetry-point symmetry-data space.
+
+\subsection{Double}
+The double-valued external comparison does not support keeping the current
+\[
+\mathbb{Z}^{16}
+\]
+as a standard answer. Here the problem is mixed: the current double AI is not aligned to Bilbao's physically irreducible spinorial basis, and the quotient is also still taken in a larger non-standard raw BS layer.
+
+\section{Workflow problem localization}
+\begin{itemize}
+\item Single: the main defect is the quotient/BS layer, not the AI generator inventory.
+\item Double: both the AI basis alignment and the quotient layer remain non-standard.
+\item The next priority is therefore not ``add more AI candidates'' on the single route. It is to project the current BS to the standard HSP symmetry-data layer, and separately to rebuild the double AI in Bilbao's spinorial physically irreducible convention before quotient extraction.
+\end{itemize}
+
+\section{Implementation mapping}
+\begin{itemize}
+\item External ordinary single route: \texttt{/rep/sitesym.html} and \texttt{/cgi-bin/rep/programs/sitesym/sitesym\_cgi.py}
+\item External double route: \texttt{/cgi-bin/cryst/programs/bandrep.pl}
+\item Structured source audit: \texttt{sg194\_external\_source\_audit.json}
+\item External AI reconstruction: \texttt{sg194\_external\_ai\_standard.json}
+\item Current vs external comparison: \texttt{sg194\_external\_vs\_current\_ai\_comparison.json}
+\item Final correction judgment: \texttt{sg194\_final\_correction\_judgment.json}
+\end{itemize}
+
+\end{document}

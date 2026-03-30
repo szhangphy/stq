@@ -1,0 +1,32 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "case_key": "194_1_1_1_double",
+  "raw_quotient": "Z^16",
+  "free_part": "Z^16",
+  "finite_part_candidate": "trivial",
+  "finite_part_confidence": "medium",
+  "still_missing_step": "A physically justified quotient that removes the 16 free crystalline directions before any comparison to a standard finite double-group indicator table.",
+  "user_facing_interpretation": "The current result is again a free-only raw quotient Z^16. The finite symmetry-indicator candidate is trivial unless an additional physical quotient produces residual torsion.",
+  "free_rank": 16,
+  "finite_part": [],
+  "free_mod_out_candidate_rank": 16,
+  "result_after_modding_out_free_part": "trivial",
+  "raw_vs_interpreted_gap": "The raw quotient is free-only, so the standard finite-indicator layer is not directly visible before modding out free crystalline directions.",
+  "primary_note": "The raw Smith data still show no torsion. The gap is interpretive and physical, not a missing order-2 factor in the current integer linear algebra.",
+  "exact_smith_diagonal_nonzero": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ]
+}

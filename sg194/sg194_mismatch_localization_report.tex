@@ -1,0 +1,250 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\begin{document}
+\title{SG194 mismatch localization report}
+\date{2026-03-30}
+\maketitle
+
+\section{Historical failure chain and why previous steps did not close}
+Previous SG194 audits separated AI-only and BS-only comparisons correctly, but they still stopped at rank-level statements. They did not localize the residuals to exact generators, exact Wyckoff families, exact local irrep or corep labels, exact HSP row blocks, and exact merge-rule candidates. That missing localization is why the workflow could not yet turn the diagnosis into a minimal correction plan.
+
+\section{Single AI mismatch localization}
+The current and external single AI images both have rank 13, but their union has rank 14. Hence the mismatch is one-dimensional.
+
+Current-only representative on the generator domain:
+\begin{verbatim}
+[
+  {
+    "label": "a_A1g",
+    "coeff": 1
+  },
+  {
+    "label": "b_A2''",
+    "coeff": 1
+  },
+  {
+    "label": "c_A2''",
+    "coeff": 1
+  },
+  {
+    "label": "d_A2''",
+    "coeff": 1
+  },
+  {
+    "label": "e_A1",
+    "coeff": 1
+  },
+  {
+    "label": "f_A1",
+    "coeff": 1
+  },
+  {
+    "label": "g_Ag",
+    "coeff": 1
+  },
+  {
+    "label": "h_B2",
+    "coeff": 1
+  },
+  {
+    "label": "i_A",
+    "coeff": 1
+  },
+  {
+    "label": "j_A'",
+    "coeff": 1
+  },
+  {
+    "label": "k_A''",
+    "coeff": 1
+  },
+  {
+    "label": "l_A",
+    "coeff": 1
+  }
+]
+\end{verbatim}
+
+External-only representative on the generator domain:
+\begin{verbatim}
+[
+  {
+    "label": "a_A2g",
+    "coeff": 1
+  },
+  {
+    "label": "b_A2'",
+    "coeff": 1
+  },
+  {
+    "label": "c_A2'",
+    "coeff": 1
+  },
+  {
+    "label": "d_A2'",
+    "coeff": 1
+  },
+  {
+    "label": "e_A2",
+    "coeff": 1
+  },
+  {
+    "label": "f_A2",
+    "coeff": 1
+  },
+  {
+    "label": "g_Bg",
+    "coeff": 1
+  },
+  {
+    "label": "h_B1",
+    "coeff": 1
+  },
+  {
+    "label": "i_B",
+    "coeff": 1
+  },
+  {
+    "label": "j_A'",
+    "coeff": 1
+  },
+  {
+    "label": "k_A''",
+    "coeff": 1
+  },
+  {
+    "label": "l_A",
+    "coeff": 1
+  }
+]
+\end{verbatim}
+
+Row witnesses:
+\begin{itemize}
+\item current: P1\_R3
+\item external: GM:*GM\_2+
+\end{itemize}
+
+Family-level representative substitution:
+\begin{verbatim}
+a: current representative uses A1g while external representative uses A2g
+b: current representative uses A2'' while external representative uses A2'
+c: current representative uses A2'' while external representative uses A2'
+d: current representative uses A2'' while external representative uses A2'
+e: current representative uses A1 while external representative uses A2
+f: current representative uses A1 while external representative uses A2
+g: current representative uses Ag while external representative uses Bg
+h: current representative uses B2 while external representative uses B1
+i: current representative uses A while external representative uses B
+\end{verbatim}
+
+\section{Single BS residual mismatch after AI correction}
+Current projected BS rank is 18; the external ordinary span rank is 13. The raw current-only BS difference has dimension 13. After adding the current AI image to the external span, 9 dimensions are absorbed and 4 residual BS directions remain.
+
+Those residual directions match the current raw BS basis ids:
+\begin{verbatim}
+[
+  "194_1_1_1_single_bs_raw_basis_04",
+  "194_1_1_1_single_bs_raw_basis_06",
+  "194_1_1_1_single_bs_raw_basis_19",
+  "194_1_1_1_single_bs_raw_basis_14"
+]
+\end{verbatim}
+
+\section{Double delta localization}
+The double mismatch remains localized to $\delta_{c1-b1}$ and $\delta_{d1-b1}$:
+\begin{itemize}
+\item $\delta_{c1-b1} = c:E1 - b:E1$
+\item $\delta_{d1-b1} = d:E1 - b:E1$
+\end{itemize}
+
+Their exact generator supports are:
+\begin{verbatim}
+[
+  {
+    "generator_id": "c_proj_doubleprime_1d_1",
+    "coeff": 1,
+    "family_id": "c",
+    "local_object_label": "proj_doubleprime_1d_1"
+  },
+  {
+    "generator_id": "c_proj_doubleprime_1d_2",
+    "coeff": 1,
+    "family_id": "c",
+    "local_object_label": "proj_doubleprime_1d_2"
+  },
+  {
+    "generator_id": "b_proj_doubleprime_1d_1",
+    "coeff": -1,
+    "family_id": "b",
+    "local_object_label": "proj_doubleprime_1d_1"
+  },
+  {
+    "generator_id": "b_proj_doubleprime_1d_2",
+    "coeff": -1,
+    "family_id": "b",
+    "local_object_label": "proj_doubleprime_1d_2"
+  }
+]
+[
+  {
+    "generator_id": "d_proj_doubleprime_1d_1",
+    "coeff": 1,
+    "family_id": "d",
+    "local_object_label": "proj_doubleprime_1d_1"
+  },
+  {
+    "generator_id": "d_proj_doubleprime_1d_2",
+    "coeff": 1,
+    "family_id": "d",
+    "local_object_label": "proj_doubleprime_1d_2"
+  },
+  {
+    "generator_id": "b_proj_doubleprime_1d_1",
+    "coeff": -1,
+    "family_id": "b",
+    "local_object_label": "proj_doubleprime_1d_1"
+  },
+  {
+    "generator_id": "b_proj_doubleprime_1d_2",
+    "coeff": -1,
+    "family_id": "b",
+    "local_object_label": "proj_doubleprime_1d_2"
+  }
+]
+\end{verbatim}
+
+\section{Double minimal correction plan}
+The next code change should target the double AI merge/typing layer, not the BS kernel:
+\begin{enumerate}
+\item patch the 2c/2d E1 channel assignment against the Bilbao content;
+\item patch the 6h four-way normalization;
+\item rerun the limited AI-only problem-sector alignment.
+\end{enumerate}
+The expected aligned rank is 10 instead of the current 12.
+
+\section{Implementation mapping}
+Raw files to localized objects to correction proposal:
+\begin{verbatim}
+raw_194_1_1_1_single_ai_candidates.json
+raw_194_1_1_1_single_bs_basis_raw.json
+raw_194_1_1_1_double_ai_candidates.json
+raw_194_1_1_1_double_ai_basis.json
+  -> sg194_single_ai_mismatch_localization.json
+  -> sg194_single_bs_mismatch_localization.json
+  -> sg194_double_delta_localization.json
+  -> sg194_double_minimal_correction_plan.json
+\end{verbatim}
+
+\section{Final diagnosis and concrete next code changes}
+\begin{itemize}
+\item single main issue: both
+\item double main issue: AI
+\item single AI-induced BS mismatch dimension: 9
+\item single independent BS residual dimension: 4
+\item next code target: double 2b/2c/2d/6h merge/typing logic
+\end{itemize}
+\end{document}

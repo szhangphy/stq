@@ -1,0 +1,41 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "comparison_scope": "double current spinorial channel generators in external 33-column order",
+  "notes": {
+    "old_rank_12_reference": "The legacy current rank 12 is the same count-aligned current rank already reported by the v2 SG194 audit.",
+    "global_union_caution": "The full 33-column global union/intersection is mechanically well-defined after the patched builder puts current columns in external order, but the historically trusted mismatch certificate is still the explicit 2b/2c/2d/6h problem sector."
+  },
+  "before": {
+    "current_rank": 12,
+    "external_rank": 10,
+    "global_union_rank": 21,
+    "global_intersection_rank": 1,
+    "problem_sector_current_rank": 6,
+    "problem_sector_external_rank": 6,
+    "problem_sector_union_rank": 8,
+    "problem_sector_intersection_rank": 4,
+    "delta_c1_minus_b1_disappeared": false,
+    "delta_d1_minus_b1_disappeared": false
+  },
+  "after": {
+    "current_rank": 12,
+    "external_rank": 10,
+    "global_union_rank": 21,
+    "global_intersection_rank": 1,
+    "problem_sector_current_rank": 6,
+    "problem_sector_external_rank": 6,
+    "problem_sector_union_rank": 6,
+    "problem_sector_intersection_rank": 6,
+    "delta_c1_minus_b1_disappeared": true,
+    "delta_d1_minus_b1_disappeared": true
+  },
+  "targets": {
+    "wanted_global_rank_drop_12_to_10": false,
+    "wanted_problem_union_drop_8_to_6": true
+  },
+  "exact_outcome": {
+    "problem_sector_exact_identification_after_patch": true,
+    "global_rank_drop_achieved": false
+  }
+}

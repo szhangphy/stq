@@ -1,0 +1,20 @@
+The current workspace already completed the SG 194 stage-2 local-library run on the fixed target group 194.1.1.1.
+
+Read these files first:
+1. workflow_portability_report_stage2_194.1.1.1.tex
+2. sg194_nonabelian_site_symmetry_inventory.md
+3. workflow_portability_stage2_audit_194.1.1.1.md
+4. group_194_1_1_1_single_ai_completion_summary.json
+5. group_194_1_1_1_double_ai_completion_summary.json
+6. current_status_194.1.1.1_stage2.json
+
+Current verified facts:
+- nonabelian_single_library_built = True
+- nonabelian_double_library_built = True
+- single_group_unblocked = True
+- double_group_unblocked = True
+- main_blocker = None inside the current SG 194 stage-2 scope.
+
+Do not change the target group.
+Do not go back to 10.4.1.31 except as an audited reference.
+The next unique task is: push the same local-library-driven workflow beyond the current SG 194 controlled case, or tighten any remaining quotient interpretation details if the review asks for more structure on the extracted generators.

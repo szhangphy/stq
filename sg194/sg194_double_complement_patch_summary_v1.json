@@ -1,0 +1,180 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "profile": "sg194_double_complement_patch_v1",
+  "dependency_check": {
+    "all_present": true,
+    "present_map": {
+      "debug_workflow_portability_stage2_194.1.1.1.py": true,
+      "debug_workflow_portability_194.1.1.1.py": true,
+      "debug_sg194_nonabelian_local_library.py": true,
+      "debug_sg194_double_global_residual.py": true,
+      "debug_sg194_double_lift.py": true,
+      "raw_194_1_1_1_double_ai_candidates.json": true,
+      "raw_194_1_1_1_double_ai_candidates_patched.json": true,
+      "raw_194_1_1_1_double_ai_basis.json": true,
+      "raw_194_1_1_1_double_ai_basis_patched.json": true,
+      "raw_194_1_1_1_double_ai_in_bs_matrix.json": true,
+      "raw_194_1_1_1_double_ai_in_bs_matrix_patched.json": true,
+      "sg194_external_spinorial_generator_matrix.json": true
+    },
+    "missing_files": [],
+    "blocked_steps_if_missing": []
+  },
+  "old_profile": "sg194_double_anchor_patch_v1",
+  "new_profile": "sg194_double_complement_patch_v1",
+  "changed_channels": {
+    "changed_count": 23,
+    "unchanged_count": 10,
+    "changed_labels": [
+      "a:1Eg\u2191G(2)",
+      "a:1Eu\u2191G(2)",
+      "a:2Eg\u2191G(2)",
+      "a:2Eu\u2191G(2)",
+      "a:E1g\u2191G(4)",
+      "a:E1u\u2191G(4)",
+      "e:1E\u2191G(4)",
+      "e:2E\u2191G(4)",
+      "e:E1\u2191G(8)",
+      "f:1E\u2191G(4)",
+      "f:2E\u2191G(4)",
+      "f:E1\u2191G(8)",
+      "g:1Eg\u2191G(6)",
+      "g:1Eu\u2191G(6)",
+      "g:2Eg\u2191G(6)",
+      "g:2Eu\u2191G(6)",
+      "i:1E\u2191G(12)",
+      "i:2E\u2191G(12)",
+      "j:1E\u2191G(12)",
+      "j:2E\u2191G(12)",
+      "k:1E\u2191G(12)",
+      "k:2E\u2191G(12)",
+      "l:A\u2191G(24)"
+    ],
+    "unchanged_labels": [
+      "b:E1\u2191G(4)",
+      "b:E2\u2191G(4)",
+      "b:E3\u2191G(4)",
+      "c:E1\u2191G(4)",
+      "c:E2\u2191G(4)",
+      "c:E3\u2191G(4)",
+      "d:E1\u2191G(4)",
+      "d:E2\u2191G(4)",
+      "d:E3\u2191G(4)",
+      "h:E\u2191G(12)"
+    ]
+  },
+  "rank_before_after": {
+    "old_v1": {
+      "full": {
+        "current_rank": 12,
+        "external_rank": 10,
+        "union_rank": 18,
+        "intersection_rank": 4,
+        "current_only_dimension": 8,
+        "external_only_dimension": 6
+      },
+      "complement": {
+        "current_rank": 9,
+        "external_rank": 7,
+        "union_rank": 12,
+        "intersection_rank": 4,
+        "current_only_dimension": 5,
+        "external_only_dimension": 3
+      },
+      "trusted": {
+        "current_rank": 6,
+        "external_rank": 6,
+        "union_rank": 6,
+        "intersection_rank": 6,
+        "current_only_dimension": 0,
+        "external_only_dimension": 0
+      },
+      "canonical_order_matches_external": true
+    },
+    "new_v2": {
+      "full": {
+        "current_rank": 10,
+        "external_rank": 10,
+        "union_rank": 10,
+        "intersection_rank": 10,
+        "current_only_dimension": 0,
+        "external_only_dimension": 0
+      },
+      "complement": {
+        "current_rank": 7,
+        "external_rank": 7,
+        "union_rank": 7,
+        "intersection_rank": 7,
+        "current_only_dimension": 0,
+        "external_only_dimension": 0
+      },
+      "trusted": {
+        "current_rank": 6,
+        "external_rank": 6,
+        "union_rank": 6,
+        "intersection_rank": 6,
+        "current_only_dimension": 0,
+        "external_only_dimension": 0
+      },
+      "canonical_order_matches_external": true
+    }
+  },
+  "complement_exact_equality": true,
+  "full_33_global_alignment": true,
+  "single_double_relation": {
+    "single_is_clean_baseline_for_this_bug_class": true,
+    "single_reason": "The SG194 single line has no spinorial complement channel builder and therefore does not show the complement identity-reuse failure mode.",
+    "double_reason": "The old double current generator layer inserted a legacy identity-reuse complement branch on top of the already unblocked stage-2 library path.",
+    "construction_philosophy_after_patch": "Both lines now route through explicit, auditable source-layer construction rather than downstream audit-only rewrites. The double line still uses a spinorial-specific row-basis translation table, which has no single-line analogue."
+  },
+  "pdf_generated": true,
+  "handoff_generated": true,
+  "status_generated": true,
+  "next_step_generated": true,
+  "package_tarball": "/data/work/szhang/ssg/comprel/review_package_sg194_double_complement_patch_v1.tar.gz",
+  "package_tree": [
+    "review_package_sg194_double_complement_patch_v1/",
+    "  - README.md",
+    "  SSGReps/",
+    "    SSGReps/",
+    "      - SG_utils.py",
+    "      - SSGReps.py",
+    "      - rep_utils.py",
+    "  - current_status_sg194_double_complement_patch_v1.json",
+    "  - debug_sg194_double_complement_patch_v1.py",
+    "  - debug_sg194_double_global_residual.py",
+    "  - debug_sg194_double_lift.py",
+    "  - debug_sg194_double_patch.py",
+    "  - debug_sg194_nonabelian_local_library.py",
+    "  - debug_workflow_portability_194.1.1.1.py",
+    "  - debug_workflow_portability_stage2_194.1.1.1.py",
+    "  - group_194_1_1_1_double_ai_completion_summary.json",
+    "  - group_194_1_1_1_single_ai_completion_summary.json",
+    "  - handoff_sg194_double_complement_patch_v1.md",
+    "  - next_step_prompt_sg194_double_complement_patch_v1.txt",
+    "  - raw_194_1_1_1_double_ai_basis.json",
+    "  - raw_194_1_1_1_double_ai_basis_patched.json",
+    "  - raw_194_1_1_1_double_ai_basis_patched_v2.json",
+    "  - raw_194_1_1_1_double_ai_candidates.json",
+    "  - raw_194_1_1_1_double_ai_candidates_patched.json",
+    "  - raw_194_1_1_1_double_ai_candidates_patched_v2.json",
+    "  - raw_194_1_1_1_double_ai_in_bs_matrix.json",
+    "  - raw_194_1_1_1_double_ai_in_bs_matrix_patched.json",
+    "  - raw_194_1_1_1_double_ai_in_bs_matrix_patched_v2.json",
+    "  - sg194_double_complement_patch_report_v1.md",
+    "  - sg194_double_complement_patch_report_v1.pdf",
+    "  - sg194_double_complement_patch_report_v1.tex",
+    "  - sg194_double_complement_patch_summary_v1.json",
+    "  - sg194_double_complement_rule_solve_v1.json",
+    "  - sg194_double_global_decomposition.json",
+    "  - sg194_double_global_residual_summary.json",
+    "  - sg194_double_patch_verdict_v3.json",
+    "  - sg194_double_problem_sector_inventory.json",
+    "  - sg194_double_problem_sector_lift.json",
+    "  - sg194_external_spinorial_generator_matrix.json",
+    "  - swyckoff_k.py",
+    "  - swyckoff_r.py",
+    "  - workflow_portability_stage2_summary_194.1.1.1.json"
+  ]
+}

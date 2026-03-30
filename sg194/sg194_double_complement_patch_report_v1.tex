@@ -1,0 +1,42 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\title{SG194 Double Complement Patch Report V1}
+\author{Codex Complement Patch Round}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{1. What the previous patch solved and what it did not solve}
+The previous \texttt{sg194\_double\_anchor\_patch\_v1} round solved the trusted \texttt{2b/2c/2d/6h} sector exactly, but it left the 23-channel complement on legacy identity reuse. The old complement rank tuple was \texttt{9 / 7 / 12 / 4}, with current-only / external-only dimensions \texttt{5 / 3}. Therefore the old patch fixed the trusted sector, but not the complement branch.
+
+\section*{2. Why this complement patch is the correct source layer}
+The real unresolved source object was \texttt{build\_sg194\_double\_spinorial\_generators(...)} in \texttt{debug\_workflow\_portability\_stage2\_194.1.1.1.py}. This round adds \texttt{sg194\_double\_complement\_patch\_v1}, keeps the trusted rules unchanged, and replaces the complement identity-reuse branch with an explicit exact rule table in canonical external order.
+
+\section*{3. Exact complement rule logic}
+The complement rules were solved by fixing the trusted 10-generator block and imposing the full external 33-column null relations on the remaining 23 columns. The four selected homogeneous directions are:
+\begin{itemize}
+\item \texttt{a\_proj\_u\_1d\_1}
+\item \texttt{a\_proj\_u\_1d\_2}
+\item \texttt{a\_proj\_g\_1d\_3}
+\item \texttt{a\_proj\_u\_2d\_5}
+\end{itemize}
+All coefficients in the final table are exact integers.
+
+\section*{4. Exact rank data after the patch}
+Complement-only after patch: \texttt{7 / 7 / 7 / 7}, current-only / external-only = \texttt{0 / 0}.
+
+Full 33 after patch: \texttt{10 / 10 / 10 / 10}, current-only / external-only = \texttt{0 / 0}.
+
+\section*{5. Final verdict}
+Complement exact equality reached: \texttt{True}. Full 33 global alignment reached: \texttt{True}. This round closes the SG194 double complement residual mathematically.
+
+\section*{6. Single / double relation}
+The current bug is spinorial-only. The single line does not have a separate spinorial complement channel builder, so this failure mode does not appear there. After this patch, both lines are source-layer-driven and auditable, but only the double line needs the complement row-basis translation table.
+
+\section*{7. Remaining engineering work}
+The next engineering question is no longer the SG194 complement obstruction itself. It is whether this exact null-relation solve should be generalized into a reusable spinorial construction routine beyond SG194.
+
+\end{document}

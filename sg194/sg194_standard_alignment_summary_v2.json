@@ -1,0 +1,23 @@
+{
+  "group": "194.1.1.1",
+  "single": {
+    "new_projection_uses_ai_anchored_trick": false,
+    "old_trivial_still_stands": false,
+    "current_hsp_point_space_bs_rank": 18,
+    "current_hsp_point_space_ai_rank": 13,
+    "current_hsp_point_space_quotient": "Z^5",
+    "main_issue": "The old v1 trivial result depended on an AI-anchored complement-killing projection; under the stricter HSP restriction, five extra current directions remain beyond AI."
+  },
+  "double": {
+    "new_alignment_is_count_merge_only": false,
+    "count_aligned_rank": 12,
+    "bilbao_spinorial_rank": 10,
+    "rank_2_mismatch_localized": true,
+    "main_issue": "The residual rank-2 mismatch is entirely localized in the 2b/2c/2d/6h representation-content sector."
+  },
+  "overall": {
+    "single_trivial_is_now_hardened": false,
+    "double_standard_space_quotient_computable": false,
+    "sg194_fully_aligned_to_external_standard_language": false
+  }
+}

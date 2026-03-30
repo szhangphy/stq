@@ -1,0 +1,9 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "sg194_double_complement_patch_v1",
+  "status": "completed",
+  "complement_exact_equality": true,
+  "full_33_global_alignment": true,
+  "package_tarball": "/data/work/szhang/ssg/comprel/review_package_sg194_double_complement_patch_v1.tar.gz"
+}

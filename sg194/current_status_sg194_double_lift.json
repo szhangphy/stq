@@ -1,0 +1,15 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "trusted_problem_sector_explicit_lift_audit",
+  "status": "completed",
+  "rational_lift_exists": true,
+  "integer_lift_exists": false,
+  "exact_lift_verification": true,
+  "delta_external_status": {
+    "delta_c1_minus_b1": "nonzero_external_span_direction_not_residual_mismatch",
+    "delta_d1_minus_b1": "nonzero_external_span_direction_not_residual_mismatch"
+  },
+  "trusted_sector_ready_for_bs_only": true,
+  "global_bs_only_certified_in_this_round": false
+}

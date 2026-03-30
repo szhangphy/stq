@@ -1,0 +1,108 @@
+# SG 194 External Standard AI
+
+## Single
+- Route: Bilbao ordinary SITESYM site-symmetry induced representations at GM, A, K, H, M, L.
+- External AI rank: `13`
+- Matrix shape: `34 x 45`
+- Site-irrep counts by Wyckoff:
+  - `24l`: `1`
+  - `12k`: `2`
+  - `12j`: `2`
+  - `12i`: `2`
+  - `6h`: `4`
+  - `6g`: `4`
+  - `4f`: `3`
+  - `4e`: `3`
+  - `2d`: `6`
+  - `2c`: `6`
+  - `2b`: `6`
+  - `2a`: `6`
+
+Single generator inventory:
+- `l_A` from `24l` / `A`
+- `k_A'` from `12k` / `A'`
+- `k_A''` from `12k` / `A''`
+- `j_A'` from `12j` / `A'`
+- `j_A''` from `12j` / `A''`
+- `i_A` from `12i` / `A`
+- `i_B` from `12i` / `B`
+- `h_A1` from `6h` / `A1`
+- `h_A2` from `6h` / `A2`
+- `h_B1` from `6h` / `B1`
+- `h_B2` from `6h` / `B2`
+- `g_Ag` from `6g` / `Ag`
+- `g_Bg` from `6g` / `Bg`
+- `g_Au` from `6g` / `Au`
+- `g_Bu` from `6g` / `Bu`
+- `f_A1` from `4f` / `A1`
+- `f_A2` from `4f` / `A2`
+- `f_E` from `4f` / `E`
+- `e_A1` from `4e` / `A1`
+- `e_A2` from `4e` / `A2`
+- `e_E` from `4e` / `E`
+- `d_A1'` from `2d` / `A1'`
+- `d_A2'` from `2d` / `A2'`
+- `d_A1''` from `2d` / `A1''`
+- `d_A2''` from `2d` / `A2''`
+- `d_E'` from `2d` / `E'`
+- `d_E''` from `2d` / `E''`
+- `c_A1'` from `2c` / `A1'`
+- `c_A2'` from `2c` / `A2'`
+- `c_A1''` from `2c` / `A1''`
+- `c_A2''` from `2c` / `A2''`
+- `c_E'` from `2c` / `E'`
+- `c_E''` from `2c` / `E''`
+- `b_A1'` from `2b` / `A1'`
+- `b_A2'` from `2b` / `A2'`
+- `b_A1''` from `2b` / `A1''`
+- `b_A2''` from `2b` / `A2''`
+- `b_E'` from `2b` / `E'`
+- `b_E''` from `2b` / `E''`
+- `a_A1g` from `2a` / `A1g`
+- `a_A2g` from `2a` / `A2g`
+- `a_Eg` from `2a` / `Eg`
+- `a_A1u` from `2a` / `A1u`
+- `a_A2u` from `2a` / `A2u`
+- `a_Eu` from `2a` / `Eu`
+
+## Double
+- Route: Bilbao BANDREP Wyckoff pages without TR, parsed one Wyckoff position at a time.
+- Mixed BANDREP rank (single + double-valued columns together): `23`
+- Mixed matrix shape: `56 x 78`
+- Spinorial candidate rank: `10`
+- Spinorial candidate matrix shape: `56 x 33`
+
+Double spinorial generator inventory retained for comparison:
+- `2a` / `1Eg↑G(2)`
+- `2a` / `1Eu↑G(2)`
+- `2a` / `2Eg↑G(2)`
+- `2a` / `2Eu↑G(2)`
+- `2a` / `E1g↑G(4)`
+- `2a` / `E1u↑G(4)`
+- `2b` / `E1↑G(4)`
+- `2b` / `E2↑G(4)`
+- `2b` / `E3↑G(4)`
+- `2c` / `E1↑G(4)`
+- `2c` / `E2↑G(4)`
+- `2c` / `E3↑G(4)`
+- `2d` / `E1↑G(4)`
+- `2d` / `E2↑G(4)`
+- `2d` / `E3↑G(4)`
+- `4e` / `1E↑G(4)`
+- `4e` / `2E↑G(4)`
+- `4e` / `E1↑G(8)`
+- `4f` / `1E↑G(4)`
+- `4f` / `2E↑G(4)`
+- `4f` / `E1↑G(8)`
+- `6g` / `1Eg↑G(6)`
+- `6g` / `1Eu↑G(6)`
+- `6g` / `2Eg↑G(6)`
+- `6g` / `2Eu↑G(6)`
+- `6h` / `E↑G(12)`
+- `12i` / `1E↑G(12)`
+- `12i` / `2E↑G(12)`
+- `12j` / `1E↑G(12)`
+- `12j` / `2E↑G(12)`
+- `12k` / `1E↑G(12)`
+- `12k` / `2E↑G(12)`
+- `24l` / `A↑G(24)`

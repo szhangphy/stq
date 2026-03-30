@@ -1,0 +1,25 @@
+
+Resume from the completed external SG194 AI audit in `/data/work/szhang/ssg/comprel`.
+
+Fixed scope:
+- Only `194.1.1.1`
+- Do not switch groups
+- Do not add new portability pilots
+- Do not redo the raw matrix audit
+
+Trusted completed baseline from the last step:
+- `sg194_external_ai_standard.json` exists
+- `sg194_external_vs_current_ai_comparison.json` exists
+- `sg194_final_correction_judgment.json` exists
+- Single external Bilbao AI rank = 13 and matches current internal single AI rank = 13
+- Double external Bilbao comparison does not yet align with the current 45-label library
+
+Your only next goal:
+- Reconcile the current double local-corep library with Bilbao's physically irreducible spinorial generator convention for SG 194.
+
+Minimum tasks:
+1. Read `sg194_external_ai_audit_report.pdf`
+2. Read `sg194_external_vs_current_ai_comparison.json`
+3. Focus only on `2b`, `2c`, `2d`, and `6h`
+4. Determine whether the current double library is overcounting physically equivalent spinorial generators or using a non-Bilbao corep convention
+5. Do not reinterpret `Z^16` until that basis alignment is fixed

@@ -1,0 +1,25 @@
+{
+  "group_number": "194.1.1.1",
+  "group_type": 1,
+  "rank(BS)": 29,
+  "rank(AI_complete)": 13,
+  "smith_diagonal_in_bs_coordinates": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "quotient_group": "Z^16",
+  "free_rank": 16,
+  "finite_part": [],
+  "generator_count": 16
+}

@@ -1,0 +1,20 @@
+{
+  "group": "194.1.1.1",
+  "single": {
+    "raw_quotient": "Z^16",
+    "free_part": "Z^16",
+    "finite_part": [],
+    "finite_part_isolated": false,
+    "can_call_standard_finite_indicator_group": false,
+    "reason": "The raw quotient is purely free (Z^16) and no finite torsion part has been isolated."
+  },
+  "double": {
+    "raw_quotient": "Z^16",
+    "free_part": "Z^16",
+    "finite_part": [],
+    "finite_part_isolated": false,
+    "can_call_standard_finite_indicator_group": false,
+    "reason": "The raw quotient is again purely free (Z^16) and no finite torsion part has been isolated."
+  },
+  "bottom_line": "The current Z^16 results are raw free-dominated quotients. They are not final finite symmetry-indicator groups."
+}

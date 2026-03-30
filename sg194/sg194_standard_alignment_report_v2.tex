@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+        \usepackage[margin=1in]{geometry}
+        \usepackage[T1]{fontenc}
+        \usepackage[utf8]{inputenc}
+        \usepackage{lmodern}
+        \usepackage{amsmath,amssymb}
+        \usepackage{hyperref}
+        \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+        \begin{document}
+        \title{SG194 Standard Alignment Report V2}
+        \date{2026-03-30}
+        \maketitle
+        \section*{SG194 Standard Alignment Report V2}
+
+\subsection*{1. Problem Background And V1 Limitation}
+
+        The v1 SG194 alignment settled the easy part of the language conversion but still relied on two constructions that were not hard enough:
+
+\begin{itemize}
+\item Single: the quotient was made trivial by an AI-anchored projection with an explicitly killed complement.
+\begin{itemize}
+\item Double: the basis mismatch was reduced only at the level of generator counts.
+
+        This v2 report upgrades both sides to stricter definitions.
+
+\subsection*{2. Single: AI-Anchored Projection vs External Row-Space Restriction}
+
+        Let the current raw unknown vector be
+        \textbackslash\{\}[
+        n\_\{\textbackslash\{\}mathrm\{raw\}\} \textbackslash\{\}in \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{62\}.
+        \textbackslash\{\}]
+        The new single map does not start from the current AI basis. Instead it applies the literal standard-point selection
+        \textbackslash\{\}[
+        S\_\{\textbackslash\{\}mathrm\{HSP\}\} : \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{62\} \textbackslash\{\}to \textbackslash\{\}mathbb\{Z\}\textasciicircum{}\{34\},
+        \textbackslash\{\}]
+        where the 34 retained rows are the current `P1,P2,P3,B1,P5,P6` blocks, corresponding externally to ordinary SG 194 `GM,A,K,H,M,L`.
+
+        On the current raw BS basis this gives:
+
+\begin{itemize}
+\item restricted BS rank = `18`
+\begin{itemize}
+\item restricted AI rank = `13`
+\begin{itemize}
+\item restricted point-space quotient = `Z\textasciicircum{}5`
+
+        Therefore the old v1 `trivial` conclusion is not reproduced by the stricter non-AI-anchored method.
+
+\subsection*{3. Single: Five Explicit Extra Directions}
+
+        The five extra current directions beyond AI inside the selected HSP point space are:
+
+\begin{itemize}
+\item `194\_1\_1\_1\_single\_bs\_raw\_basis\_04` with support [\{'label': 'P1\_R2', 'coeff': 2\}, \{'label': 'P1\_R3', 'coeff': -1\}, \{'label': 'P1\_R6', 'coeff': 1\}, \{'label': 'P2\_R1', 'coeff': 1\}, \{'label': 'P5\_R2', 'coeff': 2\}, \{'label': 'P5\_R3', 'coeff': -1\}, \{'label': 'P5\_R6', 'coeff': 1\}, \{'label': 'P6\_R1', 'coeff': 1\}]
+\begin{itemize}
+\item `194\_1\_1\_1\_single\_bs\_raw\_basis\_06` with support [\{'label': 'P1\_R2', 'coeff': -1\}, \{'label': 'P1\_R3', 'coeff': 1\}, \{'label': 'P1\_R6', 'coeff': -1\}, \{'label': 'P1\_R7', 'coeff': 1\}, \{'label': 'P5\_R2', 'coeff': -1\}, \{'label': 'P5\_R3', 'coeff': 1\}, \{'label': 'P5\_R6', 'coeff': -1\}, \{'label': 'P5\_R7', 'coeff': 1\}]
+\begin{itemize}
+\item `194\_1\_1\_1\_single\_bs\_raw\_basis\_07` with support [\{'label': 'P1\_R2', 'coeff': -1\}, \{'label': 'P1\_R3', 'coeff': 1\}, \{'label': 'P5\_R2', 'coeff': -1\}, \{'label': 'P5\_R3', 'coeff': 1\}]
+\begin{itemize}
+\item `194\_1\_1\_1\_single\_bs\_raw\_basis\_13` with support [\{'label': 'P1\_R1', 'coeff': -1\}, \{'label': 'P1\_R4', 'coeff': 1\}, \{'label': 'P1\_R6', 'coeff': 1\}, \{'label': 'P1\_R7', 'coeff': -1\}]
+\begin{itemize}
+\item `194\_1\_1\_1\_single\_bs\_raw\_basis\_14` with support [\{'label': 'P1\_R1', 'coeff': -2\}, \{'label': 'P1\_R2', 'coeff': 1\}, \{'label': 'P1\_R4', 'coeff': 1\}, \{'label': 'P1\_R5', 'coeff': -1\}, \{'label': 'P1\_R6', 'coeff': 2\}, \{'label': 'P1\_R7', 'coeff': -1\}, \{'label': 'P2\_R1', 'coeff': 1\}, \{'label': 'P2\_R2', 'coeff': -1\}]
+
+        These five directions explain why the raw v1 ordinary quotient could be collapsed to `trivial` only after an additional constructed projection.
+
+\subsection*{4. Double: Count Alignment vs Representation-Content Alignment}
+
+        The new double method works in the current HSP representation-content space rather than at the level of labels only.
+
+\begin{itemize}
+\item current HSP-space rank = `13`
+\begin{itemize}
+\item identity-sector rank = `9`
+\begin{itemize}
+\item count-aligned rank = `12`
+\begin{itemize}
+\item Bilbao spinorial rank = `10`
+
+        Sitewise, the problematic sectors behave as follows:
+
+\begin{itemize}
+\item `b` current rank `6` -> merged rank `3`
+\begin{itemize}
+\item `c` current rank `6` -> merged rank `3`
+\begin{itemize}
+\item `d` current rank `6` -> merged rank `3`
+\begin{itemize}
+\item `h` current rank `4` -> merged rank `1`
+
+\subsection*{5. Double: Residual Rank-2 Mismatch}
+
+        After content-based merging, the problematic sector still contributes three independent directions over the identity families, whereas the Bilbao spinorial total rank implies that only one such direction should survive. The residual rank-2 blocker can be written explicitly as:
+
+\begin{itemize}
+\item `delta\_c1\_minus\_b1` with support [\{'label': 'P3\_R1', 'coeff': -2\}, \{'label': 'P3\_R3', 'coeff': -2\}, \{'label': 'P3\_R5', 'coeff': 2\}, \{'label': 'B1\_R1', 'coeff': 2\}, \{'label': 'B1\_R3', 'coeff': -2\}]
+\begin{itemize}
+\item `delta\_d1\_minus\_b1` with support [\{'label': 'P3\_R1', 'coeff': -2\}, \{'label': 'P3\_R3', 'coeff': -2\}, \{'label': 'P3\_R5', 'coeff': 2\}, \{'label': 'B1\_R2', 'coeff': 2\}, \{'label': 'B1\_R3', 'coeff': -2\}]
+
+        The mismatch is therefore no longer a heuristic count issue; it is a concrete representation-content excess in the `2b/2c/2d/6h` sector.
+
+\subsection*{6. New Recomputed Results}
+
+        Single:
+
+\begin{itemize}
+\item old result = `trivial`
+\begin{itemize}
+\item new result = unresolved at the strict external-row-space level
+\begin{itemize}
+\item current strict point-space quotient = `Z\textasciicircum{}5`
+
+        Double:
+
+\begin{itemize}
+\item old result = blocked after count alignment
+\begin{itemize}
+\item new result = still blocked, but with an explicit rank-2 blocker basis
+
+\subsection*{7. Updated User-Facing Conclusions}
+
+\begin{itemize}
+\item Single should no longer be summarized as “standard-space quotient = trivial” without qualification. The v2 method shows that the non-AI-anchored HSP restriction still leaves a free rank-5 gap; an external ordinary generator matrix or an equivalent cached point-irrep basis transform is still required before an honest final standard-space quotient can be stated.
+\begin{itemize}
+\item Double should no longer be summarized as “45 -> 33 count merge done”. The v2 method shows exactly where the remaining rank-2 mismatch lives and why the standard-space quotient is still blocked.
+
+\subsection*{8. Remaining Blockers And Next Step}
+
+\begin{itemize}
+\item Single blocker: obtain the full external ordinary SG194 34x45 generator matrix, or a cached equivalent, so that the current 18-dimensional HSP image can be reduced to the external 13-dimensional ordinary symmetry-data row space without AI anchoring.
+\begin{itemize}
+\item Double blocker: obtain the full external 56x33 Bilbao spinorial generator matrix, or a cached equivalent, so that the current 34-row HSP content can be lifted into the external spinorial row basis and the explicit rank-2 blocker can be tested against the physically irreducible Bilbao convention.
+
+\subsection*{9. Implementation Mapping}
+
+\begin{itemize}
+\item Single new restriction map and rank-5 blocker basis: `sg194\_single\_external\_rowspace\_projection.json`
+\begin{itemize}
+\item Double new representation-content alignment and rank-2 blocker basis: `sg194\_double\_repcontent\_alignment.json`
+\begin{itemize}
+\item Updated v2 recomputed results: `sg194\_single\_standard\_quotient\_recomputed\_v2.json`, `sg194\_double\_standard\_quotient\_recomputed\_v2.json`
+\begin{itemize}
+\item Consolidated v2 audit: `sg194\_standard\_alignment\_audit\_v2.md`, `sg194\_standard\_alignment\_summary\_v2.json`
+        \end{document}

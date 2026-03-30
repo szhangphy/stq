@@ -1,0 +1,279 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "remaining_23_generator_complement_mismatch_localization",
+  "residual_dimensions": {
+    "current_rank": 9,
+    "external_rank": 7,
+    "union_rank": 12,
+    "intersection_rank": 4,
+    "current_only_dimension": 5,
+    "external_only_dimension": 3,
+    "remaining_mismatch_dimension": 8
+  },
+  "family_local_diagnostics": {
+    "a": {
+      "local_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "channel_labels": [
+        "a:1Eg\u2191G(2)",
+        "a:1Eu\u2191G(2)",
+        "a:2Eg\u2191G(2)",
+        "a:2Eu\u2191G(2)",
+        "a:E1g\u2191G(4)",
+        "a:E1u\u2191G(4)"
+      ],
+      "current_rank": 6,
+      "external_rank": 5,
+      "union_rank": 6,
+      "intersection_rank": 5,
+      "external_embeds_in_current_family_block": true,
+      "family_local_residual": false
+    },
+    "e": {
+      "local_indices": [
+        6,
+        7,
+        8
+      ],
+      "channel_labels": [
+        "e:1E\u2191G(4)",
+        "e:2E\u2191G(4)",
+        "e:E1\u2191G(8)"
+      ],
+      "current_rank": 3,
+      "external_rank": 2,
+      "union_rank": 3,
+      "intersection_rank": 2,
+      "external_embeds_in_current_family_block": true,
+      "family_local_residual": false
+    },
+    "f": {
+      "local_indices": [
+        9,
+        10,
+        11
+      ],
+      "channel_labels": [
+        "f:1E\u2191G(4)",
+        "f:2E\u2191G(4)",
+        "f:E1\u2191G(8)"
+      ],
+      "current_rank": 3,
+      "external_rank": 2,
+      "union_rank": 3,
+      "intersection_rank": 2,
+      "external_embeds_in_current_family_block": true,
+      "family_local_residual": false
+    },
+    "g": {
+      "local_indices": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "channel_labels": [
+        "g:1Eg\u2191G(6)",
+        "g:1Eu\u2191G(6)",
+        "g:2Eg\u2191G(6)",
+        "g:2Eu\u2191G(6)"
+      ],
+      "current_rank": 4,
+      "external_rank": 3,
+      "union_rank": 4,
+      "intersection_rank": 3,
+      "external_embeds_in_current_family_block": true,
+      "family_local_residual": false
+    },
+    "i": {
+      "local_indices": [
+        16,
+        17
+      ],
+      "channel_labels": [
+        "i:1E\u2191G(12)",
+        "i:2E\u2191G(12)"
+      ],
+      "current_rank": 2,
+      "external_rank": 2,
+      "union_rank": 2,
+      "intersection_rank": 2,
+      "external_embeds_in_current_family_block": true,
+      "family_local_residual": false
+    },
+    "j": {
+      "local_indices": [
+        18,
+        19
+      ],
+      "channel_labels": [
+        "j:1E\u2191G(12)",
+        "j:2E\u2191G(12)"
+      ],
+      "current_rank": 2,
+      "external_rank": 1,
+      "union_rank": 2,
+      "intersection_rank": 1,
+      "external_embeds_in_current_family_block": true,
+      "family_local_residual": false
+    },
+    "k": {
+      "local_indices": [
+        20,
+        21
+      ],
+      "channel_labels": [
+        "k:1E\u2191G(12)",
+        "k:2E\u2191G(12)"
+      ],
+      "current_rank": 2,
+      "external_rank": 1,
+      "union_rank": 2,
+      "intersection_rank": 1,
+      "external_embeds_in_current_family_block": true,
+      "family_local_residual": false
+    },
+    "l": {
+      "local_indices": [
+        22
+      ],
+      "channel_labels": [
+        "l:A\u2191G(24)"
+      ],
+      "current_rank": 1,
+      "external_rank": 1,
+      "union_rank": 1,
+      "intersection_rank": 1,
+      "external_embeds_in_current_family_block": true,
+      "family_local_residual": false
+    }
+  },
+  "family_local_residual_families": [],
+  "cross_family_residual": {
+    "exists": true,
+    "why": "Every individual complement family block embeds into the current family block, but the full 23-generator complement still has external-only dimension 3. So the residual mismatch is not family-local; it is caused by cross-family coupling in the row-language construction."
+  },
+  "witness_row_blocks": {
+    "current_only": [
+      "P1"
+    ],
+    "external_only": [
+      "A",
+      "\u0393"
+    ]
+  },
+  "witness_rows": {
+    "current_only": [
+      {
+        "row_index": 0,
+        "row_label": "P1_R1"
+      },
+      {
+        "row_index": 1,
+        "row_label": "P1_R2"
+      },
+      {
+        "row_index": 2,
+        "row_label": "P1_R3"
+      },
+      {
+        "row_index": 4,
+        "row_label": "P1_R5"
+      },
+      {
+        "row_index": 8,
+        "row_label": "P1_R9"
+      }
+    ],
+    "external_only": [
+      {
+        "row_index": 3,
+        "row_label": "A:A5"
+      },
+      {
+        "row_index": 18,
+        "row_label": "\u0393:\u03937"
+      },
+      {
+        "row_index": 20,
+        "row_label": "\u0393:\u03938"
+      }
+    ]
+  },
+  "generators_channels_families": {
+    "generator_labels": [
+      "a:1Eg\u2191G(2)",
+      "a:1Eu\u2191G(2)",
+      "a:2Eg\u2191G(2)",
+      "a:2Eu\u2191G(2)",
+      "a:E1g\u2191G(4)",
+      "e:1E\u2191G(4)",
+      "e:2E\u2191G(4)",
+      "e:E1\u2191G(8)",
+      "f:1E\u2191G(4)",
+      "f:2E\u2191G(4)",
+      "f:E1\u2191G(8)",
+      "g:1Eg\u2191G(6)",
+      "g:1Eu\u2191G(6)",
+      "g:2Eg\u2191G(6)",
+      "g:2Eu\u2191G(6)",
+      "i:1E\u2191G(12)",
+      "i:2E\u2191G(12)",
+      "j:1E\u2191G(12)",
+      "j:2E\u2191G(12)",
+      "k:1E\u2191G(12)",
+      "k:2E\u2191G(12)",
+      "l:A\u2191G(24)"
+    ],
+    "families": [
+      "a",
+      "e",
+      "f",
+      "g",
+      "i",
+      "j",
+      "k",
+      "l"
+    ],
+    "channels": [
+      "a:1Eg\u2191G(2)",
+      "a:1Eu\u2191G(2)",
+      "a:2Eg\u2191G(2)",
+      "a:2Eu\u2191G(2)",
+      "a:E1g\u2191G(4)",
+      "e:1E\u2191G(4)",
+      "e:2E\u2191G(4)",
+      "e:E1\u2191G(8)",
+      "f:1E\u2191G(4)",
+      "f:2E\u2191G(4)",
+      "f:E1\u2191G(8)",
+      "g:1Eg\u2191G(6)",
+      "g:1Eu\u2191G(6)",
+      "g:2Eg\u2191G(6)",
+      "g:2Eu\u2191G(6)",
+      "i:1E\u2191G(12)",
+      "i:2E\u2191G(12)",
+      "j:1E\u2191G(12)",
+      "j:2E\u2191G(12)",
+      "k:1E\u2191G(12)",
+      "k:2E\u2191G(12)",
+      "l:A\u2191G(24)"
+    ]
+  },
+  "residual_classification": {
+    "best_match": "wrong_ambient_space_construction_or_missing_complement_row_basis_translation",
+    "not_best_match": [
+      "trusted-sector merge rule regression",
+      "single-family missing generator patch",
+      "pure normalization-only issue inside one family block"
+    ],
+    "reason": "The trusted sector is already solved, and no single complement family shows an isolated external-vs-current residual. The unresolved mismatch appears only after assembling all complement families together, which is the signature of a global ambient-row translation problem."
+  }
+}

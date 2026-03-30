@@ -1,0 +1,136 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,array}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\title{Workflow Portability Stage-2 Report for 194.1.1.1}
+\author{Codex Local Audit}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section{Task Background and Scope}
+Reference group: \texttt{10.4.1.31}. Fixed target group: \texttt{194.1.1.1}. This stage addresses the unique stage-1 blocker: the missing SG 194 non-abelian local site-symmetry library. The present round does \emph{not} switch groups and does \emph{not} reopen the audited stage-1 controlled-case choice. Instead it performs:
+\begin{enumerate}
+\item a family-by-family SG 194 site-symmetry inventory,
+\item a reusable single-group local-irrep library,
+\item a reusable double-group projective local-irrep library under \texttt{factor\_su2},
+\item immediate feed-back into the \texttt{groupType=1} and \texttt{groupType=2} AI / quotient workflow on \texttt{194.1.1.1}.
+\end{enumerate}
+
+\section{SG 194 Non-Abelian Site-Symmetry Inventory}
+The real-space families are read from \texttt{swyckoff\_r.py} and stabilized through the audited bridge that maps magnetic coordinates to conventional coordinates via
+\[
+r_{\mathrm{conv}} = P\, r_{\mathrm{mag}}, \qquad P = \mathrm{diag}(1,2,2).
+\]
+The family table relevant to stage-2 is:
+\begin{center}
+\begin{longtable}{llllrrcc}
+\toprule
+family & representative & mult & site symmetry & order & abelian & nonabelian & blocker \\
+\midrule
+\endhead
+l & x, y, z & 24 & 1 & 1 & True & False \\
+k & x, y, 1/4 & 12 & m[z] & 2 & True & False \\
+j & x, -x, z & 12 & m[110] & 2 & True & False \\
+i & x, 0, 0 & 12 & 2[x] & 2 & True & False \\
+h & x, -x, 1/4 & 6 & m[z] * 2[1-10] * m[110] & 4 & True & False \\
+g & 1/2, 0, 0 & 6 & 2[x] * m[x] * -1 & 4 & True & False \\
+f & 1/3, 2/3, z & 4 & m[x] * m[y] * 3[z] * m[110] & 6 & False & True \\
+e & 0, 0, z & 4 & m[x] * m[y] * 3[z] * m[110] & 6 & False & True \\
+d & 1/3, 2/3, 3/4 & 2 & m[x] * m[y] * 3[z] * m[z] * -6[z] * 2[1-10] * m[110] * 2[120] * 2[210] & 12 & False & True \\
+c & 1/3, 2/3, 1/4 & 2 & m[x] * m[y] * 3[z] * m[z] * -6[z] * 2[1-10] * m[110] * 2[120] * 2[210] & 12 & False & True \\
+b & 0, 0, 1/4 & 2 & m[x] * m[y] * 3[z] * m[z] * -6[z] * 2[1-10] * m[110] * 2[120] * 2[210] & 12 & False & True \\
+a & 0, 0, 0 & 2 & 2[x] * m[x] * 2[y] * m[y] * 3[z] * -3[z] * 2[110] * m[110] * -1 & 12 & False & True \\
+\bottomrule
+\end{longtable}
+\end{center}
+The true non-abelian types are:
+\begin{itemize}
+\item \texttt{C3v / 3m} on families \texttt{e,f},
+\item \texttt{D3h-like / -6m2} on families \texttt{b,c,d},
+\item \texttt{D3d-like / -3m} on family \texttt{a}.
+\end{itemize}
+
+\section{Single-Group Local-Irrep Formalism}
+For each real-space family with representative point $r$, the site-symmetry group is
+\[
+G_r = \{ g \in G \mid g r = r + R,\; R \in \Lambda \}.
+\]
+The local single-group library is built at the level ``site-symmetry type $\to$ irreps'' rather than ``family id $\to$ hard-coded result''. For a stabilizer with multiplication table $m(g,h)$, the ordinary local characters $\chi$ satisfy:
+\[
+\chi(1) = \dim \rho, \qquad \frac{1}{|G_r|}\sum_{g \in G_r}\chi_i(g)^*\chi_j(g) = \delta_{ij},
+\]
+and the audit checks both character orthogonality and
+\[
+\sum_i (\dim \rho_i)^2 = |G_r|.
+\]
+
+\section{Double-Group Projective Formalism}
+The present SG 194 controlled case is purely unitary, so the double-group side uses projective local irreps rather than antiunitary magnetic coreps. The cocycle is read directly from the local code path as \texttt{factor\_su2}. For the stabilizer multiplication table $m(g,h)$ the projective local representation $\rho$ satisfies
+\[
+\rho(g)\rho(h) = \alpha(g,h)\rho(m(g,h)),
+\]
+with $\alpha = \texttt{factor\_su2}|_{G_r}$. The projective library is obtained by twisted regular decomposition of the finite-dimensional algebra $ \mathbb{C}^{\alpha}[G_r]$. The validation checks:
+\begin{align}
+\frac{1}{|G_r|}\sum_{g \in G_r}\chi_i(g)^*\chi_j(g) &= \delta_{ij}, \\
+\sum_i (\dim \rho_i)^2 &= |G_r|, \\
+\rho(g)\rho(h) - \alpha(g,h)\rho(gh) &= 0 \quad \text{numerically}.
+\end{align}
+
+\section{Atomic Induction and the Bloch Phase}
+The induction step remains the audited stage-1 route. The local character is transported along the real-space orbit, and the $k$-space character reconstruction still requires the Bloch phase
+\[
+\exp(- i\, k \cdot \tau_C).
+\]
+This factor enters at the same place as in the audited reference workflow: after the real-space conjugation to the stabilizer and before the decomposition against the little-group linear characters. The code path remains character-first and does not rely on \texttt{rep\_matrix} as the main compatibility route.
+
+\section{Workflow Stage-2 Pipeline}
+\begin{enumerate}
+\item read \texttt{swyckoff\_r.py} families and recompute stabilizers through the stage-1 bridge,
+\item classify the real site-symmetry types and identify the non-abelian blocker set,
+\item build and validate the single-group local-irrep library,
+\item build and validate the double-group projective library using twisted regular decomposition,
+\item rebuild the with-planes compatibility / BS background on \texttt{194.1.1.1},
+\item induce every local object into the audited BS unknown ordering,
+\item form the AI lattice in BS coordinates and compute the Smith decomposition of the AI inclusion matrix,
+\item extract the quotient $BS/AI$ whenever the full family census succeeds.
+\end{enumerate}
+
+\section{Single-Group Updated Result on 194.1.1.1}
+The stage-2 single-group outcome is:
+\begin{itemize}
+\item AI completion status: \texttt{True},
+\item generated local objects: 45,
+\item distinct induced unknown vectors: 45,
+\item $\mathrm{rank}(BS) = 29$ and $\mathrm{rank}(AI) = 13$,
+\item quotient: $\mathrm{Z}^{16}$.
+\end{itemize}
+The BS background still comes from the audited with-planes matrix on \texttt{194.1.1.1}, with shape $(58,62)$, rank 33, and nullity 29.
+
+\section{Double-Group Updated Result on 194.1.1.1}
+The stage-2 double-group outcome is:
+\begin{itemize}
+\item AI completion status: \texttt{True},
+\item generated local objects: 45,
+\item distinct induced unknown vectors: 45,
+\item $\mathrm{rank}(BS_{\mathrm{double}}) = 29$ and $\mathrm{rank}(AI_{\mathrm{double}}) = 13$,
+\item quotient: $\mathrm{Z}^{16}$.
+\end{itemize}
+The double-group BS background uses the same with-planes geometry and has shape $(58,62)$, rank 33, and nullity 29.
+
+\section{Implementation Mapping}
+\begin{itemize}
+\item site-symmetry inventory: \texttt{sg194\_nonabelian\_site\_symmetry\_inventory.md/json},
+\item single local library: \texttt{sg194\_single\_local\_irrep\_library.json},
+\item double local library: \texttt{sg194\_double\_local\_corep\_library.json},
+\item single AI completion summary: \texttt{group\_194\_1\_1\_1\_single\_ai\_completion\_summary.json},
+\item double AI completion summary: \texttt{group\_194\_1\_1\_1\_double\_ai\_completion\_summary.json},
+\item stage-2 audit summary: \texttt{workflow\_portability\_stage2\_summary\_194.1.1.1.json}.
+\end{itemize}
+
+\section{Conclusion and Remaining Questions}
+Within the present fixed SG 194 controlled case, the stage-2 blocker is removed at the site-symmetry-library level. The single-group line is upgraded from a pilot to a fully library-backed AI completion on the second group. The double-group line now also has a reusable SG 194 projective local library rather than a trivial witness only. Any remaining portability work is no longer ``build the missing local SG 194 library''; it is ``test the same library-driven pipeline beyond this second controlled group''.
+
+\end{document}

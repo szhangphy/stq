@@ -1,0 +1,281 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "trusted_problem_sector_explicit_lift_audit",
+  "transposed_column_space_proxy_why_insufficient": "It only proves row-space coincidence in the common generator-label domain. It does not construct an explicit current-row to external-row map, so it cannot by itself reinterpret lifted current ambient vectors in the external language.",
+  "explicit_lift_exists": true,
+  "explicit_lift_field": "Q",
+  "integer_lift_exists": false,
+  "integer_obstruction": {
+    "exists": true,
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      2,
+      2,
+      2
+    ],
+    "obstruction_kind": "row_lattice_parity_obstruction",
+    "explanation": "The rational row spaces coincide, but the current row lattice is not saturated integrally. Smith diagonal [1, 1, 1, 2, 2, 2] means the last three coordinates must be even for an integer row lift; several external rows violate those parity conditions.",
+    "failing_external_rows": [
+      {
+        "row_index": 27,
+        "row_label": "H:H5",
+        "snf_coordinates": [
+          0,
+          0,
+          1,
+          -1,
+          0,
+          1
+        ],
+        "tail_parity": [
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "row_index": 28,
+        "row_label": "H:H7",
+        "snf_coordinates": [
+          0,
+          0,
+          1,
+          0,
+          -1,
+          -1
+        ],
+        "tail_parity": [
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "row_index": 29,
+        "row_label": "H:H4",
+        "snf_coordinates": [
+          0,
+          0,
+          1,
+          -1,
+          0,
+          1
+        ],
+        "tail_parity": [
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "row_index": 30,
+        "row_label": "H:H6",
+        "snf_coordinates": [
+          0,
+          0,
+          1,
+          0,
+          -1,
+          -1
+        ],
+        "tail_parity": [
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "row_index": 31,
+        "row_label": "H:H8",
+        "snf_coordinates": [
+          1,
+          1,
+          0,
+          1,
+          0,
+          -1
+        ],
+        "tail_parity": [
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "row_index": 32,
+        "row_label": "H:H9",
+        "snf_coordinates": [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "tail_parity": [
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "row_index": 39,
+        "row_label": "K:K7",
+        "snf_coordinates": [
+          0,
+          0,
+          2,
+          -1,
+          -1,
+          0
+        ],
+        "tail_parity": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "row_index": 40,
+        "row_label": "K:K8",
+        "snf_coordinates": [
+          2,
+          0,
+          0,
+          -1,
+          2,
+          0
+        ],
+        "tail_parity": [
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "row_index": 41,
+        "row_label": "K:K9",
+        "snf_coordinates": [
+          0,
+          2,
+          0,
+          2,
+          -1,
+          0
+        ],
+        "tail_parity": [
+          0,
+          1,
+          0
+        ]
+      }
+    ],
+    "obstruction_basis": [
+      {
+        "row_index": 27,
+        "row_label": "H:H5",
+        "snf_coordinates": [
+          0,
+          0,
+          1,
+          -1,
+          0,
+          1
+        ],
+        "tail_parity": [
+          1,
+          0,
+          1
+        ]
+      },
+      {
+        "row_index": 28,
+        "row_label": "H:H7",
+        "snf_coordinates": [
+          0,
+          0,
+          1,
+          0,
+          -1,
+          -1
+        ],
+        "tail_parity": [
+          0,
+          1,
+          1
+        ]
+      },
+      {
+        "row_index": 40,
+        "row_label": "K:K8",
+        "snf_coordinates": [
+          2,
+          0,
+          0,
+          -1,
+          2,
+          0
+        ],
+        "tail_parity": [
+          1,
+          0,
+          0
+        ]
+      }
+    ],
+    "obstruction_basis_rank_mod_2": 3
+  },
+  "patch_successful_on_trusted_sector": true,
+  "delta_external_status": {
+    "delta_c1_minus_b1": "nonzero_external_span_direction_not_residual_mismatch",
+    "delta_d1_minus_b1": "nonzero_external_span_direction_not_residual_mismatch"
+  },
+  "trusted_sector_ready_for_bs_only": true,
+  "global_bs_only_certified_in_this_round": false,
+  "pdf_generated": true,
+  "handoff_generated": true,
+  "status_generated": true,
+  "next_step_generated": true,
+  "package_tarball": "/data/work/szhang/ssg/comprel/review_package_sg194_double_lift_audit.tar.gz",
+  "package_tree": [
+    "review_package_sg194_double_lift_audit/",
+    "  - README.md",
+    "  SSGReps/",
+    "    SSGReps/",
+    "      - SG_utils.py",
+    "      - SSGReps.py",
+    "      - rep_utils.py",
+    "  - current_status_sg194_double_lift.json",
+    "  - debug_sg194_double_lift.py",
+    "  - debug_sg194_double_patch.py",
+    "  - debug_sg194_double_patch_v2.py",
+    "  - handoff_sg194_double_lift.md",
+    "  - next_step_prompt_sg194_double_lift.txt",
+    "  - raw_194_1_1_1_double_ai_basis.json",
+    "  - raw_194_1_1_1_double_ai_basis_patched.json",
+    "  - raw_194_1_1_1_double_ai_candidates.json",
+    "  - raw_194_1_1_1_double_ai_candidates_patched.json",
+    "  - raw_194_1_1_1_double_ai_in_bs_matrix.json",
+    "  - raw_194_1_1_1_double_ai_in_bs_matrix_patched.json",
+    "  - sg194_double_ai_patch_before_after_v2.json",
+    "  - sg194_double_delta_external_verdict.json",
+    "  - sg194_double_delta_external_verdict.md",
+    "  - sg194_double_delta_localization.json",
+    "  - sg194_double_lift_audit.md",
+    "  - sg194_double_lift_report.md",
+    "  - sg194_double_lift_report.pdf",
+    "  - sg194_double_lift_report.tex",
+    "  - sg194_double_lift_summary.json",
+    "  - sg194_double_patch_verdict_v3.json",
+    "  - sg194_double_patch_verdict_v3.md",
+    "  - sg194_double_problem_sector_inventory.json",
+    "  - sg194_double_problem_sector_lift.json",
+    "  - sg194_double_problem_sector_lift.md",
+    "  - sg194_external_spinorial_generator_matrix.json",
+    "  - swyckoff_k.py",
+    "  - swyckoff_r.py"
+  ]
+}

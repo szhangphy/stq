@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\title{SG194 Double Lift Report}
+\author{Codex Explicit-Lift Round}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{1. Why previous metrics still did not close the problem}
+The v2 metric compared the column spaces of the transposed current and external problem-sector matrices. That proved only row-space coincidence in the common generator domain. It did not provide a concrete map from the 34 current-HSP rows to the 56 external spinorial rows, so it could not yield an honest external-language verdict.
+
+\section*{2. Trusted problem-sector inventory}
+The trusted sector contains the 10 generators
+\begin{quote}
+['b:E1->G(4)', 'b:E2->G(4)', 'b:E3->G(4)', 'c:E1->G(4)', 'c:E2->G(4)', 'c:E3->G(4)', 'd:E1->G(4)', 'd:E2->G(4)', 'd:E3->G(4)', 'h:E->G(12)']
+\end{quote}
+Current rows use blocks ['P1', 'P2', 'P3', 'P5', 'P6', 'B1']. External rows with actual support use blocks ['A', 'Gamma', 'H', 'K', 'L', 'M'].
+
+\section*{3. Explicit row-basis lift construction}
+A rational lift exists and satisfies
+\[
+L_{\mathrm{problem}} C_{\mathrm{patched,problem}} = E_{\mathrm{problem}}
+\]
+exactly. The current basis rows are
+\begin{quote}
+['P1\_R1', 'P1\_R2', 'P1\_R9', 'P3\_R1', 'P3\_R2', 'B1\_R1']
+\end{quote}
+and the external basis rows are
+\begin{quote}
+['A:A5', 'A:A6', 'Gamma:Gamma8', 'H:H5', 'H:H7', 'K:K8']
+\end{quote}
+The lift is rational rather than integral. The Smith diagonal of $C_{\mathrm{problem}}^T$ is [1, 1, 1, 2, 2, 2], which exposes three parity obstructions.
+
+\section*{4. External verdict for the two delta directions}
+\begin{itemize}
+\item \texttt{delta\_c1\_minus\_b1}: zero = \texttt{False}, status = \texttt{nonzero\_external\_span\_direction\_not\_residual\_mismatch}
+\item \texttt{delta\_d1\_minus\_b1}: zero = \texttt{False}, status = \texttt{nonzero\_external\_span\_direction\_not\_residual\_mismatch}
+\end{itemize}
+They do not vanish; they become ordinary external-span directions, not residual mismatches.
+
+\section*{5. Updated patch verdict}
+The patch is successful on the trusted sector once the explicit rational lift is used. Exact equality \texttt{L * C = E} holds on that sector, so the generator mismatch there is closed.
+
+\section*{6. Next engineering step}
+Trusted-sector BS-only comparison is now justified. Full 33-generator global BS-only is still not certified in this round because the explicit lift was only built on the trusted sector.
+
+\end{document}

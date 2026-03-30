@@ -1,0 +1,11 @@
+Continue from the completed SG194 double patch metric-fix round.
+
+Fixed facts:
+- the generator patch itself was not changed
+- the old `row_rank_union_intersection` verdict language was replaced by corrected generator-span column-space logic
+- the trusted problem-sector union still shrinks from `8` to `6`
+- the explicit `delta_c1_minus_b1` / `delta_d1_minus_b1` vectors do not disappear under direct membership re-check
+- next step is not BS-only yet: No. The corrected generator-span metric still shows only a trusted problem-sector improvement, not a global collapse. Also, the explicit delta vectors remain in the patched current generator span, so the old `delta disappeared` claim is withdrawn.
+
+Do not reopen raw localization or generator patch design.
+The next task, if continuing, is to reconcile the surviving explicit delta vectors with the improved problem-sector generator-span metric before attempting BS-only lift work.

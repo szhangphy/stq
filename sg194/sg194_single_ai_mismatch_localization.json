@@ -1,0 +1,904 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 1,
+  "current_ai_rank": 13,
+  "external_ai_rank": 13,
+  "union_rank": 14,
+  "intersection_rank": 12,
+  "mismatch_dimension": 1,
+  "current_only_generator_domain_representative": {
+    "id": "single_current_ai_extra_01",
+    "vector_on_generator_domain": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "support_on_generator_labels": [
+      {
+        "label": "a_A1g",
+        "coeff": 1
+      },
+      {
+        "label": "b_A2''",
+        "coeff": 1
+      },
+      {
+        "label": "c_A2''",
+        "coeff": 1
+      },
+      {
+        "label": "d_A2''",
+        "coeff": 1
+      },
+      {
+        "label": "e_A1",
+        "coeff": 1
+      },
+      {
+        "label": "f_A1",
+        "coeff": 1
+      },
+      {
+        "label": "g_Ag",
+        "coeff": 1
+      },
+      {
+        "label": "h_B2",
+        "coeff": 1
+      },
+      {
+        "label": "i_A",
+        "coeff": 1
+      },
+      {
+        "label": "j_A'",
+        "coeff": 1
+      },
+      {
+        "label": "k_A''",
+        "coeff": 1
+      },
+      {
+        "label": "l_A",
+        "coeff": 1
+      }
+    ],
+    "support_blocks": {
+      "a": 1,
+      "b": 1,
+      "c": 1,
+      "d": 1,
+      "e": 1,
+      "f": 1,
+      "g": 1,
+      "h": 1,
+      "i": 1,
+      "j": 1,
+      "k": 1,
+      "l": 1
+    },
+    "support_on_generators_with_metadata": [
+      {
+        "generator_id": "a_A1g",
+        "coeff": 1,
+        "family_id": "a",
+        "family_kind": "point-like",
+        "local_object_label": "A1g",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "b_A2''",
+        "coeff": 1,
+        "family_id": "b",
+        "family_kind": "point-like",
+        "local_object_label": "A2''",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "c_A2''",
+        "coeff": 1,
+        "family_id": "c",
+        "family_kind": "point-like",
+        "local_object_label": "A2''",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "d_A2''",
+        "coeff": 1,
+        "family_id": "d",
+        "family_kind": "point-like",
+        "local_object_label": "A2''",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "e_A1",
+        "coeff": 1,
+        "family_id": "e",
+        "family_kind": "parametric",
+        "local_object_label": "A1",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "f_A1",
+        "coeff": 1,
+        "family_id": "f",
+        "family_kind": "parametric",
+        "local_object_label": "A1",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "g_Ag",
+        "coeff": 1,
+        "family_id": "g",
+        "family_kind": "point-like",
+        "local_object_label": "Ag",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "h_B2",
+        "coeff": 1,
+        "family_id": "h",
+        "family_kind": "parametric",
+        "local_object_label": "B2",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "i_A",
+        "coeff": 1,
+        "family_id": "i",
+        "family_kind": "parametric",
+        "local_object_label": "A",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "j_A'",
+        "coeff": 1,
+        "family_id": "j",
+        "family_kind": "parametric",
+        "local_object_label": "A'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "k_A''",
+        "coeff": 1,
+        "family_id": "k",
+        "family_kind": "parametric",
+        "local_object_label": "A''",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "l_A",
+        "coeff": 1,
+        "family_id": "l",
+        "family_kind": "parametric",
+        "local_object_label": "A",
+        "local_object_kind": "single_local_irrep"
+      }
+    ],
+    "hsp_row_witness": {
+      "row_label": "P1_R3",
+      "row_preimage_support": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        }
+      ]
+    }
+  },
+  "external_only_generator_domain_representative": {
+    "id": "single_external_ai_extra_01",
+    "vector_on_generator_domain": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "support_on_generator_labels": [
+      {
+        "label": "a_A2g",
+        "coeff": 1
+      },
+      {
+        "label": "b_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "c_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "d_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "e_A2",
+        "coeff": 1
+      },
+      {
+        "label": "f_A2",
+        "coeff": 1
+      },
+      {
+        "label": "g_Bg",
+        "coeff": 1
+      },
+      {
+        "label": "h_B1",
+        "coeff": 1
+      },
+      {
+        "label": "i_B",
+        "coeff": 1
+      },
+      {
+        "label": "j_A'",
+        "coeff": 1
+      },
+      {
+        "label": "k_A''",
+        "coeff": 1
+      },
+      {
+        "label": "l_A",
+        "coeff": 1
+      }
+    ],
+    "support_blocks": {
+      "a": 1,
+      "b": 1,
+      "c": 1,
+      "d": 1,
+      "e": 1,
+      "f": 1,
+      "g": 1,
+      "h": 1,
+      "i": 1,
+      "j": 1,
+      "k": 1,
+      "l": 1
+    },
+    "support_on_generators_with_metadata": [
+      {
+        "generator_id": "a_A2g",
+        "coeff": 1,
+        "family_id": "a",
+        "family_kind": "point-like",
+        "local_object_label": "A2g",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "b_A2'",
+        "coeff": 1,
+        "family_id": "b",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "c_A2'",
+        "coeff": 1,
+        "family_id": "c",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "d_A2'",
+        "coeff": 1,
+        "family_id": "d",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "e_A2",
+        "coeff": 1,
+        "family_id": "e",
+        "family_kind": "parametric",
+        "local_object_label": "A2",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "f_A2",
+        "coeff": 1,
+        "family_id": "f",
+        "family_kind": "parametric",
+        "local_object_label": "A2",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "g_Bg",
+        "coeff": 1,
+        "family_id": "g",
+        "family_kind": "point-like",
+        "local_object_label": "Bg",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "h_B1",
+        "coeff": 1,
+        "family_id": "h",
+        "family_kind": "parametric",
+        "local_object_label": "B1",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "i_B",
+        "coeff": 1,
+        "family_id": "i",
+        "family_kind": "parametric",
+        "local_object_label": "B",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "j_A'",
+        "coeff": 1,
+        "family_id": "j",
+        "family_kind": "parametric",
+        "local_object_label": "A'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "k_A''",
+        "coeff": 1,
+        "family_id": "k",
+        "family_kind": "parametric",
+        "local_object_label": "A''",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "l_A",
+        "coeff": 1,
+        "family_id": "l",
+        "family_kind": "parametric",
+        "local_object_label": "A",
+        "local_object_kind": "single_local_irrep"
+      }
+    ],
+    "hsp_row_witness": {
+      "row_label": "GM:*GM_2+",
+      "row_preimage_support": [
+        {
+          "label": "GM:*GM_2+",
+          "coeff": 1
+        }
+      ]
+    }
+  },
+  "current_row_witness": {
+    "id": "single_current_ai_row_witness",
+    "row_label": "P1_R3",
+    "vector_on_generator_domain": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1
+    ],
+    "support_on_generator_labels": [
+      {
+        "label": "a_A1u",
+        "coeff": 1
+      },
+      {
+        "label": "b_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "c_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "d_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "e_A2",
+        "coeff": 1
+      },
+      {
+        "label": "f_A2",
+        "coeff": 1
+      },
+      {
+        "label": "g_Au",
+        "coeff": 1
+      },
+      {
+        "label": "h_B1",
+        "coeff": 1
+      },
+      {
+        "label": "i_A",
+        "coeff": 1
+      },
+      {
+        "label": "j_A''",
+        "coeff": 1
+      },
+      {
+        "label": "k_A'",
+        "coeff": 1
+      },
+      {
+        "label": "l_A",
+        "coeff": 1
+      }
+    ],
+    "support_blocks": {
+      "a": 1,
+      "b": 1,
+      "c": 1,
+      "d": 1,
+      "e": 1,
+      "f": 1,
+      "g": 1,
+      "h": 1,
+      "i": 1,
+      "j": 1,
+      "k": 1,
+      "l": 1
+    },
+    "row_preimage_support": [
+      {
+        "label": "P1_R3",
+        "coeff": 1
+      }
+    ],
+    "relevant_generator_metadata": [
+      {
+        "generator_id": "a_A1u",
+        "coeff": 1,
+        "family_id": "a",
+        "family_kind": "point-like",
+        "local_object_label": "A1u",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "b_A2'",
+        "coeff": 1,
+        "family_id": "b",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "c_A2'",
+        "coeff": 1,
+        "family_id": "c",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "d_A2'",
+        "coeff": 1,
+        "family_id": "d",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "e_A2",
+        "coeff": 1,
+        "family_id": "e",
+        "family_kind": "parametric",
+        "local_object_label": "A2",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "f_A2",
+        "coeff": 1,
+        "family_id": "f",
+        "family_kind": "parametric",
+        "local_object_label": "A2",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "g_Au",
+        "coeff": 1,
+        "family_id": "g",
+        "family_kind": "point-like",
+        "local_object_label": "Au",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "h_B1",
+        "coeff": 1,
+        "family_id": "h",
+        "family_kind": "parametric",
+        "local_object_label": "B1",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "i_A",
+        "coeff": 1,
+        "family_id": "i",
+        "family_kind": "parametric",
+        "local_object_label": "A",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "j_A''",
+        "coeff": 1,
+        "family_id": "j",
+        "family_kind": "parametric",
+        "local_object_label": "A''",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "k_A'",
+        "coeff": 1,
+        "family_id": "k",
+        "family_kind": "parametric",
+        "local_object_label": "A'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "l_A",
+        "coeff": 1,
+        "family_id": "l",
+        "family_kind": "parametric",
+        "local_object_label": "A",
+        "local_object_kind": "single_local_irrep"
+      }
+    ]
+  },
+  "external_row_witness": {
+    "id": "single_external_ai_row_witness",
+    "row_label": "GM:*GM_2+",
+    "vector_on_generator_domain": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      1
+    ],
+    "support_on_generator_labels": [
+      {
+        "label": "a_A2g",
+        "coeff": 1
+      },
+      {
+        "label": "b_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "c_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "d_A2'",
+        "coeff": 1
+      },
+      {
+        "label": "e_A2",
+        "coeff": 1
+      },
+      {
+        "label": "f_A2",
+        "coeff": 1
+      },
+      {
+        "label": "g_Bg",
+        "coeff": 1
+      },
+      {
+        "label": "h_B1",
+        "coeff": 1
+      },
+      {
+        "label": "i_B",
+        "coeff": 1
+      },
+      {
+        "label": "j_A'",
+        "coeff": 1
+      },
+      {
+        "label": "k_A''",
+        "coeff": 1
+      },
+      {
+        "label": "l_A",
+        "coeff": 1
+      }
+    ],
+    "support_blocks": {
+      "a": 1,
+      "b": 1,
+      "c": 1,
+      "d": 1,
+      "e": 1,
+      "f": 1,
+      "g": 1,
+      "h": 1,
+      "i": 1,
+      "j": 1,
+      "k": 1,
+      "l": 1
+    },
+    "row_preimage_support": [
+      {
+        "label": "GM:*GM_2+",
+        "coeff": 1
+      }
+    ],
+    "relevant_generator_metadata": [
+      {
+        "generator_id": "a_A2g",
+        "coeff": 1,
+        "family_id": "a",
+        "family_kind": "point-like",
+        "local_object_label": "A2g",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "b_A2'",
+        "coeff": 1,
+        "family_id": "b",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "c_A2'",
+        "coeff": 1,
+        "family_id": "c",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "d_A2'",
+        "coeff": 1,
+        "family_id": "d",
+        "family_kind": "point-like",
+        "local_object_label": "A2'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "e_A2",
+        "coeff": 1,
+        "family_id": "e",
+        "family_kind": "parametric",
+        "local_object_label": "A2",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "f_A2",
+        "coeff": 1,
+        "family_id": "f",
+        "family_kind": "parametric",
+        "local_object_label": "A2",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "g_Bg",
+        "coeff": 1,
+        "family_id": "g",
+        "family_kind": "point-like",
+        "local_object_label": "Bg",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "h_B1",
+        "coeff": 1,
+        "family_id": "h",
+        "family_kind": "parametric",
+        "local_object_label": "B1",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "i_B",
+        "coeff": 1,
+        "family_id": "i",
+        "family_kind": "parametric",
+        "local_object_label": "B",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "j_A'",
+        "coeff": 1,
+        "family_id": "j",
+        "family_kind": "parametric",
+        "local_object_label": "A'",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "k_A''",
+        "coeff": 1,
+        "family_id": "k",
+        "family_kind": "parametric",
+        "local_object_label": "A''",
+        "local_object_kind": "single_local_irrep"
+      },
+      {
+        "generator_id": "l_A",
+        "coeff": 1,
+        "family_id": "l",
+        "family_kind": "parametric",
+        "local_object_label": "A",
+        "local_object_kind": "single_local_irrep"
+      }
+    ]
+  },
+  "diagnosis": {
+    "type": "local-irrep content mismatch rather than rank deficit",
+    "why": "Both current and external AI images have rank 13, but their union has rank 14. The mismatch is a one-dimensional generator-image substitution, not a missing-rank failure.",
+    "most_salient_family_changes": [
+      "a: current representative uses A1g while external representative uses A2g",
+      "b: current representative uses A2'' while external representative uses A2'",
+      "c: current representative uses A2'' while external representative uses A2'",
+      "d: current representative uses A2'' while external representative uses A2'",
+      "e: current representative uses A1 while external representative uses A2",
+      "f: current representative uses A1 while external representative uses A2",
+      "g: current representative uses Ag while external representative uses Bg",
+      "h: current representative uses B2 while external representative uses B1",
+      "i: current representative uses A while external representative uses B"
+    ]
+  }
+}

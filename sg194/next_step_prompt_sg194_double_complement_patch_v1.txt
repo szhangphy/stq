@@ -1,0 +1,9 @@
+Continue from the completed SG194 double complement patch v1 round.
+
+Fixed facts:
+- profile `sg194_double_complement_patch_v1` is now implemented in `debug_workflow_portability_stage2_194.1.1.1.py`
+- the complement 23-generator branch reached exact equality
+- the full 33-generator SG194 double current/external spaces are globally aligned
+
+Do not reopen the trusted-sector bug story.
+The next useful task is to decide whether the exact complement null-relation solve should be generalized into a reusable spinorial row-basis translation routine beyond SG194.

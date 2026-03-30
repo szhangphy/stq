@@ -1,0 +1,15 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "raw_quotient": "Z^16",
+  "standard_space_basis": "Bilbao physically irreducible spinorial BANDREP row basis",
+  "count_aligned_generator_count": 33,
+  "count_aligned_current_ai_rank": 12,
+  "bilbao_spinorial_rank": 10,
+  "standard_space_quotient": null,
+  "free_part": null,
+  "finite_part": null,
+  "confidence": "low",
+  "remaining_blocker": "After explicit 2b/2c/2d/6h count alignment, the current double AI still has rank 12 versus Bilbao's physically irreducible spinorial rank 10. The double standard-space BS/AI quotient cannot be recomputed honestly until that residual rank-2 mismatch is resolved and the BS projection is put in the same standard spinorial space.",
+  "user_facing_rewrite": "Do not quote the raw Z^16. The double line is still not aligned to the Bilbao physically irreducible spinorial basis: the obvious 6\u21923 and 4\u21921 merges can be written explicitly, but they only lower the current AI layer to rank 12, not to the Bilbao standard rank 10, so a standard-space quotient is still blocked."
+}

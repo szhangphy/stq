@@ -1,0 +1,13 @@
+Continue from the completed SG194 double global residual round.
+
+Fixed facts:
+- do not reopen trusted 10-generator analysis
+- the remaining unresolved issue is the 23-generator complement
+- complement rank data is exact and proves no rational lift exists
+- the residual is cross-family and points at the unchanged complement identity-reuse construction
+
+Next patch target:
+- file: `debug_workflow_portability_stage2_194.1.1.1.py`
+- function: `build_sg194_double_spinorial_generators`
+- patch type: `another_generator_construction_patch_with_complement_specific_row_basis_translation`
+- rule group: `DOUBLE_SPINORIAL_IDENTITY_ORDER`

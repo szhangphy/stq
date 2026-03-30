@@ -1,0 +1,11 @@
+{
+  "target_group": "194.1.1.1",
+  "single_main_issue": "both",
+  "double_main_issue": "AI",
+  "single_ai_union_rank": 14,
+  "single_bs_union_rank": 26,
+  "double_ai_problem_sector_union_rank": 8,
+  "double_bs_status": "blocked",
+  "blocker": "double BS-only comparison still lacks a BS-only lift to the external 56-row spinorial basis",
+  "next_step": "Either construct a BS-only current->Bilbao spinorial lift or obtain an independent external double BS object."
+}

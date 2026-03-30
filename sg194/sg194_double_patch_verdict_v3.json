@@ -1,0 +1,264 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "trusted_problem_sector_patch_verdict_v3",
+  "previous_metric_proxy_verdict": {
+    "source": "sg194_double_patch_summary_v2.json",
+    "trusted_problem_sector_improved": true,
+    "delta_disappeared_claim_withdrawn": {
+      "delta_c1_minus_b1": false,
+      "delta_d1_minus_b1": false
+    },
+    "ready_for_bs_only": false,
+    "why_not_final": "The v2 metric compared column spaces of the transposed matrices in the shared generator-label ambient. That proves only row-space coincidence, not an explicit current-row to external-row lift."
+  },
+  "explicit_lift_verdict": {
+    "rational_lift_exists": true,
+    "integer_lift_exists": false,
+    "coefficient_field": "Q",
+    "common_denominator_lcm": 2,
+    "lift_times_current_equals_external": true,
+    "integer_obstruction_summary": {
+      "exists": true,
+      "smith_diagonal_nonzero": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "obstruction_kind": "row_lattice_parity_obstruction",
+      "explanation": "The rational row spaces coincide, but the current row lattice is not saturated integrally. Smith diagonal [1, 1, 1, 2, 2, 2] means the last three coordinates must be even for an integer row lift; several external rows violate those parity conditions.",
+      "failing_external_rows": [
+        {
+          "row_index": 27,
+          "row_label": "H:H5",
+          "snf_coordinates": [
+            0,
+            0,
+            1,
+            -1,
+            0,
+            1
+          ],
+          "tail_parity": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "row_index": 28,
+          "row_label": "H:H7",
+          "snf_coordinates": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "tail_parity": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "row_index": 29,
+          "row_label": "H:H4",
+          "snf_coordinates": [
+            0,
+            0,
+            1,
+            -1,
+            0,
+            1
+          ],
+          "tail_parity": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "row_index": 30,
+          "row_label": "H:H6",
+          "snf_coordinates": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "tail_parity": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "row_index": 31,
+          "row_label": "H:H8",
+          "snf_coordinates": [
+            1,
+            1,
+            0,
+            1,
+            0,
+            -1
+          ],
+          "tail_parity": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "row_index": 32,
+          "row_label": "H:H9",
+          "snf_coordinates": [
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "tail_parity": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "row_index": 39,
+          "row_label": "K:K7",
+          "snf_coordinates": [
+            0,
+            0,
+            2,
+            -1,
+            -1,
+            0
+          ],
+          "tail_parity": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "row_index": 40,
+          "row_label": "K:K8",
+          "snf_coordinates": [
+            2,
+            0,
+            0,
+            -1,
+            2,
+            0
+          ],
+          "tail_parity": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "row_index": 41,
+          "row_label": "K:K9",
+          "snf_coordinates": [
+            0,
+            2,
+            0,
+            2,
+            -1,
+            0
+          ],
+          "tail_parity": [
+            0,
+            1,
+            0
+          ]
+        }
+      ],
+      "obstruction_basis": [
+        {
+          "row_index": 27,
+          "row_label": "H:H5",
+          "snf_coordinates": [
+            0,
+            0,
+            1,
+            -1,
+            0,
+            1
+          ],
+          "tail_parity": [
+            1,
+            0,
+            1
+          ]
+        },
+        {
+          "row_index": 28,
+          "row_label": "H:H7",
+          "snf_coordinates": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            -1
+          ],
+          "tail_parity": [
+            0,
+            1,
+            1
+          ]
+        },
+        {
+          "row_index": 40,
+          "row_label": "K:K8",
+          "snf_coordinates": [
+            2,
+            0,
+            0,
+            -1,
+            2,
+            0
+          ],
+          "tail_parity": [
+            1,
+            0,
+            0
+          ]
+        }
+      ],
+      "obstruction_basis_rank_mod_2": 3
+    }
+  },
+  "delta_external_verdict": {
+    "delta_c1_minus_b1": {
+      "zero_in_external_language": false,
+      "status": "nonzero_external_span_direction_not_residual_mismatch",
+      "residual_mismatch": false
+    },
+    "delta_d1_minus_b1": {
+      "zero_in_external_language": false,
+      "status": "nonzero_external_span_direction_not_residual_mismatch",
+      "residual_mismatch": false
+    }
+  },
+  "final_trusted_sector_status": {
+    "patch_successful_on_trusted_problem_sector": true,
+    "success_scope": "trusted_problem_sector_exactly_aligned_in_external_language_up_to_rational_row_lift",
+    "trusted_sector_generator_mismatch_closed": true,
+    "trusted_sector_ready_for_bs_only": true,
+    "global_bs_only_certified_in_this_round": false,
+    "global_bs_only_blocker": "This round only constructed the explicit lift on the trusted 10-generator sector. A corresponding full 33-generator global lift has not yet been built in this round."
+  }
+}

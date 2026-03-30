@@ -1,0 +1,16 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "old_result": null,
+  "new_result": null,
+  "old_method": "Do not quote the raw Z^16. The double line is still not aligned to the Bilbao physically irreducible spinorial basis: the obvious 6\u21923 and 4\u21921 merges can be written explicitly, but they only lower the current AI layer to rank 12, not to the Bilbao standard rank 10, so a standard-space quotient is still blocked.",
+  "new_method": "Representation-content alignment on the current HSP row-content space, plus explicit residual rank-2 blocker basis",
+  "raw_quotient": "Z^16",
+  "current_hsp_row_space_rank": 13,
+  "count_aligned_rank": 12,
+  "bilbao_spinorial_rank": 10,
+  "free_part": null,
+  "finite_part": null,
+  "more_trustworthy_than_old": true,
+  "remaining_blocker": "The current HSP-row-content merge lowers the problematic 45-label library to rank 12, but the local repository still lacks the full external 56x33 Bilbao spinorial generator matrix needed to lift the current 34-row HSP content into the external spinorial row basis and to decide which two residual directions should be quotiented out."
+}

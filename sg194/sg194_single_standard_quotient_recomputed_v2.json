@@ -1,0 +1,16 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 1,
+  "old_result": "trivial",
+  "new_result": null,
+  "old_method": "Do not quote the raw Z^16. After projecting the current 29-dimensional raw BS layer onto the ordinary SG 194 standard symmetry-data space, the BS image collapses onto the same 13-dimensional layer already spanned by the externally aligned AI, so the ordinary standard-space quotient is trivial in this constructed alignment.",
+  "new_method": "Restrict current BS and AI to the externally determined 34-row HSP coordinate space before any further external row-space reduction.",
+  "raw_quotient": "Z^16",
+  "current_hsp_point_space_quotient": "Z^5",
+  "current_hsp_point_space_bs_rank": 18,
+  "current_hsp_point_space_ai_rank": 13,
+  "free_part": "Z^5",
+  "finite_part": [],
+  "more_trustworthy_than_old": true,
+  "remaining_blocker": "The local repository does not contain the full external 34x45 ordinary SG194 generator matrix, so the final 34-row current HSP coordinates -> 34-row external ordinary symmetry-data coordinates map cannot yet be fixed without a live Bilbao refetch or an equivalent cached matrix. Under the stricter non-AI-anchored method, the current HSP image has rank 18 rather than 13, so the old trivial claim must be downgraded."
+}

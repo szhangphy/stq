@@ -1,0 +1,234 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "trusted_problem_sector_delta_external_verdict",
+  "lift_reference": "sg194_double_problem_sector_lift.json",
+  "delta_verdicts": {
+    "delta_c1_minus_b1": {
+      "id": "delta_c1_minus_b1",
+      "generator_domain_coefficients": [
+        {
+          "label": "b:E1\u2191G(4)",
+          "coeff": -1
+        },
+        {
+          "label": "c:E1\u2191G(4)",
+          "coeff": 1
+        }
+      ],
+      "current_problem_vector_support": [
+        {
+          "index": 15,
+          "label": "P3_R1",
+          "coeff": -2
+        },
+        {
+          "index": 17,
+          "label": "P3_R3",
+          "coeff": -2
+        },
+        {
+          "index": 19,
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "index": 31,
+          "label": "B1_R1",
+          "coeff": 2
+        },
+        {
+          "index": 33,
+          "label": "B1_R3",
+          "coeff": -2
+        }
+      ],
+      "lifted_external_vector_support": [
+        {
+          "index": 27,
+          "label": "H:H5",
+          "coeff": 1
+        },
+        {
+          "index": 29,
+          "label": "H:H4",
+          "coeff": 1
+        },
+        {
+          "index": 31,
+          "label": "H:H8",
+          "coeff": -1
+        },
+        {
+          "index": 39,
+          "label": "K:K7",
+          "coeff": 1
+        },
+        {
+          "index": 40,
+          "label": "K:K8",
+          "coeff": 1
+        },
+        {
+          "index": 41,
+          "label": "K:K9",
+          "coeff": -2
+        }
+      ],
+      "direct_external_vector_support": [
+        {
+          "index": 27,
+          "label": "H:H5",
+          "coeff": 1
+        },
+        {
+          "index": 29,
+          "label": "H:H4",
+          "coeff": 1
+        },
+        {
+          "index": 31,
+          "label": "H:H8",
+          "coeff": -1
+        },
+        {
+          "index": 39,
+          "label": "K:K7",
+          "coeff": 1
+        },
+        {
+          "index": 40,
+          "label": "K:K8",
+          "coeff": 1
+        },
+        {
+          "index": 41,
+          "label": "K:K9",
+          "coeff": -2
+        }
+      ],
+      "lifted_equals_direct_external": true,
+      "zero_in_external_language": false,
+      "in_external_generator_span": true,
+      "residual_independent_external_mismatch": false,
+      "external_language_status": "nonzero_external_span_direction_not_residual_mismatch",
+      "verdict": "After the explicit lift, this delta becomes a nonzero vector in the external problem-sector ambient. It is not zero, but it is also not a residual mismatch because it is exactly realized inside the external generator span."
+    },
+    "delta_d1_minus_b1": {
+      "id": "delta_d1_minus_b1",
+      "generator_domain_coefficients": [
+        {
+          "label": "b:E1\u2191G(4)",
+          "coeff": -1
+        },
+        {
+          "label": "d:E1\u2191G(4)",
+          "coeff": 1
+        }
+      ],
+      "current_problem_vector_support": [
+        {
+          "index": 15,
+          "label": "P3_R1",
+          "coeff": -2
+        },
+        {
+          "index": 17,
+          "label": "P3_R3",
+          "coeff": -2
+        },
+        {
+          "index": 19,
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "index": 32,
+          "label": "B1_R2",
+          "coeff": 2
+        },
+        {
+          "index": 33,
+          "label": "B1_R3",
+          "coeff": -2
+        }
+      ],
+      "lifted_external_vector_support": [
+        {
+          "index": 28,
+          "label": "H:H7",
+          "coeff": 1
+        },
+        {
+          "index": 30,
+          "label": "H:H6",
+          "coeff": 1
+        },
+        {
+          "index": 32,
+          "label": "H:H9",
+          "coeff": -1
+        },
+        {
+          "index": 39,
+          "label": "K:K7",
+          "coeff": 1
+        },
+        {
+          "index": 40,
+          "label": "K:K8",
+          "coeff": 1
+        },
+        {
+          "index": 41,
+          "label": "K:K9",
+          "coeff": -2
+        }
+      ],
+      "direct_external_vector_support": [
+        {
+          "index": 28,
+          "label": "H:H7",
+          "coeff": 1
+        },
+        {
+          "index": 30,
+          "label": "H:H6",
+          "coeff": 1
+        },
+        {
+          "index": 32,
+          "label": "H:H9",
+          "coeff": -1
+        },
+        {
+          "index": 39,
+          "label": "K:K7",
+          "coeff": 1
+        },
+        {
+          "index": 40,
+          "label": "K:K8",
+          "coeff": 1
+        },
+        {
+          "index": 41,
+          "label": "K:K9",
+          "coeff": -2
+        }
+      ],
+      "lifted_equals_direct_external": true,
+      "zero_in_external_language": false,
+      "in_external_generator_span": true,
+      "residual_independent_external_mismatch": false,
+      "external_language_status": "nonzero_external_span_direction_not_residual_mismatch",
+      "verdict": "After the explicit lift, this delta becomes a nonzero vector in the external problem-sector ambient. It is not zero, but it is also not a residual mismatch because it is exactly realized inside the external generator span."
+    }
+  },
+  "summary": {
+    "delta_c1_minus_b1_zero_in_external_language": false,
+    "delta_d1_minus_b1_zero_in_external_language": false,
+    "delta_c1_minus_b1_residual_mismatch": false,
+    "delta_d1_minus_b1_residual_mismatch": false
+  }
+}

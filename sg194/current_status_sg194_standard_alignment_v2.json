@@ -1,0 +1,18 @@
+{
+  "target_group": "194.1.1.1",
+  "single_status": {
+    "old_result": "trivial",
+    "new_result": null,
+    "current_hsp_point_space_quotient": "Z^5",
+    "status": "reopened_and_not_fully_hardened"
+  },
+  "double_status": {
+    "old_result": null,
+    "new_result": null,
+    "count_aligned_rank": 12,
+    "bilbao_spinorial_rank": 10,
+    "status": "better_localized_but_still_blocked"
+  },
+  "main_blocker": "The local repository does not carry the full external ordinary/spinorial generator matrices, so the final external-row-space reduction cannot be completed offline.",
+  "next_step": "Cache the full Bilbao matrices locally and rerun v2."
+}

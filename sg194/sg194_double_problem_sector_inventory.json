@@ -1,0 +1,912 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "task": "trusted_problem_sector_inventory_for_explicit_row_basis_lift",
+  "trusted_problem_sector_definition": {
+    "wyckoff_labels": [
+      "2b",
+      "2c",
+      "2d",
+      "6h"
+    ],
+    "generator_count": 10,
+    "generator_label_ordering": [
+      "b:E1\u2191G(4)",
+      "b:E2\u2191G(4)",
+      "b:E3\u2191G(4)",
+      "c:E1\u2191G(4)",
+      "c:E2\u2191G(4)",
+      "c:E3\u2191G(4)",
+      "d:E1\u2191G(4)",
+      "d:E2\u2191G(4)",
+      "d:E3\u2191G(4)",
+      "h:E\u2191G(12)"
+    ]
+  },
+  "source_artifacts_read": [
+    "debug_sg194_double_patch.py",
+    "debug_sg194_double_patch_v2.py",
+    "sg194_double_ai_patch_before_after_v2.json",
+    "sg194_double_delta_localization.json",
+    "raw_194_1_1_1_double_ai_candidates.json",
+    "raw_194_1_1_1_double_ai_candidates_patched.json",
+    "raw_194_1_1_1_double_ai_basis.json",
+    "raw_194_1_1_1_double_ai_basis_patched.json",
+    "sg194_external_spinorial_generator_matrix.json"
+  ],
+  "raw_artifact_summary": {
+    "legacy_candidate_count": 45,
+    "patched_candidate_count": 33,
+    "legacy_rank_ai": 13,
+    "patched_rank_ai": 12,
+    "legacy_basis_columns": [
+      "194_1_1_1_double_ai_basis_01",
+      "194_1_1_1_double_ai_basis_02",
+      "194_1_1_1_double_ai_basis_03",
+      "194_1_1_1_double_ai_basis_04",
+      "194_1_1_1_double_ai_basis_05",
+      "194_1_1_1_double_ai_basis_06",
+      "194_1_1_1_double_ai_basis_07",
+      "194_1_1_1_double_ai_basis_08",
+      "194_1_1_1_double_ai_basis_09",
+      "194_1_1_1_double_ai_basis_10",
+      "194_1_1_1_double_ai_basis_11",
+      "194_1_1_1_double_ai_basis_12",
+      "194_1_1_1_double_ai_basis_13"
+    ],
+    "patched_basis_columns": [
+      "194_1_1_1_double_ai_basis_01",
+      "194_1_1_1_double_ai_basis_02",
+      "194_1_1_1_double_ai_basis_03",
+      "194_1_1_1_double_ai_basis_04",
+      "194_1_1_1_double_ai_basis_05",
+      "194_1_1_1_double_ai_basis_06",
+      "194_1_1_1_double_ai_basis_07",
+      "194_1_1_1_double_ai_basis_08",
+      "194_1_1_1_double_ai_basis_09",
+      "194_1_1_1_double_ai_basis_10",
+      "194_1_1_1_double_ai_basis_11",
+      "194_1_1_1_double_ai_basis_12"
+    ]
+  },
+  "current_problem_sector": {
+    "artifact": "raw_194_1_1_1_double_ai_candidates_patched.json",
+    "ambient_kind": "current_HSP_rows_selected_from_unknown_ordering",
+    "ambient_source_unknown_ordering_length": 62,
+    "ambient_selected_row_count": 34,
+    "ambient_selected_unknown_ordering_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ],
+    "ambient_row_label_ordering": [
+      "P1_R1",
+      "P1_R2",
+      "P1_R3",
+      "P1_R4",
+      "P1_R5",
+      "P1_R6",
+      "P1_R7",
+      "P1_R8",
+      "P1_R9",
+      "P1_R10",
+      "P1_R11",
+      "P1_R12",
+      "P2_R1",
+      "P2_R2",
+      "P2_R3",
+      "P3_R1",
+      "P3_R2",
+      "P3_R3",
+      "P3_R4",
+      "P3_R5",
+      "P3_R6",
+      "P5_R1",
+      "P5_R2",
+      "P5_R3",
+      "P5_R4",
+      "P5_R5",
+      "P5_R6",
+      "P5_R7",
+      "P5_R8",
+      "P6_R1",
+      "P6_R2",
+      "B1_R1",
+      "B1_R2",
+      "B1_R3"
+    ],
+    "ambient_row_blocks": {
+      "P1": {
+        "row_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "labels": [
+          "P1_R1",
+          "P1_R2",
+          "P1_R3",
+          "P1_R4",
+          "P1_R5",
+          "P1_R6",
+          "P1_R7",
+          "P1_R8",
+          "P1_R9",
+          "P1_R10",
+          "P1_R11",
+          "P1_R12"
+        ]
+      },
+      "P2": {
+        "row_indices": [
+          12,
+          13,
+          14
+        ],
+        "labels": [
+          "P2_R1",
+          "P2_R2",
+          "P2_R3"
+        ]
+      },
+      "P3": {
+        "row_indices": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "labels": [
+          "P3_R1",
+          "P3_R2",
+          "P3_R3",
+          "P3_R4",
+          "P3_R5",
+          "P3_R6"
+        ]
+      },
+      "P5": {
+        "row_indices": [
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "labels": [
+          "P5_R1",
+          "P5_R2",
+          "P5_R3",
+          "P5_R4",
+          "P5_R5",
+          "P5_R6",
+          "P5_R7",
+          "P5_R8"
+        ]
+      },
+      "P6": {
+        "row_indices": [
+          29,
+          30
+        ],
+        "labels": [
+          "P6_R1",
+          "P6_R2"
+        ]
+      },
+      "B1": {
+        "row_indices": [
+          31,
+          32,
+          33
+        ],
+        "labels": [
+          "B1_R1",
+          "B1_R2",
+          "B1_R3"
+        ]
+      }
+    },
+    "generator_indices": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32
+    ],
+    "generator_ids": [
+      "b_E1_G_4",
+      "b_E2_G_4",
+      "b_E3_G_4",
+      "c_E1_G_4",
+      "c_E2_G_4",
+      "c_E3_G_4",
+      "d_E1_G_4",
+      "d_E2_G_4",
+      "d_E3_G_4",
+      "h_E_G_12"
+    ],
+    "generator_labels": [
+      "b:E1\u2191G(4)",
+      "b:E2\u2191G(4)",
+      "b:E3\u2191G(4)",
+      "c:E1\u2191G(4)",
+      "c:E2\u2191G(4)",
+      "c:E3\u2191G(4)",
+      "d:E1\u2191G(4)",
+      "d:E2\u2191G(4)",
+      "d:E3\u2191G(4)",
+      "h:E\u2191G(12)"
+    ],
+    "matrix_shape": [
+      34,
+      10
+    ],
+    "nonzero_row_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33
+    ],
+    "nonzero_row_labels": [
+      "P1_R1",
+      "P1_R2",
+      "P1_R3",
+      "P1_R4",
+      "P1_R5",
+      "P1_R6",
+      "P1_R7",
+      "P1_R8",
+      "P1_R9",
+      "P1_R10",
+      "P1_R11",
+      "P1_R12",
+      "P2_R1",
+      "P2_R2",
+      "P2_R3",
+      "P3_R1",
+      "P3_R2",
+      "P3_R3",
+      "P3_R4",
+      "P3_R5",
+      "P3_R6",
+      "P5_R1",
+      "P5_R2",
+      "P5_R3",
+      "P5_R4",
+      "P5_R5",
+      "P5_R6",
+      "P5_R7",
+      "P5_R8",
+      "P6_R1",
+      "P6_R2",
+      "B1_R1",
+      "B1_R2",
+      "B1_R3"
+    ],
+    "nonzero_row_blocks": {
+      "P1": {
+        "row_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "labels": [
+          "P1_R1",
+          "P1_R2",
+          "P1_R3",
+          "P1_R4",
+          "P1_R5",
+          "P1_R6",
+          "P1_R7",
+          "P1_R8",
+          "P1_R9",
+          "P1_R10",
+          "P1_R11",
+          "P1_R12"
+        ]
+      },
+      "P2": {
+        "row_indices": [
+          12,
+          13,
+          14
+        ],
+        "labels": [
+          "P2_R1",
+          "P2_R2",
+          "P2_R3"
+        ]
+      },
+      "P3": {
+        "row_indices": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "labels": [
+          "P3_R1",
+          "P3_R2",
+          "P3_R3",
+          "P3_R4",
+          "P3_R5",
+          "P3_R6"
+        ]
+      },
+      "P5": {
+        "row_indices": [
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "labels": [
+          "P5_R1",
+          "P5_R2",
+          "P5_R3",
+          "P5_R4",
+          "P5_R5",
+          "P5_R6",
+          "P5_R7",
+          "P5_R8"
+        ]
+      },
+      "P6": {
+        "row_indices": [
+          29,
+          30
+        ],
+        "labels": [
+          "P6_R1",
+          "P6_R2"
+        ]
+      },
+      "B1": {
+        "row_indices": [
+          31,
+          32,
+          33
+        ],
+        "labels": [
+          "B1_R1",
+          "B1_R2",
+          "B1_R3"
+        ]
+      }
+    }
+  },
+  "external_problem_sector": {
+    "artifact": "sg194_external_spinorial_generator_matrix.json",
+    "ambient_kind": "external_spinorial_rows",
+    "ambient_row_count": 56,
+    "ambient_row_label_ordering": [
+      "A:A1",
+      "A:A2",
+      "A:A3",
+      "A:A5",
+      "A:A4",
+      "A:A6",
+      "\u0393:\u03931+",
+      "\u0393:\u03933+",
+      "\u0393:\u03931-",
+      "\u0393:\u03933-",
+      "\u0393:\u03932+",
+      "\u0393:\u03934+",
+      "\u0393:\u03932-",
+      "\u0393:\u03934-",
+      "\u0393:\u03935+",
+      "\u0393:\u03936+",
+      "\u0393:\u03935-",
+      "\u0393:\u03936-",
+      "\u0393:\u03937",
+      "\u0393:\u039310",
+      "\u0393:\u03938",
+      "\u0393:\u03939",
+      "\u0393:\u039311",
+      "\u0393:\u039312",
+      "H:H3",
+      "H:H1",
+      "H:H2",
+      "H:H5",
+      "H:H7",
+      "H:H4",
+      "H:H6",
+      "H:H8",
+      "H:H9",
+      "K:K1",
+      "K:K2",
+      "K:K3",
+      "K:K4",
+      "K:K5",
+      "K:K6",
+      "K:K7",
+      "K:K8",
+      "K:K9",
+      "L:L1",
+      "L:L2",
+      "L:L4",
+      "L:L3",
+      "M:M1+",
+      "M:M3+",
+      "M:M1-",
+      "M:M3-",
+      "M:M2+",
+      "M:M4+",
+      "M:M2-",
+      "M:M4-",
+      "M:M5",
+      "M:M6"
+    ],
+    "ambient_row_blocks": {
+      "A": {
+        "row_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "labels": [
+          "A:A1",
+          "A:A2",
+          "A:A3",
+          "A:A5",
+          "A:A4",
+          "A:A6"
+        ]
+      },
+      "\u0393": {
+        "row_indices": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "labels": [
+          "\u0393:\u03931+",
+          "\u0393:\u03933+",
+          "\u0393:\u03931-",
+          "\u0393:\u03933-",
+          "\u0393:\u03932+",
+          "\u0393:\u03934+",
+          "\u0393:\u03932-",
+          "\u0393:\u03934-",
+          "\u0393:\u03935+",
+          "\u0393:\u03936+",
+          "\u0393:\u03935-",
+          "\u0393:\u03936-",
+          "\u0393:\u03937",
+          "\u0393:\u039310",
+          "\u0393:\u03938",
+          "\u0393:\u03939",
+          "\u0393:\u039311",
+          "\u0393:\u039312"
+        ]
+      },
+      "H": {
+        "row_indices": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "labels": [
+          "H:H3",
+          "H:H1",
+          "H:H2",
+          "H:H5",
+          "H:H7",
+          "H:H4",
+          "H:H6",
+          "H:H8",
+          "H:H9"
+        ]
+      },
+      "K": {
+        "row_indices": [
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ],
+        "labels": [
+          "K:K1",
+          "K:K2",
+          "K:K3",
+          "K:K4",
+          "K:K5",
+          "K:K6",
+          "K:K7",
+          "K:K8",
+          "K:K9"
+        ]
+      },
+      "L": {
+        "row_indices": [
+          42,
+          43,
+          44,
+          45
+        ],
+        "labels": [
+          "L:L1",
+          "L:L2",
+          "L:L4",
+          "L:L3"
+        ]
+      },
+      "M": {
+        "row_indices": [
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55
+        ],
+        "labels": [
+          "M:M1+",
+          "M:M3+",
+          "M:M1-",
+          "M:M3-",
+          "M:M2+",
+          "M:M4+",
+          "M:M2-",
+          "M:M4-",
+          "M:M5",
+          "M:M6"
+        ]
+      }
+    },
+    "generator_indices": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      25
+    ],
+    "generator_labels": [
+      {
+        "generator_index": 6,
+        "bandrep_label": "E1\u2191G(4)",
+        "wp_label": "2b",
+        "letter_key": "b",
+        "local_index": 6
+      },
+      {
+        "generator_index": 7,
+        "bandrep_label": "E2\u2191G(4)",
+        "wp_label": "2b",
+        "letter_key": "b",
+        "local_index": 7
+      },
+      {
+        "generator_index": 8,
+        "bandrep_label": "E3\u2191G(4)",
+        "wp_label": "2b",
+        "letter_key": "b",
+        "local_index": 8
+      },
+      {
+        "generator_index": 9,
+        "bandrep_label": "E1\u2191G(4)",
+        "wp_label": "2c",
+        "letter_key": "c",
+        "local_index": 6
+      },
+      {
+        "generator_index": 10,
+        "bandrep_label": "E2\u2191G(4)",
+        "wp_label": "2c",
+        "letter_key": "c",
+        "local_index": 7
+      },
+      {
+        "generator_index": 11,
+        "bandrep_label": "E3\u2191G(4)",
+        "wp_label": "2c",
+        "letter_key": "c",
+        "local_index": 8
+      },
+      {
+        "generator_index": 12,
+        "bandrep_label": "E1\u2191G(4)",
+        "wp_label": "2d",
+        "letter_key": "d",
+        "local_index": 6
+      },
+      {
+        "generator_index": 13,
+        "bandrep_label": "E2\u2191G(4)",
+        "wp_label": "2d",
+        "letter_key": "d",
+        "local_index": 7
+      },
+      {
+        "generator_index": 14,
+        "bandrep_label": "E3\u2191G(4)",
+        "wp_label": "2d",
+        "letter_key": "d",
+        "local_index": 8
+      },
+      {
+        "generator_index": 25,
+        "bandrep_label": "E\u2191G(12)",
+        "wp_label": "6h",
+        "letter_key": "h",
+        "local_index": 4
+      }
+    ],
+    "matrix_shape": [
+      56,
+      10
+    ],
+    "nonzero_row_indices": [
+      3,
+      4,
+      5,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      39,
+      40,
+      41,
+      44,
+      45,
+      54,
+      55
+    ],
+    "nonzero_row_labels": [
+      "A:A5",
+      "A:A4",
+      "A:A6",
+      "\u0393:\u03937",
+      "\u0393:\u039310",
+      "\u0393:\u03938",
+      "\u0393:\u03939",
+      "\u0393:\u039311",
+      "\u0393:\u039312",
+      "H:H5",
+      "H:H7",
+      "H:H4",
+      "H:H6",
+      "H:H8",
+      "H:H9",
+      "K:K7",
+      "K:K8",
+      "K:K9",
+      "L:L4",
+      "L:L3",
+      "M:M5",
+      "M:M6"
+    ],
+    "nonzero_row_blocks": {
+      "A": {
+        "row_indices": [
+          3,
+          4,
+          5
+        ],
+        "labels": [
+          "A:A5",
+          "A:A4",
+          "A:A6"
+        ]
+      },
+      "\u0393": {
+        "row_indices": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "labels": [
+          "\u0393:\u03937",
+          "\u0393:\u039310",
+          "\u0393:\u03938",
+          "\u0393:\u03939",
+          "\u0393:\u039311",
+          "\u0393:\u039312"
+        ]
+      },
+      "H": {
+        "row_indices": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32
+        ],
+        "labels": [
+          "H:H5",
+          "H:H7",
+          "H:H4",
+          "H:H6",
+          "H:H8",
+          "H:H9"
+        ]
+      },
+      "K": {
+        "row_indices": [
+          39,
+          40,
+          41
+        ],
+        "labels": [
+          "K:K7",
+          "K:K8",
+          "K:K9"
+        ]
+      },
+      "L": {
+        "row_indices": [
+          44,
+          45
+        ],
+        "labels": [
+          "L:L4",
+          "L:L3"
+        ]
+      },
+      "M": {
+        "row_indices": [
+          54,
+          55
+        ],
+        "labels": [
+          "M:M5",
+          "M:M6"
+        ]
+      }
+    }
+  },
+  "rank_snapshot": {
+    "current_problem_rank": 6,
+    "external_problem_rank": 6,
+    "problem_union_rank": 6,
+    "problem_intersection_rank": 6,
+    "v2_proxy_problem_union_rank": 6
+  }
+}
