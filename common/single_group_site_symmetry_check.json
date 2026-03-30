@@ -1,0 +1,4971 @@
+{
+  "group_number": "10.4.1.31",
+  "coordinate_system": "fractional coordinates in the real-space setting emitted by swyckoff_r.py",
+  "point_fixing_rule": "An operation fixes a representative point when g\u00b7r = r modulo an integer lattice vector.",
+  "antiunitary_enters_site_symmetry": true,
+  "entries": [
+    {
+      "letter": "o",
+      "dimension": 3,
+      "multiplicity": 16,
+      "representative_coordinate": "x, y, z",
+      "sample_parameters": [
+        "1/5",
+        "2/7",
+        "3/11"
+      ],
+      "sample_point": [
+        "1/5",
+        "2/7",
+        "3/11"
+      ],
+      "program_output": {
+        "stabilizer_size": 1,
+        "unique_rotation_count": 1,
+        "site_symmetry": "1",
+        "unitary_site_symmetry": "1",
+        "site_symmetry_custom": "1",
+        "site_symmetry_ops": [
+          {
+            "token": "1",
+            "type": "1",
+            "kind": "identity",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "1",
+        "spatial_site_symmetry_ops": [],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 16
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/5",
+          "2/7",
+          "3/11"
+        ],
+        "stabilizer_indices": [
+          0
+        ],
+        "stabilizer_size": 1,
+        "unitary_count": 1,
+        "antiunitary_count": 0,
+        "unique_rotation_count": 1,
+        "is_closed": true,
+        "orbit_size": 16,
+        "orbit_points": [
+          [
+            "1/5",
+            "2/7",
+            "3/11"
+          ],
+          [
+            "1/5",
+            "11/14",
+            "17/22"
+          ],
+          [
+            "4/5",
+            "11/14",
+            "8/11"
+          ],
+          [
+            "4/5",
+            "2/7",
+            "5/22"
+          ],
+          [
+            "4/5",
+            "5/7",
+            "5/22"
+          ],
+          [
+            "4/5",
+            "3/14",
+            "8/11"
+          ],
+          [
+            "1/5",
+            "3/14",
+            "17/22"
+          ],
+          [
+            "1/5",
+            "5/7",
+            "3/11"
+          ],
+          [
+            "1/5",
+            "2/7",
+            "17/22"
+          ],
+          [
+            "1/5",
+            "11/14",
+            "3/11"
+          ],
+          [
+            "4/5",
+            "11/14",
+            "5/22"
+          ],
+          [
+            "4/5",
+            "2/7",
+            "8/11"
+          ],
+          [
+            "4/5",
+            "5/7",
+            "8/11"
+          ],
+          [
+            "4/5",
+            "3/14",
+            "5/22"
+          ],
+          [
+            "1/5",
+            "3/14",
+            "3/11"
+          ],
+          [
+            "1/5",
+            "5/7",
+            "17/22"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "1",
+        "unitary_site_symmetry": "1",
+        "site_symmetry_custom": "1",
+        "site_symmetry_ops": [
+          {
+            "token": "1",
+            "type": "1",
+            "kind": "identity",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "1",
+        "spatial_site_symmetry_ops": [],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "n",
+      "dimension": 2,
+      "multiplicity": 8,
+      "representative_coordinate": "x, 1/4, z",
+      "sample_parameters": [
+        "1/5",
+        "2/7"
+      ],
+      "sample_point": [
+        "1/5",
+        "1/4",
+        "2/7"
+      ],
+      "program_output": {
+        "stabilizer_size": 2,
+        "unique_rotation_count": 2,
+        "site_symmetry": "m'",
+        "unitary_site_symmetry": "1",
+        "site_symmetry_custom": "m'[y]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "m'[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 8
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/5",
+          "1/4",
+          "2/7"
+        ],
+        "stabilizer_indices": [
+          0,
+          14
+        ],
+        "stabilizer_size": 2,
+        "unitary_count": 1,
+        "antiunitary_count": 1,
+        "unique_rotation_count": 2,
+        "is_closed": true,
+        "orbit_size": 8,
+        "orbit_points": [
+          [
+            "1/5",
+            "1/4",
+            "2/7"
+          ],
+          [
+            "1/5",
+            "3/4",
+            "11/14"
+          ],
+          [
+            "4/5",
+            "3/4",
+            "5/7"
+          ],
+          [
+            "4/5",
+            "1/4",
+            "3/14"
+          ],
+          [
+            "4/5",
+            "3/4",
+            "3/14"
+          ],
+          [
+            "4/5",
+            "1/4",
+            "5/7"
+          ],
+          [
+            "1/5",
+            "1/4",
+            "11/14"
+          ],
+          [
+            "1/5",
+            "3/4",
+            "2/7"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "m'",
+        "unitary_site_symmetry": "1",
+        "site_symmetry_custom": "m'[y]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "m'[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 14,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "m",
+      "dimension": 2,
+      "multiplicity": 8,
+      "representative_coordinate": "x, 0, z",
+      "sample_parameters": [
+        "1/5",
+        "2/7"
+      ],
+      "sample_point": [
+        "1/5",
+        "0",
+        "2/7"
+      ],
+      "program_output": {
+        "stabilizer_size": 2,
+        "unique_rotation_count": 2,
+        "site_symmetry": "m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "m[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 8
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/5",
+          "0",
+          "2/7"
+        ],
+        "stabilizer_indices": [
+          0,
+          7
+        ],
+        "stabilizer_size": 2,
+        "unitary_count": 2,
+        "antiunitary_count": 0,
+        "unique_rotation_count": 2,
+        "is_closed": true,
+        "orbit_size": 8,
+        "orbit_points": [
+          [
+            "1/5",
+            "0",
+            "2/7"
+          ],
+          [
+            "1/5",
+            "1/2",
+            "11/14"
+          ],
+          [
+            "4/5",
+            "1/2",
+            "5/7"
+          ],
+          [
+            "4/5",
+            "0",
+            "3/14"
+          ],
+          [
+            "1/5",
+            "0",
+            "11/14"
+          ],
+          [
+            "1/5",
+            "1/2",
+            "2/7"
+          ],
+          [
+            "4/5",
+            "1/2",
+            "3/14"
+          ],
+          [
+            "4/5",
+            "0",
+            "5/7"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "m[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 7,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "l",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate": "1/2, y, 1/4",
+      "sample_parameters": [
+        "1/5"
+      ],
+      "sample_point": [
+        "1/2",
+        "1/5",
+        "1/4"
+      ],
+      "program_output": {
+        "stabilizer_size": 2,
+        "unique_rotation_count": 2,
+        "site_symmetry": "2",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 8
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/2",
+          "1/5",
+          "1/4"
+        ],
+        "stabilizer_indices": [
+          0,
+          3
+        ],
+        "stabilizer_size": 2,
+        "unitary_count": 2,
+        "antiunitary_count": 0,
+        "unique_rotation_count": 2,
+        "is_closed": true,
+        "orbit_size": 8,
+        "orbit_points": [
+          [
+            "1/2",
+            "1/5",
+            "1/4"
+          ],
+          [
+            "1/2",
+            "7/10",
+            "3/4"
+          ],
+          [
+            "1/2",
+            "4/5",
+            "1/4"
+          ],
+          [
+            "1/2",
+            "3/10",
+            "3/4"
+          ],
+          [
+            "1/2",
+            "1/5",
+            "3/4"
+          ],
+          [
+            "1/2",
+            "7/10",
+            "1/4"
+          ],
+          [
+            "1/2",
+            "4/5",
+            "3/4"
+          ],
+          [
+            "1/2",
+            "3/10",
+            "1/4"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 3,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1/2"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "k",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate": "0, y, 1/4",
+      "sample_parameters": [
+        "1/5"
+      ],
+      "sample_point": [
+        "0",
+        "1/5",
+        "1/4"
+      ],
+      "program_output": {
+        "stabilizer_size": 2,
+        "unique_rotation_count": 2,
+        "site_symmetry": "2",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 8
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "0",
+          "1/5",
+          "1/4"
+        ],
+        "stabilizer_indices": [
+          0,
+          3
+        ],
+        "stabilizer_size": 2,
+        "unitary_count": 2,
+        "antiunitary_count": 0,
+        "unique_rotation_count": 2,
+        "is_closed": true,
+        "orbit_size": 8,
+        "orbit_points": [
+          [
+            "0",
+            "1/5",
+            "1/4"
+          ],
+          [
+            "0",
+            "7/10",
+            "3/4"
+          ],
+          [
+            "0",
+            "4/5",
+            "1/4"
+          ],
+          [
+            "0",
+            "3/10",
+            "3/4"
+          ],
+          [
+            "0",
+            "1/5",
+            "3/4"
+          ],
+          [
+            "0",
+            "7/10",
+            "1/4"
+          ],
+          [
+            "0",
+            "4/5",
+            "3/4"
+          ],
+          [
+            "0",
+            "3/10",
+            "1/4"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 3,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1/2"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "j",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate": "1/2, y, 0",
+      "sample_parameters": [
+        "1/5"
+      ],
+      "sample_point": [
+        "1/2",
+        "1/5",
+        "0"
+      ],
+      "program_output": {
+        "stabilizer_size": 2,
+        "unique_rotation_count": 2,
+        "site_symmetry": "2'",
+        "unitary_site_symmetry": "1",
+        "site_symmetry_custom": "m'[x]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 8
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/2",
+          "1/5",
+          "0"
+        ],
+        "stabilizer_indices": [
+          0,
+          11
+        ],
+        "stabilizer_size": 2,
+        "unitary_count": 1,
+        "antiunitary_count": 1,
+        "unique_rotation_count": 2,
+        "is_closed": true,
+        "orbit_size": 8,
+        "orbit_points": [
+          [
+            "1/2",
+            "1/5",
+            "0"
+          ],
+          [
+            "1/2",
+            "7/10",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "7/10",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/5",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "4/5",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "3/10",
+            "0"
+          ],
+          [
+            "1/2",
+            "3/10",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "4/5",
+            "0"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2'",
+        "unitary_site_symmetry": "1",
+        "site_symmetry_custom": "m'[x]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 11,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "i",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate": "0, y, 0",
+      "sample_parameters": [
+        "1/5"
+      ],
+      "sample_point": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "program_output": {
+        "stabilizer_size": 2,
+        "unique_rotation_count": 2,
+        "site_symmetry": "2'",
+        "unitary_site_symmetry": "1",
+        "site_symmetry_custom": "m'[x]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 8
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "0",
+          "1/5",
+          "0"
+        ],
+        "stabilizer_indices": [
+          0,
+          11
+        ],
+        "stabilizer_size": 2,
+        "unitary_count": 1,
+        "antiunitary_count": 1,
+        "unique_rotation_count": 2,
+        "is_closed": true,
+        "orbit_size": 8,
+        "orbit_points": [
+          [
+            "0",
+            "1/5",
+            "0"
+          ],
+          [
+            "0",
+            "7/10",
+            "1/2"
+          ],
+          [
+            "0",
+            "7/10",
+            "0"
+          ],
+          [
+            "0",
+            "1/5",
+            "1/2"
+          ],
+          [
+            "0",
+            "4/5",
+            "1/2"
+          ],
+          [
+            "0",
+            "3/10",
+            "0"
+          ],
+          [
+            "0",
+            "3/10",
+            "1/2"
+          ],
+          [
+            "0",
+            "4/5",
+            "0"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2'",
+        "unitary_site_symmetry": "1",
+        "site_symmetry_custom": "m'[x]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y]",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 11,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "h",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "1/2, 1/4, 1/4",
+      "sample_parameters": [],
+      "sample_point": [
+        "1/2",
+        "1/4",
+        "1/4"
+      ],
+      "program_output": {
+        "stabilizer_size": 4,
+        "unique_rotation_count": 4,
+        "site_symmetry": "2/m'",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y] * m'[y] * -1'",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": true
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 4
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/2",
+          "1/4",
+          "1/4"
+        ],
+        "stabilizer_indices": [
+          0,
+          3,
+          13,
+          14
+        ],
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "unique_rotation_count": 4,
+        "is_closed": true,
+        "orbit_size": 4,
+        "orbit_points": [
+          [
+            "1/2",
+            "1/4",
+            "1/4"
+          ],
+          [
+            "1/2",
+            "3/4",
+            "3/4"
+          ],
+          [
+            "1/2",
+            "3/4",
+            "1/4"
+          ],
+          [
+            "1/2",
+            "1/4",
+            "3/4"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2/m'",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y] * m'[y] * -1'",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": true
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 3,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1/2"
+            ]
+          },
+          {
+            "index": 13,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "3/2"
+            ]
+          },
+          {
+            "index": 14,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "g",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "0, 1/4, 1/4",
+      "sample_parameters": [],
+      "sample_point": [
+        "0",
+        "1/4",
+        "1/4"
+      ],
+      "program_output": {
+        "stabilizer_size": 4,
+        "unique_rotation_count": 4,
+        "site_symmetry": "2/m'",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y] * m'[y] * -1'",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": true
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 4
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "0",
+          "1/4",
+          "1/4"
+        ],
+        "stabilizer_indices": [
+          0,
+          3,
+          13,
+          14
+        ],
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "unique_rotation_count": 4,
+        "is_closed": true,
+        "orbit_size": 4,
+        "orbit_points": [
+          [
+            "0",
+            "1/4",
+            "1/4"
+          ],
+          [
+            "0",
+            "3/4",
+            "3/4"
+          ],
+          [
+            "0",
+            "3/4",
+            "1/4"
+          ],
+          [
+            "0",
+            "1/4",
+            "3/4"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2/m'",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y] * m'[y] * -1'",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": true
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 3,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1/2"
+            ]
+          },
+          {
+            "index": 13,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "3/2"
+            ]
+          },
+          {
+            "index": 14,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "f",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "1/2, 0, 1/4",
+      "sample_parameters": [],
+      "sample_point": [
+        "1/2",
+        "0",
+        "1/4"
+      ],
+      "program_output": {
+        "stabilizer_size": 4,
+        "unique_rotation_count": 4,
+        "site_symmetry": "2/m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y] * m[y] * -1",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 4
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/2",
+          "0",
+          "1/4"
+        ],
+        "stabilizer_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "stabilizer_size": 4,
+        "unitary_count": 4,
+        "antiunitary_count": 0,
+        "unique_rotation_count": 4,
+        "is_closed": true,
+        "orbit_size": 4,
+        "orbit_points": [
+          [
+            "1/2",
+            "0",
+            "1/4"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "3/4"
+          ],
+          [
+            "1/2",
+            "0",
+            "3/4"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/4"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2/m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y] * m[y] * -1",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 3,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1/2"
+            ]
+          },
+          {
+            "index": 4,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "1/2"
+            ]
+          },
+          {
+            "index": 7,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "e",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "1/2, 1/4, 0",
+      "sample_parameters": [],
+      "sample_point": [
+        "1/2",
+        "1/4",
+        "0"
+      ],
+      "program_output": {
+        "stabilizer_size": 4,
+        "unique_rotation_count": 4,
+        "site_symmetry": "2'/m'",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y] * m'[y] * -1",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 4
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/2",
+          "1/4",
+          "0"
+        ],
+        "stabilizer_indices": [
+          0,
+          5,
+          11,
+          14
+        ],
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "unique_rotation_count": 4,
+        "is_closed": true,
+        "orbit_size": 4,
+        "orbit_points": [
+          [
+            "1/2",
+            "1/4",
+            "0"
+          ],
+          [
+            "1/2",
+            "3/4",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "3/4",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/4",
+            "1/2"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2'/m'",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y] * m'[y] * -1",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 5,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "1"
+            ]
+          },
+          {
+            "index": 11,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          },
+          {
+            "index": 14,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "d",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "0, 1/4, 0",
+      "sample_parameters": [],
+      "sample_point": [
+        "0",
+        "1/4",
+        "0"
+      ],
+      "program_output": {
+        "stabilizer_size": 4,
+        "unique_rotation_count": 4,
+        "site_symmetry": "2'/m'",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y] * m'[y] * -1",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 4
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "0",
+          "1/4",
+          "0"
+        ],
+        "stabilizer_indices": [
+          0,
+          5,
+          11,
+          14
+        ],
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "unique_rotation_count": 4,
+        "is_closed": true,
+        "orbit_size": 4,
+        "orbit_points": [
+          [
+            "0",
+            "1/4",
+            "0"
+          ],
+          [
+            "0",
+            "3/4",
+            "1/2"
+          ],
+          [
+            "0",
+            "3/4",
+            "0"
+          ],
+          [
+            "0",
+            "1/4",
+            "1/2"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2'/m'",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y] * m'[y] * -1",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 5,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "1"
+            ]
+          },
+          {
+            "index": 11,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          },
+          {
+            "index": 14,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "c",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "0, 0, 1/4",
+      "sample_parameters": [],
+      "sample_point": [
+        "0",
+        "0",
+        "1/4"
+      ],
+      "program_output": {
+        "stabilizer_size": 4,
+        "unique_rotation_count": 4,
+        "site_symmetry": "2/m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y] * m[y] * -1",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 4
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "stabilizer_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "stabilizer_size": 4,
+        "unitary_count": 4,
+        "antiunitary_count": 0,
+        "unique_rotation_count": 4,
+        "is_closed": true,
+        "orbit_size": 4,
+        "orbit_points": [
+          [
+            "0",
+            "0",
+            "1/4"
+          ],
+          [
+            "0",
+            "1/2",
+            "3/4"
+          ],
+          [
+            "0",
+            "0",
+            "3/4"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/4"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2/m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2[y] * m[y] * -1",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": false
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 3,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1/2"
+            ]
+          },
+          {
+            "index": 4,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "1/2"
+            ]
+          },
+          {
+            "index": 7,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "b",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "1/2, 0, 0",
+      "sample_parameters": [],
+      "sample_point": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "program_output": {
+        "stabilizer_size": 4,
+        "unique_rotation_count": 4,
+        "site_symmetry": "2'/m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y] * m[y] * -1'",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": true
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 4
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "stabilizer_indices": [
+          0,
+          7,
+          11,
+          12
+        ],
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "unique_rotation_count": 4,
+        "is_closed": true,
+        "orbit_size": 4,
+        "orbit_points": [
+          [
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2'/m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y] * m[y] * -1'",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": true
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 7,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          },
+          {
+            "index": 11,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          },
+          {
+            "index": 12,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    },
+    {
+      "letter": "a",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "0, 0, 0",
+      "sample_parameters": [],
+      "sample_point": [
+        "0",
+        "0",
+        "0"
+      ],
+      "program_output": {
+        "stabilizer_size": 4,
+        "unique_rotation_count": 4,
+        "site_symmetry": "2'/m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y] * m[y] * -1'",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": true
+          }
+        ],
+        "full_stabilizer_elements_available": false,
+        "reported_multiplicity": 4
+      },
+      "direct_reconstruction": {
+        "sample_point": [
+          "0",
+          "0",
+          "0"
+        ],
+        "stabilizer_indices": [
+          0,
+          7,
+          11,
+          12
+        ],
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "unique_rotation_count": 4,
+        "is_closed": true,
+        "orbit_size": 4,
+        "orbit_points": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "orbit_stabilizer_product": 16,
+        "site_symmetry": "2'/m",
+        "unitary_site_symmetry": "?",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "site_symmetry_ops": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "axis_direction": [
+              1,
+              0,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "axis_direction": [
+              0,
+              0,
+              1
+            ],
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_custom": "2'[y] * m[y] * -1'",
+        "spatial_site_symmetry_ops": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": true
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "axis_direction": [
+              0,
+              1,
+              0
+            ],
+            "time_reversal": false
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "axis_direction": null,
+            "time_reversal": true
+          }
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 7,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          },
+          {
+            "index": 11,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          },
+          {
+            "index": 12,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "1"
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "stabilizer_size_match": true,
+        "unique_rotation_count_match": true,
+        "site_symmetry_match": true,
+        "unitary_site_symmetry_match": true,
+        "site_symmetry_custom_match": true,
+        "orbit_size_match": true,
+        "orbit_stabilizer_match": true,
+        "closure_match": true,
+        "output_has_explicit_unitary_anti_breakdown": false,
+        "direct_has_explicit_unitary_anti_breakdown": true,
+        "comparison_scope_note": "swyckoff_r.py reports a site-symmetry summary plus generators and counts, not the full stabilizer element list; route-B rebuilds the full stabilizer explicitly.",
+        "overall_consistent": true
+      }
+    }
+  ],
+  "all_entries_consistent": true,
+  "consistent_letters": [
+    "o",
+    "n",
+    "m",
+    "l",
+    "k",
+    "j",
+    "i",
+    "h",
+    "g",
+    "f",
+    "e",
+    "d",
+    "c",
+    "b",
+    "a"
+  ]
+}

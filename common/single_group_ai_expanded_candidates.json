@@ -1,0 +1,8166 @@
+{
+  "group_number": "10.4.1.31",
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1",
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "candidate_generation_scope": "Only the six purely unitary site-symmetry families o,m,k,l,c,f are included in this round.",
+  "generators": [
+    {
+      "generator_id": "o_A",
+      "family_letter": "o",
+      "family_dimension": 3,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "x, y, z",
+      "sample_parameters": [
+        "1/5",
+        "2/7",
+        "3/11"
+      ],
+      "representative_coordinate_magnetic_sample": [
+        "1/5",
+        "2/7",
+        "3/11"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/5",
+        "4/7",
+        "6/11"
+      ],
+      "multiplicity": 16,
+      "sample_orbit_size": 16,
+      "site_symmetry": "1",
+      "stabilizer_summary": {
+        "unitary_size": 1,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "A",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Unique one-dimensional character of the trivial site-symmetry group.",
+        "character_on_unitary_stabilizer": {
+          "0": 1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/5",
+            "2/7",
+            "3/11"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "4/7",
+            "6/11"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/5",
+            "11/14",
+            "17/22"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "11/7",
+            "17/11"
+          ]
+        },
+        {
+          "source_operation_index": 2,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "4/5",
+            "11/14",
+            "8/11"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "11/7",
+            "-6/11"
+          ]
+        },
+        {
+          "source_operation_index": 3,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "4/5",
+            "2/7",
+            "5/22"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "18/7",
+            "5/11"
+          ]
+        },
+        {
+          "source_operation_index": 4,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "4/5",
+            "5/7",
+            "5/22"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "-4/7",
+            "5/11"
+          ]
+        },
+        {
+          "source_operation_index": 5,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "4/5",
+            "3/14",
+            "8/11"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "3/7",
+            "16/11"
+          ]
+        },
+        {
+          "source_operation_index": 6,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/5",
+            "3/14",
+            "17/22"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "3/7",
+            "17/11"
+          ]
+        },
+        {
+          "source_operation_index": 7,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/5",
+            "5/7",
+            "3/11"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "10/7",
+            "28/11"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/5",
+            "2/7",
+            "17/22"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "4/7",
+            "17/11"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/5",
+            "11/14",
+            "3/11"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "11/7",
+            "28/11"
+          ]
+        },
+        {
+          "source_operation_index": 10,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "4/5",
+            "11/14",
+            "5/22"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "11/7",
+            "5/11"
+          ]
+        },
+        {
+          "source_operation_index": 11,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "4/5",
+            "2/7",
+            "8/11"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "18/7",
+            "16/11"
+          ]
+        },
+        {
+          "source_operation_index": 12,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "4/5",
+            "5/7",
+            "8/11"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "-4/7",
+            "16/11"
+          ]
+        },
+        {
+          "source_operation_index": 13,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "4/5",
+            "3/14",
+            "5/22"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "3/7",
+            "27/11"
+          ]
+        },
+        {
+          "source_operation_index": 14,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/5",
+            "3/14",
+            "3/11"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "3/7",
+            "28/11"
+          ]
+        },
+        {
+          "source_operation_index": 15,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/5",
+            "5/7",
+            "17/22"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "10/7",
+            "39/11"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "P2": [
+          4,
+          4
+        ],
+        "P3": [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "P4": [
+          4,
+          4
+        ],
+        "P5": [
+          4,
+          4
+        ],
+        "P6": [
+          4
+        ],
+        "P7": [
+          4,
+          4
+        ],
+        "P8": [
+          4
+        ],
+        "S1": [
+          4,
+          4,
+          4,
+          4
+        ],
+        "S2": [
+          8
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S2": [
+          {
+            "real": 16.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        8
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -4,
+        4,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4
+      ]
+    },
+    {
+      "generator_id": "m_A_prime",
+      "family_letter": "m",
+      "family_dimension": 2,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "x, 0, z",
+      "sample_parameters": [
+        "1/5",
+        "2/7"
+      ],
+      "representative_coordinate_magnetic_sample": [
+        "1/5",
+        "0",
+        "2/7"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/5",
+        "0",
+        "4/7"
+      ],
+      "multiplicity": 8,
+      "sample_orbit_size": 8,
+      "site_symmetry": "m",
+      "stabilizer_summary": {
+        "unitary_size": 2,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "A'",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Mirror-even one-dimensional character on the unitary order-2 site symmetry.",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "7": 1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/5",
+            "0",
+            "2/7"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "0",
+            "4/7"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/5",
+            "1/2",
+            "11/14"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "1",
+            "11/7"
+          ]
+        },
+        {
+          "source_operation_index": 2,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "4/5",
+            "1/2",
+            "5/7"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "1",
+            "-4/7"
+          ]
+        },
+        {
+          "source_operation_index": 3,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "4/5",
+            "0",
+            "3/14"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "2",
+            "3/7"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/5",
+            "0",
+            "11/14"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "0",
+            "11/7"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/5",
+            "1/2",
+            "2/7"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "1",
+            "18/7"
+          ]
+        },
+        {
+          "source_operation_index": 10,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "4/5",
+            "1/2",
+            "3/14"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "1",
+            "3/7"
+          ]
+        },
+        {
+          "source_operation_index": 11,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "4/5",
+            "0",
+            "5/7"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "2",
+            "10/7"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          2,
+          2,
+          0,
+          2,
+          0,
+          0,
+          2
+        ],
+        "P2": [
+          0,
+          4
+        ],
+        "P3": [
+          0,
+          2,
+          2,
+          0,
+          2,
+          0,
+          0,
+          2
+        ],
+        "P4": [
+          2,
+          2
+        ],
+        "P5": [
+          2,
+          2
+        ],
+        "P6": [
+          2
+        ],
+        "P7": [
+          0,
+          4
+        ],
+        "P8": [
+          2
+        ],
+        "S1": [
+          4,
+          0,
+          0,
+          4
+        ],
+        "S2": [
+          4
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": -0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": -0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -6.472135955,
+            "imag": -4.70228201834
+          }
+        ],
+        "S2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        2,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        4,
+        0,
+        2,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        4,
+        2,
+        4,
+        0,
+        0,
+        4,
+        4
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -2,
+        4,
+        2,
+        0,
+        2,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "m_A_double_prime",
+      "family_letter": "m",
+      "family_dimension": 2,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "x, 0, z",
+      "sample_parameters": [
+        "1/5",
+        "2/7"
+      ],
+      "representative_coordinate_magnetic_sample": [
+        "1/5",
+        "0",
+        "2/7"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/5",
+        "0",
+        "4/7"
+      ],
+      "multiplicity": 8,
+      "sample_orbit_size": 8,
+      "site_symmetry": "m",
+      "stabilizer_summary": {
+        "unitary_size": 2,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "A''",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Mirror-odd one-dimensional character on the unitary order-2 site symmetry.",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "7": -1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/5",
+            "0",
+            "2/7"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "0",
+            "4/7"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/5",
+            "1/2",
+            "11/14"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "1",
+            "11/7"
+          ]
+        },
+        {
+          "source_operation_index": 2,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "4/5",
+            "1/2",
+            "5/7"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "1",
+            "-4/7"
+          ]
+        },
+        {
+          "source_operation_index": 3,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "4/5",
+            "0",
+            "3/14"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "2",
+            "3/7"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/5",
+            "0",
+            "11/14"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "0",
+            "11/7"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/5",
+            "1/2",
+            "2/7"
+          ],
+          "conventional_coordinate": [
+            "1/5",
+            "1",
+            "18/7"
+          ]
+        },
+        {
+          "source_operation_index": 10,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "4/5",
+            "1/2",
+            "3/14"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "1",
+            "3/7"
+          ]
+        },
+        {
+          "source_operation_index": 11,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "4/5",
+            "0",
+            "5/7"
+          ],
+          "conventional_coordinate": [
+            "-1/5",
+            "2",
+            "10/7"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          2,
+          2,
+          0
+        ],
+        "P2": [
+          4,
+          0
+        ],
+        "P3": [
+          2,
+          0,
+          0,
+          2,
+          0,
+          2,
+          2,
+          0
+        ],
+        "P4": [
+          2,
+          2
+        ],
+        "P5": [
+          2,
+          2
+        ],
+        "P6": [
+          2
+        ],
+        "P7": [
+          4,
+          0
+        ],
+        "P8": [
+          2
+        ],
+        "S1": [
+          0,
+          4,
+          4,
+          0
+        ],
+        "S2": [
+          4
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 6.472135955,
+            "imag": 4.70228201834
+          }
+        ],
+        "S2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        2,
+        0,
+        4,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        2,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        0,
+        2,
+        0,
+        4,
+        4,
+        0,
+        4
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "k_A",
+      "family_letter": "k",
+      "family_dimension": 1,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "0, y, 1/4",
+      "sample_parameters": [
+        "1/5"
+      ],
+      "representative_coordinate_magnetic_sample": [
+        "0",
+        "1/5",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "0",
+        "2/5",
+        "1/2"
+      ],
+      "multiplicity": 8,
+      "sample_orbit_size": 8,
+      "site_symmetry": "2",
+      "stabilizer_summary": {
+        "unitary_size": 2,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "A",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "C2-even one-dimensional character on the unitary order-2 site symmetry.",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": 1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "1/5",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "2/5",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "7/10",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "7/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 4,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "4/5",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "-2/5",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 5,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "3/10",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "3/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "1/5",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "2/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "7/10",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "7/5",
+            "5/2"
+          ]
+        },
+        {
+          "source_operation_index": 12,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "4/5",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "-2/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 13,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "3/10",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "3/5",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        "P2": [
+          2,
+          2
+        ],
+        "P3": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        "P4": [
+          0,
+          4
+        ],
+        "P5": [
+          0,
+          4
+        ],
+        "P6": [
+          2
+        ],
+        "P7": [
+          2,
+          2
+        ],
+        "P8": [
+          2
+        ],
+        "S1": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "S2": [
+          4
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        4,
+        0,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -2,
+        2,
+        2,
+        0,
+        2,
+        0,
+        4,
+        4
+      ]
+    },
+    {
+      "generator_id": "k_B",
+      "family_letter": "k",
+      "family_dimension": 1,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "0, y, 1/4",
+      "sample_parameters": [
+        "1/5"
+      ],
+      "representative_coordinate_magnetic_sample": [
+        "0",
+        "1/5",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "0",
+        "2/5",
+        "1/2"
+      ],
+      "multiplicity": 8,
+      "sample_orbit_size": 8,
+      "site_symmetry": "2",
+      "stabilizer_summary": {
+        "unitary_size": 2,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "B",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "C2-odd one-dimensional character on the unitary order-2 site symmetry.",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": -1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "1/5",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "2/5",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "7/10",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "7/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 4,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "4/5",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "-2/5",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 5,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "3/10",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "3/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "1/5",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "2/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "7/10",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "7/5",
+            "5/2"
+          ]
+        },
+        {
+          "source_operation_index": 12,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "4/5",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "-2/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 13,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "3/10",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "3/5",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          0,
+          2,
+          2,
+          2,
+          2,
+          0,
+          0
+        ],
+        "P2": [
+          2,
+          2
+        ],
+        "P3": [
+          0,
+          0,
+          2,
+          2,
+          2,
+          2,
+          0,
+          0
+        ],
+        "P4": [
+          4,
+          0
+        ],
+        "P5": [
+          4,
+          0
+        ],
+        "P6": [
+          2
+        ],
+        "P7": [
+          2,
+          2
+        ],
+        "P8": [
+          2
+        ],
+        "S1": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "S2": [
+          4
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        4,
+        0,
+        4,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -2,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "l_A",
+      "family_letter": "l",
+      "family_dimension": 1,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "1/2, y, 1/4",
+      "sample_parameters": [
+        "1/5"
+      ],
+      "representative_coordinate_magnetic_sample": [
+        "1/2",
+        "1/5",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/2",
+        "2/5",
+        "1/2"
+      ],
+      "multiplicity": 8,
+      "sample_orbit_size": 8,
+      "site_symmetry": "2",
+      "stabilizer_summary": {
+        "unitary_size": 2,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "A",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "C2-even one-dimensional character on the unitary order-2 site symmetry.",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": 1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/5",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "2/5",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "7/10",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "7/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 4,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "4/5",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "-1/2",
+            "-2/5",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 5,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "3/10",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "-1/2",
+            "3/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/5",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "2/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "7/10",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "7/5",
+            "5/2"
+          ]
+        },
+        {
+          "source_operation_index": 12,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "4/5",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "-1/2",
+            "-2/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 13,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "3/10",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "-1/2",
+            "3/5",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        "P2": [
+          2,
+          2
+        ],
+        "P3": [
+          0,
+          0,
+          2,
+          2,
+          2,
+          2,
+          0,
+          0
+        ],
+        "P4": [
+          0,
+          4
+        ],
+        "P5": [
+          4,
+          0
+        ],
+        "P6": [
+          2
+        ],
+        "P7": [
+          2,
+          2
+        ],
+        "P8": [
+          2
+        ],
+        "S1": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "S2": [
+          4
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        4,
+        4,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -2,
+        2,
+        0,
+        2,
+        2,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "generator_id": "l_B",
+      "family_letter": "l",
+      "family_dimension": 1,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "1/2, y, 1/4",
+      "sample_parameters": [
+        "1/5"
+      ],
+      "representative_coordinate_magnetic_sample": [
+        "1/2",
+        "1/5",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/2",
+        "2/5",
+        "1/2"
+      ],
+      "multiplicity": 8,
+      "sample_orbit_size": 8,
+      "site_symmetry": "2",
+      "stabilizer_summary": {
+        "unitary_size": 2,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "B",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "C2-odd one-dimensional character on the unitary order-2 site symmetry.",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": -1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/5",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "2/5",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "7/10",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "7/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 4,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "4/5",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "-1/2",
+            "-2/5",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 5,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "3/10",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "-1/2",
+            "3/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/5",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "2/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "7/10",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "7/5",
+            "5/2"
+          ]
+        },
+        {
+          "source_operation_index": 12,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "4/5",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "-1/2",
+            "-2/5",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 13,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "3/10",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "-1/2",
+            "3/5",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          0,
+          2,
+          2,
+          2,
+          2,
+          0,
+          0
+        ],
+        "P2": [
+          2,
+          2
+        ],
+        "P3": [
+          2,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2,
+          2
+        ],
+        "P4": [
+          4,
+          0
+        ],
+        "P5": [
+          0,
+          4
+        ],
+        "P6": [
+          2
+        ],
+        "P7": [
+          2,
+          2
+        ],
+        "P8": [
+          2
+        ],
+        "S1": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "S2": [
+          4
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -8.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S2": [
+          {
+            "real": 8.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        4,
+        0,
+        0,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        4,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_Ag",
+      "family_letter": "c",
+      "family_dimension": 0,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "0, 0, 1/4",
+      "sample_parameters": [],
+      "representative_coordinate_magnetic_sample": [
+        "0",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "sample_orbit_size": 4,
+      "site_symmetry": "2/m",
+      "stabilizer_summary": {
+        "unitary_size": 4,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "Ag",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Ag character on the unitary C2h site symmetry, generated by op 3 (C2) and op 7 (m).",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": 1,
+          "4": 1,
+          "7": 1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "0",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "1/2",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "1",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "0",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "0",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "1/2",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "1",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "P2": [
+          0,
+          2
+        ],
+        "P3": [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "P4": [
+          0,
+          2
+        ],
+        "P5": [
+          0,
+          2
+        ],
+        "P6": [
+          1
+        ],
+        "P7": [
+          0,
+          2
+        ],
+        "P8": [
+          1
+        ],
+        "S1": [
+          2,
+          0,
+          0,
+          2
+        ],
+        "S2": [
+          2
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -3.2360679775,
+            "imag": -2.35114100917
+          }
+        ],
+        "S2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -1,
+        2,
+        2,
+        0,
+        2,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "c_Bg",
+      "family_letter": "c",
+      "family_dimension": 0,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "0, 0, 1/4",
+      "sample_parameters": [],
+      "representative_coordinate_magnetic_sample": [
+        "0",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "sample_orbit_size": 4,
+      "site_symmetry": "2/m",
+      "stabilizer_summary": {
+        "unitary_size": 4,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "Bg",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Bg character on the unitary C2h site symmetry, generated by op 3 (C2) and op 7 (m).",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": -1,
+          "4": 1,
+          "7": -1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "0",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "1/2",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "1",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "0",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "0",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "1/2",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "1",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "P2": [
+          2,
+          0
+        ],
+        "P3": [
+          0,
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "P4": [
+          2,
+          0
+        ],
+        "P5": [
+          2,
+          0
+        ],
+        "P6": [
+          1
+        ],
+        "P7": [
+          2,
+          0
+        ],
+        "P8": [
+          1
+        ],
+        "S1": [
+          0,
+          2,
+          2,
+          0
+        ],
+        "S2": [
+          2
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 3.2360679775,
+            "imag": 2.35114100917
+          }
+        ],
+        "S2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -1,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_Au",
+      "family_letter": "c",
+      "family_dimension": 0,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "0, 0, 1/4",
+      "sample_parameters": [],
+      "representative_coordinate_magnetic_sample": [
+        "0",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "sample_orbit_size": 4,
+      "site_symmetry": "2/m",
+      "stabilizer_summary": {
+        "unitary_size": 4,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "Au",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Au character on the unitary C2h site symmetry, generated by op 3 (C2) and op 7 (m).",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": 1,
+          "4": -1,
+          "7": -1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "0",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "1/2",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "1",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "0",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "0",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "1/2",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "1",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "P2": [
+          2,
+          0
+        ],
+        "P3": [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "P4": [
+          0,
+          2
+        ],
+        "P5": [
+          0,
+          2
+        ],
+        "P6": [
+          1
+        ],
+        "P7": [
+          2,
+          0
+        ],
+        "P8": [
+          1
+        ],
+        "S1": [
+          0,
+          2,
+          2,
+          0
+        ],
+        "S2": [
+          2
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 3.2360679775,
+            "imag": 2.35114100917
+          }
+        ],
+        "S2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "c_Bu",
+      "family_letter": "c",
+      "family_dimension": 0,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "0, 0, 1/4",
+      "sample_parameters": [],
+      "representative_coordinate_magnetic_sample": [
+        "0",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "sample_orbit_size": 4,
+      "site_symmetry": "2/m",
+      "stabilizer_summary": {
+        "unitary_size": 4,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "Bu",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Bu character on the unitary C2h site symmetry, generated by op 3 (C2) and op 7 (m).",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": -1,
+          "4": -1,
+          "7": 1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "0",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "0",
+            "1/2",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "1",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "0",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "0",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "0",
+            "1/2",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "0",
+            "1",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "P2": [
+          0,
+          2
+        ],
+        "P3": [
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "P4": [
+          2,
+          0
+        ],
+        "P5": [
+          2,
+          0
+        ],
+        "P6": [
+          1
+        ],
+        "P7": [
+          0,
+          2
+        ],
+        "P8": [
+          1
+        ],
+        "S1": [
+          2,
+          0,
+          0,
+          2
+        ],
+        "S2": [
+          2
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -3.2360679775,
+            "imag": -2.35114100917
+          }
+        ],
+        "S2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_Ag",
+      "family_letter": "f",
+      "family_dimension": 0,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "1/2, 0, 1/4",
+      "sample_parameters": [],
+      "representative_coordinate_magnetic_sample": [
+        "1/2",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "sample_orbit_size": 4,
+      "site_symmetry": "2/m",
+      "stabilizer_summary": {
+        "unitary_size": 4,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "Ag",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Ag character on the unitary C2h site symmetry, generated by op 3 (C2) and op 7 (m).",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": 1,
+          "4": 1,
+          "7": 1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "0",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/2",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "1",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "0",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "0",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/2",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "1",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "P2": [
+          0,
+          2
+        ],
+        "P3": [
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "P4": [
+          0,
+          2
+        ],
+        "P5": [
+          2,
+          0
+        ],
+        "P6": [
+          1
+        ],
+        "P7": [
+          0,
+          2
+        ],
+        "P8": [
+          1
+        ],
+        "S1": [
+          2,
+          0,
+          0,
+          2
+        ],
+        "S2": [
+          2
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -3.2360679775,
+            "imag": -2.35114100917
+          }
+        ],
+        "S2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -1,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "generator_id": "f_Bg",
+      "family_letter": "f",
+      "family_dimension": 0,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "1/2, 0, 1/4",
+      "sample_parameters": [],
+      "representative_coordinate_magnetic_sample": [
+        "1/2",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "sample_orbit_size": 4,
+      "site_symmetry": "2/m",
+      "stabilizer_summary": {
+        "unitary_size": 4,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "Bg",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Bg character on the unitary C2h site symmetry, generated by op 3 (C2) and op 7 (m).",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": -1,
+          "4": 1,
+          "7": -1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "0",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/2",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "1",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "0",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "0",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/2",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "1",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "P2": [
+          2,
+          0
+        ],
+        "P3": [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "P4": [
+          2,
+          0
+        ],
+        "P5": [
+          0,
+          2
+        ],
+        "P6": [
+          1
+        ],
+        "P7": [
+          2,
+          0
+        ],
+        "P8": [
+          1
+        ],
+        "S1": [
+          0,
+          2,
+          2,
+          0
+        ],
+        "S2": [
+          2
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": -0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 3.2360679775,
+            "imag": 2.35114100917
+          }
+        ],
+        "S2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_Au",
+      "family_letter": "f",
+      "family_dimension": 0,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "1/2, 0, 1/4",
+      "sample_parameters": [],
+      "representative_coordinate_magnetic_sample": [
+        "1/2",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "sample_orbit_size": 4,
+      "site_symmetry": "2/m",
+      "stabilizer_summary": {
+        "unitary_size": 4,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "Au",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Au character on the unitary C2h site symmetry, generated by op 3 (C2) and op 7 (m).",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": 1,
+          "4": -1,
+          "7": -1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "0",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/2",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "1",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "0",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "0",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/2",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "1",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          0
+        ],
+        "P2": [
+          2,
+          0
+        ],
+        "P3": [
+          0,
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0
+        ],
+        "P4": [
+          0,
+          2
+        ],
+        "P5": [
+          2,
+          0
+        ],
+        "P6": [
+          1
+        ],
+        "P7": [
+          2,
+          0
+        ],
+        "P8": [
+          1
+        ],
+        "S1": [
+          0,
+          2,
+          2,
+          0
+        ],
+        "S2": [
+          2
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 3.2360679775,
+            "imag": 2.35114100917
+          }
+        ],
+        "S2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -1,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "generator_id": "f_Bu",
+      "family_letter": "f",
+      "family_dimension": 0,
+      "family_tier": "Tier 1",
+      "representative_coordinate_symbolic": "1/2, 0, 1/4",
+      "sample_parameters": [],
+      "representative_coordinate_magnetic_sample": [
+        "1/2",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_conventional_sample": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "sample_orbit_size": 4,
+      "site_symmetry": "2/m",
+      "stabilizer_summary": {
+        "unitary_size": 4,
+        "antiunitary_size": 0,
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": []
+      },
+      "local_rep": {
+        "label": "Bu",
+        "dimension": 1,
+        "local_rep_scope": "full magnetic",
+        "definition": "Bu character on the unitary C2h site symmetry, generated by op 3 (C2) and op 7 (m).",
+        "character_on_unitary_stabilizer": {
+          "0": 1,
+          "3": -1,
+          "4": -1,
+          "7": 1
+        }
+      },
+      "orbit": [
+        {
+          "source_operation_index": 0,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "0",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        },
+        {
+          "source_operation_index": 1,
+          "time_reversal_source": false,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/2",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "1",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 8,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "0",
+            "3/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "0",
+            "3/2"
+          ]
+        },
+        {
+          "source_operation_index": 9,
+          "time_reversal_source": true,
+          "magnetic_coordinate": [
+            "1/2",
+            "1/2",
+            "1/4"
+          ],
+          "conventional_coordinate": [
+            "1/2",
+            "1",
+            "5/2"
+          ]
+        }
+      ],
+      "manifold_multiplicities": {
+        "P1": [
+          0,
+          0,
+          2,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        "P2": [
+          0,
+          2
+        ],
+        "P3": [
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "P4": [
+          2,
+          0
+        ],
+        "P5": [
+          0,
+          2
+        ],
+        "P6": [
+          1
+        ],
+        "P7": [
+          0,
+          2
+        ],
+        "P8": [
+          1
+        ],
+        "S1": [
+          2,
+          0,
+          0,
+          2
+        ],
+        "S2": [
+          2
+        ]
+      },
+      "manifold_band_characters": {
+        "P1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          }
+        ],
+        "P3": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 4.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          }
+        ],
+        "P4": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P5": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "P6": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "P7": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -4.0,
+            "imag": -0.0
+          }
+        ],
+        "P8": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "S1": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -3.2360679775,
+            "imag": -2.35114100917
+          }
+        ],
+        "S2": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "unknown_vector": [
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "compatibility_zero": true,
+      "bs_basis_coefficients": [
+        -1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "stage": "raw_matrix_level_audit",
+  "cases": [
+    {
+      "case_key": "10_4_1_31_single",
+      "group": "10.4.1.31",
+      "group_type": 1,
+      "rank_C": 23,
+      "nullity_C": 8,
+      "rank_BS": 8,
+      "rank_AI": 8,
+      "AI_in_BS": true,
+      "raw_quotient": "Z2 x Z2",
+      "free_rank": 0,
+      "finite_part": [
+        2,
+        2
+      ],
+      "raw_vs_interpreted_gap": false,
+      "compat_shape": [
+        30,
+        31
+      ],
+      "candidate_count": 45,
+      "distinct_candidate_vectors": 26,
+      "paths": {
+        "raw_C": "raw_10_4_1_31_single_C.json",
+        "raw_bs_basis_raw": "raw_10_4_1_31_single_bs_basis_raw.json",
+        "raw_bs_basis_pretty": "raw_10_4_1_31_single_bs_basis_pretty.json",
+        "raw_ai_candidates": "raw_10_4_1_31_single_ai_candidates.json",
+        "raw_ai_basis": "raw_10_4_1_31_single_ai_basis.json",
+        "raw_ai_in_bs_matrix": "raw_10_4_1_31_single_ai_in_bs_matrix.json",
+        "raw_quotient": "raw_10_4_1_31_single_quotient.json"
+      },
+      "interpretation_note": "The single-group quotient is already purely finite (Z2 x Z2), so there is no free-vs-finite mixing in this case."
+    },
+    {
+      "case_key": "10_4_1_31_double",
+      "group": "10.4.1.31",
+      "group_type": 2,
+      "rank_C": 23,
+      "nullity_C": 8,
+      "rank_BS": 8,
+      "rank_AI": 6,
+      "AI_in_BS": true,
+      "raw_quotient": "Z^2 x Z2 x Z2 x Z2 x Z2",
+      "free_rank": 2,
+      "finite_part": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "raw_vs_interpreted_gap": true,
+      "compat_shape": [
+        30,
+        31
+      ],
+      "candidate_count": 27,
+      "distinct_candidate_vectors": 16,
+      "paths": {
+        "raw_C": "raw_10_4_1_31_double_C.json",
+        "raw_bs_basis_raw": "raw_10_4_1_31_double_bs_basis_raw.json",
+        "raw_bs_basis_pretty": "raw_10_4_1_31_double_bs_basis_pretty.json",
+        "raw_ai_candidates": "raw_10_4_1_31_double_ai_candidates.json",
+        "raw_ai_basis": "raw_10_4_1_31_double_ai_basis.json",
+        "raw_ai_in_bs_matrix": "raw_10_4_1_31_double_ai_in_bs_matrix.json",
+        "raw_quotient": "raw_10_4_1_31_double_quotient.json"
+      },
+      "interpretation_note": "The double-group quotient contains both a free part and a finite torsion part, so the full Z^2 x Z2^4 should not be called a purely finite indicator group."
+    },
+    {
+      "case_key": "194_1_1_1_single",
+      "group": "194.1.1.1",
+      "group_type": 1,
+      "rank_C": 33,
+      "nullity_C": 29,
+      "rank_BS": 29,
+      "rank_AI": 13,
+      "AI_in_BS": true,
+      "raw_quotient": "Z^16",
+      "free_rank": 16,
+      "finite_part": [],
+      "raw_vs_interpreted_gap": true,
+      "compat_shape": [
+        58,
+        62
+      ],
+      "candidate_count": 45,
+      "distinct_candidate_vectors": 45,
+      "paths": {
+        "raw_C": "raw_194_1_1_1_single_C.json",
+        "raw_bs_basis_raw": "raw_194_1_1_1_single_bs_basis_raw.json",
+        "raw_bs_basis_pretty": "raw_194_1_1_1_single_bs_basis_pretty.json",
+        "raw_ai_candidates": "raw_194_1_1_1_single_ai_candidates.json",
+        "raw_ai_basis": "raw_194_1_1_1_single_ai_basis.json",
+        "raw_ai_in_bs_matrix": "raw_194_1_1_1_single_ai_in_bs_matrix.json",
+        "raw_quotient": "raw_194_1_1_1_single_quotient.json"
+      },
+      "interpretation_note": "The raw quotient is purely free (Z^16) and no finite torsion part has been isolated."
+    },
+    {
+      "case_key": "194_1_1_1_double",
+      "group": "194.1.1.1",
+      "group_type": 2,
+      "rank_C": 33,
+      "nullity_C": 29,
+      "rank_BS": 29,
+      "rank_AI": 13,
+      "AI_in_BS": true,
+      "raw_quotient": "Z^16",
+      "free_rank": 16,
+      "finite_part": [],
+      "raw_vs_interpreted_gap": true,
+      "compat_shape": [
+        58,
+        62
+      ],
+      "candidate_count": 45,
+      "distinct_candidate_vectors": 45,
+      "paths": {
+        "raw_C": "raw_194_1_1_1_double_C.json",
+        "raw_bs_basis_raw": "raw_194_1_1_1_double_bs_basis_raw.json",
+        "raw_bs_basis_pretty": "raw_194_1_1_1_double_bs_basis_pretty.json",
+        "raw_ai_candidates": "raw_194_1_1_1_double_ai_candidates.json",
+        "raw_ai_basis": "raw_194_1_1_1_double_ai_basis.json",
+        "raw_ai_in_bs_matrix": "raw_194_1_1_1_double_ai_in_bs_matrix.json",
+        "raw_quotient": "raw_194_1_1_1_double_quotient.json"
+      },
+      "interpretation_note": "The raw quotient is again purely free (Z^16) and no finite torsion part has been isolated."
+    }
+  ],
+  "report_pdf": "raw_matrix_level_audit_report.pdf",
+  "report_source": "raw_matrix_level_audit_report.tex",
+  "minipack_dir": "independent_recompute_minipack",
+  "package_tarball": "review_package_raw_matrix_level_audit.tar.gz",
+  "verify_command": "python3 -u debug_raw_matrix_audit.py --validate",
+  "next_step": "Use the standalone minipack to reproduce the raw Smith results without importing the workflow builders."
+}

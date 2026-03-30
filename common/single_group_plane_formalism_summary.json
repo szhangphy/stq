@@ -1,0 +1,10 @@
+{
+  "group_number": "10.4.1.31",
+  "boundary_line_outputs_available": true,
+  "chain_check_consistent": true,
+  "torsion_2_explained": true,
+  "torsion_2_reason": "The unique 2 is a real parity/evenness constraint in the current integer compatibility lattice. It is absent in the line-only 10 x 26 matrix, but it appears as soon as either plane family is added. A minimal witness is the 2 x 3 subsystem formed by the rows 2*P6_R1 = S2_R1 and 2*P8_R1 = S2_R1, whose Smith diagonal is [1, 2]. An alternative S1-mediated witness is rows L2, L4, P2->S1(R1/R2), and P7->S1(R1/R2), which also produce a single 2. Because the chain audit reproduces the current direct rows exactly, this 2 is not a fake artifact of skipping explicit boundary-line unknowns.",
+  "current_plane_model_accepted": true,
+  "requires_matrix_update": false,
+  "next_blocker": "No immediate matrix correction is required at this layer; the remaining blocker is a future fully general connector formalism beyond this single-group local validation."
+}

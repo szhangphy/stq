@@ -1,0 +1,226 @@
+{
+  "group_number": "10.4.1.31",
+  "status": "success",
+  "left_point_id": "P7",
+  "line_id": "L4",
+  "right_point_id": "P8",
+  "left_exact_k": [
+    "1/2",
+    "0",
+    "1/2"
+  ],
+  "line_exact_k": [
+    "1/2",
+    "1/5",
+    "1/2"
+  ],
+  "right_exact_k": [
+    "1/2",
+    "1/2",
+    "1/2"
+  ],
+  "left_cli_k": [
+    "0.5",
+    "0",
+    "0.5"
+  ],
+  "line_cli_k": [
+    "0.5",
+    "0.2",
+    "0.5"
+  ],
+  "right_cli_k": [
+    "0.5",
+    "0.5",
+    "0.5"
+  ],
+  "line_parametrization": "(1/2, v, 1/2)",
+  "line_constraints": [
+    "0 < v",
+    "v < 1/2"
+  ],
+  "line_sample_point": [
+    "1/2",
+    "1/5",
+    "1/2"
+  ],
+  "line_symmetry_summary": {
+    "generic_point": [
+      "1/2",
+      "1/5",
+      "1/2"
+    ],
+    "generic_stabilizer_size": 8,
+    "generic_rotation_stabilizer_size": 2,
+    "pointwise_stabilizer_size": 8,
+    "pointwise_rotation_stabilizer_size": 2,
+    "site_symmetry": "2/m'",
+    "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+    "unitary_site_symmetry": "?"
+  },
+  "line_group_signature": {
+    "n_ops_total": 8,
+    "n_unitary_ops": 4,
+    "n_antiunitary_ops": 4,
+    "rep_degree": [
+      2
+    ],
+    "torsion": [
+      1
+    ],
+    "basis_characters": [
+      [
+        "2",
+        "0",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "line_unitary_basis": [
+    {
+      "basis_id": "L4_R1",
+      "character": [
+        "2",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ],
+  "matched_unitary_operation_indices": {
+    "P7": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "P8": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "endpoint_decompositions": {
+    "P7": [
+      {
+        "rep_id": "P7_R1",
+        "rep_degree": 2,
+        "torsion": 1,
+        "restricted_character_on_line_unitary_subgroup": [
+          "2",
+          "0",
+          "0",
+          "0"
+        ],
+        "decomposition_on_line_basis": {
+          "L4_R1": 1
+        }
+      },
+      {
+        "rep_id": "P7_R2",
+        "rep_degree": 2,
+        "torsion": 1,
+        "restricted_character_on_line_unitary_subgroup": [
+          "2",
+          "0",
+          "0",
+          "0"
+        ],
+        "decomposition_on_line_basis": {
+          "L4_R1": 1
+        }
+      }
+    ],
+    "P8": [
+      {
+        "rep_id": "P8_R1",
+        "rep_degree": 4,
+        "torsion": 2,
+        "restricted_character_on_line_unitary_subgroup": [
+          "4",
+          "0",
+          "0",
+          "0"
+        ],
+        "decomposition_on_line_basis": {
+          "L4_R1": 2
+        }
+      }
+    ]
+  },
+  "endpoint_restrictions": {
+    "P7": [
+      [
+        "2",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "P8": [
+      [
+        "4",
+        "0",
+        "0",
+        "0"
+      ]
+    ]
+  },
+  "local_unknown_ordering": [
+    "P7_R1",
+    "P7_R2",
+    "P8_R1"
+  ],
+  "equations": [
+    {
+      "basis_id": "L4_R1",
+      "terms": [
+        {
+          "unknown": "P7_R1",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": -2,
+          "side": "right"
+        }
+      ],
+      "equation": "1*P7_R1 + 1*P7_R2 = 2*P8_R1"
+    }
+  ],
+  "matrix_rows": [
+    [
+      1,
+      1,
+      -2
+    ]
+  ],
+  "raw_files": {
+    "P7": {
+      "character": "/data/work/szhang/ssg/comprel/P7_character.json",
+      "degree": "/data/work/szhang/ssg/comprel/P7_degree.json"
+    },
+    "L4": {
+      "character": "/data/work/szhang/ssg/comprel/L4_character.json",
+      "degree": "/data/work/szhang/ssg/comprel/L4_degree.json"
+    },
+    "P8": {
+      "character": "/data/work/szhang/ssg/comprel/P8_character.json",
+      "degree": "/data/work/szhang/ssg/comprel/P8_degree.json"
+    }
+  }
+}

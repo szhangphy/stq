@@ -1,0 +1,139 @@
+\documentclass[11pt]{article}
+        \usepackage[margin=1in]{geometry}
+        \usepackage{amsmath,amssymb,booktabs,longtable}
+        \usepackage[T1]{fontenc}
+        \usepackage[utf8]{inputenc}
+        \usepackage{hyperref}
+        \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+        \title{Finite-Indicator Extraction from Raw Quotients}
+        \author{Codex finite-indicator audit}
+        \date{2026-03-30}
+
+        \begin{document}
+        \maketitle
+
+        \section{Task Background and Problem Statement}
+        This stage starts from the already exported raw matrix-level artifacts.  It does not regenerate
+        $BS$, $AI$, or the raw cokernel $\mathrm{coker}(AI \to BS)$.  Instead, it reinterprets the raw quotient
+        into two layers:
+        \[
+          \mathrm{coker}(AI \to BS) \cong \mathbb{Z}^r \times T,
+        \]
+        where $\mathbb{Z}^r$ is the free crystalline-invariant sector and $T$ is the finite torsion sector.
+        Standard symmetry-indicator language is reserved for the finite abelian part $T$.
+
+        \section{Raw Quotient vs Finite Indicator}
+        If the raw quotient contains a free part, then it cannot be reported directly as a final finite symmetry-indicator group.
+        The free sector must be reported separately as free crystalline invariants, while the finite torsion sector is the natural finite-indicator candidate.
+
+        \section{Four-Case Raw Quotient Review}
+        \begin{center}
+        \begin{tabular}{lllll}
+        \toprule
+        Case & Raw quotient & Free part & Finite candidate & Confidence \\
+        \midrule
+        10.4.1.31 / 1 & $\mathrm{Z}_{2} \times \mathrm{Z}_{2}$ & $\mathrm{trivial}$ & $\mathrm{Z}_{2} \times \mathrm{Z}_{2}$ & high \\
+10.4.1.31 / 2 & $\mathrm{Z}^{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2}$ & $\mathrm{Z}^{2}$ & $\mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2}$ & high \\
+194.1.1.1 / 1 & $\mathrm{Z}^{16}$ & $\mathrm{Z}^{16}$ & $\mathrm{trivial}$ & medium \\
+194.1.1.1 / 2 & $\mathrm{Z}^{16}$ & $\mathrm{Z}^{16}$ & $\mathrm{trivial}$ & medium \\
+        \bottomrule
+        \end{tabular}
+        \end{center}
+
+        \section{Free-Generator Classification}
+        The generator classification file records every raw quotient generator together with its exact BS-basis coordinates,
+        support in the unknown ordering, and a tentative morphology-based type label.  These labels are intentionally cautious:
+        they identify point-sector balance directions, plane-resolved directions, or mixed point-plane directions without claiming a final topological name unless the support pattern is very simple.
+
+        \section{10.4.1.31 Double: Finite-Part Extraction}
+        For \texttt{10.4.1.31} in the double-group case, the exact Smith decomposition gives
+        \[
+          \mathrm{coker}(AI \to BS) \cong \mathbb{Z}^2 \times (\mathbb{Z}_2)^4.
+        \]
+        The free $\mathbb{Z}^2$ sector must be reported as free crystalline invariants.
+        The exact torsion subgroup $(\mathbb{Z}_2)^4$ is the finite symmetry-indicator candidate, because it is the canonical torsion subgroup extracted by the exact Smith normal form.
+
+        \section{194.1.1.1 Single/Double: Why They Still Read as \texttt{Z\textasciicircum{}16}}
+        For both the single-group and double-group cases on \texttt{194.1.1.1}, the exact Smith decomposition gives
+        \[
+          \mathrm{coker}(AI \to BS) \cong \mathbb{Z}^{16}.
+        \]
+        No finite torsion is present in the current raw quotient.  Therefore the current finite symmetry-indicator candidate is trivial at the purely algebraic torsion level.
+        Any nontrivial finite indicator would require an additional physically justified quotient that removes the 16 free crystalline directions and then leaves residual torsion.  That extra physical reduction is not encoded in the present raw linear-algebra layer.
+
+        \section{User-Facing Language Correction}
+        The corrected user-facing rule is:
+        \begin{itemize}
+        \item report the full raw quotient as the exact algebraic cokernel;
+        \item report the free abelian part separately as free crystalline invariants;
+        \item reserve ``finite symmetry-indicator part'' for the torsion subgroup only.
+        \end{itemize}
+
+        \section{Case Details}
+        \subsection*{10.4.1.31 / groupType=1}
+The exact raw quotient is $\mathrm{Z}_{2} \times \mathrm{Z}_{2}$.
+Its free crystalline part is $\mathrm{trivial}$ and the current finite symmetry-indicator candidate is $\mathrm{Z}_{2} \times \mathrm{Z}_{2}$.
+The relevant Smith diagonal entries are [1, 1, 1, 1, 1, 1, 2, 2].
+The primary note for this case is:
+\begin{quote}
+No free abelian sector is present; the raw quotient already matches the finite indicator candidate.
+\end{quote}
+The user-facing wording should be:
+\begin{quote}
+This case is already purely torsion at the raw quotient level, so the finite symmetry-indicator candidate is the same Z2 x Z2.
+\end{quote}
+\subsection*{10.4.1.31 / groupType=2}
+The exact raw quotient is $\mathrm{Z}^{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2}$.
+Its free crystalline part is $\mathrm{Z}^{2}$ and the current finite symmetry-indicator candidate is $\mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2}$.
+The relevant Smith diagonal entries are [1, 1, 2, 2, 2, 2].
+The primary note for this case is:
+\begin{quote}
+The Smith decomposition canonically splits the raw quotient into free rank 2 and four order-2 torsion slots.
+\end{quote}
+The user-facing wording should be:
+\begin{quote}
+Report the full raw quotient as Z\textasciicircum{}2 x Z2\textasciicircum{}4, but call only the exact torsion subgroup Z2\textasciicircum{}4 the finite symmetry-indicator candidate.
+\end{quote}
+\subsection*{194.1.1.1 / groupType=1}
+The exact raw quotient is $\mathrm{Z}^{16}$.
+Its free crystalline part is $\mathrm{Z}^{16}$ and the current finite symmetry-indicator candidate is $\mathrm{trivial}$.
+The relevant Smith diagonal entries are [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].
+The primary note for this case is:
+\begin{quote}
+The torsion subgroup of coker(AI->BS) is empty. Any further reduction must come from a physical mod-out of free crystalline invariants, not from missed SNF torsion.
+\end{quote}
+The user-facing wording should be:
+\begin{quote}
+The current result is a free-only raw quotient Z\textasciicircum{}16. In standard finite-indicator language no nontrivial finite torsion sector has been isolated.
+\end{quote}
+\subsection*{194.1.1.1 / groupType=2}
+The exact raw quotient is $\mathrm{Z}^{16}$.
+Its free crystalline part is $\mathrm{Z}^{16}$ and the current finite symmetry-indicator candidate is $\mathrm{trivial}$.
+The relevant Smith diagonal entries are [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].
+The primary note for this case is:
+\begin{quote}
+The raw Smith data still show no torsion. The gap is interpretive and physical, not a missing order-2 factor in the current integer linear algebra.
+\end{quote}
+The user-facing wording should be:
+\begin{quote}
+The current result is again a free-only raw quotient Z\textasciicircum{}16. The finite symmetry-indicator candidate is trivial unless an additional physical quotient produces residual torsion.
+\end{quote}
+
+        \section{Implementation Mapping}
+        The main implementation artifact is \texttt{debug\_finite\_indicator\_extraction.py}.
+        It reads the exported raw quotient JSON files, the exact AI-in-BS matrix JSON files,
+        and the raw BS-basis JSON files produced by the earlier raw-matrix audit.
+        It then emits:
+        \begin{itemize}
+        \item \texttt{finite\_indicator\_extraction\_summary.json} for the case-level free/torsion split,
+        \item \texttt{quotient\_generator\_classification.json} for generator-level classification,
+        \item three case-specific reinterpretation files for the nontrivial reinterpretation targets,
+        \item this PDF report and its \LaTeX{} source,
+        \item a review package tarball.
+        \end{itemize}
+
+        \section{Current Missing Step and Next Advice}
+        The remaining open issue is not a missing Smith decomposition.  It is the physical reduction from the raw quotient to a standard finite symmetry-indicator layer in cases such as \texttt{194.1.1.1}, where the raw quotient is free-only.  The next review step, if needed, is to define and justify that additional physical quotient.
+
+        \end{document}

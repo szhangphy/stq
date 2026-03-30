@@ -1,0 +1,758 @@
+{
+  "group_number": "10.4.1.31",
+  "interpretation": {
+    "point_line": "A point-line edge is recorded only when a line endpoint exactly matches an existing listed point.",
+    "line_plane": "A line-plane edge is recorded only when a geometric plane boundary exactly matches an existing separately listed line manifold.",
+    "unmatched_plane_boundaries": "These are still valid geometric boundaries; unmatched means only that swyckoff_k.py did not list the same 1D orbit as an independent special line manifold."
+  },
+  "point_line": [
+    {
+      "point_id": "P1",
+      "line_id": "L1",
+      "boundary_condition": "v = 0",
+      "derived_point": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "point_id": "P4",
+      "line_id": "L1",
+      "boundary_condition": "v = 1/2",
+      "derived_point": [
+        "0",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "point_id": "P2",
+      "line_id": "L2",
+      "boundary_condition": "v = 0",
+      "derived_point": [
+        "0",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "point_id": "P6",
+      "line_id": "L2",
+      "boundary_condition": "v = 1/2",
+      "derived_point": [
+        "0",
+        "1/2",
+        "1/2"
+      ]
+    },
+    {
+      "point_id": "P3",
+      "line_id": "L3",
+      "boundary_condition": "v = 0",
+      "derived_point": [
+        "1/2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "point_id": "P5",
+      "line_id": "L3",
+      "boundary_condition": "v = 1/2",
+      "derived_point": [
+        "1/2",
+        "1/2",
+        "0"
+      ]
+    },
+    {
+      "point_id": "P7",
+      "line_id": "L4",
+      "boundary_condition": "v = 0",
+      "derived_point": [
+        "1/2",
+        "0",
+        "1/2"
+      ]
+    },
+    {
+      "point_id": "P8",
+      "line_id": "L4",
+      "boundary_condition": "v = 1/2",
+      "derived_point": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ]
+    }
+  ],
+  "line_plane": [],
+  "unmatched_line_endpoints": [],
+  "unmatched_plane_boundaries": [
+    {
+      "plane_id": "S1",
+      "boundary_condition": "u = 0",
+      "boundary_role": "geometric_boundary_line",
+      "derived_line": "(0, 0, w)",
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "sample_point": [
+        "0",
+        "0",
+        "1/5"
+      ],
+      "symmetry_summary": {
+        "generic_point": [
+          "0",
+          "0",
+          "1/5"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        },
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S2"
+        }
+      ],
+      "special_line_orbit_match": null,
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      }
+    },
+    {
+      "plane_id": "S1",
+      "boundary_condition": "u = 1/2",
+      "boundary_role": "geometric_boundary_line",
+      "derived_line": "(1/2, 0, w)",
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "sample_point": [
+        "1/2",
+        "0",
+        "1/5"
+      ],
+      "symmetry_summary": {
+        "generic_point": [
+          "1/2",
+          "0",
+          "1/5"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        },
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S2"
+        }
+      ],
+      "special_line_orbit_match": null,
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      }
+    },
+    {
+      "plane_id": "S1",
+      "boundary_condition": "w = 0",
+      "boundary_role": "geometric_boundary_line",
+      "derived_line": "(u, 0, 0)",
+      "parameters": [
+        "u"
+      ],
+      "constraints": [
+        "0 < u",
+        "u < 1/2"
+      ],
+      "sample_point": [
+        "1/5",
+        "0",
+        "0"
+      ],
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "0",
+          "0"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        },
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S2"
+        }
+      ],
+      "special_line_orbit_match": null,
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      }
+    },
+    {
+      "plane_id": "S1",
+      "boundary_condition": "w = 1/2",
+      "boundary_role": "geometric_boundary_line",
+      "derived_line": "(u, 0, 1/2)",
+      "parameters": [
+        "u"
+      ],
+      "constraints": [
+        "0 < u",
+        "u < 1/2"
+      ],
+      "sample_point": [
+        "1/5",
+        "0",
+        "1/2"
+      ],
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "0",
+          "1/2"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        },
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S2"
+        }
+      ],
+      "special_line_orbit_match": null,
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      }
+    },
+    {
+      "plane_id": "S2",
+      "boundary_condition": "u = 0",
+      "boundary_role": "geometric_boundary_line",
+      "derived_line": "(0, 1/2, w)",
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "sample_point": [
+        "0",
+        "1/2",
+        "1/5"
+      ],
+      "symmetry_summary": {
+        "generic_point": [
+          "0",
+          "1/2",
+          "1/5"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        },
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S2"
+        }
+      ],
+      "special_line_orbit_match": null,
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      }
+    },
+    {
+      "plane_id": "S2",
+      "boundary_condition": "u = 1/2",
+      "boundary_role": "geometric_boundary_line",
+      "derived_line": "(1/2, 1/2, w)",
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "sample_point": [
+        "1/2",
+        "1/2",
+        "1/5"
+      ],
+      "symmetry_summary": {
+        "generic_point": [
+          "1/2",
+          "1/2",
+          "1/5"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        },
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S2"
+        }
+      ],
+      "special_line_orbit_match": null,
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      }
+    },
+    {
+      "plane_id": "S2",
+      "boundary_condition": "w = 0",
+      "boundary_role": "geometric_boundary_line",
+      "derived_line": "(u, 1/2, 0)",
+      "parameters": [
+        "u"
+      ],
+      "constraints": [
+        "0 < u",
+        "u < 1/2"
+      ],
+      "sample_point": [
+        "1/5",
+        "1/2",
+        "0"
+      ],
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/2",
+          "0"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        },
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S2"
+        }
+      ],
+      "special_line_orbit_match": null,
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      }
+    },
+    {
+      "plane_id": "S2",
+      "boundary_condition": "w = 1/2",
+      "boundary_role": "geometric_boundary_line",
+      "derived_line": "(u, 1/2, 1/2)",
+      "parameters": [
+        "u"
+      ],
+      "constraints": [
+        "0 < u",
+        "u < 1/2"
+      ],
+      "sample_point": [
+        "1/5",
+        "1/2",
+        "1/2"
+      ],
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/2",
+          "1/2"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        },
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S2"
+        }
+      ],
+      "special_line_orbit_match": null,
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      }
+    }
+  ]
+}

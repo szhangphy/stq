@@ -1,0 +1,2021 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "selected_minimal_kspace_test_block": {
+    "points": [
+      "P1",
+      "P4"
+    ],
+    "line": "L1",
+    "reason": "Reuse the already-audited explicit endpoint-line block P1-L1-P4. All three objects run stably in groupType=2; P1 shows the clearest double-valued phase shift, L1 is the simplest generic special line, and P4 supplies the first endpoint with 2D double little coreps."
+  },
+  "supplemental_plane_probe": {
+    "plane": "S1",
+    "reason": "A single generic plane point is enough to confirm that the current groupType=2 little-corep extraction is also stable on special planes."
+  },
+  "all_required_special_manifolds_probe": {
+    "required_points": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P7",
+      "P8"
+    ],
+    "required_lines": [
+      "L1",
+      "L2",
+      "L3",
+      "L4"
+    ],
+    "required_planes": [
+      "S1",
+      "S2"
+    ],
+    "all_double_status_ok": true,
+    "probe_summary": {
+      "P1": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 16,
+        "antiunitary_present": true,
+        "rep_count": 8,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "unitary_operation_count": 8
+      },
+      "P2": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 16,
+        "antiunitary_present": true,
+        "rep_count": 2,
+        "rep_degree": [
+          2,
+          2
+        ],
+        "torsion": [
+          1,
+          1
+        ],
+        "unitary_operation_count": 8
+      },
+      "P3": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 16,
+        "antiunitary_present": true,
+        "rep_count": 8,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "unitary_operation_count": 8
+      },
+      "P4": {
+        "status": "ok",
+        "warning_text": "cant find the position\ncant find the position",
+        "little_group_operation_count": 16,
+        "antiunitary_present": true,
+        "rep_count": 2,
+        "rep_degree": [
+          2,
+          2
+        ],
+        "torsion": [
+          1,
+          1
+        ],
+        "unitary_operation_count": 8
+      },
+      "P5": {
+        "status": "ok",
+        "warning_text": "cant find the position\ncant find the position\ncant find the position\ncant find the position",
+        "little_group_operation_count": 16,
+        "antiunitary_present": true,
+        "rep_count": 2,
+        "rep_degree": [
+          2,
+          2
+        ],
+        "torsion": [
+          1,
+          1
+        ],
+        "unitary_operation_count": 8
+      },
+      "P6": {
+        "status": "ok",
+        "warning_text": "cant find the position",
+        "little_group_operation_count": 16,
+        "antiunitary_present": true,
+        "rep_count": 1,
+        "rep_degree": [
+          4
+        ],
+        "torsion": [
+          2
+        ],
+        "unitary_operation_count": 8
+      },
+      "P7": {
+        "status": "ok",
+        "warning_text": "cant find the position\ncant find the position\ncant find the position\ncant find the position",
+        "little_group_operation_count": 16,
+        "antiunitary_present": true,
+        "rep_count": 2,
+        "rep_degree": [
+          2,
+          2
+        ],
+        "torsion": [
+          1,
+          1
+        ],
+        "unitary_operation_count": 8
+      },
+      "P8": {
+        "status": "ok",
+        "warning_text": "cant find the position",
+        "little_group_operation_count": 16,
+        "antiunitary_present": true,
+        "rep_count": 1,
+        "rep_degree": [
+          4
+        ],
+        "torsion": [
+          2
+        ],
+        "unitary_operation_count": 8
+      },
+      "L1": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 8,
+        "antiunitary_present": true,
+        "rep_count": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "unitary_operation_count": 4
+      },
+      "L2": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 8,
+        "antiunitary_present": true,
+        "rep_count": 1,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "unitary_operation_count": 4
+      },
+      "L3": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 8,
+        "antiunitary_present": true,
+        "rep_count": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "unitary_operation_count": 4
+      },
+      "L4": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 8,
+        "antiunitary_present": true,
+        "rep_count": 1,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "unitary_operation_count": 4
+      },
+      "S1": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 8,
+        "antiunitary_present": true,
+        "rep_count": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "unitary_operation_count": 4
+      },
+      "S2": {
+        "status": "ok",
+        "warning_text": "",
+        "little_group_operation_count": 8,
+        "antiunitary_present": true,
+        "rep_count": 1,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "unitary_operation_count": 4
+      }
+    }
+  },
+  "selected_block_details": {
+    "P1": {
+      "kvec": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "single_summary": {
+        "rep_count": 8,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "warning_text": "",
+        "character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          }
+        ],
+        "linear_character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          }
+        ]
+      },
+      "double_summary": {
+        "rep_count": 8,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "warning_text": "",
+        "unitary_raw_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "character_row0": [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 1.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 1.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -1.0
+          }
+        ],
+        "linear_character_row0": [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 1.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 1.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -1.0
+          }
+        ],
+        "all_characters": [
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ]
+        ],
+        "all_linear_characters": [
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ]
+        ]
+      },
+      "same_rep_count_as_single": true,
+      "same_rep_degree_as_single": true,
+      "raw_character_changed_from_single": true
+    },
+    "P4": {
+      "kvec": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "single_summary": {
+        "rep_count": 2,
+        "rep_degree": [
+          2,
+          2
+        ],
+        "torsion": [
+          1,
+          1
+        ],
+        "warning_text": "cant find the position\ncant find the position",
+        "character_row0": [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -2.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          }
+        ],
+        "linear_character_row0": [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ]
+      },
+      "double_summary": {
+        "rep_count": 2,
+        "rep_degree": [
+          2,
+          2
+        ],
+        "torsion": [
+          1,
+          1
+        ],
+        "warning_text": "cant find the position\ncant find the position",
+        "unitary_raw_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "character_row0": [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -2.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          }
+        ],
+        "linear_character_row0": [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 2.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          }
+        ],
+        "all_characters": [
+          [
+            {
+              "real": 2.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -2.0
+            },
+            {
+              "real": -0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 2.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            }
+          ]
+        ],
+        "all_linear_characters": [
+          [
+            {
+              "real": 2.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 2.0
+            },
+            {
+              "real": -0.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            }
+          ],
+          [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -2.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            }
+          ]
+        ]
+      },
+      "same_rep_count_as_single": true,
+      "same_rep_degree_as_single": true,
+      "raw_character_changed_from_single": true
+    },
+    "L1": {
+      "kvec": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "single_summary": {
+        "rep_count": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "warning_text": "",
+        "character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          }
+        ],
+        "linear_character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.809016994375,
+            "imag": 0.587785252292
+          },
+          {
+            "real": -0.809016994375,
+            "imag": 0.587785252292
+          },
+          {
+            "real": 0.309016994375,
+            "imag": -0.951056516295
+          }
+        ]
+      },
+      "double_summary": {
+        "rep_count": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "warning_text": "",
+        "unitary_raw_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "character_row0": [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 1.0
+          }
+        ],
+        "linear_character_row0": [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.587785252292,
+            "imag": -0.809016994375
+          },
+          {
+            "real": -0.809016994375,
+            "imag": 0.587785252292
+          },
+          {
+            "real": 0.951056516295,
+            "imag": 0.309016994375
+          }
+        ],
+        "all_characters": [
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          ]
+        ],
+        "all_linear_characters": [
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.587785252292,
+              "imag": -0.809016994375
+            },
+            {
+              "real": -0.809016994375,
+              "imag": 0.587785252292
+            },
+            {
+              "real": 0.951056516295,
+              "imag": 0.309016994375
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.587785252292,
+              "imag": 0.809016994375
+            },
+            {
+              "real": -0.809016994375,
+              "imag": 0.587785252292
+            },
+            {
+              "real": -0.951056516295,
+              "imag": -0.309016994375
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.587785252292,
+              "imag": -0.809016994375
+            },
+            {
+              "real": 0.809016994375,
+              "imag": -0.587785252292
+            },
+            {
+              "real": -0.951056516295,
+              "imag": -0.309016994375
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.587785252292,
+              "imag": 0.809016994375
+            },
+            {
+              "real": 0.809016994375,
+              "imag": -0.587785252292
+            },
+            {
+              "real": 0.951056516295,
+              "imag": 0.309016994375
+            }
+          ]
+        ]
+      },
+      "same_rep_count_as_single": true,
+      "same_rep_degree_as_single": true,
+      "raw_character_changed_from_single": true
+    },
+    "S1": {
+      "kvec": [
+        0.2,
+        0.0,
+        0.2
+      ],
+      "single_summary": {
+        "rep_count": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "warning_text": "",
+        "character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          }
+        ],
+        "linear_character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.809016994375,
+            "imag": 0.587785252292
+          },
+          {
+            "real": -0.809016994375,
+            "imag": 0.587785252292
+          },
+          {
+            "real": 0.309016994375,
+            "imag": -0.951056516295
+          }
+        ]
+      },
+      "double_summary": {
+        "rep_count": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "warning_text": "",
+        "unitary_raw_indices": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -1.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 1.0
+          }
+        ],
+        "linear_character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.587785252292,
+            "imag": -0.809016994375
+          },
+          {
+            "real": -0.809016994375,
+            "imag": 0.587785252292
+          },
+          {
+            "real": 0.951056516295,
+            "imag": 0.309016994375
+          }
+        ],
+        "all_characters": [
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ]
+        ],
+        "all_linear_characters": [
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.587785252292,
+              "imag": -0.809016994375
+            },
+            {
+              "real": -0.809016994375,
+              "imag": 0.587785252292
+            },
+            {
+              "real": 0.951056516295,
+              "imag": 0.309016994375
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.587785252292,
+              "imag": 0.809016994375
+            },
+            {
+              "real": -0.809016994375,
+              "imag": 0.587785252292
+            },
+            {
+              "real": -0.951056516295,
+              "imag": -0.309016994375
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.587785252292,
+              "imag": -0.809016994375
+            },
+            {
+              "real": 0.809016994375,
+              "imag": -0.587785252292
+            },
+            {
+              "real": -0.951056516295,
+              "imag": -0.309016994375
+            }
+          ],
+          [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.587785252292,
+              "imag": 0.809016994375
+            },
+            {
+              "real": 0.809016994375,
+              "imag": -0.587785252292
+            },
+            {
+              "real": 0.951056516295,
+              "imag": 0.309016994375
+            }
+          ]
+        ]
+      },
+      "same_rep_count_as_single": true,
+      "same_rep_degree_as_single": true,
+      "raw_character_changed_from_single": true
+    }
+  },
+  "double_vs_single_change_summary": {
+    "headline": "For this group, the rep-count and rep-degree patterns on the tested manifolds stay the same, but the raw characters become genuinely double-valued: order-2 unitary operations pick up projective phases such as +/-i instead of only +/-1.",
+    "representative_examples": {
+      "P1": {
+        "single_character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          }
+        ],
+        "double_character_row0": [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 1.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 1.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -1.0
+          }
+        ]
+      },
+      "L1": {
+        "single_character_row0": [
+          {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": -0.0
+          }
+        ],
+        "double_character_row0": [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 1.0
+          }
+        ]
+      }
+    }
+  },
+  "current_corep_extraction_verdict": {
+    "character_available": true,
+    "linear_character_available": true,
+    "rep_degree_available": true,
+    "current_blocker": null,
+    "compatibility_block_status": "A general double-group point-line restriction solver has not been generalized in this script. Instead, the minimal real-space prototype below supplies an explicit induced witness on P1-L1-P4."
+  }
+}

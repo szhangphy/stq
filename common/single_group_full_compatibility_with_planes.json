@@ -1,0 +1,4502 @@
+{
+  "group_number": "10.4.1.31",
+  "model": "explicit_special_line_matrix plus minimal point-plane prototype",
+  "line_rows_preserved": true,
+  "plane_connector_model": "Point-plane restriction onto plane unitary bases. Geometric boundary lines are not lifted to separate unknowns.",
+  "covered_lines": [
+    "L1",
+    "L2",
+    "L3",
+    "L4"
+  ],
+  "covered_planes": [
+    "S1",
+    "S2"
+  ],
+  "plane_unknown_ordering": [
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "plane_blocks": [
+    {
+      "group_number": "10.4.1.31",
+      "status": "success",
+      "plane_id": "S1",
+      "connector_model": "Minimal point-plane prototype: the plane generic basis carries the unknowns; geometric boundary lines are incidence geometry only and are not introduced as separate unknown-bearing manifolds.",
+      "boundary_model_note": "Because single_group_connectivity.json has line_plane = [] and all plane boundaries are geometric_only, the usable minimal connector is direct restriction from each boundary corner point to the common plane unitary-subgroup basis.",
+      "corner_points": [
+        "P1",
+        "P2",
+        "P3",
+        "P7"
+      ],
+      "plane_exact_k": [
+        "1/5",
+        "0",
+        "2/5"
+      ],
+      "plane_cli_k": [
+        "0.2",
+        "0",
+        "0.4"
+      ],
+      "plane_parametrization": "(u, 0, w)",
+      "plane_constraints": [
+        "0 < u",
+        "0 < w",
+        "u < 1/2",
+        "w < 1/2"
+      ],
+      "plane_sample_point": [
+        "1/5",
+        "0",
+        "2/5"
+      ],
+      "plane_symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "0",
+          "1/7"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "plane_group_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ]
+      },
+      "plane_unitary_basis": [
+        {
+          "basis_id": "S1_R1",
+          "character": [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ]
+        },
+        {
+          "basis_id": "S1_R2",
+          "character": [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ]
+        },
+        {
+          "basis_id": "S1_R3",
+          "character": [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ]
+        },
+        {
+          "basis_id": "S1_R4",
+          "character": [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        }
+      ],
+      "matched_unitary_operation_indices": {
+        "P1": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "P2": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "P3": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "P7": [
+          0,
+          1,
+          6,
+          7
+        ]
+      },
+      "corner_decompositions": {
+        "P1": [
+          {
+            "rep_id": "P1_R1",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "-1",
+              "1",
+              "-1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R2": 1
+            }
+          },
+          {
+            "rep_id": "P1_R2",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "-1",
+              "-1",
+              "1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R1": 1
+            }
+          },
+          {
+            "rep_id": "P1_R3",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "-1",
+              "-1",
+              "1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R1": 1
+            }
+          },
+          {
+            "rep_id": "P1_R4",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "-1",
+              "1",
+              "-1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R2": 1
+            }
+          },
+          {
+            "rep_id": "P1_R5",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R4": 1
+            }
+          },
+          {
+            "rep_id": "P1_R6",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "1",
+              "-1",
+              "-1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P1_R7",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "1",
+              "-1",
+              "-1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P1_R8",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R4": 1
+            }
+          }
+        ],
+        "P2": [
+          {
+            "rep_id": "P2_R1",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "-2"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R2": 1,
+              "S1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P2_R2",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "2"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R1": 1,
+              "S1_R4": 1
+            }
+          }
+        ],
+        "P3": [
+          {
+            "rep_id": "P3_R1",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "-1",
+              "1",
+              "-1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R2": 1
+            }
+          },
+          {
+            "rep_id": "P3_R2",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "-1",
+              "-1",
+              "1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R1": 1
+            }
+          },
+          {
+            "rep_id": "P3_R3",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "-1",
+              "-1",
+              "1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R1": 1
+            }
+          },
+          {
+            "rep_id": "P3_R4",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "-1",
+              "1",
+              "-1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R2": 1
+            }
+          },
+          {
+            "rep_id": "P3_R5",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R4": 1
+            }
+          },
+          {
+            "rep_id": "P3_R6",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "1",
+              "-1",
+              "-1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P3_R7",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "1",
+              "-1",
+              "-1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P3_R8",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R4": 1
+            }
+          }
+        ],
+        "P7": [
+          {
+            "rep_id": "P7_R1",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "-2"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R2": 1,
+              "S1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P7_R2",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "2"
+            ],
+            "decomposition_on_plane_basis": {
+              "S1_R1": 1,
+              "S1_R4": 1
+            }
+          }
+        ]
+      },
+      "local_unknown_ordering": [
+        "P1_R1",
+        "P1_R2",
+        "P1_R3",
+        "P1_R4",
+        "P1_R5",
+        "P1_R6",
+        "P1_R7",
+        "P1_R8",
+        "P2_R1",
+        "P2_R2",
+        "P3_R1",
+        "P3_R2",
+        "P3_R3",
+        "P3_R4",
+        "P3_R5",
+        "P3_R6",
+        "P3_R7",
+        "P3_R8",
+        "P7_R1",
+        "P7_R2",
+        "S1_R1",
+        "S1_R2",
+        "S1_R3",
+        "S1_R4"
+      ],
+      "equations": [
+        {
+          "plane_id": "S1",
+          "point_id": "P1",
+          "basis_id": "S1_R1",
+          "terms": [
+            {
+              "unknown": "P1_R2",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P1_R3",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R1",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P1_R2 + 1*P1_R3 = 1*S1_R1"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P1",
+          "basis_id": "S1_R2",
+          "terms": [
+            {
+              "unknown": "P1_R1",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P1_R4",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R2",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P1_R1 + 1*P1_R4 = 1*S1_R2"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P1",
+          "basis_id": "S1_R3",
+          "terms": [
+            {
+              "unknown": "P1_R6",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P1_R7",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R3",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P1_R6 + 1*P1_R7 = 1*S1_R3"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P1",
+          "basis_id": "S1_R4",
+          "terms": [
+            {
+              "unknown": "P1_R5",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P1_R8",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R4",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P1_R5 + 1*P1_R8 = 1*S1_R4"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P2",
+          "basis_id": "S1_R1",
+          "terms": [
+            {
+              "unknown": "P2_R2",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R1",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P2_R2 = 1*S1_R1"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P2",
+          "basis_id": "S1_R2",
+          "terms": [
+            {
+              "unknown": "P2_R1",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R2",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P2_R1 = 1*S1_R2"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P2",
+          "basis_id": "S1_R3",
+          "terms": [
+            {
+              "unknown": "P2_R1",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R3",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P2_R1 = 1*S1_R3"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P2",
+          "basis_id": "S1_R4",
+          "terms": [
+            {
+              "unknown": "P2_R2",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R4",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P2_R2 = 1*S1_R4"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P3",
+          "basis_id": "S1_R1",
+          "terms": [
+            {
+              "unknown": "P3_R2",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P3_R3",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R1",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P3_R2 + 1*P3_R3 = 1*S1_R1"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P3",
+          "basis_id": "S1_R2",
+          "terms": [
+            {
+              "unknown": "P3_R1",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P3_R4",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R2",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P3_R1 + 1*P3_R4 = 1*S1_R2"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P3",
+          "basis_id": "S1_R3",
+          "terms": [
+            {
+              "unknown": "P3_R6",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P3_R7",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R3",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P3_R6 + 1*P3_R7 = 1*S1_R3"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P3",
+          "basis_id": "S1_R4",
+          "terms": [
+            {
+              "unknown": "P3_R5",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P3_R8",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R4",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P3_R5 + 1*P3_R8 = 1*S1_R4"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P7",
+          "basis_id": "S1_R1",
+          "terms": [
+            {
+              "unknown": "P7_R2",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R1",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P7_R2 = 1*S1_R1"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P7",
+          "basis_id": "S1_R2",
+          "terms": [
+            {
+              "unknown": "P7_R1",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R2",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P7_R1 = 1*S1_R2"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P7",
+          "basis_id": "S1_R3",
+          "terms": [
+            {
+              "unknown": "P7_R1",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R3",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P7_R1 = 1*S1_R3"
+        },
+        {
+          "plane_id": "S1",
+          "point_id": "P7",
+          "basis_id": "S1_R4",
+          "terms": [
+            {
+              "unknown": "P7_R2",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S1_R4",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P7_R2 = 1*S1_R4"
+        }
+      ],
+      "matrix_rows": [
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          -1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "local_matrix_shape": [
+        16,
+        24
+      ],
+      "local_rank": 14
+    },
+    {
+      "group_number": "10.4.1.31",
+      "status": "success",
+      "plane_id": "S2",
+      "connector_model": "Minimal point-plane prototype: the plane generic basis carries the unknowns; geometric boundary lines are incidence geometry only and are not introduced as separate unknown-bearing manifolds.",
+      "boundary_model_note": "Because single_group_connectivity.json has line_plane = [] and all plane boundaries are geometric_only, the usable minimal connector is direct restriction from each boundary corner point to the common plane unitary-subgroup basis.",
+      "corner_points": [
+        "P4",
+        "P5",
+        "P6",
+        "P8"
+      ],
+      "plane_exact_k": [
+        "1/5",
+        "1/2",
+        "2/5"
+      ],
+      "plane_cli_k": [
+        "0.2",
+        "0.5",
+        "0.4"
+      ],
+      "plane_parametrization": "(u, 1/2, w)",
+      "plane_constraints": [
+        "0 < u",
+        "0 < w",
+        "u < 1/2",
+        "w < 1/2"
+      ],
+      "plane_sample_point": [
+        "1/5",
+        "1/2",
+        "2/5"
+      ],
+      "plane_symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/2",
+          "1/7"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "plane_group_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "plane_unitary_basis": [
+        {
+          "basis_id": "S2_R1",
+          "character": [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        }
+      ],
+      "matched_unitary_operation_indices": {
+        "P4": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "P5": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "P6": [
+          0,
+          1,
+          6,
+          7
+        ],
+        "P8": [
+          0,
+          1,
+          6,
+          7
+        ]
+      },
+      "corner_decompositions": {
+        "P4": [
+          {
+            "rep_id": "P4_R1",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_plane_basis": {
+              "S2_R1": 1
+            }
+          },
+          {
+            "rep_id": "P4_R2",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_plane_basis": {
+              "S2_R1": 1
+            }
+          }
+        ],
+        "P5": [
+          {
+            "rep_id": "P5_R1",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_plane_basis": {
+              "S2_R1": 1
+            }
+          },
+          {
+            "rep_id": "P5_R2",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_plane_basis": {
+              "S2_R1": 1
+            }
+          }
+        ],
+        "P6": [
+          {
+            "rep_id": "P6_R1",
+            "rep_degree": 4,
+            "torsion": 2,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "4",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_plane_basis": {
+              "S2_R1": 2
+            }
+          }
+        ],
+        "P8": [
+          {
+            "rep_id": "P8_R1",
+            "rep_degree": 4,
+            "torsion": 2,
+            "restricted_character_on_plane_unitary_subgroup": [
+              "4",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_plane_basis": {
+              "S2_R1": 2
+            }
+          }
+        ]
+      },
+      "local_unknown_ordering": [
+        "P4_R1",
+        "P4_R2",
+        "P5_R1",
+        "P5_R2",
+        "P6_R1",
+        "P8_R1",
+        "S2_R1"
+      ],
+      "equations": [
+        {
+          "plane_id": "S2",
+          "point_id": "P4",
+          "basis_id": "S2_R1",
+          "terms": [
+            {
+              "unknown": "P4_R1",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P4_R2",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S2_R1",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P4_R1 + 1*P4_R2 = 1*S2_R1"
+        },
+        {
+          "plane_id": "S2",
+          "point_id": "P5",
+          "basis_id": "S2_R1",
+          "terms": [
+            {
+              "unknown": "P5_R1",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "P5_R2",
+              "coeff": 1,
+              "side": "point"
+            },
+            {
+              "unknown": "S2_R1",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "1*P5_R1 + 1*P5_R2 = 1*S2_R1"
+        },
+        {
+          "plane_id": "S2",
+          "point_id": "P6",
+          "basis_id": "S2_R1",
+          "terms": [
+            {
+              "unknown": "P6_R1",
+              "coeff": 2,
+              "side": "point"
+            },
+            {
+              "unknown": "S2_R1",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "2*P6_R1 = 1*S2_R1"
+        },
+        {
+          "plane_id": "S2",
+          "point_id": "P8",
+          "basis_id": "S2_R1",
+          "terms": [
+            {
+              "unknown": "P8_R1",
+              "coeff": 2,
+              "side": "point"
+            },
+            {
+              "unknown": "S2_R1",
+              "coeff": -1,
+              "side": "plane"
+            }
+          ],
+          "equation": "2*P8_R1 = 1*S2_R1"
+        }
+      ],
+      "matrix_rows": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          2,
+          0,
+          -1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          -1
+        ]
+      ],
+      "local_matrix_shape": [
+        4,
+        7
+      ],
+      "local_rank": 4
+    }
+  ],
+  "global_unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1",
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "global_equations": [
+    {
+      "source_type": "line",
+      "line_id": "L1",
+      "basis_id": "L1_R1",
+      "equation": "1*P1_R1 + 1*P1_R2 = 1*P4_R2",
+      "terms": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": -1,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L1",
+      "basis_id": "L1_R2",
+      "equation": "1*P1_R3 + 1*P1_R4 = 1*P4_R1",
+      "terms": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -1,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L1",
+      "basis_id": "L1_R3",
+      "equation": "1*P1_R5 + 1*P1_R6 = 1*P4_R1",
+      "terms": [
+        {
+          "unknown": "P1_R5",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -1,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L1",
+      "basis_id": "L1_R4",
+      "equation": "1*P1_R7 + 1*P1_R8 = 1*P4_R2",
+      "terms": [
+        {
+          "unknown": "P1_R7",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": -1,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L2",
+      "basis_id": "L2_R1",
+      "equation": "1*P2_R1 + 1*P2_R2 = 2*P6_R1",
+      "terms": [
+        {
+          "unknown": "P2_R1",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": -2,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L3",
+      "basis_id": "L3_R1",
+      "equation": "1*P3_R1 + 1*P3_R2 = 1*P5_R2",
+      "terms": [
+        {
+          "unknown": "P3_R1",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": -1,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L3",
+      "basis_id": "L3_R2",
+      "equation": "1*P3_R3 + 1*P3_R4 = 1*P5_R1",
+      "terms": [
+        {
+          "unknown": "P3_R3",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": -1,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L3",
+      "basis_id": "L3_R3",
+      "equation": "1*P3_R5 + 1*P3_R6 = 1*P5_R1",
+      "terms": [
+        {
+          "unknown": "P3_R5",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": -1,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L3",
+      "basis_id": "L3_R4",
+      "equation": "1*P3_R7 + 1*P3_R8 = 1*P5_R2",
+      "terms": [
+        {
+          "unknown": "P3_R7",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": -1,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L4",
+      "basis_id": "L4_R1",
+      "equation": "1*P7_R1 + 1*P7_R2 = 2*P8_R1",
+      "terms": [
+        {
+          "unknown": "P7_R1",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1,
+          "side": "left"
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": -2,
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R1",
+      "equation": "1*P1_R2 + 1*P1_R3 = 1*S1_R1",
+      "terms": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R2",
+      "equation": "1*P1_R1 + 1*P1_R4 = 1*S1_R2",
+      "terms": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R3",
+      "equation": "1*P1_R6 + 1*P1_R7 = 1*S1_R3",
+      "terms": [
+        {
+          "unknown": "P1_R6",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R4",
+      "equation": "1*P1_R5 + 1*P1_R8 = 1*S1_R4",
+      "terms": [
+        {
+          "unknown": "P1_R5",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R1",
+      "equation": "1*P2_R2 = 1*S1_R1",
+      "terms": [
+        {
+          "unknown": "P2_R2",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R2",
+      "equation": "1*P2_R1 = 1*S1_R2",
+      "terms": [
+        {
+          "unknown": "P2_R1",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R3",
+      "equation": "1*P2_R1 = 1*S1_R3",
+      "terms": [
+        {
+          "unknown": "P2_R1",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R4",
+      "equation": "1*P2_R2 = 1*S1_R4",
+      "terms": [
+        {
+          "unknown": "P2_R2",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R1",
+      "equation": "1*P3_R2 + 1*P3_R3 = 1*S1_R1",
+      "terms": [
+        {
+          "unknown": "P3_R2",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R2",
+      "equation": "1*P3_R1 + 1*P3_R4 = 1*S1_R2",
+      "terms": [
+        {
+          "unknown": "P3_R1",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R3",
+      "equation": "1*P3_R6 + 1*P3_R7 = 1*S1_R3",
+      "terms": [
+        {
+          "unknown": "P3_R6",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R4",
+      "equation": "1*P3_R5 + 1*P3_R8 = 1*S1_R4",
+      "terms": [
+        {
+          "unknown": "P3_R5",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R1",
+      "equation": "1*P7_R2 = 1*S1_R1",
+      "terms": [
+        {
+          "unknown": "P7_R2",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R2",
+      "equation": "1*P7_R1 = 1*S1_R2",
+      "terms": [
+        {
+          "unknown": "P7_R1",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R3",
+      "equation": "1*P7_R1 = 1*S1_R3",
+      "terms": [
+        {
+          "unknown": "P7_R1",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R4",
+      "equation": "1*P7_R2 = 1*S1_R4",
+      "terms": [
+        {
+          "unknown": "P7_R2",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S2",
+      "point_id": "P4",
+      "basis_id": "S2_R1",
+      "equation": "1*P4_R1 + 1*P4_R2 = 1*S2_R1",
+      "terms": [
+        {
+          "unknown": "P4_R1",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S2",
+      "point_id": "P5",
+      "basis_id": "S2_R1",
+      "equation": "1*P5_R1 + 1*P5_R2 = 1*S2_R1",
+      "terms": [
+        {
+          "unknown": "P5_R1",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1,
+          "side": "point"
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S2",
+      "point_id": "P6",
+      "basis_id": "S2_R1",
+      "equation": "2*P6_R1 = 1*S2_R1",
+      "terms": [
+        {
+          "unknown": "P6_R1",
+          "coeff": 2,
+          "side": "point"
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S2",
+      "point_id": "P8",
+      "basis_id": "S2_R1",
+      "equation": "2*P8_R1 = 1*S2_R1",
+      "terms": [
+        {
+          "unknown": "P8_R1",
+          "coeff": 2,
+          "side": "point"
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": -1,
+          "side": "plane"
+        }
+      ]
+    }
+  ],
+  "global_matrix_rows": [
+    {
+      "source_type": "line",
+      "line_id": "L1",
+      "basis_id": "L1_R1",
+      "row_index_within_source": 0,
+      "equation": "1*P1_R1 + 1*P1_R2 = 1*P4_R2",
+      "matrix_row": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L1",
+      "basis_id": "L1_R2",
+      "row_index_within_source": 1,
+      "equation": "1*P1_R3 + 1*P1_R4 = 1*P4_R1",
+      "matrix_row": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L1",
+      "basis_id": "L1_R3",
+      "row_index_within_source": 2,
+      "equation": "1*P1_R5 + 1*P1_R6 = 1*P4_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L1",
+      "basis_id": "L1_R4",
+      "row_index_within_source": 3,
+      "equation": "1*P1_R7 + 1*P1_R8 = 1*P4_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L2",
+      "basis_id": "L2_R1",
+      "row_index_within_source": 0,
+      "equation": "1*P2_R1 + 1*P2_R2 = 2*P6_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L3",
+      "basis_id": "L3_R1",
+      "row_index_within_source": 0,
+      "equation": "1*P3_R1 + 1*P3_R2 = 1*P5_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L3",
+      "basis_id": "L3_R2",
+      "row_index_within_source": 1,
+      "equation": "1*P3_R3 + 1*P3_R4 = 1*P5_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L3",
+      "basis_id": "L3_R3",
+      "row_index_within_source": 2,
+      "equation": "1*P3_R5 + 1*P3_R6 = 1*P5_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L3",
+      "basis_id": "L3_R4",
+      "row_index_within_source": 3,
+      "equation": "1*P3_R7 + 1*P3_R8 = 1*P5_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "line",
+      "line_id": "L4",
+      "basis_id": "L4_R1",
+      "row_index_within_source": 0,
+      "equation": "1*P7_R1 + 1*P7_R2 = 2*P8_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R1",
+      "row_index_within_source": 0,
+      "equation": "1*P1_R2 + 1*P1_R3 = 1*S1_R1",
+      "matrix_row": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R2",
+      "row_index_within_source": 1,
+      "equation": "1*P1_R1 + 1*P1_R4 = 1*S1_R2",
+      "matrix_row": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R3",
+      "row_index_within_source": 2,
+      "equation": "1*P1_R6 + 1*P1_R7 = 1*S1_R3",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R4",
+      "row_index_within_source": 3,
+      "equation": "1*P1_R5 + 1*P1_R8 = 1*S1_R4",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R1",
+      "row_index_within_source": 4,
+      "equation": "1*P2_R2 = 1*S1_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R2",
+      "row_index_within_source": 5,
+      "equation": "1*P2_R1 = 1*S1_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R3",
+      "row_index_within_source": 6,
+      "equation": "1*P2_R1 = 1*S1_R3",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R4",
+      "row_index_within_source": 7,
+      "equation": "1*P2_R2 = 1*S1_R4",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R1",
+      "row_index_within_source": 8,
+      "equation": "1*P3_R2 + 1*P3_R3 = 1*S1_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R2",
+      "row_index_within_source": 9,
+      "equation": "1*P3_R1 + 1*P3_R4 = 1*S1_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R3",
+      "row_index_within_source": 10,
+      "equation": "1*P3_R6 + 1*P3_R7 = 1*S1_R3",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R4",
+      "row_index_within_source": 11,
+      "equation": "1*P3_R5 + 1*P3_R8 = 1*S1_R4",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R1",
+      "row_index_within_source": 12,
+      "equation": "1*P7_R2 = 1*S1_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R2",
+      "row_index_within_source": 13,
+      "equation": "1*P7_R1 = 1*S1_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R3",
+      "row_index_within_source": 14,
+      "equation": "1*P7_R1 = 1*S1_R3",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R4",
+      "row_index_within_source": 15,
+      "equation": "1*P7_R2 = 1*S1_R4",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S2",
+      "point_id": "P4",
+      "basis_id": "S2_R1",
+      "row_index_within_source": 0,
+      "equation": "1*P4_R1 + 1*P4_R2 = 1*S2_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S2",
+      "point_id": "P5",
+      "basis_id": "S2_R1",
+      "row_index_within_source": 1,
+      "equation": "1*P5_R1 + 1*P5_R2 = 1*S2_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S2",
+      "point_id": "P6",
+      "basis_id": "S2_R1",
+      "row_index_within_source": 2,
+      "equation": "2*P6_R1 = 1*S2_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "source_type": "plane",
+      "plane_id": "S2",
+      "point_id": "P8",
+      "basis_id": "S2_R1",
+      "row_index_within_source": 3,
+      "equation": "2*P8_R1 = 1*S2_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "global_matrix": [
+    [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      -2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ]
+  ]
+}

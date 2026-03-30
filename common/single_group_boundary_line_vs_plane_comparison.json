@@ -1,0 +1,2955 @@
+{
+  "group_number": "10.4.1.31",
+  "current_plane_unknowns": [
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "current_plane_unknown_definitions": [
+    {
+      "basis_id": "S1_R1",
+      "character": [
+        "1",
+        "-1",
+        "-1",
+        "1"
+      ],
+      "rep_degree": 1
+    },
+    {
+      "basis_id": "S1_R2",
+      "character": [
+        "1",
+        "-1",
+        "1",
+        "-1"
+      ],
+      "rep_degree": 1
+    },
+    {
+      "basis_id": "S1_R3",
+      "character": [
+        "1",
+        "1",
+        "-1",
+        "-1"
+      ],
+      "rep_degree": 1
+    },
+    {
+      "basis_id": "S1_R4",
+      "character": [
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "rep_degree": 1
+    },
+    {
+      "basis_id": "S2_R1",
+      "character": [
+        "2",
+        "0",
+        "0",
+        "0"
+      ],
+      "rep_degree": 2
+    }
+  ],
+  "current_plane_rows": [
+    {
+      "row_index": 10,
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R1",
+      "equation": "1*P1_R2 + 1*P1_R3 = 1*S1_R1"
+    },
+    {
+      "row_index": 11,
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R2",
+      "equation": "1*P1_R1 + 1*P1_R4 = 1*S1_R2"
+    },
+    {
+      "row_index": 12,
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R3",
+      "equation": "1*P1_R6 + 1*P1_R7 = 1*S1_R3"
+    },
+    {
+      "row_index": 13,
+      "plane_id": "S1",
+      "point_id": "P1",
+      "basis_id": "S1_R4",
+      "equation": "1*P1_R5 + 1*P1_R8 = 1*S1_R4"
+    },
+    {
+      "row_index": 14,
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R1",
+      "equation": "1*P2_R2 = 1*S1_R1"
+    },
+    {
+      "row_index": 15,
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R2",
+      "equation": "1*P2_R1 = 1*S1_R2"
+    },
+    {
+      "row_index": 16,
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R3",
+      "equation": "1*P2_R1 = 1*S1_R3"
+    },
+    {
+      "row_index": 17,
+      "plane_id": "S1",
+      "point_id": "P2",
+      "basis_id": "S1_R4",
+      "equation": "1*P2_R2 = 1*S1_R4"
+    },
+    {
+      "row_index": 18,
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R1",
+      "equation": "1*P3_R2 + 1*P3_R3 = 1*S1_R1"
+    },
+    {
+      "row_index": 19,
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R2",
+      "equation": "1*P3_R1 + 1*P3_R4 = 1*S1_R2"
+    },
+    {
+      "row_index": 20,
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R3",
+      "equation": "1*P3_R6 + 1*P3_R7 = 1*S1_R3"
+    },
+    {
+      "row_index": 21,
+      "plane_id": "S1",
+      "point_id": "P3",
+      "basis_id": "S1_R4",
+      "equation": "1*P3_R5 + 1*P3_R8 = 1*S1_R4"
+    },
+    {
+      "row_index": 22,
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R1",
+      "equation": "1*P7_R2 = 1*S1_R1"
+    },
+    {
+      "row_index": 23,
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R2",
+      "equation": "1*P7_R1 = 1*S1_R2"
+    },
+    {
+      "row_index": 24,
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R3",
+      "equation": "1*P7_R1 = 1*S1_R3"
+    },
+    {
+      "row_index": 25,
+      "plane_id": "S1",
+      "point_id": "P7",
+      "basis_id": "S1_R4",
+      "equation": "1*P7_R2 = 1*S1_R4"
+    },
+    {
+      "row_index": 26,
+      "plane_id": "S2",
+      "point_id": "P4",
+      "basis_id": "S2_R1",
+      "equation": "1*P4_R1 + 1*P4_R2 = 1*S2_R1"
+    },
+    {
+      "row_index": 27,
+      "plane_id": "S2",
+      "point_id": "P5",
+      "basis_id": "S2_R1",
+      "equation": "1*P5_R1 + 1*P5_R2 = 1*S2_R1"
+    },
+    {
+      "row_index": 28,
+      "plane_id": "S2",
+      "point_id": "P6",
+      "basis_id": "S2_R1",
+      "equation": "2*P6_R1 = 1*S2_R1"
+    },
+    {
+      "row_index": 29,
+      "plane_id": "S2",
+      "point_id": "P8",
+      "basis_id": "S2_R1",
+      "equation": "2*P8_R1 = 1*S2_R1"
+    }
+  ],
+  "boundary_lines": [
+    {
+      "boundary_id": "S1_bdry_u0",
+      "plane_id": "S1",
+      "boundary_condition": "u = 0",
+      "derived_line": "(0, 0, w)",
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "exact_k": [
+        "0",
+        "0",
+        "1/5"
+      ],
+      "actual_cli_k": [
+        "0",
+        "0",
+        "0.2"
+      ],
+      "endpoints": [
+        "P1",
+        "P2"
+      ],
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      },
+      "special_line_orbit_match": null,
+      "status": "ok",
+      "boundary_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "plane_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "boundary_vs_plane_signature": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "boundary_to_plane": {
+        "matched_unitary_operation_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis_rep_to_plane_decomposition": {
+          "S1_bdry_u0_R1": {
+            "S1_R1": 1
+          },
+          "S1_bdry_u0_R2": {
+            "S1_R2": 1
+          },
+          "S1_bdry_u0_R3": {
+            "S1_R3": 1
+          },
+          "S1_bdry_u0_R4": {
+            "S1_R4": 1
+          }
+        },
+        "basis_map_is_identity": true
+      },
+      "endpoint_chain_checks": [
+        {
+          "point_id": "P1",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P1_R1",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R2": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R2",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R3",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R4",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R2": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R5",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R6",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R7",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R8",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S1_R1",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_equation": "1*P1_R2 + 1*P1_R3 = 1*S1_R1",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R2",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_equation": "1*P1_R1 + 1*P1_R4 = 1*S1_R2",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R3",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              "direct_equation": "1*P1_R6 + 1*P1_R7 = 1*S1_R3",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R4",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              "direct_equation": "1*P1_R5 + 1*P1_R8 = 1*S1_R4",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        },
+        {
+          "point_id": "P2",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P2_R1",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R2": 1,
+                "S1_bdry_u0_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1,
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1,
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P2_R2",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u0_R1": 1,
+                "S1_bdry_u0_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1,
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1,
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S1_R1",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_equation": "1*P2_R2 = 1*S1_R1",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R2",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_equation": "1*P2_R1 = 1*S1_R2",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R3",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_equation": "1*P2_R1 = 1*S1_R3",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R4",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_equation": "1*P2_R2 = 1*S1_R4",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        }
+      ],
+      "all_endpoint_chain_checks_match_direct": true,
+      "all_endpoint_row_checks_match_direct": true
+    },
+    {
+      "boundary_id": "S1_bdry_u12",
+      "plane_id": "S1",
+      "boundary_condition": "u = 1/2",
+      "derived_line": "(1/2, 0, w)",
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "exact_k": [
+        "1/2",
+        "0",
+        "1/5"
+      ],
+      "actual_cli_k": [
+        "0.5",
+        "0",
+        "0.2"
+      ],
+      "endpoints": [
+        "P3",
+        "P7"
+      ],
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      },
+      "special_line_orbit_match": null,
+      "status": "ok",
+      "boundary_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "plane_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "boundary_vs_plane_signature": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "boundary_to_plane": {
+        "matched_unitary_operation_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis_rep_to_plane_decomposition": {
+          "S1_bdry_u12_R1": {
+            "S1_R1": 1
+          },
+          "S1_bdry_u12_R2": {
+            "S1_R2": 1
+          },
+          "S1_bdry_u12_R3": {
+            "S1_R3": 1
+          },
+          "S1_bdry_u12_R4": {
+            "S1_R4": 1
+          }
+        },
+        "basis_map_is_identity": true
+      },
+      "endpoint_chain_checks": [
+        {
+          "point_id": "P3",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P3_R1",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R2": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R2",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R3",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R4",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R2": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R5",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R6",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R7",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R8",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S1_R1",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_equation": "1*P3_R2 + 1*P3_R3 = 1*S1_R1",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R2",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_equation": "1*P3_R1 + 1*P3_R4 = 1*S1_R2",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R3",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              "direct_equation": "1*P3_R6 + 1*P3_R7 = 1*S1_R3",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R4",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              "direct_equation": "1*P3_R5 + 1*P3_R8 = 1*S1_R4",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        },
+        {
+          "point_id": "P7",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P7_R1",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R2": 1,
+                "S1_bdry_u12_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1,
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1,
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P7_R2",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_u12_R1": 1,
+                "S1_bdry_u12_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1,
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1,
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S1_R1",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_equation": "1*P7_R2 = 1*S1_R1",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R2",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_equation": "1*P7_R1 = 1*S1_R2",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R3",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_equation": "1*P7_R1 = 1*S1_R3",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R4",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_equation": "1*P7_R2 = 1*S1_R4",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        }
+      ],
+      "all_endpoint_chain_checks_match_direct": true,
+      "all_endpoint_row_checks_match_direct": true
+    },
+    {
+      "boundary_id": "S1_bdry_w0",
+      "plane_id": "S1",
+      "boundary_condition": "w = 0",
+      "derived_line": "(u, 0, 0)",
+      "parameters": [
+        "u"
+      ],
+      "constraints": [
+        "0 < u",
+        "u < 1/2"
+      ],
+      "exact_k": [
+        "1/5",
+        "0",
+        "0"
+      ],
+      "actual_cli_k": [
+        "0.2",
+        "0",
+        "0"
+      ],
+      "endpoints": [
+        "P1",
+        "P3"
+      ],
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      },
+      "special_line_orbit_match": null,
+      "status": "ok",
+      "boundary_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "plane_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "boundary_vs_plane_signature": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "boundary_to_plane": {
+        "matched_unitary_operation_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis_rep_to_plane_decomposition": {
+          "S1_bdry_w0_R1": {
+            "S1_R1": 1
+          },
+          "S1_bdry_w0_R2": {
+            "S1_R2": 1
+          },
+          "S1_bdry_w0_R3": {
+            "S1_R3": 1
+          },
+          "S1_bdry_w0_R4": {
+            "S1_R4": 1
+          }
+        },
+        "basis_map_is_identity": true
+      },
+      "endpoint_chain_checks": [
+        {
+          "point_id": "P1",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P1_R1",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R2": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R2",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R3",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R4",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R2": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R5",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R6",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R7",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P1_R8",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S1_R1",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_equation": "1*P1_R2 + 1*P1_R3 = 1*S1_R1",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R2",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_equation": "1*P1_R1 + 1*P1_R4 = 1*S1_R2",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R3",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              "direct_equation": "1*P1_R6 + 1*P1_R7 = 1*S1_R3",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R4",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              "direct_equation": "1*P1_R5 + 1*P1_R8 = 1*S1_R4",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        },
+        {
+          "point_id": "P3",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P3_R1",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R2": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R2",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R3",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R4",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R2": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R5",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R6",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R7",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P3_R8",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w0_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S1_R1",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_equation": "1*P3_R2 + 1*P3_R3 = 1*S1_R1",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R2",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ],
+              "direct_equation": "1*P3_R1 + 1*P3_R4 = 1*S1_R2",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R3",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                0
+              ],
+              "direct_equation": "1*P3_R6 + 1*P3_R7 = 1*S1_R3",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R4",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                1
+              ],
+              "direct_equation": "1*P3_R5 + 1*P3_R8 = 1*S1_R4",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        }
+      ],
+      "all_endpoint_chain_checks_match_direct": true,
+      "all_endpoint_row_checks_match_direct": true
+    },
+    {
+      "boundary_id": "S1_bdry_w12",
+      "plane_id": "S1",
+      "boundary_condition": "w = 1/2",
+      "derived_line": "(u, 0, 1/2)",
+      "parameters": [
+        "u"
+      ],
+      "constraints": [
+        "0 < u",
+        "u < 1/2"
+      ],
+      "exact_k": [
+        "1/5",
+        "0",
+        "1/2"
+      ],
+      "actual_cli_k": [
+        "0.2",
+        "0",
+        "0.5"
+      ],
+      "endpoints": [
+        "P2",
+        "P7"
+      ],
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      },
+      "special_line_orbit_match": null,
+      "status": "ok",
+      "boundary_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "plane_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "boundary_vs_plane_signature": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "boundary_to_plane": {
+        "matched_unitary_operation_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis_rep_to_plane_decomposition": {
+          "S1_bdry_w12_R1": {
+            "S1_R1": 1
+          },
+          "S1_bdry_w12_R2": {
+            "S1_R2": 1
+          },
+          "S1_bdry_w12_R3": {
+            "S1_R3": 1
+          },
+          "S1_bdry_w12_R4": {
+            "S1_R4": 1
+          }
+        },
+        "basis_map_is_identity": true
+      },
+      "endpoint_chain_checks": [
+        {
+          "point_id": "P2",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P2_R1",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w12_R2": 1,
+                "S1_bdry_w12_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1,
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1,
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P2_R2",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w12_R1": 1,
+                "S1_bdry_w12_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1,
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1,
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S1_R1",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_equation": "1*P2_R2 = 1*S1_R1",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R2",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_equation": "1*P2_R1 = 1*S1_R2",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R3",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_equation": "1*P2_R1 = 1*S1_R3",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R4",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_equation": "1*P2_R2 = 1*S1_R4",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        },
+        {
+          "point_id": "P7",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P7_R1",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w12_R2": 1,
+                "S1_bdry_w12_R3": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R2": 1,
+                "S1_R3": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R2": 1,
+                "S1_R3": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P7_R2",
+              "point_to_boundary_decomposition": {
+                "S1_bdry_w12_R1": 1,
+                "S1_bdry_w12_R4": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S1_R1": 1,
+                "S1_R4": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S1_R1": 1,
+                "S1_R4": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S1_R1",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_equation": "1*P7_R2 = 1*S1_R1",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R2",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_equation": "1*P7_R1 = 1*S1_R2",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R3",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                0
+              ],
+              "direct_equation": "1*P7_R1 = 1*S1_R3",
+              "matches_direct": true
+            },
+            {
+              "basis_id": "S1_R4",
+              "chain_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                0,
+                1
+              ],
+              "direct_equation": "1*P7_R2 = 1*S1_R4",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        }
+      ],
+      "all_endpoint_chain_checks_match_direct": true,
+      "all_endpoint_row_checks_match_direct": true
+    },
+    {
+      "boundary_id": "S2_bdry_u0",
+      "plane_id": "S2",
+      "boundary_condition": "u = 0",
+      "derived_line": "(0, 1/2, w)",
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "exact_k": [
+        "0",
+        "1/2",
+        "1/5"
+      ],
+      "actual_cli_k": [
+        "0",
+        "0.5",
+        "0.2"
+      ],
+      "endpoints": [
+        "P4",
+        "P6"
+      ],
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      },
+      "special_line_orbit_match": null,
+      "status": "ok",
+      "boundary_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "plane_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "boundary_vs_plane_signature": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "boundary_to_plane": {
+        "matched_unitary_operation_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis_rep_to_plane_decomposition": {
+          "S2_bdry_u0_R1": {
+            "S2_R1": 1
+          }
+        },
+        "basis_map_is_identity": true
+      },
+      "endpoint_chain_checks": [
+        {
+          "point_id": "P4",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P4_R1",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_u0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P4_R2",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_u0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S2_R1",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                1
+              ],
+              "direct_equation": "1*P4_R1 + 1*P4_R2 = 1*S2_R1",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        },
+        {
+          "point_id": "P6",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P6_R1",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_u0_R1": 2
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 2
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 2
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S2_R1",
+              "chain_coefficients_on_point_irreps": [
+                2
+              ],
+              "direct_coefficients_on_point_irreps": [
+                2
+              ],
+              "direct_equation": "2*P6_R1 = 1*S2_R1",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        }
+      ],
+      "all_endpoint_chain_checks_match_direct": true,
+      "all_endpoint_row_checks_match_direct": true
+    },
+    {
+      "boundary_id": "S2_bdry_u12",
+      "plane_id": "S2",
+      "boundary_condition": "u = 1/2",
+      "derived_line": "(1/2, 1/2, w)",
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "exact_k": [
+        "1/2",
+        "1/2",
+        "1/5"
+      ],
+      "actual_cli_k": [
+        "0.5",
+        "0.5",
+        "0.2"
+      ],
+      "endpoints": [
+        "P5",
+        "P8"
+      ],
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      },
+      "special_line_orbit_match": null,
+      "status": "ok",
+      "boundary_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "plane_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "boundary_vs_plane_signature": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "boundary_to_plane": {
+        "matched_unitary_operation_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis_rep_to_plane_decomposition": {
+          "S2_bdry_u12_R1": {
+            "S2_R1": 1
+          }
+        },
+        "basis_map_is_identity": true
+      },
+      "endpoint_chain_checks": [
+        {
+          "point_id": "P5",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P5_R1",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_u12_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P5_R2",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_u12_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S2_R1",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                1
+              ],
+              "direct_equation": "1*P5_R1 + 1*P5_R2 = 1*S2_R1",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        },
+        {
+          "point_id": "P8",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P8_R1",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_u12_R1": 2
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 2
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 2
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S2_R1",
+              "chain_coefficients_on_point_irreps": [
+                2
+              ],
+              "direct_coefficients_on_point_irreps": [
+                2
+              ],
+              "direct_equation": "2*P8_R1 = 1*S2_R1",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        }
+      ],
+      "all_endpoint_chain_checks_match_direct": true,
+      "all_endpoint_row_checks_match_direct": true
+    },
+    {
+      "boundary_id": "S2_bdry_w0",
+      "plane_id": "S2",
+      "boundary_condition": "w = 0",
+      "derived_line": "(u, 1/2, 0)",
+      "parameters": [
+        "u"
+      ],
+      "constraints": [
+        "0 < u",
+        "u < 1/2"
+      ],
+      "exact_k": [
+        "1/5",
+        "1/2",
+        "0"
+      ],
+      "actual_cli_k": [
+        "0.2",
+        "0.5",
+        "0"
+      ],
+      "endpoints": [
+        "P4",
+        "P5"
+      ],
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      },
+      "special_line_orbit_match": null,
+      "status": "ok",
+      "boundary_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "plane_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "boundary_vs_plane_signature": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "boundary_to_plane": {
+        "matched_unitary_operation_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis_rep_to_plane_decomposition": {
+          "S2_bdry_w0_R1": {
+            "S2_R1": 1
+          }
+        },
+        "basis_map_is_identity": true
+      },
+      "endpoint_chain_checks": [
+        {
+          "point_id": "P4",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P4_R1",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_w0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P4_R2",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_w0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S2_R1",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                1
+              ],
+              "direct_equation": "1*P4_R1 + 1*P4_R2 = 1*S2_R1",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        },
+        {
+          "point_id": "P5",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P5_R1",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_w0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "matches_direct": true
+            },
+            {
+              "rep_id": "P5_R2",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_w0_R1": 1
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 1
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S2_R1",
+              "chain_coefficients_on_point_irreps": [
+                1,
+                1
+              ],
+              "direct_coefficients_on_point_irreps": [
+                1,
+                1
+              ],
+              "direct_equation": "1*P5_R1 + 1*P5_R2 = 1*S2_R1",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        }
+      ],
+      "all_endpoint_chain_checks_match_direct": true,
+      "all_endpoint_row_checks_match_direct": true
+    },
+    {
+      "boundary_id": "S2_bdry_w12",
+      "plane_id": "S2",
+      "boundary_condition": "w = 1/2",
+      "derived_line": "(u, 1/2, 1/2)",
+      "parameters": [
+        "u"
+      ],
+      "constraints": [
+        "0 < u",
+        "u < 1/2"
+      ],
+      "exact_k": [
+        "1/5",
+        "1/2",
+        "1/2"
+      ],
+      "actual_cli_k": [
+        "0.2",
+        "0.5",
+        "0.5"
+      ],
+      "endpoints": [
+        "P6",
+        "P8"
+      ],
+      "classification": {
+        "is_separately_listed_special_line": false,
+        "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+      },
+      "special_line_orbit_match": null,
+      "status": "ok",
+      "boundary_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "plane_signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m"
+      },
+      "boundary_vs_plane_signature": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "boundary_to_plane": {
+        "matched_unitary_operation_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "basis_rep_to_plane_decomposition": {
+          "S2_bdry_w12_R1": {
+            "S2_R1": 1
+          }
+        },
+        "basis_map_is_identity": true
+      },
+      "endpoint_chain_checks": [
+        {
+          "point_id": "P6",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P6_R1",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_w12_R1": 2
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 2
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 2
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S2_R1",
+              "chain_coefficients_on_point_irreps": [
+                2
+              ],
+              "direct_coefficients_on_point_irreps": [
+                2
+              ],
+              "direct_equation": "2*P6_R1 = 1*S2_R1",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        },
+        {
+          "point_id": "P8",
+          "matched_unitary_operation_indices_for_point_to_boundary": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "rep_checks": [
+            {
+              "rep_id": "P8_R1",
+              "point_to_boundary_decomposition": {
+                "S2_bdry_w12_R1": 2
+              },
+              "chain_to_plane_decomposition": {
+                "S2_R1": 2
+              },
+              "direct_point_to_plane_decomposition": {
+                "S2_R1": 2
+              },
+              "matches_direct": true
+            }
+          ],
+          "row_checks": [
+            {
+              "basis_id": "S2_R1",
+              "chain_coefficients_on_point_irreps": [
+                2
+              ],
+              "direct_coefficients_on_point_irreps": [
+                2
+              ],
+              "direct_equation": "2*P8_R1 = 1*S2_R1",
+              "matches_direct": true
+            }
+          ],
+          "all_rep_checks_match": true,
+          "all_row_checks_match": true
+        }
+      ],
+      "all_endpoint_chain_checks_match_direct": true,
+      "all_endpoint_row_checks_match_direct": true
+    }
+  ],
+  "plane_summaries": {
+    "S1": {
+      "boundary_ids": [
+        "S1_bdry_u0",
+        "S1_bdry_u12",
+        "S1_bdry_w0",
+        "S1_bdry_w12"
+      ],
+      "all_boundary_outputs_available": true,
+      "all_chain_matches_direct": true,
+      "all_row_matches_direct": true
+    },
+    "S2": {
+      "boundary_ids": [
+        "S2_bdry_u0",
+        "S2_bdry_u12",
+        "S2_bdry_w0",
+        "S2_bdry_w12"
+      ],
+      "all_boundary_outputs_available": true,
+      "all_chain_matches_direct": true,
+      "all_row_matches_direct": true
+    }
+  },
+  "boundary_line_outputs_available": true,
+  "chain_check_consistent": true,
+  "chain_rows_equal_direct_rows": true,
+  "boundary_to_plane_basis_maps_identity": true,
+  "conclusion_summary": "Every boundary line can be treated as a local check object without entering the global unknown ordering. The chain point -> boundary-line -> plane reproduces the current direct point -> plane decompositions exactly for all available endpoints."
+}

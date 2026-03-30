@@ -1,0 +1,21 @@
+上一个会话已经完成了 raw matrix-level audit。不要重做 portability，也不要扩群。当前已经存在：
+
+        - 10.4.1.31 / 1: raw quotient Z2 x Z2, free rank 0, finite part [2, 2]
+- 10.4.1.31 / 2: raw quotient Z^2 x Z2 x Z2 x Z2 x Z2, free rank 2, finite part [2, 2, 2, 2]
+- 194.1.1.1 / 1: raw quotient Z^16, free rank 16, finite part []
+- 194.1.1.1 / 2: raw quotient Z^16, free rank 16, finite part []
+
+        优先读取：
+        1. raw_matrix_level_audit_report.pdf
+        2. raw_matrix_level_audit.md
+        3. raw_matrix_level_audit_summary.json
+        4. independent_recompute_minipack/README.md
+        5. independent_recompute_minipack/recompute_from_raw.py
+
+        当前这一轮的交付重点是：
+        - 用最小复算包外部独立复核四个 case 的 raw C / BS / AI / quotient；
+        - 或者把 raw quotient 与 user-facing interpreted quotient 的差别整理成更可审阅的补充文档；
+        - 不要新增群，不要新增 workflow 功能，不要重跑 local-library 扩展。
+
+        如果只是验证当前工件是否完整，直接运行：
+        `python3 -u debug_raw_matrix_audit.py --validate`

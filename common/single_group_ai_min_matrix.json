@@ -1,0 +1,334 @@
+{
+  "group_number": "10.4.1.31",
+  "matrix_orientation": "columns_are_generators",
+  "column_order": [
+    "c_trivial_1d",
+    "f_trivial_1d"
+  ],
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1",
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "A_min_columns": [
+    [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      1,
+      0,
+      2,
+      1,
+      2,
+      0,
+      0,
+      2,
+      2
+    ],
+    [
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      1,
+      0,
+      2,
+      1,
+      2,
+      0,
+      0,
+      2,
+      2
+    ]
+  ],
+  "A_min_rows": [
+    {
+      "unknown": "P1_R1",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P1_R2",
+      "coefficients": [
+        2,
+        2
+      ]
+    },
+    {
+      "unknown": "P1_R3",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P1_R4",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P1_R5",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P1_R6",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P1_R7",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P1_R8",
+      "coefficients": [
+        2,
+        2
+      ]
+    },
+    {
+      "unknown": "P2_R1",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P2_R2",
+      "coefficients": [
+        2,
+        2
+      ]
+    },
+    {
+      "unknown": "P3_R1",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P3_R2",
+      "coefficients": [
+        2,
+        0
+      ]
+    },
+    {
+      "unknown": "P3_R3",
+      "coefficients": [
+        0,
+        2
+      ]
+    },
+    {
+      "unknown": "P3_R4",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P3_R5",
+      "coefficients": [
+        0,
+        2
+      ]
+    },
+    {
+      "unknown": "P3_R6",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P3_R7",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P3_R8",
+      "coefficients": [
+        2,
+        0
+      ]
+    },
+    {
+      "unknown": "P4_R1",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P4_R2",
+      "coefficients": [
+        2,
+        2
+      ]
+    },
+    {
+      "unknown": "P5_R1",
+      "coefficients": [
+        0,
+        2
+      ]
+    },
+    {
+      "unknown": "P5_R2",
+      "coefficients": [
+        2,
+        0
+      ]
+    },
+    {
+      "unknown": "P6_R1",
+      "coefficients": [
+        1,
+        1
+      ]
+    },
+    {
+      "unknown": "P7_R1",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "P7_R2",
+      "coefficients": [
+        2,
+        2
+      ]
+    },
+    {
+      "unknown": "P8_R1",
+      "coefficients": [
+        1,
+        1
+      ]
+    },
+    {
+      "unknown": "S1_R1",
+      "coefficients": [
+        2,
+        2
+      ]
+    },
+    {
+      "unknown": "S1_R2",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "S1_R3",
+      "coefficients": [
+        0,
+        0
+      ]
+    },
+    {
+      "unknown": "S1_R4",
+      "coefficients": [
+        2,
+        2
+      ]
+    },
+    {
+      "unknown": "S2_R1",
+      "coefficients": [
+        2,
+        2
+      ]
+    }
+  ],
+  "rank_z": 2,
+  "rank_q": 2,
+  "compatibility_zero": {
+    "c_trivial_1d": true,
+    "f_trivial_1d": true
+  }
+}

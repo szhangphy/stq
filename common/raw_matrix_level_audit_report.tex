@@ -1,0 +1,176 @@
+\documentclass[11pt]{article}
+        \usepackage[margin=1in]{geometry}
+        \usepackage{amsmath,amssymb,booktabs,longtable,array}
+        \usepackage[T1]{fontenc}
+        \usepackage[utf8]{inputenc}
+        \usepackage{hyperref}
+        \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+        \title{Raw Matrix-Level Audit for \texttt{10.4.1.31} and \texttt{194.1.1.1}}
+        \author{Codex raw-matrix audit}
+        \date{2026-03-30}
+
+        \begin{document}
+        \maketitle
+
+        \section{Task Background and Goal}
+        This report is not a new portability run and not a new physical reinterpretation pass.
+        Its only purpose is to lower the two fixed groups
+        \texttt{10.4.1.31} and \texttt{194.1.1.1} to raw matrix / raw vector / exact Smith-artifact form.
+        For each of the four fixed cases
+        (single-group and double-group on each group),
+        the export now includes:
+        \begin{itemize}
+        \item the raw compatibility matrix $C$ and its unknown ordering;
+        \item an exact integer basis for $BS = \ker_{\mathbb Z}(C)$;
+        \item raw AI candidate vectors with provenance;
+        \item a reduced exact integer basis for the AI lattice;
+        \item the exact matrix of $AI \hookrightarrow BS$ in BS coordinates;
+        \item the exact Smith data for the cokernel $\mathrm{coker}(AI \to BS)$.
+        \end{itemize}
+
+        \section{Current Summary Conclusions}
+        The current user-facing summaries already claim:
+        \begin{itemize}
+        \item \texttt{10.4.1.31} single: $BS/AI = \mathrm{Z}_2 \times \mathrm{Z}_2$;
+        \item \texttt{10.4.1.31} double: $BS/AI \cong \mathrm{Z}^2 \times \mathrm{Z}_2^4$;
+        \item \texttt{194.1.1.1} single: raw quotient $\mathrm{Z}^{16}$;
+        \item \texttt{194.1.1.1} double: raw quotient $\mathrm{Z}^{16}$.
+        \end{itemize}
+        This audit does not replace those summaries.
+        It exports the exact integer artifacts required to reproduce them independently.
+
+        \section{Raw Compatibility Matrices}
+        For each case the raw compatibility matrix is exported as an integer matrix $C$ with explicit unknown ordering and row labels.
+        The BS lattice is then defined strictly by
+        \[
+          BS = \ker_{\mathbb Z}(C).
+        \]
+        Operationally the export uses the Smith decomposition
+        \[
+          D = U C V,
+        \]
+        where $U$ and $V$ are unimodular over $\mathbb{Z}$.
+        The last columns of $V$ form an exact integer basis of $\ker_{\mathbb Z}(C)$.
+
+        \section{Raw AI Candidate and Basis Export}
+        For each case the exported AI candidates are integer vectors in the same unknown ordering as the BS problem.
+        After converting each candidate to BS coordinates, the reduced AI basis is built from the image lattice of the candidate matrix.
+        If $A_{cand}$ is the candidate matrix in BS coordinates, the image lattice basis is derived from the Smith decomposition
+        \[
+          D_{cand} = U_{cand} A_{cand} V_{cand}.
+        \]
+        The nonzero diagonal part of $D_{cand}$ together with $U_{cand}^{-1}$ produces an exact reduced basis for the image lattice $AI \subset BS$.
+
+        \section{Exact Smith Audit of \texorpdfstring{$\mathrm{coker}(AI \to BS)$}{coker(AI->BS)}}
+        Once the reduced AI basis matrix $A$ in BS coordinates is fixed, the raw quotient is defined purely algebraically by
+        \[
+          \mathrm{coker}(AI \to BS) = \mathbb{Z}^m / \mathrm{im}(A),
+        \]
+        where $m = \operatorname{rank}(BS)$.
+        A second exact Smith decomposition
+        \[
+          D_{AI} = U_{AI} A V_{AI}
+        \]
+        gives the raw quotient decomposition
+        \[
+          \mathrm{coker}(AI \to BS)
+          \cong
+          \mathbb{Z}^{m-r}
+          \oplus
+          \bigoplus_i \mathbb{Z}_{d_i},
+        \]
+        where the $d_i > 1$ are the torsion invariant factors and $r = \operatorname{rank}(AI)$.
+
+        \section{Case Table}
+        \begin{center}
+        \begin{tabular}{lcccccc}
+        \toprule
+        case & shape(C) & rank(C) & rank(BS) & rank(AI) & raw quotient & gap \\
+        \midrule
+        10.4.1.31 / 1 & $30 \times 31$ & 23 & 8 & 8 & $\mathrm{Z}_{2} \times \mathrm{Z}_{2}$ & false \\
+10.4.1.31 / 2 & $30 \times 31$ & 23 & 8 & 6 & $\mathrm{Z}^{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2}$ & true \\
+194.1.1.1 / 1 & $58 \times 62$ & 33 & 29 & 13 & $\mathrm{Z}^{16}$ & true \\
+194.1.1.1 / 2 & $58 \times 62$ & 33 & 29 & 13 & $\mathrm{Z}^{16}$ & true \\
+        \bottomrule
+        \end{tabular}
+        \end{center}
+
+        \section{Raw Quotient vs Interpreted Quotient}
+        The raw quotient is the exact integer cokernel described above.
+        The interpreted quotient is the more user-facing layer that decides whether the raw result should be reported as a purely finite indicator group or as a mixed/free object.
+        The present export is deliberately conservative:
+        it writes the raw quotient first and stores only a carried-forward note on the interpretation gap.
+        In particular:
+        \begin{itemize}
+        \item \texttt{194.1.1.1} single and double both export raw quotient $\mathrm{Z}^{16}$ and finite part $[]$;
+        \item \texttt{10.4.1.31} double exports raw quotient $\mathrm{Z}^2 \times \mathrm{Z}_2^4$, so its free and torsion sectors are explicitly separated in the raw quotient artifact.
+        \end{itemize}
+
+        \section{Per-Case Results}
+        \subsection*{10.4.1.31 / groupType=1}
+The raw compatibility matrix has shape $30 \times 31$ with
+$\operatorname{rank}(C) = 23$ and
+$\dim \ker_{\mathbb Z}(C) = 8$.
+The exported BS basis therefore has rank 8, the reduced AI basis has rank 8,
+and the exact inclusion check $AI \subset BS$ evaluates to \texttt{true}.
+The exact Smith audit of the exported $AI \to BS$ matrix yields the raw quotient
+$\mathrm{Z}_{2} \times \mathrm{Z}_{2}$ with free rank 0 and finite part [2, 2].
+The carried-forward interpretation note is:
+\begin{quote}
+The single-group quotient is already purely finite (Z2 x Z2), so there is no free-vs-finite mixing in this case.
+\end{quote}
+\subsection*{10.4.1.31 / groupType=2}
+The raw compatibility matrix has shape $30 \times 31$ with
+$\operatorname{rank}(C) = 23$ and
+$\dim \ker_{\mathbb Z}(C) = 8$.
+The exported BS basis therefore has rank 8, the reduced AI basis has rank 6,
+and the exact inclusion check $AI \subset BS$ evaluates to \texttt{true}.
+The exact Smith audit of the exported $AI \to BS$ matrix yields the raw quotient
+$\mathrm{Z}^{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2} \times \mathrm{Z}_{2}$ with free rank 2 and finite part [2, 2, 2, 2].
+The carried-forward interpretation note is:
+\begin{quote}
+The double-group quotient contains both a free part and a finite torsion part, so the full Z\textasciicircum{}2 x Z2\textasciicircum{}4 should not be called a purely finite indicator group.
+\end{quote}
+\subsection*{194.1.1.1 / groupType=1}
+The raw compatibility matrix has shape $58 \times 62$ with
+$\operatorname{rank}(C) = 33$ and
+$\dim \ker_{\mathbb Z}(C) = 29$.
+The exported BS basis therefore has rank 29, the reduced AI basis has rank 13,
+and the exact inclusion check $AI \subset BS$ evaluates to \texttt{true}.
+The exact Smith audit of the exported $AI \to BS$ matrix yields the raw quotient
+$\mathrm{Z}^{16}$ with free rank 16 and finite part [].
+The carried-forward interpretation note is:
+\begin{quote}
+The raw quotient is purely free (Z\textasciicircum{}16) and no finite torsion part has been isolated.
+\end{quote}
+\subsection*{194.1.1.1 / groupType=2}
+The raw compatibility matrix has shape $58 \times 62$ with
+$\operatorname{rank}(C) = 33$ and
+$\dim \ker_{\mathbb Z}(C) = 29$.
+The exported BS basis therefore has rank 29, the reduced AI basis has rank 13,
+and the exact inclusion check $AI \subset BS$ evaluates to \texttt{true}.
+The exact Smith audit of the exported $AI \to BS$ matrix yields the raw quotient
+$\mathrm{Z}^{16}$ with free rank 16 and finite part [].
+The carried-forward interpretation note is:
+\begin{quote}
+The raw quotient is again purely free (Z\textasciicircum{}16) and no finite torsion part has been isolated.
+\end{quote}
+
+        \section{Implementation Mapping}
+        The mathematical objects map to exported files as follows:
+        \begin{itemize}
+        \item raw compatibility matrix and unknown ordering maps to \verb|raw_*_C.json|;
+        \item BS kernel basis maps to \verb|raw_*_bs_basis_raw.json| and \verb|raw_*_bs_basis_pretty.json|;
+        \item raw AI candidates map to \verb|raw_*_ai_candidates.json|;
+        \item reduced AI basis maps to \verb|raw_*_ai_basis.json|;
+        \item exact map $AI \hookrightarrow BS$ maps to \verb|raw_*_ai_in_bs_matrix.json|;
+        \item raw quotient generators and Smith artifacts map to \verb|raw_*_quotient.json|;
+        \item standalone recompute bundle maps to \verb|independent_recompute_minipack/|.
+        \end{itemize}
+
+        \section{Conclusion and Next Step}
+        The repository now contains a raw-artifact audit layer that does not depend on the semantic workflow to verify the four reported quotients.
+        The next meaningful review step is external rerun of the minipack or a more refined interpretation pass that acts only on the already-exported raw quotient data.
+
+        \end{document}

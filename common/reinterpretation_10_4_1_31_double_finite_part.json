@@ -1,0 +1,30 @@
+{
+  "group": "10.4.1.31",
+  "group_type": 2,
+  "case_key": "10_4_1_31_double",
+  "raw_quotient": "Z^2 x Z2 x Z2 x Z2 x Z2",
+  "free_part": "Z^2",
+  "finite_part_candidate": "Z2 x Z2 x Z2 x Z2",
+  "finite_part_confidence": "high",
+  "still_missing_step": "Only reporting-layer cleanup remains: reserve indicator language for the torsion subgroup and report Z^2 separately as free crystalline invariants.",
+  "user_facing_interpretation": "Report the full raw quotient as Z^2 x Z2^4, but call only the exact torsion subgroup Z2^4 the finite symmetry-indicator candidate.",
+  "free_rank": 2,
+  "finite_part": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "free_mod_out_candidate_rank": 2,
+  "result_after_modding_out_free_part": "Z2 x Z2 x Z2 x Z2",
+  "raw_vs_interpreted_gap": "The raw quotient mixes a free Z^2 sector with the finite torsion subgroup Z2^4; only the latter should be called the finite symmetry-indicator candidate.",
+  "primary_note": "The Smith decomposition canonically splits the raw quotient into free rank 2 and four order-2 torsion slots.",
+  "exact_smith_diagonal_nonzero": [
+    1,
+    1,
+    2,
+    2,
+    2,
+    2
+  ]
+}

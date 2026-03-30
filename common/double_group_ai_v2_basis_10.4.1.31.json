@@ -1,0 +1,890 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "basis_construction_method": "Hermite normal form on the combined BS_double coefficient lattice of point-like AI_v1 plus the new parametric double candidates.",
+  "basis_kind": "bs_double_coefficient_hnf_basis",
+  "basis_column_order": [
+    "ai_double_v2_hnf_01",
+    "ai_double_v2_hnf_02",
+    "ai_double_v2_hnf_03",
+    "ai_double_v2_hnf_04",
+    "ai_double_v2_hnf_05",
+    "ai_double_v2_hnf_06"
+  ],
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1",
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "basis_vectors": [
+    [
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      1,
+      0,
+      2,
+      1,
+      2,
+      0,
+      0,
+      2,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -2,
+      -2,
+      2,
+      2,
+      -2,
+      -2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      -2,
+      -2,
+      2,
+      0,
+      -2,
+      -2,
+      0,
+      2,
+      -2,
+      0,
+      -2,
+      -2,
+      2,
+      0,
+      -2,
+      -2,
+      0,
+      2,
+      -2,
+      0,
+      -2,
+      0,
+      -1,
+      -2,
+      0,
+      -1,
+      0,
+      -2,
+      -2,
+      0,
+      -2
+    ],
+    [
+      -1,
+      -1,
+      1,
+      1,
+      -1,
+      -1,
+      1,
+      1,
+      0,
+      0,
+      -1,
+      -1,
+      1,
+      1,
+      -1,
+      -1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -2,
+      2,
+      0,
+      -2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      -2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      -2,
+      0,
+      2,
+      2,
+      0,
+      -2,
+      0,
+      2,
+      2,
+      0,
+      1,
+      2,
+      0,
+      1,
+      0,
+      2,
+      2,
+      0,
+      2
+    ]
+  ],
+  "basis_support": [
+    [
+      {
+        "unknown": "P1_R2",
+        "coeff": 2
+      },
+      {
+        "unknown": "P1_R5",
+        "coeff": 2
+      },
+      {
+        "unknown": "P2_R2",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R2",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R5",
+        "coeff": 2
+      },
+      {
+        "unknown": "P4_R1",
+        "coeff": 2
+      },
+      {
+        "unknown": "P5_R1",
+        "coeff": 2
+      },
+      {
+        "unknown": "P6_R1",
+        "coeff": 1
+      },
+      {
+        "unknown": "P7_R2",
+        "coeff": 2
+      },
+      {
+        "unknown": "P8_R1",
+        "coeff": 1
+      },
+      {
+        "unknown": "S1_R1",
+        "coeff": 2
+      },
+      {
+        "unknown": "S1_R4",
+        "coeff": 2
+      },
+      {
+        "unknown": "S2_R1",
+        "coeff": 2
+      }
+    ],
+    [
+      {
+        "unknown": "P3_R1",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R2",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R3",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R4",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R5",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R6",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R7",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R8",
+        "coeff": 2
+      }
+    ],
+    [
+      {
+        "unknown": "P1_R1",
+        "coeff": -2
+      },
+      {
+        "unknown": "P1_R2",
+        "coeff": -2
+      },
+      {
+        "unknown": "P1_R3",
+        "coeff": 2
+      },
+      {
+        "unknown": "P1_R5",
+        "coeff": -2
+      },
+      {
+        "unknown": "P1_R6",
+        "coeff": -2
+      },
+      {
+        "unknown": "P1_R8",
+        "coeff": 2
+      },
+      {
+        "unknown": "P2_R1",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R1",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R2",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R3",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R5",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R6",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R8",
+        "coeff": 2
+      },
+      {
+        "unknown": "P4_R1",
+        "coeff": -2
+      },
+      {
+        "unknown": "P5_R1",
+        "coeff": -2
+      },
+      {
+        "unknown": "P6_R1",
+        "coeff": -1
+      },
+      {
+        "unknown": "P7_R1",
+        "coeff": -2
+      },
+      {
+        "unknown": "P8_R1",
+        "coeff": -1
+      },
+      {
+        "unknown": "S1_R2",
+        "coeff": -2
+      },
+      {
+        "unknown": "S1_R3",
+        "coeff": -2
+      },
+      {
+        "unknown": "S2_R1",
+        "coeff": -2
+      }
+    ],
+    [
+      {
+        "unknown": "P1_R1",
+        "coeff": -1
+      },
+      {
+        "unknown": "P1_R2",
+        "coeff": -1
+      },
+      {
+        "unknown": "P1_R3",
+        "coeff": 1
+      },
+      {
+        "unknown": "P1_R4",
+        "coeff": 1
+      },
+      {
+        "unknown": "P1_R5",
+        "coeff": -1
+      },
+      {
+        "unknown": "P1_R6",
+        "coeff": -1
+      },
+      {
+        "unknown": "P1_R7",
+        "coeff": 1
+      },
+      {
+        "unknown": "P1_R8",
+        "coeff": 1
+      },
+      {
+        "unknown": "P3_R1",
+        "coeff": -1
+      },
+      {
+        "unknown": "P3_R2",
+        "coeff": -1
+      },
+      {
+        "unknown": "P3_R3",
+        "coeff": 1
+      },
+      {
+        "unknown": "P3_R4",
+        "coeff": 1
+      },
+      {
+        "unknown": "P3_R5",
+        "coeff": -1
+      },
+      {
+        "unknown": "P3_R6",
+        "coeff": -1
+      },
+      {
+        "unknown": "P3_R7",
+        "coeff": 1
+      },
+      {
+        "unknown": "P3_R8",
+        "coeff": 1
+      }
+    ],
+    [
+      {
+        "unknown": "P3_R2",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R3",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R5",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R8",
+        "coeff": 2
+      },
+      {
+        "unknown": "P5_R1",
+        "coeff": -2
+      },
+      {
+        "unknown": "P5_R2",
+        "coeff": 2
+      }
+    ],
+    [
+      {
+        "unknown": "P1_R1",
+        "coeff": 2
+      },
+      {
+        "unknown": "P1_R6",
+        "coeff": 2
+      },
+      {
+        "unknown": "P2_R1",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R1",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R2",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R3",
+        "coeff": -2
+      },
+      {
+        "unknown": "P3_R5",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R6",
+        "coeff": 2
+      },
+      {
+        "unknown": "P3_R8",
+        "coeff": -2
+      },
+      {
+        "unknown": "P4_R2",
+        "coeff": 2
+      },
+      {
+        "unknown": "P5_R1",
+        "coeff": 2
+      },
+      {
+        "unknown": "P6_R1",
+        "coeff": 1
+      },
+      {
+        "unknown": "P7_R1",
+        "coeff": 2
+      },
+      {
+        "unknown": "P8_R1",
+        "coeff": 1
+      },
+      {
+        "unknown": "S1_R2",
+        "coeff": 2
+      },
+      {
+        "unknown": "S1_R3",
+        "coeff": 2
+      },
+      {
+        "unknown": "S2_R1",
+        "coeff": 2
+      }
+    ]
+  ],
+  "basis_bs_coefficients": [
+    [
+      -1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      2,
+      0
+    ],
+    [
+      -1,
+      0,
+      -2,
+      0,
+      0,
+      0,
+      0,
+      2
+    ]
+  ],
+  "rank_z": 6,
+  "candidate_to_basis_integer_relations": {
+    "c_double_g_plus_i": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "c_double_u_plus_i": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1
+    ],
+    "c_double_g_minus_i": [
+      0,
+      0,
+      -1,
+      2,
+      0,
+      0
+    ],
+    "c_double_u_minus_i": [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "f_double_g_plus_i": [
+      1,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    "f_double_u_plus_i": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    "f_double_g_minus_i": [
+      0,
+      -1,
+      -1,
+      2,
+      1,
+      0
+    ],
+    "f_double_u_minus_i": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0
+    ],
+    "d_double_case_c_pair": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "e_double_case_c_pair": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "g_double_case_c_pair": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "h_double_case_c_pair": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "b_double_case_c_pair": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "a_double_case_c_pair": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "o_double_A": [
+      2,
+      0,
+      0,
+      2,
+      2,
+      2
+    ],
+    "m_double_plus_i": [
+      2,
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "m_double_minus_i": [
+      0,
+      0,
+      -1,
+      2,
+      1,
+      1
+    ],
+    "k_double_plus_i": [
+      1,
+      0,
+      1,
+      0,
+      2,
+      2
+    ],
+    "k_double_minus_i": [
+      1,
+      0,
+      -1,
+      2,
+      0,
+      0
+    ],
+    "l_double_plus_i": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      2
+    ],
+    "l_double_minus_i": [
+      1,
+      -1,
+      -1,
+      2,
+      2,
+      0
+    ],
+    "i_double_A_eta_plus": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "i_double_A_eta_minus": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "j_double_A_eta_plus": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "j_double_A_eta_minus": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "n_double_A_eta_plus": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "n_double_A_eta_minus": [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  "raw_candidate_count": 27,
+  "parametric_raw_candidate_count": 13,
+  "distinct_candidate_vector_count": 16,
+  "parametric_distinct_candidate_vector_count": 8,
+  "rank_growing_new_candidate_ids_over_v1": [],
+  "bs_coefficient_smith_diagonal": [
+    1,
+    1,
+    2,
+    2,
+    2,
+    2
+  ],
+  "hnf_shape": [
+    8,
+    6
+  ],
+  "same_lattice_as_old_pointlike_v1": true,
+  "relation_to_old_pointlike_v1_basis": {
+    "rank_increase_over_pointlike_v1": 0,
+    "same_lattice_as_old_pointlike_v1": true,
+    "new_basis_directions_added_in_this_round": []
+  },
+  "key_added_directions": []
+}

@@ -1,0 +1,56 @@
+{
+  "group_number": "10.4.1.31",
+  "bridge_validated": true,
+  "supercell_basis_change": [
+    [
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      2,
+      0
+    ],
+    [
+      0,
+      0,
+      2
+    ]
+  ],
+  "matched_operation_count": 16,
+  "operation_count_total": 16,
+  "bridge_stabilizer_entry_count": 15,
+  "bridge_stabilizer_consistent_letters": [
+    "o",
+    "n",
+    "m",
+    "l",
+    "k",
+    "j",
+    "i",
+    "h",
+    "g",
+    "f",
+    "e",
+    "d",
+    "c",
+    "b",
+    "a"
+  ],
+  "minimal_ai_prototype_built": true,
+  "prototype_generator_ids": [
+    "c_trivial_1d",
+    "f_trivial_1d"
+  ],
+  "prototype_letters": [
+    "c",
+    "f"
+  ],
+  "rank_AI_min": 2,
+  "rank_BS_with_planes": 8,
+  "AI_min_in_BS": true,
+  "can_compare_bs_vs_ai_min": true,
+  "key_subtlety": "The exported *_character.json files store raw characters; the induction step must reconstruct linear characters by multiplying exp(-i k\u00b7tauC).",
+  "prototype_scope_note": "This prototype only uses trivial 1D local reps on the audited c and f point families; it is not a full AI lattice."
+}

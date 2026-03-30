@@ -1,0 +1,811 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "families": [
+    {
+      "family_id": "a",
+      "family_class": "point-like",
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'/m",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective order-2 unitary subgroup",
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "generator_index": 7,
+          "antiunitary_generator_index": 11,
+          "antiunitary_generator_square_index": 0,
+          "antiunitary_conjugation_on_unitary_generator": 7,
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_unitary_irrep_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "a_double_case_c_pair",
+          "dimension": 2,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "c",
+          "truly_antiunitary": true
+        }
+      ],
+      "expected_local_object_count": 1,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "The unitary subgroup is projective order-2 with exactly two conjugate unitary irreps `+i/-i`.",
+        "The antiunitary generator fixes the unitary generator and squares to the identity, so Wigner extension pairs those conjugate unitary irreps into one irreducible case-c magnetic corep.",
+        "No additional case-a or higher-dimensional magnetic corep exists because there is no extra unitary irrep left to extend."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "b",
+      "family_class": "point-like",
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'/m",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective order-2 unitary subgroup",
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "generator_index": 7,
+          "antiunitary_generator_index": 11,
+          "antiunitary_generator_square_index": 0,
+          "antiunitary_conjugation_on_unitary_generator": 7,
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_unitary_irrep_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "b_double_case_c_pair",
+          "dimension": 2,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "c",
+          "truly_antiunitary": true
+        }
+      ],
+      "expected_local_object_count": 1,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "Same `2'/m` antiunitary stabilizer as family `a`.",
+        "The only unitary projective irreps are the conjugate pair `+i/-i`.",
+        "Therefore the complete double local set is a single Wigner-case-c pair, already present in the census."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "c",
+      "family_class": "point-like",
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2/m",
+        "unitary_subgroup_summary": {
+          "abstract_group": "2/m",
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "generator_indices": [
+            3,
+            4
+          ],
+          "factor_on_c2_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "factor_on_inversion_square": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "double_group_local_builder": "explicit projective character enumeration on the full unitary stabilizer"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "c_double_g_plus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "c_double_u_plus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "c_double_g_minus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "c_double_u_minus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 4,
+      "expected_kind": "projective_local_irrep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "Pure-unitary family with full unitary stabilizer `2/m`.",
+        "The projective character is fixed by two choices: C2 eigenvalue `+i/-i` and inversion parity `g/u`.",
+        "Those two binary choices give exactly four one-dimensional double-valued projective irreps and the current census contains all four."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "d",
+      "family_class": "point-like",
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'/m'",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective order-2 unitary subgroup",
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "generator_index": 5,
+          "antiunitary_generator_index": 11,
+          "antiunitary_generator_square_index": 0,
+          "antiunitary_conjugation_on_unitary_generator": 5,
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_unitary_irrep_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "d_double_case_c_pair",
+          "dimension": 2,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "c",
+          "truly_antiunitary": true
+        }
+      ],
+      "expected_local_object_count": 1,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "The unitary subgroup is projective order-2 with generator square factor `-1`, so its only one-dimensional projective irreps are `+i/-i`.",
+        "The antiunitary action fixes that unitary generator, so the conjugate pair must combine into one irreducible case-c magnetic corep.",
+        "That single case-c pair is therefore the full local-object set."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "e",
+      "family_class": "point-like",
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'/m'",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective order-2 unitary subgroup",
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "generator_index": 5,
+          "antiunitary_generator_index": 11,
+          "antiunitary_generator_square_index": 0,
+          "antiunitary_conjugation_on_unitary_generator": 5,
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_unitary_irrep_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "e_double_case_c_pair",
+          "dimension": 2,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "c",
+          "truly_antiunitary": true
+        }
+      ],
+      "expected_local_object_count": 1,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "Same `2'/m'` antiunitary stabilizer as family `d`.",
+        "The projective unitary subgroup again has only the conjugate pair `+i/-i`.",
+        "Hence the census is complete once the single case-c magnetic corep is present, which it is."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "f",
+      "family_class": "point-like",
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2/m",
+        "unitary_subgroup_summary": {
+          "abstract_group": "2/m",
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "generator_indices": [
+            3,
+            4
+          ],
+          "factor_on_c2_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "factor_on_inversion_square": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "double_group_local_builder": "explicit projective character enumeration on the full unitary stabilizer"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "f_double_g_plus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "f_double_u_plus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "f_double_g_minus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "f_double_u_minus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 4,
+      "expected_kind": "projective_local_irrep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "Same pure-unitary `2/m` site symmetry as family `c`.",
+        "Projective completeness is fixed by the same `C2=+i/-i` and inversion `g/u` choices.",
+        "Hence the complete local set has exactly four one-dimensional projective irreps, all present in the census."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "g",
+      "family_class": "point-like",
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2/m'",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective order-2 unitary subgroup",
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "generator_index": 3,
+          "antiunitary_generator_index": 14,
+          "antiunitary_generator_square_index": 0,
+          "antiunitary_conjugation_on_unitary_generator": 3,
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_unitary_irrep_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "g_double_case_c_pair",
+          "dimension": 2,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "c",
+          "truly_antiunitary": true
+        }
+      ],
+      "expected_local_object_count": 1,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "The unitary subgroup is projective order-2 with only the conjugate `+i/-i` pair.",
+        "The antiunitary generator fixes the unitary generator, so Wigner completeness again produces a single irreducible case-c corep.",
+        "No further double local object is available beyond that pair."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "h",
+      "family_class": "point-like",
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2/m'",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective order-2 unitary subgroup",
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "generator_index": 3,
+          "antiunitary_generator_index": 14,
+          "antiunitary_generator_square_index": 0,
+          "antiunitary_conjugation_on_unitary_generator": 3,
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_unitary_irrep_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "h_double_case_c_pair",
+          "dimension": 2,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "c",
+          "truly_antiunitary": true
+        }
+      ],
+      "expected_local_object_count": 1,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "Same `2/m'` antiunitary stabilizer as family `g`.",
+        "The only unitary projective irreps are the conjugate pair `+i/-i`.",
+        "That pair gives exactly one case-c magnetic corep, which is already present."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "i",
+      "family_class": "parametric",
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'",
+        "unitary_subgroup_summary": {
+          "abstract_group": "1",
+          "unitary_indices": [
+            0
+          ],
+          "generator_index": null,
+          "antiunitary_generator_index": 11,
+          "antiunitary_generator_name": "raw op 11",
+          "antiunitary_generator_square_index": 0,
+          "factor_on_antiunitary_square": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "double_group_local_builder": "explicit Wigner-case-a extension of the unique trivial-unitary-subgroup irrep"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "i_double_A_eta_plus",
+          "dimension": 1,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "a",
+          "truly_antiunitary": false
+        },
+        {
+          "id": "i_double_A_eta_minus",
+          "dimension": 1,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "a",
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 2,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "The unitary subgroup is trivial, so there is only one unitary irrep to extend.",
+        "The antiunitary generator squares to the identity with double-group factor `+1`, so Wigner completeness gives the eta=`+/-` case-a pair.",
+        "There is no room for an additional higher-dimensional or projective magnetic corep in this stabilizer."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "j",
+      "family_class": "parametric",
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'",
+        "unitary_subgroup_summary": {
+          "abstract_group": "1",
+          "unitary_indices": [
+            0
+          ],
+          "generator_index": null,
+          "antiunitary_generator_index": 11,
+          "antiunitary_generator_name": "raw op 11",
+          "antiunitary_generator_square_index": 0,
+          "factor_on_antiunitary_square": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "double_group_local_builder": "explicit Wigner-case-a extension of the unique trivial-unitary-subgroup irrep"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "j_double_A_eta_plus",
+          "dimension": 1,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "a",
+          "truly_antiunitary": false
+        },
+        {
+          "id": "j_double_A_eta_minus",
+          "dimension": 1,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "a",
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 2,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "Same `2'` antiunitary stabilizer as family `i`.",
+        "With trivial unitary subgroup and antiunitary square `+1`, the full local set is exactly the eta=`+/-` case-a pair.",
+        "The census already contains that full pair."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "k",
+      "family_class": "parametric",
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "2",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective 2",
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "generator_index": 3,
+          "generator_label": "C2",
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit one-dimensional projective character enumeration on the audited order-2 unitary stabilizer"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "k_double_plus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "k_double_minus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 2,
+      "expected_kind": "projective_local_irrep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "The pure-unitary stabilizer is order 2 with generator square factor `-1`.",
+        "Hence the complete one-dimensional projective spectrum is just the two generator eigenvalues `+i/-i`.",
+        "Both are present in the current census, so the family is complete."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "l",
+      "family_class": "parametric",
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "2",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective 2",
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "generator_index": 3,
+          "generator_label": "C2",
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit one-dimensional projective character enumeration on the audited order-2 unitary stabilizer"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "l_double_plus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "l_double_minus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 2,
+      "expected_kind": "projective_local_irrep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "Same order-2 pure-unitary stabilizer as family `k`.",
+        "The only projective one-dimensional possibilities are again `+i/-i`.",
+        "Both are included, so the family-level local-object census is complete."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "m",
+      "family_class": "parametric",
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "m",
+        "unitary_subgroup_summary": {
+          "abstract_group": "projective m",
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "generator_index": 7,
+          "generator_label": "mirror",
+          "factor_on_generator_square": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "projective_generator_values": [
+            "+i",
+            "-i"
+          ],
+          "double_group_local_builder": "explicit one-dimensional projective character enumeration on the audited order-2 unitary stabilizer"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "m_double_plus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "m_double_minus_i",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 2,
+      "expected_kind": "projective_local_irrep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "The pure-unitary stabilizer is order 2 with double-group square factor `-1` on its generator.",
+        "A one-dimensional projective character must satisfy `chi(g)^2 = -1`, so the only possibilities are `+i` and `-i`.",
+        "Those two characters exhaust the projective local-irrep set."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "n",
+      "family_class": "parametric",
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "m'",
+        "unitary_subgroup_summary": {
+          "abstract_group": "1",
+          "unitary_indices": [
+            0
+          ],
+          "generator_index": null,
+          "antiunitary_generator_index": 14,
+          "antiunitary_generator_name": "raw op 14",
+          "antiunitary_generator_square_index": 0,
+          "factor_on_antiunitary_square": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "double_group_local_builder": "explicit Wigner-case-a extension of the unique trivial-unitary-subgroup irrep"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "n_double_A_eta_plus",
+          "dimension": 1,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "a",
+          "truly_antiunitary": false
+        },
+        {
+          "id": "n_double_A_eta_minus",
+          "dimension": 1,
+          "kind": "magnetic_local_corep",
+          "wigner_case": "a",
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 2,
+      "expected_kind": "magnetic_local_corep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "The unitary subgroup is again trivial.",
+        "The antiunitary generator squares to the identity with double-group factor `+1`, so the complete magnetic extension is the eta=`+/-` case-a pair.",
+        "No missing higher-dimensional local corep remains after that pair is included."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    },
+    {
+      "family_id": "o",
+      "family_class": "parametric",
+      "multiplicity": 16,
+      "site_symmetry_summary": {
+        "site_symmetry": "1",
+        "unitary_subgroup_summary": {
+          "abstract_group": "1",
+          "unitary_indices": [
+            0
+          ],
+          "generator_index": null,
+          "double_group_local_builder": "unique trivial projective irrep on the identity stabilizer"
+        }
+      },
+      "current_included_double_local_objects": [
+        {
+          "id": "o_double_A",
+          "dimension": 1,
+          "kind": "projective_local_irrep",
+          "wigner_case": null,
+          "truly_antiunitary": false
+        }
+      ],
+      "expected_local_object_count": 1,
+      "expected_kind": "projective_local_irrep",
+      "completeness_status": "complete",
+      "complete": true,
+      "missing_objects": [],
+      "completeness_basis": [
+        "The site stabilizer is trivial.",
+        "A trivial stabilizer has exactly one one-dimensional projective local irrep.",
+        "The current singleton census is therefore complete."
+      ],
+      "notes": [
+        "Current local-object census matches the mathematically expected double-group object set for this family."
+      ]
+    }
+  ]
+}

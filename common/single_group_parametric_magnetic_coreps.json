@@ -1,0 +1,1146 @@
+{
+  "group_number": "10.4.1.31",
+  "target_families": [
+    "n",
+    "i",
+    "j"
+  ],
+  "processing_order": [
+    "i",
+    "n",
+    "j"
+  ],
+  "families": [
+    {
+      "letter": "i",
+      "processing_priority": 1,
+      "processing_priority_reason": "Simplest one-parameter antiunitary family: the stabilizer is just {1, 2'} with trivial unitary subgroup, and the sample-point orbit issue is easiest to audit on the y line first.",
+      "representative_coordinate": "0, y, 0",
+      "dimension": 1,
+      "basis_vectors_magnetic": [
+        [
+          "0",
+          "1",
+          "0"
+        ]
+      ],
+      "x0_anchor_magnetic": [
+        "0",
+        "0",
+        "0"
+      ],
+      "sample_parameters": [
+        "1/5"
+      ],
+      "generic_sample_point_magnetic": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "generic_sample_point_conventional": [
+        "0",
+        "2/5",
+        "0"
+      ],
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'",
+        "site_symmetry_custom": "m'[x]",
+        "spatial_site_symmetry_custom": "2'[y]",
+        "unitary_site_symmetry": "1"
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 2,
+        "unitary_count": 1,
+        "antiunitary_count": 1,
+        "stabilizer_indices": [
+          0,
+          11
+        ],
+        "unitary_indices": [
+          0
+        ],
+        "antiunitary_indices": [
+          11
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 11,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          }
+        ]
+      },
+      "site_symmetry_check_comparison": {
+        "single_group_site_symmetry_check_matches_recompute": true,
+        "overall_consistent_flag": true,
+        "direct_reconstruction_indices": [
+          0,
+          11
+        ],
+        "direct_reconstruction_unitary_count": 1,
+        "direct_reconstruction_antiunitary_count": 1,
+        "usable_as_magnetic_local_corep_input": true,
+        "usable_note": "This family's site symmetry can be used as magnetic local corep input."
+      },
+      "orbit_handling": {
+        "must_use_sample_point_orbit": true,
+        "sample_point_is_generic": true,
+        "sample_point_genericity_reason": "The sample parameters are chosen from the fixed interior pool (1/5, 2/7, 3/11) and therefore avoid 0 and 1/2; the resulting sample orbit has size 8, matching the family multiplicity.",
+        "x0_orbit_size": 4,
+        "sample_point_orbit_size": 8,
+        "multiplicity": 8,
+        "x0_orbit_invalid": true,
+        "x0_orbit_invalid_reason": "The symbolic x0 anchor sits on the more special family `a` and its orbit has size 4 instead of the required multiplicity 8.",
+        "x0_orbit": [
+          {
+            "source_operation_index": 0,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "0",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 1,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "1/2",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "1",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 2,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "1/2",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 3,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "0",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "2",
+              "1"
+            ]
+          }
+        ],
+        "sample_point_orbit": [
+          {
+            "source_operation_index": 0,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "1/5",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "2/5",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 1,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "7/10",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "7/5",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 2,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "7/10",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "7/5",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 3,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "1/5",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "12/5",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 4,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "4/5",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "-2/5",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 5,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "3/10",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "3/5",
+              "2"
+            ]
+          },
+          {
+            "source_operation_index": 6,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "3/10",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "3/5",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 7,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "4/5",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "8/5",
+              "2"
+            ]
+          }
+        ],
+        "x0_special_anchor_family": "a"
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "C1",
+        "identity_index": 0,
+        "generator_index": null,
+        "unitary_irrep_labels": [
+          "A"
+        ]
+      },
+      "wigner_preanalysis": {
+        "antiunitary_generator_index": 11,
+        "antiunitary_generator_name": "raw op 11",
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_subgroup": "trivial because the unitary subgroup is just the identity",
+        "all_unitary_irreps_real": true,
+        "all_unitary_irreps_fixed_by_antiunitary_action": true,
+        "expected_wigner_case": "a"
+      },
+      "feasibility": {
+        "current_toolchain_direct_support": false,
+        "current_toolchain_direct_support_note": "SSGReps has antiunitary little-group/corep machinery, but no direct entrypoint that consumes a real-space site stabilizer plus a sample-point orbit as a local magnetic corep group.",
+        "can_reuse_pointlike_case_a_logic": true,
+        "pointlike_logic_difference": "The local corep classification is even simpler than the point-like case because the unitary subgroup is trivial, but the real-space orbit must be generated from a generic sample point instead of the x0 anchor.",
+        "custom_single_group_builder_possible": true,
+        "minimal_blocker": null
+      },
+      "magnetic_local_coreps": [
+        {
+          "corep_id": "i_A_eta_plus",
+          "label": "A, eta=+1",
+          "dimension": 1,
+          "family_letter": "i",
+          "family_site_symmetry": "2'",
+          "unitary_irrep_label": "A",
+          "unitary_irrep_ascii": "A",
+          "unitary_character_on_stabilizer": {
+            "0": 1
+          },
+          "antiunitary_character_signature": {
+            "11": 1
+          },
+          "antiunitary_extension_eta": 1,
+          "wigner_case": "a",
+          "source_unitary_irrep": "A",
+          "construction_logic": "The unitary subgroup is trivial and the antiunitary generator squares to the identity, so the unique real one-dimensional unitary irrep admits case-a eta=+/- direct extensions. This script keeps the eta labels explicitly for continuity with the point-like audit.",
+          "truly_antiunitary": false,
+          "direct_extension_of_unitary_irrep": true,
+          "status": "constructed"
+        },
+        {
+          "corep_id": "i_A_eta_minus",
+          "label": "A, eta=-1",
+          "dimension": 1,
+          "family_letter": "i",
+          "family_site_symmetry": "2'",
+          "unitary_irrep_label": "A",
+          "unitary_irrep_ascii": "A",
+          "unitary_character_on_stabilizer": {
+            "0": 1
+          },
+          "antiunitary_character_signature": {
+            "11": -1
+          },
+          "antiunitary_extension_eta": -1,
+          "wigner_case": "a",
+          "source_unitary_irrep": "A",
+          "construction_logic": "The unitary subgroup is trivial and the antiunitary generator squares to the identity, so the unique real one-dimensional unitary irrep admits case-a eta=+/- direct extensions. This script keeps the eta labels explicitly for continuity with the point-like audit.",
+          "truly_antiunitary": false,
+          "direct_extension_of_unitary_irrep": true,
+          "status": "constructed"
+        }
+      ],
+      "full_magnetic_local_corep_set_built": true
+    },
+    {
+      "letter": "n",
+      "processing_priority": 2,
+      "processing_priority_reason": "Second priority because it probes the distinct m' plane family and the two-parameter sample-point orbit, while still having the same trivial unitary subgroup logic.",
+      "representative_coordinate": "x, 1/4, z",
+      "dimension": 2,
+      "basis_vectors_magnetic": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "x0_anchor_magnetic": [
+        "0",
+        "1/4",
+        "0"
+      ],
+      "sample_parameters": [
+        "1/5",
+        "2/7"
+      ],
+      "generic_sample_point_magnetic": [
+        "1/5",
+        "1/4",
+        "2/7"
+      ],
+      "generic_sample_point_conventional": [
+        "1/5",
+        "1/2",
+        "4/7"
+      ],
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "m'",
+        "site_symmetry_custom": "m'[y]",
+        "spatial_site_symmetry_custom": "m'[y]",
+        "unitary_site_symmetry": "1"
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 2,
+        "unitary_count": 1,
+        "antiunitary_count": 1,
+        "stabilizer_indices": [
+          0,
+          14
+        ],
+        "unitary_indices": [
+          0
+        ],
+        "antiunitary_indices": [
+          14
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 14,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1/2",
+              "1"
+            ]
+          }
+        ]
+      },
+      "site_symmetry_check_comparison": {
+        "single_group_site_symmetry_check_matches_recompute": true,
+        "overall_consistent_flag": true,
+        "direct_reconstruction_indices": [
+          0,
+          14
+        ],
+        "direct_reconstruction_unitary_count": 1,
+        "direct_reconstruction_antiunitary_count": 1,
+        "usable_as_magnetic_local_corep_input": true,
+        "usable_note": "This family's site symmetry can be used as magnetic local corep input."
+      },
+      "orbit_handling": {
+        "must_use_sample_point_orbit": true,
+        "sample_point_is_generic": true,
+        "sample_point_genericity_reason": "The sample parameters are chosen from the fixed interior pool (1/5, 2/7, 3/11) and therefore avoid 0 and 1/2; the resulting sample orbit has size 8, matching the family multiplicity.",
+        "x0_orbit_size": 4,
+        "sample_point_orbit_size": 8,
+        "multiplicity": 8,
+        "x0_orbit_invalid": true,
+        "x0_orbit_invalid_reason": "The symbolic x0 anchor sits on the more special family `d` and its orbit has size 4 instead of the required multiplicity 8.",
+        "x0_orbit": [
+          {
+            "source_operation_index": 0,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "1/4",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "1/2",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 1,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "3/4",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "3/2",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 2,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "3/4",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "3/2",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 3,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "0",
+              "1/4",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "0",
+              "5/2",
+              "1"
+            ]
+          }
+        ],
+        "sample_point_orbit": [
+          {
+            "source_operation_index": 0,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/5",
+              "1/4",
+              "2/7"
+            ],
+            "conventional_coordinate": [
+              "1/5",
+              "1/2",
+              "4/7"
+            ]
+          },
+          {
+            "source_operation_index": 1,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/5",
+              "3/4",
+              "11/14"
+            ],
+            "conventional_coordinate": [
+              "1/5",
+              "3/2",
+              "11/7"
+            ]
+          },
+          {
+            "source_operation_index": 2,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "4/5",
+              "3/4",
+              "5/7"
+            ],
+            "conventional_coordinate": [
+              "-1/5",
+              "3/2",
+              "-4/7"
+            ]
+          },
+          {
+            "source_operation_index": 3,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "4/5",
+              "1/4",
+              "3/14"
+            ],
+            "conventional_coordinate": [
+              "-1/5",
+              "5/2",
+              "3/7"
+            ]
+          },
+          {
+            "source_operation_index": 4,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "4/5",
+              "3/4",
+              "3/14"
+            ],
+            "conventional_coordinate": [
+              "-1/5",
+              "-1/2",
+              "3/7"
+            ]
+          },
+          {
+            "source_operation_index": 5,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "4/5",
+              "1/4",
+              "5/7"
+            ],
+            "conventional_coordinate": [
+              "-1/5",
+              "1/2",
+              "10/7"
+            ]
+          },
+          {
+            "source_operation_index": 6,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/5",
+              "1/4",
+              "11/14"
+            ],
+            "conventional_coordinate": [
+              "1/5",
+              "1/2",
+              "11/7"
+            ]
+          },
+          {
+            "source_operation_index": 7,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/5",
+              "3/4",
+              "2/7"
+            ],
+            "conventional_coordinate": [
+              "1/5",
+              "3/2",
+              "18/7"
+            ]
+          }
+        ],
+        "x0_special_anchor_family": "d"
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "C1",
+        "identity_index": 0,
+        "generator_index": null,
+        "unitary_irrep_labels": [
+          "A"
+        ]
+      },
+      "wigner_preanalysis": {
+        "antiunitary_generator_index": 14,
+        "antiunitary_generator_name": "raw op 14",
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_subgroup": "trivial because the unitary subgroup is just the identity",
+        "all_unitary_irreps_real": true,
+        "all_unitary_irreps_fixed_by_antiunitary_action": true,
+        "expected_wigner_case": "a"
+      },
+      "feasibility": {
+        "current_toolchain_direct_support": false,
+        "current_toolchain_direct_support_note": "SSGReps has antiunitary little-group/corep machinery, but no direct entrypoint that consumes a real-space site stabilizer plus a sample-point orbit as a local magnetic corep group.",
+        "can_reuse_pointlike_case_a_logic": true,
+        "pointlike_logic_difference": "The local corep classification is even simpler than the point-like case because the unitary subgroup is trivial, but the real-space orbit must be generated from a generic sample point instead of the x0 anchor.",
+        "custom_single_group_builder_possible": true,
+        "minimal_blocker": null
+      },
+      "magnetic_local_coreps": [
+        {
+          "corep_id": "n_A_eta_plus",
+          "label": "A, eta=+1",
+          "dimension": 1,
+          "family_letter": "n",
+          "family_site_symmetry": "m'",
+          "unitary_irrep_label": "A",
+          "unitary_irrep_ascii": "A",
+          "unitary_character_on_stabilizer": {
+            "0": 1
+          },
+          "antiunitary_character_signature": {
+            "14": 1
+          },
+          "antiunitary_extension_eta": 1,
+          "wigner_case": "a",
+          "source_unitary_irrep": "A",
+          "construction_logic": "The unitary subgroup is trivial and the antiunitary generator squares to the identity, so the unique real one-dimensional unitary irrep admits case-a eta=+/- direct extensions. This script keeps the eta labels explicitly for continuity with the point-like audit.",
+          "truly_antiunitary": false,
+          "direct_extension_of_unitary_irrep": true,
+          "status": "constructed"
+        },
+        {
+          "corep_id": "n_A_eta_minus",
+          "label": "A, eta=-1",
+          "dimension": 1,
+          "family_letter": "n",
+          "family_site_symmetry": "m'",
+          "unitary_irrep_label": "A",
+          "unitary_irrep_ascii": "A",
+          "unitary_character_on_stabilizer": {
+            "0": 1
+          },
+          "antiunitary_character_signature": {
+            "14": -1
+          },
+          "antiunitary_extension_eta": -1,
+          "wigner_case": "a",
+          "source_unitary_irrep": "A",
+          "construction_logic": "The unitary subgroup is trivial and the antiunitary generator squares to the identity, so the unique real one-dimensional unitary irrep admits case-a eta=+/- direct extensions. This script keeps the eta labels explicitly for continuity with the point-like audit.",
+          "truly_antiunitary": false,
+          "direct_extension_of_unitary_irrep": true,
+          "status": "constructed"
+        }
+      ],
+      "full_magnetic_local_corep_set_built": true
+    },
+    {
+      "letter": "j",
+      "processing_priority": 3,
+      "processing_priority_reason": "Last because it shares the same 2' stabilizer and one-parameter orbit logic as i and mainly checks the translated partner after the i builder is stable.",
+      "representative_coordinate": "1/2, y, 0",
+      "dimension": 1,
+      "basis_vectors_magnetic": [
+        [
+          "0",
+          "1",
+          "0"
+        ]
+      ],
+      "x0_anchor_magnetic": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "sample_parameters": [
+        "1/5"
+      ],
+      "generic_sample_point_magnetic": [
+        "1/2",
+        "1/5",
+        "0"
+      ],
+      "generic_sample_point_conventional": [
+        "1/2",
+        "2/5",
+        "0"
+      ],
+      "multiplicity": 8,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'",
+        "site_symmetry_custom": "m'[x]",
+        "spatial_site_symmetry_custom": "2'[y]",
+        "unitary_site_symmetry": "1"
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 2,
+        "unitary_count": 1,
+        "antiunitary_count": 1,
+        "stabilizer_indices": [
+          0,
+          11
+        ],
+        "unitary_indices": [
+          0
+        ],
+        "antiunitary_indices": [
+          11
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "time_reversal": false,
+            "matrix": [
+              [
+                "1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "index": 11,
+            "time_reversal": true,
+            "matrix": [
+              [
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "-1"
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "1"
+            ]
+          }
+        ]
+      },
+      "site_symmetry_check_comparison": {
+        "single_group_site_symmetry_check_matches_recompute": true,
+        "overall_consistent_flag": true,
+        "direct_reconstruction_indices": [
+          0,
+          11
+        ],
+        "direct_reconstruction_unitary_count": 1,
+        "direct_reconstruction_antiunitary_count": 1,
+        "usable_as_magnetic_local_corep_input": true,
+        "usable_note": "This family's site symmetry can be used as magnetic local corep input."
+      },
+      "orbit_handling": {
+        "must_use_sample_point_orbit": true,
+        "sample_point_is_generic": true,
+        "sample_point_genericity_reason": "The sample parameters are chosen from the fixed interior pool (1/5, 2/7, 3/11) and therefore avoid 0 and 1/2; the resulting sample orbit has size 8, matching the family multiplicity.",
+        "x0_orbit_size": 4,
+        "sample_point_orbit_size": 8,
+        "multiplicity": 8,
+        "x0_orbit_invalid": true,
+        "x0_orbit_invalid_reason": "The symbolic x0 anchor sits on the more special family `b` and its orbit has size 4 instead of the required multiplicity 8.",
+        "x0_orbit": [
+          {
+            "source_operation_index": 0,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "0",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "1/2",
+              "0",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 1,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "1/2",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "1/2",
+              "1",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 2,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "1/2",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "-1/2",
+              "1",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 3,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "0",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "-1/2",
+              "2",
+              "1"
+            ]
+          }
+        ],
+        "sample_point_orbit": [
+          {
+            "source_operation_index": 0,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "1/5",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "1/2",
+              "2/5",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 1,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "7/10",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "1/2",
+              "7/5",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 2,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "7/10",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "-1/2",
+              "7/5",
+              "0"
+            ]
+          },
+          {
+            "source_operation_index": 3,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "1/5",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "-1/2",
+              "12/5",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 4,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "4/5",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "-1/2",
+              "-2/5",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 5,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "3/10",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "-1/2",
+              "3/5",
+              "2"
+            ]
+          },
+          {
+            "source_operation_index": 6,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "3/10",
+              "1/2"
+            ],
+            "conventional_coordinate": [
+              "1/2",
+              "3/5",
+              "1"
+            ]
+          },
+          {
+            "source_operation_index": 7,
+            "time_reversal_source": false,
+            "magnetic_coordinate": [
+              "1/2",
+              "4/5",
+              "0"
+            ],
+            "conventional_coordinate": [
+              "1/2",
+              "8/5",
+              "2"
+            ]
+          }
+        ],
+        "x0_special_anchor_family": "b"
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "C1",
+        "identity_index": 0,
+        "generator_index": null,
+        "unitary_irrep_labels": [
+          "A"
+        ]
+      },
+      "wigner_preanalysis": {
+        "antiunitary_generator_index": 11,
+        "antiunitary_generator_name": "raw op 11",
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_subgroup": "trivial because the unitary subgroup is just the identity",
+        "all_unitary_irreps_real": true,
+        "all_unitary_irreps_fixed_by_antiunitary_action": true,
+        "expected_wigner_case": "a"
+      },
+      "feasibility": {
+        "current_toolchain_direct_support": false,
+        "current_toolchain_direct_support_note": "SSGReps has antiunitary little-group/corep machinery, but no direct entrypoint that consumes a real-space site stabilizer plus a sample-point orbit as a local magnetic corep group.",
+        "can_reuse_pointlike_case_a_logic": true,
+        "pointlike_logic_difference": "The local corep classification is even simpler than the point-like case because the unitary subgroup is trivial, but the real-space orbit must be generated from a generic sample point instead of the x0 anchor.",
+        "custom_single_group_builder_possible": true,
+        "minimal_blocker": null
+      },
+      "magnetic_local_coreps": [
+        {
+          "corep_id": "j_A_eta_plus",
+          "label": "A, eta=+1",
+          "dimension": 1,
+          "family_letter": "j",
+          "family_site_symmetry": "2'",
+          "unitary_irrep_label": "A",
+          "unitary_irrep_ascii": "A",
+          "unitary_character_on_stabilizer": {
+            "0": 1
+          },
+          "antiunitary_character_signature": {
+            "11": 1
+          },
+          "antiunitary_extension_eta": 1,
+          "wigner_case": "a",
+          "source_unitary_irrep": "A",
+          "construction_logic": "The unitary subgroup is trivial and the antiunitary generator squares to the identity, so the unique real one-dimensional unitary irrep admits case-a eta=+/- direct extensions. This script keeps the eta labels explicitly for continuity with the point-like audit.",
+          "truly_antiunitary": false,
+          "direct_extension_of_unitary_irrep": true,
+          "status": "constructed"
+        },
+        {
+          "corep_id": "j_A_eta_minus",
+          "label": "A, eta=-1",
+          "dimension": 1,
+          "family_letter": "j",
+          "family_site_symmetry": "2'",
+          "unitary_irrep_label": "A",
+          "unitary_irrep_ascii": "A",
+          "unitary_character_on_stabilizer": {
+            "0": 1
+          },
+          "antiunitary_character_signature": {
+            "11": -1
+          },
+          "antiunitary_extension_eta": -1,
+          "wigner_case": "a",
+          "source_unitary_irrep": "A",
+          "construction_logic": "The unitary subgroup is trivial and the antiunitary generator squares to the identity, so the unique real one-dimensional unitary irrep admits case-a eta=+/- direct extensions. This script keeps the eta labels explicitly for continuity with the point-like audit.",
+          "truly_antiunitary": false,
+          "direct_extension_of_unitary_irrep": true,
+          "status": "constructed"
+        }
+      ],
+      "full_magnetic_local_corep_set_built": true
+    }
+  ]
+}

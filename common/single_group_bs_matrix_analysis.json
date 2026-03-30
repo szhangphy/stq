@@ -1,0 +1,3163 @@
+{
+  "group_number": "10.4.1.31",
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1"
+  ],
+  "global_matrix": [
+    [
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -2,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      -2
+    ]
+  ],
+  "row_sources": [
+    {
+      "line_id": "L1",
+      "basis_id": "L1_R1",
+      "row_index_within_line": 0,
+      "equation": "1*P1_R1 + 1*P1_R2 = 1*P4_R2",
+      "matrix_row": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L1",
+      "basis_id": "L1_R2",
+      "row_index_within_line": 1,
+      "equation": "1*P1_R3 + 1*P1_R4 = 1*P4_R1",
+      "matrix_row": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L1",
+      "basis_id": "L1_R3",
+      "row_index_within_line": 2,
+      "equation": "1*P1_R5 + 1*P1_R6 = 1*P4_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L1",
+      "basis_id": "L1_R4",
+      "row_index_within_line": 3,
+      "equation": "1*P1_R7 + 1*P1_R8 = 1*P4_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L2",
+      "basis_id": "L2_R1",
+      "row_index_within_line": 0,
+      "equation": "1*P2_R1 + 1*P2_R2 = 2*P6_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L3",
+      "basis_id": "L3_R1",
+      "row_index_within_line": 0,
+      "equation": "1*P3_R1 + 1*P3_R2 = 1*P5_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L3",
+      "basis_id": "L3_R2",
+      "row_index_within_line": 1,
+      "equation": "1*P3_R3 + 1*P3_R4 = 1*P5_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L3",
+      "basis_id": "L3_R3",
+      "row_index_within_line": 2,
+      "equation": "1*P3_R5 + 1*P3_R6 = 1*P5_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L3",
+      "basis_id": "L3_R4",
+      "row_index_within_line": 3,
+      "equation": "1*P3_R7 + 1*P3_R8 = 1*P5_R2",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "line_id": "L4",
+      "basis_id": "L4_R1",
+      "row_index_within_line": 0,
+      "equation": "1*P7_R1 + 1*P7_R2 = 2*P8_R1",
+      "matrix_row": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        -2
+      ]
+    }
+  ],
+  "integrality": {
+    "all_entries_are_integers": true,
+    "contains_floats": false,
+    "contains_non_numeric_strings": false
+  },
+  "rank": 10,
+  "nullity": 16,
+  "smith_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "all_nonzero_smith_entries_are_one": true,
+  "row_analysis": {
+    "duplicate_row_count": 0,
+    "all_rows_are_essential": true,
+    "rows": [
+      {
+        "row_index": 0,
+        "line_id": "L1",
+        "basis_id": "L1_R1",
+        "equation": "1*P1_R1 + 1*P1_R2 = 1*P4_R2",
+        "is_essential": true
+      },
+      {
+        "row_index": 1,
+        "line_id": "L1",
+        "basis_id": "L1_R2",
+        "equation": "1*P1_R3 + 1*P1_R4 = 1*P4_R1",
+        "is_essential": true
+      },
+      {
+        "row_index": 2,
+        "line_id": "L1",
+        "basis_id": "L1_R3",
+        "equation": "1*P1_R5 + 1*P1_R6 = 1*P4_R1",
+        "is_essential": true
+      },
+      {
+        "row_index": 3,
+        "line_id": "L1",
+        "basis_id": "L1_R4",
+        "equation": "1*P1_R7 + 1*P1_R8 = 1*P4_R2",
+        "is_essential": true
+      },
+      {
+        "row_index": 4,
+        "line_id": "L2",
+        "basis_id": "L2_R1",
+        "equation": "1*P2_R1 + 1*P2_R2 = 2*P6_R1",
+        "is_essential": true
+      },
+      {
+        "row_index": 5,
+        "line_id": "L3",
+        "basis_id": "L3_R1",
+        "equation": "1*P3_R1 + 1*P3_R2 = 1*P5_R2",
+        "is_essential": true
+      },
+      {
+        "row_index": 6,
+        "line_id": "L3",
+        "basis_id": "L3_R2",
+        "equation": "1*P3_R3 + 1*P3_R4 = 1*P5_R1",
+        "is_essential": true
+      },
+      {
+        "row_index": 7,
+        "line_id": "L3",
+        "basis_id": "L3_R3",
+        "equation": "1*P3_R5 + 1*P3_R6 = 1*P5_R1",
+        "is_essential": true
+      },
+      {
+        "row_index": 8,
+        "line_id": "L3",
+        "basis_id": "L3_R4",
+        "equation": "1*P3_R7 + 1*P3_R8 = 1*P5_R2",
+        "is_essential": true
+      },
+      {
+        "row_index": 9,
+        "line_id": "L4",
+        "basis_id": "L4_R1",
+        "equation": "1*P7_R1 + 1*P7_R2 = 2*P8_R1",
+        "is_essential": true
+      }
+    ]
+  },
+  "kernel_checks": {
+    "raw_basis_count": 16,
+    "pretty_basis_count": 16,
+    "basis_transform_from_raw_determinant": -1,
+    "block_checks": {
+      "L1": {
+        "local_unknown_ordering": [
+          "P1_R1",
+          "P1_R2",
+          "P1_R3",
+          "P1_R4",
+          "P1_R5",
+          "P1_R6",
+          "P1_R7",
+          "P1_R8",
+          "P4_R1",
+          "P4_R2"
+        ],
+        "local_matrix": [
+          [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            -1
+          ]
+        ],
+        "pretty_basis_checks": [
+          {
+            "basis_id": "P1_diff_12",
+            "restricted_vector": [
+              1,
+              -1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_34",
+            "restricted_vector": [
+              0,
+              0,
+              1,
+              -1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_56",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              -1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_78",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              -1,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L1_sum_R1",
+            "restricted_vector": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L1_sum_R2",
+            "restricted_vector": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P2_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L2_charge",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_34",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_56",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_78",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L3_sum_R1",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L3_sum_R2",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P7_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L4_charge",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          }
+        ],
+        "raw_basis_checks": [
+          {
+            "basis_id": "raw_basis_01",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              -1,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_02",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_03",
+            "restricted_vector": [
+              0,
+              0,
+              -1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_04",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_05",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              -1,
+              1,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_06",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_07",
+            "restricted_vector": [
+              -1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_08",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_09",
+            "restricted_vector": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_10",
+            "restricted_vector": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_11",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_12",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_13",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_14",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_15",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_16",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          }
+        ],
+        "local_kernel_rank": 6
+      },
+      "L2": {
+        "local_unknown_ordering": [
+          "P2_R1",
+          "P2_R2",
+          "P6_R1"
+        ],
+        "local_matrix": [
+          [
+            1,
+            1,
+            -2
+          ]
+        ],
+        "pretty_basis_checks": [
+          {
+            "basis_id": "P1_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_34",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_56",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_78",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L1_sum_R1",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L1_sum_R2",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P2_diff_12",
+            "restricted_vector": [
+              1,
+              -1,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L2_charge",
+            "restricted_vector": [
+              2,
+              0,
+              1
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_34",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_56",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_78",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L3_sum_R1",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L3_sum_R2",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P7_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L4_charge",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          }
+        ],
+        "raw_basis_checks": [
+          {
+            "basis_id": "raw_basis_01",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_02",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_03",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_04",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_05",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_06",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_07",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_08",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_09",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_10",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_11",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_12",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_13",
+            "restricted_vector": [
+              2,
+              0,
+              1
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_14",
+            "restricted_vector": [
+              -1,
+              1,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_15",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_16",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          }
+        ],
+        "local_kernel_rank": 2
+      },
+      "L3": {
+        "local_unknown_ordering": [
+          "P3_R1",
+          "P3_R2",
+          "P3_R3",
+          "P3_R4",
+          "P3_R5",
+          "P3_R6",
+          "P3_R7",
+          "P3_R8",
+          "P5_R1",
+          "P5_R2"
+        ],
+        "local_matrix": [
+          [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            -1,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            -1
+          ]
+        ],
+        "pretty_basis_checks": [
+          {
+            "basis_id": "P1_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_34",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_56",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_78",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L1_sum_R1",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L1_sum_R2",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P2_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L2_charge",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_12",
+            "restricted_vector": [
+              1,
+              -1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_34",
+            "restricted_vector": [
+              0,
+              0,
+              1,
+              -1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_56",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              -1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_78",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              -1,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L3_sum_R1",
+            "restricted_vector": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L3_sum_R2",
+            "restricted_vector": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P7_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L4_charge",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          }
+        ],
+        "raw_basis_checks": [
+          {
+            "basis_id": "raw_basis_01",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_02",
+            "restricted_vector": [
+              -1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_03",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_04",
+            "restricted_vector": [
+              0,
+              0,
+              -1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_05",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_06",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              -1,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_07",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_08",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              -1,
+              1,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_09",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_10",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_11",
+            "restricted_vector": [
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_12",
+            "restricted_vector": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_13",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_14",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_15",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_16",
+            "restricted_vector": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "satisfies_block": true
+          }
+        ],
+        "local_kernel_rank": 6
+      },
+      "L4": {
+        "local_unknown_ordering": [
+          "P7_R1",
+          "P7_R2",
+          "P8_R1"
+        ],
+        "local_matrix": [
+          [
+            1,
+            1,
+            -2
+          ]
+        ],
+        "pretty_basis_checks": [
+          {
+            "basis_id": "P1_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_34",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_56",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P1_diff_78",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L1_sum_R1",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L1_sum_R2",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P2_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L2_charge",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_12",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_34",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_56",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P3_diff_78",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L3_sum_R1",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L3_sum_R2",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "P7_diff_12",
+            "restricted_vector": [
+              1,
+              -1,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "L4_charge",
+            "restricted_vector": [
+              2,
+              0,
+              1
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          }
+        ],
+        "raw_basis_checks": [
+          {
+            "basis_id": "raw_basis_01",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_02",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_03",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_04",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_05",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_06",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_07",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_08",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_09",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_10",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_11",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_12",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_13",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_14",
+            "restricted_vector": [
+              0,
+              0,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_15",
+            "restricted_vector": [
+              -1,
+              1,
+              0
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          },
+          {
+            "basis_id": "raw_basis_16",
+            "restricted_vector": [
+              2,
+              0,
+              1
+            ],
+            "residual": [
+              0
+            ],
+            "satisfies_block": true
+          }
+        ],
+        "local_kernel_rank": 2
+      }
+    },
+    "block_separation": {
+      "global_kernel_is_direct_sum_of_line_blocks": true,
+      "pretty_basis_blocks": {
+        "P1_diff_12": [
+          "L1"
+        ],
+        "P1_diff_34": [
+          "L1"
+        ],
+        "P1_diff_56": [
+          "L1"
+        ],
+        "P1_diff_78": [
+          "L1"
+        ],
+        "L1_sum_R1": [
+          "L1"
+        ],
+        "L1_sum_R2": [
+          "L1"
+        ],
+        "P2_diff_12": [
+          "L2"
+        ],
+        "L2_charge": [
+          "L2"
+        ],
+        "P3_diff_12": [
+          "L3"
+        ],
+        "P3_diff_34": [
+          "L3"
+        ],
+        "P3_diff_56": [
+          "L3"
+        ],
+        "P3_diff_78": [
+          "L3"
+        ],
+        "L3_sum_R1": [
+          "L3"
+        ],
+        "L3_sum_R2": [
+          "L3"
+        ],
+        "P7_diff_12": [
+          "L4"
+        ],
+        "L4_charge": [
+          "L4"
+        ]
+      }
+    }
+  }
+}

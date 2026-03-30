@@ -1,0 +1,383 @@
+{
+  "group_number": "10.4.1.31",
+  "line_signature_classes": [
+    {
+      "line_ids": [
+        "L1",
+        "L3"
+      ],
+      "signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-1",
+            "-1",
+            "1"
+          ],
+          [
+            "1",
+            "-1",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "-1",
+            "-1"
+          ],
+          [
+            "1",
+            "1",
+            "1",
+            "1"
+          ]
+        ],
+        "basis_size": 4,
+        "character_length": 4,
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'"
+      }
+    },
+    {
+      "line_ids": [
+        "L2",
+        "L4"
+      ],
+      "signature": {
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "basis_size": 1,
+        "character_length": 4,
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'"
+      }
+    }
+  ],
+  "line_signatures": {
+    "L1": {
+      "n_ops_total": 8,
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "basis_characters": [
+        [
+          "1",
+          "-1",
+          "-1",
+          "1"
+        ],
+        [
+          "1",
+          "-1",
+          "1",
+          "-1"
+        ],
+        [
+          "1",
+          "1",
+          "-1",
+          "-1"
+        ],
+        [
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      ],
+      "basis_size": 4,
+      "character_length": 4,
+      "generic_stabilizer_size": 8,
+      "generic_rotation_stabilizer_size": 2,
+      "site_symmetry": "2/m'"
+    },
+    "L2": {
+      "n_ops_total": 8,
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "rep_degree": [
+        2
+      ],
+      "torsion": [
+        1
+      ],
+      "basis_characters": [
+        [
+          "2",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "basis_size": 1,
+      "character_length": 4,
+      "generic_stabilizer_size": 8,
+      "generic_rotation_stabilizer_size": 2,
+      "site_symmetry": "2/m'"
+    },
+    "L3": {
+      "n_ops_total": 8,
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "basis_characters": [
+        [
+          "1",
+          "-1",
+          "-1",
+          "1"
+        ],
+        [
+          "1",
+          "-1",
+          "1",
+          "-1"
+        ],
+        [
+          "1",
+          "1",
+          "-1",
+          "-1"
+        ],
+        [
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      ],
+      "basis_size": 4,
+      "character_length": 4,
+      "generic_stabilizer_size": 8,
+      "generic_rotation_stabilizer_size": 2,
+      "site_symmetry": "2/m'"
+    },
+    "L4": {
+      "n_ops_total": 8,
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "rep_degree": [
+        2
+      ],
+      "torsion": [
+        1
+      ],
+      "basis_characters": [
+        [
+          "2",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "basis_size": 1,
+      "character_length": 4,
+      "generic_stabilizer_size": 8,
+      "generic_rotation_stabilizer_size": 2,
+      "site_symmetry": "2/m'"
+    }
+  },
+  "plane_signatures": {
+    "S1": {
+      "n_ops_total": 8,
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "basis_size": 4,
+      "character_length": 4,
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "basis_characters": [
+        [
+          "1",
+          "-1",
+          "-1",
+          "1"
+        ],
+        [
+          "1",
+          "-1",
+          "1",
+          "-1"
+        ],
+        [
+          "1",
+          "1",
+          "-1",
+          "-1"
+        ],
+        [
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      ],
+      "generic_stabilizer_size": 8,
+      "generic_rotation_stabilizer_size": 2,
+      "site_symmetry": "2'/m"
+    },
+    "S2": {
+      "n_ops_total": 8,
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "basis_size": 1,
+      "character_length": 4,
+      "rep_degree": [
+        2
+      ],
+      "torsion": [
+        1
+      ],
+      "basis_characters": [
+        [
+          "2",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "generic_stabilizer_size": 8,
+      "generic_rotation_stabilizer_size": 2,
+      "site_symmetry": "2'/m"
+    }
+  },
+  "plane_vs_line": {
+    "S1": {
+      "L1": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "L2": {
+        "same_signature": false,
+        "same_basis_characters": false,
+        "same_rep_degree_pattern": false,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "L3": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "L4": {
+        "same_signature": false,
+        "same_basis_characters": false,
+        "same_rep_degree_pattern": false,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      }
+    },
+    "S2": {
+      "L1": {
+        "same_signature": false,
+        "same_basis_characters": false,
+        "same_rep_degree_pattern": false,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "L2": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "L3": {
+        "same_signature": false,
+        "same_basis_characters": false,
+        "same_rep_degree_pattern": false,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      },
+      "L4": {
+        "same_signature": true,
+        "same_basis_characters": true,
+        "same_rep_degree_pattern": true,
+        "same_unitary_antiunitary_counts": true,
+        "same_stabilizer_size": true
+      }
+    }
+  },
+  "plane_to_matching_lines": {
+    "S1": [
+      "L1",
+      "L3"
+    ],
+    "S2": [
+      "L2",
+      "L4"
+    ]
+  },
+  "new_little_group_signature_types": false,
+  "conclusion_summary": "S1 matches the L1/L3 one-dimensional four-basis signature, and S2 matches the L2/L4 two-dimensional single-basis signature. No new little-group signature type appears at the plane-generic level."
+}

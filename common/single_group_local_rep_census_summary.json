@@ -1,0 +1,274 @@
+{
+  "group_number": "10.4.1.31",
+  "trusted_families": [
+    "o",
+    "n",
+    "m",
+    "l",
+    "k",
+    "j",
+    "i",
+    "h",
+    "g",
+    "f",
+    "e",
+    "d",
+    "c",
+    "b",
+    "a"
+  ],
+  "included_families": [
+    "o",
+    "m",
+    "k",
+    "l",
+    "c",
+    "f"
+  ],
+  "excluded_families": [
+    "h",
+    "g",
+    "e",
+    "d",
+    "b",
+    "a",
+    "n",
+    "j",
+    "i"
+  ],
+  "included_local_reps": {
+    "o": [
+      "o_A"
+    ],
+    "m": [
+      "m_A_prime",
+      "m_A_double_prime"
+    ],
+    "k": [
+      "k_A",
+      "k_B"
+    ],
+    "l": [
+      "l_A",
+      "l_B"
+    ],
+    "c": [
+      "c_Ag",
+      "c_Bg",
+      "c_Au",
+      "c_Bu"
+    ],
+    "f": [
+      "f_Ag",
+      "f_Bg",
+      "f_Au",
+      "f_Bu"
+    ]
+  },
+  "can_build_expanded_ai_candidates": true,
+  "next_blocker": "Extend the site-symmetry side from unitary-only local irreps to full magnetic local coreps on the antiunitary families a,b,d,e,g,h,n,i,j.",
+  "tiers": [
+    {
+      "letter": "o",
+      "tier": "Tier 1",
+      "dimension": 3,
+      "multiplicity": 16,
+      "representative_coordinate_symbolic": "x, y, z",
+      "site_symmetry": "1",
+      "unitary_stabilizer_size": 1,
+      "antiunitary_stabilizer_size": 0,
+      "included_local_rep_ids": [
+        "o_A"
+      ],
+      "rationale": "Purely unitary site symmetry; all one-dimensional local irreps can be reconstructed directly from the unitary stabilizer."
+    },
+    {
+      "letter": "n",
+      "tier": "Tier 3",
+      "dimension": 2,
+      "multiplicity": 8,
+      "representative_coordinate_symbolic": "x, 1/4, z",
+      "site_symmetry": "m'",
+      "unitary_stabilizer_size": 1,
+      "antiunitary_stabilizer_size": 1,
+      "included_local_rep_ids": [],
+      "rationale": "Site symmetry contains antiunitary elements and the family also carries free real-space parameters; defer until a dedicated magnetic corep audit is done."
+    },
+    {
+      "letter": "m",
+      "tier": "Tier 1",
+      "dimension": 2,
+      "multiplicity": 8,
+      "representative_coordinate_symbolic": "x, 0, z",
+      "site_symmetry": "m",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 0,
+      "included_local_rep_ids": [
+        "m_A_prime",
+        "m_A_double_prime"
+      ],
+      "rationale": "Purely unitary site symmetry; all one-dimensional local irreps can be reconstructed directly from the unitary stabilizer."
+    },
+    {
+      "letter": "l",
+      "tier": "Tier 1",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate_symbolic": "1/2, y, 1/4",
+      "site_symmetry": "2",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 0,
+      "included_local_rep_ids": [
+        "l_A",
+        "l_B"
+      ],
+      "rationale": "Purely unitary site symmetry; all one-dimensional local irreps can be reconstructed directly from the unitary stabilizer."
+    },
+    {
+      "letter": "k",
+      "tier": "Tier 1",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate_symbolic": "0, y, 1/4",
+      "site_symmetry": "2",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 0,
+      "included_local_rep_ids": [
+        "k_A",
+        "k_B"
+      ],
+      "rationale": "Purely unitary site symmetry; all one-dimensional local irreps can be reconstructed directly from the unitary stabilizer."
+    },
+    {
+      "letter": "j",
+      "tier": "Tier 3",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate_symbolic": "1/2, y, 0",
+      "site_symmetry": "2'",
+      "unitary_stabilizer_size": 1,
+      "antiunitary_stabilizer_size": 1,
+      "included_local_rep_ids": [],
+      "rationale": "Site symmetry contains antiunitary elements and the family also carries free real-space parameters; defer until a dedicated magnetic corep audit is done."
+    },
+    {
+      "letter": "i",
+      "tier": "Tier 3",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate_symbolic": "0, y, 0",
+      "site_symmetry": "2'",
+      "unitary_stabilizer_size": 1,
+      "antiunitary_stabilizer_size": 1,
+      "included_local_rep_ids": [],
+      "rationale": "Site symmetry contains antiunitary elements and the family also carries free real-space parameters; defer until a dedicated magnetic corep audit is done."
+    },
+    {
+      "letter": "h",
+      "tier": "Tier 2",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate_symbolic": "1/2, 1/4, 1/4",
+      "site_symmetry": "2/m'",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 2,
+      "included_local_rep_ids": [],
+      "rationale": "Point-like and double-checked, but the site symmetry contains antiunitary elements; full magnetic local coreps are not yet reconstructed."
+    },
+    {
+      "letter": "g",
+      "tier": "Tier 2",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate_symbolic": "0, 1/4, 1/4",
+      "site_symmetry": "2/m'",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 2,
+      "included_local_rep_ids": [],
+      "rationale": "Point-like and double-checked, but the site symmetry contains antiunitary elements; full magnetic local coreps are not yet reconstructed."
+    },
+    {
+      "letter": "f",
+      "tier": "Tier 1",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate_symbolic": "1/2, 0, 1/4",
+      "site_symmetry": "2/m",
+      "unitary_stabilizer_size": 4,
+      "antiunitary_stabilizer_size": 0,
+      "included_local_rep_ids": [
+        "f_Ag",
+        "f_Bg",
+        "f_Au",
+        "f_Bu"
+      ],
+      "rationale": "Purely unitary site symmetry; all one-dimensional local irreps can be reconstructed directly from the unitary stabilizer."
+    },
+    {
+      "letter": "e",
+      "tier": "Tier 2",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate_symbolic": "1/2, 1/4, 0",
+      "site_symmetry": "2'/m'",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 2,
+      "included_local_rep_ids": [],
+      "rationale": "Point-like and double-checked, but the site symmetry contains antiunitary elements; full magnetic local coreps are not yet reconstructed."
+    },
+    {
+      "letter": "d",
+      "tier": "Tier 2",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate_symbolic": "0, 1/4, 0",
+      "site_symmetry": "2'/m'",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 2,
+      "included_local_rep_ids": [],
+      "rationale": "Point-like and double-checked, but the site symmetry contains antiunitary elements; full magnetic local coreps are not yet reconstructed."
+    },
+    {
+      "letter": "c",
+      "tier": "Tier 1",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate_symbolic": "0, 0, 1/4",
+      "site_symmetry": "2/m",
+      "unitary_stabilizer_size": 4,
+      "antiunitary_stabilizer_size": 0,
+      "included_local_rep_ids": [
+        "c_Ag",
+        "c_Bg",
+        "c_Au",
+        "c_Bu"
+      ],
+      "rationale": "Purely unitary site symmetry; all one-dimensional local irreps can be reconstructed directly from the unitary stabilizer."
+    },
+    {
+      "letter": "b",
+      "tier": "Tier 2",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate_symbolic": "1/2, 0, 0",
+      "site_symmetry": "2'/m",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 2,
+      "included_local_rep_ids": [],
+      "rationale": "Point-like and double-checked, but the site symmetry contains antiunitary elements; full magnetic local coreps are not yet reconstructed."
+    },
+    {
+      "letter": "a",
+      "tier": "Tier 2",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate_symbolic": "0, 0, 0",
+      "site_symmetry": "2'/m",
+      "unitary_stabilizer_size": 2,
+      "antiunitary_stabilizer_size": 2,
+      "included_local_rep_ids": [],
+      "rationale": "Point-like and double-checked, but the site symmetry contains antiunitary elements; full magnetic local coreps are not yet reconstructed."
+    }
+  ],
+  "missing_file_note": "No local swyckoff.py exists in this repository; the real-space side is provided by swyckoff_r.py and the k-space side by swyckoff_k.py."
+}

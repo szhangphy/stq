@@ -1,0 +1,442 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "selected_minimal_family": {
+    "family": "c",
+    "reason": "Family c is point-like, purely unitary, and has site symmetry 2/m with stabilizer indices [0,3,4,7]. That makes it the safest first double-group prototype because the local double-valued irreps can be built directly from the projective factor table without the extra Wigner-case machinery needed by antiunitary families."
+  },
+  "site_symmetry_summary": {
+    "representative_coordinate": "0, 0, 1/4",
+    "site_symmetry": "2/m",
+    "unitary_site_symmetry": "?",
+    "stabilizer_indices": [
+      0,
+      3,
+      4,
+      7
+    ],
+    "unitary_indices": [
+      0,
+      3,
+      4,
+      7
+    ],
+    "antiunitary_indices": []
+  },
+  "double_group_local_rep_corep_summary": {
+    "available_minimal_irreps": [
+      {
+        "id": "c_double_g_plus_i",
+        "family_letter": "c",
+        "dimension": 1,
+        "site_symmetry": "2/m",
+        "double_group_local_object_kind": "projective_local_irrep",
+        "construction_basis": "Use the double-group factor table on the unitary stabilizer [0,3,4,7]. Because factor_su2[3,3] = factor_su2[7,7] = -1 while factor_su2[4,4] = +1, the order-2 spatial generators lift to double-valued characters with C2 -> +/-i, inversion -> +/-1, and mirror = inversion * C2.",
+        "character_on_unitary_stabilizer": {
+          "0": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "3": {
+            "real": 0.0,
+            "imag": 1.0
+          },
+          "4": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "7": {
+            "real": 0.0,
+            "imag": 1.0
+          }
+        }
+      },
+      {
+        "id": "c_double_u_plus_i",
+        "family_letter": "c",
+        "dimension": 1,
+        "site_symmetry": "2/m",
+        "double_group_local_object_kind": "projective_local_irrep",
+        "construction_basis": "Use the double-group factor table on the unitary stabilizer [0,3,4,7]. Because factor_su2[3,3] = factor_su2[7,7] = -1 while factor_su2[4,4] = +1, the order-2 spatial generators lift to double-valued characters with C2 -> +/-i, inversion -> +/-1, and mirror = inversion * C2.",
+        "character_on_unitary_stabilizer": {
+          "0": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "3": {
+            "real": 0.0,
+            "imag": 1.0
+          },
+          "4": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "7": {
+            "real": -0.0,
+            "imag": -1.0
+          }
+        }
+      },
+      {
+        "id": "c_double_g_minus_i",
+        "family_letter": "c",
+        "dimension": 1,
+        "site_symmetry": "2/m",
+        "double_group_local_object_kind": "projective_local_irrep",
+        "construction_basis": "Use the double-group factor table on the unitary stabilizer [0,3,4,7]. Because factor_su2[3,3] = factor_su2[7,7] = -1 while factor_su2[4,4] = +1, the order-2 spatial generators lift to double-valued characters with C2 -> +/-i, inversion -> +/-1, and mirror = inversion * C2.",
+        "character_on_unitary_stabilizer": {
+          "0": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "3": {
+            "real": -0.0,
+            "imag": -1.0
+          },
+          "4": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "7": {
+            "real": 0.0,
+            "imag": -1.0
+          }
+        }
+      },
+      {
+        "id": "c_double_u_minus_i",
+        "family_letter": "c",
+        "dimension": 1,
+        "site_symmetry": "2/m",
+        "double_group_local_object_kind": "projective_local_irrep",
+        "construction_basis": "Use the double-group factor table on the unitary stabilizer [0,3,4,7]. Because factor_su2[3,3] = factor_su2[7,7] = -1 while factor_su2[4,4] = +1, the order-2 spatial generators lift to double-valued characters with C2 -> +/-i, inversion -> +/-1, and mirror = inversion * C2.",
+        "character_on_unitary_stabilizer": {
+          "0": {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          "3": {
+            "real": -0.0,
+            "imag": -1.0
+          },
+          "4": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "7": {
+            "real": 0.0,
+            "imag": 1.0
+          }
+        }
+      }
+    ],
+    "selected_prototype_id": "c_double_g_plus_i",
+    "difference_from_single_same_family": "Single-group family c used ordinary C2h characters with values in {+/-1}. The double-group prototype uses a projective local irrep with C2 -> +i, inversion -> +1, and mirror -> +i, as enforced by factor_su2[3,3] = factor_su2[7,7] = -1.",
+    "factor_su2_relations": [
+      {
+        "left": 3,
+        "right": 3,
+        "product_index": 0,
+        "factor_su2": {
+          "real": -1.0,
+          "imag": 0.0
+        }
+      },
+      {
+        "left": 4,
+        "right": 4,
+        "product_index": 0,
+        "factor_su2": {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      },
+      {
+        "left": 7,
+        "right": 7,
+        "product_index": 0,
+        "factor_su2": {
+          "real": -1.0,
+          "imag": 0.0
+        }
+      },
+      {
+        "left": 3,
+        "right": 4,
+        "product_index": 7,
+        "factor_su2": {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      },
+      {
+        "left": 7,
+        "right": 3,
+        "product_index": 4,
+        "factor_su2": {
+          "real": -1.0,
+          "imag": 0.0
+        }
+      }
+    ],
+    "two_pi_rotation_note": "The needed spinor sign is not inferred from swyckoff_r.py alone; it enters here through the double-group factor table of SSGReps. The chosen local irrep is therefore genuinely double-valued."
+  },
+  "bridge_check_result": {
+    "spatial_bridge_reused_from_single": true,
+    "r_conv_equals_P_r_mag": true,
+    "P_matrix": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        2
+      ]
+    ],
+    "operation_match_count_after_basis_change": 16,
+    "all_spatial_operations_match": true,
+    "bridge_scope_note": "This confirms the spatial/time-reversal bridge and the stabilizer indices for the minimal prototype. It does not by itself certify the SU2/projective sign layer, which is handled here through factor_su2."
+  },
+  "induction_result": {
+    "selected_family": "c",
+    "representative_coordinate": "0, 0, 1/4",
+    "sample_point_magnetic": [
+      "0",
+      "0",
+      "1/4"
+    ],
+    "multiplicity": 4,
+    "stabilizer_summary": {
+      "stabilizer_size": 4,
+      "unitary_count": 4,
+      "antiunitary_count": 0,
+      "stabilizer_indices": [
+        0,
+        3,
+        4,
+        7
+      ]
+    },
+    "manifolds": {
+      "P1": {
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "unitary_raw_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "band_character": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 4.0
+          },
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 4.0
+          }
+        ],
+        "multiplicities": [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0,
+          2
+        ],
+        "reconstruction_exact": true,
+        "total_dimension": 4
+      },
+      "P4": {
+        "rep_degree": [
+          2,
+          2
+        ],
+        "unitary_raw_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "band_character": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -4.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        "multiplicities": [
+          0,
+          2
+        ],
+        "reconstruction_exact": true,
+        "total_dimension": 4
+      },
+      "L1": {
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "unitary_raw_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "band_character": [
+          {
+            "real": 4.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 3.804226065181,
+            "imag": 1.2360679775
+          }
+        ],
+        "multiplicities": [
+          2,
+          0,
+          0,
+          2
+        ],
+        "reconstruction_exact": true,
+        "total_dimension": 4
+      }
+    },
+    "minimal_block_unknown_ordering": [
+      "P1_R1",
+      "P1_R2",
+      "P1_R3",
+      "P1_R4",
+      "P1_R5",
+      "P1_R6",
+      "P1_R7",
+      "P1_R8",
+      "P4_R1",
+      "P4_R2",
+      "L1_R1",
+      "L1_R2",
+      "L1_R3",
+      "L1_R4"
+    ],
+    "minimal_block_unknown_vector": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      0,
+      0,
+      2
+    ],
+    "all_total_dims_match_orbit_size": true,
+    "minimal_closure_success": true
+  },
+  "compatibility_check_result": {
+    "minimal_block": {
+      "endpoints": [
+        "P1",
+        "P4"
+      ],
+      "line": "L1",
+      "reason": "Reuse the already-audited explicit endpoint-line block P1-L1-P4. All three objects run stably in groupType=2; P1 shows the clearest double-valued phase shift, L1 is the simplest generic special line, and P4 supplies the first endpoint with 2D double little coreps."
+    },
+    "all_total_dims_match_orbit_size": true,
+    "minimal_closure_success": true,
+    "note": "The same double local irrep on family c induces exact integer multiplicities on P1, L1, and P4. That is sufficient for the present minimal closure prototype even though a general double-group compatibility matrix has not yet been built."
+  }
+}

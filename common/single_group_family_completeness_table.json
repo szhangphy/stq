@@ -1,0 +1,856 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 1,
+  "family_order": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o"
+  ],
+  "all_families_audited": true,
+  "complete_families": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o"
+  ],
+  "incomplete_families": [],
+  "ai_v3_complete_for_single_group": true,
+  "families": [
+    {
+      "family_id": "a",
+      "family_kind": "pointlike",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "0, 0, 0",
+      "site_symmetry": "2'/m",
+      "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 4,
+      "unitary_count": 2,
+      "antiunitary_count": 2,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "Cs",
+      "expected_single_group_count": 4,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "a_Ap_eta_plus",
+          "label": "A', eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A'",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "a_Ap_eta_minus",
+          "label": "A', eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A'",
+          "eta": -1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "a_App_eta_plus",
+          "label": "A'', eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A''",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "a_App_eta_minus",
+          "label": "A'', eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A''",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "a_Ap_eta_plus",
+        "a_Ap_eta_minus",
+        "a_App_eta_plus",
+        "a_App_eta_minus"
+      ],
+      "sum_dimension_squared": 4,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is Cs with real one-dimensional irreps A', A''. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "b",
+      "family_kind": "pointlike",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "1/2, 0, 0",
+      "site_symmetry": "2'/m",
+      "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 4,
+      "unitary_count": 2,
+      "antiunitary_count": 2,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "Cs",
+      "expected_single_group_count": 4,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "b_Ap_eta_plus",
+          "label": "A', eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A'",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "b_Ap_eta_minus",
+          "label": "A', eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A'",
+          "eta": -1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "b_App_eta_plus",
+          "label": "A'', eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A''",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "b_App_eta_minus",
+          "label": "A'', eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A''",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "b_Ap_eta_plus",
+        "b_Ap_eta_minus",
+        "b_App_eta_plus",
+        "b_App_eta_minus"
+      ],
+      "sum_dimension_squared": 4,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is Cs with real one-dimensional irreps A', A''. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "c",
+      "family_kind": "unitary",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "0, 0, 1/4",
+      "site_symmetry": "2/m",
+      "site_symmetry_custom": "2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 4,
+      "unitary_count": 4,
+      "antiunitary_count": 0,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "local_irreps",
+      "expected_single_group_abstract_group": "C2h",
+      "expected_single_group_count": 4,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "c_Ag",
+          "label": "Ag",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "c_Bg",
+          "label": "Bg",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "c_Au",
+          "label": "Au",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "c_Bu",
+          "label": "Bu",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        }
+      ],
+      "current_ai_generator_ids": [
+        "c_Ag",
+        "c_Bg",
+        "c_Au",
+        "c_Bu"
+      ],
+      "sum_dimension_squared": 4,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary site symmetry is the abelian order-4 group C2h, so the full single-group local-irrep census is the four one-dimensional characters Ag/Bg/Au/Bu.",
+      "notes": "Complete: the enumerated local irreps exactly match the expected C2h single-group character list."
+    },
+    {
+      "family_id": "d",
+      "family_kind": "pointlike",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "0, 1/4, 0",
+      "site_symmetry": "2'/m'",
+      "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 4,
+      "unitary_count": 2,
+      "antiunitary_count": 2,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "Ci",
+      "expected_single_group_count": 4,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "d_g_eta_plus",
+          "label": "g, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "g",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "d_g_eta_minus",
+          "label": "g, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "g",
+          "eta": -1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "d_u_eta_plus",
+          "label": "u, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "u",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "d_u_eta_minus",
+          "label": "u, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "u",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "d_g_eta_plus",
+        "d_g_eta_minus",
+        "d_u_eta_plus",
+        "d_u_eta_minus"
+      ],
+      "sum_dimension_squared": 4,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is Ci with real one-dimensional irreps g, u. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "e",
+      "family_kind": "pointlike",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "1/2, 1/4, 0",
+      "site_symmetry": "2'/m'",
+      "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 4,
+      "unitary_count": 2,
+      "antiunitary_count": 2,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "Ci",
+      "expected_single_group_count": 4,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "e_g_eta_plus",
+          "label": "g, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "g",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "e_g_eta_minus",
+          "label": "g, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "g",
+          "eta": -1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "e_u_eta_plus",
+          "label": "u, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "u",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "e_u_eta_minus",
+          "label": "u, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "u",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "e_g_eta_plus",
+        "e_g_eta_minus",
+        "e_u_eta_plus",
+        "e_u_eta_minus"
+      ],
+      "sum_dimension_squared": 4,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is Ci with real one-dimensional irreps g, u. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "f",
+      "family_kind": "unitary",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "1/2, 0, 1/4",
+      "site_symmetry": "2/m",
+      "site_symmetry_custom": "2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 4,
+      "unitary_count": 4,
+      "antiunitary_count": 0,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "local_irreps",
+      "expected_single_group_abstract_group": "C2h",
+      "expected_single_group_count": 4,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "f_Ag",
+          "label": "Ag",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "f_Bg",
+          "label": "Bg",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "f_Au",
+          "label": "Au",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "f_Bu",
+          "label": "Bu",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        }
+      ],
+      "current_ai_generator_ids": [
+        "f_Ag",
+        "f_Bg",
+        "f_Au",
+        "f_Bu"
+      ],
+      "sum_dimension_squared": 4,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary site symmetry is the abelian order-4 group C2h, so the full single-group local-irrep census is the four one-dimensional characters Ag/Bg/Au/Bu.",
+      "notes": "Complete: the enumerated local irreps exactly match the expected C2h single-group character list."
+    },
+    {
+      "family_id": "g",
+      "family_kind": "pointlike",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "0, 1/4, 1/4",
+      "site_symmetry": "2/m'",
+      "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 4,
+      "unitary_count": 2,
+      "antiunitary_count": 2,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "C2",
+      "expected_single_group_count": 4,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "g_A_eta_plus",
+          "label": "A, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "g_A_eta_minus",
+          "label": "A, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": -1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "g_B_eta_plus",
+          "label": "B, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "B",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "g_B_eta_minus",
+          "label": "B, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "B",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "g_A_eta_plus",
+        "g_A_eta_minus",
+        "g_B_eta_plus",
+        "g_B_eta_minus"
+      ],
+      "sum_dimension_squared": 4,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is C2 with real one-dimensional irreps A, B. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "h",
+      "family_kind": "pointlike",
+      "dimension": 0,
+      "multiplicity": 4,
+      "representative_coordinate": "1/2, 1/4, 1/4",
+      "site_symmetry": "2/m'",
+      "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 4,
+      "unitary_count": 2,
+      "antiunitary_count": 2,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "C2",
+      "expected_single_group_count": 4,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "h_A_eta_plus",
+          "label": "A, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "h_A_eta_minus",
+          "label": "A, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": -1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "h_B_eta_plus",
+          "label": "B, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "B",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "h_B_eta_minus",
+          "label": "B, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "B",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "h_A_eta_plus",
+        "h_A_eta_minus",
+        "h_B_eta_plus",
+        "h_B_eta_minus"
+      ],
+      "sum_dimension_squared": 4,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is C2 with real one-dimensional irreps A, B. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "i",
+      "family_kind": "parametric",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate": "0, y, 0",
+      "site_symmetry": "2'",
+      "site_symmetry_custom": "m'[x]",
+      "unitary_site_symmetry": "1",
+      "stabilizer_size": 2,
+      "unitary_count": 1,
+      "antiunitary_count": 1,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "C1",
+      "expected_single_group_count": 2,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "i_A_eta_plus",
+          "label": "A, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "i_A_eta_minus",
+          "label": "A, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "i_A_eta_plus",
+        "i_A_eta_minus"
+      ],
+      "sum_dimension_squared": 2,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is C1 with real one-dimensional irreps A. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "j",
+      "family_kind": "parametric",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate": "1/2, y, 0",
+      "site_symmetry": "2'",
+      "site_symmetry_custom": "m'[x]",
+      "unitary_site_symmetry": "1",
+      "stabilizer_size": 2,
+      "unitary_count": 1,
+      "antiunitary_count": 1,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "C1",
+      "expected_single_group_count": 2,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "j_A_eta_plus",
+          "label": "A, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "j_A_eta_minus",
+          "label": "A, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "j_A_eta_plus",
+        "j_A_eta_minus"
+      ],
+      "sum_dimension_squared": 2,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is C1 with real one-dimensional irreps A. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "k",
+      "family_kind": "unitary",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate": "0, y, 1/4",
+      "site_symmetry": "2",
+      "site_symmetry_custom": "2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 2,
+      "unitary_count": 2,
+      "antiunitary_count": 0,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "local_irreps",
+      "expected_single_group_abstract_group": "C2",
+      "expected_single_group_count": 2,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "k_A",
+          "label": "A",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "k_B",
+          "label": "B",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        }
+      ],
+      "current_ai_generator_ids": [
+        "k_A",
+        "k_B"
+      ],
+      "sum_dimension_squared": 2,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary site symmetry is order-2 rotation symmetry, hence abelian with exactly two one-dimensional single-group irreps.",
+      "notes": "Complete: the enumerated local irreps exactly match the expected C2 single-group character list."
+    },
+    {
+      "family_id": "l",
+      "family_kind": "unitary",
+      "dimension": 1,
+      "multiplicity": 8,
+      "representative_coordinate": "1/2, y, 1/4",
+      "site_symmetry": "2",
+      "site_symmetry_custom": "2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 2,
+      "unitary_count": 2,
+      "antiunitary_count": 0,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "local_irreps",
+      "expected_single_group_abstract_group": "C2",
+      "expected_single_group_count": 2,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "l_A",
+          "label": "A",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "l_B",
+          "label": "B",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        }
+      ],
+      "current_ai_generator_ids": [
+        "l_A",
+        "l_B"
+      ],
+      "sum_dimension_squared": 2,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary site symmetry is order-2 rotation symmetry, hence abelian with exactly two one-dimensional single-group irreps.",
+      "notes": "Complete: the enumerated local irreps exactly match the expected C2 single-group character list."
+    },
+    {
+      "family_id": "m",
+      "family_kind": "unitary",
+      "dimension": 2,
+      "multiplicity": 8,
+      "representative_coordinate": "x, 0, z",
+      "site_symmetry": "m",
+      "site_symmetry_custom": "2[z]",
+      "unitary_site_symmetry": "?",
+      "stabilizer_size": 2,
+      "unitary_count": 2,
+      "antiunitary_count": 0,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "local_irreps",
+      "expected_single_group_abstract_group": "Cs",
+      "expected_single_group_count": 2,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "m_A_prime",
+          "label": "A'",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        },
+        {
+          "id": "m_A_double_prime",
+          "label": "A''",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        }
+      ],
+      "current_ai_generator_ids": [
+        "m_A_prime",
+        "m_A_double_prime"
+      ],
+      "sum_dimension_squared": 2,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary site symmetry is order-2 mirror symmetry, hence abelian with exactly two one-dimensional single-group irreps.",
+      "notes": "Complete: the enumerated local irreps exactly match the expected Cs single-group character list."
+    },
+    {
+      "family_id": "n",
+      "family_kind": "parametric",
+      "dimension": 2,
+      "multiplicity": 8,
+      "representative_coordinate": "x, 1/4, z",
+      "site_symmetry": "m'",
+      "site_symmetry_custom": "m'[y]",
+      "unitary_site_symmetry": "1",
+      "stabilizer_size": 2,
+      "unitary_count": 1,
+      "antiunitary_count": 1,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "magnetic_local_coreps",
+      "expected_single_group_abstract_group": "C1",
+      "expected_single_group_count": 2,
+      "wigner_case": "a",
+      "antiunitary_generator_square_index": 0,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "n_A_eta_plus",
+          "label": "A, eta=+1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": 1,
+          "truly_antiunitary": false
+        },
+        {
+          "id": "n_A_eta_minus",
+          "label": "A, eta=-1",
+          "dimension": 1,
+          "type": "magnetic_local_corep",
+          "source_unitary_irrep": "A",
+          "eta": -1,
+          "truly_antiunitary": false
+        }
+      ],
+      "current_ai_generator_ids": [
+        "n_A_eta_plus",
+        "n_A_eta_minus"
+      ],
+      "sum_dimension_squared": 2,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The unitary subgroup is C1 with real one-dimensional irreps A. The audited antiunitary action fixes those irreps and the Wigner analysis is case-a, so each unitary irrep has exactly two eta=+/- direct extensions and no higher-dimensional single-group magnetic coreps are expected.",
+      "notes": "Complete: the family's magnetic local-corep census closes under the audited case-a extension logic."
+    },
+    {
+      "family_id": "o",
+      "family_kind": "unitary",
+      "dimension": 3,
+      "multiplicity": 16,
+      "representative_coordinate": "x, y, z",
+      "site_symmetry": "1",
+      "site_symmetry_custom": "1",
+      "unitary_site_symmetry": "1",
+      "stabilizer_size": 1,
+      "unitary_count": 1,
+      "antiunitary_count": 0,
+      "site_symmetry_consistent": true,
+      "expected_single_group_local_object_kind": "local_irreps",
+      "expected_single_group_abstract_group": "C1",
+      "expected_single_group_count": 1,
+      "current_included_local_reps_coreps": [
+        {
+          "id": "o_A",
+          "label": "A",
+          "dimension": 1,
+          "type": "unitary_local_irrep"
+        }
+      ],
+      "current_ai_generator_ids": [
+        "o_A"
+      ],
+      "sum_dimension_squared": 1,
+      "complete_for_single_group": true,
+      "missing_items": [],
+      "completeness_basis": "The generic family has trivial single-group site symmetry, so there is exactly one one-dimensional local irrep.",
+      "notes": "Complete: the enumerated local irreps exactly match the expected C1 single-group character list."
+    }
+  ]
+}

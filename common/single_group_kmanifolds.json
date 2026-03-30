@@ -1,0 +1,2067 @@
+{
+  "group_number": "10.4.1.31",
+  "source": {
+    "module": "swyckoff_k.py",
+    "function": "compute_wyckoff_output",
+    "arguments": {
+      "ssgnum": "10.4.1.31",
+      "kspace": true,
+      "fast": true
+    }
+  },
+  "interpretation": {
+    "listed_line_objects": "Separately listed special 1D manifold types emitted by swyckoff_k.py.",
+    "plane_boundary_candidates": "Geometric boundary lines derived from plane parameter domains; they are not required to match the separately listed line list."
+  },
+  "objects": [
+    {
+      "label": "a",
+      "type": "point",
+      "dimension": 0,
+      "parametrization": "(0, 0, 0)",
+      "coordinate_expressions": [
+        "0",
+        "0",
+        "0"
+      ],
+      "parameters": [],
+      "constraints": [],
+      "constraint_summary": "",
+      "sample_point": [
+        "0",
+        "0",
+        "0"
+      ],
+      "metadata": {
+        "source_letter": "a",
+        "source_mult": 1,
+        "source_dimension": 0,
+        "source_orbit": [
+          "0, 0, 0"
+        ],
+        "source_representative_coordinate": "0, 0, 0",
+        "source_x0": [
+          "0",
+          "0",
+          "0"
+        ],
+        "source_basis_vecs": [],
+        "source_rep": [
+          [
+            "0",
+            {}
+          ],
+          [
+            "0",
+            {}
+          ],
+          [
+            "0",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "P1"
+    },
+    {
+      "label": "b",
+      "type": "point",
+      "dimension": 0,
+      "parametrization": "(0, 0, 1/2)",
+      "coordinate_expressions": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "parameters": [],
+      "constraints": [],
+      "constraint_summary": "",
+      "sample_point": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "metadata": {
+        "source_letter": "b",
+        "source_mult": 1,
+        "source_dimension": 0,
+        "source_orbit": [
+          "0, 0, 1/2"
+        ],
+        "source_representative_coordinate": "0, 0, 1/2",
+        "source_x0": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "source_basis_vecs": [],
+        "source_rep": [
+          [
+            "0",
+            {}
+          ],
+          [
+            "0",
+            {}
+          ],
+          [
+            "1/2",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "P2"
+    },
+    {
+      "label": "c",
+      "type": "point",
+      "dimension": 0,
+      "parametrization": "(1/2, 0, 0)",
+      "coordinate_expressions": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "parameters": [],
+      "constraints": [],
+      "constraint_summary": "",
+      "sample_point": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "metadata": {
+        "source_letter": "c",
+        "source_mult": 1,
+        "source_dimension": 0,
+        "source_orbit": [
+          "1/2, 0, 0"
+        ],
+        "source_representative_coordinate": "1/2, 0, 0",
+        "source_x0": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "source_basis_vecs": [],
+        "source_rep": [
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "0",
+            {}
+          ],
+          [
+            "0",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "P3"
+    },
+    {
+      "label": "d",
+      "type": "point",
+      "dimension": 0,
+      "parametrization": "(0, 1/2, 0)",
+      "coordinate_expressions": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "parameters": [],
+      "constraints": [],
+      "constraint_summary": "",
+      "sample_point": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "metadata": {
+        "source_letter": "d",
+        "source_mult": 1,
+        "source_dimension": 0,
+        "source_orbit": [
+          "0, 1/2, 0"
+        ],
+        "source_representative_coordinate": "0, 1/2, 0",
+        "source_x0": [
+          "0",
+          "1/2",
+          "0"
+        ],
+        "source_basis_vecs": [],
+        "source_rep": [
+          [
+            "0",
+            {}
+          ],
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "0",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "P4"
+    },
+    {
+      "label": "e",
+      "type": "point",
+      "dimension": 0,
+      "parametrization": "(1/2, 1/2, 0)",
+      "coordinate_expressions": [
+        "1/2",
+        "1/2",
+        "0"
+      ],
+      "parameters": [],
+      "constraints": [],
+      "constraint_summary": "",
+      "sample_point": [
+        "1/2",
+        "1/2",
+        "0"
+      ],
+      "metadata": {
+        "source_letter": "e",
+        "source_mult": 1,
+        "source_dimension": 0,
+        "source_orbit": [
+          "1/2, 1/2, 0"
+        ],
+        "source_representative_coordinate": "1/2, 1/2, 0",
+        "source_x0": [
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "source_basis_vecs": [],
+        "source_rep": [
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "0",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "P5"
+    },
+    {
+      "label": "f",
+      "type": "point",
+      "dimension": 0,
+      "parametrization": "(0, 1/2, 1/2)",
+      "coordinate_expressions": [
+        "0",
+        "1/2",
+        "1/2"
+      ],
+      "parameters": [],
+      "constraints": [],
+      "constraint_summary": "",
+      "sample_point": [
+        "0",
+        "1/2",
+        "1/2"
+      ],
+      "metadata": {
+        "source_letter": "f",
+        "source_mult": 1,
+        "source_dimension": 0,
+        "source_orbit": [
+          "0, 1/2, 1/2"
+        ],
+        "source_representative_coordinate": "0, 1/2, 1/2",
+        "source_x0": [
+          "0",
+          "1/2",
+          "1/2"
+        ],
+        "source_basis_vecs": [],
+        "source_rep": [
+          [
+            "0",
+            {}
+          ],
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "1/2",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "P6"
+    },
+    {
+      "label": "g",
+      "type": "point",
+      "dimension": 0,
+      "parametrization": "(1/2, 0, 1/2)",
+      "coordinate_expressions": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "parameters": [],
+      "constraints": [],
+      "constraint_summary": "",
+      "sample_point": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "metadata": {
+        "source_letter": "g",
+        "source_mult": 1,
+        "source_dimension": 0,
+        "source_orbit": [
+          "1/2, 0, 1/2"
+        ],
+        "source_representative_coordinate": "1/2, 0, 1/2",
+        "source_x0": [
+          "1/2",
+          "0",
+          "1/2"
+        ],
+        "source_basis_vecs": [],
+        "source_rep": [
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "0",
+            {}
+          ],
+          [
+            "1/2",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "P7"
+    },
+    {
+      "label": "h",
+      "type": "point",
+      "dimension": 0,
+      "parametrization": "(1/2, 1/2, 1/2)",
+      "coordinate_expressions": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "parameters": [],
+      "constraints": [],
+      "constraint_summary": "",
+      "sample_point": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "metadata": {
+        "source_letter": "h",
+        "source_mult": 1,
+        "source_dimension": 0,
+        "source_orbit": [
+          "1/2, 1/2, 1/2"
+        ],
+        "source_representative_coordinate": "1/2, 1/2, 1/2",
+        "source_x0": [
+          "1/2",
+          "1/2",
+          "1/2"
+        ],
+        "source_basis_vecs": [],
+        "source_rep": [
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "1/2",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "P8"
+    },
+    {
+      "label": "i",
+      "type": "line",
+      "dimension": 1,
+      "parametrization": "(0, v, 0)",
+      "coordinate_expressions": [
+        "0",
+        "v",
+        "0"
+      ],
+      "parameters": [
+        "v"
+      ],
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "constraint_summary": "0 < v < 1/2",
+      "sample_point": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "metadata": {
+        "source_letter": "i",
+        "source_mult": 2,
+        "source_dimension": 1,
+        "source_orbit": [
+          "0, -v, 0",
+          "0, v, 0"
+        ],
+        "source_representative_coordinate": "0, v, 0",
+        "source_x0": [
+          "0",
+          "0",
+          "0"
+        ],
+        "source_basis_vecs": [
+          [
+            "0",
+            "1",
+            "0"
+          ]
+        ],
+        "source_rep": [
+          [
+            "0",
+            {}
+          ],
+          [
+            "0",
+            {
+              "v": "1"
+            }
+          ],
+          [
+            "0",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "L1",
+      "manifold_role": "separately_listed_special_line_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "0",
+          "1/5",
+          "0"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 1,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L1",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "0",
+            "0",
+            "1/2"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L2",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "1/2",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L3",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L4",
+          "plane_id": null
+        }
+      ],
+      "endpoints": [
+        {
+          "boundary_condition": "v = 0",
+          "point_coordinates": [
+            "0",
+            "0",
+            "0"
+          ],
+          "point_id": "P1"
+        },
+        {
+          "boundary_condition": "v = 1/2",
+          "point_coordinates": [
+            "0",
+            "1/2",
+            "0"
+          ],
+          "point_id": "P4"
+        }
+      ]
+    },
+    {
+      "label": "j",
+      "type": "line",
+      "dimension": 1,
+      "parametrization": "(0, v, 1/2)",
+      "coordinate_expressions": [
+        "0",
+        "v",
+        "1/2"
+      ],
+      "parameters": [
+        "v"
+      ],
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "constraint_summary": "0 < v < 1/2",
+      "sample_point": [
+        "0",
+        "1/5",
+        "1/2"
+      ],
+      "metadata": {
+        "source_letter": "j",
+        "source_mult": 2,
+        "source_dimension": 1,
+        "source_orbit": [
+          "0, -v, 1/2",
+          "0, v, 1/2"
+        ],
+        "source_representative_coordinate": "0, v, 1/2",
+        "source_x0": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "source_basis_vecs": [
+          [
+            "0",
+            "1",
+            "0"
+          ]
+        ],
+        "source_rep": [
+          [
+            "0",
+            {}
+          ],
+          [
+            "0",
+            {
+              "v": "1"
+            }
+          ],
+          [
+            "1/2",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "L2",
+      "manifold_role": "separately_listed_special_line_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "0",
+          "1/5",
+          "1/2"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 1,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L1",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "0",
+            "0",
+            "1/2"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L2",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "1/2",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L3",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L4",
+          "plane_id": null
+        }
+      ],
+      "endpoints": [
+        {
+          "boundary_condition": "v = 0",
+          "point_coordinates": [
+            "0",
+            "0",
+            "1/2"
+          ],
+          "point_id": "P2"
+        },
+        {
+          "boundary_condition": "v = 1/2",
+          "point_coordinates": [
+            "0",
+            "1/2",
+            "1/2"
+          ],
+          "point_id": "P6"
+        }
+      ]
+    },
+    {
+      "label": "k",
+      "type": "line",
+      "dimension": 1,
+      "parametrization": "(1/2, v, 0)",
+      "coordinate_expressions": [
+        "1/2",
+        "v",
+        "0"
+      ],
+      "parameters": [
+        "v"
+      ],
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "constraint_summary": "0 < v < 1/2",
+      "sample_point": [
+        "1/2",
+        "1/5",
+        "0"
+      ],
+      "metadata": {
+        "source_letter": "k",
+        "source_mult": 2,
+        "source_dimension": 1,
+        "source_orbit": [
+          "1/2, -v, 0",
+          "1/2, v, 0"
+        ],
+        "source_representative_coordinate": "1/2, v, 0",
+        "source_x0": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "source_basis_vecs": [
+          [
+            "0",
+            "1",
+            "0"
+          ]
+        ],
+        "source_rep": [
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "0",
+            {
+              "v": "1"
+            }
+          ],
+          [
+            "0",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "L3",
+      "manifold_role": "separately_listed_special_line_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "1/2",
+          "1/5",
+          "0"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 1,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L1",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "0",
+            "0",
+            "1/2"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L2",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "1/2",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L3",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L4",
+          "plane_id": null
+        }
+      ],
+      "endpoints": [
+        {
+          "boundary_condition": "v = 0",
+          "point_coordinates": [
+            "1/2",
+            "0",
+            "0"
+          ],
+          "point_id": "P3"
+        },
+        {
+          "boundary_condition": "v = 1/2",
+          "point_coordinates": [
+            "1/2",
+            "1/2",
+            "0"
+          ],
+          "point_id": "P5"
+        }
+      ]
+    },
+    {
+      "label": "l",
+      "type": "line",
+      "dimension": 1,
+      "parametrization": "(1/2, v, 1/2)",
+      "coordinate_expressions": [
+        "1/2",
+        "v",
+        "1/2"
+      ],
+      "parameters": [
+        "v"
+      ],
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "constraint_summary": "0 < v < 1/2",
+      "sample_point": [
+        "1/2",
+        "1/5",
+        "1/2"
+      ],
+      "metadata": {
+        "source_letter": "l",
+        "source_mult": 2,
+        "source_dimension": 1,
+        "source_orbit": [
+          "1/2, -v, 1/2",
+          "1/2, v, 1/2"
+        ],
+        "source_representative_coordinate": "1/2, v, 1/2",
+        "source_x0": [
+          "1/2",
+          "0",
+          "1/2"
+        ],
+        "source_basis_vecs": [
+          [
+            "0",
+            "1",
+            "0"
+          ]
+        ],
+        "source_rep": [
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "0",
+            {
+              "v": "1"
+            }
+          ],
+          [
+            "1/2",
+            {}
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "L4",
+      "manifold_role": "separately_listed_special_line_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "1/2",
+          "1/5",
+          "1/2"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 1,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L1",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "0",
+            "0",
+            "1/2"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L2",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "1/2",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L3",
+          "plane_id": null
+        },
+        {
+          "dimension": 1,
+          "x0": [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          "basis_vecs": [
+            [
+              "0",
+              "1",
+              "0"
+            ]
+          ],
+          "line_id": "L4",
+          "plane_id": null
+        }
+      ],
+      "endpoints": [
+        {
+          "boundary_condition": "v = 0",
+          "point_coordinates": [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          "point_id": "P7"
+        },
+        {
+          "boundary_condition": "v = 1/2",
+          "point_coordinates": [
+            "1/2",
+            "1/2",
+            "1/2"
+          ],
+          "point_id": "P8"
+        }
+      ]
+    },
+    {
+      "label": "m",
+      "type": "plane",
+      "dimension": 2,
+      "parametrization": "(u, 0, w)",
+      "coordinate_expressions": [
+        "u",
+        "0",
+        "w"
+      ],
+      "parameters": [
+        "u",
+        "w"
+      ],
+      "constraints": [
+        "0 < u",
+        "0 < w",
+        "u < 1/2",
+        "w < 1/2"
+      ],
+      "constraint_summary": "0 < u < 1/2, 0 < w < 1/2",
+      "sample_point": [
+        "1/5",
+        "0",
+        "2/5"
+      ],
+      "metadata": {
+        "source_letter": "m",
+        "source_mult": 2,
+        "source_dimension": 2,
+        "source_orbit": [
+          "-u, 0, -w",
+          "u, 0, w"
+        ],
+        "source_representative_coordinate": "u, 0, w",
+        "source_x0": [
+          "0",
+          "0",
+          "0"
+        ],
+        "source_basis_vecs": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "source_rep": [
+          [
+            "0",
+            {
+              "u": "1"
+            }
+          ],
+          [
+            "0",
+            {}
+          ],
+          [
+            "0",
+            {
+              "w": "1"
+            }
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "S1",
+      "manifold_role": "separately_listed_special_plane_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "0",
+          "1/7"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "boundary_lines": [
+        {
+          "boundary_condition": "u = 0",
+          "boundary_role": "geometric_boundary_line",
+          "parametrization": "(0, 0, w)",
+          "coordinate_expressions": [
+            "0",
+            "0",
+            "w"
+          ],
+          "parameters": [
+            "w"
+          ],
+          "constraints": [
+            "0 < w",
+            "w < 1/2"
+          ],
+          "sample_point": [
+            "0",
+            "0",
+            "1/5"
+          ],
+          "symmetry_summary": {
+            "generic_point": [
+              "0",
+              "0",
+              "1/5"
+            ],
+            "generic_stabilizer_size": 8,
+            "generic_rotation_stabilizer_size": 2,
+            "pointwise_stabilizer_size": 8,
+            "pointwise_rotation_stabilizer_size": 2,
+            "site_symmetry": "2'/m",
+            "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+            "unitary_site_symmetry": "?"
+          },
+          "closure_under_pointwise_stabilizer": [
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "0",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S1"
+            },
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "1/2",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S2"
+            }
+          ],
+          "special_line_orbit_match": null,
+          "classification": {
+            "is_separately_listed_special_line": false,
+            "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+          },
+          "line_id": null
+        },
+        {
+          "boundary_condition": "u = 1/2",
+          "boundary_role": "geometric_boundary_line",
+          "parametrization": "(1/2, 0, w)",
+          "coordinate_expressions": [
+            "1/2",
+            "0",
+            "w"
+          ],
+          "parameters": [
+            "w"
+          ],
+          "constraints": [
+            "0 < w",
+            "w < 1/2"
+          ],
+          "sample_point": [
+            "1/2",
+            "0",
+            "1/5"
+          ],
+          "symmetry_summary": {
+            "generic_point": [
+              "1/2",
+              "0",
+              "1/5"
+            ],
+            "generic_stabilizer_size": 8,
+            "generic_rotation_stabilizer_size": 2,
+            "pointwise_stabilizer_size": 8,
+            "pointwise_rotation_stabilizer_size": 2,
+            "site_symmetry": "2'/m",
+            "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+            "unitary_site_symmetry": "?"
+          },
+          "closure_under_pointwise_stabilizer": [
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "0",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S1"
+            },
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "1/2",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S2"
+            }
+          ],
+          "special_line_orbit_match": null,
+          "classification": {
+            "is_separately_listed_special_line": false,
+            "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+          },
+          "line_id": null
+        },
+        {
+          "boundary_condition": "w = 0",
+          "boundary_role": "geometric_boundary_line",
+          "parametrization": "(u, 0, 0)",
+          "coordinate_expressions": [
+            "u",
+            "0",
+            "0"
+          ],
+          "parameters": [
+            "u"
+          ],
+          "constraints": [
+            "0 < u",
+            "u < 1/2"
+          ],
+          "sample_point": [
+            "1/5",
+            "0",
+            "0"
+          ],
+          "symmetry_summary": {
+            "generic_point": [
+              "1/5",
+              "0",
+              "0"
+            ],
+            "generic_stabilizer_size": 8,
+            "generic_rotation_stabilizer_size": 2,
+            "pointwise_stabilizer_size": 8,
+            "pointwise_rotation_stabilizer_size": 2,
+            "site_symmetry": "2'/m",
+            "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+            "unitary_site_symmetry": "?"
+          },
+          "closure_under_pointwise_stabilizer": [
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "0",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S1"
+            },
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "1/2",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S2"
+            }
+          ],
+          "special_line_orbit_match": null,
+          "classification": {
+            "is_separately_listed_special_line": false,
+            "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+          },
+          "line_id": null
+        },
+        {
+          "boundary_condition": "w = 1/2",
+          "boundary_role": "geometric_boundary_line",
+          "parametrization": "(u, 0, 1/2)",
+          "coordinate_expressions": [
+            "u",
+            "0",
+            "1/2"
+          ],
+          "parameters": [
+            "u"
+          ],
+          "constraints": [
+            "0 < u",
+            "u < 1/2"
+          ],
+          "sample_point": [
+            "1/5",
+            "0",
+            "1/2"
+          ],
+          "symmetry_summary": {
+            "generic_point": [
+              "1/5",
+              "0",
+              "1/2"
+            ],
+            "generic_stabilizer_size": 8,
+            "generic_rotation_stabilizer_size": 2,
+            "pointwise_stabilizer_size": 8,
+            "pointwise_rotation_stabilizer_size": 2,
+            "site_symmetry": "2'/m",
+            "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+            "unitary_site_symmetry": "?"
+          },
+          "closure_under_pointwise_stabilizer": [
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "0",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S1"
+            },
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "1/2",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S2"
+            }
+          ],
+          "special_line_orbit_match": null,
+          "classification": {
+            "is_separately_listed_special_line": false,
+            "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+          },
+          "line_id": null
+        }
+      ]
+    },
+    {
+      "label": "n",
+      "type": "plane",
+      "dimension": 2,
+      "parametrization": "(u, 1/2, w)",
+      "coordinate_expressions": [
+        "u",
+        "1/2",
+        "w"
+      ],
+      "parameters": [
+        "u",
+        "w"
+      ],
+      "constraints": [
+        "0 < u",
+        "0 < w",
+        "u < 1/2",
+        "w < 1/2"
+      ],
+      "constraint_summary": "0 < u < 1/2, 0 < w < 1/2",
+      "sample_point": [
+        "1/5",
+        "1/2",
+        "2/5"
+      ],
+      "metadata": {
+        "source_letter": "n",
+        "source_mult": 2,
+        "source_dimension": 2,
+        "source_orbit": [
+          "-u, 1/2, -w",
+          "u, 1/2, w"
+        ],
+        "source_representative_coordinate": "u, 1/2, w",
+        "source_x0": [
+          "0",
+          "1/2",
+          "0"
+        ],
+        "source_basis_vecs": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "source_rep": [
+          [
+            "0",
+            {
+              "u": "1"
+            }
+          ],
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "0",
+            {
+              "w": "1"
+            }
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      },
+      "id": "S2",
+      "manifold_role": "separately_listed_special_plane_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/2",
+          "1/7"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "boundary_lines": [
+        {
+          "boundary_condition": "u = 0",
+          "boundary_role": "geometric_boundary_line",
+          "parametrization": "(0, 1/2, w)",
+          "coordinate_expressions": [
+            "0",
+            "1/2",
+            "w"
+          ],
+          "parameters": [
+            "w"
+          ],
+          "constraints": [
+            "0 < w",
+            "w < 1/2"
+          ],
+          "sample_point": [
+            "0",
+            "1/2",
+            "1/5"
+          ],
+          "symmetry_summary": {
+            "generic_point": [
+              "0",
+              "1/2",
+              "1/5"
+            ],
+            "generic_stabilizer_size": 8,
+            "generic_rotation_stabilizer_size": 2,
+            "pointwise_stabilizer_size": 8,
+            "pointwise_rotation_stabilizer_size": 2,
+            "site_symmetry": "2'/m",
+            "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+            "unitary_site_symmetry": "?"
+          },
+          "closure_under_pointwise_stabilizer": [
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "0",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S1"
+            },
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "1/2",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S2"
+            }
+          ],
+          "special_line_orbit_match": null,
+          "classification": {
+            "is_separately_listed_special_line": false,
+            "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+          },
+          "line_id": null
+        },
+        {
+          "boundary_condition": "u = 1/2",
+          "boundary_role": "geometric_boundary_line",
+          "parametrization": "(1/2, 1/2, w)",
+          "coordinate_expressions": [
+            "1/2",
+            "1/2",
+            "w"
+          ],
+          "parameters": [
+            "w"
+          ],
+          "constraints": [
+            "0 < w",
+            "w < 1/2"
+          ],
+          "sample_point": [
+            "1/2",
+            "1/2",
+            "1/5"
+          ],
+          "symmetry_summary": {
+            "generic_point": [
+              "1/2",
+              "1/2",
+              "1/5"
+            ],
+            "generic_stabilizer_size": 8,
+            "generic_rotation_stabilizer_size": 2,
+            "pointwise_stabilizer_size": 8,
+            "pointwise_rotation_stabilizer_size": 2,
+            "site_symmetry": "2'/m",
+            "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+            "unitary_site_symmetry": "?"
+          },
+          "closure_under_pointwise_stabilizer": [
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "0",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S1"
+            },
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "1/2",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S2"
+            }
+          ],
+          "special_line_orbit_match": null,
+          "classification": {
+            "is_separately_listed_special_line": false,
+            "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+          },
+          "line_id": null
+        },
+        {
+          "boundary_condition": "w = 0",
+          "boundary_role": "geometric_boundary_line",
+          "parametrization": "(u, 1/2, 0)",
+          "coordinate_expressions": [
+            "u",
+            "1/2",
+            "0"
+          ],
+          "parameters": [
+            "u"
+          ],
+          "constraints": [
+            "0 < u",
+            "u < 1/2"
+          ],
+          "sample_point": [
+            "1/5",
+            "1/2",
+            "0"
+          ],
+          "symmetry_summary": {
+            "generic_point": [
+              "1/5",
+              "1/2",
+              "0"
+            ],
+            "generic_stabilizer_size": 8,
+            "generic_rotation_stabilizer_size": 2,
+            "pointwise_stabilizer_size": 8,
+            "pointwise_rotation_stabilizer_size": 2,
+            "site_symmetry": "2'/m",
+            "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+            "unitary_site_symmetry": "?"
+          },
+          "closure_under_pointwise_stabilizer": [
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "0",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S1"
+            },
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "1/2",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S2"
+            }
+          ],
+          "special_line_orbit_match": null,
+          "classification": {
+            "is_separately_listed_special_line": false,
+            "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+          },
+          "line_id": null
+        },
+        {
+          "boundary_condition": "w = 1/2",
+          "boundary_role": "geometric_boundary_line",
+          "parametrization": "(u, 1/2, 1/2)",
+          "coordinate_expressions": [
+            "u",
+            "1/2",
+            "1/2"
+          ],
+          "parameters": [
+            "u"
+          ],
+          "constraints": [
+            "0 < u",
+            "u < 1/2"
+          ],
+          "sample_point": [
+            "1/5",
+            "1/2",
+            "1/2"
+          ],
+          "symmetry_summary": {
+            "generic_point": [
+              "1/5",
+              "1/2",
+              "1/2"
+            ],
+            "generic_stabilizer_size": 8,
+            "generic_rotation_stabilizer_size": 2,
+            "pointwise_stabilizer_size": 8,
+            "pointwise_rotation_stabilizer_size": 2,
+            "site_symmetry": "2'/m",
+            "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+            "unitary_site_symmetry": "?"
+          },
+          "closure_under_pointwise_stabilizer": [
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "0",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S1"
+            },
+            {
+              "dimension": 2,
+              "x0": [
+                "0",
+                "1/2",
+                "0"
+              ],
+              "basis_vecs": [
+                [
+                  "1",
+                  "0",
+                  "0"
+                ],
+                [
+                  "0",
+                  "0",
+                  "1"
+                ]
+              ],
+              "line_id": null,
+              "plane_id": "S2"
+            }
+          ],
+          "special_line_orbit_match": null,
+          "classification": {
+            "is_separately_listed_special_line": false,
+            "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S1, S2, so this is treated as a geometric boundary only."
+          },
+          "line_id": null
+        }
+      ]
+    }
+  ],
+  "generic_manifolds_ignored": [
+    {
+      "label": "o",
+      "type": "generic",
+      "dimension": 3,
+      "parametrization": "(u, v, w)",
+      "coordinate_expressions": [
+        "u",
+        "v",
+        "w"
+      ],
+      "parameters": [
+        "u",
+        "v",
+        "w"
+      ],
+      "constraints": [
+        "0 < u",
+        "0 < v",
+        "0 < w",
+        "u < 1/2",
+        "v < 1/2",
+        "w < 1/2"
+      ],
+      "constraint_summary": "0 < u < 1/2, 0 < v < 1/2, 0 < w < 1/2",
+      "sample_point": [
+        "1/5",
+        "2/5",
+        "3/10"
+      ],
+      "metadata": {
+        "source_letter": "o",
+        "source_mult": 4,
+        "source_dimension": 3,
+        "source_orbit": [
+          "-u, -v, -w",
+          "-u, v, -w",
+          "u, -v, w",
+          "u, v, w"
+        ],
+        "source_representative_coordinate": "u, v, w",
+        "source_x0": [
+          "0",
+          "0",
+          "0"
+        ],
+        "source_basis_vecs": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "source_rep": [
+          [
+            "0",
+            {
+              "u": "1"
+            }
+          ],
+          [
+            "0",
+            {
+              "v": "1"
+            }
+          ],
+          [
+            "0",
+            {
+              "w": "1"
+            }
+          ]
+        ],
+        "parameter_range_note": "Half-interval fundamental domain inferred from the explicit k -> -k orbit pairing."
+      }
+    }
+  ]
+}

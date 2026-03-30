@@ -1,0 +1,656 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "family": "c",
+  "selected_local_irrep": {
+    "id": "c_double_g_plus_i",
+    "family_letter": "c",
+    "dimension": 1,
+    "site_symmetry": "2/m",
+    "double_group_local_object_kind": "projective_local_irrep",
+    "character_on_unitary_stabilizer": {
+      "0": {
+        "real": 1.0,
+        "imag": 0.0
+      },
+      "3": {
+        "real": 0.0,
+        "imag": 1.0
+      },
+      "4": {
+        "real": 1.0,
+        "imag": 0.0
+      },
+      "7": {
+        "real": 0.0,
+        "imag": 1.0
+      }
+    }
+  },
+  "final_unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1",
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "vector_in_final_unknown_ordering": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    2,
+    0,
+    2,
+    1,
+    0,
+    2,
+    1,
+    2,
+    0,
+    0,
+    2,
+    2
+  ],
+  "support": [
+    {
+      "unknown": "P1_R3",
+      "coeff": 2
+    },
+    {
+      "unknown": "P1_R8",
+      "coeff": 2
+    },
+    {
+      "unknown": "P2_R2",
+      "coeff": 2
+    },
+    {
+      "unknown": "P3_R3",
+      "coeff": 2
+    },
+    {
+      "unknown": "P3_R8",
+      "coeff": 2
+    },
+    {
+      "unknown": "P4_R2",
+      "coeff": 2
+    },
+    {
+      "unknown": "P5_R2",
+      "coeff": 2
+    },
+    {
+      "unknown": "P6_R1",
+      "coeff": 1
+    },
+    {
+      "unknown": "P7_R2",
+      "coeff": 2
+    },
+    {
+      "unknown": "P8_R1",
+      "coeff": 1
+    },
+    {
+      "unknown": "S1_R1",
+      "coeff": 2
+    },
+    {
+      "unknown": "S1_R4",
+      "coeff": 2
+    },
+    {
+      "unknown": "S2_R1",
+      "coeff": 2
+    }
+  ],
+  "induced_multiplicities_by_manifold": {
+    "P1": {
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 4.0
+        },
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 4.0
+        }
+      ],
+      "multiplicities": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "P2": {
+      "rep_degree": [
+        2,
+        2
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -4.0
+        }
+      ],
+      "multiplicities": [
+        0,
+        2
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "P3": {
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 4.0
+        },
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 4.0
+        }
+      ],
+      "multiplicities": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "P4": {
+      "rep_degree": [
+        2,
+        2
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -4.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "multiplicities": [
+        0,
+        2
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "P5": {
+      "rep_degree": [
+        2,
+        2
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -4.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "multiplicities": [
+        0,
+        2
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "P6": {
+      "rep_degree": [
+        4
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "multiplicities": [
+        1
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "P7": {
+      "rep_degree": [
+        2,
+        2
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -4.0
+        }
+      ],
+      "multiplicities": [
+        0,
+        2
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "P8": {
+      "rep_degree": [
+        4
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "multiplicities": [
+        1
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "S1": {
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.35114100917,
+          "imag": -3.2360679775
+        }
+      ],
+      "multiplicities": [
+        2,
+        0,
+        0,
+        2
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    },
+    "S2": {
+      "rep_degree": [
+        2
+      ],
+      "band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "multiplicities": [
+        2
+      ],
+      "reconstruction_exact": true,
+      "total_dimension": 4
+    }
+  },
+  "in_bs_double": true,
+  "residual_under_final_C": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "coordinates_in_raw_bs_basis": [
+    -1,
+    2,
+    2,
+    0,
+    2,
+    0,
+    2,
+    2
+  ],
+  "coordinates_in_pretty_bs_basis": [
+    1,
+    -2,
+    -2,
+    0,
+    -2,
+    0,
+    2,
+    2
+  ],
+  "planes_required_for_embedding": true
+}

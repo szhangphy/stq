@@ -1,0 +1,8375 @@
+{
+  "group": "10.4.1.31",
+  "group_type": 1,
+  "case_key": "10_4_1_31_single",
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1",
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "bs_basis_ordering": [
+    "10_4_1_31_single_bs_raw_basis_01",
+    "10_4_1_31_single_bs_raw_basis_02",
+    "10_4_1_31_single_bs_raw_basis_03",
+    "10_4_1_31_single_bs_raw_basis_04",
+    "10_4_1_31_single_bs_raw_basis_05",
+    "10_4_1_31_single_bs_raw_basis_06",
+    "10_4_1_31_single_bs_raw_basis_07",
+    "10_4_1_31_single_bs_raw_basis_08"
+  ],
+  "candidate_count": 45,
+  "distinct_unknown_vector_count": 26,
+  "candidates": [
+    {
+      "generator_id": "o_A",
+      "group_type": 1,
+      "family_id": "o",
+      "family_dimension": 3,
+      "family_kind": "parametric",
+      "family_tier": "Tier 1",
+      "local_object_label": "A",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "x, y, z",
+      "multiplicity": 16,
+      "site_symmetry": "1",
+      "unknown_vector": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        8
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 4
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 4
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 8
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5",
+          "2/7",
+          "3/11"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 1,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -4,
+        4,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4
+      ]
+    },
+    {
+      "generator_id": "m_A_prime",
+      "group_type": 1,
+      "family_id": "m",
+      "family_dimension": 2,
+      "family_kind": "parametric",
+      "family_tier": "Tier 1",
+      "local_object_label": "A'",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "x, 0, z",
+      "multiplicity": 8,
+      "site_symmetry": "m",
+      "unknown_vector": [
+        0,
+        2,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        4,
+        0,
+        2,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        4,
+        2,
+        4,
+        0,
+        0,
+        4,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 4
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5",
+          "2/7"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -2,
+        4,
+        2,
+        0,
+        2,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "m_A_double_prime",
+      "group_type": 1,
+      "family_id": "m",
+      "family_dimension": 2,
+      "family_kind": "parametric",
+      "family_tier": "Tier 1",
+      "local_object_label": "A''",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "x, 0, z",
+      "multiplicity": 8,
+      "site_symmetry": "m",
+      "unknown_vector": [
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        2,
+        0,
+        4,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        2,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        0,
+        2,
+        0,
+        4,
+        4,
+        0,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 4
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5",
+          "2/7"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "k_A",
+      "group_type": 1,
+      "family_id": "k",
+      "family_dimension": 1,
+      "family_kind": "parametric",
+      "family_tier": "Tier 1",
+      "local_object_label": "A",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "0, y, 1/4",
+      "multiplicity": 8,
+      "site_symmetry": "2",
+      "unknown_vector": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        4,
+        0,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        2,
+        0,
+        2,
+        0,
+        4,
+        4
+      ]
+    },
+    {
+      "generator_id": "k_B",
+      "group_type": 1,
+      "family_id": "k",
+      "family_dimension": 1,
+      "family_kind": "parametric",
+      "family_tier": "Tier 1",
+      "local_object_label": "B",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "0, y, 1/4",
+      "multiplicity": 8,
+      "site_symmetry": "2",
+      "unknown_vector": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        4,
+        0,
+        4,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "l_A",
+      "group_type": 1,
+      "family_id": "l",
+      "family_dimension": 1,
+      "family_kind": "parametric",
+      "family_tier": "Tier 1",
+      "local_object_label": "A",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "1/2, y, 1/4",
+      "multiplicity": 8,
+      "site_symmetry": "2",
+      "unknown_vector": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        4,
+        4,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        0,
+        2,
+        2,
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "generator_id": "l_B",
+      "group_type": 1,
+      "family_id": "l",
+      "family_dimension": 1,
+      "family_kind": "parametric",
+      "family_tier": "Tier 1",
+      "local_object_label": "B",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "1/2, y, 1/4",
+      "multiplicity": 8,
+      "site_symmetry": "2",
+      "unknown_vector": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        4,
+        0,
+        0,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 4
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 4
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        4,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_Ag",
+      "group_type": 1,
+      "family_id": "c",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": "Tier 1",
+      "local_object_label": "Ag",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "0, 0, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m",
+      "unknown_vector": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [],
+        "stabilizer_summary": {
+          "unitary_size": 4,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -1,
+        2,
+        2,
+        0,
+        2,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "c_Bg",
+      "group_type": 1,
+      "family_id": "c",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": "Tier 1",
+      "local_object_label": "Bg",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "0, 0, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m",
+      "unknown_vector": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [],
+        "stabilizer_summary": {
+          "unitary_size": 4,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -1,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_Au",
+      "group_type": 1,
+      "family_id": "c",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": "Tier 1",
+      "local_object_label": "Au",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "0, 0, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m",
+      "unknown_vector": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [],
+        "stabilizer_summary": {
+          "unitary_size": 4,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "c_Bu",
+      "group_type": 1,
+      "family_id": "c",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": "Tier 1",
+      "local_object_label": "Bu",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "0, 0, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m",
+      "unknown_vector": [
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [],
+        "stabilizer_summary": {
+          "unitary_size": 4,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_Ag",
+      "group_type": 1,
+      "family_id": "f",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": "Tier 1",
+      "local_object_label": "Ag",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "1/2, 0, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m",
+      "unknown_vector": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [],
+        "stabilizer_summary": {
+          "unitary_size": 4,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -1,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "generator_id": "f_Bg",
+      "group_type": 1,
+      "family_id": "f",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": "Tier 1",
+      "local_object_label": "Bg",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "1/2, 0, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m",
+      "unknown_vector": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [],
+        "stabilizer_summary": {
+          "unitary_size": 4,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_Au",
+      "group_type": 1,
+      "family_id": "f",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": "Tier 1",
+      "local_object_label": "Au",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "1/2, 0, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m",
+      "unknown_vector": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [],
+        "stabilizer_summary": {
+          "unitary_size": 4,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -1,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "generator_id": "f_Bu",
+      "group_type": 1,
+      "family_id": "f",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": "Tier 1",
+      "local_object_label": "Bu",
+      "local_object_kind": "single_local_irrep",
+      "local_object_dimension": 1,
+      "local_object_origin": "full magnetic",
+      "representative_coordinate": "1/2, 0, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m",
+      "unknown_vector": [
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [],
+        "stabilizer_summary": {
+          "unitary_size": 4,
+          "antiunitary_size": 0,
+          "unitary_indices": [
+            0,
+            3,
+            4,
+            7
+          ],
+          "antiunitary_indices": []
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": null
+      },
+      "bs_coordinates": [
+        -1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "generator_id": "e_g_eta_plus",
+      "group_type": 1,
+      "family_id": "e",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "g, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 1/4, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m'",
+      "unknown_vector": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "antiunitary_indices": [
+            11,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "e_g_eta_minus",
+      "group_type": 1,
+      "family_id": "e",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "g, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 1/4, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m'",
+      "unknown_vector": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "antiunitary_indices": [
+            11,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "e_u_eta_plus",
+      "group_type": 1,
+      "family_id": "e",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "u, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 1/4, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m'",
+      "unknown_vector": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "antiunitary_indices": [
+            11,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "e_u_eta_minus",
+      "group_type": 1,
+      "family_id": "e",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "u, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 1/4, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m'",
+      "unknown_vector": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "antiunitary_indices": [
+            11,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "d_g_eta_plus",
+      "group_type": 1,
+      "family_id": "d",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "g, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 1/4, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m'",
+      "unknown_vector": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "antiunitary_indices": [
+            11,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "d_g_eta_minus",
+      "group_type": 1,
+      "family_id": "d",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "g, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 1/4, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m'",
+      "unknown_vector": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "antiunitary_indices": [
+            11,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "d_u_eta_plus",
+      "group_type": 1,
+      "family_id": "d",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "u, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 1/4, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m'",
+      "unknown_vector": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "antiunitary_indices": [
+            11,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "d_u_eta_minus",
+      "group_type": 1,
+      "family_id": "d",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "u, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 1/4, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m'",
+      "unknown_vector": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            5
+          ],
+          "antiunitary_indices": [
+            11,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "h_A_eta_plus",
+      "group_type": 1,
+      "family_id": "h",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 1/4, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m'",
+      "unknown_vector": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": [
+            13,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "generator_id": "h_A_eta_minus",
+      "group_type": 1,
+      "family_id": "h",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 1/4, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m'",
+      "unknown_vector": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": [
+            13,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "generator_id": "h_B_eta_plus",
+      "group_type": 1,
+      "family_id": "h",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "B, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 1/4, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m'",
+      "unknown_vector": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": [
+            13,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "generator_id": "h_B_eta_minus",
+      "group_type": 1,
+      "family_id": "h",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "B, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 1/4, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m'",
+      "unknown_vector": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": [
+            13,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_A_eta_plus",
+      "group_type": 1,
+      "family_id": "g",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 1/4, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m'",
+      "unknown_vector": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": [
+            13,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "g_A_eta_minus",
+      "group_type": 1,
+      "family_id": "g",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 1/4, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m'",
+      "unknown_vector": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": [
+            13,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "g_B_eta_plus",
+      "group_type": 1,
+      "family_id": "g",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "B, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 1/4, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m'",
+      "unknown_vector": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": [
+            13,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_B_eta_minus",
+      "group_type": 1,
+      "family_id": "g",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "B, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 1/4, 1/4",
+      "multiplicity": 4,
+      "site_symmetry": "2/m'",
+      "unknown_vector": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            3
+          ],
+          "antiunitary_indices": [
+            13,
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_Ap_eta_plus",
+      "group_type": 1,
+      "family_id": "b",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A', eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 0, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m",
+      "unknown_vector": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": [
+            11,
+            12
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        2,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "b_Ap_eta_minus",
+      "group_type": 1,
+      "family_id": "b",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A', eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 0, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m",
+      "unknown_vector": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": [
+            11,
+            12
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        2,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "b_App_eta_plus",
+      "group_type": 1,
+      "family_id": "b",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A'', eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 0, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m",
+      "unknown_vector": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": [
+            11,
+            12
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "b_App_eta_minus",
+      "group_type": 1,
+      "family_id": "b",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A'', eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "1/2, 0, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m",
+      "unknown_vector": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": [
+            11,
+            12
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "a_Ap_eta_plus",
+      "group_type": 1,
+      "family_id": "a",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A', eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 0, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m",
+      "unknown_vector": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": [
+            11,
+            12
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        2,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "a_Ap_eta_minus",
+      "group_type": 1,
+      "family_id": "a",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A', eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 0, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m",
+      "unknown_vector": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": [
+            11,
+            12
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        2,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "a_App_eta_plus",
+      "group_type": 1,
+      "family_id": "a",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A'', eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 0, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m",
+      "unknown_vector": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": [
+            11,
+            12
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "a_App_eta_minus",
+      "group_type": 1,
+      "family_id": "a",
+      "family_dimension": 0,
+      "family_kind": "point-like",
+      "family_tier": null,
+      "local_object_label": "A'', eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "pointlike_magnetic_local_corep",
+      "representative_coordinate": "0, 0, 0",
+      "multiplicity": 4,
+      "site_symmetry": "2'/m",
+      "unknown_vector": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": null,
+        "stabilizer_summary": {
+          "unitary_size": 2,
+          "antiunitary_size": 2,
+          "unitary_indices": [
+            0,
+            7
+          ],
+          "antiunitary_indices": [
+            11,
+            12
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "i_A_eta_plus",
+      "group_type": 1,
+      "family_id": "i",
+      "family_dimension": 1,
+      "family_kind": "parametric",
+      "family_tier": null,
+      "local_object_label": "A, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "parametric_magnetic_local_corep",
+      "representative_coordinate": "0, y, 0",
+      "multiplicity": 8,
+      "site_symmetry": "2'",
+      "unknown_vector": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 1,
+          "antiunitary_size": 1,
+          "unitary_indices": [
+            0
+          ],
+          "antiunitary_indices": [
+            11
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "i_A_eta_minus",
+      "group_type": 1,
+      "family_id": "i",
+      "family_dimension": 1,
+      "family_kind": "parametric",
+      "family_tier": null,
+      "local_object_label": "A, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "parametric_magnetic_local_corep",
+      "representative_coordinate": "0, y, 0",
+      "multiplicity": 8,
+      "site_symmetry": "2'",
+      "unknown_vector": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 1,
+          "antiunitary_size": 1,
+          "unitary_indices": [
+            0
+          ],
+          "antiunitary_indices": [
+            11
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "n_A_eta_plus",
+      "group_type": 1,
+      "family_id": "n",
+      "family_dimension": 2,
+      "family_kind": "parametric",
+      "family_tier": null,
+      "local_object_label": "A, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "parametric_magnetic_local_corep",
+      "representative_coordinate": "x, 1/4, z",
+      "multiplicity": 8,
+      "site_symmetry": "m'",
+      "unknown_vector": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5",
+          "2/7"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 1,
+          "antiunitary_size": 1,
+          "unitary_indices": [
+            0
+          ],
+          "antiunitary_indices": [
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "n_A_eta_minus",
+      "group_type": 1,
+      "family_id": "n",
+      "family_dimension": 2,
+      "family_kind": "parametric",
+      "family_tier": null,
+      "local_object_label": "A, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "parametric_magnetic_local_corep",
+      "representative_coordinate": "x, 1/4, z",
+      "multiplicity": 8,
+      "site_symmetry": "m'",
+      "unknown_vector": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5",
+          "2/7"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 1,
+          "antiunitary_size": 1,
+          "unitary_indices": [
+            0
+          ],
+          "antiunitary_indices": [
+            14
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "j_A_eta_plus",
+      "group_type": 1,
+      "family_id": "j",
+      "family_dimension": 1,
+      "family_kind": "parametric",
+      "family_tier": null,
+      "local_object_label": "A, eta=+1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "parametric_magnetic_local_corep",
+      "representative_coordinate": "1/2, y, 0",
+      "multiplicity": 8,
+      "site_symmetry": "2'",
+      "unknown_vector": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 1,
+          "antiunitary_size": 1,
+          "unitary_indices": [
+            0
+          ],
+          "antiunitary_indices": [
+            11
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "generator_id": "j_A_eta_minus",
+      "group_type": 1,
+      "family_id": "j",
+      "family_dimension": 1,
+      "family_kind": "parametric",
+      "family_tier": null,
+      "local_object_label": "A, eta=-1",
+      "local_object_kind": "single_magnetic_local_corep",
+      "local_object_dimension": 1,
+      "local_object_origin": "parametric_magnetic_local_corep",
+      "representative_coordinate": "1/2, y, 0",
+      "multiplicity": 8,
+      "site_symmetry": "2'",
+      "unknown_vector": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 4
+        }
+      ],
+      "compatibility_zero": true,
+      "source_artifact": "single_group_ai_expanded_v3_candidates.json",
+      "source_payload": {
+        "sample_parameters": [
+          "1/5"
+        ],
+        "stabilizer_summary": {
+          "unitary_size": 1,
+          "antiunitary_size": 1,
+          "unitary_indices": [
+            0
+          ],
+          "antiunitary_indices": [
+            11
+          ]
+        },
+        "antiunitary_extension_visible_in_current_unitary_kspace_target": false
+      },
+      "bs_coordinates": [
+        -2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    }
+  ],
+  "duplicate_vector_classes": [
+    {
+      "generator_ids": [
+        "b_Ap_eta_plus",
+        "b_Ap_eta_minus",
+        "a_Ap_eta_plus",
+        "a_Ap_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "class_size": 4
+    },
+    {
+      "generator_ids": [
+        "b_App_eta_plus",
+        "b_App_eta_minus",
+        "a_App_eta_plus",
+        "a_App_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "class_size": 4
+    },
+    {
+      "generator_ids": [
+        "c_Ag"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "c_Au"
+      ],
+      "vector_in_unknown_ordering": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "c_Bg"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "c_Bu"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "d_g_eta_plus",
+        "d_g_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "class_size": 2
+    },
+    {
+      "generator_ids": [
+        "d_u_eta_plus",
+        "d_u_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "class_size": 2
+    },
+    {
+      "generator_ids": [
+        "e_g_eta_plus",
+        "e_g_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "class_size": 2
+    },
+    {
+      "generator_ids": [
+        "e_u_eta_plus",
+        "e_u_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "class_size": 2
+    },
+    {
+      "generator_ids": [
+        "f_Ag"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "f_Au"
+      ],
+      "vector_in_unknown_ordering": [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "f_Bg"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "f_Bu"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        2,
+        1,
+        0,
+        2,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "g_A_eta_plus",
+        "g_A_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "class_size": 2
+    },
+    {
+      "generator_ids": [
+        "g_B_eta_plus",
+        "g_B_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "class_size": 2
+    },
+    {
+      "generator_ids": [
+        "h_A_eta_plus",
+        "h_A_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "class_size": 2
+    },
+    {
+      "generator_ids": [
+        "h_B_eta_plus",
+        "h_B_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "class_size": 2
+    },
+    {
+      "generator_ids": [
+        "i_A_eta_plus",
+        "i_A_eta_minus",
+        "n_A_eta_plus",
+        "n_A_eta_minus",
+        "j_A_eta_plus",
+        "j_A_eta_minus"
+      ],
+      "vector_in_unknown_ordering": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "class_size": 6
+    },
+    {
+      "generator_ids": [
+        "k_A"
+      ],
+      "vector_in_unknown_ordering": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        0,
+        4,
+        0,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "k_B"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        4,
+        0,
+        4,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "l_A"
+      ],
+      "vector_in_unknown_ordering": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        4,
+        4,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "l_B"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        4,
+        0,
+        0,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "m_A_double_prime"
+      ],
+      "vector_in_unknown_ordering": [
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        2,
+        0,
+        4,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        2,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        0,
+        2,
+        0,
+        4,
+        4,
+        0,
+        4
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "m_A_prime"
+      ],
+      "vector_in_unknown_ordering": [
+        0,
+        2,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        4,
+        0,
+        2,
+        2,
+        0,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        4,
+        2,
+        4,
+        0,
+        0,
+        4,
+        4
+      ],
+      "class_size": 1
+    },
+    {
+      "generator_ids": [
+        "o_A"
+      ],
+      "vector_in_unknown_ordering": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        8
+      ],
+      "class_size": 1
+    }
+  ]
+}

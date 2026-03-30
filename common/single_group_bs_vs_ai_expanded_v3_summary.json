@@ -1,0 +1,28 @@
+{
+  "group_number": "10.4.1.31",
+  "rank_BS_with_planes": 8,
+  "rank_AI_expanded_v2": 8,
+  "rank_AI_expanded_v3": 8,
+  "AI_expanded_v3_in_BS": true,
+  "rank_fully_covered": true,
+  "saturation_closed": false,
+  "smith_diagonal_in_bs_coordinates": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2
+  ],
+  "remaining_index": 4,
+  "added_rank_coverage_vs_v2": 0,
+  "old_raw_candidate_count": 39,
+  "new_parametric_magnetic_corep_candidate_count": 6,
+  "combined_raw_candidate_count": 45,
+  "distinct_new_parametric_unknown_vector_count": 1,
+  "new_generators_change_rank": false,
+  "new_generators_change_smith": false,
+  "current_honest_conclusion": "All audited Wyckoff families are now included, rank coverage stays complete at 8, but the finite-index saturation issue remains with Smith diagonal [1,1,1,1,1,1,2,2] and index 4. Under the current single-group formalism this residual quotient is no longer attributable to missing n/i/j generators."
+}

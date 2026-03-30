@@ -1,0 +1,620 @@
+{
+  "group_number": "10.4.1.31",
+  "connection": [
+    "P1",
+    "L1",
+    "P4"
+  ],
+  "exact_k_points": {
+    "P1": [
+      "0",
+      "0",
+      "0"
+    ],
+    "L1": [
+      "0",
+      "1/5",
+      "0"
+    ],
+    "P4": [
+      "0",
+      "1/2",
+      "0"
+    ]
+  },
+  "actual_cli_k_points": {
+    "P1": [
+      "0",
+      "0",
+      "0"
+    ],
+    "L1": [
+      "0",
+      "0.2",
+      "0"
+    ],
+    "P4": [
+      "0",
+      "0.5",
+      "0"
+    ]
+  },
+  "geometry_anchor": {
+    "P1_id": "P1",
+    "P1_parametrization": "(0, 0, 0)",
+    "L1_id": "L1",
+    "L1_parametrization": "(0, v, 0)",
+    "L1_constraints": [
+      "0 < v",
+      "v < 1/2"
+    ],
+    "L1_sample_point": [
+      "0",
+      "1/5",
+      "0"
+    ],
+    "P4_id": "P4",
+    "P4_parametrization": "(0, 1/2, 0)",
+    "point_line_edges": [
+      {
+        "point_id": "P1",
+        "line_id": "L1",
+        "boundary_condition": "v = 0",
+        "derived_point": [
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "point_id": "P4",
+        "line_id": "L1",
+        "boundary_condition": "v = 1/2",
+        "derived_point": [
+          "0",
+          "1/2",
+          "0"
+        ]
+      }
+    ]
+  },
+  "raw_output_note": "`SSGReps.py` uses the same JSON schema for both `--out character` and `--out rep_degree`, and the CLI branch only changes terminal printing after the little-group object is built. Two independent runs are not byte-identical because the irrep construction uses a random matrix internally, so `character` and especially `repMatrix` can drift by tiny floating noise between runs. For this task the stable usable fields are the operation data, `timeReversal`, `torsion`, `repDegree`, and the rounded internal unitary-subgroup `character`; the printed terminal output instead uses `linear_character`.",
+  "files": {
+    "P1_character": {
+      "keys": [
+        "ssgNum",
+        "kvec",
+        "rotC",
+        "spin",
+        "su2",
+        "timeReversal",
+        "tauC",
+        "character",
+        "repMatrix",
+        "torsion",
+        "repDegree"
+      ],
+      "kvec": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_ops_total": 16,
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "n_reps": 8,
+      "character_length": 8,
+      "repDegree": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "timeReversal": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "command": "/data/home/szhang/anaconda3/bin/python /data/work/szhang/ssg/comprel/SSGReps/SSGReps/SSGReps.py --ssgNum 10.4.1.31 --kp 0 0 0 --out character --groupType 1 --fileType json",
+      "json_path": "/data/work/szhang/ssg/comprel/P1_character.json",
+      "stdout_path": "/data/work/szhang/ssg/comprel/P1_character.stdout.txt",
+      "exact_k": [
+        "0",
+        "0",
+        "0"
+      ],
+      "actual_cli_k": [
+        "0",
+        "0",
+        "0"
+      ],
+      "stdout_last_lines": [
+        "1  +1.00000+0.00000*i",
+        "2  +1.00000+0.00000*i",
+        "3  +1.00000+0.00000*i",
+        "4  +1.00000+0.00000*i",
+        "5  +1.00000+0.00000*i",
+        "6  +1.00000+0.00000*i",
+        "7  +1.00000+0.00000*i",
+        "8  +1.00000+0.00000*i"
+      ]
+    },
+    "P1_degree": {
+      "keys": [
+        "ssgNum",
+        "kvec",
+        "rotC",
+        "spin",
+        "su2",
+        "timeReversal",
+        "tauC",
+        "character",
+        "repMatrix",
+        "torsion",
+        "repDegree"
+      ],
+      "kvec": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_ops_total": 16,
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "n_reps": 8,
+      "character_length": 8,
+      "repDegree": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "timeReversal": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "command": "/data/home/szhang/anaconda3/bin/python /data/work/szhang/ssg/comprel/SSGReps/SSGReps/SSGReps.py --ssgNum 10.4.1.31 --kp 0 0 0 --out rep_degree --groupType 1 --fileType json",
+      "json_path": "/data/work/szhang/ssg/comprel/P1_degree.json",
+      "stdout_path": "/data/work/szhang/ssg/comprel/P1_degree.stdout.txt",
+      "exact_k": [
+        "0",
+        "0",
+        "0"
+      ],
+      "actual_cli_k": [
+        "0",
+        "0",
+        "0"
+      ],
+      "stdout_last_lines": [
+        "",
+        "[  -1.000      0           0       ]",
+        "[      0       1.000      0       ]",
+        "[      0           0       1.000  ]",
+        "",
+        "[0. 2. 3.]",
+        "repdgree is:",
+        "[1, 1, 1, 1, 1, 1, 1, 1]"
+      ]
+    },
+    "L1_character": {
+      "keys": [
+        "ssgNum",
+        "kvec",
+        "rotC",
+        "spin",
+        "su2",
+        "timeReversal",
+        "tauC",
+        "character",
+        "repMatrix",
+        "torsion",
+        "repDegree"
+      ],
+      "kvec": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "n_ops_total": 8,
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "n_reps": 4,
+      "character_length": 4,
+      "repDegree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "timeReversal": [
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "command": "/data/home/szhang/anaconda3/bin/python /data/work/szhang/ssg/comprel/SSGReps/SSGReps/SSGReps.py --ssgNum 10.4.1.31 --kp 0 0.2 0 --out character --groupType 1 --fileType json",
+      "json_path": "/data/work/szhang/ssg/comprel/L1_character.json",
+      "stdout_path": "/data/work/szhang/ssg/comprel/L1_character.stdout.txt",
+      "exact_k": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "actual_cli_k": [
+        "0",
+        "0.2",
+        "0"
+      ],
+      "stdout_last_lines": [
+        "3  -0.80902+0.58779*i",
+        "4  -0.30902+0.95106*i",
+        "4th:",
+        "torsion: 1",
+        "1  +1.00000+0.00000*i",
+        "2  +0.80902-0.58779*i",
+        "3  +0.80902-0.58779*i",
+        "4  +0.30902-0.95106*i"
+      ]
+    },
+    "L1_degree": {
+      "keys": [
+        "ssgNum",
+        "kvec",
+        "rotC",
+        "spin",
+        "su2",
+        "timeReversal",
+        "tauC",
+        "character",
+        "repMatrix",
+        "torsion",
+        "repDegree"
+      ],
+      "kvec": [
+        0.0,
+        0.2,
+        0.0
+      ],
+      "n_ops_total": 8,
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "n_reps": 4,
+      "character_length": 4,
+      "repDegree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "timeReversal": [
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "command": "/data/home/szhang/anaconda3/bin/python /data/work/szhang/ssg/comprel/SSGReps/SSGReps/SSGReps.py --ssgNum 10.4.1.31 --kp 0 0.2 0 --out rep_degree --groupType 1 --fileType json",
+      "json_path": "/data/work/szhang/ssg/comprel/L1_degree.json",
+      "stdout_path": "/data/work/szhang/ssg/comprel/L1_degree.stdout.txt",
+      "exact_k": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "actual_cli_k": [
+        "0",
+        "0.2",
+        "0"
+      ],
+      "stdout_last_lines": [
+        "",
+        "[  -1.000      0           0       ]",
+        "[      0       1.000      0       ]",
+        "[      0           0       1.000  ]",
+        "",
+        "[0. 2. 3.]",
+        "repdgree is:",
+        "[1, 1, 1, 1]"
+      ]
+    },
+    "P4_character": {
+      "keys": [
+        "ssgNum",
+        "kvec",
+        "rotC",
+        "spin",
+        "su2",
+        "timeReversal",
+        "tauC",
+        "character",
+        "repMatrix",
+        "torsion",
+        "repDegree"
+      ],
+      "kvec": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "n_ops_total": 16,
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "n_reps": 2,
+      "character_length": 8,
+      "repDegree": [
+        2,
+        2
+      ],
+      "torsion": [
+        1,
+        1
+      ],
+      "timeReversal": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "command": "/data/home/szhang/anaconda3/bin/python /data/work/szhang/ssg/comprel/SSGReps/SSGReps/SSGReps.py --ssgNum 10.4.1.31 --kp 0 0.5 0 --out character --groupType 1 --fileType json",
+      "json_path": "/data/work/szhang/ssg/comprel/P4_character.json",
+      "stdout_path": "/data/work/szhang/ssg/comprel/P4_character.stdout.txt",
+      "exact_k": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "actual_cli_k": [
+        "0",
+        "0.5",
+        "0"
+      ],
+      "stdout_last_lines": [
+        "1  +2.00000+0.00000*i",
+        "2  +0.00000+0.00000*i",
+        "3  +0.00000+0.00000*i",
+        "4  -2.00000-0.00000*i",
+        "5  -0.00000-0.00000*i",
+        "6  +0.00000+0.00000*i",
+        "7  +0.00000+0.00000*i",
+        "8  +0.00000+0.00000*i"
+      ]
+    },
+    "P4_degree": {
+      "keys": [
+        "ssgNum",
+        "kvec",
+        "rotC",
+        "spin",
+        "su2",
+        "timeReversal",
+        "tauC",
+        "character",
+        "repMatrix",
+        "torsion",
+        "repDegree"
+      ],
+      "kvec": [
+        0.0,
+        0.5,
+        0.0
+      ],
+      "n_ops_total": 16,
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "n_reps": 2,
+      "character_length": 8,
+      "repDegree": [
+        2,
+        2
+      ],
+      "torsion": [
+        1,
+        1
+      ],
+      "timeReversal": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "command": "/data/home/szhang/anaconda3/bin/python /data/work/szhang/ssg/comprel/SSGReps/SSGReps/SSGReps.py --ssgNum 10.4.1.31 --kp 0 0.5 0 --out rep_degree --groupType 1 --fileType json",
+      "json_path": "/data/work/szhang/ssg/comprel/P4_degree.json",
+      "stdout_path": "/data/work/szhang/ssg/comprel/P4_degree.stdout.txt",
+      "exact_k": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "actual_cli_k": [
+        "0",
+        "0.5",
+        "0"
+      ],
+      "stdout_last_lines": [
+        "",
+        "[  -1.000      0           0       ]",
+        "[      0       1.000      0       ]",
+        "[      0           0       1.000  ]",
+        "",
+        "[0. 2. 3.]",
+        "repdgree is:",
+        "[2, 2]"
+      ]
+    }
+  },
+  "character_vs_degree_mode_check": {
+    "P1": {
+      "same_schema_keys": true,
+      "stable_fields_equal": true,
+      "character_allclose": true,
+      "rep_matrix_allclose": true,
+      "byte_identical": false
+    },
+    "L1": {
+      "same_schema_keys": true,
+      "stable_fields_equal": true,
+      "character_allclose": true,
+      "rep_matrix_allclose": true,
+      "byte_identical": false
+    },
+    "P4": {
+      "same_schema_keys": true,
+      "stable_fields_equal": true,
+      "character_allclose": true,
+      "rep_matrix_allclose": false,
+      "byte_identical": false
+    }
+  },
+  "optimize_false_true_check": {
+    "P1": {
+      "same_rep_degree": true,
+      "same_torsion": true,
+      "same_time_reversal": true,
+      "same_character": true,
+      "same_linear_character": true
+    },
+    "L1": {
+      "same_rep_degree": true,
+      "same_torsion": true,
+      "same_time_reversal": true,
+      "same_character": true,
+      "same_linear_character": true
+    },
+    "P4": {
+      "same_rep_degree": true,
+      "same_torsion": true,
+      "same_time_reversal": true,
+      "same_character": true,
+      "same_linear_character": true
+    }
+  },
+  "can_proceed_to_compatibility": true,
+  "blocker": null,
+  "compatibility_support": {
+    "matched_unitary_operation_indices": {
+      "P1": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "P4": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "unknown_ordering": [
+      "P1_R1",
+      "P1_R2",
+      "P1_R3",
+      "P1_R4",
+      "P1_R5",
+      "P1_R6",
+      "P1_R7",
+      "P1_R8",
+      "P4_R1",
+      "P4_R2"
+    ]
+  }
+}

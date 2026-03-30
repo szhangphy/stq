@@ -1,0 +1,24 @@
+{
+  "group_number": "10.4.1.31",
+  "target_families": [
+    "n",
+    "i",
+    "j"
+  ],
+  "processing_order": [
+    "i",
+    "n",
+    "j"
+  ],
+  "successful_families": [
+    "i",
+    "n",
+    "j"
+  ],
+  "failed_families": [],
+  "successful_local_corep_count": 6,
+  "can_build_ai_expanded_v3": true,
+  "next_blocker": "All three parametric antiunitary families are now included. The remaining blocker is the residual index-4 finite saturation issue inside BS_with_planes, which is no longer attributable to missing n/i/j families.",
+  "rank_ai_expanded_v3": 8,
+  "saturation_closed": false
+}

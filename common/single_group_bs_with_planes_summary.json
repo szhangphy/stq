@@ -1,0 +1,40 @@
+{
+  "group_number": "10.4.1.31",
+  "matrix_shape": [
+    30,
+    31
+  ],
+  "rank": 23,
+  "nullity": 8,
+  "smith_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+  ],
+  "line_row_count": 10,
+  "plane_row_count": 20,
+  "added_rank_vs_line_only_embedding": 13,
+  "net_nullity_drop_vs_line_only": 8,
+  "plane_unknowns_enter_global_ordering": true,
+  "note": "This is the minimal point-plane prototype consistent with the current geometric-only boundary classification."
+}

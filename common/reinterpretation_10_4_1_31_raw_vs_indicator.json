@@ -1,0 +1,26 @@
+{
+  "group": "10.4.1.31",
+  "single": {
+    "raw_quotient": "Z2 x Z2",
+    "free_part": "trivial",
+    "finite_part": [
+      2,
+      2
+    ],
+    "major_reinterpretation_needed": false,
+    "reason": "The single-group quotient is already purely finite (Z2 x Z2), so there is no free-vs-finite mixing in this case."
+  },
+  "double": {
+    "raw_quotient": "Z^2 x Z2 x Z2 x Z2 x Z2",
+    "free_part": "Z^2",
+    "finite_part": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "major_reinterpretation_needed": true,
+    "reason": "The double-group quotient contains both a free part and a finite torsion part, so the full Z^2 x Z2^4 should not be called a purely finite indicator group."
+  },
+  "bottom_line": "10.4.1.31 single-group is mostly stable. 10.4.1.31 double-group needs a raw-quotient-vs-finite-indicator reinterpretation."
+}

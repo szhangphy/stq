@@ -1,0 +1,26 @@
+{
+  "group_number": "10.4.1.31",
+  "rank_BS_with_planes": 8,
+  "rank_AI_min": 2,
+  "rank_AI_expanded": 6,
+  "AI_expanded_in_BS": true,
+  "rank_span_BS_plus_AI_expanded": 8,
+  "raw_candidate_count": 15,
+  "basis_generator_ids": [
+    "o_A",
+    "m_A_prime",
+    "k_A",
+    "l_A",
+    "c_Ag",
+    "f_Ag"
+  ],
+  "new_independent_directions_vs_min_prototype": 4,
+  "remaining_bs_rank_gap": 2,
+  "new_coverage_statement": "The expanded candidate lattice raises the atomic-side rank from 2 to 6, so it adds 4 independent directions beyond the earlier minimal prototype.",
+  "remaining_gap_statement": "The remaining rank-2 gap is consistent with the still-excluded antiunitary families/coreps; this is still not the full single-group AI lattice.",
+  "missing_pieces": [
+    "full magnetic local coreps on a,b,d,e,g,h",
+    "magnetic-corep treatment for the antiunitary parameter families n,i,j"
+  ],
+  "scope_note": "This remains an expanded single-group AI candidate lattice, not the final BS/AI result and not a final topological classification."
+}

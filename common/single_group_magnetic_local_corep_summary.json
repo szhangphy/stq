@@ -1,0 +1,33 @@
+{
+  "group_number": "10.4.1.31",
+  "target_families": [
+    "a",
+    "b",
+    "d",
+    "e",
+    "g",
+    "h"
+  ],
+  "processing_order": [
+    "e",
+    "d",
+    "h",
+    "g",
+    "b",
+    "a"
+  ],
+  "successful_families": [
+    "e",
+    "d",
+    "h",
+    "g",
+    "b",
+    "a"
+  ],
+  "failed_families": [],
+  "successful_local_corep_count": 24,
+  "can_build_ai_expanded_v2": true,
+  "next_blocker": "The point-like antiunitary families are now covered at the rank level; the remaining next blocker is the parameter families n,i,j together with the final integer-saturation question beyond rank closure.",
+  "rank_ai_expanded_v2": 8,
+  "remaining_rank_gap": 0
+}

@@ -1,0 +1,29 @@
+{
+  "group_number": "10.4.1.31",
+  "planes": [
+    "S1",
+    "S2"
+  ],
+  "plane_outputs_available": true,
+  "plane_adds_new_constraints": true,
+  "reason": "S1 and S2 do not introduce new little-group signature types, but the minimal point-plane prototype couples previously disjoint line blocks through shared plane unknowns. The extended matrix has shape 30 x 31, rank 23, and nullity 8, so the plane layer adds independent compatibility information.",
+  "can_proceed_to_plane_layer": true,
+  "next_blocker": "Only the minimal point-plane prototype is implemented; a fully generalized boundary-line-aware plane framework remains future work.",
+  "plane_signature_matches": {
+    "S1": [
+      "L1",
+      "L3"
+    ],
+    "S2": [
+      "L2",
+      "L4"
+    ]
+  },
+  "with_planes_matrix_shape": [
+    30,
+    31
+  ],
+  "with_planes_rank": 23,
+  "with_planes_nullity": 8,
+  "with_planes_added_rank_vs_line_only": 13
+}

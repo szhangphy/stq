@@ -1,0 +1,220 @@
+{
+  "scope": "two-group correctness attribution audit",
+  "cases": {
+    "10.4.1.31_single": {
+      "group": "10.4.1.31",
+      "group_type": 1,
+      "BS_likely_correct": "true",
+      "AI_likely_complete": "true",
+      "quotient_interpretation_likely_correct": "true",
+      "suspicion_ranking": [
+        "AI / AI completeness",
+        "quotient interpretation",
+        "BS"
+      ],
+      "confidence": "medium",
+      "main_issue": "No hard contradiction is visible; if forced to pick the weakest layer, the family-level completeness proof is the first one to stress because it depends on the local census assumptions.",
+      "recommended_next_step": "If more confidence is needed, independently rederive the local-family census from the site-symmetry data rather than from the current audited library outputs.",
+      "raw_quotient": "Z2 x Z2",
+      "free_rank": 0,
+      "finite_part": [
+        2,
+        2
+      ],
+      "bs_evidence": [
+        "line-only and with-planes summaries are both present, and the nullity drops from 16 to 8 when planes are added",
+        "plane necessity audit reports added rank 13 with shape [30, 31]",
+        "with-planes BS basis has 8 basis columns, matching nullity 8",
+        "the compatibility workflow is explicit and uses integer Smith decomposition rather than a floating nullspace"
+      ],
+      "ai_evidence": [
+        "all 15 families are explicitly listed complete in the completeness summary",
+        "the local site symmetries are all abelian or order-2 antiunitary case-a extensions, which limits hidden missing higher-dimensional local objects",
+        "independent SNF recomputation from AI basis coefficients reproduces Z2 x Z2"
+      ],
+      "quotient_evidence": [
+        "independent SNF recomputation gives smith diagonal [1, 1, 1, 1, 1, 1, 2, 2]",
+        "the quotient has no free part, so there is no free-vs-finite mixing in this case",
+        "the result remains scoped to the current with-planes basis and unknown ordering, but that is a scope caveat rather than a contradiction"
+      ],
+      "evidence_files": [
+        "single_group_bs_summary.json",
+        "single_group_plane_necessity_summary.json",
+        "single_group_bs_with_planes_summary.json",
+        "single_group_bs_with_planes_basis_raw.json",
+        "single_group_ai_expanded_v3_basis.json",
+        "single_group_ai_completeness_summary.json",
+        "single_group_ai_completeness_audit.md",
+        "single_group_indicator_group_summary.json",
+        "single_group_indicator_generators.json"
+      ]
+    },
+    "10.4.1.31_double": {
+      "group": "10.4.1.31",
+      "group_type": 2,
+      "BS_likely_correct": "true",
+      "AI_likely_complete": "true",
+      "quotient_interpretation_likely_correct": "uncertain",
+      "suspicion_ranking": [
+        "quotient interpretation",
+        "AI / AI completeness",
+        "BS"
+      ],
+      "confidence": "high",
+      "main_issue": "The raw mixed quotient is likely real, but the reporting layer still mixes a full raw quotient with indicator language.",
+      "recommended_next_step": "Split the raw quotient into its free and torsion sectors in the primary artifacts, and reserve indicator language for the finite torsion part only.",
+      "raw_quotient": "Z^2 x Z2 x Z2 x Z2 x Z2",
+      "free_rank": 2,
+      "finite_part": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "bs_evidence": [
+        "double-group BS summary reports shape [30, 31] with rank 23 and nullity 8",
+        "double-group raw BS basis has 8 basis columns, matching nullity 8",
+        "the k-space backbone audit explicitly redoes line blocks, plane necessity, and with-planes kernel extraction on the double branch"
+      ],
+      "ai_evidence": [
+        "all 15 families are marked complete after combining point-like and parametric double local objects",
+        "the family site symmetries are still only order-2 or simple unitary/antiunitary extensions, which makes the completeness model relatively constrained",
+        "independent SNF recomputation from the AI_v2 basis coefficients reproduces Z^2 x Z2 x Z2 x Z2 x Z2"
+      ],
+      "quotient_evidence": [
+        "the algebraic quotient extraction itself is well supported by the stored AI basis coefficients",
+        "the recomputed quotient has free rank 2 and finite part [2, 2, 2, 2]",
+        "the interpretation layer is the weak point because the artifact naming still uses indicator-language even though the quotient contains a free part",
+        "Because the quotient contains a free part, the current BS_double/AI_double is not a purely finite indicator group. The honest algebraic result is the full mixed quotient reported here."
+      ],
+      "evidence_files": [
+        "double_group_bs_summary_10.4.1.31.json",
+        "double_group_bs_basis_raw_10.4.1.31.json",
+        "double_group_kspace_backbone_audit_10.4.1.31.md",
+        "double_group_plane_necessity_audit_10.4.1.31.md",
+        "double_group_ai_v2_basis_10.4.1.31.json",
+        "double_group_ai_completeness_summary_10.4.1.31.json",
+        "double_group_ai_completeness_audit_10.4.1.31.md",
+        "double_group_bs_mod_ai_summary_10.4.1.31.json",
+        "double_group_indicator_group_summary_10.4.1.31.json",
+        "double_group_indicator_generators_10.4.1.31.json"
+      ]
+    },
+    "194.1.1.1_single": {
+      "group": "194.1.1.1",
+      "group_type": 1,
+      "BS_likely_correct": "uncertain",
+      "AI_likely_complete": "uncertain",
+      "quotient_interpretation_likely_correct": "false",
+      "suspicion_ranking": [
+        "quotient interpretation",
+        "AI / AI completeness",
+        "BS"
+      ],
+      "confidence": "high",
+      "main_issue": "The raw quotient Z^16 is free-only and therefore cannot be presented as a standard finite topological indicator group.",
+      "recommended_next_step": "Keep the raw quotient as an algebraic result, but separately identify which free directions are genuine topological invariants and whether any finite symmetry-indicator sector remains after the physically appropriate reduction.",
+      "raw_quotient": "Z^16",
+      "free_rank": 16,
+      "finite_part": [],
+      "bs_evidence": [
+        "single and double BS backgrounds can be rebuilt from the stage-1/stage-2 scripts in the current workspace",
+        "the recomputed single and double matrices both have shape [58, 62] and nullity 29",
+        "the BS layer on 194.1.1.1 depends on synthetic boundary-point augmentation because swyckoff_k.py does not emit every needed 0D endpoint directly",
+        "that augmentation is internally consistent, but it is still the main reason this BS layer is less settled than the closed 10.4.1.31 case"
+      ],
+      "ai_evidence": [
+        "the SG194 single local-irrep library covers the non-abelian types C3v, D3d-like, and D3h-like with orthogonality and dimension-squared checks",
+        "the recomputed single AI rank is 13 inside BS rank 29",
+        "the recomputed raw quotient is Z^16",
+        "however, the completeness statement is still library-backed rather than independently checked against an external BR/EBR source"
+      ],
+      "quotient_evidence": [
+        "the quotient summary itself already records free_rank = 16 and finite_part = []",
+        "there is no finite torsion left after the raw Smith decomposition",
+        "therefore Z^16 is a raw free-dominated quotient, not a standard finite symmetry-indicator group"
+      ],
+      "evidence_files": [
+        "group_194_1_1_1_single_bs_analysis.json",
+        "group_194_1_1_1_single_full_compatibility_with_planes.json",
+        "group_194_1_1_1_single_pilot_summary.json",
+        "group_194_1_1_1_single_pilot_audit.md",
+        "group_194_1_1_1_single_ai_completion_summary.json",
+        "group_194_1_1_1_single_indicator_group_summary.json",
+        "group_194_1_1_1_single_indicator_generators.json",
+        "workflow_portability_report_194.1.1.1.tex",
+        "workflow_portability_report_stage2_194.1.1.1.tex",
+        "debug_workflow_portability_stage2_194.1.1.1.py",
+        "debug_sg194_nonabelian_local_library.py"
+      ]
+    },
+    "194.1.1.1_double": {
+      "group": "194.1.1.1",
+      "group_type": 2,
+      "BS_likely_correct": "uncertain",
+      "AI_likely_complete": "uncertain",
+      "quotient_interpretation_likely_correct": "false",
+      "suspicion_ranking": [
+        "quotient interpretation",
+        "AI / AI completeness",
+        "BS"
+      ],
+      "confidence": "medium",
+      "main_issue": "The double-group result is again a free-only raw quotient Z^16, while the AI completeness claim still depends on the current projective local library.",
+      "recommended_next_step": "Do not call Z^16 a final double-group indicator group; first separate the free sector, then cross-check the projective local library with an independent derivation or benchmark.",
+      "raw_quotient": "Z^16",
+      "free_rank": 16,
+      "finite_part": [],
+      "bs_evidence": [
+        "single and double BS backgrounds can be rebuilt from the stage-1/stage-2 scripts in the current workspace",
+        "the recomputed single and double matrices both have shape [58, 62] and nullity 29",
+        "the BS layer on 194.1.1.1 depends on synthetic boundary-point augmentation because swyckoff_k.py does not emit every needed 0D endpoint directly",
+        "that augmentation is internally consistent, but it is still the main reason this BS layer is less settled than the closed 10.4.1.31 case"
+      ],
+      "ai_evidence": [
+        "the SG194 double local library uses projective twisted-regular decomposition with factor_su2 validation",
+        "the recomputed double AI rank is 13 inside BS rank 29",
+        "the recomputed raw quotient is Z^16",
+        "this is a newer and more delicate library than the single-group one, so the completeness verdict is still best treated as conditional on the current projective builder"
+      ],
+      "quotient_evidence": [
+        "the double quotient summary also records free_rank = 16 and finite_part = []",
+        "this matches the recomputed projective-library-based quotient exactly",
+        "again, the problem is interpretation: a free-only raw quotient cannot be read as a final finite indicator group"
+      ],
+      "evidence_files": [
+        "group_194_1_1_1_double_bs_analysis.json",
+        "group_194_1_1_1_double_full_compatibility_with_planes.json",
+        "group_194_1_1_1_double_pilot_summary.json",
+        "group_194_1_1_1_double_pilot_audit.md",
+        "group_194_1_1_1_double_ai_completion_summary.json",
+        "group_194_1_1_1_double_indicator_group_summary.json",
+        "group_194_1_1_1_double_indicator_generators.json",
+        "workflow_portability_report_194.1.1.1.tex",
+        "workflow_portability_report_stage2_194.1.1.1.tex",
+        "debug_workflow_portability_stage2_194.1.1.1.py",
+        "debug_sg194_nonabelian_local_library.py"
+      ]
+    }
+  },
+  "recomputed_194_runtime": {
+    "single_runtime_shape": [
+      58,
+      62
+    ],
+    "single_runtime_rank": 33,
+    "single_runtime_nullity": 29,
+    "double_runtime_shape": [
+      58,
+      62
+    ],
+    "double_runtime_rank": 33,
+    "double_runtime_nullity": 29,
+    "single_ai_candidate_count": 45,
+    "double_ai_candidate_count": 45,
+    "single_ai_rank": 13,
+    "double_ai_rank": 13
+  },
+  "main_blocker": "No coding blocker remains inside this audit run; the remaining issue is interpretation discipline, especially for quotients with free parts.",
+  "next_step": "If a follow-up is needed, separate free generators from finite torsion generators in the user-facing quotient reports and benchmark the SG194 AI completeness externally."
+}

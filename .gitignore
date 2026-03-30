@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.swp
+
+autoresearch-state.json
+autoresearch-lessons.md
+research-results.tsv
+
+common/SSGReps/ssg_data/identify.pkl
+common/**/*.pdf
+sg194/**/*.pdf

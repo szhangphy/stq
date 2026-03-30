@@ -1,0 +1,14 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "rank_BS_double": 8,
+  "rank_AI_double_pointlike_v1": 6,
+  "AI_double_pointlike_v1_in_BS": true,
+  "rank_span_BS_plus_AI_double_pointlike_v1": 8,
+  "covered_bs_dimensions": 6,
+  "remaining_rank_gap": 2,
+  "successful_pointlike_candidate_count": 14,
+  "distinct_pointlike_unknown_vector_count": 9,
+  "remaining_gap_source": "The rank gap is no longer in the audited point-like sector. It is entirely in the out-of-scope parametric families `o,m,k,l,n,i,j`, although the current point-like data alone does not yet separate the unitary `o,m,k,l` and antiunitary `n,i,j` contributions.",
+  "next_most_reasonable_target": "Extend the same double-group local-corep builder to the parametric families `o,m,k,l,n,i,j` and then re-check AI saturation inside BS_double."
+}

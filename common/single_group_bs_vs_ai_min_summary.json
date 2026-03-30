@@ -1,0 +1,35 @@
+{
+  "group_number": "10.4.1.31",
+  "rank_BS_with_planes": 8,
+  "rank_AI_min": 2,
+  "AI_min_in_BS": true,
+  "rank_span_BS_plus_AI_min": 8,
+  "prototype_generator_ids": [
+    "c_trivial_1d",
+    "f_trivial_1d"
+  ],
+  "prototype_bs_coefficients": {
+    "c_trivial_1d": [
+      -1,
+      2,
+      2,
+      0,
+      2,
+      0,
+      2,
+      2
+    ],
+    "f_trivial_1d": [
+      -1,
+      2,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2
+    ]
+  },
+  "coverage_statement": "The minimal prototype spans a 2D sublattice inside the current 8D BS lattice; at least 6 BS directions remain uncovered by this prototype.",
+  "scope_note": "This is only a minimal prototype, not the final BS/AI comparison for 10.4.1.31."
+}

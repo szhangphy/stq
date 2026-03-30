@@ -1,0 +1,3418 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "target_families": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h"
+  ],
+  "processing_order": [
+    "c",
+    "f",
+    "d",
+    "e",
+    "g",
+    "h",
+    "b",
+    "a"
+  ],
+  "families": [
+    {
+      "letter": "c",
+      "processing_order_index": 1,
+      "processing_reason": "Already validated as the minimal double-group seed family; pure unitary `2/m` and the safest place to anchor the reusable point-like builder.",
+      "representative_coordinate": "0, 0, 1/4",
+      "representative_coordinate_sample_magnetic": [
+        "0",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_sample_conventional": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2/m",
+        "site_symmetry_custom": "2[z]",
+        "unitary_site_symmetry_raw_field": "?",
+        "site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "time_reversal": false,
+            "spin_matrix": null
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": false,
+            "spin_matrix": null
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "time_reversal": false,
+            "spin_matrix": null
+          }
+        ],
+        "note": "The `site_symmetry_ops` fields in `swyckoff_r.py` behave like generator descriptors, not a full indexed stabilizer list. Exact raw-op stabilizer indices below come from direct recomputation after the audited basis bridge."
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 4,
+        "unitary_count": 4,
+        "antiunitary_count": 0,
+        "stabilizer_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": [],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 3,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "1"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 4,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "1"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 7,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "2"
+            ],
+            "time_reversal": false
+          }
+        ]
+      },
+      "swyckoff_vs_recomputed_stabilizer": {
+        "swyckoff_stab_field": 4,
+        "recomputed_stabilizer_size": 4,
+        "size_matches": true,
+        "generator_count_in_swyckoff_field": 1,
+        "generator_has_antiunitary_flag": false,
+        "generator_antiunitary_presence_consistent_with_recomputed_counts": true,
+        "usable_as_double_local_corep_input": true
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "2/m",
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "generator_indices": [
+          3,
+          4
+        ],
+        "factor_on_c2_square": {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        "factor_on_inversion_square": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "double_group_local_builder": "explicit projective character enumeration on the full unitary stabilizer"
+      },
+      "double_group_local_corep_feasibility": {
+        "can_build_full_local_object_set": true,
+        "reason": "Pure unitary point family. The full projective local-irrep set can be enumerated directly from the audited unitary stabilizer and `factor_su2`.",
+        "expected_wigner_case": null,
+        "minimal_blocker": null
+      },
+      "local_objects": [
+        {
+          "id": "c_double_g_plus_i",
+          "label": "c: g, C2=+i",
+          "dimension": 1,
+          "type": "projective_local_irrep",
+          "double_group_local_object_kind": "projective_local_irrep",
+          "origin": {
+            "unitary_subgroup": "2/m",
+            "construction": "Double-valued one-dimensional projective irrep on the unitary `2/m` stabilizer.",
+            "c2_eigenvalue": "+i",
+            "inversion_parity": "g"
+          },
+          "wigner_case": null,
+          "truly_antiunitary": false,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            "4": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              4,
+              7
+            ],
+            "checked_relation_count": 16
+          }
+        },
+        {
+          "id": "c_double_u_plus_i",
+          "label": "c: u, C2=+i",
+          "dimension": 1,
+          "type": "projective_local_irrep",
+          "double_group_local_object_kind": "projective_local_irrep",
+          "origin": {
+            "unitary_subgroup": "2/m",
+            "construction": "Double-valued one-dimensional projective irrep on the unitary `2/m` stabilizer.",
+            "c2_eigenvalue": "+i",
+            "inversion_parity": "u"
+          },
+          "wigner_case": null,
+          "truly_antiunitary": false,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            "4": {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              4,
+              7
+            ],
+            "checked_relation_count": 16
+          }
+        },
+        {
+          "id": "c_double_g_minus_i",
+          "label": "c: g, C2=-i",
+          "dimension": 1,
+          "type": "projective_local_irrep",
+          "double_group_local_object_kind": "projective_local_irrep",
+          "origin": {
+            "unitary_subgroup": "2/m",
+            "construction": "Double-valued one-dimensional projective irrep on the unitary `2/m` stabilizer.",
+            "c2_eigenvalue": "-i",
+            "inversion_parity": "g"
+          },
+          "wigner_case": null,
+          "truly_antiunitary": false,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            "4": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": 0.0,
+              "imag": -1.0
+            }
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              4,
+              7
+            ],
+            "checked_relation_count": 16
+          }
+        },
+        {
+          "id": "c_double_u_minus_i",
+          "label": "c: u, C2=-i",
+          "dimension": 1,
+          "type": "projective_local_irrep",
+          "double_group_local_object_kind": "projective_local_irrep",
+          "origin": {
+            "unitary_subgroup": "2/m",
+            "construction": "Double-valued one-dimensional projective irrep on the unitary `2/m` stabilizer.",
+            "c2_eigenvalue": "-i",
+            "inversion_parity": "u"
+          },
+          "wigner_case": null,
+          "truly_antiunitary": false,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            "4": {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              4,
+              7
+            ],
+            "checked_relation_count": 16
+          }
+        }
+      ],
+      "full_local_object_set_built": true
+    },
+    {
+      "letter": "f",
+      "processing_order_index": 2,
+      "processing_reason": "Same pure-unitary `2/m` site symmetry as `c`, so it is the cleanest first extension once the seed builder is stable.",
+      "representative_coordinate": "1/2, 0, 1/4",
+      "representative_coordinate_sample_magnetic": [
+        "1/2",
+        "0",
+        "1/4"
+      ],
+      "representative_coordinate_sample_conventional": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2/m",
+        "site_symmetry_custom": "2[z]",
+        "unitary_site_symmetry_raw_field": "?",
+        "site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "time_reversal": false,
+            "spin_matrix": null
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": false,
+            "spin_matrix": null
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "time_reversal": false,
+            "spin_matrix": null
+          }
+        ],
+        "note": "The `site_symmetry_ops` fields in `swyckoff_r.py` behave like generator descriptors, not a full indexed stabilizer list. Exact raw-op stabilizer indices below come from direct recomputation after the audited basis bridge."
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 4,
+        "unitary_count": 4,
+        "antiunitary_count": 0,
+        "stabilizer_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "antiunitary_indices": [],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 3,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "1"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 4,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "1"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 7,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "2"
+            ],
+            "time_reversal": false
+          }
+        ]
+      },
+      "swyckoff_vs_recomputed_stabilizer": {
+        "swyckoff_stab_field": 4,
+        "recomputed_stabilizer_size": 4,
+        "size_matches": true,
+        "generator_count_in_swyckoff_field": 1,
+        "generator_has_antiunitary_flag": false,
+        "generator_antiunitary_presence_consistent_with_recomputed_counts": true,
+        "usable_as_double_local_corep_input": true
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "2/m",
+        "unitary_indices": [
+          0,
+          3,
+          4,
+          7
+        ],
+        "generator_indices": [
+          3,
+          4
+        ],
+        "factor_on_c2_square": {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        "factor_on_inversion_square": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "double_group_local_builder": "explicit projective character enumeration on the full unitary stabilizer"
+      },
+      "double_group_local_corep_feasibility": {
+        "can_build_full_local_object_set": true,
+        "reason": "Pure unitary point family. The full projective local-irrep set can be enumerated directly from the audited unitary stabilizer and `factor_su2`.",
+        "expected_wigner_case": null,
+        "minimal_blocker": null
+      },
+      "local_objects": [
+        {
+          "id": "f_double_g_plus_i",
+          "label": "f: g, C2=+i",
+          "dimension": 1,
+          "type": "projective_local_irrep",
+          "double_group_local_object_kind": "projective_local_irrep",
+          "origin": {
+            "unitary_subgroup": "2/m",
+            "construction": "Double-valued one-dimensional projective irrep on the unitary `2/m` stabilizer.",
+            "c2_eigenvalue": "+i",
+            "inversion_parity": "g"
+          },
+          "wigner_case": null,
+          "truly_antiunitary": false,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            "4": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              4,
+              7
+            ],
+            "checked_relation_count": 16
+          }
+        },
+        {
+          "id": "f_double_u_plus_i",
+          "label": "f: u, C2=+i",
+          "dimension": 1,
+          "type": "projective_local_irrep",
+          "double_group_local_object_kind": "projective_local_irrep",
+          "origin": {
+            "unitary_subgroup": "2/m",
+            "construction": "Double-valued one-dimensional projective irrep on the unitary `2/m` stabilizer.",
+            "c2_eigenvalue": "+i",
+            "inversion_parity": "u"
+          },
+          "wigner_case": null,
+          "truly_antiunitary": false,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            "4": {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              4,
+              7
+            ],
+            "checked_relation_count": 16
+          }
+        },
+        {
+          "id": "f_double_g_minus_i",
+          "label": "f: g, C2=-i",
+          "dimension": 1,
+          "type": "projective_local_irrep",
+          "double_group_local_object_kind": "projective_local_irrep",
+          "origin": {
+            "unitary_subgroup": "2/m",
+            "construction": "Double-valued one-dimensional projective irrep on the unitary `2/m` stabilizer.",
+            "c2_eigenvalue": "-i",
+            "inversion_parity": "g"
+          },
+          "wigner_case": null,
+          "truly_antiunitary": false,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            "4": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": 0.0,
+              "imag": -1.0
+            }
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              4,
+              7
+            ],
+            "checked_relation_count": 16
+          }
+        },
+        {
+          "id": "f_double_u_minus_i",
+          "label": "f: u, C2=-i",
+          "dimension": 1,
+          "type": "projective_local_irrep",
+          "double_group_local_object_kind": "projective_local_irrep",
+          "origin": {
+            "unitary_subgroup": "2/m",
+            "construction": "Double-valued one-dimensional projective irrep on the unitary `2/m` stabilizer.",
+            "c2_eigenvalue": "-i",
+            "inversion_parity": "u"
+          },
+          "wigner_case": null,
+          "truly_antiunitary": false,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            "4": {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              4,
+              7
+            ],
+            "checked_relation_count": 16
+          }
+        }
+      ],
+      "full_local_object_set_built": true
+    },
+    {
+      "letter": "d",
+      "processing_order_index": 3,
+      "processing_reason": "First antiunitary pair after `c,f`; it shares the same `2'/m'` site symmetry as `e`, so the case-c builder can be debugged on one stabilizer type before cloning it to its partner.",
+      "representative_coordinate": "0, 1/4, 0",
+      "representative_coordinate_sample_magnetic": [
+        "0",
+        "1/4",
+        "0"
+      ],
+      "representative_coordinate_sample_conventional": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry_raw_field": "?",
+        "site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": null
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": null
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "time_reversal": false,
+            "spin_matrix": null
+          }
+        ],
+        "note": "The `site_symmetry_ops` fields in `swyckoff_r.py` behave like generator descriptors, not a full indexed stabilizer list. Exact raw-op stabilizer indices below come from direct recomputation after the audited basis bridge."
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "stabilizer_indices": [
+          0,
+          5,
+          11,
+          14
+        ],
+        "unitary_indices": [
+          0,
+          5
+        ],
+        "antiunitary_indices": [
+          11,
+          14
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 5,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "2"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 11,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "2"
+            ],
+            "time_reversal": true
+          },
+          {
+            "index": 14,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "2"
+            ],
+            "time_reversal": true
+          }
+        ]
+      },
+      "swyckoff_vs_recomputed_stabilizer": {
+        "swyckoff_stab_field": 4,
+        "recomputed_stabilizer_size": 4,
+        "size_matches": true,
+        "generator_count_in_swyckoff_field": 3,
+        "generator_has_antiunitary_flag": true,
+        "generator_antiunitary_presence_consistent_with_recomputed_counts": true,
+        "usable_as_double_local_corep_input": true
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "projective order-2 unitary subgroup",
+        "unitary_indices": [
+          0,
+          5
+        ],
+        "generator_index": 5,
+        "antiunitary_generator_index": 11,
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_generator": 5,
+        "factor_on_generator_square": {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        "projective_unitary_irrep_generator_values": [
+          "+i",
+          "-i"
+        ],
+        "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+      },
+      "double_group_local_corep_feasibility": {
+        "can_build_full_local_object_set": true,
+        "reason": "The unitary subgroup has the projective eigenvalue pair `+i/-i`; the antiunitary action fixes the subgroup generator and pairs those conjugate irreps into one irreducible 2D magnetic corep.",
+        "expected_wigner_case": "c",
+        "minimal_blocker": null
+      },
+      "local_objects": [
+        {
+          "id": "d_double_case_c_pair",
+          "label": "d: Wigner-case-c pair",
+          "dimension": 2,
+          "type": "magnetic_local_corep",
+          "double_group_local_object_kind": "magnetic_local_corep",
+          "origin": {
+            "unitary_projective_irrep_pair": [
+              {
+                "label": "rho_plus_i",
+                "generator_character": "+i"
+              },
+              {
+                "label": "rho_minus_i",
+                "generator_character": "-i"
+              }
+            ],
+            "construction": "Wigner case-c pairing of the two complex-conjugate projective unitary irreps on the order-2 unitary subgroup.",
+            "antiunitary_generator_index": 11,
+            "other_antiunitary_index": 14
+          },
+          "wigner_case": "c",
+          "truly_antiunitary": true,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            "5": {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          },
+          "matrix_part_on_stabilizer": {
+            "0": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "5": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ],
+            "11": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "14": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ]
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              5,
+              11,
+              14
+            ],
+            "checked_relation_count": 16,
+            "antiunitary_generator_square_index": 0,
+            "antiunitary_conjugation_on_unitary_generator": 5,
+            "factor_u_u": {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          }
+        }
+      ],
+      "full_local_object_set_built": true
+    },
+    {
+      "letter": "e",
+      "processing_order_index": 4,
+      "processing_reason": "Same antiunitary site-symmetry type as `d`; processed immediately after it to reuse the exact same case-c construction.",
+      "representative_coordinate": "1/2, 1/4, 0",
+      "representative_coordinate_sample_magnetic": [
+        "1/2",
+        "1/4",
+        "0"
+      ],
+      "representative_coordinate_sample_conventional": [
+        "1/2",
+        "1/2",
+        "0"
+      ],
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry_raw_field": "?",
+        "site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": null
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": null
+          },
+          {
+            "token": "-1",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "time_reversal": false,
+            "spin_matrix": null
+          }
+        ],
+        "note": "The `site_symmetry_ops` fields in `swyckoff_r.py` behave like generator descriptors, not a full indexed stabilizer list. Exact raw-op stabilizer indices below come from direct recomputation after the audited basis bridge."
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "stabilizer_indices": [
+          0,
+          5,
+          11,
+          14
+        ],
+        "unitary_indices": [
+          0,
+          5
+        ],
+        "antiunitary_indices": [
+          11,
+          14
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 5,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "2"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 11,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "2"
+            ],
+            "time_reversal": true
+          },
+          {
+            "index": 14,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "2"
+            ],
+            "time_reversal": true
+          }
+        ]
+      },
+      "swyckoff_vs_recomputed_stabilizer": {
+        "swyckoff_stab_field": 4,
+        "recomputed_stabilizer_size": 4,
+        "size_matches": true,
+        "generator_count_in_swyckoff_field": 3,
+        "generator_has_antiunitary_flag": true,
+        "generator_antiunitary_presence_consistent_with_recomputed_counts": true,
+        "usable_as_double_local_corep_input": true
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "projective order-2 unitary subgroup",
+        "unitary_indices": [
+          0,
+          5
+        ],
+        "generator_index": 5,
+        "antiunitary_generator_index": 11,
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_generator": 5,
+        "factor_on_generator_square": {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        "projective_unitary_irrep_generator_values": [
+          "+i",
+          "-i"
+        ],
+        "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+      },
+      "double_group_local_corep_feasibility": {
+        "can_build_full_local_object_set": true,
+        "reason": "The unitary subgroup has the projective eigenvalue pair `+i/-i`; the antiunitary action fixes the subgroup generator and pairs those conjugate irreps into one irreducible 2D magnetic corep.",
+        "expected_wigner_case": "c",
+        "minimal_blocker": null
+      },
+      "local_objects": [
+        {
+          "id": "e_double_case_c_pair",
+          "label": "e: Wigner-case-c pair",
+          "dimension": 2,
+          "type": "magnetic_local_corep",
+          "double_group_local_object_kind": "magnetic_local_corep",
+          "origin": {
+            "unitary_projective_irrep_pair": [
+              {
+                "label": "rho_plus_i",
+                "generator_character": "+i"
+              },
+              {
+                "label": "rho_minus_i",
+                "generator_character": "-i"
+              }
+            ],
+            "construction": "Wigner case-c pairing of the two complex-conjugate projective unitary irreps on the order-2 unitary subgroup.",
+            "antiunitary_generator_index": 11,
+            "other_antiunitary_index": 14
+          },
+          "wigner_case": "c",
+          "truly_antiunitary": true,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            "5": {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          },
+          "matrix_part_on_stabilizer": {
+            "0": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "5": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ],
+            "11": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "14": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ]
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              5,
+              11,
+              14
+            ],
+            "checked_relation_count": 16,
+            "antiunitary_generator_square_index": 0,
+            "antiunitary_conjugation_on_unitary_generator": 5,
+            "factor_u_u": {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          }
+        }
+      ],
+      "full_local_object_set_built": true
+    },
+    {
+      "letter": "g",
+      "processing_order_index": 5,
+      "processing_reason": "Second antiunitary pair; shares the same `2/m'` site symmetry as `h`, so it is handled as the next reusable case-c block.",
+      "representative_coordinate": "0, 1/4, 1/4",
+      "representative_coordinate_sample_magnetic": [
+        "0",
+        "1/4",
+        "1/4"
+      ],
+      "representative_coordinate_sample_conventional": [
+        "0",
+        "1/2",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry_raw_field": "?",
+        "site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "time_reversal": false,
+            "spin_matrix": null
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": null
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "time_reversal": true,
+            "spin_matrix": null
+          }
+        ],
+        "note": "The `site_symmetry_ops` fields in `swyckoff_r.py` behave like generator descriptors, not a full indexed stabilizer list. Exact raw-op stabilizer indices below come from direct recomputation after the audited basis bridge."
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "stabilizer_indices": [
+          0,
+          3,
+          13,
+          14
+        ],
+        "unitary_indices": [
+          0,
+          3
+        ],
+        "antiunitary_indices": [
+          13,
+          14
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 3,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "1"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 13,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "3"
+            ],
+            "time_reversal": true
+          },
+          {
+            "index": 14,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "2"
+            ],
+            "time_reversal": true
+          }
+        ]
+      },
+      "swyckoff_vs_recomputed_stabilizer": {
+        "swyckoff_stab_field": 4,
+        "recomputed_stabilizer_size": 4,
+        "size_matches": true,
+        "generator_count_in_swyckoff_field": 3,
+        "generator_has_antiunitary_flag": true,
+        "generator_antiunitary_presence_consistent_with_recomputed_counts": true,
+        "usable_as_double_local_corep_input": true
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "projective order-2 unitary subgroup",
+        "unitary_indices": [
+          0,
+          3
+        ],
+        "generator_index": 3,
+        "antiunitary_generator_index": 14,
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_generator": 3,
+        "factor_on_generator_square": {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        "projective_unitary_irrep_generator_values": [
+          "+i",
+          "-i"
+        ],
+        "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+      },
+      "double_group_local_corep_feasibility": {
+        "can_build_full_local_object_set": true,
+        "reason": "The unitary subgroup has the projective eigenvalue pair `+i/-i`; the antiunitary action fixes the subgroup generator and pairs those conjugate irreps into one irreducible 2D magnetic corep.",
+        "expected_wigner_case": "c",
+        "minimal_blocker": null
+      },
+      "local_objects": [
+        {
+          "id": "g_double_case_c_pair",
+          "label": "g: Wigner-case-c pair",
+          "dimension": 2,
+          "type": "magnetic_local_corep",
+          "double_group_local_object_kind": "magnetic_local_corep",
+          "origin": {
+            "unitary_projective_irrep_pair": [
+              {
+                "label": "rho_plus_i",
+                "generator_character": "+i"
+              },
+              {
+                "label": "rho_minus_i",
+                "generator_character": "-i"
+              }
+            ],
+            "construction": "Wigner case-c pairing of the two complex-conjugate projective unitary irreps on the order-2 unitary subgroup.",
+            "antiunitary_generator_index": 14,
+            "other_antiunitary_index": 13
+          },
+          "wigner_case": "c",
+          "truly_antiunitary": true,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          },
+          "matrix_part_on_stabilizer": {
+            "0": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "3": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ],
+            "14": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "13": [
+              [
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
+                }
+              ],
+              [
+                {
+                  "real": -0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": 1.0
+                }
+              ]
+            ]
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              13,
+              14
+            ],
+            "checked_relation_count": 16,
+            "antiunitary_generator_square_index": 0,
+            "antiunitary_conjugation_on_unitary_generator": 3,
+            "factor_u_u": {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          }
+        }
+      ],
+      "full_local_object_set_built": true
+    },
+    {
+      "letter": "h",
+      "processing_order_index": 6,
+      "processing_reason": "Same antiunitary site-symmetry type as `g`; kept adjacent to avoid switching stabilizer logic mid-stream.",
+      "representative_coordinate": "1/2, 1/4, 1/4",
+      "representative_coordinate_sample_magnetic": [
+        "1/2",
+        "1/4",
+        "1/4"
+      ],
+      "representative_coordinate_sample_conventional": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry_raw_field": "?",
+        "site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "time_reversal": false,
+            "spin_matrix": null
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": null
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "time_reversal": true,
+            "spin_matrix": null
+          }
+        ],
+        "note": "The `site_symmetry_ops` fields in `swyckoff_r.py` behave like generator descriptors, not a full indexed stabilizer list. Exact raw-op stabilizer indices below come from direct recomputation after the audited basis bridge."
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "stabilizer_indices": [
+          0,
+          3,
+          13,
+          14
+        ],
+        "unitary_indices": [
+          0,
+          3
+        ],
+        "antiunitary_indices": [
+          13,
+          14
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 3,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "1"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 13,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "3"
+            ],
+            "time_reversal": true
+          },
+          {
+            "index": 14,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "1",
+              "2"
+            ],
+            "time_reversal": true
+          }
+        ]
+      },
+      "swyckoff_vs_recomputed_stabilizer": {
+        "swyckoff_stab_field": 4,
+        "recomputed_stabilizer_size": 4,
+        "size_matches": true,
+        "generator_count_in_swyckoff_field": 3,
+        "generator_has_antiunitary_flag": true,
+        "generator_antiunitary_presence_consistent_with_recomputed_counts": true,
+        "usable_as_double_local_corep_input": true
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "projective order-2 unitary subgroup",
+        "unitary_indices": [
+          0,
+          3
+        ],
+        "generator_index": 3,
+        "antiunitary_generator_index": 14,
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_generator": 3,
+        "factor_on_generator_square": {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        "projective_unitary_irrep_generator_values": [
+          "+i",
+          "-i"
+        ],
+        "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+      },
+      "double_group_local_corep_feasibility": {
+        "can_build_full_local_object_set": true,
+        "reason": "The unitary subgroup has the projective eigenvalue pair `+i/-i`; the antiunitary action fixes the subgroup generator and pairs those conjugate irreps into one irreducible 2D magnetic corep.",
+        "expected_wigner_case": "c",
+        "minimal_blocker": null
+      },
+      "local_objects": [
+        {
+          "id": "h_double_case_c_pair",
+          "label": "h: Wigner-case-c pair",
+          "dimension": 2,
+          "type": "magnetic_local_corep",
+          "double_group_local_object_kind": "magnetic_local_corep",
+          "origin": {
+            "unitary_projective_irrep_pair": [
+              {
+                "label": "rho_plus_i",
+                "generator_character": "+i"
+              },
+              {
+                "label": "rho_minus_i",
+                "generator_character": "-i"
+              }
+            ],
+            "construction": "Wigner case-c pairing of the two complex-conjugate projective unitary irreps on the order-2 unitary subgroup.",
+            "antiunitary_generator_index": 14,
+            "other_antiunitary_index": 13
+          },
+          "wigner_case": "c",
+          "truly_antiunitary": true,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            "3": {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          },
+          "matrix_part_on_stabilizer": {
+            "0": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "3": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ],
+            "14": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "13": [
+              [
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
+                }
+              ],
+              [
+                {
+                  "real": -0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": 1.0
+                }
+              ]
+            ]
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              3,
+              13,
+              14
+            ],
+            "checked_relation_count": 16,
+            "antiunitary_generator_square_index": 0,
+            "antiunitary_conjugation_on_unitary_generator": 3,
+            "factor_u_u": {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          }
+        }
+      ],
+      "full_local_object_set_built": true
+    },
+    {
+      "letter": "b",
+      "processing_order_index": 7,
+      "processing_reason": "Final antiunitary pair; shares the same `2'/m` site symmetry as `a` and is handled only after the two earlier case-c patterns are stable.",
+      "representative_coordinate": "1/2, 0, 0",
+      "representative_coordinate_sample_magnetic": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "representative_coordinate_sample_conventional": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry_raw_field": "?",
+        "site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": null
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": false,
+            "spin_matrix": null
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "time_reversal": true,
+            "spin_matrix": null
+          }
+        ],
+        "note": "The `site_symmetry_ops` fields in `swyckoff_r.py` behave like generator descriptors, not a full indexed stabilizer list. Exact raw-op stabilizer indices below come from direct recomputation after the audited basis bridge."
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "stabilizer_indices": [
+          0,
+          7,
+          11,
+          12
+        ],
+        "unitary_indices": [
+          0,
+          7
+        ],
+        "antiunitary_indices": [
+          11,
+          12
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 7,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "2"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 11,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "2"
+            ],
+            "time_reversal": true
+          },
+          {
+            "index": 12,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "2"
+            ],
+            "time_reversal": true
+          }
+        ]
+      },
+      "swyckoff_vs_recomputed_stabilizer": {
+        "swyckoff_stab_field": 4,
+        "recomputed_stabilizer_size": 4,
+        "size_matches": true,
+        "generator_count_in_swyckoff_field": 3,
+        "generator_has_antiunitary_flag": true,
+        "generator_antiunitary_presence_consistent_with_recomputed_counts": true,
+        "usable_as_double_local_corep_input": true
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "projective order-2 unitary subgroup",
+        "unitary_indices": [
+          0,
+          7
+        ],
+        "generator_index": 7,
+        "antiunitary_generator_index": 11,
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_generator": 7,
+        "factor_on_generator_square": {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        "projective_unitary_irrep_generator_values": [
+          "+i",
+          "-i"
+        ],
+        "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+      },
+      "double_group_local_corep_feasibility": {
+        "can_build_full_local_object_set": true,
+        "reason": "The unitary subgroup has the projective eigenvalue pair `+i/-i`; the antiunitary action fixes the subgroup generator and pairs those conjugate irreps into one irreducible 2D magnetic corep.",
+        "expected_wigner_case": "c",
+        "minimal_blocker": null
+      },
+      "local_objects": [
+        {
+          "id": "b_double_case_c_pair",
+          "label": "b: Wigner-case-c pair",
+          "dimension": 2,
+          "type": "magnetic_local_corep",
+          "double_group_local_object_kind": "magnetic_local_corep",
+          "origin": {
+            "unitary_projective_irrep_pair": [
+              {
+                "label": "rho_plus_i",
+                "generator_character": "+i"
+              },
+              {
+                "label": "rho_minus_i",
+                "generator_character": "-i"
+              }
+            ],
+            "construction": "Wigner case-c pairing of the two complex-conjugate projective unitary irreps on the order-2 unitary subgroup.",
+            "antiunitary_generator_index": 11,
+            "other_antiunitary_index": 12
+          },
+          "wigner_case": "c",
+          "truly_antiunitary": true,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          },
+          "matrix_part_on_stabilizer": {
+            "0": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "7": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ],
+            "11": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "12": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ]
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              7,
+              11,
+              12
+            ],
+            "checked_relation_count": 16,
+            "antiunitary_generator_square_index": 0,
+            "antiunitary_conjugation_on_unitary_generator": 7,
+            "factor_u_u": {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          }
+        }
+      ],
+      "full_local_object_set_built": true
+    },
+    {
+      "letter": "a",
+      "processing_order_index": 8,
+      "processing_reason": "Same antiunitary site-symmetry type as `b`; kept last only because the builder is already trusted by then, not because the family is intrinsically harder.",
+      "representative_coordinate": "0, 0, 0",
+      "representative_coordinate_sample_magnetic": [
+        "0",
+        "0",
+        "0"
+      ],
+      "representative_coordinate_sample_conventional": [
+        "0",
+        "0",
+        "0"
+      ],
+      "multiplicity": 4,
+      "site_symmetry_summary": {
+        "site_symmetry": "2'/m",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry_raw_field": "?",
+        "site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "m'[x]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "x",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "m'[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": [
+              [
+                1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          },
+          {
+            "token": "2[z]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "z",
+            "time_reversal": false,
+            "spin_matrix": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.0,
+                1.0
+              ]
+            ]
+          }
+        ],
+        "spatial_site_symmetry_generators_from_swyckoff_r": [
+          {
+            "token": "2'[y]",
+            "type": "2",
+            "kind": "rotation",
+            "axis": "y",
+            "time_reversal": true,
+            "spin_matrix": null
+          },
+          {
+            "token": "m[y]",
+            "type": "m",
+            "kind": "mirror",
+            "axis": "y",
+            "time_reversal": false,
+            "spin_matrix": null
+          },
+          {
+            "token": "-1'",
+            "type": "-1",
+            "kind": "inversion",
+            "axis": null,
+            "time_reversal": true,
+            "spin_matrix": null
+          }
+        ],
+        "note": "The `site_symmetry_ops` fields in `swyckoff_r.py` behave like generator descriptors, not a full indexed stabilizer list. Exact raw-op stabilizer indices below come from direct recomputation after the audited basis bridge."
+      },
+      "stabilizer_summary": {
+        "stabilizer_size": 4,
+        "unitary_count": 2,
+        "antiunitary_count": 2,
+        "stabilizer_indices": [
+          0,
+          7,
+          11,
+          12
+        ],
+        "unitary_indices": [
+          0,
+          7
+        ],
+        "antiunitary_indices": [
+          11,
+          12
+        ],
+        "stabilizer_elements": [
+          {
+            "index": 0,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "0"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 7,
+            "rotation": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "2"
+            ],
+            "time_reversal": false
+          },
+          {
+            "index": 11,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "2",
+              "2"
+            ],
+            "time_reversal": true
+          },
+          {
+            "index": 12,
+            "rotation": [
+              [
+                -1,
+                0,
+                0
+              ],
+              [
+                0,
+                -1,
+                0
+              ],
+              [
+                0,
+                0,
+                -1
+              ]
+            ],
+            "translation": [
+              "0",
+              "0",
+              "2"
+            ],
+            "time_reversal": true
+          }
+        ]
+      },
+      "swyckoff_vs_recomputed_stabilizer": {
+        "swyckoff_stab_field": 4,
+        "recomputed_stabilizer_size": 4,
+        "size_matches": true,
+        "generator_count_in_swyckoff_field": 3,
+        "generator_has_antiunitary_flag": true,
+        "generator_antiunitary_presence_consistent_with_recomputed_counts": true,
+        "usable_as_double_local_corep_input": true
+      },
+      "unitary_subgroup_summary": {
+        "abstract_group": "projective order-2 unitary subgroup",
+        "unitary_indices": [
+          0,
+          7
+        ],
+        "generator_index": 7,
+        "antiunitary_generator_index": 11,
+        "antiunitary_generator_square_index": 0,
+        "antiunitary_conjugation_on_unitary_generator": 7,
+        "factor_on_generator_square": {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        "projective_unitary_irrep_generator_values": [
+          "+i",
+          "-i"
+        ],
+        "double_group_local_builder": "explicit Wigner-case-c pairing of the two complex-conjugate projective unitary irreps"
+      },
+      "double_group_local_corep_feasibility": {
+        "can_build_full_local_object_set": true,
+        "reason": "The unitary subgroup has the projective eigenvalue pair `+i/-i`; the antiunitary action fixes the subgroup generator and pairs those conjugate irreps into one irreducible 2D magnetic corep.",
+        "expected_wigner_case": "c",
+        "minimal_blocker": null
+      },
+      "local_objects": [
+        {
+          "id": "a_double_case_c_pair",
+          "label": "a: Wigner-case-c pair",
+          "dimension": 2,
+          "type": "magnetic_local_corep",
+          "double_group_local_object_kind": "magnetic_local_corep",
+          "origin": {
+            "unitary_projective_irrep_pair": [
+              {
+                "label": "rho_plus_i",
+                "generator_character": "+i"
+              },
+              {
+                "label": "rho_minus_i",
+                "generator_character": "-i"
+              }
+            ],
+            "construction": "Wigner case-c pairing of the two complex-conjugate projective unitary irreps on the order-2 unitary subgroup.",
+            "antiunitary_generator_index": 11,
+            "other_antiunitary_index": 12
+          },
+          "wigner_case": "c",
+          "truly_antiunitary": true,
+          "depends_on_factor_su2": true,
+          "character_on_unitary_stabilizer": {
+            "0": {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            "7": {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          },
+          "matrix_part_on_stabilizer": {
+            "0": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "7": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ],
+            "11": [
+              [
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 1.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "12": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 1.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ],
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -1.0
+                }
+              ]
+            ]
+          },
+          "projective_multiplication_verified": true,
+          "verification_scope": {
+            "stabilizer_indices": [
+              0,
+              7,
+              11,
+              12
+            ],
+            "checked_relation_count": 16,
+            "antiunitary_generator_square_index": 0,
+            "antiunitary_conjugation_on_unitary_generator": 7,
+            "factor_u_u": {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          }
+        }
+      ],
+      "full_local_object_set_built": true
+    }
+  ]
+}

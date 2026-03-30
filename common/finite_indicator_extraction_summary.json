@@ -1,0 +1,128 @@
+{
+  "cases": [
+    {
+      "group": "10.4.1.31",
+      "group_type": 1,
+      "case_key": "10_4_1_31_single",
+      "raw_quotient": "Z2 x Z2",
+      "free_part": "trivial",
+      "finite_part_candidate": "Z2 x Z2",
+      "finite_part_confidence": "high",
+      "still_missing_step": "none within the current raw/SNF formalism",
+      "user_facing_interpretation": "This case is already purely torsion at the raw quotient level, so the finite symmetry-indicator candidate is the same Z2 x Z2.",
+      "free_rank": 0,
+      "finite_part": [
+        2,
+        2
+      ],
+      "free_mod_out_candidate_rank": 0,
+      "result_after_modding_out_free_part": "Z2 x Z2",
+      "raw_vs_interpreted_gap": "No gap: the raw quotient is already purely finite.",
+      "primary_note": "No free abelian sector is present; the raw quotient already matches the finite indicator candidate.",
+      "exact_smith_diagonal_nonzero": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "group": "10.4.1.31",
+      "group_type": 2,
+      "case_key": "10_4_1_31_double",
+      "raw_quotient": "Z^2 x Z2 x Z2 x Z2 x Z2",
+      "free_part": "Z^2",
+      "finite_part_candidate": "Z2 x Z2 x Z2 x Z2",
+      "finite_part_confidence": "high",
+      "still_missing_step": "Only reporting-layer cleanup remains: reserve indicator language for the torsion subgroup and report Z^2 separately as free crystalline invariants.",
+      "user_facing_interpretation": "Report the full raw quotient as Z^2 x Z2^4, but call only the exact torsion subgroup Z2^4 the finite symmetry-indicator candidate.",
+      "free_rank": 2,
+      "finite_part": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "free_mod_out_candidate_rank": 2,
+      "result_after_modding_out_free_part": "Z2 x Z2 x Z2 x Z2",
+      "raw_vs_interpreted_gap": "The raw quotient mixes a free Z^2 sector with the finite torsion subgroup Z2^4; only the latter should be called the finite symmetry-indicator candidate.",
+      "primary_note": "The Smith decomposition canonically splits the raw quotient into free rank 2 and four order-2 torsion slots.",
+      "exact_smith_diagonal_nonzero": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "group": "194.1.1.1",
+      "group_type": 1,
+      "case_key": "194_1_1_1_single",
+      "raw_quotient": "Z^16",
+      "free_part": "Z^16",
+      "finite_part_candidate": "trivial",
+      "finite_part_confidence": "medium",
+      "still_missing_step": "A physically justified quotient that mods out the free crystalline subgroup before comparison to standard finite symmetry-indicator tables.",
+      "user_facing_interpretation": "The current result is a free-only raw quotient Z^16. In standard finite-indicator language no nontrivial finite torsion sector has been isolated.",
+      "free_rank": 16,
+      "finite_part": [],
+      "free_mod_out_candidate_rank": 16,
+      "result_after_modding_out_free_part": "trivial",
+      "raw_vs_interpreted_gap": "The raw quotient is free-only, so the standard finite-indicator layer is not directly visible before modding out free crystalline directions.",
+      "primary_note": "The torsion subgroup of coker(AI->BS) is empty. Any further reduction must come from a physical mod-out of free crystalline invariants, not from missed SNF torsion.",
+      "exact_smith_diagonal_nonzero": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "group": "194.1.1.1",
+      "group_type": 2,
+      "case_key": "194_1_1_1_double",
+      "raw_quotient": "Z^16",
+      "free_part": "Z^16",
+      "finite_part_candidate": "trivial",
+      "finite_part_confidence": "medium",
+      "still_missing_step": "A physically justified quotient that removes the 16 free crystalline directions before any comparison to a standard finite double-group indicator table.",
+      "user_facing_interpretation": "The current result is again a free-only raw quotient Z^16. The finite symmetry-indicator candidate is trivial unless an additional physical quotient produces residual torsion.",
+      "free_rank": 16,
+      "finite_part": [],
+      "free_mod_out_candidate_rank": 16,
+      "result_after_modding_out_free_part": "trivial",
+      "raw_vs_interpreted_gap": "The raw quotient is free-only, so the standard finite-indicator layer is not directly visible before modding out free crystalline directions.",
+      "primary_note": "The raw Smith data still show no torsion. The gap is interpretive and physical, not a missing order-2 factor in the current integer linear algebra.",
+      "exact_smith_diagonal_nonzero": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

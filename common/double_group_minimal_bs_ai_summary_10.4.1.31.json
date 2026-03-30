@@ -1,0 +1,56 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "current_minimal_double_group_bs_prototype": {
+    "minimal_block": {
+      "endpoints": [
+        "P1",
+        "P4"
+      ],
+      "line": "L1",
+      "reason": "Reuse the already-audited explicit endpoint-line block P1-L1-P4. All three objects run stably in groupType=2; P1 shows the clearest double-valued phase shift, L1 is the simplest generic special line, and P4 supplies the first endpoint with 2D double little coreps."
+    },
+    "block_unknown_ordering": [
+      "P1_R1",
+      "P1_R2",
+      "P1_R3",
+      "P1_R4",
+      "P1_R5",
+      "P1_R6",
+      "P1_R7",
+      "P1_R8",
+      "P4_R1",
+      "P4_R2",
+      "L1_R1",
+      "L1_R2",
+      "L1_R3",
+      "L1_R4"
+    ],
+    "block_unknown_vector": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      2,
+      0,
+      0,
+      2
+    ]
+  },
+  "current_minimal_double_group_ai_prototype": {
+    "family": "c",
+    "selected_local_irrep": "c_double_g_plus_i"
+  },
+  "minimal_closure_formed": true,
+  "still_unfinished": [
+    "No general double-group compatibility matrix for all endpoints/lines/planes has been built yet.",
+    "No reusable double-group local-corep builder exists yet for the antiunitary families.",
+    "The SU2/projective bridge has only been audited far enough for this minimal unitary-family prototype."
+  ]
+}

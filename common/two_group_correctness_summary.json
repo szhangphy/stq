@@ -1,0 +1,76 @@
+{
+  "cases": [
+    {
+      "group": "10.4.1.31",
+      "group_type": 1,
+      "BS_likely_correct": "true",
+      "AI_likely_complete": "true",
+      "quotient_interpretation_likely_correct": "true",
+      "suspicion_ranking": [
+        "AI / AI completeness",
+        "quotient interpretation",
+        "BS"
+      ],
+      "confidence": "medium",
+      "main_issue": "No hard contradiction is visible; if forced to pick the weakest layer, the family-level completeness proof is the first one to stress because it depends on the local census assumptions.",
+      "recommended_next_step": "If more confidence is needed, independently rederive the local-family census from the site-symmetry data rather than from the current audited library outputs."
+    },
+    {
+      "group": "10.4.1.31",
+      "group_type": 2,
+      "BS_likely_correct": "true",
+      "AI_likely_complete": "true",
+      "quotient_interpretation_likely_correct": "uncertain",
+      "suspicion_ranking": [
+        "quotient interpretation",
+        "AI / AI completeness",
+        "BS"
+      ],
+      "confidence": "high",
+      "main_issue": "The raw mixed quotient is likely real, but the reporting layer still mixes a full raw quotient with indicator language.",
+      "recommended_next_step": "Split the raw quotient into its free and torsion sectors in the primary artifacts, and reserve indicator language for the finite torsion part only."
+    },
+    {
+      "group": "194.1.1.1",
+      "group_type": 1,
+      "BS_likely_correct": "uncertain",
+      "AI_likely_complete": "uncertain",
+      "quotient_interpretation_likely_correct": "false",
+      "suspicion_ranking": [
+        "quotient interpretation",
+        "AI / AI completeness",
+        "BS"
+      ],
+      "confidence": "high",
+      "main_issue": "The raw quotient Z^16 is free-only and therefore cannot be presented as a standard finite topological indicator group.",
+      "recommended_next_step": "Keep the raw quotient as an algebraic result, but separately identify which free directions are genuine topological invariants and whether any finite symmetry-indicator sector remains after the physically appropriate reduction."
+    },
+    {
+      "group": "194.1.1.1",
+      "group_type": 2,
+      "BS_likely_correct": "uncertain",
+      "AI_likely_complete": "uncertain",
+      "quotient_interpretation_likely_correct": "false",
+      "suspicion_ranking": [
+        "quotient interpretation",
+        "AI / AI completeness",
+        "BS"
+      ],
+      "confidence": "medium",
+      "main_issue": "The double-group result is again a free-only raw quotient Z^16, while the AI completeness claim still depends on the current projective local library.",
+      "recommended_next_step": "Do not call Z^16 a final double-group indicator group; first separate the free sector, then cross-check the projective local library with an independent derivation or benchmark."
+    }
+  ],
+  "most_stable_bs_cases": [
+    "10.4.1.31/1",
+    "10.4.1.31/2"
+  ],
+  "most_suspicious_ai_cases": [
+    "10.4.1.31/1"
+  ],
+  "most_suspicious_quotient_cases": [
+    "10.4.1.31/2",
+    "194.1.1.1/1",
+    "194.1.1.1/2"
+  ]
+}

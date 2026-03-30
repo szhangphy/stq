@@ -1,0 +1,2737 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "geometry_source": "/data/work/szhang/ssg/comprel/review_package_10.4.1.31_double_feasibility/background/single_group_kmanifolds.json",
+  "connectivity_source": "/data/work/szhang/ssg/comprel/review_package_10.4.1.31_double_feasibility/background/single_group_connectivity.json",
+  "manifolds": {
+    "P1": {
+      "type": "point",
+      "dimension": 0,
+      "coordinates": [
+        "0",
+        "0",
+        "0"
+      ],
+      "parametrization": "(0, 0, 0)",
+      "constraints": [],
+      "sample_point": [
+        "0",
+        "0",
+        "0"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 8,
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "character_shape": [
+        8,
+        8
+      ],
+      "linear_character_shape": [
+        8,
+        8
+      ],
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "warning_text": "",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "P2": {
+      "type": "point",
+      "dimension": 0,
+      "coordinates": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "parametrization": "(0, 0, 1/2)",
+      "constraints": [],
+      "sample_point": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 2,
+      "rep_degree": [
+        2,
+        2
+      ],
+      "torsion": [
+        1,
+        1
+      ],
+      "character_shape": [
+        2,
+        8
+      ],
+      "linear_character_shape": [
+        2,
+        8
+      ],
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "warning_text": "cant find the position\ncant find the position",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "P3": {
+      "type": "point",
+      "dimension": 0,
+      "coordinates": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "parametrization": "(1/2, 0, 0)",
+      "constraints": [],
+      "sample_point": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 8,
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "character_shape": [
+        8,
+        8
+      ],
+      "linear_character_shape": [
+        8,
+        8
+      ],
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "warning_text": "",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "P4": {
+      "type": "point",
+      "dimension": 0,
+      "coordinates": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "parametrization": "(0, 1/2, 0)",
+      "constraints": [],
+      "sample_point": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 2,
+      "rep_degree": [
+        2,
+        2
+      ],
+      "torsion": [
+        1,
+        1
+      ],
+      "character_shape": [
+        2,
+        8
+      ],
+      "linear_character_shape": [
+        2,
+        8
+      ],
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "warning_text": "cant find the position\ncant find the position",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "P5": {
+      "type": "point",
+      "dimension": 0,
+      "coordinates": [
+        "1/2",
+        "1/2",
+        "0"
+      ],
+      "parametrization": "(1/2, 1/2, 0)",
+      "constraints": [],
+      "sample_point": [
+        "1/2",
+        "1/2",
+        "0"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 2,
+      "rep_degree": [
+        2,
+        2
+      ],
+      "torsion": [
+        1,
+        1
+      ],
+      "character_shape": [
+        2,
+        8
+      ],
+      "linear_character_shape": [
+        2,
+        8
+      ],
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "warning_text": "cant find the position\ncant find the position",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "P6": {
+      "type": "point",
+      "dimension": 0,
+      "coordinates": [
+        "0",
+        "1/2",
+        "1/2"
+      ],
+      "parametrization": "(0, 1/2, 1/2)",
+      "constraints": [],
+      "sample_point": [
+        "0",
+        "1/2",
+        "1/2"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 1,
+      "rep_degree": [
+        4
+      ],
+      "torsion": [
+        2
+      ],
+      "character_shape": [
+        1,
+        8
+      ],
+      "linear_character_shape": [
+        1,
+        8
+      ],
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "warning_text": "cant find the position",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "P7": {
+      "type": "point",
+      "dimension": 0,
+      "coordinates": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "parametrization": "(1/2, 0, 1/2)",
+      "constraints": [],
+      "sample_point": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 2,
+      "rep_degree": [
+        2,
+        2
+      ],
+      "torsion": [
+        1,
+        1
+      ],
+      "character_shape": [
+        2,
+        8
+      ],
+      "linear_character_shape": [
+        2,
+        8
+      ],
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "warning_text": "",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "P8": {
+      "type": "point",
+      "dimension": 0,
+      "coordinates": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "parametrization": "(1/2, 1/2, 1/2)",
+      "constraints": [],
+      "sample_point": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 1,
+      "rep_degree": [
+        4
+      ],
+      "torsion": [
+        2
+      ],
+      "character_shape": [
+        1,
+        8
+      ],
+      "linear_character_shape": [
+        1,
+        8
+      ],
+      "n_unitary_ops": 8,
+      "n_antiunitary_ops": 8,
+      "warning_text": "cant find the position",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "L1": {
+      "type": "line",
+      "dimension": 1,
+      "coordinates": [
+        "0",
+        "v",
+        "0"
+      ],
+      "parametrization": "(0, v, 0)",
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "sample_point": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 4,
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "character_shape": [
+        4,
+        4
+      ],
+      "linear_character_shape": [
+        4,
+        4
+      ],
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "warning_text": "",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "L2": {
+      "type": "line",
+      "dimension": 1,
+      "coordinates": [
+        "0",
+        "v",
+        "1/2"
+      ],
+      "parametrization": "(0, v, 1/2)",
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "sample_point": [
+        "0",
+        "1/5",
+        "1/2"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 1,
+      "rep_degree": [
+        2
+      ],
+      "torsion": [
+        1
+      ],
+      "character_shape": [
+        1,
+        4
+      ],
+      "linear_character_shape": [
+        1,
+        4
+      ],
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "warning_text": "cant find the position\ncant find the position",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "L3": {
+      "type": "line",
+      "dimension": 1,
+      "coordinates": [
+        "1/2",
+        "v",
+        "0"
+      ],
+      "parametrization": "(1/2, v, 0)",
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "sample_point": [
+        "1/2",
+        "1/5",
+        "0"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 4,
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "character_shape": [
+        4,
+        4
+      ],
+      "linear_character_shape": [
+        4,
+        4
+      ],
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "warning_text": "",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "L4": {
+      "type": "line",
+      "dimension": 1,
+      "coordinates": [
+        "1/2",
+        "v",
+        "1/2"
+      ],
+      "parametrization": "(1/2, v, 1/2)",
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "sample_point": [
+        "1/2",
+        "1/5",
+        "1/2"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 1,
+      "rep_degree": [
+        2
+      ],
+      "torsion": [
+        1
+      ],
+      "character_shape": [
+        1,
+        4
+      ],
+      "linear_character_shape": [
+        1,
+        4
+      ],
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "warning_text": "cant find the position\ncant find the position",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "S1": {
+      "type": "plane",
+      "dimension": 2,
+      "coordinates": [
+        "u",
+        "0",
+        "w"
+      ],
+      "parametrization": "(u, 0, w)",
+      "constraints": [
+        "0 < u",
+        "0 < w",
+        "u < 1/2",
+        "w < 1/2"
+      ],
+      "sample_point": [
+        "1/5",
+        "0",
+        "2/5"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 4,
+      "rep_degree": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "torsion": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "character_shape": [
+        4,
+        4
+      ],
+      "linear_character_shape": [
+        4,
+        4
+      ],
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "warning_text": "",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    },
+    "S2": {
+      "type": "plane",
+      "dimension": 2,
+      "coordinates": [
+        "u",
+        "1/2",
+        "w"
+      ],
+      "parametrization": "(u, 1/2, w)",
+      "constraints": [
+        "0 < u",
+        "0 < w",
+        "u < 1/2",
+        "w < 1/2"
+      ],
+      "sample_point": [
+        "1/5",
+        "1/2",
+        "2/5"
+      ],
+      "character_available": true,
+      "linear_character_available": true,
+      "rep_count": 1,
+      "rep_degree": [
+        2
+      ],
+      "torsion": [
+        1
+      ],
+      "character_shape": [
+        1,
+        4
+      ],
+      "linear_character_shape": [
+        1,
+        4
+      ],
+      "n_unitary_ops": 4,
+      "n_antiunitary_ops": 4,
+      "warning_text": "cant find the position\ncant find the position",
+      "repeated_call_consistent": {
+        "same_rep_degree": true,
+        "same_torsion": true,
+        "same_time_reversal": true,
+        "same_rotC": true,
+        "same_tauC": true,
+        "same_spin": true,
+        "same_character": true,
+        "same_linear_character": true
+      }
+    }
+  },
+  "all_manifolds_stable_under_repeat_call": true,
+  "compatibility_character_choice": {
+    "available_modes": [
+      "character",
+      "linear_character"
+    ],
+    "mode_assessment": {
+      "character": {
+        "all_blocks_ok": true,
+        "line_blocks": {
+          "L1": {
+            "block_ok": true,
+            "endpoints": {
+              "P1": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              },
+              "P4": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              }
+            }
+          },
+          "L2": {
+            "block_ok": true,
+            "endpoints": {
+              "P2": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              },
+              "P6": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              }
+            }
+          },
+          "L3": {
+            "block_ok": true,
+            "endpoints": {
+              "P3": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              },
+              "P5": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              }
+            }
+          },
+          "L4": {
+            "block_ok": true,
+            "endpoints": {
+              "P7": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              },
+              "P8": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              }
+            }
+          }
+        }
+      },
+      "linear_character": {
+        "all_blocks_ok": false,
+        "line_blocks": {
+          "L1": {
+            "block_ok": false,
+            "endpoints": {
+              "P1": {
+                "matches_subgroup": true,
+                "integral_decomposition": false,
+                "max_coefficient_deviation_from_nearest_integer": 0.53165675522,
+                "max_reconstruction_deviation": 0.0
+              },
+              "P4": {
+                "matches_subgroup": true,
+                "integral_decomposition": false,
+                "max_coefficient_deviation_from_nearest_integer": 0.475528258148,
+                "max_reconstruction_deviation": 0.0
+              }
+            }
+          },
+          "L2": {
+            "block_ok": true,
+            "endpoints": {
+              "P2": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              },
+              "P6": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              }
+            }
+          },
+          "L3": {
+            "block_ok": false,
+            "endpoints": {
+              "P3": {
+                "matches_subgroup": true,
+                "integral_decomposition": false,
+                "max_coefficient_deviation_from_nearest_integer": 0.53165675522,
+                "max_reconstruction_deviation": 0.0
+              },
+              "P5": {
+                "matches_subgroup": true,
+                "integral_decomposition": false,
+                "max_coefficient_deviation_from_nearest_integer": 0.475528258148,
+                "max_reconstruction_deviation": 0.0
+              }
+            }
+          },
+          "L4": {
+            "block_ok": true,
+            "endpoints": {
+              "P7": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              },
+              "P8": {
+                "matches_subgroup": true,
+                "integral_decomposition": true,
+                "max_coefficient_deviation_from_nearest_integer": 0.0,
+                "max_reconstruction_deviation": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    "selected_compatibility_character_mode": "character",
+    "selection_reason": "Use raw character for compatibility. It gives an exact integer restriction/decomposition on all four explicit line blocks. linear_character carries the k-dependent Bloch phase exp(-i k\u00b7tauC); that phase is needed later for band-character decomposition and induction, but it breaks a uniform integer restriction formalism already on L1 and L3.",
+    "single_group_difference": "The single-group scripts also effectively used raw character for subgroup restriction, but the reason was easier to overlook because linear_character often differed only by signs or trivial phases. In the double group the failure of linear_character on L1/L3 becomes explicit because the projective spinful phases combine with generic-k translational phases.",
+    "projective_phase_handling_note": "The double-valued SU2/projective part is kept inside raw character and in the subgroup-matching key through the little-group su2 matrices. The translational Bloch phase is not stripped from induction; it is only excluded from compatibility rows."
+  },
+  "line_blocks": [
+    {
+      "group_number": "10.4.1.31",
+      "group_type": 2,
+      "character_mode_used_for_compatibility": "character",
+      "left_point_id": "P1",
+      "line_id": "L1",
+      "right_point_id": "P4",
+      "left_exact_k": [
+        "0",
+        "0",
+        "0"
+      ],
+      "line_exact_k": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "right_exact_k": [
+        "0",
+        "1/2",
+        "0"
+      ],
+      "left_cli_k": [
+        "0",
+        "0",
+        "0"
+      ],
+      "line_cli_k": [
+        "0",
+        "0.2",
+        "0"
+      ],
+      "right_cli_k": [
+        "0",
+        "0.5",
+        "0"
+      ],
+      "line_parametrization": "(0, v, 0)",
+      "line_constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "line_sample_point": [
+        "0",
+        "1/5",
+        "0"
+      ],
+      "line_coordinates": [
+        "0",
+        "v",
+        "0"
+      ],
+      "line_symmetry_summary": {
+        "generic_point": [
+          "0",
+          "1/5",
+          "0"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "line_group_signature": {
+        "character_mode": "character",
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-20980603997873/10000000000000000000000000000000 - I",
+            "-1",
+            "387670902364147/100000000000000000000000000000000 + I"
+          ],
+          [
+            "1",
+            "-14210334548423/10000000000000000000000000000000 + I",
+            "-1",
+            "706704239253601/100000000000000000000000000000000 - I"
+          ],
+          [
+            "1",
+            "153073832977521/1000000000000000000000000000000 - I",
+            "1",
+            "4775411776367/31250000000000000000000000000 - I"
+          ],
+          [
+            "1",
+            "124837362911053/1000000000000000000000000000000 + I",
+            "1",
+            "125166104265963/1000000000000000000000000000000 + I"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "unitary_site_symmetry": "?"
+      },
+      "line_generic_corep_list": [
+        {
+          "rep_id": "L1_R1",
+          "rep_degree": 1,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.587785252292,
+              "imag": -0.809016994375
+            },
+            {
+              "real": -0.809016994375,
+              "imag": 0.587785252292
+            },
+            {
+              "real": 0.951056516295,
+              "imag": 0.309016994375
+            }
+          ]
+        },
+        {
+          "rep_id": "L1_R2",
+          "rep_degree": 1,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.587785252292,
+              "imag": 0.809016994375
+            },
+            {
+              "real": -0.809016994375,
+              "imag": 0.587785252292
+            },
+            {
+              "real": -0.951056516295,
+              "imag": -0.309016994375
+            }
+          ]
+        },
+        {
+          "rep_id": "L1_R3",
+          "rep_degree": 1,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.587785252292,
+              "imag": -0.809016994375
+            },
+            {
+              "real": 0.809016994375,
+              "imag": -0.587785252292
+            },
+            {
+              "real": -0.951056516295,
+              "imag": -0.309016994375
+            }
+          ]
+        },
+        {
+          "rep_id": "L1_R4",
+          "rep_degree": 1,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.587785252292,
+              "imag": 0.809016994375
+            },
+            {
+              "real": 0.809016994375,
+              "imag": -0.587785252292
+            },
+            {
+              "real": 0.951056516295,
+              "imag": 0.309016994375
+            }
+          ]
+        }
+      ],
+      "matched_unitary_operation_indices": {
+        "P1": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "P4": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "endpoint_decompositions": {
+        "P1": [
+          {
+            "rep_id": "P1_R1",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "253695340951201/5000000000000000000000000000000 - I",
+              "-1",
+              "-886052694823/15625000000000000000000000000 + I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R1": 1
+            }
+          },
+          {
+            "rep_id": "P1_R2",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "-26041541622921/625000000000000000000000000000 + I",
+              "-1",
+              "203613514382451/5000000000000000000000000000000 - I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R2": 1
+            }
+          },
+          {
+            "rep_id": "P1_R3",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "27899119255409/1250000000000000000000000000000 - I",
+              "-1",
+              "-50021367493037/2500000000000000000000000000000 + I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R1": 1
+            }
+          },
+          {
+            "rep_id": "P1_R4",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "-567641034748201/10000000000000000000000000000000 + I",
+              "-1",
+              "584973273492933/10000000000000000000000000000000 - I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R2": 1
+            }
+          },
+          {
+            "rep_id": "P1_R5",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "718051407077033/10000000000000000000000000000000 - I",
+              "1",
+              "743484380748209/10000000000000000000000000000000 - I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P1_R6",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "-53319322163039/500000000000000000000000000000 + I",
+              "1",
+              "-21177723496827/200000000000000000000000000000 + I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R4": 1
+            }
+          },
+          {
+            "rep_id": "P1_R7",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "-59305479002977/250000000000000000000000000000 - I",
+              "1",
+              "-237613420379447/1000000000000000000000000000000 - I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P1_R8",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "-45591346925073/2000000000000000000000000000000 + I",
+              "1",
+              "-2956738733753/125000000000000000000000000000 + I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R4": 1
+            }
+          }
+        ],
+        "P4": [
+          {
+            "rep_id": "P4_R1",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "-18543063561897/250000000000000000000000000000 - 2*I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R2": 1,
+              "L1_R3": 1
+            }
+          },
+          {
+            "rep_id": "P4_R2",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "-53229252915469/5000000000000000000000000000000 + 2*I"
+            ],
+            "decomposition_on_line_basis": {
+              "L1_R1": 1,
+              "L1_R4": 1
+            }
+          }
+        ]
+      },
+      "endpoint_mode_viability": {
+        "P1": {
+          "all_integer_like": true,
+          "max_coefficient_deviation_from_nearest_integer": 0.0,
+          "max_reconstruction_deviation": 0.0,
+          "worst_case": {
+            "rep_id": 7,
+            "coefficients_rounded": [
+              {
+                "real": -0.0,
+                "imag": -0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -0.0
+              },
+              {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            "reconstruction_deviation": 0.0
+          }
+        },
+        "P4": {
+          "all_integer_like": true,
+          "max_coefficient_deviation_from_nearest_integer": 0.0,
+          "max_reconstruction_deviation": 0.0,
+          "worst_case": {
+            "rep_id": 2,
+            "coefficients_rounded": [
+              {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            ],
+            "reconstruction_deviation": 0.0
+          }
+        }
+      },
+      "local_unknown_ordering": [
+        "P1_R1",
+        "P1_R2",
+        "P1_R3",
+        "P1_R4",
+        "P1_R5",
+        "P1_R6",
+        "P1_R7",
+        "P1_R8",
+        "P4_R1",
+        "P4_R2"
+      ],
+      "equations": [
+        {
+          "basis_id": "L1_R1",
+          "terms": [
+            {
+              "unknown": "P1_R1",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P1_R3",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P4_R2",
+              "coeff": -1,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P1_R1 + 1*P1_R3 = 1*P4_R2"
+        },
+        {
+          "basis_id": "L1_R2",
+          "terms": [
+            {
+              "unknown": "P1_R2",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P1_R4",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P4_R1",
+              "coeff": -1,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P1_R2 + 1*P1_R4 = 1*P4_R1"
+        },
+        {
+          "basis_id": "L1_R3",
+          "terms": [
+            {
+              "unknown": "P1_R5",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P1_R7",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P4_R1",
+              "coeff": -1,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P1_R5 + 1*P1_R7 = 1*P4_R1"
+        },
+        {
+          "basis_id": "L1_R4",
+          "terms": [
+            {
+              "unknown": "P1_R6",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P1_R8",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P4_R2",
+              "coeff": -1,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P1_R6 + 1*P1_R8 = 1*P4_R2"
+        }
+      ],
+      "block_matrix": [
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1
+        ]
+      ],
+      "block_matrix_shape": [
+        4,
+        10
+      ],
+      "block_rank": 4
+    },
+    {
+      "group_number": "10.4.1.31",
+      "group_type": 2,
+      "character_mode_used_for_compatibility": "character",
+      "left_point_id": "P2",
+      "line_id": "L2",
+      "right_point_id": "P6",
+      "left_exact_k": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "line_exact_k": [
+        "0",
+        "1/5",
+        "1/2"
+      ],
+      "right_exact_k": [
+        "0",
+        "1/2",
+        "1/2"
+      ],
+      "left_cli_k": [
+        "0",
+        "0",
+        "0.5"
+      ],
+      "line_cli_k": [
+        "0",
+        "0.2",
+        "0.5"
+      ],
+      "right_cli_k": [
+        "0",
+        "0.5",
+        "0.5"
+      ],
+      "line_parametrization": "(0, v, 1/2)",
+      "line_constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "line_sample_point": [
+        "0",
+        "1/5",
+        "1/2"
+      ],
+      "line_coordinates": [
+        "0",
+        "v",
+        "1/2"
+      ],
+      "line_symmetry_summary": {
+        "generic_point": [
+          "0",
+          "1/5",
+          "1/2"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "line_group_signature": {
+        "character_mode": "character",
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "unitary_site_symmetry": "?"
+      },
+      "line_generic_corep_list": [
+        {
+          "rep_id": "L2_R1",
+          "rep_degree": 2,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 0.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            }
+          ]
+        }
+      ],
+      "matched_unitary_operation_indices": {
+        "P2": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "P6": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "endpoint_decompositions": {
+        "P2": [
+          {
+            "rep_id": "P2_R1",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_line_basis": {
+              "L2_R1": 1
+            }
+          },
+          {
+            "rep_id": "P2_R2",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_line_basis": {
+              "L2_R1": 1
+            }
+          }
+        ],
+        "P6": [
+          {
+            "rep_id": "P6_R1",
+            "rep_degree": 4,
+            "torsion": 2,
+            "restricted_character_on_line_unitary_subgroup": [
+              "4",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_line_basis": {
+              "L2_R1": 2
+            }
+          }
+        ]
+      },
+      "endpoint_mode_viability": {
+        "P2": {
+          "all_integer_like": true,
+          "max_coefficient_deviation_from_nearest_integer": 0.0,
+          "max_reconstruction_deviation": 0.0,
+          "worst_case": {
+            "rep_id": 2,
+            "coefficients_rounded": [
+              {
+                "real": 1.0,
+                "imag": -0.0
+              }
+            ],
+            "reconstruction_deviation": 0.0
+          }
+        },
+        "P6": {
+          "all_integer_like": true,
+          "max_coefficient_deviation_from_nearest_integer": 0.0,
+          "max_reconstruction_deviation": 0.0,
+          "worst_case": {
+            "rep_id": 1,
+            "coefficients_rounded": [
+              {
+                "real": 2.0,
+                "imag": 0.0
+              }
+            ],
+            "reconstruction_deviation": 0.0
+          }
+        }
+      },
+      "local_unknown_ordering": [
+        "P2_R1",
+        "P2_R2",
+        "P6_R1"
+      ],
+      "equations": [
+        {
+          "basis_id": "L2_R1",
+          "terms": [
+            {
+              "unknown": "P2_R1",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P2_R2",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P6_R1",
+              "coeff": -2,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P2_R1 + 1*P2_R2 = 2*P6_R1"
+        }
+      ],
+      "block_matrix": [
+        [
+          1,
+          1,
+          -2
+        ]
+      ],
+      "block_matrix_shape": [
+        1,
+        3
+      ],
+      "block_rank": 1
+    },
+    {
+      "group_number": "10.4.1.31",
+      "group_type": 2,
+      "character_mode_used_for_compatibility": "character",
+      "left_point_id": "P3",
+      "line_id": "L3",
+      "right_point_id": "P5",
+      "left_exact_k": [
+        "1/2",
+        "0",
+        "0"
+      ],
+      "line_exact_k": [
+        "1/2",
+        "1/5",
+        "0"
+      ],
+      "right_exact_k": [
+        "1/2",
+        "1/2",
+        "0"
+      ],
+      "left_cli_k": [
+        "0.5",
+        "0",
+        "0"
+      ],
+      "line_cli_k": [
+        "0.5",
+        "0.2",
+        "0"
+      ],
+      "right_cli_k": [
+        "0.5",
+        "0.5",
+        "0"
+      ],
+      "line_parametrization": "(1/2, v, 0)",
+      "line_constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "line_sample_point": [
+        "1/2",
+        "1/5",
+        "0"
+      ],
+      "line_coordinates": [
+        "1/2",
+        "v",
+        "0"
+      ],
+      "line_symmetry_summary": {
+        "generic_point": [
+          "1/2",
+          "1/5",
+          "0"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "line_group_signature": {
+        "character_mode": "character",
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 4,
+        "character_length": 4,
+        "rep_degree": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "torsion": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "basis_characters": [
+          [
+            "1",
+            "-42426709821981/1000000000000000000000000000000 - I",
+            "-1",
+            "419922335303967/10000000000000000000000000000000 + I"
+          ],
+          [
+            "1",
+            "42263277601299/500000000000000000000000000000 + I",
+            "-1",
+            "-215992131836441/2500000000000000000000000000000 - I"
+          ],
+          [
+            "1",
+            "14161601567237/312500000000000000000000000000 - I",
+            "1",
+            "18378188139383/400000000000000000000000000000 - I"
+          ],
+          [
+            "1",
+            "-356875502292313/500000000000000000000000000000000 + I",
+            "1",
+            "-574919851281851/1000000000000000000000000000000000 + I"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "unitary_site_symmetry": "?"
+      },
+      "line_generic_corep_list": [
+        {
+          "rep_id": "L3_R1",
+          "rep_degree": 1,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": -0.587785252292,
+              "imag": -0.809016994375
+            },
+            {
+              "real": -0.809016994375,
+              "imag": 0.587785252292
+            },
+            {
+              "real": 0.951056516295,
+              "imag": 0.309016994375
+            }
+          ]
+        },
+        {
+          "rep_id": "L3_R2",
+          "rep_degree": 1,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -1.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 1.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.587785252292,
+              "imag": 0.809016994375
+            },
+            {
+              "real": -0.809016994375,
+              "imag": 0.587785252292
+            },
+            {
+              "real": -0.951056516295,
+              "imag": -0.309016994375
+            }
+          ]
+        },
+        {
+          "rep_id": "L3_R3",
+          "rep_degree": 1,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -1.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.587785252292,
+              "imag": -0.809016994375
+            },
+            {
+              "real": 0.809016994375,
+              "imag": -0.587785252292
+            },
+            {
+              "real": -0.951056516295,
+              "imag": -0.309016994375
+            }
+          ]
+        },
+        {
+          "rep_id": "L3_R4",
+          "rep_degree": 1,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": 1.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.587785252292,
+              "imag": 0.809016994375
+            },
+            {
+              "real": 0.809016994375,
+              "imag": -0.587785252292
+            },
+            {
+              "real": 0.951056516295,
+              "imag": 0.309016994375
+            }
+          ]
+        }
+      ],
+      "matched_unitary_operation_indices": {
+        "P3": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "P5": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "endpoint_decompositions": {
+        "P3": [
+          {
+            "rep_id": "P3_R1",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "36363553419691/250000000000000000000000000000 - I",
+              "-1",
+              "-72756978119909/500000000000000000000000000000 + I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R1": 1
+            }
+          },
+          {
+            "rep_id": "P3_R2",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "86563456011557/2500000000000000000000000000000 + I",
+              "-1",
+              "-91412167863/2500000000000000000000000000 - I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R2": 1
+            }
+          },
+          {
+            "rep_id": "P3_R3",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "70387466340731/500000000000000000000000000000 - I",
+              "-1",
+              "-140212851129391/1000000000000000000000000000000 + I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R1": 1
+            }
+          },
+          {
+            "rep_id": "P3_R4",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "420645585693453/5000000000000000000000000000000 + I",
+              "-1",
+              "-429700977820129/5000000000000000000000000000000 - I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R2": 1
+            }
+          },
+          {
+            "rep_id": "P3_R5",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "-164965735424053/1000000000000000000000000000000 - I",
+              "1",
+              "-33682584745929/200000000000000000000000000000 - I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R3": 1
+            }
+          },
+          {
+            "rep_id": "P3_R6",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "146616558142063/5000000000000000000000000000000 + I",
+              "1",
+              "63179124808617/2500000000000000000000000000000 + I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R4": 1
+            }
+          },
+          {
+            "rep_id": "P3_R7",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "49957635426069/20000000000000000000000000000000 - I",
+              "1",
+              "278650411517299/100000000000000000000000000000000 - I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R3": 1
+            }
+          },
+          {
+            "rep_id": "P3_R8",
+            "rep_degree": 1,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "1",
+              "74038094580017/2000000000000000000000000000000 + I",
+              "1",
+              "179084669289113/5000000000000000000000000000000 + I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R4": 1
+            }
+          }
+        ],
+        "P5": [
+          {
+            "rep_id": "P5_R1",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "49674121168189/2500000000000000000000000000000 - 2*I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R2": 1,
+              "L3_R3": 1
+            }
+          },
+          {
+            "rep_id": "P5_R2",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "-54673001720069/1000000000000000000000000000000 + 2*I"
+            ],
+            "decomposition_on_line_basis": {
+              "L3_R1": 1,
+              "L3_R4": 1
+            }
+          }
+        ]
+      },
+      "endpoint_mode_viability": {
+        "P3": {
+          "all_integer_like": true,
+          "max_coefficient_deviation_from_nearest_integer": 0.0,
+          "max_reconstruction_deviation": 0.0,
+          "worst_case": {
+            "rep_id": 2,
+            "coefficients_rounded": [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              {
+                "real": -0.0,
+                "imag": -0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -0.0
+              }
+            ],
+            "reconstruction_deviation": 0.0
+          }
+        },
+        "P5": {
+          "all_integer_like": true,
+          "max_coefficient_deviation_from_nearest_integer": 0.0,
+          "max_reconstruction_deviation": 0.0,
+          "worst_case": {
+            "rep_id": 1,
+            "coefficients_rounded": [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -0.0
+              }
+            ],
+            "reconstruction_deviation": 0.0
+          }
+        }
+      },
+      "local_unknown_ordering": [
+        "P3_R1",
+        "P3_R2",
+        "P3_R3",
+        "P3_R4",
+        "P3_R5",
+        "P3_R6",
+        "P3_R7",
+        "P3_R8",
+        "P5_R1",
+        "P5_R2"
+      ],
+      "equations": [
+        {
+          "basis_id": "L3_R1",
+          "terms": [
+            {
+              "unknown": "P3_R1",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P3_R3",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P5_R2",
+              "coeff": -1,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P3_R1 + 1*P3_R3 = 1*P5_R2"
+        },
+        {
+          "basis_id": "L3_R2",
+          "terms": [
+            {
+              "unknown": "P3_R2",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P3_R4",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P5_R1",
+              "coeff": -1,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P3_R2 + 1*P3_R4 = 1*P5_R1"
+        },
+        {
+          "basis_id": "L3_R3",
+          "terms": [
+            {
+              "unknown": "P3_R5",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P3_R7",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P5_R1",
+              "coeff": -1,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P3_R5 + 1*P3_R7 = 1*P5_R1"
+        },
+        {
+          "basis_id": "L3_R4",
+          "terms": [
+            {
+              "unknown": "P3_R6",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P3_R8",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P5_R2",
+              "coeff": -1,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P3_R6 + 1*P3_R8 = 1*P5_R2"
+        }
+      ],
+      "block_matrix": [
+        [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          -1
+        ]
+      ],
+      "block_matrix_shape": [
+        4,
+        10
+      ],
+      "block_rank": 4
+    },
+    {
+      "group_number": "10.4.1.31",
+      "group_type": 2,
+      "character_mode_used_for_compatibility": "character",
+      "left_point_id": "P7",
+      "line_id": "L4",
+      "right_point_id": "P8",
+      "left_exact_k": [
+        "1/2",
+        "0",
+        "1/2"
+      ],
+      "line_exact_k": [
+        "1/2",
+        "1/5",
+        "1/2"
+      ],
+      "right_exact_k": [
+        "1/2",
+        "1/2",
+        "1/2"
+      ],
+      "left_cli_k": [
+        "0.5",
+        "0",
+        "0.5"
+      ],
+      "line_cli_k": [
+        "0.5",
+        "0.2",
+        "0.5"
+      ],
+      "right_cli_k": [
+        "0.5",
+        "0.5",
+        "0.5"
+      ],
+      "line_parametrization": "(1/2, v, 1/2)",
+      "line_constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "line_sample_point": [
+        "1/2",
+        "1/5",
+        "1/2"
+      ],
+      "line_coordinates": [
+        "1/2",
+        "v",
+        "1/2"
+      ],
+      "line_symmetry_summary": {
+        "generic_point": [
+          "1/2",
+          "1/5",
+          "1/2"
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 8,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "site_symmetry_custom": "m'[x] * m'[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      },
+      "line_group_signature": {
+        "character_mode": "character",
+        "n_ops_total": 8,
+        "n_unitary_ops": 4,
+        "n_antiunitary_ops": 4,
+        "basis_size": 1,
+        "character_length": 4,
+        "rep_degree": [
+          2
+        ],
+        "torsion": [
+          1
+        ],
+        "basis_characters": [
+          [
+            "2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "generic_stabilizer_size": 8,
+        "generic_rotation_stabilizer_size": 2,
+        "site_symmetry": "2/m'",
+        "unitary_site_symmetry": "?"
+      },
+      "line_generic_corep_list": [
+        {
+          "rep_id": "L4_R1",
+          "rep_degree": 2,
+          "torsion": 1,
+          "character": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          "linear_character": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -0.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -0.0
+            }
+          ]
+        }
+      ],
+      "matched_unitary_operation_indices": {
+        "P7": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "P8": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "endpoint_decompositions": {
+        "P7": [
+          {
+            "rep_id": "P7_R1",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_line_basis": {
+              "L4_R1": 1
+            }
+          },
+          {
+            "rep_id": "P7_R2",
+            "rep_degree": 2,
+            "torsion": 1,
+            "restricted_character_on_line_unitary_subgroup": [
+              "2",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_line_basis": {
+              "L4_R1": 1
+            }
+          }
+        ],
+        "P8": [
+          {
+            "rep_id": "P8_R1",
+            "rep_degree": 4,
+            "torsion": 2,
+            "restricted_character_on_line_unitary_subgroup": [
+              "4",
+              "0",
+              "0",
+              "0"
+            ],
+            "decomposition_on_line_basis": {
+              "L4_R1": 2
+            }
+          }
+        ]
+      },
+      "endpoint_mode_viability": {
+        "P7": {
+          "all_integer_like": true,
+          "max_coefficient_deviation_from_nearest_integer": 0.0,
+          "max_reconstruction_deviation": 0.0,
+          "worst_case": {
+            "rep_id": 2,
+            "coefficients_rounded": [
+              {
+                "real": 1.0,
+                "imag": -0.0
+              }
+            ],
+            "reconstruction_deviation": 0.0
+          }
+        },
+        "P8": {
+          "all_integer_like": true,
+          "max_coefficient_deviation_from_nearest_integer": 0.0,
+          "max_reconstruction_deviation": 0.0,
+          "worst_case": {
+            "rep_id": 1,
+            "coefficients_rounded": [
+              {
+                "real": 2.0,
+                "imag": -0.0
+              }
+            ],
+            "reconstruction_deviation": 0.0
+          }
+        }
+      },
+      "local_unknown_ordering": [
+        "P7_R1",
+        "P7_R2",
+        "P8_R1"
+      ],
+      "equations": [
+        {
+          "basis_id": "L4_R1",
+          "terms": [
+            {
+              "unknown": "P7_R1",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P7_R2",
+              "coeff": 1,
+              "side": "left"
+            },
+            {
+              "unknown": "P8_R1",
+              "coeff": -2,
+              "side": "right"
+            }
+          ],
+          "equation": "1*P7_R1 + 1*P7_R2 = 2*P8_R1"
+        }
+      ],
+      "block_matrix": [
+        [
+          1,
+          1,
+          -2
+        ]
+      ],
+      "block_matrix_shape": [
+        1,
+        3
+      ],
+      "block_rank": 1
+    }
+  ]
+}

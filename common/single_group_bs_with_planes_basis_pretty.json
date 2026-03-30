@@ -1,0 +1,690 @@
+{
+  "group_number": "10.4.1.31",
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1",
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "basis_kind": "with_planes_pretty_basis",
+  "note": "Signed readable basis for the minimal point-plane prototype kernel lattice.",
+  "basis_vectors": [
+    {
+      "id": "global_charge_mode",
+      "sector": "global",
+      "description": "Common charge mode tying the S2 scalar plane sector to the L2/L4 charge sector and the even S1 components.",
+      "vector": [
+        2,
+        -2,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        -2,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": 2
+        }
+      ]
+    },
+    {
+      "id": "S1_alternating_mode",
+      "sector": "global",
+      "description": "Alternating one-dimensional mode on S1 that couples the P1/P2/P3/P7 corner sectors across the four S1 basis characters.",
+      "vector": [
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        1,
+        1,
+        -1,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "id": "P3_diff_56_78_after_planes",
+      "sector": "L3_local",
+      "description": "Residual P3 difference mode between the (R5,R6) and (R7,R8) pairs after the plane constraints are imposed.",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "id": "P3_diff_12_34_after_planes",
+      "sector": "L3_local",
+      "description": "Residual P3 difference mode between the (R1,R2) and (R3,R4) pairs after the plane constraints are imposed.",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "id": "P1_diff_56_78_after_planes",
+      "sector": "L1_local",
+      "description": "Residual P1 difference mode between the (R5,R6) and (R7,R8) pairs after the plane constraints are imposed.",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "id": "P1_diff_12_34_after_planes",
+      "sector": "L1_local",
+      "description": "Residual P1 difference mode between the (R1,R2) and (R3,R4) pairs after the plane constraints are imposed.",
+      "vector": [
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "id": "L3_endpoint_difference_after_planes",
+      "sector": "L3_local",
+      "description": "Residual endpoint-difference mode on the L3/P5 sector that survives the plane couplings.",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "L1_endpoint_difference_after_planes",
+      "sector": "L1_local",
+      "description": "Residual endpoint-difference mode on the L1/P4 sector that survives the plane couplings.",
+      "vector": [
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        }
+      ]
+    }
+  ],
+  "basis_transform_note": "The pretty basis is a signed reorientation of the Smith raw basis.",
+  "basis_transform_from_raw": {
+    "matrix_as_rows": [
+      [
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    ],
+    "determinant": 1
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "group_number": "10.4.1.31",
+  "rank_BS_with_planes": 8,
+  "rank_AI_expanded": 6,
+  "rank_AI_expanded_v2": 8,
+  "AI_expanded_v2_in_BS": true,
+  "rank_span_BS_plus_AI_expanded_v2": 8,
+  "remaining_rank_gap": 0,
+  "added_rank_coverage_vs_old": 2,
+  "old_raw_candidate_count": 15,
+  "new_pointlike_magnetic_corep_candidate_count": 24,
+  "combined_raw_candidate_count": 39,
+  "distinct_new_pointlike_unknown_vector_count": 10,
+  "rank_closing_example_candidate_ids": [
+    "e_g_eta_plus",
+    "d_g_eta_plus"
+  ],
+  "remaining_missing_families": [
+    "n",
+    "i",
+    "j"
+  ],
+  "residual_nonrank_issue": "The combined BS-coefficient Smith diagonal is [1,1,1,1,1,1,2,2], so finite-index saturation inside the audited BS lattice is still not settled by this rank-level closure.",
+  "next_most_reasonable_target": "Build the parameter-family antiunitary magnetic local coreps for n,i,j and re-check integer saturation."
+}

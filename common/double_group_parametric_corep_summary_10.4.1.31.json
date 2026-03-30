@@ -1,0 +1,35 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "target_families": [
+    "o",
+    "m",
+    "k",
+    "l",
+    "n",
+    "i",
+    "j"
+  ],
+  "processing_order": [
+    "o",
+    "m",
+    "k",
+    "l",
+    "i",
+    "j",
+    "n"
+  ],
+  "successful_families": [
+    "o",
+    "m",
+    "k",
+    "l",
+    "n",
+    "i",
+    "j"
+  ],
+  "failed_families": [],
+  "successful_local_object_count": 13,
+  "can_build_ai_double_v2": true,
+  "next_blocker": "All target parametric families are now built, but the combined AI lattice still has rank 6 < 8. The blocker is no longer a missing in-scope family; it is the explicit residual BS_double gap witnessed by the two annihilator relations recorded in `double_group_bs_vs_ai_v2_summary_10.4.1.31.json`."
+}

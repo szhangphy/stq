@@ -1,0 +1,892 @@
+{
+  "group": "10.4.1.31",
+  "group_type": 2,
+  "case_key": "10_4_1_31_double",
+  "basis_construction_method": "Smith-image basis of the raw AI candidate lattice in BS coordinates",
+  "candidate_ordering": [
+    "c_double_g_plus_i",
+    "c_double_u_plus_i",
+    "c_double_g_minus_i",
+    "c_double_u_minus_i",
+    "f_double_g_plus_i",
+    "f_double_u_plus_i",
+    "f_double_g_minus_i",
+    "f_double_u_minus_i",
+    "d_double_case_c_pair",
+    "e_double_case_c_pair",
+    "g_double_case_c_pair",
+    "h_double_case_c_pair",
+    "b_double_case_c_pair",
+    "a_double_case_c_pair",
+    "o_double_A",
+    "m_double_plus_i",
+    "m_double_minus_i",
+    "k_double_plus_i",
+    "k_double_minus_i",
+    "l_double_plus_i",
+    "l_double_minus_i",
+    "i_double_A_eta_plus",
+    "i_double_A_eta_minus",
+    "j_double_A_eta_plus",
+    "j_double_A_eta_minus",
+    "n_double_A_eta_plus",
+    "n_double_A_eta_minus"
+  ],
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P2_R1",
+    "P2_R2",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P3_R7",
+    "P3_R8",
+    "P4_R1",
+    "P4_R2",
+    "P5_R1",
+    "P5_R2",
+    "P6_R1",
+    "P7_R1",
+    "P7_R2",
+    "P8_R1",
+    "S1_R1",
+    "S1_R2",
+    "S1_R3",
+    "S1_R4",
+    "S2_R1"
+  ],
+  "bs_basis_ordering": [
+    "10_4_1_31_double_bs_raw_basis_01",
+    "10_4_1_31_double_bs_raw_basis_02",
+    "10_4_1_31_double_bs_raw_basis_03",
+    "10_4_1_31_double_bs_raw_basis_04",
+    "10_4_1_31_double_bs_raw_basis_05",
+    "10_4_1_31_double_bs_raw_basis_06",
+    "10_4_1_31_double_bs_raw_basis_07",
+    "10_4_1_31_double_bs_raw_basis_08"
+  ],
+  "candidate_matrix_shape": [
+    8,
+    27
+  ],
+  "candidate_matrix_smith_diagonal_nonzero": [
+    1,
+    1,
+    2,
+    2,
+    2,
+    2
+  ],
+  "rank_ai": 6,
+  "basis_column_order": [
+    "10_4_1_31_double_ai_basis_01",
+    "10_4_1_31_double_ai_basis_02",
+    "10_4_1_31_double_ai_basis_03",
+    "10_4_1_31_double_ai_basis_04",
+    "10_4_1_31_double_ai_basis_05",
+    "10_4_1_31_double_ai_basis_06"
+  ],
+  "basis_vectors": [
+    {
+      "id": "10_4_1_31_double_ai_basis_01",
+      "vector": [
+        0,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        -2,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        -2,
+        0,
+        -2,
+        -1,
+        0,
+        -2,
+        -1,
+        -2,
+        0,
+        0,
+        -2,
+        -2
+      ],
+      "support": [
+        {
+          "unknown": "P1_R3",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": -2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": -2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": -2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P6_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P8_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": -2
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": -2
+        }
+      ]
+    },
+    {
+      "id": "10_4_1_31_double_ai_basis_02",
+      "vector": [
+        -1,
+        -1,
+        3,
+        -1,
+        -1,
+        -1,
+        -1,
+        3,
+        -2,
+        2,
+        -1,
+        -1,
+        3,
+        -1,
+        -1,
+        -1,
+        -1,
+        3,
+        -2,
+        2,
+        -2,
+        2,
+        0,
+        -2,
+        2,
+        0,
+        2,
+        -2,
+        -2,
+        2,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 3
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 3
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 3
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R7",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 3
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": -2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        }
+      ]
+    },
+    {
+      "id": "10_4_1_31_double_ai_basis_03",
+      "vector": [
+        -2,
+        0,
+        2,
+        0,
+        0,
+        -2,
+        0,
+        2,
+        -2,
+        2,
+        -2,
+        0,
+        2,
+        0,
+        0,
+        -2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        2,
+        0,
+        2,
+        -2,
+        -2,
+        2,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": -2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P7_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P7_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "S1_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "S1_R3",
+          "coeff": -2
+        },
+        {
+          "unknown": "S1_R4",
+          "coeff": 2
+        }
+      ]
+    },
+    {
+      "id": "10_4_1_31_double_ai_basis_04",
+      "vector": [
+        0,
+        -2,
+        2,
+        0,
+        -2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        -2,
+        2,
+        0,
+        -2,
+        0,
+        0,
+        2,
+        -2,
+        2,
+        -2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": -2
+        },
+        {
+          "unknown": "P3_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P5_R2",
+          "coeff": 2
+        }
+      ]
+    },
+    {
+      "id": "10_4_1_31_double_ai_basis_05",
+      "vector": [
+        0,
+        -2,
+        2,
+        0,
+        -2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        }
+      ]
+    },
+    {
+      "id": "10_4_1_31_double_ai_basis_06",
+      "vector": [
+        -2,
+        0,
+        0,
+        2,
+        0,
+        -2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": -2
+        },
+        {
+          "unknown": "P1_R7",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": -2
+        }
+      ]
+    }
+  ],
+  "basis_bs_coefficients": [
+    [
+      1,
+      -2,
+      -2,
+      0,
+      -2,
+      0,
+      -2,
+      -2
+    ],
+    [
+      0,
+      2,
+      3,
+      -1,
+      3,
+      -1,
+      2,
+      2
+    ],
+    [
+      0,
+      2,
+      2,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      0,
+      2,
+      0,
+      2,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      -2
+    ]
+  ],
+  "basis_from_candidate_relations": [
+    [
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      -1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "candidate_to_basis_exact_check": true
+}

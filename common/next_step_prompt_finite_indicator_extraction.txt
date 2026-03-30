@@ -1,0 +1,23 @@
+上一个会话已经完成 finite-indicator extraction。不要扩群，不要重做 BS / AI / portability。当前固定四个 case 的分层结论是：
+
+        - 10.4.1.31 / groupType=1: raw quotient Z2 x Z2, free part trivial, finite candidate Z2 x Z2
+- 10.4.1.31 / groupType=2: raw quotient Z^2 x Z2 x Z2 x Z2 x Z2, free part Z^2, finite candidate Z2 x Z2 x Z2 x Z2
+- 194.1.1.1 / groupType=1: raw quotient Z^16, free part Z^16, finite candidate trivial
+- 194.1.1.1 / groupType=2: raw quotient Z^16, free part Z^16, finite candidate trivial
+
+        优先读取：
+        1. finite_indicator_extraction_report.pdf
+        2. finite_indicator_extraction_audit.md
+        3. finite_indicator_extraction_summary.json
+        4. quotient_generator_classification.json
+        5. reinterpretation_10_4_1_31_double_finite_part.md
+        6. reinterpretation_194_1_1_1_single_finite_part.md
+        7. reinterpretation_194_1_1_1_double_finite_part.md
+
+        当前这一轮的目标已经完成。下一轮如果还要继续，只能做更高层的物理对表或外部表格基准，不要回头重算 raw quotient。
+
+        验证当前工件完整性：
+        `python3 -u debug_finite_indicator_extraction.py --validate`
+
+        守护 raw 基线：
+        `python3 -u debug_raw_matrix_audit.py --validate`

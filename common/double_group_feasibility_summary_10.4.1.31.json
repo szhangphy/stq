@@ -1,0 +1,15 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "kspace_double_feasible": true,
+  "realspace_double_feasible": true,
+  "bridge_double_feasible": true,
+  "induction_double_feasible": true,
+  "minimal_double_prototype_completed": true,
+  "main_blocker": null,
+  "next_blocker": "Generalize from the unitary point-like family c to a reusable double-group local-corep builder, especially for antiunitary families, and add a general double-group compatibility-block constructor that treats projective phases explicitly.",
+  "projective_factor_values_seen": [
+    -1,
+    1
+  ]
+}
