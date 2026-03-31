@@ -1,6 +1,6 @@
 # SG194 194.1.1.1 Live Checkpoint
 
-- Current time: 2026-04-01 04:27:00 +0800
+- Current time: 2026-04-01 04:39:00 +0800
 - Branch: `sg194-special`
 - HEAD before this checkpoint update: `70fdd3f`
 - Task scope: SG194 unified benchmark audit for `SSG 194.1.1.1` treated together with `OG 194.1.1494 / BNS 194.263`, using read-only `topmat_src` plus copied-source local compute inside `sg194/`.
@@ -19,8 +19,8 @@
    `basis_194.263.txt` gives BS rank `10`; `MsgAI_194.263.txt` lifted into the BS basis also has rank `10`; Smith nonzero diagonal is `[1, 1, 1, 1, 1, 1, 1, 1, 1, 6]`, so the complete benchmark classification is `Z6`.
 6. Current-vs-external object matching completed.
    Current raw objects are `Z^3` raw internal quotients, the phase-aware object is a local raw compatibility repair prototype, and the older anchored trivial claim is superseded by a later unresolved external-matrix status.
-7. Commit/push closeout pending.
-   The required v3/v2/v1 benchmark artifacts have been generated under `sg194/`; remaining work is checkpointed staging, commit, and push.
+7. Commit/push closeout nearly complete.
+   The benchmark artifacts are committed and pushed once; the remaining follow-up is to commit the copied `topmat_reference_v3/` snapshot together with this refreshed final checkpoint state.
 
 ## Confirmed Findings
 
@@ -54,8 +54,10 @@
 11. `sg194/sg194_topmat_copied_sources_manifest_v2.md`
 12. `sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json`
 13. `sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.md`
+14. `sg194/topmat_reference_v3/` copied-source snapshot tree
 
 ## Active Blockers
 
 1. Bilbao/accessible web sources directly confirm `OG 194.1.1494 / BNS 194.263`, but not the `SSG 194.1.1.1` label as a separately surfaced external field.
 2. The outer working directory `/data/work/szhang/ssg/comprel` is not itself a git repository; commit/push must happen from `stq_repo_export/repo`.
+3. The copied `sg194/topmat_reference_v3/` tree still needs its own follow-up commit so the manifest points only at tracked files.
