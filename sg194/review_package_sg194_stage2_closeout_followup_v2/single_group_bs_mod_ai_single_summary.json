@@ -1,0 +1,24 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 1,
+  "ai_v3_complete_for_single_group": true,
+  "bs_mod_ai_single_obtained": true,
+  "quotient_group": "Z2 x Z2",
+  "indicator_generators": [
+    "indicator_generator_1",
+    "indicator_generator_2"
+  ],
+  "applicable_scope": [
+    "single group only",
+    "group 10.4.1.31 only",
+    "current with-planes formalism only",
+    "current audited BS basis and unknown ordering only"
+  ],
+  "not_applicable_scope": [
+    "double group",
+    "other SSGs",
+    "database-wide automation",
+    "any basis/formalism not matched to the current audited single-group setup"
+  ],
+  "current_honest_conclusion": "For SSG 10.4.1.31 at groupType=1, the current AI_expanded_v3 passes the family-level completeness audit, so it is promoted to the complete single-group AI lattice. Therefore the residual Smith diagonal [1,1,1,1,1,1,2,2] is interpreted as the genuine finite quotient BS/AI = Z2 x Z2 within the present audited formalism."
+}

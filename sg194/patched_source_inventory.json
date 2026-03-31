@@ -1,0 +1,24 @@
+{
+  "patched_files": [
+    {
+      "path": "debug_workflow_portability_stage2_194.1.1.1.py",
+      "patched_functions": [
+        "_combined_double_channel_record",
+        "build_sg194_double_spinorial_generators"
+      ],
+      "old_behavior": "Stage-2 only emitted the 45 induced local-irrep candidates. The 33-column current spinorial generator layer existed only implicitly downstream via hardcoded audit merges.",
+      "new_behavior": "Stage-2 now owns the SG194 double spinorial channel builder. It can emit both the legacy 33-column channelization and the patched SG194 problem-sector channelization from the same induced-candidate source.",
+      "patch_summary": "Added a source-of-truth generator-construction layer for SG194 double spinorial channels and a patched profile `sg194_double_anchor_patch_v1` that changes the 2b/2c/2d/6h problem-sector channel assembly."
+    },
+    {
+      "path": "debug_sg194_double_patch.py",
+      "patched_functions": [
+        "main",
+        "run_patch_round"
+      ],
+      "old_behavior": "No dedicated patch driver existed.",
+      "new_behavior": "This driver regenerates patched raw artifacts, performs before/after comparisons, writes the report package, and validates the result.",
+      "patch_summary": "New execution driver for the patched SG194 double channelization round."
+    }
+  ]
+}

@@ -15,23 +15,18 @@
   "new_current_rank": 12,
   "old_problem_sector_union_rank": 8,
   "new_problem_sector_union_rank": 6,
-  "delta_c1_minus_b1_disappeared": true,
-  "delta_d1_minus_b1_disappeared": true,
+  "delta_c1_minus_b1_disappeared": false,
+  "delta_d1_minus_b1_disappeared": false,
   "bs_only_after_patch_rerun": false,
   "bs_only_after_patch_reason": "The trusted problem sector is fixed, but the full current 33-column rank has not yet dropped from 12 to 10, so BS-only remains premature.",
   "pdf_generated": true,
   "handoff_generated": true,
   "status_generated": true,
   "next_step_generated": true,
-  "package_tarball": "/data/work/szhang/ssg/comprel/review_package_sg194_double_patch_audit.tar.gz",
+  "package_tarball": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_sg194_double_patch_audit.tar.gz",
   "package_tree": [
     "review_package_sg194_double_patch_audit/",
     "  - README.md",
-    "  SSGReps/",
-    "    SSGReps/",
-    "      - SG_utils.py",
-    "      - SSGReps.py",
-    "      - rep_utils.py",
     "  - current_status_sg194_double_patch.json",
     "  - debug_raw_matrix_audit.py",
     "  - debug_sg194_double_patch.py",
@@ -61,8 +56,6 @@
     "  - sg194_double_patch_report.tex",
     "  - sg194_double_patch_summary.json",
     "  - sg194_external_spinorial_generator_matrix.json",
-    "  - sg194_mismatch_localization_summary.json",
-    "  - swyckoff_k.py",
-    "  - swyckoff_r.py"
+    "  - sg194_mismatch_localization_summary.json"
   ]
 }

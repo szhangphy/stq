@@ -1,0 +1,160 @@
+{
+  "group": "194.1.1.1",
+  "group_type": 2,
+  "old_raw_quotient": "Z^16",
+  "intermediate_repcontent_status": "v2 localized the residual rank-2 mismatch to 2b/2c/2d/6h",
+  "full_external_spinorial_quotient": null,
+  "spinorial_external_matrix_shape": [
+    56,
+    33
+  ],
+  "spinorial_external_matrix_cached": true,
+  "problem_sector_labels": [
+    "2b:E1",
+    "2b:E2",
+    "2b:E3",
+    "2c:E1",
+    "2c:E2",
+    "2c:E3",
+    "2d:E1",
+    "2d:E2",
+    "2d:E3",
+    "6h:E"
+  ],
+  "problem_sector_current_rank": 6,
+  "problem_sector_external_rank": 6,
+  "problem_sector_union_rank": 8,
+  "problem_sector_intersection_rank": 4,
+  "current_only_problem_sector_basis": [
+    [
+      {
+        "label": "2b:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2c:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2d:E3",
+        "coeff": 1
+      },
+      {
+        "label": "6h:E",
+        "coeff": 2
+      }
+    ],
+    [
+      {
+        "label": "2c:E1",
+        "coeff": -2
+      },
+      {
+        "label": "2c:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2d:E1",
+        "coeff": -2
+      },
+      {
+        "label": "2d:E3",
+        "coeff": 1
+      }
+    ]
+  ],
+  "external_only_problem_sector_basis": [
+    [
+      {
+        "label": "2b:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2c:E3",
+        "coeff": 1
+      },
+      {
+        "label": "2d:E3",
+        "coeff": 1
+      },
+      {
+        "label": "6h:E",
+        "coeff": 1
+      }
+    ],
+    [
+      {
+        "label": "2c:E1",
+        "coeff": 1
+      },
+      {
+        "label": "2c:E3",
+        "coeff": -1
+      },
+      {
+        "label": "2d:E2",
+        "coeff": 1
+      },
+      {
+        "label": "2d:E3",
+        "coeff": -1
+      }
+    ]
+  ],
+  "delta_c1_minus_b1_final_status": "still current-only excess direction; not absorbed by the external spinorial problem-sector row space",
+  "delta_d1_minus_b1_final_status": "still current-only excess direction; not absorbed by the external spinorial problem-sector row space",
+  "delta_basis_from_v2": [
+    {
+      "id": "delta_c1_minus_b1",
+      "support_on_current_hsp_rows": [
+        {
+          "label": "P3_R1",
+          "coeff": -2
+        },
+        {
+          "label": "P3_R3",
+          "coeff": -2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "B1_R1",
+          "coeff": 2
+        },
+        {
+          "label": "B1_R3",
+          "coeff": -2
+        }
+      ]
+    },
+    {
+      "id": "delta_d1_minus_b1",
+      "support_on_current_hsp_rows": [
+        {
+          "label": "P3_R1",
+          "coeff": -2
+        },
+        {
+          "label": "P3_R3",
+          "coeff": -2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "B1_R2",
+          "coeff": 2
+        },
+        {
+          "label": "B1_R3",
+          "coeff": -2
+        }
+      ]
+    }
+  ],
+  "final_conclusion": "Final double external reduction remains blocked. The full Bilbao 56x33 spinorial matrix is now cached, and the unambiguous 2b/2c/2d/6h spinorial sector already proves a genuine rank-2 mismatch: both current merged and external problem-sector row spaces have rank 6, but their union has rank 8. Therefore delta_c1_minus_b1 and delta_d1_minus_b1 remain current-only excess directions rather than mere missing lifts, and no honest final double standard quotient should be quoted yet.",
+  "confidence": "high"
+}

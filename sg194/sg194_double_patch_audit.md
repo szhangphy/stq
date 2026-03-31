@@ -16,8 +16,8 @@
 
 - problem-sector union rank: `8 -> 6`
 - problem-sector intersection rank: `4 -> 6`
-- `delta_c1_minus_b1` disappeared: `True`
-- `delta_d1_minus_b1` disappeared: `True`
+- `delta_c1_minus_b1` disappeared: `False`
+- `delta_d1_minus_b1` disappeared: `False`
 - full current rank in the 33-column comparison: `12 -> 12`
 
 ## Diagnosis

@@ -1,9 +1,7 @@
 from turtle import position
 import numpy as np
-from spglib import *
 from numpy.linalg import norm, inv, det
 import os
-from pymatgen.symmetry.analyzer import PointGroupAnalyzer
 import pickle
 import warnings
 

@@ -1,0 +1,34 @@
+{
+  "group_number": "194.1.1.1",
+  "group_type": 2,
+  "matrix_shape": [
+    16,
+    10
+  ],
+  "rank(BS)": 16,
+  "rank(AI_complete)": 10,
+  "smith_diagonal_nonzero": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2
+  ],
+  "quotient_scope": "raw_internal_bs_space",
+  "raw_internal_quotient_group": "Z^6 x Z2 x Z2 x Z2",
+  "quotient_group": null,
+  "free_rank": 6,
+  "finite_part": [
+    2,
+    2,
+    2
+  ],
+  "standard_space_projection_status": "missing",
+  "interpretation_warning": "This quotient is computed in the 16-dimensional raw internal BS space and must not yet be reported as the final SG194 standard indicator.",
+  "generator_count": 3
+}

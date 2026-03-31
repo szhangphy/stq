@@ -16,10 +16,107 @@
       "raw_194_1_1_1_double_ai_basis_patched.json": true,
       "raw_194_1_1_1_double_ai_in_bs_matrix.json": true,
       "raw_194_1_1_1_double_ai_in_bs_matrix_patched.json": true,
-      "sg194_external_spinorial_generator_matrix.json": true
+      "sg194_external_spinorial_generator_matrix.json": true,
+      "debug_raw_matrix_audit.py": true
     },
     "missing_files": [],
     "blocked_steps_if_missing": []
+  },
+  "dependency_graph": {
+    "entry_script": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_double_complement_patch_v1.py",
+    "dependencies": [
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+        "name": "debug_workflow_portability_stage2_194.1.1.1.py",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_workflow_portability_194.1.1.1.py",
+        "name": "debug_workflow_portability_194.1.1.1.py",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_nonabelian_local_library.py",
+        "name": "debug_sg194_nonabelian_local_library.py",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_double_global_residual.py",
+        "name": "debug_sg194_double_global_residual.py",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_double_lift.py",
+        "name": "debug_sg194_double_lift.py",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_candidates.json",
+        "name": "raw_194_1_1_1_double_ai_candidates.json",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_candidates_patched.json",
+        "name": "raw_194_1_1_1_double_ai_candidates_patched.json",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_basis.json",
+        "name": "raw_194_1_1_1_double_ai_basis.json",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_basis_patched.json",
+        "name": "raw_194_1_1_1_double_ai_basis_patched.json",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_in_bs_matrix.json",
+        "name": "raw_194_1_1_1_double_ai_in_bs_matrix.json",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_in_bs_matrix_patched.json",
+        "name": "raw_194_1_1_1_double_ai_in_bs_matrix_patched.json",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_external_spinorial_generator_matrix.json",
+        "name": "sg194_external_spinorial_generator_matrix.json",
+        "exists": true
+      },
+      {
+        "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_raw_matrix_audit.py",
+        "name": "debug_raw_matrix_audit.py",
+        "exists": true
+      }
+    ],
+    "all_present": true,
+    "missing_files": [],
+    "versioned_outputs": [
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_candidates_patched_v2.json",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_basis_patched_v2.json",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_in_bs_matrix_patched_v2.json",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_quotient_patched_v2.json",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/group_194_1_1_1_double_indicator_group_summary_patched_v2.json",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/group_194_1_1_1_double_indicator_generators_patched_v2.json",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_double_complement_patch_closeout_summary_v1.json",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_double_complement_patch_closeout_report_v1.md",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/handoff_sg194_double_complement_patch_closeout_v1.md",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/current_status_sg194_double_complement_patch_closeout_v1.json",
+      "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/next_step_prompt_sg194_double_complement_patch_closeout_v1.txt"
+    ],
+    "package_contract_members": [
+      "debug_raw_matrix_audit.py",
+      "raw_194_1_1_1_double_quotient_patched_v2.json",
+      "group_194_1_1_1_double_indicator_group_summary_patched_v2.json",
+      "group_194_1_1_1_double_indicator_generators_patched_v2.json",
+      "sg194_double_complement_patch_closeout_summary_v1.json",
+      "sg194_double_complement_patch_closeout_report_v1.md",
+      "handoff_sg194_double_complement_patch_closeout_v1.md",
+      "current_status_sg194_double_complement_patch_closeout_v1.json",
+      "next_step_prompt_sg194_double_complement_patch_closeout_v1.txt"
+    ]
   },
   "old_profile": "sg194_double_anchor_patch_v1",
   "new_profile": "sg194_double_complement_patch_v1",
@@ -122,6 +219,33 @@
   },
   "complement_exact_equality": true,
   "full_33_global_alignment": true,
+  "single_current_raw_internal_quotient": "Z^3",
+  "double_old_raw_internal_quotient": "Z^3",
+  "double_patched_v2_raw_internal_quotient": "Z^6 x Z2 x Z2 x Z2",
+  "patched_v2_matrix_shape": [
+    16,
+    10
+  ],
+  "patched_v2_smith_diagonal_nonzero": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2
+  ],
+  "patched_v2_free_rank": 6,
+  "patched_v2_finite_part": [
+    2,
+    2,
+    2
+  ],
+  "standard_space_projection_status": "missing",
+  "interpretation_warning": "This quotient is computed in the 16-dimensional raw internal BS space and must not yet be reported as the final SG194 standard indicator.",
   "single_double_relation": {
     "single_is_clean_baseline_for_this_bug_class": true,
     "single_reason": "The SG194 single line has no spinorial complement channel builder and therefore does not show the complement identity-reuse failure mode.",
@@ -132,16 +256,21 @@
   "handoff_generated": true,
   "status_generated": true,
   "next_step_generated": true,
-  "package_tarball": "/data/work/szhang/ssg/comprel/review_package_sg194_double_complement_patch_v1.tar.gz",
+  "package_tarball": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_sg194_double_complement_patch_followup_v1.tar.gz",
   "package_tree": [
-    "review_package_sg194_double_complement_patch_v1/",
+    "review_package_sg194_double_complement_patch_followup_v1/",
     "  - README.md",
-    "  SSGReps/",
+    "  common/",
     "    SSGReps/",
-    "      - SG_utils.py",
-    "      - SSGReps.py",
-    "      - rep_utils.py",
+    "      SSGReps/",
+    "        - SG_utils.py",
+    "        - SSGReps.py",
+    "        - rep_utils.py",
+    "    - swyckoff_k.py",
+    "    - swyckoff_r.py",
+    "  - current_status_sg194_double_complement_patch_closeout_v1.json",
     "  - current_status_sg194_double_complement_patch_v1.json",
+    "  - debug_raw_matrix_audit.py",
     "  - debug_sg194_double_complement_patch_v1.py",
     "  - debug_sg194_double_global_residual.py",
     "  - debug_sg194_double_lift.py",
@@ -150,8 +279,12 @@
     "  - debug_workflow_portability_194.1.1.1.py",
     "  - debug_workflow_portability_stage2_194.1.1.1.py",
     "  - group_194_1_1_1_double_ai_completion_summary.json",
+    "  - group_194_1_1_1_double_indicator_generators_patched_v2.json",
+    "  - group_194_1_1_1_double_indicator_group_summary_patched_v2.json",
     "  - group_194_1_1_1_single_ai_completion_summary.json",
+    "  - handoff_sg194_double_complement_patch_closeout_v1.md",
     "  - handoff_sg194_double_complement_patch_v1.md",
+    "  - next_step_prompt_sg194_double_complement_patch_closeout_v1.txt",
     "  - next_step_prompt_sg194_double_complement_patch_v1.txt",
     "  - raw_194_1_1_1_double_ai_basis.json",
     "  - raw_194_1_1_1_double_ai_basis_patched.json",
@@ -162,6 +295,10 @@
     "  - raw_194_1_1_1_double_ai_in_bs_matrix.json",
     "  - raw_194_1_1_1_double_ai_in_bs_matrix_patched.json",
     "  - raw_194_1_1_1_double_ai_in_bs_matrix_patched_v2.json",
+    "  - raw_194_1_1_1_double_quotient_patched_v2.json",
+    "  - sg194_double_complement_patch_closeout_report_v1.md",
+    "  - sg194_double_complement_patch_closeout_summary_v1.json",
+    "  - sg194_double_complement_patch_dependency_graph_v1.json",
     "  - sg194_double_complement_patch_report_v1.md",
     "  - sg194_double_complement_patch_report_v1.pdf",
     "  - sg194_double_complement_patch_report_v1.tex",
@@ -173,8 +310,6 @@
     "  - sg194_double_problem_sector_inventory.json",
     "  - sg194_double_problem_sector_lift.json",
     "  - sg194_external_spinorial_generator_matrix.json",
-    "  - swyckoff_k.py",
-    "  - swyckoff_r.py",
     "  - workflow_portability_stage2_summary_194.1.1.1.json"
   ]
 }

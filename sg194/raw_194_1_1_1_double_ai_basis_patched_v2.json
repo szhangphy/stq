@@ -60,6 +60,9 @@
     "P3_R4",
     "P3_R5",
     "P3_R6",
+    "P4_R1",
+    "P4_R2",
+    "P4_R3",
     "P5_R1",
     "P5_R2",
     "P5_R3",
@@ -70,35 +73,12 @@
     "P5_R8",
     "P6_R1",
     "P6_R2",
-    "B1_R1",
-    "B1_R2",
-    "B1_R3",
-    "B2_R1",
-    "B2_R2",
-    "B2_R3",
-    "B2_R4",
-    "B2_R5",
-    "B2_R6",
-    "B2_R7",
-    "B2_R8",
-    "B3_R1",
-    "B3_R2",
     "S1_R1",
     "S1_R2",
-    "B4_R1",
-    "B4_R2",
-    "B4_R3",
-    "B4_R4",
-    "B4_R5",
-    "B4_R6",
-    "B4_R7",
-    "B4_R8",
     "S2_R1",
     "S2_R2",
     "S3_R1",
     "S3_R2",
-    "B5_R1",
-    "B5_R2",
     "S4_R1",
     "S4_R2"
   ],
@@ -118,23 +98,10 @@
     "194_1_1_1_double_bs_raw_basis_13",
     "194_1_1_1_double_bs_raw_basis_14",
     "194_1_1_1_double_bs_raw_basis_15",
-    "194_1_1_1_double_bs_raw_basis_16",
-    "194_1_1_1_double_bs_raw_basis_17",
-    "194_1_1_1_double_bs_raw_basis_18",
-    "194_1_1_1_double_bs_raw_basis_19",
-    "194_1_1_1_double_bs_raw_basis_20",
-    "194_1_1_1_double_bs_raw_basis_21",
-    "194_1_1_1_double_bs_raw_basis_22",
-    "194_1_1_1_double_bs_raw_basis_23",
-    "194_1_1_1_double_bs_raw_basis_24",
-    "194_1_1_1_double_bs_raw_basis_25",
-    "194_1_1_1_double_bs_raw_basis_26",
-    "194_1_1_1_double_bs_raw_basis_27",
-    "194_1_1_1_double_bs_raw_basis_28",
-    "194_1_1_1_double_bs_raw_basis_29"
+    "194_1_1_1_double_bs_raw_basis_16"
   ],
   "candidate_matrix_shape": [
-    29,
+    16,
     33
   ],
   "candidate_matrix_smith_diagonal_nonzero": [
@@ -187,16 +154,6 @@
         0,
         2,
         2,
-        0,
-        1,
-        1,
-        1,
-        0,
-        1,
-        1,
-        1,
-        2,
-        1,
         2,
         2,
         -1,
@@ -212,20 +169,10 @@
         1,
         4,
         2,
-        0,
-        1,
-        1,
-        1,
-        0,
-        1,
-        1,
-        1,
         3,
         3,
         3,
         3,
-        2,
-        1,
         3,
         3
       ],
@@ -279,6 +226,18 @@
           "coeff": 2
         },
         {
+          "unknown": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P4_R3",
+          "coeff": -1
+        },
+        {
           "unknown": "P5_R2",
           "coeff": 1
         },
@@ -311,80 +270,12 @@
           "coeff": 1
         },
         {
-          "unknown": "B1_R1",
-          "coeff": 2
-        },
-        {
-          "unknown": "B1_R2",
-          "coeff": 2
-        },
-        {
-          "unknown": "B1_R3",
-          "coeff": -1
-        },
-        {
-          "unknown": "B2_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R3",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R4",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R6",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R7",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R8",
-          "coeff": 1
-        },
-        {
-          "unknown": "B3_R1",
-          "coeff": 2
-        },
-        {
-          "unknown": "B3_R2",
-          "coeff": 1
-        },
-        {
           "unknown": "S1_R1",
           "coeff": 4
         },
         {
           "unknown": "S1_R2",
           "coeff": 2
-        },
-        {
-          "unknown": "B4_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R3",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R4",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R6",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R7",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R8",
-          "coeff": 1
         },
         {
           "unknown": "S2_R1",
@@ -401,14 +292,6 @@
         {
           "unknown": "S3_R2",
           "coeff": 3
-        },
-        {
-          "unknown": "B5_R1",
-          "coeff": 2
-        },
-        {
-          "unknown": "B5_R2",
-          "coeff": 1
         },
         {
           "unknown": "S4_R1",
@@ -423,160 +306,152 @@
     {
       "id": "194_1_1_1_double_ai_basis_02",
       "vector": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        -1,
-        0,
-        -1,
-        0,
-        2,
-        2,
-        -1,
-        2,
-        2,
-        2,
-        2,
+        -2,
         -1,
         -1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        1,
+        -1,
+        -2,
         -1,
         -1,
-        4,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        1,
-        1,
-        2,
-        2,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        2,
-        2,
-        2,
+        -1,
         2,
         1,
-        1,
         2,
-        2
+        1,
+        -2,
+        -3,
+        3,
+        -3,
+        -3,
+        -2,
+        -2,
+        3,
+        3,
+        3,
+        3,
+        -5,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
       ],
       "support": [
         {
           "unknown": "P1_R1",
-          "coeff": 1
+          "coeff": -2
         },
         {
           "unknown": "P1_R2",
-          "coeff": 1
+          "coeff": -1
         },
         {
           "unknown": "P1_R3",
-          "coeff": 1
+          "coeff": -1
         },
         {
           "unknown": "P1_R4",
-          "coeff": 1
+          "coeff": -1
         },
         {
           "unknown": "P1_R5",
-          "coeff": 1
+          "coeff": -2
         },
         {
           "unknown": "P1_R6",
-          "coeff": 1
+          "coeff": -1
         },
         {
           "unknown": "P1_R7",
-          "coeff": 1
+          "coeff": -1
         },
         {
           "unknown": "P1_R8",
-          "coeff": 1
+          "coeff": -1
         },
         {
           "unknown": "P1_R9",
-          "coeff": -1
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R10",
+          "coeff": 1
         },
         {
           "unknown": "P1_R11",
-          "coeff": -1
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R12",
+          "coeff": 1
         },
         {
           "unknown": "P2_R1",
-          "coeff": 2
+          "coeff": -2
         },
         {
           "unknown": "P2_R2",
-          "coeff": 2
+          "coeff": -3
         },
         {
           "unknown": "P2_R3",
-          "coeff": -1
+          "coeff": 3
         },
         {
           "unknown": "P3_R1",
-          "coeff": 2
+          "coeff": -3
         },
         {
           "unknown": "P3_R2",
-          "coeff": 2
+          "coeff": -3
         },
         {
           "unknown": "P3_R3",
-          "coeff": 2
+          "coeff": -2
         },
         {
           "unknown": "P3_R4",
-          "coeff": 2
+          "coeff": -2
         },
         {
           "unknown": "P3_R5",
-          "coeff": -1
+          "coeff": 3
         },
         {
           "unknown": "P3_R6",
-          "coeff": -1
+          "coeff": 3
         },
         {
-          "unknown": "P5_R2",
+          "unknown": "P4_R1",
+          "coeff": 3
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 3
+        },
+        {
+          "unknown": "P4_R3",
+          "coeff": -5
+        },
+        {
+          "unknown": "P5_R3",
           "coeff": 1
         },
         {
-          "unknown": "P5_R4",
-          "coeff": 1
-        },
-        {
-          "unknown": "P5_R6",
-          "coeff": 1
-        },
-        {
-          "unknown": "P5_R8",
+          "unknown": "P5_R7",
           "coeff": 1
         },
         {
@@ -584,237 +459,177 @@
           "coeff": 1
         },
         {
-          "unknown": "P6_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B1_R1",
-          "coeff": -1
-        },
-        {
-          "unknown": "B1_R2",
-          "coeff": -1
-        },
-        {
-          "unknown": "B1_R3",
-          "coeff": 4
-        },
-        {
-          "unknown": "B2_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R4",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R6",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R8",
-          "coeff": 1
-        },
-        {
-          "unknown": "B3_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "B3_R2",
-          "coeff": 1
-        },
-        {
           "unknown": "S1_R1",
           "coeff": 2
         },
         {
-          "unknown": "S1_R2",
-          "coeff": 2
-        },
-        {
-          "unknown": "B4_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R4",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R6",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R8",
-          "coeff": 1
-        },
-        {
           "unknown": "S2_R1",
-          "coeff": 2
+          "coeff": 1
         },
         {
           "unknown": "S2_R2",
-          "coeff": 2
-        },
-        {
-          "unknown": "S3_R1",
-          "coeff": 2
-        },
-        {
-          "unknown": "S3_R2",
-          "coeff": 2
-        },
-        {
-          "unknown": "B5_R1",
           "coeff": 1
         },
         {
-          "unknown": "B5_R2",
+          "unknown": "S3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "S3_R2",
           "coeff": 1
         },
         {
           "unknown": "S4_R1",
-          "coeff": 2
+          "coeff": 1
         },
         {
           "unknown": "S4_R2",
-          "coeff": 2
+          "coeff": 1
         }
       ]
     },
     {
       "id": "194_1_1_1_double_ai_basis_03",
       "vector": [
-        0,
-        1,
-        1,
-        1,
-        0,
-        1,
-        1,
-        1,
-        -1,
-        0,
-        -1,
-        0,
-        2,
-        1,
-        -1,
-        1,
-        1,
         2,
         2,
-        -1,
-        -1,
-        -1,
-        1,
-        0,
-        1,
-        -1,
-        1,
-        0,
-        1,
-        1,
-        0,
-        -1,
-        -1,
-        3,
-        -1,
-        1,
-        0,
-        1,
-        -1,
-        1,
-        0,
-        1,
-        1,
-        0,
         2,
-        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        -3,
+        -1,
+        -3,
+        -1,
+        4,
+        4,
+        -4,
+        4,
+        4,
+        4,
+        4,
+        -4,
+        -4,
+        -4,
+        -4,
+        8,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
         -1,
         1,
         0,
-        1,
-        -1,
-        1,
         0,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
         0,
-        1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ],
       "support": [
         {
+          "unknown": "P1_R1",
+          "coeff": 2
+        },
+        {
           "unknown": "P1_R2",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "unknown": "P1_R3",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "unknown": "P1_R4",
-          "coeff": 1
+          "coeff": 2
+        },
+        {
+          "unknown": "P1_R5",
+          "coeff": 2
         },
         {
           "unknown": "P1_R6",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "unknown": "P1_R7",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "unknown": "P1_R8",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "unknown": "P1_R9",
+          "coeff": -3
+        },
+        {
+          "unknown": "P1_R10",
           "coeff": -1
         },
         {
           "unknown": "P1_R11",
+          "coeff": -3
+        },
+        {
+          "unknown": "P1_R12",
           "coeff": -1
         },
         {
           "unknown": "P2_R1",
-          "coeff": 2
+          "coeff": 4
         },
         {
           "unknown": "P2_R2",
-          "coeff": 1
+          "coeff": 4
         },
         {
           "unknown": "P2_R3",
-          "coeff": -1
+          "coeff": -4
         },
         {
           "unknown": "P3_R1",
-          "coeff": 1
+          "coeff": 4
         },
         {
           "unknown": "P3_R2",
-          "coeff": 1
+          "coeff": 4
         },
         {
           "unknown": "P3_R3",
-          "coeff": 2
+          "coeff": 4
         },
         {
           "unknown": "P3_R4",
-          "coeff": 2
+          "coeff": 4
         },
         {
           "unknown": "P3_R5",
-          "coeff": -1
+          "coeff": -4
         },
         {
           "unknown": "P3_R6",
-          "coeff": -1
+          "coeff": -4
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -4
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": -4
+        },
+        {
+          "unknown": "P4_R3",
+          "coeff": 8
         },
         {
           "unknown": "P5_R1",
@@ -823,6 +638,10 @@
         {
           "unknown": "P5_R2",
           "coeff": 1
+        },
+        {
+          "unknown": "P5_R3",
+          "coeff": -1
         },
         {
           "unknown": "P5_R4",
@@ -837,113 +656,154 @@
           "coeff": 1
         },
         {
+          "unknown": "P5_R7",
+          "coeff": -1
+        },
+        {
           "unknown": "P5_R8",
-          "coeff": 1
-        },
-        {
-          "unknown": "P6_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "B1_R1",
-          "coeff": -1
-        },
-        {
-          "unknown": "B1_R2",
-          "coeff": -1
-        },
-        {
-          "unknown": "B1_R3",
-          "coeff": 3
-        },
-        {
-          "unknown": "B2_R1",
-          "coeff": -1
-        },
-        {
-          "unknown": "B2_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R4",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R5",
-          "coeff": -1
-        },
-        {
-          "unknown": "B2_R6",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R8",
-          "coeff": 1
-        },
-        {
-          "unknown": "B3_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "S1_R1",
-          "coeff": 2
-        },
-        {
-          "unknown": "B4_R1",
-          "coeff": -1
-        },
-        {
-          "unknown": "B4_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R4",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R5",
-          "coeff": -1
-        },
-        {
-          "unknown": "B4_R6",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R8",
-          "coeff": 1
-        },
-        {
-          "unknown": "S2_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "S2_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "S3_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "S3_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B5_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "S4_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "S4_R2",
           "coeff": 1
         }
       ]
     },
     {
       "id": "194_1_1_1_double_ai_basis_04",
+      "vector": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        1,
+        1,
+        -1,
+        0,
+        2,
+        0,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "unknown": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "P1_R9",
+          "coeff": -1
+        },
+        {
+          "unknown": "P1_R11",
+          "coeff": -1
+        },
+        {
+          "unknown": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P2_R3",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": -1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": -1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": -1
+        },
+        {
+          "unknown": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "unknown": "P5_R5",
+          "coeff": -1
+        },
+        {
+          "unknown": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P5_R7",
+          "coeff": -1
+        },
+        {
+          "unknown": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "unknown": "S2_R1",
+          "coeff": -2
+        },
+        {
+          "unknown": "S2_R2",
+          "coeff": 2
+        }
+      ]
+    },
+    {
+      "id": "194_1_1_1_double_ai_basis_05",
       "vector": [
         1,
         0,
@@ -966,29 +826,9 @@
         1,
         -1,
         -1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         -1,
         -1,
         2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1070,21 +910,21 @@
           "coeff": -1
         },
         {
-          "unknown": "B1_R1",
+          "unknown": "P4_R1",
           "coeff": -1
         },
         {
-          "unknown": "B1_R2",
+          "unknown": "P4_R2",
           "coeff": -1
         },
         {
-          "unknown": "B1_R3",
+          "unknown": "P4_R3",
           "coeff": 2
         }
       ]
     },
     {
-      "id": "194_1_1_1_double_ai_basis_05",
+      "id": "194_1_1_1_double_ai_basis_06",
       "vector": [
         1,
         -1,
@@ -1098,26 +938,6 @@
         1,
         -1,
         1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1201,253 +1021,44 @@
       ]
     },
     {
-      "id": "194_1_1_1_double_ai_basis_06",
-      "vector": [
-        0,
-        -1,
-        0,
-        -1,
-        -1,
-        0,
-        -1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        -1,
-        -1,
-        1,
-        -2,
-        0,
-        -2,
-        0,
-        1,
-        1,
-        1,
-        -1,
-        1,
-        -1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        -2,
-        1,
-        -1,
-        1,
-        -1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        -1,
-        1,
-        -1,
-        0,
-        0,
-        0,
-        0,
-        -2,
-        2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "support": [
-        {
-          "unknown": "P1_R2",
-          "coeff": -1
-        },
-        {
-          "unknown": "P1_R4",
-          "coeff": -1
-        },
-        {
-          "unknown": "P1_R5",
-          "coeff": -1
-        },
-        {
-          "unknown": "P1_R7",
-          "coeff": -1
-        },
-        {
-          "unknown": "P1_R9",
-          "coeff": 1
-        },
-        {
-          "unknown": "P1_R11",
-          "coeff": 1
-        },
-        {
-          "unknown": "P2_R1",
-          "coeff": -1
-        },
-        {
-          "unknown": "P2_R2",
-          "coeff": -1
-        },
-        {
-          "unknown": "P2_R3",
-          "coeff": 1
-        },
-        {
-          "unknown": "P3_R1",
-          "coeff": -2
-        },
-        {
-          "unknown": "P3_R3",
-          "coeff": -2
-        },
-        {
-          "unknown": "P3_R5",
-          "coeff": 1
-        },
-        {
-          "unknown": "P3_R6",
-          "coeff": 1
-        },
-        {
-          "unknown": "P5_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "P5_R2",
-          "coeff": -1
-        },
-        {
-          "unknown": "P5_R3",
-          "coeff": 1
-        },
-        {
-          "unknown": "P5_R4",
-          "coeff": -1
-        },
-        {
-          "unknown": "B1_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "B1_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B1_R3",
-          "coeff": -2
-        },
-        {
-          "unknown": "B2_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R2",
-          "coeff": -1
-        },
-        {
-          "unknown": "B2_R3",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R4",
-          "coeff": -1
-        },
-        {
-          "unknown": "B4_R1",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R2",
-          "coeff": -1
-        },
-        {
-          "unknown": "B4_R3",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R4",
-          "coeff": -1
-        },
-        {
-          "unknown": "S2_R1",
-          "coeff": -2
-        },
-        {
-          "unknown": "S2_R2",
-          "coeff": 2
-        }
-      ]
-    },
-    {
       "id": "194_1_1_1_double_ai_basis_07",
       "vector": [
-        2,
-        1,
-        1,
-        0,
-        3,
-        0,
-        2,
         -1,
-        -2,
-        0,
-        -2,
-        0,
-        2,
-        2,
-        -2,
-        4,
-        2,
-        2,
-        0,
-        -2,
-        -2,
-        0,
-        1,
-        -1,
-        0,
-        1,
-        0,
-        0,
         -1,
         0,
         0,
-        -2,
-        -2,
-        4,
-        0,
-        1,
+        -1,
         -1,
         0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        -1,
+        1,
+        -2,
+        -2,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        -2,
+        0,
+        -1,
         1,
         0,
         0,
         -1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        -1,
-        0,
         1,
         0,
         0,
-        -1,
-        2,
-        -2,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -1458,135 +1069,83 @@
       "support": [
         {
           "unknown": "P1_R1",
-          "coeff": 2
+          "coeff": -1
         },
         {
           "unknown": "P1_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "P1_R3",
-          "coeff": 1
+          "coeff": -1
         },
         {
           "unknown": "P1_R5",
-          "coeff": 3
+          "coeff": -1
         },
         {
-          "unknown": "P1_R7",
-          "coeff": 2
-        },
-        {
-          "unknown": "P1_R8",
+          "unknown": "P1_R6",
           "coeff": -1
         },
         {
           "unknown": "P1_R9",
-          "coeff": -2
+          "coeff": 1
         },
         {
           "unknown": "P1_R11",
-          "coeff": -2
+          "coeff": 1
         },
         {
           "unknown": "P2_R1",
-          "coeff": 2
+          "coeff": -1
         },
         {
           "unknown": "P2_R2",
-          "coeff": 2
+          "coeff": -1
         },
         {
           "unknown": "P2_R3",
-          "coeff": -2
+          "coeff": 1
         },
         {
           "unknown": "P3_R1",
-          "coeff": 4
-        },
-        {
-          "unknown": "P3_R2",
-          "coeff": 2
-        },
-        {
-          "unknown": "P3_R3",
-          "coeff": 2
-        },
-        {
-          "unknown": "P3_R5",
           "coeff": -2
         },
         {
+          "unknown": "P3_R2",
+          "coeff": -2
+        },
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
           "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R3",
           "coeff": -2
         },
         {
           "unknown": "P5_R2",
-          "coeff": 1
+          "coeff": -1
         },
         {
           "unknown": "P5_R3",
-          "coeff": -1
-        },
-        {
-          "unknown": "P5_R5",
           "coeff": 1
         },
         {
-          "unknown": "P5_R8",
+          "unknown": "P5_R6",
           "coeff": -1
         },
         {
-          "unknown": "B1_R1",
-          "coeff": -2
-        },
-        {
-          "unknown": "B1_R2",
-          "coeff": -2
-        },
-        {
-          "unknown": "B1_R3",
-          "coeff": 4
-        },
-        {
-          "unknown": "B2_R2",
+          "unknown": "P5_R7",
           "coeff": 1
-        },
-        {
-          "unknown": "B2_R3",
-          "coeff": -1
-        },
-        {
-          "unknown": "B2_R5",
-          "coeff": 1
-        },
-        {
-          "unknown": "B2_R8",
-          "coeff": -1
-        },
-        {
-          "unknown": "B4_R2",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R3",
-          "coeff": -1
-        },
-        {
-          "unknown": "B4_R5",
-          "coeff": 1
-        },
-        {
-          "unknown": "B4_R8",
-          "coeff": -1
-        },
-        {
-          "unknown": "S2_R1",
-          "coeff": 2
-        },
-        {
-          "unknown": "S2_R2",
-          "coeff": -2
         }
       ]
     },
@@ -1615,28 +1174,8 @@
         -2,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         -2,
-        0,
         2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1670,11 +1209,11 @@
           "coeff": -2
         },
         {
-          "unknown": "B1_R1",
+          "unknown": "P4_R2",
           "coeff": -2
         },
         {
-          "unknown": "B1_R3",
+          "unknown": "P4_R3",
           "coeff": 2
         }
       ]
@@ -1697,26 +1236,6 @@
         -2,
         -2,
         2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1808,28 +1327,8 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         -2,
         2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1852,11 +1351,11 @@
       ],
       "support": [
         {
-          "unknown": "B1_R1",
+          "unknown": "P4_R1",
           "coeff": -2
         },
         {
-          "unknown": "B1_R2",
+          "unknown": "P4_R2",
           "coeff": 2
         }
       ]
@@ -1864,187 +1363,73 @@
   ],
   "basis_bs_coefficients": [
     [
-      1,
-      1,
-      1,
       3,
-      0,
-      1,
       3,
+      -2,
+      1,
       0,
       1,
       1,
       1,
-      1,
-      1,
-      -1,
+      0,
       2,
-      1,
-      1,
-      1,
-      0,
       -1,
       2,
       2,
+      2,
+      1,
+      0
+    ],
+    [
       1,
       1,
-      1,
+      -1,
+      0,
+      -2,
       0,
       1,
+      1,
+      -2,
+      3,
+      -5,
+      3,
+      3,
+      3,
+      1,
+      -1
+    ],
+    [
       0,
+      0,
+      0,
+      1,
+      4,
+      1,
+      -1,
+      -1,
+      4,
+      -4,
+      8,
+      -4,
+      -4,
+      -4,
+      -1,
       2
     ],
     [
       0,
-      1,
-      1,
       2,
       0,
       0,
       2,
-      2,
-      1,
-      1,
-      0,
-      0,
-      1,
-      -1,
-      -1,
-      1,
-      0,
-      1,
-      0,
-      4,
-      -1,
-      -1,
-      1,
-      0,
-      1,
-      2,
-      1,
-      1,
-      -1
-    ],
-    [
-      0,
-      0,
-      1,
       1,
       -1,
       0,
-      1,
-      2,
-      1,
-      1,
-      0,
-      0,
-      1,
       0,
       -1,
-      1,
-      0,
-      1,
-      -1,
-      3,
-      -1,
-      -1,
-      0,
-      0,
-      1,
-      2,
-      1,
-      1,
-      -1
-    ],
-    [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      -1,
-      0,
-      0,
-      0,
-      0,
       2,
       -1,
       -1,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      -1
-    ],
-    [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
-      0,
-      0,
-      0,
-      -1,
-      0
-    ],
-    [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0,
-      -1,
-      1,
-      0,
-      -1,
-      0,
-      1,
-      0,
-      0,
-      0,
-      0,
-      -2,
-      1,
-      1,
-      0,
-      0,
-      0,
-      -2,
       -1,
       0,
       1
@@ -2056,29 +1441,70 @@
       0,
       1,
       0,
-      -2,
-      0,
-      -1,
-      0,
-      -1,
-      0,
-      0,
-      0,
-      -2,
-      -1,
       0,
       0,
       1,
-      4,
-      -2,
-      -2,
-      0,
-      0,
       -1,
       2,
-      0,
       -1,
-      -2
+      -1,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      -1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      -2,
+      1,
+      1,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      2,
+      -2,
+      0,
+      0,
+      0,
+      0
     ],
     [
       0,
@@ -2090,23 +1516,10 @@
       0,
       0,
       0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
       2,
       0,
-      -2,
       0,
       0,
-      0,
-      2,
       0,
       0,
       0
@@ -2123,52 +1536,8 @@
       0,
       0,
       0,
-      0,
-      0,
-      0,
-      2,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
       2,
       -2,
-      0,
-      0,
-      0,
-      0,
       0,
       0,
       0
@@ -2211,8 +1580,8 @@
       0
     ],
     [
-      -1,
-      -1,
+      2,
+      1,
       0,
       0,
       0,
@@ -2246,13 +1615,48 @@
       0
     ],
     [
-      0,
       -2,
+      -3,
       -1,
       0,
       0,
       0,
       0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      -1,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      -1,
       0,
       0,
       0,
@@ -2352,62 +1756,27 @@
     ],
     [
       1,
+      2,
       1,
       0,
+      1,
+      2,
       0,
-      1,
-      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
       -1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    [
-      -4,
-      -1,
-      1,
-      0,
-      -3,
-      -2,
-      1,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      1,
       0,
       0,
       0,
@@ -2500,10 +1869,10 @@
       0,
       0,
       0,
-      -1,
-      0,
-      0,
       1,
+      0,
+      0,
+      -1,
       0,
       0,
       0,

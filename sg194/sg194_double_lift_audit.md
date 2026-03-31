@@ -6,7 +6,7 @@ The v2 proxy proved that the patched current and external problem-sector matrice
 
 ## Trusted problem-sector inventory
 
-- current generator indices: `[23, 24, 25, 26, 27, 28, 29, 30, 31, 32]`
+- current generator indices: `[6, 7, 8, 9, 10, 11, 12, 13, 14, 25]`
 - external generator indices: `[6, 7, 8, 9, 10, 11, 12, 13, 14, 25]`
 - current row blocks used: `['P1', 'P2', 'P3', 'P5', 'P6', 'B1']`
 - external row blocks used: `['A', 'Γ', 'H', 'K', 'L', 'M']`

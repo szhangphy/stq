@@ -103,18 +103,18 @@ at the level of the operation-set comparison performed by the local code. The re
 \subsection*{Single-group pilot}
 The single-group route succeeds through geometry, connectivity, line-layer compatibility, plane-augmented compatibility, and integer-kernel BS construction. The resulting compatibility matrix has
 \[
-\mathrm{shape}(C_{\mathrm{single}}) = 58 \times 62, \qquad
-\operatorname{rank} C_{\mathrm{single}} = 33, \qquad
-\operatorname{nullity} C_{\mathrm{single}} = 29.
+\mathrm{shape}(C_{\mathrm{single}}) = 58 \times 42, \qquad
+\operatorname{rank} C_{\mathrm{single}} = 26, \qquad
+\operatorname{nullity} C_{\mathrm{single}} = 16.
 \]
-The script had to add 5 synthetic 0D boundary points because the raw special-point list is not connectivity-complete for this target. The present AI side is only partial: 12 trivial-family generators span rank 12. This means the pilot reaches an honest BS computation and an honest atomic prototype, but not yet an honest AI completeness audit or quotient extraction.
+The script had to add 0 synthetic 0D boundary points because the raw special-point list is not connectivity-complete for this target. The present AI side is only partial: 12 trivial-family generators span rank 12. This means the pilot reaches an honest BS computation and an honest atomic prototype, but not yet an honest AI completeness audit or quotient extraction.
 
 \subsection*{Double-group pilot}
 The double-group route succeeds through feasibility, bridge reuse, induction reuse, and a full with-planes k-space backbone. The resulting double compatibility matrix has
 \[
-\mathrm{shape}(C_{\mathrm{double}}) = 58 \times 62, \qquad
-\operatorname{rank} C_{\mathrm{double}} = 33, \qquad
-\operatorname{nullity} C_{\mathrm{double}} = 29.
+\mathrm{shape}(C_{\mathrm{double}}) = 58 \times 42, \qquad
+\operatorname{rank} C_{\mathrm{double}} = 26, \qquad
+\operatorname{nullity} C_{\mathrm{double}} = 16.
 \]
 The first reusable real-space witness is the minimal prototype on family \texttt{l} with trivial stabilizer. This already verifies that the spatial bridge, the Bloch phase, the double little-corep decomposition, and the with-planes backbone are not unique to 10.4.1.31. However, the current run does not yet enumerate point-like or parametric double local coreps for the nontrivial SG 194 site symmetries, so it does not reach a full double AI completeness audit or any final double quotient.
 

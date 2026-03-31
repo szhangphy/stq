@@ -1,0 +1,10 @@
+Continue from the completed SG194 double complement patch closeout v1 round.
+
+Verified facts:
+- single raw internal quotient = Z^3
+- double old raw internal quotient = Z^3
+- double patched_v2 raw internal quotient = Z^6 x Z2 x Z2 x Z2
+- final SG194 standard quotient remains missing
+
+Do not reopen the 23-channel complement rule solve.
+The next useful task is to derive the missing standard-space projection only if a reviewer explicitly asks for the final SG194 standard indicator layer.

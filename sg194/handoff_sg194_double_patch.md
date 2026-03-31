@@ -10,7 +10,7 @@
 
 - problem-sector union: `8 -> 6`
 - problem-sector intersection: `4 -> 6`
-- deltas disappeared: `c=True`, `d=True`
+- deltas disappeared: `c=False`, `d=False`
 - full 33-column current rank: `12 -> 12`
 
 ## Remaining Blocker

@@ -1,0 +1,96 @@
+{
+  "entry_script": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_double_complement_patch_v1.py",
+  "dependencies": [
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+      "name": "debug_workflow_portability_stage2_194.1.1.1.py",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_workflow_portability_194.1.1.1.py",
+      "name": "debug_workflow_portability_194.1.1.1.py",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_nonabelian_local_library.py",
+      "name": "debug_sg194_nonabelian_local_library.py",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_double_global_residual.py",
+      "name": "debug_sg194_double_global_residual.py",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_double_lift.py",
+      "name": "debug_sg194_double_lift.py",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_candidates.json",
+      "name": "raw_194_1_1_1_double_ai_candidates.json",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_candidates_patched.json",
+      "name": "raw_194_1_1_1_double_ai_candidates_patched.json",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_basis.json",
+      "name": "raw_194_1_1_1_double_ai_basis.json",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_basis_patched.json",
+      "name": "raw_194_1_1_1_double_ai_basis_patched.json",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_in_bs_matrix.json",
+      "name": "raw_194_1_1_1_double_ai_in_bs_matrix.json",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_in_bs_matrix_patched.json",
+      "name": "raw_194_1_1_1_double_ai_in_bs_matrix_patched.json",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_external_spinorial_generator_matrix.json",
+      "name": "sg194_external_spinorial_generator_matrix.json",
+      "exists": true
+    },
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_raw_matrix_audit.py",
+      "name": "debug_raw_matrix_audit.py",
+      "exists": true
+    }
+  ],
+  "all_present": true,
+  "missing_files": [],
+  "versioned_outputs": [
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_candidates_patched_v2.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_basis_patched_v2.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_ai_in_bs_matrix_patched_v2.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/raw_194_1_1_1_double_quotient_patched_v2.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/group_194_1_1_1_double_indicator_group_summary_patched_v2.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/group_194_1_1_1_double_indicator_generators_patched_v2.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_double_complement_patch_closeout_summary_v1.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_double_complement_patch_closeout_report_v1.md",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/handoff_sg194_double_complement_patch_closeout_v1.md",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/current_status_sg194_double_complement_patch_closeout_v1.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/next_step_prompt_sg194_double_complement_patch_closeout_v1.txt"
+  ],
+  "package_contract_members": [
+    "debug_raw_matrix_audit.py",
+    "raw_194_1_1_1_double_quotient_patched_v2.json",
+    "group_194_1_1_1_double_indicator_group_summary_patched_v2.json",
+    "group_194_1_1_1_double_indicator_generators_patched_v2.json",
+    "sg194_double_complement_patch_closeout_summary_v1.json",
+    "sg194_double_complement_patch_closeout_report_v1.md",
+    "handoff_sg194_double_complement_patch_closeout_v1.md",
+    "current_status_sg194_double_complement_patch_closeout_v1.json",
+    "next_step_prompt_sg194_double_complement_patch_closeout_v1.txt"
+  ]
+}

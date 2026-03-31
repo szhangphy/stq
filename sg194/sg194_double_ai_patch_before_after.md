@@ -4,8 +4,8 @@
 
 - old current rank / external rank: `12 / 10`
 - new current rank / external rank: `12 / 10`
-- old global union / intersection: `21 / 1`
-- new global union / intersection: `21 / 1`
+- old global union / intersection: `18 / 4`
+- new global union / intersection: `18 / 4`
 
 ## Trusted Problem-Sector Comparison
 
@@ -16,8 +16,8 @@
 
 ## Delta Status
 
-- `delta_c1_minus_b1` disappeared: `True`
-- `delta_d1_minus_b1` disappeared: `True`
+- `delta_c1_minus_b1` disappeared: `False`
+- `delta_d1_minus_b1` disappeared: `False`
 
 ## Interpretation
 

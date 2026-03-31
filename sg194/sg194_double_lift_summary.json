@@ -239,15 +239,10 @@
   "handoff_generated": true,
   "status_generated": true,
   "next_step_generated": true,
-  "package_tarball": "/data/work/szhang/ssg/comprel/review_package_sg194_double_lift_audit.tar.gz",
+  "package_tarball": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_sg194_double_lift_audit.tar.gz",
   "package_tree": [
     "review_package_sg194_double_lift_audit/",
     "  - README.md",
-    "  SSGReps/",
-    "    SSGReps/",
-    "      - SG_utils.py",
-    "      - SSGReps.py",
-    "      - rep_utils.py",
     "  - current_status_sg194_double_lift.json",
     "  - debug_sg194_double_lift.py",
     "  - debug_sg194_double_patch.py",
@@ -274,8 +269,6 @@
     "  - sg194_double_problem_sector_inventory.json",
     "  - sg194_double_problem_sector_lift.json",
     "  - sg194_double_problem_sector_lift.md",
-    "  - sg194_external_spinorial_generator_matrix.json",
-    "  - swyckoff_k.py",
-    "  - swyckoff_r.py"
+    "  - sg194_external_spinorial_generator_matrix.json"
   ]
 }
