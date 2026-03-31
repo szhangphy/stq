@@ -179,7 +179,7 @@ def delta_membership_record(
 
 
 def selection_indices(ordering: list[str]) -> list[int]:
-    prefixes = {"P1", "P2", "P3", "P5", "P6", "B1"}
+    prefixes = {"P1", "P2", "P3", "P4", "P5", "P6", "B1"}
     return [idx for idx, token in enumerate(ordering) if token.split("_R")[0] in prefixes]
 
 
@@ -339,6 +339,11 @@ def load_context_modules():
     stage2 = load_module(ROOT / "debug_workflow_portability_stage2_194.1.1.1.py", "sg194_double_patch_stage2")
     raw = load_module(ROOT / "debug_raw_matrix_audit.py", "sg194_double_patch_raw")
     return stage2, raw
+
+
+def load_current_normalized_double_candidates(raw_module: Any) -> list[dict[str, Any]]:
+    rebuilt_194 = raw_module.rebuild_194_candidates()
+    return raw_module.load_case_candidates("194_1_1_1_double", rebuilt_194)
 
 
 def build_channel_candidates(
@@ -934,7 +939,7 @@ def run_patch_round() -> None:
     compat_root = raw.load_json(raw.CASE_SPECS["194_1_1_1_double"]["compat_path"])
     c_ctx = raw.compute_c_artifact("194_1_1_1_double", compat_root)
     bs_ctx = raw.compute_bs_artifacts("194_1_1_1_double", c_ctx)
-    old_normalized = load_json(ROOT / "raw_194_1_1_1_double_ai_candidates.json")["candidates"]
+    old_normalized = load_current_normalized_double_candidates(raw)
     induction_like = [raw_candidate_to_induction_like(candidate) for candidate in old_normalized]
     family_dimension_map = {candidate["family_id"]: int(candidate["family_dimension"]) for candidate in old_normalized}
 

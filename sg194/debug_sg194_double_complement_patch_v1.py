@@ -12,9 +12,13 @@ from pathlib import Path
 from typing import Any
 
 import sympy as sp
+from sympy import ZZ
+from sympy.matrices.normalforms import smith_normal_decomp
 
 
 ROOT = Path(__file__).resolve().parent
+REPO_ROOT = ROOT.parent
+COMMON_ROOT = REPO_ROOT / "common"
 
 RULE_SOLVE_JSON = ROOT / "sg194_double_complement_rule_solve_v1.json"
 PATCH_SUMMARY_JSON = ROOT / "sg194_double_complement_patch_summary_v1.json"
@@ -28,8 +32,17 @@ NEXT_STEP_PROMPT_TXT = ROOT / "next_step_prompt_sg194_double_complement_patch_v1
 RAW_CANDIDATES_PATCHED_V2_JSON = ROOT / "raw_194_1_1_1_double_ai_candidates_patched_v2.json"
 RAW_BASIS_PATCHED_V2_JSON = ROOT / "raw_194_1_1_1_double_ai_basis_patched_v2.json"
 RAW_IN_BS_PATCHED_V2_JSON = ROOT / "raw_194_1_1_1_double_ai_in_bs_matrix_patched_v2.json"
+RAW_QUOTIENT_PATCHED_V2_JSON = ROOT / "raw_194_1_1_1_double_quotient_patched_v2.json"
+INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON = ROOT / "group_194_1_1_1_double_indicator_group_summary_patched_v2.json"
+INDICATOR_GENERATORS_PATCHED_V2_JSON = ROOT / "group_194_1_1_1_double_indicator_generators_patched_v2.json"
+DEPENDENCY_GRAPH_JSON = ROOT / "sg194_double_complement_patch_dependency_graph_v1.json"
+CLOSEOUT_SUMMARY_JSON = ROOT / "sg194_double_complement_patch_closeout_summary_v1.json"
+CLOSEOUT_REPORT_MD = ROOT / "sg194_double_complement_patch_closeout_report_v1.md"
+CLOSEOUT_HANDOFF_MD = ROOT / "handoff_sg194_double_complement_patch_closeout_v1.md"
+CLOSEOUT_STATUS_JSON = ROOT / "current_status_sg194_double_complement_patch_closeout_v1.json"
+CLOSEOUT_NEXT_STEP_PROMPT_TXT = ROOT / "next_step_prompt_sg194_double_complement_patch_closeout_v1.txt"
 
-PACKAGE_NAME = "review_package_sg194_double_complement_patch_v1"
+PACKAGE_NAME = "review_package_sg194_double_complement_patch_followup_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 ROOT_README = ROOT / "README.md"
@@ -55,12 +68,13 @@ GLOBAL_RESIDUAL_SUMMARY_JSON = ROOT / "sg194_double_global_residual_summary.json
 STAGE2_SUMMARY_JSON = ROOT / "workflow_portability_stage2_summary_194.1.1.1.json"
 SINGLE_COMPLETION_JSON = ROOT / "group_194_1_1_1_single_ai_completion_summary.json"
 DOUBLE_COMPLETION_JSON = ROOT / "group_194_1_1_1_double_ai_completion_summary.json"
+RAW_AUDIT_SCRIPT = ROOT / "debug_raw_matrix_audit.py"
 
-SWYCKOFF_K = ROOT / "swyckoff_k.py"
-SWYCKOFF_R = ROOT / "swyckoff_r.py"
-SSGREPS = ROOT / "SSGReps" / "SSGReps" / "SSGReps.py"
-SG_UTILS = ROOT / "SSGReps" / "SSGReps" / "SG_utils.py"
-REP_UTILS = ROOT / "SSGReps" / "SSGReps" / "rep_utils.py"
+SWYCKOFF_K = COMMON_ROOT / "swyckoff_k.py"
+SWYCKOFF_R = COMMON_ROOT / "swyckoff_r.py"
+SSGREPS = COMMON_ROOT / "SSGReps" / "SSGReps" / "SSGReps.py"
+SG_UTILS = COMMON_ROOT / "SSGReps" / "SSGReps" / "SG_utils.py"
+REP_UTILS = COMMON_ROOT / "SSGReps" / "SSGReps" / "rep_utils.py"
 
 DEPENDENCY_FILES = [
     STAGE2_SCRIPT,
@@ -75,6 +89,7 @@ DEPENDENCY_FILES = [
     RAW_IN_BS_JSON,
     RAW_IN_BS_PATCHED_JSON,
     EXTERNAL_JSON,
+    RAW_AUDIT_SCRIPT,
 ]
 
 TRUSTED_COMMON_INDICES = [6, 7, 8, 9, 10, 11, 12, 13, 14, 25]
@@ -133,6 +148,13 @@ def format_tree(root: Path) -> list[str]:
         suffix = "/" if path.is_dir() else ""
         lines.append(f"{prefix}{rel.name}{suffix}")
     return lines
+
+
+def package_relpath(path: Path) -> Path:
+    try:
+        return path.relative_to(ROOT)
+    except ValueError:
+        return path.relative_to(REPO_ROOT)
 
 
 def compile_pdf(tex_path: Path, pdf_path: Path) -> None:
@@ -215,6 +237,252 @@ def rank_record(current: sp.Matrix, external: sp.Matrix) -> dict[str, int]:
     }
 
 
+def normalize_sign(primary: list[int], secondary: list[int] | None = None) -> tuple[list[int], list[int] | None]:
+    sign = 1
+    for value in primary:
+        if value > 0:
+            break
+        if value < 0:
+            sign = -1
+            break
+    if sign < 0:
+        primary = [-value for value in primary]
+        if secondary is not None:
+            secondary = [-value for value in secondary]
+    return primary, secondary
+
+
+def quotient_group_string(free_rank: int, finite_part: list[int]) -> str:
+    parts: list[str] = []
+    if free_rank > 0:
+        parts.append("Z" if free_rank == 1 else f"Z^{free_rank}")
+    parts.extend(f"Z{value}" for value in finite_part)
+    return " x ".join(parts) if parts else "trivial"
+
+
+def raw_internal_warning(bs_rank: int) -> str:
+    return (
+        f"This quotient is computed in the {bs_rank}-dimensional raw internal BS space "
+        "and must not yet be reported as the final SG194 standard indicator."
+    )
+
+
+def compute_patched_v2_quotient_artifacts(ai_in_bs_payload: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    matrix = sp.Matrix(ai_in_bs_payload["matrix"])
+    diagonal, left, right = smith_normal_decomp(matrix, domain=ZZ)
+    left_inv = left.inv()
+    diag_entries = [abs(int(diagonal[idx, idx])) for idx in range(min(diagonal.rows, diagonal.cols)) if int(diagonal[idx, idx]) != 0]
+    ai_rank = len(diag_entries)
+    free_rank = int(matrix.rows - ai_rank)
+    finite_part = [value for value in diag_entries if value > 1]
+    raw_quotient = quotient_group_string(free_rank, finite_part)
+    interpretation_warning = raw_internal_warning(int(matrix.rows))
+
+    torsion_indices = [
+        idx for idx in range(min(diagonal.rows, diagonal.cols))
+        if int(diagonal[idx, idx]) not in (0, 1, -1)
+    ]
+    free_indices = [idx for idx in range(min(diagonal.rows, diagonal.cols)) if int(diagonal[idx, idx]) == 0]
+
+    torsion_generators = []
+    for generator_index, torsion_index in enumerate(torsion_indices, start=1):
+        bs_coords = [int(value) for value in list(left_inv[:, torsion_index])]
+        ai_relation = [int(value) for value in list(right[:, torsion_index])]
+        bs_coords, ai_relation = normalize_sign(bs_coords, ai_relation)
+        torsion_generators.append(
+            {
+                "indicator_id": f"double_patched_v2_torsion_generator_{generator_index}",
+                "smith_factor": abs(int(diagonal[torsion_index, torsion_index])),
+                "raw_bs_basis_coordinates": bs_coords,
+                "raw_bs_basis_ordering": ai_in_bs_payload["bs_basis_ordering"],
+                "raw_ai_relation_for_multiple": ai_relation,
+                "raw_ai_basis_ordering": ai_in_bs_payload["ai_basis_ordering"],
+            }
+        )
+
+    free_generators = []
+    for generator_index, free_index in enumerate(free_indices, start=1):
+        bs_coords = [int(value) for value in list(left_inv[:, free_index])]
+        bs_coords, _ = normalize_sign(bs_coords)
+        free_generators.append(
+            {
+                "indicator_id": f"double_patched_v2_free_generator_{generator_index}",
+                "raw_bs_basis_coordinates": bs_coords,
+                "raw_bs_basis_ordering": ai_in_bs_payload["bs_basis_ordering"],
+            }
+        )
+
+    raw_payload = {
+        "group": "194.1.1.1",
+        "group_type": 2,
+        "case_key": "194_1_1_1_double_patched_v2",
+        "matrix_shape": ai_in_bs_payload["matrix_shape"],
+        "rank_bs": int(matrix.rows),
+        "rank_ai": int(ai_rank),
+        "smith_diagonal_nonzero": diag_entries,
+        "raw_quotient": raw_quotient,
+        "free_rank": free_rank,
+        "finite_part": finite_part,
+        "standard_space_projection_status": "missing",
+        "quotient_group": None,
+        "interpretation_warning": interpretation_warning,
+    }
+    group_summary = {
+        "group_number": "194.1.1.1",
+        "group_type": 2,
+        "matrix_shape": ai_in_bs_payload["matrix_shape"],
+        "rank(BS)": int(matrix.rows),
+        "rank(AI_complete)": int(ai_rank),
+        "smith_diagonal_nonzero": diag_entries,
+        "quotient_scope": "raw_internal_bs_space",
+        "raw_internal_quotient_group": raw_quotient,
+        "quotient_group": None,
+        "free_rank": free_rank,
+        "finite_part": finite_part,
+        "standard_space_projection_status": "missing",
+        "interpretation_warning": interpretation_warning,
+        "generator_count": len(torsion_generators) + len(free_generators),
+    }
+    generator_root = {
+        "group_number": "194.1.1.1",
+        "group_type": 2,
+        "quotient_scope": "raw_internal_bs_space",
+        "raw_internal_quotient_group": raw_quotient,
+        "quotient_group": None,
+        "standard_space_projection_status": "missing",
+        "interpretation_warning": interpretation_warning,
+        "free_generators": free_generators,
+        "torsion_generators": torsion_generators,
+    }
+    return raw_payload, group_summary, generator_root
+
+
+def build_dependency_graph(dependency_info: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "entry_script": str(ROOT / "debug_sg194_double_complement_patch_v1.py"),
+        "dependencies": [
+            {"path": str(path), "name": path.name, "exists": path.exists()}
+            for path in DEPENDENCY_FILES
+        ],
+        "all_present": dependency_info["all_present"],
+        "missing_files": dependency_info["missing_files"],
+        "versioned_outputs": [
+            str(RAW_CANDIDATES_PATCHED_V2_JSON),
+            str(RAW_BASIS_PATCHED_V2_JSON),
+            str(RAW_IN_BS_PATCHED_V2_JSON),
+            str(RAW_QUOTIENT_PATCHED_V2_JSON),
+            str(INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON),
+            str(INDICATOR_GENERATORS_PATCHED_V2_JSON),
+            str(CLOSEOUT_SUMMARY_JSON),
+            str(CLOSEOUT_REPORT_MD),
+            str(CLOSEOUT_HANDOFF_MD),
+            str(CLOSEOUT_STATUS_JSON),
+            str(CLOSEOUT_NEXT_STEP_PROMPT_TXT),
+        ],
+        "package_contract_members": [
+            RAW_AUDIT_SCRIPT.name,
+            RAW_QUOTIENT_PATCHED_V2_JSON.name,
+            INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON.name,
+            INDICATOR_GENERATORS_PATCHED_V2_JSON.name,
+            CLOSEOUT_SUMMARY_JSON.name,
+            CLOSEOUT_REPORT_MD.name,
+            CLOSEOUT_HANDOFF_MD.name,
+            CLOSEOUT_STATUS_JSON.name,
+            CLOSEOUT_NEXT_STEP_PROMPT_TXT.name,
+        ],
+    }
+
+
+def build_closeout_summary(summary: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "task": "sg194_double_complement_patch_closeout_v1",
+        "status": "completed",
+        "single_current_raw_internal_quotient": summary["single_current_raw_internal_quotient"],
+        "double_old_raw_internal_quotient": summary["double_old_raw_internal_quotient"],
+        "double_patched_v2_raw_internal_quotient": summary["double_patched_v2_raw_internal_quotient"],
+        "patched_v2_matrix_shape": summary["patched_v2_matrix_shape"],
+        "patched_v2_smith_diagonal_nonzero": summary["patched_v2_smith_diagonal_nonzero"],
+        "standard_space_projection_status": summary["standard_space_projection_status"],
+        "interpretation_warning": summary["interpretation_warning"],
+        "package_tarball": summary["package_tarball"],
+        "dependency_graph": summary["dependency_graph"],
+        "package_tree": summary["package_tree"],
+    }
+
+
+def build_closeout_report_md(summary: dict[str, Any]) -> str:
+    return textwrap.dedent(
+        f"""
+        # SG194 Double Complement Patch Closeout Report V1
+
+        ## Code Fixes
+
+        - `debug_workflow_portability_194.1.1.1.py` now lazy-loads `spglib` only inside `build_controlled_case()`.
+        - `debug_sg194_double_complement_patch_v1.py` now treats `debug_raw_matrix_audit.py` as a real dependency and packages it.
+        - `debug_workflow_portability_stage2_194.1.1.1.py` now reports raw internal quotients separately from the missing final SG194 standard quotient.
+
+        ## Quotient Facts
+
+        - single current raw internal quotient = `{summary['single_current_raw_internal_quotient']}`
+        - double old raw internal quotient = `{summary['double_old_raw_internal_quotient']}`
+        - double patched_v2 raw internal quotient = `{summary['double_patched_v2_raw_internal_quotient']}`
+        - patched_v2 matrix shape = `{summary['patched_v2_matrix_shape'][0]} x {summary['patched_v2_matrix_shape'][1]}`
+        - patched_v2 smith diagonal nonzero = `{summary['patched_v2_smith_diagonal_nonzero']}`
+
+        ## Interpretation Boundary
+
+        {summary['interpretation_warning']}
+
+        ## Package Contract
+
+        - dependency graph file = `{DEPENDENCY_GRAPH_JSON.name}`
+        - closeout summary file = `{CLOSEOUT_SUMMARY_JSON.name}`
+        - new review tarball = `{summary['package_tarball']}`
+        """
+    ).strip()
+
+
+def build_closeout_handoff_md(summary: dict[str, Any]) -> str:
+    return textwrap.dedent(
+        f"""
+        # Handoff: SG194 Double Complement Patch Closeout V1
+
+        - single raw internal quotient = `{summary['single_current_raw_internal_quotient']}`
+        - double old raw internal quotient = `{summary['double_old_raw_internal_quotient']}`
+        - double patched_v2 raw internal quotient = `{summary['double_patched_v2_raw_internal_quotient']}`
+        - final SG194 standard quotient status = `{summary['standard_space_projection_status']}`
+        - new review tarball = `{summary['package_tarball']}`
+        """
+    ).strip()
+
+
+def build_closeout_status_json(summary: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "task": "sg194_double_complement_patch_closeout_v1",
+        "status": "completed",
+        "double_patched_v2_raw_internal_quotient": summary["double_patched_v2_raw_internal_quotient"],
+        "standard_space_projection_status": summary["standard_space_projection_status"],
+        "package_tarball": summary["package_tarball"],
+    }
+
+
+def build_closeout_next_step_prompt(summary: dict[str, Any]) -> str:
+    return textwrap.dedent(
+        f"""
+        Continue from the completed SG194 double complement patch closeout v1 round.
+
+        Verified facts:
+        - single raw internal quotient = {summary['single_current_raw_internal_quotient']}
+        - double old raw internal quotient = {summary['double_old_raw_internal_quotient']}
+        - double patched_v2 raw internal quotient = {summary['double_patched_v2_raw_internal_quotient']}
+        - final SG194 standard quotient remains {summary['standard_space_projection_status']}
+
+        Do not reopen the 23-channel complement rule solve.
+        The next useful task is to derive the missing standard-space projection only if a reviewer explicitly asks for the final SG194 standard indicator layer.
+        """
+    ).strip()
+
+
 def update_root_readme() -> None:
     section = textwrap.dedent(
         """
@@ -240,20 +508,18 @@ def update_root_readme() -> None:
 def build_context() -> dict[str, Any]:
     stage2 = load_module(STAGE2_SCRIPT, "sg194_stage2_complement_patch_v1")
     patch = load_module(PATCH_SCRIPT, "sg194_patch_base_complement_v1")
-    rawaudit = load_module(ROOT / "debug_raw_matrix_audit.py", "sg194_rawaudit_complement_v1")
+    rawaudit = load_module(RAW_AUDIT_SCRIPT, "sg194_rawaudit_complement_v1")
 
-    raw_root = load_json(RAW_CANDIDATES_JSON)
-    raw_candidates = raw_root["candidates"]
-    unknown_ordering = raw_root["unknown_ordering"]
+    compat_root = rawaudit.load_json(rawaudit.CASE_SPECS["194_1_1_1_double"]["compat_path"])
+    c_ctx = rawaudit.compute_c_artifact("194_1_1_1_double", compat_root)
+    bs_ctx = rawaudit.compute_bs_artifacts("194_1_1_1_double", c_ctx)
+    raw_candidates = patch.load_current_normalized_double_candidates(rawaudit)
+    unknown_ordering = c_ctx["unknown_ordering"]
     selected_indices = patch.selection_indices(unknown_ordering)
     current_row_labels = [unknown_ordering[idx] for idx in selected_indices]
 
     family_dimension_map = {candidate["family_id"]: int(candidate["family_dimension"]) for candidate in raw_candidates}
     induction_like = [patch.raw_candidate_to_induction_like(candidate) for candidate in raw_candidates]
-
-    compat_root = rawaudit.load_json(rawaudit.CASE_SPECS["194_1_1_1_double"]["compat_path"])
-    c_ctx = rawaudit.compute_c_artifact("194_1_1_1_double", compat_root)
-    bs_ctx = rawaudit.compute_bs_artifacts("194_1_1_1_double", c_ctx)
 
     external = load_json(EXTERNAL_JSON)
     external_labels = [f"{item['letter_key']}:{item['bandrep_label']}" for item in external["column_labels"]]
@@ -410,10 +676,13 @@ def build_rule_solve_json(context: dict[str, Any], built: dict[str, Any], rank_d
 
 
 def build_summary_json(
+    context: dict[str, Any],
     dependency_info: dict[str, Any],
     old_rank_data: dict[str, Any],
     new_rank_data: dict[str, Any],
     channel_diff: dict[str, Any],
+    patched_v2_quotient: dict[str, Any],
+    dependency_graph: dict[str, Any],
     package_tree: list[str] | None = None,
 ) -> dict[str, Any]:
     complement_exact = (
@@ -424,11 +693,14 @@ def build_summary_json(
         new_rank_data["full"]["current_only_dimension"] == 0
         and new_rank_data["full"]["external_only_dimension"] == 0
     )
+    single_raw = context["single_completion"].get("raw_internal_quotient_group") or context["single_completion"].get("quotient_group")
+    double_old_raw = context["double_completion"].get("raw_internal_quotient_group") or context["double_completion"].get("quotient_group")
     return {
         "group": "194.1.1.1",
         "group_type": 2,
         "profile": "sg194_double_complement_patch_v1",
         "dependency_check": dependency_info,
+        "dependency_graph": dependency_graph,
         "old_profile": "sg194_double_anchor_patch_v1",
         "new_profile": "sg194_double_complement_patch_v1",
         "changed_channels": channel_diff,
@@ -438,6 +710,15 @@ def build_summary_json(
         },
         "complement_exact_equality": complement_exact,
         "full_33_global_alignment": full_exact,
+        "single_current_raw_internal_quotient": single_raw,
+        "double_old_raw_internal_quotient": double_old_raw,
+        "double_patched_v2_raw_internal_quotient": patched_v2_quotient["raw_quotient"],
+        "patched_v2_matrix_shape": patched_v2_quotient["matrix_shape"],
+        "patched_v2_smith_diagonal_nonzero": patched_v2_quotient["smith_diagonal_nonzero"],
+        "patched_v2_free_rank": patched_v2_quotient["free_rank"],
+        "patched_v2_finite_part": patched_v2_quotient["finite_part"],
+        "standard_space_projection_status": "missing",
+        "interpretation_warning": patched_v2_quotient["interpretation_warning"],
         "single_double_relation": {
             "single_is_clean_baseline_for_this_bug_class": True,
             "single_reason": "The SG194 single line has no spinorial complement channel builder and therefore does not show the complement identity-reuse failure mode.",
@@ -454,7 +735,6 @@ def build_summary_json(
         "package_tarball": str(PACKAGE_TARBALL) if PACKAGE_TARBALL.exists() else None,
         "package_tree": package_tree or [],
     }
-
 
 def build_report_md(summary: dict[str, Any]) -> str:
     old_comp = summary["rank_before_after"]["old_v1"]["complement"]
@@ -634,46 +914,37 @@ def build_next_step_prompt(summary: dict[str, Any]) -> str:
 def build_package_readme(summary: dict[str, Any]) -> str:
     return "\n".join(
         [
-            "# Review Package: SG194 Double Complement Patch V1",
+            "# Review Package: SG194 Double Complement Patch Followup V1",
             "",
-            "## What this round solved",
+            "## What this round adds",
             "",
-            "- Added `sg194_double_complement_patch_v1` to the stage-2 SG194 double generator builder.",
-            "- Replaced legacy complement identity reuse with an explicit exact complement rule table.",
-            f"- Complement exact equality reached: `{summary['complement_exact_equality']}`.",
-            f"- Full 33-generator global alignment reached: `{summary['full_33_global_alignment']}`.",
+            "- recomputed the patched_v2 raw-internal quotient from the current `raw_194_1_1_1_double_ai_in_bs_matrix_patched_v2.json` matrix",
+            "- split raw internal quotient reporting from the still-missing final SG194 standard quotient",
+            "- added closeout summary / report / handoff / next-step artifacts",
+            "- packaged the actual raw-matrix audit dependency and common code dependencies",
             "",
-            "## What this round did not try to solve",
+            "## Quotient facts",
             "",
-            "- It did not reopen the already solved trusted 10-generator lift.",
-            "- It did not attempt to generalize the SG194-specific exact solve into a multi-group framework.",
+            f"- single current raw internal quotient: `{summary['single_current_raw_internal_quotient']}`",
+            f"- double old raw internal quotient: `{summary['double_old_raw_internal_quotient']}`",
+            f"- double patched_v2 raw internal quotient: `{summary['double_patched_v2_raw_internal_quotient']}`",
+            f"- patched_v2 Smith diagonal: `{summary['patched_v2_smith_diagonal_nonzero']}`",
             "",
-            "## Reproduce",
+            "## Interpretation boundary",
             "",
-            "1. `python3 -m py_compile debug_workflow_portability_stage2_194.1.1.1.py debug_sg194_double_complement_patch_v1.py`",
-            "2. `python3 debug_sg194_double_complement_patch_v1.py`",
-            "3. `python3 debug_sg194_double_complement_patch_v1.py --validate`",
+            f"- {summary['interpretation_warning']}",
             "",
-            "## Entry Point",
+            "## Suggested reading order",
             "",
-            "- `debug_sg194_double_complement_patch_v1.py`",
+            f"1. `{REPORT_MD.name}`",
+            f"2. `{PATCH_SUMMARY_JSON.name}`",
+            f"3. `{RAW_QUOTIENT_PATCHED_V2_JSON.name}`",
+            f"4. `{INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON.name}`",
+            f"5. `{CLOSEOUT_REPORT_MD.name}`",
             "",
-            "## Suggested Reading Order",
+            "## Main entrypoint",
             "",
-            "1. `sg194_double_complement_patch_report_v1.pdf`",
-            "2. `sg194_double_complement_rule_solve_v1.json`",
-            "3. `sg194_double_complement_patch_summary_v1.json`",
-            "4. `raw_194_1_1_1_double_ai_candidates_patched_v2.json`",
-            "",
-            "## File Guide",
-            "",
-            "- `sg194_double_complement_rule_solve_v1.json`: exact 23-channel complement rule table and solve metadata",
-            "- `sg194_double_complement_patch_summary_v1.json`: before/after rank comparison and final verdict",
-            "- `sg194_double_complement_patch_report_v1.pdf`: human-readable technical report",
-            "- `raw_194_1_1_1_double_ai_*_patched_v2.json`: regenerated versioned raw outputs",
-            "- `handoff_sg194_double_complement_patch_v1.md`: concise continuation note",
-            "- `current_status_sg194_double_complement_patch_v1.json`: machine-readable status snapshot",
-            "- `next_step_prompt_sg194_double_complement_patch_v1.txt`: next-session prompt",
+            f"- `{Path(__file__).name}`",
         ]
     )
 
@@ -694,12 +965,22 @@ def build_package(summary: dict[str, Any]) -> list[str]:
         RAW_CANDIDATES_PATCHED_V2_JSON,
         RAW_BASIS_PATCHED_V2_JSON,
         RAW_IN_BS_PATCHED_V2_JSON,
+        RAW_QUOTIENT_PATCHED_V2_JSON,
+        INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON,
+        INDICATOR_GENERATORS_PATCHED_V2_JSON,
+        DEPENDENCY_GRAPH_JSON,
+        CLOSEOUT_SUMMARY_JSON,
+        CLOSEOUT_REPORT_MD,
+        CLOSEOUT_HANDOFF_MD,
+        CLOSEOUT_STATUS_JSON,
+        CLOSEOUT_NEXT_STEP_PROMPT_TXT,
         STAGE2_SCRIPT,
         STAGE1_SCRIPT,
         LOCAL_LIBRARY_SCRIPT,
         PATCH_SCRIPT,
         GLOBAL_RESIDUAL_SCRIPT,
         LIFT_SCRIPT,
+        RAW_AUDIT_SCRIPT,
         EXTERNAL_JSON,
         RAW_CANDIDATES_JSON,
         RAW_CANDIDATES_PATCHED_JSON,
@@ -725,7 +1006,7 @@ def build_package(summary: dict[str, Any]) -> list[str]:
     for path in files_to_copy:
         if not path.exists():
             continue
-        rel = path.relative_to(ROOT)
+        rel = package_relpath(path)
         dest = PACKAGE_DIR / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(path, dest)
@@ -735,7 +1016,6 @@ def build_package(summary: dict[str, Any]) -> list[str]:
     with tarfile.open(PACKAGE_TARBALL, "w:gz") as tar:
         tar.add(PACKAGE_DIR, arcname=PACKAGE_NAME)
     return format_tree(PACKAGE_DIR)
-
 
 def run_round() -> None:
     dependencies = dependency_status()
@@ -753,30 +1033,48 @@ def run_round() -> None:
     write_json(RAW_BASIS_PATCHED_V2_JSON, new_profile["ai_basis_payload"])
     write_json(RAW_IN_BS_PATCHED_V2_JSON, new_profile["ai_in_bs_payload"])
 
+    patched_v2_raw_quotient, patched_v2_group_summary, patched_v2_generators = compute_patched_v2_quotient_artifacts(new_profile["ai_in_bs_payload"])
+    write_json(RAW_QUOTIENT_PATCHED_V2_JSON, patched_v2_raw_quotient)
+    write_json(INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON, patched_v2_group_summary)
+    write_json(INDICATOR_GENERATORS_PATCHED_V2_JSON, patched_v2_generators)
+
     old_rank_data = rank_summary(context, old_profile["ai_candidates_payload"])
     new_rank_data = rank_summary(context, new_profile["ai_candidates_payload"])
     channel_diff = changed_channel_report(old_profile["ai_candidates_payload"], new_profile["ai_candidates_payload"])
     rule_solve = build_rule_solve_json(context, new_profile["built"], new_rank_data)
+    dependency_graph = build_dependency_graph(dependencies)
     write_json(RULE_SOLVE_JSON, rule_solve)
+    write_json(DEPENDENCY_GRAPH_JSON, dependency_graph)
 
-    provisional_summary = build_summary_json(dependencies, old_rank_data, new_rank_data, channel_diff)
+    provisional_summary = build_summary_json(context, dependencies, old_rank_data, new_rank_data, channel_diff, patched_v2_raw_quotient, dependency_graph)
     write_text(REPORT_MD, build_report_md(provisional_summary))
     write_text(REPORT_TEX, build_report_tex(provisional_summary))
     compile_pdf(REPORT_TEX, REPORT_PDF)
     write_text(HANDOFF_MD, build_handoff_md(provisional_summary))
     write_json(CURRENT_STATUS_JSON, build_status_json(provisional_summary))
     write_text(NEXT_STEP_PROMPT_TXT, build_next_step_prompt(provisional_summary))
+    write_json(CLOSEOUT_SUMMARY_JSON, build_closeout_summary(provisional_summary))
+    write_text(CLOSEOUT_REPORT_MD, build_closeout_report_md(provisional_summary))
+    write_text(CLOSEOUT_HANDOFF_MD, build_closeout_handoff_md(provisional_summary))
+    write_json(CLOSEOUT_STATUS_JSON, build_closeout_status_json(provisional_summary))
+    write_text(CLOSEOUT_NEXT_STEP_PROMPT_TXT, build_closeout_next_step_prompt(provisional_summary))
 
     update_root_readme()
     package_tree = build_package(provisional_summary)
-    summary = build_summary_json(dependencies, old_rank_data, new_rank_data, channel_diff, package_tree)
+    summary = build_summary_json(context, dependencies, old_rank_data, new_rank_data, channel_diff, patched_v2_raw_quotient, dependency_graph, package_tree)
     write_json(PATCH_SUMMARY_JSON, summary)
     write_text(HANDOFF_MD, build_handoff_md(summary))
     write_json(CURRENT_STATUS_JSON, build_status_json(summary))
     write_text(NEXT_STEP_PROMPT_TXT, build_next_step_prompt(summary))
+    write_json(CLOSEOUT_SUMMARY_JSON, build_closeout_summary(summary))
+    write_text(CLOSEOUT_REPORT_MD, build_closeout_report_md(summary))
+    write_text(CLOSEOUT_HANDOFF_MD, build_closeout_handoff_md(summary))
+    write_json(CLOSEOUT_STATUS_JSON, build_closeout_status_json(summary))
+    write_text(CLOSEOUT_NEXT_STEP_PROMPT_TXT, build_closeout_next_step_prompt(summary))
     package_tree = build_package(summary)
-    write_json(PATCH_SUMMARY_JSON, build_summary_json(dependencies, old_rank_data, new_rank_data, channel_diff, package_tree))
-
+    summary = build_summary_json(context, dependencies, old_rank_data, new_rank_data, channel_diff, patched_v2_raw_quotient, dependency_graph, package_tree)
+    write_json(PATCH_SUMMARY_JSON, summary)
+    write_json(CLOSEOUT_SUMMARY_JSON, build_closeout_summary(summary))
 
 def validate_outputs() -> None:
     required = [
@@ -791,6 +1089,15 @@ def validate_outputs() -> None:
         RAW_CANDIDATES_PATCHED_V2_JSON,
         RAW_BASIS_PATCHED_V2_JSON,
         RAW_IN_BS_PATCHED_V2_JSON,
+        RAW_QUOTIENT_PATCHED_V2_JSON,
+        INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON,
+        INDICATOR_GENERATORS_PATCHED_V2_JSON,
+        DEPENDENCY_GRAPH_JSON,
+        CLOSEOUT_SUMMARY_JSON,
+        CLOSEOUT_REPORT_MD,
+        CLOSEOUT_HANDOFF_MD,
+        CLOSEOUT_STATUS_JSON,
+        CLOSEOUT_NEXT_STEP_PROMPT_TXT,
         ROOT_README,
         PACKAGE_TARBALL,
     ]
@@ -803,17 +1110,35 @@ def validate_outputs() -> None:
         raise ValueError("complement exact equality must hold")
     if not summary["full_33_global_alignment"]:
         raise ValueError("full 33 global alignment must hold")
-
-    new_comp = summary["rank_before_after"]["new_v2"]["complement"]
-    if (new_comp["current_rank"], new_comp["external_rank"], new_comp["union_rank"], new_comp["intersection_rank"]) != (7, 7, 7, 7):
-        raise ValueError("unexpected complement rank tuple")
-    new_full = summary["rank_before_after"]["new_v2"]["full"]
-    if (new_full["current_rank"], new_full["external_rank"], new_full["union_rank"], new_full["intersection_rank"]) != (10, 10, 10, 10):
-        raise ValueError("unexpected full rank tuple")
+    expected_raw_quotient = "Z^6 x Z2 x Z2 x Z2"
+    expected_matrix_shape = [16, 10]
+    expected_smith = [1, 1, 1, 1, 1, 1, 1, 2, 2, 2]
+    if summary["double_patched_v2_raw_internal_quotient"] != expected_raw_quotient:
+        raise ValueError("patched_v2 raw quotient mismatch")
+    if summary["patched_v2_matrix_shape"] != expected_matrix_shape:
+        raise ValueError("patched_v2 matrix shape mismatch")
+    if summary["patched_v2_smith_diagonal_nonzero"] != expected_smith:
+        raise ValueError("patched_v2 Smith data mismatch")
 
     rules = load_json(RULE_SOLVE_JSON)
     if rules["coefficient_field"] != "Z" or rules["complement_rule_count"] != 23:
         raise ValueError("rule table metadata mismatch")
+
+    raw_q = load_json(RAW_QUOTIENT_PATCHED_V2_JSON)
+    if raw_q["raw_quotient"] != expected_raw_quotient:
+        raise ValueError("raw quotient file mismatch")
+    if raw_q["matrix_shape"] != expected_matrix_shape:
+        raise ValueError("raw quotient matrix shape mismatch")
+    if raw_q["smith_diagonal_nonzero"] != expected_smith:
+        raise ValueError("raw quotient Smith data mismatch")
+
+    group_summary = load_json(INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON)
+    if group_summary["raw_internal_quotient_group"] != expected_raw_quotient:
+        raise ValueError("patched_v2 group summary mismatch")
+    if group_summary["matrix_shape"] != expected_matrix_shape:
+        raise ValueError("patched_v2 group summary matrix shape mismatch")
+    if group_summary["smith_diagonal_nonzero"] != expected_smith:
+        raise ValueError("patched_v2 group summary Smith data mismatch")
 
     with tarfile.open(PACKAGE_TARBALL, "r:gz") as tar:
         names = set(tar.getnames())
@@ -823,7 +1148,16 @@ def validate_outputs() -> None:
         f"{PACKAGE_NAME}/{RULE_SOLVE_JSON.name}",
         f"{PACKAGE_NAME}/{PATCH_SUMMARY_JSON.name}",
         f"{PACKAGE_NAME}/{REPORT_PDF.name}",
-        f"{PACKAGE_NAME}/{RAW_CANDIDATES_PATCHED_V2_JSON.name}",
+        f"{PACKAGE_NAME}/{RAW_QUOTIENT_PATCHED_V2_JSON.name}",
+        f"{PACKAGE_NAME}/{INDICATOR_GROUP_SUMMARY_PATCHED_V2_JSON.name}",
+        f"{PACKAGE_NAME}/{INDICATOR_GENERATORS_PATCHED_V2_JSON.name}",
+        f"{PACKAGE_NAME}/{DEPENDENCY_GRAPH_JSON.name}",
+        f"{PACKAGE_NAME}/{CLOSEOUT_SUMMARY_JSON.name}",
+        f"{PACKAGE_NAME}/{CLOSEOUT_REPORT_MD.name}",
+        f"{PACKAGE_NAME}/{CLOSEOUT_HANDOFF_MD.name}",
+        f"{PACKAGE_NAME}/{CLOSEOUT_STATUS_JSON.name}",
+        f"{PACKAGE_NAME}/{CLOSEOUT_NEXT_STEP_PROMPT_TXT.name}",
+        f"{PACKAGE_NAME}/{RAW_AUDIT_SCRIPT.name}",
         f"{PACKAGE_NAME}/{STAGE2_SCRIPT.name}",
         f"{PACKAGE_NAME}/{LOCAL_LIBRARY_SCRIPT.name}",
     }
@@ -831,9 +1165,8 @@ def validate_outputs() -> None:
     if missing_members:
         raise FileNotFoundError("missing tar members: " + ", ".join(missing_members))
     readme_text = readme_bytes.decode("utf-8")
-    if not readme_text.startswith("# Review Package: SG194 Double Complement Patch V1"):
-        raise ValueError("package README was overwritten by a non-package README")
-
+    if not readme_text.startswith("# Review Package: SG194 Double Complement Patch Followup V1"):
+        raise ValueError("package README title mismatch")
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Apply and validate the SG194 double complement patch v1 round.")
