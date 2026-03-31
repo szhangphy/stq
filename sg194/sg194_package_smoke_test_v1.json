@@ -1,7 +1,7 @@
 {
-  "package_name": "review_package_sg194_source_bs_fix_v1",
-  "tarball": "review_package_sg194_source_bs_fix_v1.tar.gz",
-  "extracted_package_root": "review_package_sg194_source_bs_fix_v1",
+  "package_name": "review_package_sg194_internalization_fix_v1",
+  "tarball": "review_package_sg194_internalization_fix_v1.tar.gz",
+  "extracted_package_root": "review_package_sg194_internalization_fix_v1",
   "commands": [
     {
       "command": "python3 debug_sg194_standard_space_projection_v1.py --validate",

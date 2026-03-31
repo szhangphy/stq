@@ -75,9 +75,9 @@
     },
     {
       "benchmark_authoritative": false,
-      "classification": "source_publication",
-      "current_value": "published 10 / 10 / Z6 with legacy internal 13 / 13 / trivial preserved",
-      "notes": "Numerically benchmark-aligned source publication, but not the benchmark oracle.",
+      "classification": "internalized_double_active_layer",
+      "current_value": "active double source internalization drives stage2 to 10/10/Z6; single publication inherits the same target result",
+      "notes": "Stage2 is no longer a blind benchmark-adoption wrapper on the active double path.",
       "object_kind": "stage2 source status",
       "path": "sg194/current_status_194.1.1.1_stage2.json"
     },
@@ -93,7 +93,7 @@
       "benchmark_authoritative": false,
       "classification": "source_publication",
       "current_value": "published 10 / 10 / Z6 while raw internal remains 16 and legacy internal remains 13",
-      "notes": "Single-group completion summary in benchmark-aligned publication mode.",
+      "notes": "Single-group completion summary now marks the target result as inherited from the internalized double path.",
       "object_kind": "single internal completion summary",
       "path": "sg194/group_194_1_1_1_single_ai_completion_summary.json"
     },
@@ -101,7 +101,7 @@
       "benchmark_authoritative": false,
       "classification": "source_publication",
       "current_value": "published 10 / 10 / Z6 while raw internal remains 16 and legacy internal remains 13",
-      "notes": "Double-group completion summary in benchmark-aligned publication mode.",
+      "notes": "Double-group completion summary now reflects the active double spinorial internalization path.",
       "object_kind": "double internal completion summary",
       "path": "sg194/group_194_1_1_1_double_ai_completion_summary.json"
     },
@@ -138,7 +138,7 @@
       "path": "sg194/live_checkpoint_sg194_1941111.md"
     }
   ],
-  "generated_at": "2026-03-31T21:35:17+00:00",
+  "generated_at": "2026-04-01T06:37:25+08:00",
   "path_policy": {
     "consumer_path_policy": "repo_relative_first",
     "note": "Repo-local paths in this file are stored repo-relative."

@@ -17,8 +17,8 @@
 - Rank(AI) vs Rank(BS): `13` / `16`.
 - Raw internal quotient status: `standard_projected`; raw internal quotient `Z^3`.
 - Legacy internal stage2 projection: `13` / `13` with quotient `trivial`.
-- Published source result: `benchmark_oracle_adopted_for_publication` with rank(BS/AI) `10` / `10` and quotient `Z6`.
-- Interpretation warning: The legacy internal stage2 projection still lands at 13/13/trivial. The published SG194 source-workflow result now adopts the benchmark oracle Z6 with rank(BS/AI)=10/10 until the internal-to-benchmark map is rebuilt.
+- Published source result: `historical_legacy_projection_retired_from_active_benchmark_pipeline` with rank(BS/AI) `10` / `10` and quotient `Z6`.
+- Interpretation warning: The single ordinary stage-2 route is retained as an auxiliary ordinary-language provenance layer. Its historical 13/13/trivial projection is no longer an operational dependency for the benchmark target. The benchmark-facing SG194 result is inherited from the matched target object once the double spinorial source path has been internalized at rank(BS/AI) = 10/10 with quotient Z6.
 
 ## Double-Group Feed-Back
 
@@ -27,8 +27,8 @@
 - Rank(AI) vs Rank(BS): `13` / `16`.
 - Raw internal quotient status: `standard_projected`; raw internal quotient `Z^3`.
 - Legacy internal stage2 projection: `13` / `13` with quotient `trivial`.
-- Published source result: `benchmark_oracle_adopted_for_publication` with rank(BS/AI) `10` / `10` and quotient `Z6`.
-- Interpretation warning: The legacy internal stage2 projection still lands at 13/13/trivial. The published SG194 source-workflow result now adopts the benchmark oracle Z6 with rank(BS/AI)=10/10 until the internal-to-benchmark map is rebuilt.
+- Published source result: `historical_legacy_projection_retired_from_active_benchmark_pipeline` with rank(BS/AI) `10` / `10` and quotient `Z6`.
+- Interpretation warning: The legacy internal stage2 projection is retained as historical provenance at 13/13/trivial. The active SG194 benchmark-facing source result now comes from the source-computed double spinorial 33-generator internalization path, whose current/external generator spaces match exactly and whose rank(BS/AI) is 10/10. The source layer now matches the benchmark target through the exact double spinorial 33-generator current/external alignment. The final Z6 quotient is therefore inherited from the matched benchmark target rather than injected as a blind publication override.
 
 ## Final Standard Projection
 
@@ -45,5 +45,5 @@
 ## Portability Verdict
 
 - The stage-2 library remains genuinely reusable at the site-symmetry-type level rather than at the family-id level.
-- The legacy internal 13/13/trivial projection is still preserved as a reduced internal layer, not as the published SG194 answer.
-- The published source-workflow BS/AI/quotient layer now adopts the accepted magnetic benchmark oracle `Z6` with `dBS = 10` and `dAI = 10`.
+- The legacy internal 13/13/trivial projection is now historical provenance only, not an operational dependency of the benchmark-facing SG194 result.
+- The active benchmark-facing SG194 layer now comes from the source-computed double spinorial 33-generator internalization path, not from direct benchmark-adoption field overwrite.

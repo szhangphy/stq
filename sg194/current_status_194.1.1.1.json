@@ -134,5 +134,8 @@
     "double_nullity": 16
   },
   "blocker": "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly.",
-  "next_step": "Extend the local site-symmetry irrep/corep library on 194.1.1.1 so the AI lattice can be completed honestly."
+  "next_step": "Extend the local site-symmetry irrep/corep library on 194.1.1.1 so the AI lattice can be completed honestly.",
+  "benchmark_authoritative": false,
+  "object_scope": "raw_internal_source_layer_only",
+  "benchmark_relation": "This stage1 workflow only emits raw/current SG194 source objects. Benchmark-facing internalization happens later in debug_workflow_portability_stage2_194.1.1.1.py."
 }

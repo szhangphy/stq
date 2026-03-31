@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-04-01T06:37:25+08:00",
+  "target_group": "194.1.1.1",
+  "benchmark_target_result": {
+    "classification": "Z6",
+    "indicator_group": "Z6",
+    "dBS": 10,
+    "dAI": 10
+  },
+  "layer_table": [
+    {
+      "layer_name": "raw_internal_layer",
+      "source_file": "sg194/current_status_194.1.1.1_stage2.json",
+      "object_kind": "direct_source_raw_internal",
+      "direct_source_computation": true,
+      "bs_rank": 16,
+      "ai_rank": 13,
+      "quotient": "Z^3",
+      "benchmark_match": false,
+      "gap_to_benchmark": "BS +6, AI +3, quotient mismatch due to the 16-dimensional raw internal BS ambient"
+    },
+    {
+      "layer_name": "legacy_internal_reduced_13_layer",
+      "source_file": "sg194/current_status_194.1.1.1_stage2.json",
+      "object_kind": "historical_internal_reduced_layer",
+      "direct_source_computation": true,
+      "bs_rank": 13,
+      "ai_rank": 13,
+      "quotient": "trivial",
+      "benchmark_match": false,
+      "gap_to_benchmark": "The historical current-to-standard projection stays at 13/13/trivial and is retained only as provenance"
+    },
+    {
+      "layer_name": "active_double_internalized_layer",
+      "source_file": "sg194/current_status_194.1.1.1_stage2.json",
+      "object_kind": "active_source_internalized_target_object",
+      "direct_source_computation": true,
+      "bs_rank": 10,
+      "ai_rank": 10,
+      "quotient": "Z6",
+      "quotient_derivation_mode": "matched_target_inference_after_exact_double_generator_space_identity",
+      "benchmark_match": true,
+      "gap_to_benchmark": "None at BS/AI rank. Quotient is matched-target inference after exact generator-space identity rather than a direct raw-current Smith derivation."
+    },
+    {
+      "layer_name": "single_publication_layer",
+      "source_file": "sg194/current_status_194.1.1.1_stage2.json",
+      "object_kind": "single_inherited_publication_layer",
+      "direct_source_computation": false,
+      "bs_rank": 10,
+      "ai_rank": 10,
+      "quotient": "Z6",
+      "quotient_derivation_mode": "inherited_from_internalized_double_target_object",
+      "benchmark_match": true,
+      "gap_to_benchmark": "The single ordinary line is still inherited from the double internalized target object rather than directly derived as a single benchmark-layer computation."
+    }
+  ],
+  "active_double_internalization_evidence": {
+    "current_label_order_matches_external": true,
+    "selected_row_count": 34,
+    "generator_count": 33,
+    "rank_record": {
+      "current_rank": 10,
+      "external_rank": 10,
+      "union_rank": 10,
+      "intersection_rank": 10,
+      "current_only_dimension": 0,
+      "external_only_dimension": 0
+    },
+    "patched_ai_rank": 10,
+    "patched_group_rank_ai_complete": 10,
+    "stored_patch_summary_rank_record": {
+      "current_rank": 10,
+      "external_rank": 10,
+      "union_rank": 10,
+      "intersection_rank": 10,
+      "current_only_dimension": 0,
+      "external_only_dimension": 0
+    }
+  },
+  "direct_answers": {
+    "current_internal_source_bs_true_to_10": true,
+    "current_internal_source_ai_true_to_10": true,
+    "current_internal_source_quotient_true_to_Z6": true,
+    "quotient_direct_current_lattice_derivation": false,
+    "single_path_directly_internalized": false
+  },
+  "remaining_gaps": [
+    "The active double target object is internalized at BS/AI = 10/10, but the final Z6 quotient is still recorded as matched-target inference rather than as a standalone raw-current lattice derivation.",
+    "The single ordinary publication still inherits the target result from the internalized double path instead of exposing a direct single benchmark-layer computation.",
+    "The legacy 13-dimensional reduced layer is still preserved inside stage2 outputs as historical provenance."
+  ]
+}

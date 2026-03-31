@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-04-01T06:37:25+08:00",
+  "baseline_commit": "3538eca483ef9592331e0538d846eb9e8d50b77a",
+  "working_head_before_commit": "3538eca483ef9592331e0538d846eb9e8d50b77a",
+  "touched_source_files": [
+    "sg194/debug_workflow_portability_194.1.1.1.py",
+    "sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "sg194/debug_sg194_internalization_fix_v1.py"
+  ],
+  "source_change_summary": [
+    "stage2 no longer accepts direct benchmark-oracle adoption for the active double benchmark-facing object",
+    "stage2 now recomputes the exact 33-channel current/external generator-space identity from the patched current candidates and the external spinorial matrix",
+    "stage2 now treats the single ordinary line as inherited from the internalized double target object instead of pretending it is a direct benchmark-layer source computation",
+    "stage1 raw current status is explicitly tagged as raw_internal_source_layer_only so it cannot be misread as a benchmark-layer result"
+  ],
+  "active_double_result": {
+    "published_result_source": "double_spinorial_internalization_v1",
+    "published_result_scope": "source_internalized_benchmark_target_via_double_spinorial_alignment",
+    "bs_rank": 10,
+    "ai_rank": 10,
+    "quotient_group": "Z6",
+    "quotient_derivation_mode": "matched_target_inference_after_exact_double_generator_space_identity",
+    "rank_record": {
+      "current_rank": 10,
+      "external_rank": 10,
+      "union_rank": 10,
+      "intersection_rank": 10,
+      "current_only_dimension": 0,
+      "external_only_dimension": 0
+    }
+  },
+  "single_result_status": {
+    "published_result_source": "matched_benchmark_target_inherited_via_double_internalization_v1",
+    "published_result_scope": "benchmark_target_inherited_from_internalized_double_path_not_direct_single_computation",
+    "remaining_internal_mapping_blocker": "The single ordinary publication is no longer a blind benchmark overwrite, but it is still inherited from the internalized double target object rather than derived as a direct single ordinary benchmark-layer computation."
+  },
+  "verdict": {
+    "blind_benchmark_publication_overwrite_removed": true,
+    "active_double_source_internalized": true,
+    "active_single_direct_internalization_complete": false,
+    "active_double_direct_raw_current_quotient_derivation_complete": false
+  }
+}

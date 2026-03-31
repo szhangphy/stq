@@ -76,7 +76,7 @@ Single and double currently share the same 16-dimensional BS space. Their raw in
 The explicit projection matrix from current BS coordinates to external ordinary rows is recorded in \texttt{sg194\_standard\_space\_projection\_summary\_v1.json}.
 
 \section{Single-Group Published Result on 194.1.1.1}
-The single-group source workflow now publishes the benchmark-aligned result while preserving the legacy internal 13/13/trivial layer as provenance:
+The single-group source workflow now inherits the matched benchmark-target result while preserving the legacy internal 13/13/trivial layer as historical provenance:
 \begin{itemize}
 \item AI completion status: \texttt{True},
 \item generated local objects: 45,
@@ -91,7 +91,7 @@ The single-group source workflow now publishes the benchmark-aligned result whil
 The BS background still comes from the audited with-planes matrix on \texttt{194.1.1.1}, with shape $(58,42)$, rank 26, and nullity 16.
 
 \section{Double-Group Published Result on 194.1.1.1}
-The double-group source workflow now publishes the benchmark-aligned result while preserving the legacy internal 13/13/trivial layer as provenance:
+The double-group source workflow now computes the benchmark-facing result through the internalized double spinorial 33-generator path while preserving the legacy internal 13/13/trivial layer as historical provenance:
 \begin{itemize}
 \item AI completion status: \texttt{True},
 \item generated local objects: 45,
@@ -118,7 +118,7 @@ The double-group BS background uses the same with-planes geometry and has shape 
 \end{itemize}
 
 \section{Conclusion and Remaining Questions}
-Within the present fixed SG 194 controlled case, the local-library blocker is removed and the published source-workflow result no longer reuses the legacy internal 13/13/trivial reduced layer as its final public answer. The current code chain now preserves the internal 13-dimensional reduced layer as provenance, but publishes the benchmark-aligned result
+Within the present fixed SG 194 controlled case, the local-library blocker is removed and the active benchmark-facing source result no longer relies on direct benchmark-adoption overwrite. The historical internal 13-dimensional reduced layer is kept only as provenance, while the active result is sourced from the internalized target-object path
 \[
 \mathrm{rank}(BS) = \mathrm{rank}(AI) = 10,
 \qquad

@@ -1,17 +1,17 @@
 # Handoff for 194.1.1.1 Stage 2
 
 - Target group: `194.1.1.1`
-- Single status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and published benchmark-aligned quotient `Z6`.
-- Double status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and published benchmark-aligned quotient `Z6`.
-- Quotient scope: `raw_internal_bs_space_with_benchmark_aligned_publication`
-- Interpretation warning: The raw internal quotients and the legacy internal 13/13/trivial projection are preserved as provenance. The published SG194 source-workflow result now adopts the accepted benchmark oracle 10/10/Z6 while the internal current-to-benchmark map remains unresolved.
+- Single status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and inherited benchmark-target quotient `Z6`.
+- Double status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and source-internalized benchmark-target quotient `Z6`.
+- Quotient scope: `source_internalized_benchmark_layer_with_historical_raw_provenance`
+- Interpretation warning: The raw internal quotient and the legacy internal 13/13/trivial projection are preserved only as provenance. The active benchmark-facing SG194 result now comes from the source-computed double spinorial 33-generator internalization path, whose exact current/external rank record is {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The final Z6 quotient is inherited from the matched benchmark target rather than from blind publication overwrite.
 - Projection contract type: `common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators`
 - `single_vs_external_union_rank_in_current_point_rows = 17`
 - `double_vs_external_union_rank_in_current_point_rows = 17`
 - Union-rank meaning: The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.
 - Common free-generator rank: `3`
-- Main blocker: `The published SG194 source-workflow result now uses the accepted benchmark oracle dBS/dAI = 10/10 with indicator group Z6, but the internal current-to-benchmark map still has not retired the legacy 13-dimensional reduced layer.`
-- Next unique target: Rebuild the internal current-to-benchmark map so the legacy internal 13-dimensional reduced layer is no longer needed behind the published benchmark-aligned 10-dimensional source result.
+- Main blocker: `The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. Remaining follow-up is narrower: the single ordinary path is still inherited rather than directly benchmark-layer derived, and the final Z6 quotient is still emitted as matched-target inference instead of as a standalone raw-current lattice derivation.`
+- Next unique target: If further cleanup is requested, retire the remaining adoption-era source-BS artifacts, keep only the internalized double active path, and optionally derive a direct single ordinary benchmark-layer witness.
 - Files to read first:
   - workflow_portability_report_stage2_194.1.1.1.pdf
   - sg194_standard_space_projection_summary_v1.json

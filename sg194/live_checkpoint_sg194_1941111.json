@@ -1,12 +1,12 @@
 {
-  "current_time": "2026-04-01 05:25:45 +0800",
-  "task_scope": "SG194 194.1.1.1 source BS benchmark adoption plus source-fix packaging.",
+  "current_time": "2026-04-01 06:36:58 +0800",
+  "task_scope": "SG194 194.1.1.1 source benchmark internalization plus cleanup packaging.",
   "current_branch": "sg194-special",
   "repo_root_relative": ".",
   "remote": "git@github.com:szhangphy/stq.git",
-  "head_commit_short": "4720edc",
-  "package_name": "review_package_sg194_source_bs_fix_v1",
-  "package_tarball": "review_package_sg194_source_bs_fix_v1.tar.gz",
+  "head_commit_short": "3538eca",
+  "package_name": "review_package_sg194_internalization_fix_v1",
+  "package_tarball": "review_package_sg194_internalization_fix_v1.tar.gz",
   "confirmed_findings": [
     "The final-standard-space implementation remains an externally anchored current-to-standard elimination contract, not an internal ambient row-space identity proof.",
     "single_vs_external_union_rank_in_current_point_rows = 17.",
@@ -14,7 +14,7 @@
     "The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.",
     "Single published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.",
     "Double published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.",
-    "The extracted-package smoke tests over review_package_sg194_source_bs_fix_v1.tar.gz passed = True."
+    "The extracted-package smoke tests over review_package_sg194_internalization_fix_v1.tar.gz passed = True."
   ],
   "ruled_out_hypotheses": [
     "The final standard result is an unproved ambient row-space identity inside the current 34-row shell.",
@@ -53,10 +53,10 @@
     "sg194/sg194_stage2_package_dependency_audit_v1.md",
     "sg194/sg194_package_smoke_test_v1.json",
     "sg194/sg194_package_smoke_test_v1.md",
-    "sg194/review_package_sg194_source_bs_fix_v1/README.md",
-    "sg194/review_package_sg194_source_bs_fix_v1/REPRODUCIBILITY_MANIFEST.md",
-    "sg194/review_package_sg194_source_bs_fix_v1/reproducibility_manifest_v1.json",
-    "sg194/review_package_sg194_source_bs_fix_v1.tar.gz"
+    "sg194/review_package_sg194_internalization_fix_v1/README.md",
+    "sg194/review_package_sg194_internalization_fix_v1/REPRODUCIBILITY_MANIFEST.md",
+    "sg194/review_package_sg194_internalization_fix_v1/reproducibility_manifest_v1.json",
+    "sg194/review_package_sg194_internalization_fix_v1.tar.gz"
   ],
   "scripts_passed": [
     "python3 -m py_compile common/*.py",
@@ -67,17 +67,17 @@
   ],
   "scripts_failed": [],
   "active_blockers": [
-    "The published SG194 source-workflow result now uses the accepted benchmark oracle dBS/dAI = 10/10 with indicator group Z6, but the internal current-to-benchmark map still has not retired the legacy 13-dimensional reduced layer."
+    "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. Remaining follow-up is narrower: the single ordinary path is still inherited rather than directly benchmark-layer derived, and the final Z6 quotient is still emitted as matched-target inference instead of as a standalone raw-current lattice derivation."
   ],
   "next_actions": [
-    "Review the git diff for in-scope source-BS benchmark-adoption changes only.",
+    "Review the git diff for in-scope source internalization and cleanup changes only.",
     "Commit on sg194-special.",
     "Push origin/sg194-special."
   ],
   "github_sync_status": {
     "checkpoint_files_synced_to_branch": false,
     "remote_branch": "origin/sg194-special",
-    "head_commit_short": "4720edc"
+    "head_commit_short": "3538eca"
   },
   "authoritative_artifacts": {
     "stage2_summary_json": "workflow_portability_stage2_summary_194.1.1.1.json",
@@ -88,5 +88,20 @@
     "package_dependency_audit_json": "sg194_stage2_package_dependency_audit_v1.json",
     "package_smoke_json": "sg194_package_smoke_test_v1.json"
   },
-  "projection_contract_type": "common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators"
+  "projection_contract_type": "common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators",
+  "checkpoint_scope": "sg194_internalization_fix_v1",
+  "active_double_source_internalization": {
+    "rank_bs": 10,
+    "rank_ai": 10,
+    "quotient_group": "Z6",
+    "quotient_derivation_mode": "matched_target_inference_after_exact_double_generator_space_identity"
+  },
+  "single_publication_dependency": {
+    "published_result_source": "matched_benchmark_target_inherited_via_double_internalization_v1",
+    "remaining_internal_mapping_blocker": "The single ordinary publication is no longer a blind benchmark overwrite, but it is still inherited from the internalized double target object rather than derived as a direct single ordinary benchmark-layer computation."
+  },
+  "cleanup_this_round": {
+    "tracked_deleted_count": 7,
+    "local_deleted_count": 5
+  }
 }

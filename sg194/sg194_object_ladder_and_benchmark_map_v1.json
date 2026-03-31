@@ -48,13 +48,13 @@
     {
       "benchmark_authoritative": false,
       "complete_classification": true,
-      "coordinate_language": "repo current-to-standard ordinary row language with benchmark publication overlay",
-      "current_value": "published 10/10/Z6 with legacy internal reduced layer 13/13/trivial preserved",
+      "coordinate_language": "active double spinorial target-object layer plus inherited single ordinary publication",
+      "current_value": "double active path 10/10/Z6 internalized; single publication inherits the same target result; legacy 13/13/trivial preserved as provenance",
       "object_kind": "source-workflow published status",
       "object_name": "stage2 published source status",
-      "relation_to_benchmark": "Matches the benchmark numerically, but remains a benchmark-adopted publication while the internal current-to-benchmark map is still unresolved.",
+      "relation_to_benchmark": "The active double path now reaches the benchmark target object through exact current/external 33-generator alignment. The single ordinary publication still inherits that internalized target result rather than deriving it directly.",
       "source_file": "sg194/current_status_194.1.1.1_stage2.json",
-      "status": "internal_published_alignment"
+      "status": "internalized_double_active_single_inherited"
     },
     {
       "benchmark_authoritative": false,
@@ -68,7 +68,7 @@
       "status": "unresolved"
     }
   ],
-  "generated_at": "2026-03-31T21:35:17+00:00",
+  "generated_at": "2026-04-01T06:37:25+08:00",
   "path_policy": {
     "consumer_path_policy": "repo_relative_first",
     "note": "Repo-local paths in this file are stored repo-relative."
@@ -96,10 +96,10 @@
         6
       ]
     },
-    "closest_to_benchmark_truth": "The copied topmat-derived magnetic benchmark and the current benchmark-aligned stage2 source publication both report Z6, dBS 10, dAI 10.",
-    "hardening_package": "sg194/review_package_sg194_source_bs_fix_v1",
+    "closest_to_benchmark_truth": "The copied topmat magnetic benchmark remains authoritative. The active double stage2 source object now lands on the same target object through exact 33-generator alignment, while the single ordinary publication still inherits that result.",
+    "hardening_package": "sg194/review_package_sg194_internalization_fix_v1",
     "phase_aware_verdict": "still potentially needed, but only after object mapping to benchmark is clarified",
-    "source_publication_verdict": "Current stage2 source publication is numerically benchmark-aligned but remains non-authoritative because it adopts the benchmark oracle while preserving the legacy 13-dimensional internal layer.",
+    "source_publication_verdict": "The old benchmark-adoption publication layer is gone on the active double path. Current stage2 now exposes a source-internalized double target object at 10/10/Z6, with a still-inherited single ordinary publication and a preserved historical 13-layer snapshot.",
     "legacy_internal_snapshot": {
       "single_rank_bs": 13,
       "double_rank_bs": 13,
