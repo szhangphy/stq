@@ -1,32 +1,31 @@
-# Live Checkpoint: SG194 194.1.1.1 Final Standard-Space Closeout
+# SG194 194.1.1.1 Final Standard-Space Live Checkpoint
 
-- Last updated: 2026-03-31 20:05:18 +0800
-- Branch: `sg194-special`
-- Latest synced `sg194-special`: `36a66b7`
-- Latest synced `main`: `a7b4e4d`
-- Phase: final standard-space projection implemented; validation complete; git commit/push pending
+        - Current time: 2026-03-31 21:38:57 +0800
+        - Branch: `sg194-special`
+        - Current HEAD: `e5d261f`
+        - Repo root (relative): `.`
+        - Remote: `git@github.com:szhangphy/stq.git`
+        - Current subtask: final git/push closeout after v3 reproducibility cleanup
 
-## Latest state
+        ## Accepted hard facts
 
-1. The current authoritative physical point-space shell is the 34-row `P1..P6` block ordering.
-2. The final ordinary SG194 standard comparison shell is the 34-row `GM/A/K/H/M/L` ordering.
-3. The current-to-standard mapping is explicit and no longer missing.
-4. The decisive contract kills the three common raw `Z^3` free directions while anchoring onto the external ordinary 13-generator AI basis.
-5. The authoritative stage2 outputs now report single final `BS=13`, final `AI=13`, quotient `trivial`.
-6. The authoritative stage2 outputs now report double final `BS=13`, final `AI=13`, quotient `trivial`.
-7. The stage2 report PDF exists and `python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate` passes.
+        1. The mathematical closeout remains final `rank(BS)=13`, final `rank(AI)=13`, final quotient `trivial` for both single and double.
+        2. The implementation is an externally anchored current-to-standard elimination contract, not an internal ambient row-space identity proof.
+        3. Both single and double have external-union rank `17` inside current point rows, so the external ordinary standard layer must remain externally anchored.
+        4. The v3 review package now carries dependency audit and reproducibility manifest files, plus extracted-package smoke-test evidence.
 
-## Latest commands
+        ## Read First
 
-1. `python3 -m py_compile common/*.py`
-2. `python3 -m py_compile sg194/*.py`
-3. `python3 sg194/debug_sg194_standard_space_projection_v1.py --validate`
-4. `python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py`
-5. `python3 -c '<load stage2 module, rebuild report tex/pdf from authoritative JSON, run compile_report()>'`
-6. `python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate`
+        1. `sg194/sg194_standard_space_projection_summary_v1.json`
+2. `sg194/current_status_194.1.1.1_stage2.json`
+3. `sg194/workflow_portability_stage2_summary_194.1.1.1.json`
+4. `sg194/workflow_portability_report_stage2_194.1.1.1.pdf`
+5. `sg194/review_package_sg194_stage2_closeout_followup_v3/REPRODUCIBILITY_MANIFEST.md`
+6. `sg194/sg194_stage2_package_dependency_audit_v1.md`
+7. `sg194/sg194_package_smoke_test_v1.md`
 
-## Next
+        ## Immediate Next Step
 
-1. Review the staged diff and keep unrelated old review-package directories/tarballs plus LaTeX aux/log files out of the commit.
-2. Commit the in-scope source and authoritative outputs on `sg194-special`.
-3. Push `origin/sg194-special`.
+        1. Review the git diff for in-scope v3 closeout changes only.
+2. Commit on sg194-special.
+3. Push origin/sg194-special.

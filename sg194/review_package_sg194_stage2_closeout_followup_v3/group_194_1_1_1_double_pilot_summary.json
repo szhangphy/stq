@@ -1,0 +1,54 @@
+{
+  "target_group": "194.1.1.1",
+  "group_type": 2,
+  "double_group_feasibility_status": "success",
+  "minimal_realspace_prototype_status": "success",
+  "bridge_status": "success",
+  "induction_status": "success",
+  "kspace_backbone_status": {
+    "status": "success",
+    "matrix_shape": [
+      58,
+      42
+    ],
+    "rank": 26,
+    "nullity": 16,
+    "smith_diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "point_like_AI_status": {
+    "status": "blocked",
+    "blocker": "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
+  },
+  "parametric_status": {
+    "status": "blocked",
+    "blocker": "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
+  },
+  "blocker": "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
+}

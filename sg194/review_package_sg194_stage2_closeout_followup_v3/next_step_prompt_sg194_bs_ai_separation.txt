@@ -1,0 +1,30 @@
+$codex-autoresearch 继续在 /data/work/szhang/ssg/comprel 工作。
+
+不换群，不扩 workflow。当前这份 `debug_sg194_bs_ai_separation.py` 输出只能当 legacy/stale reference。
+
+不要把它当 current repo snapshot evidence，因为：
+- current repo point blocks are P1, P2, P3, P4, P5, P6
+- this script still uses legacy internal selection blocks P1, P2, P3, P5, P6, B1
+- its honest role is historical object-separation diagnosis only
+- current authoritative outputs now live at workflow_portability_report_stage2_194.1.1.1.pdf, workflow_portability_stage2_summary_194.1.1.1.json, current_status_194.1.1.1_stage2.json, handoff_194.1.1.1_stage2.md, review_package_sg194_stage2_closeout_followup_v2.tar.gz
+
+已有且不要重做的 legacy reference outputs：
+- `sg194_single_ai_vs_external.json`
+- `sg194_single_bs_vs_external.json`
+- `sg194_double_ai_vs_external.json`
+- `sg194_double_bs_vs_external.json`
+- `sg194_bs_ai_separation_report.pdf`
+
+当前 legacy reference 仍然保留的结论：
+- previous external_matrix_final mixed up AI-image comparison with BS-space comparison.
+- single: `both`
+  - AI-only mismatch: rank 13 vs 13, union rank 14, intersection 12
+  - BS-only mismatch: current rank 18 vs external rank 13, union rank 26, intersection 5
+- double: `AI`
+  - AI-only mismatch proven in the 2b/2c/2d/6h problem sector: rank 6 vs 6, union rank 8, intersection 4
+  - BS-only external comparison still blocked; no BS-only lift to the 56-row Bilbao spinorial basis is fixed yet
+- `delta_c1_minus_b1` / `delta_d1_minus_b1` are AI excess directions, not separately proven BS excess directions.
+
+如果下一轮真要继续这个方向，唯一诚实的做法是：
+- 要么基于 current P1..P6 point-space 重建这套分析
+- 要么继续把它保留为 legacy/stale reference，不再当 active evidence

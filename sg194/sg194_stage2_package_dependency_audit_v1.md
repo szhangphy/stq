@@ -1,0 +1,121 @@
+# SG194 Stage-2 Package Dependency Audit v1
+
+- Package: `review_package_sg194_stage2_closeout_followup_v3`
+- All required files present: `True`
+- Missing files: `[]`
+
+## Executable Scripts
+
+### `debug_sg194_standard_space_projection_v1.py`
+- role: `projection_and_final_closeout`
+- smoke-test command: `python3 debug_sg194_standard_space_projection_v1.py --validate`
+- validate dependencies:
+  - `debug_sg194_standard_space_projection_v1.py`
+  - `sg194_current_point_space_snapshot_v1.json`
+  - `sg194_current_to_standard_row_translation_v1.json`
+  - `sg194_standard_space_projection_summary_v1.json`
+  - `sg194_final_bs_ai_closeout_report_v1.md`
+  - `sg194_final_bs_ai_closeout_status_v1.json`
+  - `sg194_final_bs_ai_closeout_next_step_prompt_v1.txt`
+- rerun dependencies:
+  - `debug_sg194_standard_space_projection_v1.py`
+  - `debug_workflow_portability_stage2_194.1.1.1.py`
+  - `debug_workflow_portability_194.1.1.1.py`
+  - `debug_sg194_nonabelian_local_library.py`
+  - `sg194_external_ordinary_generator_matrix.json`
+  - `group_194_1_1_1_single_indicator_generators.json`
+  - `group_194_1_1_1_double_indicator_generators.json`
+  - `group_194_1_1_1_single_bs_analysis.json`
+  - `group_194_1_1_1_double_bs_analysis.json`
+  - `debug_sg194_stage2_package_dependency_audit_v1.py`
+- expected outputs:
+  - `sg194_current_point_space_snapshot_v1.json`
+  - `sg194_current_to_standard_row_translation_v1.json`
+  - `sg194_standard_space_projection_summary_v1.json`
+  - `sg194_final_bs_ai_closeout_report_v1.md`
+  - `sg194_final_bs_ai_closeout_status_v1.json`
+  - `sg194_final_bs_ai_closeout_next_step_prompt_v1.txt`
+
+### `debug_workflow_portability_stage2_194.1.1.1.py`
+- role: `authoritative_stage2_closeout`
+- smoke-test command: `python3 debug_workflow_portability_stage2_194.1.1.1.py --validate`
+- validate dependencies:
+  - `debug_workflow_portability_stage2_194.1.1.1.py`
+  - `debug_sg194_standard_space_projection_v1.py`
+  - `debug_sg194_stage2_package_dependency_audit_v1.py`
+  - `debug_sg194_nonabelian_local_library.py`
+  - `sg194_nonabelian_site_symmetry_inventory.md`
+  - `sg194_nonabelian_site_symmetry_inventory.json`
+  - `sg194_single_local_irrep_library.json`
+  - `sg194_double_local_corep_library.json`
+  - `group_194_1_1_1_single_ai_completion_summary.json`
+  - `group_194_1_1_1_double_ai_completion_summary.json`
+  - `workflow_portability_stage2_audit_194.1.1.1.md`
+  - `workflow_portability_stage2_summary_194.1.1.1.json`
+  - `handoff_194.1.1.1_stage2.md`
+  - `current_status_194.1.1.1_stage2.json`
+  - `next_step_prompt_194.1.1.1_stage2.txt`
+  - `workflow_portability_report_stage2_194.1.1.1.tex`
+  - `workflow_portability_report_stage2_194.1.1.1.pdf`
+  - `sg194_current_point_space_snapshot_v1.json`
+  - `sg194_current_to_standard_row_translation_v1.json`
+  - `sg194_standard_space_projection_summary_v1.json`
+  - `sg194_final_bs_ai_closeout_report_v1.md`
+  - `sg194_final_bs_ai_closeout_status_v1.json`
+  - `sg194_final_bs_ai_closeout_next_step_prompt_v1.txt`
+- rerun dependencies:
+  - `debug_workflow_portability_stage2_194.1.1.1.py`
+  - `debug_sg194_standard_space_projection_v1.py`
+  - `debug_sg194_nonabelian_local_library.py`
+  - `debug_workflow_portability_194.1.1.1.py`
+  - `workflow_portability_summary_194.1.1.1.json`
+  - `group_194_1_1_1_single_pilot_summary.json`
+  - `group_194_1_1_1_single_pilot_audit.md`
+  - `group_194_1_1_1_double_pilot_summary.json`
+  - `group_194_1_1_1_double_pilot_audit.md`
+  - `controlled_case_audit_194.1.1.1.md`
+  - `current_status_194.1.1.1.json`
+  - `handoff_194.1.1.1.md`
+  - `next_step_prompt_194.1.1.1.txt`
+  - `double_group_ai_completeness_audit_10.4.1.31.md`
+  - `double_group_ai_completeness_summary_10.4.1.31.json`
+  - `double_group_indicator_group_summary_10.4.1.31.json`
+  - `double_group_indicator_generators_10.4.1.31.json`
+  - `double_group_bs_mod_ai_summary_10.4.1.31.json`
+  - `double_group_bs_summary_10.4.1.31.json`
+  - `double_group_bs_basis_raw_10.4.1.31.json`
+  - `double_group_bs_basis_pretty_10.4.1.31.json`
+  - `double_group_full_compatibility_with_planes_10.4.1.31.json`
+  - `single_group_ai_completeness_audit.md`
+  - `single_group_ai_completeness_summary.json`
+  - `single_group_indicator_group_summary.json`
+  - `single_group_indicator_generators.json`
+  - `single_group_bs_mod_ai_single_summary.json`
+  - `sg194_external_ordinary_generator_matrix.json`
+  - `group_194_1_1_1_single_indicator_generators.json`
+  - `group_194_1_1_1_double_indicator_generators.json`
+  - `debug_sg194_stage2_package_dependency_audit_v1.py`
+  - `common/debug_single_group_ai_bridge.py`
+  - `common/debug_single_group_ai_expanded.py`
+  - `swyckoff_r.py`
+  - `swyckoff_k.py`
+  - `common/SSGReps/SSGReps/SSGReps.py`
+  - `common/SSGReps/SSGReps/SG_utils.py`
+  - `common/SSGReps/SSGReps/rep_utils.py`
+  - `common/SSGReps/ssg_data/identify.pkl.tar.gz`
+- expected outputs:
+  - `group_194_1_1_1_single_ai_completion_summary.json`
+  - `group_194_1_1_1_double_ai_completion_summary.json`
+  - `workflow_portability_stage2_audit_194.1.1.1.md`
+  - `workflow_portability_stage2_summary_194.1.1.1.json`
+  - `handoff_194.1.1.1_stage2.md`
+  - `current_status_194.1.1.1_stage2.json`
+  - `next_step_prompt_194.1.1.1_stage2.txt`
+  - `workflow_portability_report_stage2_194.1.1.1.tex`
+  - `workflow_portability_report_stage2_194.1.1.1.pdf`
+
+## Boundary
+
+- Read-only review path: inspect the PDF/JSON/Markdown outputs and run the two `--validate` smoke-test commands.
+- Rerun path: the package includes the direct script/data/runtime dependencies needed to rerun the standard projection and stage-2 authoritative pipeline locally inside the extracted package directory.
+- The package is self-contained for package-local execution; it must not rely on `/data/work/...` absolute paths.

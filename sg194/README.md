@@ -1,22 +1,28 @@
 # SG194 Residual Audits
 
-## SG194 stage2 closeout followup v2
+## SG194 stage2 closeout followup v3
 
-- package file: `review_package_sg194_stage2_closeout_followup_v2.tar.gz`
-- package directory: `review_package_sg194_stage2_closeout_followup_v2/`
+- package file: `review_package_sg194_stage2_closeout_followup_v3.tar.gz`
+- package directory: `review_package_sg194_stage2_closeout_followup_v3/`
 - current contract:
   - the raw internal stage2 quotient fields remain preserved as provenance
-  - the final ordinary SG194 standard quotient is now implemented through the current-to-standard elimination contract
+  - the final ordinary SG194 standard quotient is now implemented through an externally anchored current-to-standard elimination contract
+  - `single_vs_external_union_rank_in_current_point_rows = 17` and `double_vs_external_union_rank_in_current_point_rows = 17` mean this is not an internal ambient row-space identity proof
   - current local stage2 completion summaries use `rank_bs_raw_internal = 16`, `raw_internal_quotient_group = Z^3`, `final_rank_bs = 13`, and `quotient_group = trivial`
 - recommended reading order:
-  - `workflow_portability_report_stage2_194.1.1.1.pdf`
   - `sg194_standard_space_projection_summary_v1.json`
   - `sg194_current_to_standard_row_translation_v1.json`
   - `workflow_portability_stage2_summary_194.1.1.1.json`
+  - `current_status_194.1.1.1_stage2.json`
+  - `workflow_portability_report_stage2_194.1.1.1.pdf`
+  - `sg194_stage2_package_dependency_audit_v1.md`
+  - `review_package_sg194_stage2_closeout_followup_v3/REPRODUCIBILITY_MANIFEST.md`
   - `group_194_1_1_1_single_ai_completion_summary.json`
   - `group_194_1_1_1_double_ai_completion_summary.json`
-  - `handoff_sg194_1941111_bs_ai_bug_audit_v1.md`
-  - `current_status_sg194_1941111_bs_ai_bug_audit_v1.json`
+- package boundary:
+  - smoke-tested inside extracted package: `python3 debug_sg194_standard_space_projection_v1.py --validate`
+  - smoke-tested inside extracted package: `python3 debug_workflow_portability_stage2_194.1.1.1.py --validate`
+  - full reruns are package-local and documented in `reproducibility_manifest_v1.json`
 
 ## SG194 BS-vs-AI separation legacy reference
 

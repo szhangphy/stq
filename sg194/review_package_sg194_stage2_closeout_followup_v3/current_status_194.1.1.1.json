@@ -1,0 +1,138 @@
+{
+  "target_group": "194.1.1.1",
+  "single_status": {
+    "target_group": "194.1.1.1",
+    "group_type": 1,
+    "geometry_status": "success",
+    "compatibility_status": {
+      "line_blocks_built": 7,
+      "synthetic_boundary_points_added": 0,
+      "point_line_relations": 14,
+      "unmatched_line_endpoints_before_augmentation": 0,
+      "plane_blocks_built": 4,
+      "status": "success"
+    },
+    "BS_status": {
+      "status": "success",
+      "matrix_shape": [
+        58,
+        42
+      ],
+      "rank": 26,
+      "nullity": 16,
+      "smith_diagonal": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "AI_status": {
+      "status": "partial",
+      "trivial_generators_count": 12,
+      "rank_trivial_family_span": 12,
+      "all_trivial_generators_compatibility_zero": true
+    },
+    "completeness_status": {
+      "status": "blocked",
+      "blocker": "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly."
+    },
+    "quotient_status": {
+      "status": "blocked",
+      "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."
+    },
+    "blocker": "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly."
+  },
+  "double_status": {
+    "target_group": "194.1.1.1",
+    "group_type": 2,
+    "double_group_feasibility_status": "success",
+    "minimal_realspace_prototype_status": "success",
+    "bridge_status": "success",
+    "induction_status": "success",
+    "kspace_backbone_status": {
+      "status": "success",
+      "matrix_shape": [
+        58,
+        42
+      ],
+      "rank": 26,
+      "nullity": 16,
+      "smith_diagonal": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "point_like_AI_status": {
+      "status": "blocked",
+      "blocker": "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
+    },
+    "parametric_status": {
+      "status": "blocked",
+      "blocker": "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
+    },
+    "blocker": "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
+  },
+  "key_matrices": {
+    "single_matrix_shape": [
+      58,
+      42
+    ],
+    "single_rank": 26,
+    "single_nullity": 16,
+    "double_matrix_shape": [
+      58,
+      42
+    ],
+    "double_rank": 26,
+    "double_nullity": 16
+  },
+  "blocker": "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly.",
+  "next_step": "Extend the local site-symmetry irrep/corep library on 194.1.1.1 so the AI lattice can be completed honestly."
+}

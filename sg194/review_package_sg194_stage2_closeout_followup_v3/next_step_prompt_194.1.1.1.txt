@@ -1,0 +1,28 @@
+Previous Codex session already reconstructed the 10.4.1.31 baseline and completed the 194.1.1.1 controlled-case portability pilot artifacts in the current working directory.
+
+Read these files first:
+1. workflow_portability_report_194.1.1.1.tex
+2. controlled_case_audit_194.1.1.1.md
+3. workflow_portability_audit_194.1.1.1.md
+4. group_194_1_1_1_single_pilot_audit.md
+5. group_194_1_1_1_double_pilot_audit.md
+6. current_status_194.1.1.1.json
+
+Current verified facts:
+- controlled_case_valid = True
+- single_group_portable = True
+- double_group_portable_seed = True
+- main_blocker = Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly.
+
+Current single-group matrix status:
+- shape = [58, 42]
+- rank = 26
+- nullity = 16
+
+Current double-group matrix status:
+- shape = [58, 42]
+- rank = 26
+- nullity = 16
+
+Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
+The next unique task is: implement a generic local real-space irrep/corep builder for the SG 194 site symmetries so that the current partial AI prototypes on 194.1.1.1 can be upgraded to an honest AI completeness audit and, if successful, quotient extraction.

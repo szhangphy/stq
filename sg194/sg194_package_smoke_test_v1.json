@@ -1,0 +1,20 @@
+{
+  "package_name": "review_package_sg194_stage2_closeout_followup_v3",
+  "tarball": "review_package_sg194_stage2_closeout_followup_v3.tar.gz",
+  "extracted_package_root": "review_package_sg194_stage2_closeout_followup_v3",
+  "commands": [
+    {
+      "command": "python3 debug_sg194_standard_space_projection_v1.py --validate",
+      "passed": true,
+      "returncode": 0,
+      "output_excerpt": "validated sg194 standard-space projection outputs"
+    },
+    {
+      "command": "python3 debug_workflow_portability_stage2_194.1.1.1.py --validate",
+      "passed": true,
+      "returncode": 0,
+      "output_excerpt": "validated workflow portability stage-2 outputs"
+    }
+  ],
+  "all_passed": true
+}
