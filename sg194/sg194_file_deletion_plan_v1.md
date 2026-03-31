@@ -1,0 +1,75 @@
+# SG194 file deletion plan v1
+
+## Git delete candidates
+
+- `sg194/handoff_bundle_sg194_repo_consistency_closeout_v1`
+- `sg194/handoff_bundle_sg194_repo_consistency_closeout_v1.tar.gz`
+- `sg194/review_package_sg194_benchmark_takeover_v1`
+- `sg194/review_package_sg194_benchmark_takeover_v1.tar.gz`
+- `sg194/review_package_sg194_benchmark_hardening_v1`
+- `sg194/review_package_sg194_benchmark_hardening_v1.tar.gz`
+- `sg194/review_package_sg194_bs_ai_separation_audit`
+- `sg194/review_package_sg194_bs_ai_separation_audit.tar.gz`
+- `sg194/review_package_sg194_stage2_closeout_followup_v2`
+- `sg194/review_package_sg194_stage2_closeout_followup_v2.tar.gz`
+- `sg194/review_package_sg194_stage2_closeout_followup_v3`
+- `sg194/review_package_sg194_stage2_closeout_followup_v3.tar.gz`
+
+## Keep but internal/archive
+
+- `sg194/current_status_194.1.1.1.json`
+- `sg194/current_status_194.1.1.1_stage2.json`
+- `sg194/workflow_portability_stage2_summary_194.1.1.1.json`
+- `sg194/group_194_1_1_1_single_ai_completion_summary.json`
+- `sg194/group_194_1_1_1_double_ai_completion_summary.json`
+- `sg194/sg194_phase_aware_l2_compatibility_v1.json`
+- `sg194/current_status_sg194_external_matrix_final.json`
+- `sg194/review_package_sg194_source_bs_fix_v1`
+- `sg194/review_package_sg194_source_bs_fix_v1.tar.gz`
+
+## Local cleanup only
+
+- `autoresearch-state.prev.json`
+- `research-results.prev.tsv`
+- `sg194/debug_sg194_phase_aware_point_row_translation_v1.py`
+- `sg194/review_package_sg194_double_complement_patch_followup_v1`
+- `sg194/review_package_sg194_double_complement_patch_followup_v1.tar.gz`
+- `sg194/review_package_sg194_double_global_residual_audit`
+- `sg194/review_package_sg194_double_global_residual_audit.tar.gz`
+- `sg194/review_package_sg194_double_lift_audit`
+- `sg194/review_package_sg194_double_lift_audit.tar.gz`
+- `sg194/review_package_sg194_double_patch_audit`
+- `sg194/review_package_sg194_double_patch_audit.tar.gz`
+- `sg194/review_package_sg194_external_matrix_final`
+- `sg194/review_package_sg194_standard_alignment_audit_v2`
+- `sg194/review_package_workflow_portability_194.1.1.1`
+- `sg194/review_package_workflow_portability_194.1.1.1.tar.gz`
+- `sg194/sg194_external_matrix_cache`
+- `sg194/sg194_phase_aware_endpoint_gauge_comparison_v1.json`
+- `sg194/sg194_phase_aware_endpoint_gauge_comparison_v1.md`
+- `sg194/sg194_phase_aware_point_row_translation_v1.json`
+- `sg194/sg194_phase_aware_point_row_translation_v1.md`
+- `sg194/sg194_upstream_raw_ai_fix_attempt_v1.json`
+- `sg194/sg194_upstream_raw_ai_fix_attempt_v1.md`
+- `sg194/sg194_standard_alignment_report_v2.aux`
+- `sg194/sg194_standard_alignment_report_v2.log`
+- `sg194/sg194_standard_alignment_report_v2.out`
+- `sg194/workflow_portability_report_194.1.1.1.aux`
+- `sg194/workflow_portability_report_194.1.1.1.log`
+- `sg194/workflow_portability_report_194.1.1.1.out`
+- `sg194/workflow_portability_report_stage2_194.1.1.1.aux`
+- `sg194/workflow_portability_report_stage2_194.1.1.1.log`
+
+## Restore before commit
+
+- `sg194/current_status_sg194_external_matrix_final.json`
+- `sg194/group_194_1_1_1_double_little_groups.json`
+- `sg194/group_194_1_1_1_double_minimal_prototype.json`
+- `sg194/group_194_1_1_1_single_ai_trivial_generators.json`
+- `sg194/group_194_1_1_1_single_line_compatibility.json`
+- `sg194/group_194_1_1_1_single_little_groups.json`
+- `sg194/sg194_phase_aware_l2_compatibility_v1.json`
+- `sg194/sg194_topmat_copied_sources_manifest_v2.json`
+- `sg194/sg194_topmat_experimental_compute_v2.json`
+- `sg194/sg194_topmat_readonly_audit_v3.json`
+- `sg194/sg194_topmat_readonly_audit_v3.md`

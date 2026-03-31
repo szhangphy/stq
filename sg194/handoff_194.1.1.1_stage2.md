@@ -1,31 +1,23 @@
 # Handoff for 194.1.1.1 Stage 2
 
-- status: `superseded_for_benchmark_use`
-- benchmark-authoritative: `false`
-- object kind: `anchored_internal_reduced_quotient_claim`
-- benchmark-authoritative replacement: `current_status_1941111_benchmark_v1.json`
-- benchmark takeaway: the repo benchmark for the current project convention target is now `classification = Z6`, `dBS = 10`, `dAI = 10`
-
-## What this file still means
-
 - Target group: `194.1.1.1`
-- Single internal stage2 claim: raw internal quotient `Z^3`, anchored reduced quotient `13 / 13 / trivial`
-- Double internal stage2 claim: raw internal quotient `Z^3`, anchored reduced quotient `13 / 13 / trivial`
-- Quotient scope: `raw_internal_bs_space_with_final_standard_projection`
-- Interpretation warning: the old `trivial` conclusion here is an internally anchored ordinary reduced quotient claim, not the benchmark classification for the unified `SSG 194.1.1.1 / OG 194.1.1494 / BNS 194.263` target
-
-## Why it is superseded for benchmark use
-
-- The copied topmat magnetic benchmark fixes the benchmark result at `Z6`, `dBS = 10`, `dAI = 10`.
-- `current_status_sg194_external_matrix_final.json` already re-opened the older stage2 final quotient to unresolved/null for external use.
-- Therefore the `13 / trivial` line in this handoff must remain historical internal provenance only.
-
-## If you are reading SG194 fresh
-
-Read these first instead:
-
-1. `current_status_1941111_benchmark_v1.json`
-2. `sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json`
-3. `sg194_current_vs_external_object_matching_v3.json`
-4. `sg194_object_ladder_and_benchmark_map_v1.json`
-5. `sg194_authoritative_file_inventory_v1.json`
+- Single status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and published benchmark-aligned quotient `Z6`.
+- Double status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and published benchmark-aligned quotient `Z6`.
+- Quotient scope: `raw_internal_bs_space_with_benchmark_aligned_publication`
+- Interpretation warning: The raw internal quotients and the legacy internal 13/13/trivial projection are preserved as provenance. The published SG194 source-workflow result now adopts the accepted benchmark oracle 10/10/Z6 while the internal current-to-benchmark map remains unresolved.
+- Projection contract type: `common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators`
+- `single_vs_external_union_rank_in_current_point_rows = 17`
+- `double_vs_external_union_rank_in_current_point_rows = 17`
+- Union-rank meaning: The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.
+- Common free-generator rank: `3`
+- Main blocker: `The published SG194 source-workflow result now uses the accepted benchmark oracle dBS/dAI = 10/10 with indicator group Z6, but the internal current-to-benchmark map still has not retired the legacy 13-dimensional reduced layer.`
+- Next unique target: Rebuild the internal current-to-benchmark map so the legacy internal 13-dimensional reduced layer is no longer needed behind the published benchmark-aligned 10-dimensional source result.
+- Files to read first:
+  - workflow_portability_report_stage2_194.1.1.1.pdf
+  - sg194_standard_space_projection_summary_v1.json
+  - sg194_current_to_standard_row_translation_v1.json
+  - sg194_nonabelian_site_symmetry_inventory.md
+  - workflow_portability_stage2_audit_194.1.1.1.md
+  - group_194_1_1_1_single_ai_completion_summary.json
+  - group_194_1_1_1_double_ai_completion_summary.json
+  - handoff_sg194_1941111_bs_ai_bug_audit_v1.md

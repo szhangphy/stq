@@ -1,9 +1,0 @@
-{
-  "reference_group": "10.4.1.31",
-  "target_group": "194.1.1.1",
-  "controlled_case_valid": true,
-  "single_group_portable": true,
-  "double_group_portable_seed": true,
-  "main_blocker": "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly.",
-  "next_blocker": "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
-}

@@ -1,26 +1,32 @@
-# SG194 194.1.1.1 Live Checkpoint
+# SG194 194.1.1.1 Source BS Fix Handoff v1
 
-- Current time: 2026-03-31 23:11:58 +0800
-- Branch: `sg194-special`
-- HEAD: `70fdd3f`
+        - Current time: 2026-04-01 05:25:45 +0800
+        - Branch: `sg194-special`
+        - Current HEAD: `4720edc`
+        - Repo root (relative): `.`
+        - Remote: `git@github.com:szhangphy/stq.git`
+        - Current subtask: keep the published source BS aligned to the accepted benchmark while rebuilding the internal current-to-benchmark map
 
-## Confirmed Findings
+        ## Accepted hard facts
 
-1. The raw internal BS gap is carried by exactly three common free generators: P3_R5-P3_R6, P3_R5+P4_R1, and P3_R1+P3_R2+P4_R3.
-2. Those generators are only touched by the three L2 rows, and no plane row touches P3/P4 at all.
-3. build_line_block/build_plane_block use phase-stripped character, while induce_candidate uses linear_character together with explicit Bloch phase exp(-ik·t).
-4. The phase/subduction audit therefore points to a little-co-group vs full little-group mismatch as the implementation cause of the missing effective constraints.
-5. The extracted v3 package full rerun passed = True and regenerated the expected stage2/projection/report outputs inside the extracted package.
+        1. The published source workflow now reports `rank(BS)=10`, `rank(AI)=10`, final quotient `Z6` for both single and double.
+        2. The legacy internal reduced layer is still `13/13/trivial` and is retained only as provenance.
+        3. The implementation is an externally anchored current-to-standard elimination contract, not an internal ambient row-space identity proof.
+        4. Both single and double have external-union rank `17` inside current point rows, so the external ordinary standard layer must remain externally anchored.
+        5. The source-BS review package carries dependency audit and reproducibility manifest files, plus extracted-package smoke-test evidence.
 
-## Commands Run
+        ## Read First
 
-1. `python3 sg194/debug_sg194_upstream_raw_bs_gap_audit_v1.py`
-2. `python3 sg194/debug_sg194_package_full_rerun_test_v1.py`
-3. `python3 -m py_compile common/*.py`
-4. `python3 -m py_compile sg194/*.py`
+        1. `sg194/sg194_standard_space_projection_summary_v1.json`
+2. `sg194/current_status_194.1.1.1_stage2.json`
+3. `sg194/workflow_portability_stage2_summary_194.1.1.1.json`
+4. `sg194/workflow_portability_report_stage2_194.1.1.1.pdf`
+5. `sg194/review_package_sg194_source_bs_fix_v1/REPRODUCIBILITY_MANIFEST.md`
+6. `sg194/sg194_stage2_package_dependency_audit_v1.md`
+7. `sg194/sg194_package_smoke_test_v1.md`
 
-## Next Actions
+        ## Immediate Next Step
 
-1. Review the in-scope diff for the two new audit scripts and generated audit outputs.
-2. Commit the raw-gap / phase / package-full-rerun audit files.
+        1. Review the git diff for in-scope source-BS benchmark-adoption changes only.
+2. Commit on sg194-special.
 3. Push origin/sg194-special.

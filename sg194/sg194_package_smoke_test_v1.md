@@ -1,7 +1,7 @@
 # SG194 Package Smoke Test v1
 
-- Package tarball: `review_package_sg194_stage2_closeout_followup_v3.tar.gz`
-- Extracted package root: `review_package_sg194_stage2_closeout_followup_v3`
+- Package tarball: `review_package_sg194_source_bs_fix_v1.tar.gz`
+- Extracted package root: `review_package_sg194_source_bs_fix_v1`
 - All passed: `True`
 
 ## Commands

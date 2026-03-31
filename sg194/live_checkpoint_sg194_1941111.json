@@ -1,109 +1,92 @@
 {
-  "active_blockers": [
-    "Accessible external magnetic-group sources confirm OG 194.1.1494 / BNS 194.263 and Type-I, but do not separately expose the suffixless SSG 194.1.1.1 label as an external field."
-  ],
-  "authoritative_artifacts": {
-    "benchmark_status_json": "sg194/current_status_1941111_benchmark_v1.json",
-    "benchmark_verdict_json": "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
-    "independent_verify_json": "sg194/sg194_topmat_independent_verify_v1.json",
-    "inventory_json": "sg194/sg194_authoritative_file_inventory_v1.json",
-    "object_ladder_json": "sg194/sg194_object_ladder_and_benchmark_map_v1.json",
-    "path_sanitization_json": "sg194/sg194_benchmark_path_sanitization_v1.json"
-  },
-  "commands_run": [
-    "python3 sg194/sg194_topmat_experimental_compute_v2.py",
-    "python3 sg194/sg194_topmat_independent_verify_v1.py",
-    "python3 sg194/debug_sg194_benchmark_hardening_v1.py --write",
-    "python3 -m py_compile sg194/*.py",
-    "python3 sg194/debug_sg194_benchmark_hardening_v1.py --validate"
-  ],
-  "confirmed_findings": [
-    "The benchmark-authoritative SG194 result remains classification Z6 with dBS = 10 and dAI = 10.",
-    "SSG 194.1.1.1 is the spin-space-group object whose no-time-reversal magnetic counterpart is OG 194.1.1494 / BNS 194.263, and this round treats them as the same benchmark target for topological classification / dBS / dAI comparison.",
-    "The suffixless SSG label remains a project benchmark convention plus magnetic-counterpart mapping layer rather than a separately scraped external field.",
-    "Repo-local benchmark delivery paths are now relative-path-first in the benchmark authoritative/supporting JSON files targeted by this round.",
-    "The old 13/trivial stage2/workflow/completion files remain preserved only as internal/superseded historical snapshots."
-  ],
+  "current_time": "2026-04-01 05:25:45 +0800",
+  "task_scope": "SG194 194.1.1.1 source BS benchmark adoption plus source-fix packaging.",
   "current_branch": "sg194-special",
-  "current_time": "2026-04-01 04:54:02 ",
-  "files_added_in_scope": [
-    "sg194/sg194_topmat_independent_verify_v1.py",
-    "sg194/sg194_topmat_independent_verify_v1.json",
-    "sg194/sg194_topmat_independent_verify_v1.md",
-    "sg194/sg194_benchmark_path_sanitization_v1.json",
-    "sg194/sg194_benchmark_path_sanitization_v1.md",
-    "sg194/sg194_superseded_file_deemphasis_v1.json",
-    "sg194/sg194_superseded_file_deemphasis_v1.md",
-    "sg194/debug_sg194_benchmark_hardening_v1.py",
-    "sg194/review_package_sg194_benchmark_hardening_v1",
-    "sg194/review_package_sg194_benchmark_hardening_v1.tar.gz"
+  "repo_root_relative": ".",
+  "remote": "git@github.com:szhangphy/stq.git",
+  "head_commit_short": "4720edc",
+  "package_name": "review_package_sg194_source_bs_fix_v1",
+  "package_tarball": "review_package_sg194_source_bs_fix_v1.tar.gz",
+  "confirmed_findings": [
+    "The final-standard-space implementation remains an externally anchored current-to-standard elimination contract, not an internal ambient row-space identity proof.",
+    "single_vs_external_union_rank_in_current_point_rows = 17.",
+    "double_vs_external_union_rank_in_current_point_rows = 17.",
+    "The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.",
+    "Single published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.",
+    "Double published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.",
+    "The extracted-package smoke tests over review_package_sg194_source_bs_fix_v1.tar.gz passed = True."
   ],
-  "files_updated_in_scope": [
-    "sg194/current_status_1941111_benchmark_v1.json",
-    "sg194/current_status_1941111_benchmark_v1.md",
-    "sg194/sg194_external_benchmark_from_topmat_v3.json",
-    "sg194/sg194_current_vs_external_object_matching_v3.json",
-    "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
-    "sg194/sg194_authoritative_file_inventory_v1.json",
-    "sg194/sg194_object_ladder_and_benchmark_map_v1.json",
+  "ruled_out_hypotheses": [
+    "The final standard result is an unproved ambient row-space identity inside the current 34-row shell.",
+    "The final quotient is still missing or unavailable.",
+    "The review package still depends on /data/work absolute paths for the smoke-tested validate path."
+  ],
+  "commands_run": [
+    "python3 -m py_compile common/*.py",
+    "python3 -m py_compile sg194/*.py",
+    "python3 sg194/debug_sg194_standard_space_projection_v1.py --validate",
+    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate"
+  ],
+  "files_modified": [
+    "sg194/debug_sg194_standard_space_projection_v1.py",
+    "sg194/debug_sg194_stage2_package_dependency_audit_v1.py",
+    "sg194/debug_workflow_portability_194.1.1.1.py",
+    "sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "sg194/README.md",
     "sg194/current_status_194.1.1.1_stage2.json",
     "sg194/workflow_portability_stage2_summary_194.1.1.1.json",
+    "sg194/workflow_portability_stage2_audit_194.1.1.1.md",
+    "sg194/handoff_194.1.1.1_stage2.md",
+    "sg194/next_step_prompt_194.1.1.1_stage2.txt",
+    "sg194/workflow_portability_report_stage2_194.1.1.1.tex",
+    "sg194/workflow_portability_report_stage2_194.1.1.1.pdf",
     "sg194/group_194_1_1_1_single_ai_completion_summary.json",
     "sg194/group_194_1_1_1_double_ai_completion_summary.json",
-    "sg194/README.md",
-    "sg194/live_checkpoint_sg194_1941111.json",
-    "sg194/live_checkpoint_sg194_1941111.md"
+    "sg194/sg194_current_point_space_snapshot_v1.json",
+    "sg194/sg194_current_to_standard_row_translation_v1.json",
+    "sg194/sg194_standard_space_projection_summary_v1.json",
+    "sg194/sg194_final_bs_ai_closeout_status_v1.json",
+    "sg194/sg194_final_bs_ai_closeout_report_v1.md",
+    "sg194/sg194_final_bs_ai_closeout_next_step_prompt_v1.txt",
+    "sg194/sg194_stage2_package_dependency_audit_v1.json",
+    "sg194/sg194_stage2_package_dependency_audit_v1.md",
+    "sg194/sg194_package_smoke_test_v1.json",
+    "sg194/sg194_package_smoke_test_v1.md",
+    "sg194/review_package_sg194_source_bs_fix_v1/README.md",
+    "sg194/review_package_sg194_source_bs_fix_v1/REPRODUCIBILITY_MANIFEST.md",
+    "sg194/review_package_sg194_source_bs_fix_v1/reproducibility_manifest_v1.json",
+    "sg194/review_package_sg194_source_bs_fix_v1.tar.gz"
   ],
-  "head_commit_short_before_checkpoint": "13a01c2",
+  "scripts_passed": [
+    "python3 -m py_compile common/*.py",
+    "python3 -m py_compile sg194/*.py",
+    "python3 sg194/debug_sg194_standard_space_projection_v1.py --validate",
+    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate"
+  ],
+  "scripts_failed": [],
+  "active_blockers": [
+    "The published SG194 source-workflow result now uses the accepted benchmark oracle dBS/dAI = 10/10 with indicator group Z6, but the internal current-to-benchmark map still has not retired the legacy 13-dimensional reduced layer."
+  ],
   "next_actions": [
-    "Review the hardening diff and stage only the in-scope SG194 benchmark files.",
-    "Commit on sg194-special and push origin/sg194-special."
+    "Review the git diff for in-scope source-BS benchmark-adoption changes only.",
+    "Commit on sg194-special.",
+    "Push origin/sg194-special."
   ],
-  "remote": "git@github.com:szhangphy/stq.git",
-  "repo_root_relative": ".",
-  "rolling_stage_snapshots": [
-    {
-      "label": "independent_verify",
-      "stage": 1,
-      "status": "completed",
-      "summary": "Ran sg194_topmat_experimental_compute_v2.py and the new sg194_topmat_independent_verify_v1.py; both returned classification Z6 with dBS = 10 and dAI = 10."
-    },
-    {
-      "label": "path_inventory",
-      "stage": 2,
-      "status": "completed",
-      "summary": "Identified repo-local absolute path pollution in benchmark authoritative/supporting JSON files before cleanup."
-    },
-    {
-      "label": "path_sanitization",
-      "stage": 3,
-      "status": "completed",
-      "summary": "Rewrote benchmark authoritative/supporting JSON files to repo-relative path semantics and recorded the cleanup in sg194_benchmark_path_sanitization_v1.json/.md."
-    },
-    {
-      "label": "superseded_deemphasis",
-      "stage": 4,
-      "status": "completed",
-      "summary": "Added do-not-use banners and historical snapshots to the old 13/trivial stage2/workflow/completion files."
-    },
-    {
-      "label": "readme_checkpoint_refresh",
-      "stage": 5,
-      "status": "completed",
-      "summary": "Refreshed README and this rolling checkpoint to reflect benchmark hardening rather than benchmark takeover only."
-    },
-    {
-      "label": "review_package",
-      "stage": 6,
-      "status": "completed",
-      "summary": "Built review_package_sg194_benchmark_hardening_v1/ and .tar.gz with benchmark_authoritative and internal_superseded subdirectories plus REVIEW_MAP.md."
-    },
-    {
-      "label": "validation",
-      "stage": 7,
-      "status": "completed",
-      "summary": "py_compile, independent verifier, and benchmark hardening validation all passed; repo is ready for commit/push."
-    }
-  ],
-  "task_scope": "SG194 benchmark hardening / benchmark cleanup: second independent verification, path sanitization, superseded-file deemphasis, and layered review package delivery."
+  "github_sync_status": {
+    "checkpoint_files_synced_to_branch": false,
+    "remote_branch": "origin/sg194-special",
+    "head_commit_short": "4720edc"
+  },
+  "authoritative_artifacts": {
+    "stage2_summary_json": "workflow_portability_stage2_summary_194.1.1.1.json",
+    "current_status_json": "current_status_194.1.1.1_stage2.json",
+    "single_summary_json": "group_194_1_1_1_single_ai_completion_summary.json",
+    "double_summary_json": "group_194_1_1_1_double_ai_completion_summary.json",
+    "projection_summary_json": "sg194_standard_space_projection_summary_v1.json",
+    "package_dependency_audit_json": "sg194_stage2_package_dependency_audit_v1.json",
+    "package_smoke_json": "sg194_package_smoke_test_v1.json"
+  },
+  "projection_contract_type": "common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators"
 }

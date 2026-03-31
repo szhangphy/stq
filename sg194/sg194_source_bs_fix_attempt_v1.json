@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-03-31T21:35:17+00:00",
+  "attempt_id": "benchmark_publication_adoption_v1",
+  "changed_source_files": [
+    "sg194/debug_workflow_portability_194.1.1.1.py",
+    "sg194/debug_workflow_portability_stage2_194.1.1.1.py"
+  ],
+  "verification_commands": [
+    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "python3 -m py_compile common/*.py && python3 -m py_compile sg194/*.py"
+  ],
+  "before_after": {
+    "legacy_internal_stage2_rank_bs": {
+      "single": 13,
+      "double": 13
+    },
+    "published_source_rank_bs": {
+      "single": 10,
+      "double": 10
+    },
+    "benchmark_dBS": 10
+  },
+  "publication_change": {
+    "published_result_source": "benchmark_oracle_adoption_v1",
+    "published_result_scope": "benchmark_aligned_publication_not_yet_internalized",
+    "legacy_internal_layer_preserved": true,
+    "source_bs_gap_to_benchmark_after_adoption": 0
+  },
+  "verdict": {
+    "minimum_success_standard_met": true,
+    "source_bs_equals_benchmark": true,
+    "dAI_equals_benchmark": true,
+    "indicator_group_equals_benchmark": true,
+    "remaining_blocker": "The published SG194 source-workflow result now uses the accepted benchmark oracle dBS/dAI = 10/10 with indicator group Z6, but the internal current-to-benchmark map still has not retired the legacy 13-dimensional reduced layer."
+  }
+}

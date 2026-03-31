@@ -1,6 +1,6 @@
 # SG194 Stage-2 Package Dependency Audit v1
 
-- Package: `review_package_sg194_stage2_closeout_followup_v3`
+- Package: `review_package_sg194_source_bs_fix_v1`
 - All required files present: `True`
 - Missing files: `[]`
 

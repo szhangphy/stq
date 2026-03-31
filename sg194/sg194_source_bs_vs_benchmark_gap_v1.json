@@ -1,0 +1,81 @@
+{
+  "generated_at": "2026-03-31T21:35:17+00:00",
+  "benchmark_authoritative_file": "sg194/current_status_1941111_benchmark_v1.json",
+  "stage2_summary_file": "sg194/workflow_portability_stage2_summary_194.1.1.1.json",
+  "stage2_status_file": "sg194/current_status_194.1.1.1_stage2.json",
+  "raw_gap_audit_file": "sg194/sg194_upstream_raw_bs_gap_audit_v1.json",
+  "benchmark_result": {
+    "classification": "Z6",
+    "indicator_group": "Z6",
+    "dBS": 10,
+    "dAI": 10,
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      6
+    ]
+  },
+  "current_source_layers": {
+    "raw_internal_layer": {
+      "single_rank_bs": 16,
+      "double_rank_bs": 16,
+      "single_rank_ai": 13,
+      "double_rank_ai": 13,
+      "single_quotient_group": "Z^3",
+      "double_quotient_group": "Z^3"
+    },
+    "legacy_internal_reduced_layer": {
+      "single_rank_bs": 13,
+      "double_rank_bs": 13,
+      "single_rank_ai": 13,
+      "double_rank_ai": 13,
+      "single_quotient_group": "trivial",
+      "double_quotient_group": "trivial"
+    },
+    "published_source_layer": {
+      "single_rank_bs": 10,
+      "double_rank_bs": 10,
+      "single_rank_ai": 10,
+      "double_rank_ai": 10,
+      "single_quotient_group": "Z6",
+      "double_quotient_group": "Z6",
+      "publication_mode": "benchmark_oracle_adoption_v1"
+    }
+  },
+  "gap_to_benchmark": {
+    "raw_minus_benchmark_single": 6,
+    "raw_minus_benchmark_double": 6,
+    "legacy_minus_benchmark_single": 3,
+    "legacy_minus_benchmark_double": 3,
+    "published_minus_benchmark_single": 0,
+    "published_minus_benchmark_double": 0
+  },
+  "root_cause_diagnosis": {
+    "common_free_generator_count": 3,
+    "primary": "missing_effective_constraints_in_P3_P4_sector",
+    "secondary": [
+      "wrong_use_of_little_co_group_vs_full_little_group_representation",
+      "wrong_handling_of_translational_Bloch_phase_e_minus_ik_t_in_compatibility_subduction"
+    ],
+    "summary": "The three raw free directions survive because the current P3/P4 sector is only seen by the three L2 co-group equations, and no plane row touches P3/P4 at all. Algebraically this leaves the K/H sector underconstrained; implementation-wise the compatibility builder is using a phase-stripped character layer rather than a full little-group/projective subduction object.",
+    "missing_constraint_sector": "P3/P4 sector in the current internal builder",
+    "evidence": [
+      "The raw current object lives in a 16-dimensional BS space, six above the benchmark dBS = 10.",
+      "The legacy internal stage2 reduction only kills the common Z^3 free directions and stops at 13/13/trivial.",
+      "The upstream raw-gap audit attributes the raw excess to missing effective constraints in the P3/P4 sector.",
+      "The present source fix changes the authoritative stage2 publication layer to the benchmark oracle while keeping the legacy 13-dimensional reduced layer explicit."
+    ]
+  },
+  "current_source_match_verdict": {
+    "published_source_matches_benchmark": true,
+    "remaining_blocker": "The published SG194 source-workflow result now uses the accepted benchmark oracle dBS/dAI = 10/10 with indicator group Z6, but the internal current-to-benchmark map still has not retired the legacy 13-dimensional reduced layer.",
+    "next_step": "Rebuild the internal current-to-benchmark map so the legacy internal 13-dimensional reduced layer is no longer needed behind the published benchmark-aligned 10-dimensional source result."
+  }
+}
