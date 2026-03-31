@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "generated_at": "2026-03-31T20:27:32+00:00",
+  "status": "authoritative_benchmark_oracle",
+  "benchmark_authoritative": true,
+  "benchmark_target": {
+    "spin_space_group": "194.1.1.1",
+    "magnetic_group_og": "194.1.1494",
+    "magnetic_group_bns": "194.263",
+    "magnetic_type": "Type-I",
+    "time_reversal": "absent",
+    "project_round_unification_statement": "SSG 194.1.1.1 is the spin-space-group object whose no-time-reversal magnetic counterpart is OG 194.1.1494 / BNS 194.263, and this round treats them as the same benchmark target for topological classification / dBS / dAI comparison.",
+    "external_mapping_caveat": "Accessible external magnetic-group sources in this round directly confirm the OG/BNS object and its Type-I character. They do not independently expose the suffixless SSG label 194.1.1.1 used in this repo. An external SSG source consulted in this round uses a more refined suffix-decorated notation (for example 194.1.1.1.L), so the suffixless SSG identification is treated here as the project/user benchmark convention rather than as a separately scraped Bilbao field."
+  },
+  "benchmark_result": {
+    "classification": "Z6",
+    "indicator_group": "Z6",
+    "dBS": 10,
+    "dAI": 10,
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      6
+    ],
+    "finite_part": [
+      6
+    ],
+    "free_rank": 0
+  },
+  "source_of_truth": {
+    "primary_benchmark_verdict_json": "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
+    "supporting_external_benchmark_json": "sg194/sg194_external_benchmark_from_topmat_v3.json",
+    "supporting_object_matching_json": "sg194/sg194_current_vs_external_object_matching_v3.json",
+    "topmat_direct_run_available": true,
+    "topmat_direct_dBS_available": false,
+    "topmat_direct_dAI_available": false
+  },
+  "which_internal_objects_are_not_benchmark": {
+    "current_raw": {
+      "status": "internal_raw_object",
+      "files": [
+        "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/group_194_1_1_1_single_indicator_group_summary.json",
+        "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/group_194_1_1_1_double_indicator_group_summary.json",
+        "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/current_status_194.1.1.1.json"
+      ],
+      "summary": "Current raw stays a 16-dimensional internal BS-space object with quotient Z^3, not the magnetic benchmark."
+    },
+    "phase_aware_prototype": {
+      "status": "local_prototype",
+      "files": [
+        "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_phase_aware_l2_compatibility_v1.json",
+        "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_phase_aware_l2_compatibility_v1.md"
+      ],
+      "summary": "The phase-aware object is a local raw compatibility prototype, not the final benchmark."
+    },
+    "anchored_stage2_final_claim": {
+      "status": "superseded_internal_reduced_quotient_claim",
+      "file": "sg194/current_status_194.1.1.1_stage2.json",
+      "older_claim": {
+        "double_final_quotient_group": "trivial",
+        "double_final_rank_ai": 13,
+        "double_final_rank_bs": 13,
+        "single_final_quotient_group": "trivial",
+        "single_final_rank_ai": 13,
+        "single_final_rank_bs": 13
+      },
+      "summary": "The older stage2 anchored object was a reduced externally anchored quotient claim, but the later authoritative status re-opened it to unresolved/null."
+    },
+    "external_matrix_final_status": {
+      "status": "unresolved_mapping_layer",
+      "file": "sg194/current_status_sg194_external_matrix_final.json",
+      "summary": "Current internal SG194 generator images do not land in the cached external standard row spaces."
+    }
+  },
+  "benchmark_takeover_verdict": {
+    "phase_aware_verdict": "still potentially needed, but only after object mapping to benchmark is clarified",
+    "phase_aware_detail": "Necessary as a raw-layer repair if the internal SG194 builder is being fixed, but directionally wrong if interpreted as the benchmark answer itself.",
+    "stage2_13_trivial_verdict": "The older 13/13/trivial stage2 claim is retained only as an internally anchored reduced quotient claim and is superseded for benchmark use."
+  },
+  "conflict_resolution": {
+    "superseded_files_for_benchmark_use": [
+      "sg194/current_status_194.1.1.1_stage2.json",
+      "sg194/workflow_portability_stage2_summary_194.1.1.1.json",
+      "sg194/group_194_1_1_1_single_ai_completion_summary.json",
+      "sg194/group_194_1_1_1_double_ai_completion_summary.json"
+    ],
+    "unresolved_mapping_file": "sg194/current_status_sg194_external_matrix_final.json",
+    "reason": "The copied topmat magnetic benchmark fixes the benchmark result at Z6 / dBS 10 / dAI 10. The older stage2 13/13/trivial result is therefore not allowed to remain the repo's benchmark-final claim."
+  },
+  "superseded_stage2_snapshot": {
+    "single_final_rank_bs": 13,
+    "single_final_rank_ai": 13,
+    "single_final_quotient_group": "trivial",
+    "double_final_rank_bs": 13,
+    "double_final_rank_ai": 13,
+    "double_final_quotient_group": "trivial"
+  }
+}

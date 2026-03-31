@@ -1,0 +1,179 @@
+{
+  "generated_at": "2026-03-31T20:27:32+00:00",
+  "benchmark_authoritative_file": "sg194/current_status_1941111_benchmark_v1.json",
+  "entries": [
+    {
+      "path": "sg194/current_status_1941111_benchmark_v1.json",
+      "classification": "benchmark_authoritative_status",
+      "benchmark_authoritative": true,
+      "object_kind": "authoritative benchmark status",
+      "current_value": "Z6 / dBS 10 / dAI 10",
+      "notes": "Primary benchmark-first status file for SG194 after takeover."
+    },
+    {
+      "path": "sg194/current_status_1941111_benchmark_v1.md",
+      "classification": "benchmark_authoritative_status",
+      "benchmark_authoritative": true,
+      "object_kind": "human-readable benchmark status",
+      "current_value": "benchmark-first summary",
+      "notes": "Markdown companion to the authoritative benchmark JSON."
+    },
+    {
+      "path": "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
+      "classification": "benchmark_oracle",
+      "benchmark_authoritative": false,
+      "object_kind": "benchmark oracle payload",
+      "current_value": "Z6 / dBS 10 / dAI 10",
+      "notes": "Copied topmat-derived oracle verdict."
+    },
+    {
+      "path": "sg194/sg194_external_benchmark_from_topmat_v3.json",
+      "classification": "benchmark_oracle_support",
+      "benchmark_authoritative": false,
+      "object_kind": "benchmark support data",
+      "current_value": "topmat direct-vs-copied capability audit",
+      "notes": "Records what topmat_src gives directly and what had to be computed locally."
+    },
+    {
+      "path": "sg194/sg194_current_vs_external_object_matching_v3.json",
+      "classification": "reconciliation_support",
+      "benchmark_authoritative": false,
+      "object_kind": "benchmark reconciliation map",
+      "current_value": "raw / phase-aware / stage2 matched against benchmark",
+      "notes": "Explains which internal objects are not the benchmark."
+    },
+    {
+      "path": "sg194/current_status_194.1.1.1.json",
+      "classification": "internal_raw_object",
+      "benchmark_authoritative": false,
+      "object_kind": "raw internal status",
+      "current_value": "pre-stage2 blocked current raw object",
+      "notes": "Raw internal SG194 object before later internal reductions."
+    },
+    {
+      "path": "sg194/group_194_1_1_1_single_indicator_group_summary.json",
+      "classification": "internal_raw_object",
+      "benchmark_authoritative": false,
+      "object_kind": "single raw quotient summary",
+      "current_value": "Z^3 in raw internal BS space",
+      "notes": "Not benchmark; internal raw quotient only."
+    },
+    {
+      "path": "sg194/group_194_1_1_1_double_indicator_group_summary.json",
+      "classification": "internal_raw_object",
+      "benchmark_authoritative": false,
+      "object_kind": "double raw quotient summary",
+      "current_value": "Z^3 in raw internal BS space",
+      "notes": "Not benchmark; internal raw quotient only."
+    },
+    {
+      "path": "sg194/sg194_phase_aware_l2_compatibility_v1.json",
+      "classification": "local_prototype",
+      "benchmark_authoritative": false,
+      "object_kind": "phase-aware raw repair prototype",
+      "current_value": "raw BS rank 16 -> 13 locally",
+      "notes": "Necessary as a raw-layer repair if the internal SG194 builder is being fixed, but directionally wrong if interpreted as the benchmark answer itself."
+    },
+    {
+      "path": "sg194/current_status_194.1.1.1_stage2.json",
+      "classification": "stale_superseded",
+      "benchmark_authoritative": false,
+      "object_kind": "anchored internal reduced quotient claim",
+      "current_value": "13 / 13 / trivial",
+      "notes": "Retained as internal stage2 claim only; superseded for benchmark use."
+    },
+    {
+      "path": "sg194/workflow_portability_stage2_summary_194.1.1.1.json",
+      "classification": "stale_superseded",
+      "benchmark_authoritative": false,
+      "object_kind": "stage2 workflow summary",
+      "current_value": "13 / 13 / trivial",
+      "notes": "Internal stage2 summary; no longer benchmark-final."
+    },
+    {
+      "path": "sg194/group_194_1_1_1_single_ai_completion_summary.json",
+      "classification": "stale_superseded",
+      "benchmark_authoritative": false,
+      "object_kind": "single internal completion summary",
+      "current_value": "13 / 13 / trivial",
+      "notes": "Internal completion summary only; not the benchmark classification."
+    },
+    {
+      "path": "sg194/group_194_1_1_1_double_ai_completion_summary.json",
+      "classification": "stale_superseded",
+      "benchmark_authoritative": false,
+      "object_kind": "double internal completion summary",
+      "current_value": "13 / 13 / trivial",
+      "notes": "Internal completion summary only; not the benchmark classification."
+    },
+    {
+      "path": "sg194/current_status_sg194_external_matrix_final.json",
+      "classification": "unresolved_mapping_layer",
+      "benchmark_authoritative": false,
+      "object_kind": "mapping-layer unresolved status",
+      "current_value": "single null / double null",
+      "notes": "Still useful, but only as current-to-external mapping blocker status."
+    },
+    {
+      "path": "sg194/README.md",
+      "classification": "benchmark_portal",
+      "benchmark_authoritative": false,
+      "object_kind": "repo SG194 entrypoint",
+      "current_value": "benchmark-first index",
+      "notes": "Should point readers to the new benchmark authoritative status first."
+    },
+    {
+      "path": "sg194/handoff_194.1.1.1_stage2.md",
+      "classification": "stale_superseded",
+      "benchmark_authoritative": false,
+      "object_kind": "internal stage2 handoff",
+      "current_value": "13 / 13 / trivial handoff",
+      "notes": "Retained only as internal stage2 handoff, not benchmark-final."
+    },
+    {
+      "path": "sg194/live_checkpoint_sg194_1941111.json",
+      "classification": "benchmark_portal",
+      "benchmark_authoritative": false,
+      "object_kind": "rolling checkpoint",
+      "current_value": "benchmark takeover checkpoint",
+      "notes": "Checkpoint should summarize the benchmark takeover state, not the old stage2 final claim."
+    },
+    {
+      "path": "sg194/live_checkpoint_sg194_1941111.md",
+      "classification": "benchmark_portal",
+      "benchmark_authoritative": false,
+      "object_kind": "rolling checkpoint markdown",
+      "current_value": "benchmark takeover checkpoint",
+      "notes": "Human-readable checkpoint companion."
+    },
+    {
+      "path": "sg194/review_package_sg194_stage2_closeout_followup_v3/README.md",
+      "classification": "stale_package_portal",
+      "benchmark_authoritative": false,
+      "object_kind": "historical stage2 package portal",
+      "current_value": "package says 13 / 13 / trivial",
+      "notes": "Historical internal package; superseded for benchmark use by the benchmark takeover artifacts."
+    },
+    {
+      "path": "sg194/review_package_sg194_stage2_closeout_followup_v3/handoff_194.1.1.1_stage2.md",
+      "classification": "stale_package_portal",
+      "benchmark_authoritative": false,
+      "object_kind": "historical stage2 package handoff",
+      "current_value": "package handoff says trivial",
+      "notes": "Historical internal package handoff; not benchmark authoritative."
+    },
+    {
+      "path": "sg194/review_package_sg194_stage2_closeout_followup_v3/live_checkpoint_sg194_1941111.md",
+      "classification": "stale_package_portal",
+      "benchmark_authoritative": false,
+      "object_kind": "historical stage2 package checkpoint",
+      "current_value": "package checkpoint says trivial",
+      "notes": "Historical internal package checkpoint; not benchmark authoritative."
+    }
+  ],
+  "inventory_verdict": {
+    "benchmark_authoritative_count": 2,
+    "mandatory_paths_present": true,
+    "stage2_files_marked_superseded": true
+  }
+}
