@@ -1,98 +1,71 @@
 {
-  "current_time": "2026-03-31 14:52:35 +0800",
-  "task_scope": "Rolling live checkpoint for SG194 194.1.1.1 BS/AI bug audit",
+  "current_time": "2026-03-31 15:03:02 +0800",
+  "task_scope": "Rolling live checkpoint for the SG194 194.1.1.1 BS/AI bug audit closeout.",
   "current_branch": "sg194-special",
   "repo_root": "/data/work/szhang/ssg/comprel/stq_repo_export/repo",
+  "latest_synced_audit_fix_commit": "a48469a",
   "confirmed_findings": [
     "Stage1 portability passed.",
-    "Stage2 portability passed and unblocked both nonabelian library checks.",
-    "After compaction, the required autoresearch runtime docs were re-read and git status was reconfirmed before continuing.",
+    "Stage2 portability passed and reports both nonabelian libraries built.",
     "Current line-space ordering length is 34 with P1..P6.",
-    "Double patch and double complement patch both fail with the same ShapeError.",
-    "The ShapeError is caused by feeding 62-entry raw double-channel vectors into a 42-column compatibility matrix.",
-    "double_global_residual and double_lift both pass on direct rerun.",
-    "The stale raw ordering adds 23 B1..B5 labels and omits P4_R1..P4_R3.",
-    "The current rebuild path already yields 42-entry double vectors, so the live bug is the patch script reading a stale raw JSON file.",
-    "The stage2 double spinorial builder also stays in 42 dimensions when fed rebuilt double induction candidates.",
-    "Source patch is in place for both double patch entrypoints.",
-    "Patched debug_sg194_double_patch.py now passes.",
-    "Patched debug_sg194_double_complement_patch_v1.py no longer hits the old ShapeError but now fails later with full 33 global alignment must hold.",
-    "Complement v2 has complement_exact_equality=true but full_33_global_alignment=false and is missing one external full-space dimension.",
-    "Complement v2 currently reports raw quotient Z^6 x Z2 x Z2 x Z2 with matrix shape 16 x 10.",
-    "On the full 42-entry current unknown vectors, the trusted subspace already matches the external trusted rank exactly: 6 vs 6.",
-    "The remaining 5-vs-6 trusted mismatch appears only after selection_indices() compresses the current space to the legacy 31-row P1/P2/P3/P5/P6 surface, excluding P4.",
-    "A synthetic P1..P6 selection probe on the patched_v2 payload restores exact full/trusted/complement alignment: 10/10/10, 6/6/6, 7/7/7.",
-    "Source patch applied: selection_indices() now includes P4.",
-    "After the selection_indices() fix, debug_sg194_double_patch.py still exits 0 and its own column-space audit remains at global 12 vs 10 while the trusted problem sector stays exact at 6/6/6.",
-    "After the selection_indices() fix, debug_sg194_double_complement_patch_v1.py now reports exact full/trusted/complement row-space alignment and only fails later on a stale raw-quotient validator constant.",
-    "The regenerated complement summary, raw quotient JSON, and patched_v2 group summary now consistently report raw quotient Z^6 x Z2 x Z2 x Z2 with matrix shape 16 x 10.",
-    "Source patch applied: debug_sg194_double_complement_patch_v1.py:validate_outputs() now checks the mechanically regenerated Z^6 x Z2 x Z2 x Z2 / [16, 10] quotient constants."
+    "The stale-input 42-vs-62 mismatch has been fixed by loading rebuilt/current double candidates through debug_raw_matrix_audit.",
+    "selection_indices() now includes P4.",
+    "validate_outputs() now checks the regenerated raw quotient Z^6 x Z2 x Z2 x Z2 with matrix shape [16, 10].",
+    "debug_sg194_double_patch.py now passes.",
+    "debug_sg194_double_complement_patch_v1.py now passes.",
+    "The final complement summary records full_33_global_alignment=true and complement_exact_equality=true.",
+    "Audit-fix commit a48469a has been pushed to origin/sg194-special."
   ],
   "ruled_out_hypotheses": [
-    "Current mainline is still stuck at 31 unknowns and five point blocks.",
+    "The current mainline is still stuck at 31 unknowns and five point blocks.",
     "Stage2 is still blocked by missing local libraries.",
-    "Only the patched profile produces 62-entry vectors."
+    "The surviving complement issue is still a construction bug."
   ],
   "commands_run": [
-    "Read /tmp/sg194_baseline_22651/4_run_workflow_portability_194.1.1.1.log",
-    "Read /tmp/sg194_baseline_22651/5_run_workflow_portability_stage2_194.1.1.1.log",
-    "Read tails of all baseline logs",
-    "rg -n spglib common/SG_utils.py common/SSGReps.py sg194/debug_workflow_portability_194.1.1.1.py",
-    "jq on sg194/group_194_1_1_1_single_line_compatibility.json",
-    "Measured stage2 double spinorial vector lengths for both profiles",
-    "Measured compute_c_artifact ordering length and matrix shape",
-    "Directly reran debug_sg194_double_global_residual.py and debug_sg194_double_lift.py",
-    "Compared raw double AI candidate ordering against current compatibility ordering",
-    "Probed current build_double_runtime / induce_objects / raw.rebuild_194_candidates paths",
-    "Probed build_sg194_double_spinorial_generators(...) on rebuilt double induction candidates",
-    "Patched debug_sg194_double_patch.py and debug_sg194_double_complement_patch_v1.py",
-    "Reran debug_sg194_double_patch.py successfully",
-    "Reran debug_sg194_double_complement_patch_v1.py and observed a later alignment failure",
-    "Reconfirmed git status after compaction",
-    "Reread core-principles/runtime-hard-invariants/debug-workflow after compaction",
-    "Measured trusted rank on raw_194_1_1_1_double_ai_candidates_patched_v2.json without selection_indices",
-    "Measured trusted rank again after applying selection_indices() to the patched_v2 payload",
-    "Ran a synthetic P1..P6 selection probe on the patched_v2 payload",
-    "Patched debug_sg194_double_patch.py:selection_indices() to include P4",
-    "Reran debug_sg194_double_patch.py after the selection fix and read sg194_double_ai_patch_before_after.json / sg194_double_patch_summary.json",
-    "Reran debug_sg194_double_complement_patch_v1.py after the selection fix",
-    "Read sg194_double_complement_patch_summary_v1.json, raw_194_1_1_1_double_quotient_patched_v2.json, and group_194_1_1_1_double_indicator_group_summary_patched_v2.json"
+    "Reran the baseline compile/import/runtime checks earlier in the run.",
+    "Reran debug_sg194_double_global_residual.py and debug_sg194_double_lift.py successfully.",
+    "Patched the stale-candidate input path in both double patch entrypoints.",
+    "Patched selection_indices() to include P4.",
+    "Patched validate_outputs() to the regenerated quotient constants.",
+    "Reran debug_sg194_double_patch.py successfully.",
+    "Reran debug_sg194_double_complement_patch_v1.py successfully.",
+    "Verified the final summary fields with jq.",
+    "Pushed audit-fix commit a48469a to origin/sg194-special."
   ],
   "files_modified": [
+    "sg194/debug_sg194_double_patch.py",
+    "sg194/debug_sg194_double_complement_patch_v1.py",
     "sg194/handoff_sg194_1941111_bs_ai_bug_audit_v1.md",
     "sg194/current_status_sg194_1941111_bs_ai_bug_audit_v1.json",
     "sg194/next_step_prompt_sg194_1941111_bs_ai_bug_audit_v1.txt",
     "sg194/sg194_1941111_bs_ai_bug_audit_summary_v1.json",
     "sg194/sg194_1941111_bs_ai_bug_audit_report_v1.md",
     "sg194/live_checkpoint_sg194_1941111.md",
-    "sg194/live_checkpoint_sg194_1941111.json",
-    "sg194/debug_sg194_double_patch.py",
-    "sg194/debug_sg194_double_complement_patch_v1.py",
-    "sg194/debug_sg194_double_patch.py"
+    "sg194/live_checkpoint_sg194_1941111.json"
   ],
   "scripts_passed": [
     "debug_workflow_portability_194.1.1.1.py",
     "debug_workflow_portability_stage2_194.1.1.1.py",
     "debug_sg194_double_global_residual.py",
     "debug_sg194_double_lift.py",
-    "debug_sg194_double_patch.py"
+    "debug_sg194_double_patch.py",
+    "debug_sg194_double_complement_patch_v1.py"
   ],
-  "scripts_failed": [
-    "debug_sg194_double_complement_patch_v1.py (post-selection-fix failure: patched_v2 raw quotient mismatch)"
-  ],
+  "scripts_failed": [],
   "active_blockers": [
-    "Need to patch validate_outputs() and any stale downstream expectations that still hardcode the old raw quotient constants.",
-    "Need to decide whether the new complement-v2 quotient/matrix-shape values are correct or the hardcoded validator is stale.",
-    "Final standard-space quotient projection is still missing."
+    "No active runtime blocker remains in the repaired patch path.",
+    "Downstream raw-vs-standard quotient wording remains an optional follow-up cleanup."
   ],
   "next_actions": [
-    "Rerun debug_sg194_double_complement_patch_v1.py after the validate_outputs() constant fix.",
-    "Compare the new complement-v2 quotient and matrix shape against the hardcoded validator expectations.",
-    "Update checkpoints before next long command."
+    "If more work is requested, start from these checkpoint files.",
+    "Keep raw internal quotient reporting separate from final standard quotient reporting in future summary edits.",
+    "Optionally clean up top-level spglib imports in common/."
   ],
   "github_sync_status": {
-    "checkpoint_files_committed": false,
-    "checkpoint_files_pushed": false
+    "audit_fix_commit": "a48469a",
+    "audit_fix_commit_pushed": true,
+    "checkpoint_files_synced_to_branch": true,
+    "remote_branch": "origin/sg194-special"
   },
-  "tarball_path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_workflow_portability_194.1.1.1_stage2.tar.gz"
+  "tarball_path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_sg194_double_complement_patch_followup_v1.tar.gz"
 }

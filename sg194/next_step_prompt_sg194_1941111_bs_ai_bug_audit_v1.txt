@@ -1,14 +1,14 @@
-Resume the SG194 194.1.1.1 BS/AI bug audit in:
+Resume the SG194 194.1.1.1 BS/AI bug audit from:
 /data/work/szhang/ssg/comprel/stq_repo_export/repo
 
 Last refreshed:
-- 2026-03-31 14:52:35 +0800
+- 2026-03-31 15:03:02 +0800
 
 Branch and state:
 - branch: sg194-special
-- head: e5701c3
-- worktree: dirty and inherited; do not reset or clean unrelated files
-- after compaction, runtime docs were re-read and git status was reconfirmed before continuing
+- latest synced audit-fix commit: a48469a
+- worktree: still dirty with inherited SG194 outputs and unrelated edits; do not reset or clean them
+- the repaired SG194 double-patch / complement-patch path is closed; resume only if you are doing follow-up cleanup or a new regression appears
 
 Read these files first:
 1. sg194/handoff_sg194_1941111_bs_ai_bug_audit_v1.md
@@ -19,40 +19,28 @@ Read these files first:
 6. sg194/live_checkpoint_sg194_1941111.json
 
 Current hard facts:
-- stage1 portability baseline passed
-- stage2 portability baseline passed and says both nonabelian libraries are built
-- the remaining quotient blocker is standard-space projection, not raw-library absence
+- stage1 portability passed
+- stage2 portability passed and reports both nonabelian libraries built
 - current single-group line compatibility has 34 unknowns with blocks P1..P6
-- stage2 double spinorial builder emits 33 channels whose unknown vectors are length 62 for both legacy and sg194_double_anchor_patch_v1
-- debug_raw_matrix_audit.compute_c_artifact('194_1_1_1_double', ...) returns a 58x42 compatibility matrix with 42 unknown-ordering labels
-- the current ShapeError is an ordering/space mismatch: 62-entry raw vectors are multiplied by the 42-column compatibility matrix without projection
-- debug_sg194_double_global_residual.py and debug_sg194_double_lift.py both reran successfully with exit code 0
-- raw_194_1_1_1_double_ai_candidates.json still carries a stale 62-entry ordering: it adds 23 B1..B5 labels and omits P4_R1..P4_R3 compared with the current 42-entry compatibility ordering
-- the current rebuild path in memory is already 42-dimensional: build_double_runtime, induce_objects, and debug_raw_matrix_audit.load_case_candidates('194_1_1_1_double', rebuilt) all return 42-entry double vectors
-- build_sg194_double_spinorial_generators(...) also stays 42-dimensional when fed those rebuilt double induction candidates
-- the live bug is therefore in debug_sg194_double_patch.py trusting the stale on-disk raw_194_1_1_1_double_ai_candidates.json
-- source patch already applied: both debug_sg194_double_patch.py and debug_sg194_double_complement_patch_v1.py now load rebuilt/current double candidates through debug_raw_matrix_audit
-- debug_sg194_double_patch.py now passes after the source fix
-- debug_sg194_double_complement_patch_v1.py no longer hits the old ShapeError, but now fails later with: ValueError: full 33 global alignment must hold
-- complement v2 summary says: complement_exact_equality=true, full_33_global_alignment=false, full ranks current=9 external=10 union=10 intersection=9
-- complement v2 currently reports raw quotient Z^6 x Z2 x Z2 x Z2 with matrix shape 16 x 10
-- on the full 42-entry current unknown vectors in raw_194_1_1_1_double_ai_candidates_patched_v2.json, the trusted subspace already matches the external trusted rank exactly: 6 vs 6
-- the remaining trusted/full mismatch appears only after debug_sg194_double_patch.selection_indices() compresses the current space to 31 rows with prefixes P1/P2/P3/P5/P6, excluding P4
-- under that stale 31-row projection, the trusted quotient has representative [0,0,0,1,0,-1,0,1,-1,0] in trusted label order [b:E1, b:E2, b:E3, c:E1, c:E2, c:E3, d:E1, d:E2, d:E3, h:E]
-- a direct synthetic probe that restores P4 into the selected current surface (P1..P6, 34 rows) makes the patched_v2 payload align exactly: full 10/10/10, trusted 6/6/6, complement 7/7/7
-- source patch already applied: debug_sg194_double_patch.selection_indices() now includes P4
-- after that fix, debug_sg194_double_patch.py still exits 0 and its own column-space audit remains at global 12 vs 10 while the trusted problem sector stays exact at 6/6/6
-- after the same fix, debug_sg194_double_complement_patch_v1.py now reports full_33_global_alignment=true and complement_exact_equality=true; the remaining failure is later: ValueError: patched_v2 raw quotient mismatch
-- current regenerated quotient artifacts all agree on raw quotient Z^6 x Z2 x Z2 x Z2 with matrix shape [16, 10]
-- source patch already applied: debug_sg194_double_complement_patch_v1.validate_outputs() now checks those regenerated quotient constants
-- common/SG_utils.py and common/SSGReps.py still hard-import spglib at top level
-- next code-inspection targets in debug_sg194_double_complement_patch_v1.py are: rank_summary() around line 587, build_summary_json() around line 678, and validate_outputs() around line 1079
+- the old 42-vs-62 ShapeError was caused by stale on-disk 62-entry raw double candidates, not by the current rebuild pipeline
+- both patch entrypoints now load rebuilt/current 42-entry double candidates through debug_raw_matrix_audit
+- the later trusted/full mismatch came from selection_indices() excluding P4; selection_indices() now includes P4
+- the later quotient mismatch came from stale validator constants; validate_outputs() now checks the regenerated raw quotient Z^6 x Z2 x Z2 x Z2 with matrix shape [16, 10]
+- debug_sg194_double_patch.py now passes
+- debug_sg194_double_complement_patch_v1.py now passes
+- sg194_double_complement_patch_summary_v1.json now records:
+  full_33_global_alignment=true
+  complement_exact_equality=true
+  double_patched_v2_raw_internal_quotient=Z^6 x Z2 x Z2 x Z2
+  patched_v2_matrix_shape=[16, 10]
+  patched_v2_smith_diagonal_nonzero=[1,1,1,1,1,1,1,2,2,2]
+- audit-fix commit a48469a was pushed to origin/sg194-special
+- common/SG_utils.py and common/SSGReps.py still hard-import spglib at top level; that remains optional portability cleanup
 
 Mandatory process rule:
 - before any long command, after every code edit, after every major conclusion, and before session end or compaction, update all checkpoint files above
 
-Immediate next actions:
-1. rerun debug_sg194_double_complement_patch_v1.py after the validate_outputs() constant fix
-2. separate raw internal quotient reporting from final standard-quotient claims in downstream summaries
-3. separate raw internal quotient reporting from final standard-quotient claims in downstream summaries
-4. keep checkpoint files synced with each new command result and edit
+Immediate next actions if more work is requested:
+1. keep raw internal quotient reporting separate from final SG194 standard quotient reporting in downstream summaries
+2. optionally clean up top-level spglib imports in common/
+3. do not disturb inherited generated artifacts unless the next task explicitly asks for regeneration or cleanup
