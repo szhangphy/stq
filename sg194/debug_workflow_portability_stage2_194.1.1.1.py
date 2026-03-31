@@ -342,7 +342,7 @@ def apply_standard_projection_fields(
     return summary
 
 
-def build_single_runtime(port, module, ssg_dict) -> dict[str, Any]:
+def build_single_runtime(port, module, ssg_dict, *, line_phase_profile: str | None = None) -> dict[str, Any]:
     ctx = port.load_context(module, TARGET_GROUP, "single", ssg_dict)
     prepared_kgeom = port.prepare_kgeometry(TARGET_GROUP)
     kgeom_payload = prepared_kgeom["payload"]
@@ -356,7 +356,10 @@ def build_single_runtime(port, module, ssg_dict) -> dict[str, Any]:
 
     captures = port.build_manifold_capture(module, TARGET_GROUP, ssg_dict, ctx, "single", kgeom)
     point_ids = [item["id"] for item in grouped["points"]] + [item["id"] for item in synthetic_points]
-    line_blocks = [port.build_line_block(line, captures) for line in grouped["lines"]]
+    line_blocks = [
+        port.build_line_block(line, captures, phase_aware_profile=line_phase_profile)
+        for line in grouped["lines"]
+    ]
     line_full = port.build_global_compatibility(line_blocks, point_ids)
     plane_blocks = [
         port.build_plane_block(plane, plane["corner_entries"], captures)
@@ -368,6 +371,8 @@ def build_single_runtime(port, module, ssg_dict) -> dict[str, Any]:
         "ctx": ctx,
         "kgeom": kgeom,
         "captures": captures,
+        "line_blocks": line_blocks,
+        "plane_blocks": plane_blocks,
         "line_full": line_full,
         "with_planes": with_planes,
         "bs_analysis": bs_analysis,
@@ -375,12 +380,22 @@ def build_single_runtime(port, module, ssg_dict) -> dict[str, Any]:
     }
 
 
-def build_double_runtime(port, module, ssg_dict, single_kgeom: dict[str, Any]) -> dict[str, Any]:
+def build_double_runtime(
+    port,
+    module,
+    ssg_dict,
+    single_kgeom: dict[str, Any],
+    *,
+    line_phase_profile: str | None = None,
+) -> dict[str, Any]:
     ctx = port.load_context(module, TARGET_GROUP, "double", ssg_dict)
     ctx["kgeom"] = single_kgeom
     captures = port.build_manifold_capture(module, TARGET_GROUP, ssg_dict, ctx, "double", single_kgeom)
     point_ids = [item["id"] for item in single_kgeom["grouped"]["points"]] + [item["id"] for item in single_kgeom["synthetic_boundary_points"]]
-    line_blocks = [port.build_line_block(line, captures) for line in single_kgeom["grouped"]["lines"]]
+    line_blocks = [
+        port.build_line_block(line, captures, phase_aware_profile=line_phase_profile)
+        for line in single_kgeom["grouped"]["lines"]
+    ]
     line_full = port.build_global_compatibility(line_blocks, point_ids)
     plane_blocks = [
         port.build_plane_block(plane, plane["corner_entries"], captures)
@@ -391,6 +406,8 @@ def build_double_runtime(port, module, ssg_dict, single_kgeom: dict[str, Any]) -
     return {
         "ctx": ctx,
         "captures": captures,
+        "line_blocks": line_blocks,
+        "plane_blocks": plane_blocks,
         "line_full": line_full,
         "with_planes": with_planes,
         "bs_analysis": bs_analysis,

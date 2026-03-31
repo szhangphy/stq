@@ -904,7 +904,117 @@ def coerce_integer_coeffs(coeffs: list[sp.Expr], context: str) -> list[int]:
     return result
 
 
-def build_line_block(line_obj: dict[str, Any], captures: dict[str, Any]) -> dict[str, Any]:
+def matched_unitary_indices(parent_raw: dict[str, Any], child_raw: dict[str, Any]) -> list[int]:
+    parent_ops = [operation_key_from_capture(parent_raw, op_index) for op_index in parent_raw["unitary_capture_indices"]]
+    unitary_map = {
+        operation_key_from_capture(child_raw, op_index): unitary_index
+        for unitary_index, op_index in enumerate(child_raw["unitary_capture_indices"])
+    }
+    matched = [unitary_map.get(op_key) for op_key in parent_ops]
+    if any(index is None for index in matched):
+        raise ValueError("child manifold does not contain the full parent unitary subgroup")
+    return [int(index) for index in matched]
+
+
+def capture_character_vectors(raw: dict[str, Any], field: str, matched: list[int]) -> list[list[complex]]:
+    return [
+        [complex(rep_character[index]) for index in matched]
+        for rep_character in raw[field]
+    ]
+
+
+def identical_restriction_classes(
+    endpoint_id: str,
+    endpoint_raw: dict[str, Any],
+    matched: list[int],
+    *,
+    field: str,
+    tol: float = 1e-8,
+) -> list[dict[str, Any]]:
+    vectors = capture_character_vectors(endpoint_raw, field, matched)
+    classes: list[dict[str, Any]] = []
+    for rep_index, restricted_vector in enumerate(vectors, start=1):
+        rep_id = f"{endpoint_id}_R{rep_index}"
+        for existing in classes:
+            if all(abs(left - right) <= tol for left, right in zip(existing["_vector"], restricted_vector)):
+                existing["rep_ids"].append(rep_id)
+                break
+        else:
+            classes.append(
+                {
+                    "rep_ids": [rep_id],
+                    "restricted_vector": complex_list_to_json(restricted_vector),
+                    "_vector": restricted_vector,
+                }
+            )
+    for existing in classes:
+        existing["class_size"] = len(existing["rep_ids"])
+        del existing["_vector"]
+    return classes
+
+
+def phase_aware_l2_refinement(
+    line_id: str,
+    endpoint_entries: list[dict[str, Any]],
+    captures: dict[str, Any],
+) -> dict[str, Any]:
+    if line_id != "L2":
+        return {
+            "profile": "legacy",
+            "selected_endpoint_id": None,
+            "restriction_classes_by_endpoint": {},
+            "refinement_equations": [],
+        }
+
+    line_raw = captures[line_id]
+    endpoint_scores: list[tuple[int, int, str, list[dict[str, Any]]]] = []
+    restriction_classes_by_endpoint: dict[str, Any] = {}
+    for endpoint_entry in endpoint_entries:
+        endpoint_id = endpoint_entry["point_id"]
+        endpoint_raw = captures[endpoint_entry["capture_id"]]
+        matched = matched_unitary_indices(line_raw, endpoint_raw)
+        classes = identical_restriction_classes(
+            endpoint_id,
+            endpoint_raw,
+            matched,
+            field="linear_character",
+        )
+        restriction_classes_by_endpoint[endpoint_id] = classes
+        duplicated_classes = [item for item in classes if item["class_size"] > 1]
+        duplicated_cover = sum(item["class_size"] for item in duplicated_classes)
+        endpoint_scores.append((duplicated_cover, len(duplicated_classes), endpoint_id, duplicated_classes))
+
+    endpoint_scores.sort(reverse=True)
+    duplicated_cover, duplicated_count, selected_endpoint_id, duplicated_classes = endpoint_scores[0]
+    refinement_equations: list[dict[str, Any]] = []
+    if duplicated_cover > 0 and duplicated_count > 0:
+        for class_index, entry in enumerate(duplicated_classes, start=1):
+            anchor = entry["rep_ids"][0]
+            for rep_id in entry["rep_ids"][1:]:
+                refinement_equations.append(
+                    {
+                        "basis_id": f"{line_id}_phase_aware_class_{class_index:02d}",
+                        "terms": [
+                            {"unknown": anchor, "coeff": 1, "side": "phase_aware_endpoint_class"},
+                            {"unknown": rep_id, "coeff": -1, "side": "phase_aware_endpoint_class"},
+                        ],
+                        "restriction_class_rep_ids": list(entry["rep_ids"]),
+                        "selected_endpoint_id": selected_endpoint_id,
+                    }
+                )
+    return {
+        "profile": "phase_aware_l2_projective_v1",
+        "selected_endpoint_id": selected_endpoint_id,
+        "restriction_classes_by_endpoint": restriction_classes_by_endpoint,
+        "refinement_equations": refinement_equations,
+    }
+
+
+def build_line_block(
+    line_obj: dict[str, Any],
+    captures: dict[str, Any],
+    phase_aware_profile: str | None = None,
+) -> dict[str, Any]:
     line_id = line_obj["id"]
     endpoint_entries = [
         {
@@ -916,7 +1026,6 @@ def build_line_block(line_obj: dict[str, Any], captures: dict[str, Any]) -> dict
     ]
     endpoint_ids = [endpoint["point_id"] for endpoint in endpoint_entries]
     line_raw = captures[line_id]
-    line_unitary_ops = [operation_key_from_capture(line_raw, op_index) for op_index in line_raw["unitary_capture_indices"]]
     line_basis_labels = [f"{line_id}_R{i}" for i in range(1, len(line_raw["character"]) + 1)]
     line_basis_matrix = sp.Matrix([[as_exact_char(value) for value in rep_character] for rep_character in line_raw["character"]]).T
     endpoint_decompositions: dict[str, Any] = {}
@@ -926,15 +1035,7 @@ def build_line_block(line_obj: dict[str, Any], captures: dict[str, Any]) -> dict
     for endpoint_entry in endpoint_entries:
         endpoint_id = endpoint_entry["point_id"]
         endpoint_raw = captures[endpoint_entry["capture_id"]]
-        unitary_map = {
-            operation_key_from_capture(endpoint_raw, op_index): unitary_index
-            for unitary_index, op_index in enumerate(endpoint_raw["unitary_capture_indices"])
-        }
-        matched = [unitary_map.get(op_key) for op_key in line_unitary_ops]
-        if any(index is None for index in matched):
-            raise ValueError(
-                f"{endpoint_id} at {endpoint_entry['point_coordinates']} does not contain the full {line_id} unitary subgroup"
-            )
+        matched = matched_unitary_indices(line_raw, endpoint_raw)
         reps = []
         for rep_index, rep_character in enumerate(endpoint_raw["character"], start=1):
             restricted = sp.Matrix([as_exact_char(rep_character[index]) for index in matched])
@@ -963,6 +1064,29 @@ def build_line_block(line_obj: dict[str, Any], captures: dict[str, Any]) -> dict
                     terms.append({"unknown": rep["rep_id"], "coeff": coeff, "side": side})
         matrix_rows.append(row)
         equations.append({"basis_id": basis_label, "terms": terms})
+    phase_aware_refinement = {
+        "profile": "legacy",
+        "selected_endpoint_id": None,
+        "restriction_classes_by_endpoint": {},
+        "refinement_equations": [],
+    }
+    if phase_aware_profile == "phase_aware_l2_projective_v1":
+        phase_aware_refinement = phase_aware_l2_refinement(line_id, endpoint_entries, captures)
+        local_index = {unknown: index for index, unknown in enumerate(local_unknown_ordering)}
+        for equation in phase_aware_refinement["refinement_equations"]:
+            row = [0] * len(local_unknown_ordering)
+            for term in equation["terms"]:
+                row[local_index[term["unknown"]]] += int(term["coeff"])
+            matrix_rows.append(row)
+            equations.append(
+                {
+                    "basis_id": equation["basis_id"],
+                    "terms": equation["terms"],
+                    "phase_aware_refinement": True,
+                    "restriction_class_rep_ids": equation["restriction_class_rep_ids"],
+                    "selected_endpoint_id": equation["selected_endpoint_id"],
+                }
+            )
     return {
         "status": "success",
         "line_id": line_id,
@@ -982,6 +1106,7 @@ def build_line_block(line_obj: dict[str, Any], captures: dict[str, Any]) -> dict
             "rep_degree": list(line_raw["rep_degree"]),
             "torsion": list(line_raw["torsion"]),
         },
+        "phase_aware_refinement": phase_aware_refinement,
     }
 
 

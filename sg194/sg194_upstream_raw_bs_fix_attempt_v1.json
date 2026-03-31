@@ -1,0 +1,419 @@
+{
+  "target_group": "194.1.1.1",
+  "profile": "phase_aware_l2_projective_v1",
+  "current_raw_bs_rank_single": 16,
+  "current_raw_bs_rank_double": 16,
+  "refined_raw_bs_rank_single": 13,
+  "refined_raw_bs_rank_double": 13,
+  "current_raw_quotient_group_single": "Z^3",
+  "current_raw_quotient_group_double": "Z^3",
+  "surviving_common_free_generators_before": 3,
+  "surviving_common_free_generators_after": 0,
+  "single_current_ai_against_refined_kernel": {
+    "all_candidates_compatibility_zero": false,
+    "failing_candidate_count": 34,
+    "failing_candidate_examples": [
+      {
+        "generator_id": "a_A1g",
+        "local_object_label": "A1g",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "a_A1u",
+        "local_object_label": "A1u",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "a_A2g",
+        "local_object_label": "A2g",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "a_A2u",
+        "local_object_label": "A2u",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_A1'",
+        "local_object_label": "A1'",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_A1''",
+        "local_object_label": "A1''",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_A2'",
+        "local_object_label": "A2'",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_A2''",
+        "local_object_label": "A2''",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_E'",
+        "local_object_label": "E'",
+        "failure_count": 1,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 11,
+            "residual": -2,
+            "basis_id": "L2_phase_aware_class_03",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_E''",
+        "local_object_label": "E''",
+        "failure_count": 1,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 11,
+            "residual": 2,
+            "basis_id": "L2_phase_aware_class_03",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      }
+    ]
+  },
+  "double_current_ai_against_refined_kernel": {
+    "all_candidates_compatibility_zero": false,
+    "failing_candidate_count": 34,
+    "failing_candidate_examples": [
+      {
+        "generator_id": "a_proj_u_1d_1",
+        "local_object_label": "proj_u_1d_1",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "a_proj_u_1d_2",
+        "local_object_label": "proj_u_1d_2",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "a_proj_g_1d_3",
+        "local_object_label": "proj_g_1d_3",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "a_proj_g_1d_4",
+        "local_object_label": "proj_g_1d_4",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_proj_doubleprime_1d_1",
+        "local_object_label": "proj_doubleprime_1d_1",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_proj_doubleprime_1d_2",
+        "local_object_label": "proj_doubleprime_1d_2",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_proj_prime_1d_3",
+        "local_object_label": "proj_prime_1d_3",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_proj_prime_1d_4",
+        "local_object_label": "proj_prime_1d_4",
+        "failure_count": 2,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 9,
+            "residual": -1,
+            "basis_id": "L2_phase_aware_class_01",
+            "source_type": "line",
+            "line_id": "L2"
+          },
+          {
+            "row_index": 10,
+            "residual": 1,
+            "basis_id": "L2_phase_aware_class_02",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_proj_doubleprime_2d_5",
+        "local_object_label": "proj_doubleprime_2d_5",
+        "failure_count": 1,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 11,
+            "residual": 2,
+            "basis_id": "L2_phase_aware_class_03",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      },
+      {
+        "generator_id": "b_proj_doubleprime_2d_6",
+        "local_object_label": "proj_doubleprime_2d_6",
+        "failure_count": 1,
+        "nonzero_residual_rows": [
+          {
+            "row_index": 11,
+            "residual": -2,
+            "basis_id": "L2_phase_aware_class_03",
+            "source_type": "line",
+            "line_id": "L2"
+          }
+        ]
+      }
+    ]
+  },
+  "raw_quotient_status_after_refined_l2": "blocked_by_phase_aware_ai_mapping",
+  "blocker": "The phase-aware L2 refinement kills the BS-side Z^3 and drops raw BS from 16 to 13, but the current AI induction still emits raw point-row multiplicities that violate the new P3 class-glue rows. A matching phase-aware point-row translation / unknown-vector builder is still missing.",
+  "next_missing_object": "phase_aware_point_row_translation_for_P3_duplicate_L2_classes"
+}
