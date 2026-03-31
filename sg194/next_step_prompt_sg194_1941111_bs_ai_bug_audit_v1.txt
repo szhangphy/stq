@@ -1,50 +1,49 @@
-Resume the SG194 194.1.1.1 repo-consistency closeout in:
+Resume the SG194 194.1.1.1 final standard-space closeout in:
 /data/work/szhang/ssg/comprel/stq_repo_export/repo
 
 Last refreshed:
-- 2026-03-31 18:14:31 +0800
+- 2026-03-31 20:05:18 +0800
 
 Branch and synced commits:
 - active branch: sg194-special
-- latest synced sg194-special commit: a53a9af
+- latest synced sg194-special commit: 36a66b7
 - latest synced main commit: a7b4e4d
 - remote: git@github.com:szhangphy/stq.git
 
 Do not reopen:
-- double complement math patching
-- trusted-sector work
-- full_33_global_alignment proof work
-- old 42-vs-62 mismatch
-
-Accepted finished facts:
-- patched_v2 raw internal quotient = Z^6 x Z2 x Z2 x Z2
-- patched_v2 matrix shape = [16,10]
-- full_33_global_alignment = true
-- complement_exact_equality = true
+- repo-consistency closeout
+- package/import portability
+- legacy bs_ai_separation semantics
+- double complement mathematics
 
 Current hard facts:
-- local stage2 completion JSONs show rank_bs=16, raw_internal_quotient_group=Z^3, quotient_group=null
-- local stage2 current_status and stage2 summary JSON separate raw internal quotient from missing standard projection
-- bs_ai_separation is explicit legacy/stale reference and points to the stage2 closeout outputs as the current authoritative evidence path
-- repo-top and vendored common portability chains both pass blocked spglib/pymatgen import verification
-- debug_sg194_bs_ai_separation.py, debug_workflow_portability_stage2_194.1.1.1.py, debug_sg194_double_patch.py, and debug_sg194_double_complement_patch_v1.py all passed
-- the final checkpoint/package sync and lightweight handoff bundle creation are already done
-- the remaining work is staged-scope review, commit, and push
+- current physical point-space shell = 34 rows P1..P6 inside the 42-row runtime ambient
+- final ordinary SG194 standard shell = 34 rows on GM/A/K/H/M/L
+- current-to-standard mapping is explicit in sg194_current_to_standard_row_translation_v1.json
+- projection contract type = common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators
+- common free-generator rank = 3
+- single final rank(BS) = 13
+- single final rank(AI) = 13
+- single final quotient = trivial
+- double final rank(BS) = 13
+- double final rank(AI) = 13
+- double final quotient = trivial
+- workflow_portability_report_stage2_194.1.1.1.pdf exists
+- python3 sg194/debug_sg194_standard_space_projection_v1.py --validate passed
+- python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate passed
 
 Read first:
-1. sg194/handoff_sg194_1941111_bs_ai_bug_audit_v1.md
-2. sg194/current_status_sg194_1941111_bs_ai_bug_audit_v1.json
-3. sg194/sg194_1941111_bs_ai_bug_audit_summary_v1.json
-4. sg194/sg194_1941111_bs_ai_bug_audit_report_v1.md
-5. sg194/live_checkpoint_sg194_1941111.md
-6. sg194/live_checkpoint_sg194_1941111.json
-7. sg194/repo_consistency_closeout_verification_v1.md
-8. sg194/workflow_portability_stage2_summary_194.1.1.1.json
-9. sg194/current_status_194.1.1.1_stage2.json
-10. sg194/current_status_sg194_bs_ai_separation.json
+1. sg194/sg194_standard_space_projection_summary_v1.json
+2. sg194/sg194_current_to_standard_row_translation_v1.json
+3. sg194/sg194_final_bs_ai_closeout_report_v1.md
+4. sg194/current_status_194.1.1.1_stage2.json
+5. sg194/workflow_portability_stage2_summary_194.1.1.1.json
+6. sg194/group_194_1_1_1_single_ai_completion_summary.json
+7. sg194/group_194_1_1_1_double_ai_completion_summary.json
+8. sg194/workflow_portability_report_stage2_194.1.1.1.pdf
 
 Immediate next actions:
-1. review the staged diff and remove any out-of-scope old review-package files before commit
-2. git add the in-scope source/artifact/package/checkpoint outputs if any updated files are not yet staged
+1. review staged scope and keep unrelated old review-package directories/tarballs plus LaTeX aux/log files out of the commit
+2. git add the in-scope source and generated outputs
 3. commit on sg194-special
 4. push origin sg194-special

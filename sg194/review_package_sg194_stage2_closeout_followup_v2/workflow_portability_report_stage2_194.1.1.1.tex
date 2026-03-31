@@ -16,7 +16,8 @@ Reference group: \texttt{10.4.1.31}. Fixed target group: \texttt{194.1.1.1}. Thi
 \item a family-by-family SG 194 site-symmetry inventory,
 \item a reusable single-group local-irrep library,
 \item a reusable double-group projective local-irrep library under \texttt{factor\_su2},
-\item immediate feed-back into the \texttt{groupType=1} and \texttt{groupType=2} AI workflow on \texttt{194.1.1.1}, together with explicit raw-internal quotient extraction.
+\item immediate feed-back into the \texttt{groupType=1} and \texttt{groupType=2} AI workflow on \texttt{194.1.1.1},
+\item and the final ordinary standard-space reduction from the common 16-dimensional current BS layer to the final 13-dimensional SG194 ordinary standard layer.
 \end{enumerate}
 
 \section{SG 194 Non-Abelian Site-Symmetry Inventory}
@@ -44,32 +45,54 @@ a & 0, 0, 0 & 2 & 2[x] * m[x] * 2[y] * m[y] * 3[z] * -3[z] * 2[110] * m[110] * -
 \end{center}
 The true non-abelian types are \texttt{C3v / 3m} on families \texttt{e,f}, \texttt{D3h-like / -6m2} on families \texttt{b,c,d}, and \texttt{D3d-like / -3m} on family \texttt{a}.
 
-\section{Single-Group Updated Result on 194.1.1.1}
-The stage-2 single-group outcome is:
+\section{Current Point Space And Standard Target}
+The current authoritative runtime ambient is the 42-row ordering
+\texttt{['P1\_R1', 'P1\_R2', 'P1\_R3', 'P1\_R4', 'P1\_R5', 'P1\_R6', 'P1\_R7', 'P1\_R8', 'P1\_R9', 'P1\_R10', 'P1\_R11', 'P1\_R12', 'P2\_R1', 'P2\_R2', 'P2\_R3', 'P3\_R1', 'P3\_R2', 'P3\_R3', 'P3\_R4', 'P3\_R5', 'P3\_R6', 'P4\_R1', 'P4\_R2', 'P4\_R3', 'P5\_R1', 'P5\_R2', 'P5\_R3', 'P5\_R4', 'P5\_R5', 'P5\_R6', 'P5\_R7', 'P5\_R8', 'P6\_R1', 'P6\_R2', 'S1\_R1', 'S1\_R2', 'S2\_R1', 'S2\_R2', 'S3\_R1', 'S3\_R2', 'S4\_R1', 'S4\_R2']}.
+Its physical point-space shell is the first 34 rows
+\texttt{['P1\_R1', 'P1\_R2', 'P1\_R3', 'P1\_R4', 'P1\_R5', 'P1\_R6', 'P1\_R7', 'P1\_R8', 'P1\_R9', 'P1\_R10', 'P1\_R11', 'P1\_R12', 'P2\_R1', 'P2\_R2', 'P2\_R3', 'P3\_R1', 'P3\_R2', 'P3\_R3', 'P3\_R4', 'P3\_R5', 'P3\_R6', 'P4\_R1', 'P4\_R2', 'P4\_R3', 'P5\_R1', 'P5\_R2', 'P5\_R3', 'P5\_R4', 'P5\_R5', 'P5\_R6', 'P5\_R7', 'P5\_R8', 'P6\_R1', 'P6\_R2']},
+while the trailing synthetic rows are
+\texttt{['S1\_R1', 'S1\_R2', 'S2\_R1', 'S2\_R2', 'S3\_R1', 'S3\_R2', 'S4\_R1', 'S4\_R2']}.
+
+The final ordinary standard target is the external 34-row row language
+\texttt{['GM:*GM\_1+', 'GM:*GM\_1-', 'GM:*GM\_2+', 'GM:*GM\_2-', 'GM:*GM\_3+', 'GM:*GM\_3-', 'GM:*GM\_4+', 'GM:*GM\_4-', 'GM:*GM\_5+', 'GM:*GM\_5-', 'GM:*GM\_6+', 'GM:*GM\_6-', 'A:*A\_1', 'A:*A\_2', 'A:*A\_3', 'K:*K\_1', 'K:*K\_4', 'K:*K\_2', 'K:*K\_3', 'K:*K\_5', 'K:*K\_6', 'H:*H\_3', 'H:*H\_1', 'H:*H\_2', 'M:*M\_1+', 'M:*M\_1-', 'M:*M\_2+', 'M:*M\_2-', 'M:*M\_3+', 'M:*M\_3-', 'M:*M\_4+', 'M:*M\_4-', 'L:*L\_1', 'L:*L\_2']}.
+The block identification is:
+\texttt{P1 -> GM, P2 -> A, P3 -> K, P4 -> H, P5 -> M, P6 -> L}.
+
+\section{Common Quotient Contract}
+Single and double currently share the same 16-dimensional BS space. Their raw internal quotient is the same free rank-3 object, and the same three common free directions are killed by the final standard projection:
+\begin{itemize}
+\item \texttt{common\_free\_generator\_1}: P3\_R5:-1, P3\_R6:+1
+\item \texttt{common\_free\_generator\_2}: P3\_R5:+1, P4\_R1:+1
+\item \texttt{common\_free\_generator\_3}: P3\_R1:+1, P3\_R2:+1, P4\_R3:+1
+\end{itemize}
+
+The explicit projection matrix from current BS coordinates to external ordinary rows is recorded in \texttt{sg194\_standard\_space\_projection\_summary\_v1.json}.
+
+\section{Single-Group Final Result on 194.1.1.1}
+The final single-group outcome is:
 \begin{itemize}
 \item AI completion status: \texttt{True},
 \item generated local objects: 45,
 \item distinct induced unknown vectors: 45,
-\item $\mathrm{rank}(BS) = 16$ and $\mathrm{rank}(AI) = 13$,
-\item raw internal quotient: $\mathrm{Z}^{3}$,
-\item final standard quotient: \texttt{missing}.
+\item raw $\mathrm{rank}(BS) = 16$ and raw $\mathrm{rank}(AI) = 13$,
+\item final $\mathrm{rank}(BS_{\mathrm{std}}) = 13$ and final $\mathrm{rank}(AI_{\mathrm{std}}) = 13$,
+\item raw internal quotient: \texttt{Z\textasciicircum{}3},
+\item final standard quotient: $\mathrm{trivial}$.
 \end{itemize}
 The BS background still comes from the audited with-planes matrix on \texttt{194.1.1.1}, with shape $(58,42)$, rank 26, and nullity 16.
 
-\section{Double-Group Updated Result on 194.1.1.1}
-The stage-2 double-group outcome is:
+\section{Double-Group Final Result on 194.1.1.1}
+The final double-group outcome is:
 \begin{itemize}
 \item AI completion status: \texttt{True},
 \item generated local objects: 45,
 \item distinct induced unknown vectors: 45,
-\item $\mathrm{rank}(BS_{\mathrm{double}}) = 16$ and $\mathrm{rank}(AI_{\mathrm{double}}) = 13$,
-\item raw internal quotient: $\mathrm{Z}^{3}$,
-\item final standard quotient: \texttt{missing}.
+\item raw $\mathrm{rank}(BS_{\mathrm{double}}) = 16$ and raw $\mathrm{rank}(AI_{\mathrm{double}}) = 13$,
+\item final $\mathrm{rank}(BS_{\mathrm{std,double}}) = 13$ and final $\mathrm{rank}(AI_{\mathrm{std,double}}) = 13$,
+\item raw internal quotient: \texttt{Z\textasciicircum{}3},
+\item final standard quotient: $\mathrm{trivial}$.
 \end{itemize}
 The double-group BS background uses the same with-planes geometry and has shape $(58,42)$, rank 26, and nullity 16.
-
-\section{Interpretation Boundary}
-This quotient is computed in the 16-dimensional raw internal BS space and must not yet be reported as the final SG194 standard indicator.
 
 \section{Implementation Mapping}
 \begin{itemize}
@@ -78,10 +101,18 @@ This quotient is computed in the 16-dimensional raw internal BS space and must n
 \item double local library: \texttt{sg194\_double\_local\_corep\_library.json},
 \item single AI completion summary: \texttt{group\_194\_1\_1\_1\_single\_ai\_completion\_summary.json},
 \item double AI completion summary: \texttt{group\_194\_1\_1\_1\_double\_ai\_completion\_summary.json},
-\item stage-2 audit summary: \texttt{workflow\_portability\_stage2\_summary\_194.1.1.1.json}.
+\item stage-2 audit summary: \texttt{workflow\_portability\_stage2\_summary\_194.1.1.1.json},
+\item current-to-standard row translation: \texttt{sg194\_current\_to\_standard\_row\_translation\_v1.json},
+\item final projection summary: \texttt{sg194\_standard\_space\_projection\_summary\_v1.json}.
 \end{itemize}
 
 \section{Conclusion and Remaining Questions}
-Within the present fixed SG 194 controlled case, the local-library blocker is removed. What remains is not a local-library failure but an interpretation boundary: the raw internal quotient is now available, while the final standard-indicator projection is still missing and must remain reported as missing.
+Within the present fixed SG 194 controlled case, the local-library blocker is removed and the final standard-indicator projection is no longer missing. The current code chain now carries an explicit ordinary standard-space reduction whose final result is
+\[
+\mathrm{rank}(BS_{\mathrm{std}}) = \mathrm{rank}(AI_{\mathrm{std}}) = 13,
+\qquad
+BS_{\mathrm{std}}/AI_{\mathrm{std}} = \mathrm{trivial},
+\]
+for both the single and double authoritative stage-2 lines.
 
 \end{document}

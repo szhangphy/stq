@@ -1,0 +1,12346 @@
+{
+  "target_group": "194.1.1.1",
+  "current_runtime_unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P1_R9",
+    "P1_R10",
+    "P1_R11",
+    "P1_R12",
+    "P2_R1",
+    "P2_R2",
+    "P2_R3",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P4_R1",
+    "P4_R2",
+    "P4_R3",
+    "P5_R1",
+    "P5_R2",
+    "P5_R3",
+    "P5_R4",
+    "P5_R5",
+    "P5_R6",
+    "P5_R7",
+    "P5_R8",
+    "P6_R1",
+    "P6_R2",
+    "S1_R1",
+    "S1_R2",
+    "S2_R1",
+    "S2_R2",
+    "S3_R1",
+    "S3_R2",
+    "S4_R1",
+    "S4_R2"
+  ],
+  "current_point_row_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P1_R9",
+    "P1_R10",
+    "P1_R11",
+    "P1_R12",
+    "P2_R1",
+    "P2_R2",
+    "P2_R3",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P4_R1",
+    "P4_R2",
+    "P4_R3",
+    "P5_R1",
+    "P5_R2",
+    "P5_R3",
+    "P5_R4",
+    "P5_R5",
+    "P5_R6",
+    "P5_R7",
+    "P5_R8",
+    "P6_R1",
+    "P6_R2"
+  ],
+  "synthetic_boundary_rows": [
+    "S1_R1",
+    "S1_R2",
+    "S2_R1",
+    "S2_R2",
+    "S3_R1",
+    "S3_R2",
+    "S4_R1",
+    "S4_R2"
+  ],
+  "current_point_block_counts": {
+    "P1": 12,
+    "P2": 3,
+    "P3": 6,
+    "P4": 3,
+    "P5": 8,
+    "P6": 2
+  },
+  "common_bs_basis_vectors": [
+    {
+      "id": "basis_01",
+      "vector_in_current_point_rows": [
+        1,
+        1,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_02",
+      "vector_in_current_point_rows": [
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_03",
+      "vector_in_current_point_rows": [
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_04",
+      "vector_in_current_point_rows": [
+        -1,
+        -1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_05",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_06",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_07",
+      "vector_in_current_point_rows": [
+        0,
+        -1,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": -1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_08",
+      "vector_in_current_point_rows": [
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_09",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_10",
+      "vector_in_current_point_rows": [
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": -1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_11",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_12",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_13",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_14",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_15",
+      "vector_in_current_point_rows": [
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "id": "basis_16",
+      "vector_in_current_point_rows": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": -1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        }
+      ]
+    }
+  ],
+  "single_ai_candidate_vectors": [
+    {
+      "generator_id": "a_A1g",
+      "family_id": "a",
+      "local_object_label": "A1g",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "a_A1u",
+      "family_id": "a",
+      "local_object_label": "A1u",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        1,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_A2g",
+      "family_id": "a",
+      "local_object_label": "A2g",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_A2u",
+      "family_id": "a",
+      "local_object_label": "A2u",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_Eg",
+      "family_id": "a",
+      "local_object_label": "Eg",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        -1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_Eu",
+      "family_id": "a",
+      "local_object_label": "Eu",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "b_A1''",
+      "family_id": "b",
+      "local_object_label": "A1''",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_A2'",
+      "family_id": "b",
+      "local_object_label": "A2'",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_A2''",
+      "family_id": "b",
+      "local_object_label": "A2''",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_E'",
+      "family_id": "b",
+      "local_object_label": "E'",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        4,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_E''",
+      "family_id": "b",
+      "local_object_label": "E''",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "c_A1''",
+      "family_id": "c",
+      "local_object_label": "A1''",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_A2'",
+      "family_id": "c",
+      "local_object_label": "A2'",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_A2''",
+      "family_id": "c",
+      "local_object_label": "A2''",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_E'",
+      "family_id": "c",
+      "local_object_label": "E'",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        4,
+        -1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_E''",
+      "family_id": "c",
+      "local_object_label": "E''",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "d_A1''",
+      "family_id": "d",
+      "local_object_label": "A1''",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_A2'",
+      "family_id": "d",
+      "local_object_label": "A2'",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_A2''",
+      "family_id": "d",
+      "local_object_label": "A2''",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_E'",
+      "family_id": "d",
+      "local_object_label": "E'",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        4,
+        -1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_E''",
+      "family_id": "d",
+      "local_object_label": "E''",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "e_A1",
+      "family_id": "e",
+      "local_object_label": "A1",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "e_A2",
+      "family_id": "e",
+      "local_object_label": "A2",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        -2,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "e_E",
+      "family_id": "e",
+      "local_object_label": "E",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        4,
+        4,
+        -2,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        0,
+        2,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_A1",
+      "family_id": "f",
+      "local_object_label": "A1",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "f_A2",
+      "family_id": "f",
+      "local_object_label": "A2",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        -2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_E",
+      "family_id": "f",
+      "local_object_label": "E",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        4,
+        4,
+        -2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_Ag",
+      "family_id": "g",
+      "local_object_label": "Ag",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        3,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "g_Bg",
+      "family_id": "g",
+      "local_object_label": "Bg",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        3,
+        -2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_Au",
+      "family_id": "g",
+      "local_object_label": "Au",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        3,
+        -2,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_Bu",
+      "family_id": "g",
+      "local_object_label": "Bu",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        3,
+        -1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "h_A1",
+      "family_id": "h",
+      "local_object_label": "A1",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        1,
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        1,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        6,
+        -1,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "h_A2",
+      "family_id": "h",
+      "local_object_label": "A2",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        2,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        0,
+        -2,
+        1,
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "h_B1",
+      "family_id": "h",
+      "local_object_label": "B1",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        6,
+        -2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "h_B2",
+      "family_id": "h",
+      "local_object_label": "B2",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        0,
+        1,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        0,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "i_A",
+      "family_id": "i",
+      "local_object_label": "A",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 3
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        6,
+        -3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "i_B",
+      "family_id": "i",
+      "local_object_label": "B",
+      "vector_in_current_point_rows": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        3,
+        3
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 3
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        6,
+        -3,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "j_A'",
+      "family_id": "j",
+      "local_object_label": "A'",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        4
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 4
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        6,
+        -2,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "j_A''",
+      "family_id": "j",
+      "local_object_label": "A''",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        4,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 4
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        6,
+        -4,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "k_A'",
+      "family_id": "k",
+      "local_object_label": "A'",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        4,
+        2,
+        2,
+        2,
+        3,
+        0,
+        3,
+        0,
+        0,
+        3,
+        0,
+        3,
+        3,
+        3
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 3
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        12,
+        -3,
+        0,
+        2,
+        3,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        4,
+        2,
+        1
+      ]
+    },
+    {
+      "generator_id": "k_A''",
+      "family_id": "k",
+      "local_object_label": "A''",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        0,
+        2,
+        0,
+        4,
+        0,
+        2,
+        2,
+        2,
+        0,
+        3,
+        0,
+        3,
+        3,
+        0,
+        3,
+        0,
+        3,
+        3
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 3
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        0,
+        -3,
+        3,
+        0,
+        0,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "l_A",
+      "family_id": "l",
+      "local_object_label": "A",
+      "vector_in_current_point_rows": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        6,
+        6
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 4
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 4
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 4
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 6
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 6
+        }
+      ],
+      "bs_coordinates": [
+        12,
+        12,
+        -6,
+        3,
+        2,
+        3,
+        3,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        2,
+        1
+      ]
+    }
+  ],
+  "double_ai_candidate_vectors": [
+    {
+      "generator_id": "a_proj_u_1d_1",
+      "family_id": "a",
+      "local_object_label": "proj_u_1d_1",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_proj_u_1d_2",
+      "family_id": "a",
+      "local_object_label": "proj_u_1d_2",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        1,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_proj_g_1d_3",
+      "family_id": "a",
+      "local_object_label": "proj_g_1d_3",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "a_proj_g_1d_4",
+      "family_id": "a",
+      "local_object_label": "proj_g_1d_4",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_proj_u_2d_5",
+      "family_id": "a",
+      "local_object_label": "proj_u_2d_5",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_proj_u_2d_6",
+      "family_id": "a",
+      "local_object_label": "proj_u_2d_6",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        -1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_proj_doubleprime_1d_1",
+      "family_id": "b",
+      "local_object_label": "proj_doubleprime_1d_1",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_proj_doubleprime_1d_2",
+      "family_id": "b",
+      "local_object_label": "proj_doubleprime_1d_2",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_proj_prime_1d_3",
+      "family_id": "b",
+      "local_object_label": "proj_prime_1d_3",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "b_proj_prime_1d_4",
+      "family_id": "b",
+      "local_object_label": "proj_prime_1d_4",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        -1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_proj_doubleprime_2d_5",
+      "family_id": "b",
+      "local_object_label": "proj_doubleprime_2d_5",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_proj_doubleprime_2d_6",
+      "family_id": "b",
+      "local_object_label": "proj_doubleprime_2d_6",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        4,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_proj_doubleprime_1d_1",
+      "family_id": "c",
+      "local_object_label": "proj_doubleprime_1d_1",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_proj_doubleprime_1d_2",
+      "family_id": "c",
+      "local_object_label": "proj_doubleprime_1d_2",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_proj_prime_1d_3",
+      "family_id": "c",
+      "local_object_label": "proj_prime_1d_3",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "c_proj_prime_1d_4",
+      "family_id": "c",
+      "local_object_label": "proj_prime_1d_4",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_proj_doubleprime_2d_5",
+      "family_id": "c",
+      "local_object_label": "proj_doubleprime_2d_5",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "c_proj_doubleprime_2d_6",
+      "family_id": "c",
+      "local_object_label": "proj_doubleprime_2d_6",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        4,
+        -1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_proj_doubleprime_1d_1",
+      "family_id": "d",
+      "local_object_label": "proj_doubleprime_1d_1",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_proj_doubleprime_1d_2",
+      "family_id": "d",
+      "local_object_label": "proj_doubleprime_1d_2",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_proj_prime_1d_3",
+      "family_id": "d",
+      "local_object_label": "proj_prime_1d_3",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "d_proj_prime_1d_4",
+      "family_id": "d",
+      "local_object_label": "proj_prime_1d_4",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        1,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_proj_doubleprime_2d_5",
+      "family_id": "d",
+      "local_object_label": "proj_doubleprime_2d_5",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "d_proj_doubleprime_2d_6",
+      "family_id": "d",
+      "local_object_label": "proj_doubleprime_2d_6",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        4,
+        -1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "e_proj_1d_1",
+      "family_id": "e",
+      "local_object_label": "proj_1d_1",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        -2,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "e_proj_1d_2",
+      "family_id": "e",
+      "local_object_label": "proj_1d_2",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "e_proj_E_half",
+      "family_id": "e",
+      "local_object_label": "proj_E_half",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        4,
+        4,
+        -2,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        0,
+        2,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_proj_1d_1",
+      "family_id": "f",
+      "local_object_label": "proj_1d_1",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        -2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_proj_1d_2",
+      "family_id": "f",
+      "local_object_label": "proj_1d_2",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        2,
+        2,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "generator_id": "f_proj_E_half",
+      "family_id": "f",
+      "local_object_label": "proj_E_half",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        4,
+        4,
+        -2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_proj_u_m1",
+      "family_id": "g",
+      "local_object_label": "proj_u_m1",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        3,
+        -1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_proj_u_1",
+      "family_id": "g",
+      "local_object_label": "proj_u_1",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        3,
+        -2,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_proj_g_m1",
+      "family_id": "g",
+      "local_object_label": "proj_g_m1",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        3,
+        -2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_proj_g_1",
+      "family_id": "g",
+      "local_object_label": "proj_g_1",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        3,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "h_proj_mm2_1",
+      "family_id": "h",
+      "local_object_label": "proj_mm2_1",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        2,
+        0,
+        1,
+        0,
+        1,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        0,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "h_proj_mm2_2",
+      "family_id": "h",
+      "local_object_label": "proj_mm2_2",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0,
+        1,
+        2,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        6,
+        -2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "h_proj_mm2_3",
+      "family_id": "h",
+      "local_object_label": "proj_mm2_3",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        2,
+        1
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 1
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        0,
+        -2,
+        1,
+        0,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "h_proj_mm2_4",
+      "family_id": "h",
+      "local_object_label": "proj_mm2_4",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        2,
+        1,
+        1,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        1,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        3,
+        6,
+        -1,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "i_proj_minus_i",
+      "family_id": "i",
+      "local_object_label": "proj_minus_i",
+      "vector_in_current_point_rows": [
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        3,
+        3
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 3
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        6,
+        -3,
+        1,
+        0,
+        1,
+        1,
+        1,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "i_proj_plus_i",
+      "family_id": "i",
+      "local_object_label": "proj_plus_i",
+      "vector_in_current_point_rows": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 3
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        6,
+        -3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "j_proj_minus_i",
+      "family_id": "j",
+      "local_object_label": "proj_minus_i",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        4,
+        2
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 4
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 2
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        6,
+        -4,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "j_proj_plus_i",
+      "family_id": "j",
+      "local_object_label": "proj_plus_i",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2,
+        4
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 4
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        6,
+        -2,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "generator_id": "k_proj_minus_i",
+      "family_id": "k",
+      "local_object_label": "proj_minus_i",
+      "vector_in_current_point_rows": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        2,
+        2,
+        0,
+        1,
+        1,
+        2,
+        2,
+        0,
+        2,
+        0,
+        4,
+        0,
+        2,
+        2,
+        2,
+        0,
+        3,
+        0,
+        3,
+        3,
+        0,
+        3,
+        0,
+        3,
+        3
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 3
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        0,
+        -3,
+        3,
+        0,
+        0,
+        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "k_proj_plus_i",
+      "family_id": "k",
+      "local_object_label": "proj_plus_i",
+      "vector_in_current_point_rows": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        2,
+        0,
+        0,
+        2,
+        1,
+        1,
+        2,
+        0,
+        2,
+        0,
+        2,
+        0,
+        4,
+        2,
+        2,
+        2,
+        3,
+        0,
+        3,
+        0,
+        0,
+        3,
+        0,
+        3,
+        3,
+        3
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 3
+        }
+      ],
+      "bs_coordinates": [
+        6,
+        12,
+        -3,
+        0,
+        2,
+        3,
+        0,
+        0,
+        0,
+        2,
+        2,
+        2,
+        2,
+        4,
+        2,
+        1
+      ]
+    },
+    {
+      "generator_id": "l_proj_1",
+      "family_id": "l",
+      "local_object_label": "proj_1",
+      "vector_in_current_point_rows": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        4,
+        2,
+        2,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        6,
+        6
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P1_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R7",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R8",
+          "coeff": 1
+        },
+        {
+          "label": "P1_R9",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R10",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R11",
+          "coeff": 2
+        },
+        {
+          "label": "P1_R12",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P2_R3",
+          "coeff": 4
+        },
+        {
+          "label": "P3_R1",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 2
+        },
+        {
+          "label": "P3_R5",
+          "coeff": 4
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R2",
+          "coeff": 4
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 4
+        },
+        {
+          "label": "P5_R1",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R2",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R3",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R4",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R5",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R6",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R7",
+          "coeff": 3
+        },
+        {
+          "label": "P5_R8",
+          "coeff": 3
+        },
+        {
+          "label": "P6_R1",
+          "coeff": 6
+        },
+        {
+          "label": "P6_R2",
+          "coeff": 6
+        }
+      ],
+      "bs_coordinates": [
+        12,
+        12,
+        -6,
+        3,
+        2,
+        3,
+        3,
+        2,
+        2,
+        4,
+        4,
+        4,
+        4,
+        4,
+        2,
+        1
+      ]
+    }
+  ],
+  "common_free_generators": [
+    {
+      "common_free_generator_id": "common_free_generator_1",
+      "single_indicator_id": "single_free_generator_1",
+      "double_indicator_id": "double_free_generator_1",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "unknown_vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "common_free_generator_id": "common_free_generator_2",
+      "single_indicator_id": "single_free_generator_2",
+      "double_indicator_id": "double_free_generator_2",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "unknown_vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        }
+      ]
+    },
+    {
+      "common_free_generator_id": "common_free_generator_3",
+      "single_indicator_id": "single_free_generator_3",
+      "double_indicator_id": "double_free_generator_3",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unknown_vector_in_current_point_rows": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support_on_current_point_rows": [
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        }
+      ]
+    }
+  ]
+}

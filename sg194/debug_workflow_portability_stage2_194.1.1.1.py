@@ -16,6 +16,7 @@ import sympy as sp
 from sympy import ZZ
 from sympy.matrices.normalforms import smith_normal_decomp
 
+import debug_sg194_standard_space_projection_v1 as standard_projection
 
 ROOT = Path(__file__).resolve().parent
 COMMON_ROOT = ROOT.parent / "common"
@@ -70,6 +71,15 @@ COMMON_PACKAGE_FILES = [
     Path("SG_utils.py"),
     Path("SSGReps.py"),
     Path("rep_utils.py"),
+]
+
+STANDARD_PROJECTION_OUTPUTS = [
+    standard_projection.CURRENT_POINT_SNAPSHOT_JSON,
+    standard_projection.ROW_TRANSLATION_JSON,
+    standard_projection.PROJECTION_SUMMARY_JSON,
+    standard_projection.FINAL_CLOSEOUT_REPORT_MD,
+    standard_projection.FINAL_CLOSEOUT_STATUS_JSON,
+    standard_projection.FINAL_CLOSEOUT_NEXT_STEP_PROMPT_TXT,
 ]
 
 
@@ -188,6 +198,33 @@ def latex_group_string(group: str | None) -> str:
     return r" \times ".join(rebuilt)
 
 
+def latex_escape(text: str) -> str:
+    replacements = {
+        "\\": r"\textbackslash{}",
+        "_": r"\_",
+        "{": r"\{",
+        "}": r"\}",
+        "#": r"\#",
+        "$": r"\$",
+        "%": r"\%",
+        "&": r"\&",
+        "~": r"\textasciitilde{}",
+        "^": r"\textasciicircum{}",
+    }
+    for src, dst in replacements.items():
+        text = text.replace(src, dst)
+    return text
+
+
+def format_support_for_latex(support: list[dict[str, Any]]) -> str:
+    pieces: list[str] = []
+    for item in support:
+        coeff = item["coeff"]
+        sign = "+" if coeff > 0 else ""
+        pieces.append(f"{item['label']}:{sign}{coeff}")
+    return latex_escape(", ".join(pieces))
+
+
 def raw_internal_warning(bs_rank: int) -> str:
     return (
         f"This quotient is computed in the {bs_rank}-dimensional raw internal BS space "
@@ -221,6 +258,42 @@ def completion_quotient_fields(
         "quotient_group": None,
         "interpretation_warning": raw_internal_warning(bs_rank),
     }
+
+
+def common_free_generator_ids(projection_payload: dict[str, Any]) -> list[str]:
+    return [item["common_free_generator_id"] for item in projection_payload["common_free_generators"]]
+
+
+def apply_standard_projection_fields(
+    summary: dict[str, Any],
+    projection_payload: dict[str, Any],
+    group_key: str,
+) -> dict[str, Any]:
+    final = projection_payload[group_key]
+    summary.update(
+        {
+            "quotient_status": "standard_projected",
+            "standard_space_projection_status": "implemented",
+            "projection_contract_type": projection_payload["projection_contract_type"],
+            "current_to_standard_row_translation_json": str(standard_projection.ROW_TRANSLATION_JSON),
+            "standard_space_projection_summary_json": str(standard_projection.PROJECTION_SUMMARY_JSON),
+            "final_standard_space_kind": "ordinary_sg194_external_row_language",
+            "final_standard_row_count": len(projection_payload["row_translation"]["external_standard_row_ordering"]),
+            "rank_bs_standard": final["final_rank_bs"],
+            "rank_ai_standard": final["final_rank_ai"],
+            "final_rank_bs": final["final_rank_bs"],
+            "final_rank_ai": final["final_rank_ai"],
+            "quotient_group": final["quotient_group"],
+            "standard_quotient_group": final["quotient_group"],
+            "standard_space_projection_common_free_generator_rank": projection_payload["common_free_generator_rank"],
+            "common_free_generators_killed": common_free_generator_ids(projection_payload),
+            "interpretation_warning": (
+                "The raw internal quotient is retained as provenance, and the final SG194 ordinary standard quotient "
+                "is now computed through the explicit current-to-standard elimination contract."
+            ),
+        }
+    )
+    return summary
 
 
 def build_single_runtime(port, module, ssg_dict) -> dict[str, Any]:
@@ -735,7 +808,12 @@ def quotient_artifacts(
     return group_summary, generator_root
 
 
-def single_completion_summary(runtime: dict[str, Any], induction: dict[str, Any], family_objects: dict[str, list[dict[str, Any]]]) -> tuple[dict[str, Any], dict[str, Any] | None, dict[str, Any] | None]:
+def single_completion_summary(
+    runtime: dict[str, Any],
+    induction: dict[str, Any],
+    family_objects: dict[str, list[dict[str, Any]]],
+    projection_payload: dict[str, Any] | None = None,
+) -> tuple[dict[str, Any], dict[str, Any] | None, dict[str, Any] | None]:
     candidate_ids = [candidate["generator_id"] for candidate in induction["candidates"]]
     ai_coords = bs_coordinate_matrix(runtime["bs_analysis"], induction["candidates"])
     quotient_summary, quotient_generators = quotient_artifacts(1, runtime["bs_analysis"], ai_coords, candidate_ids)
@@ -766,10 +844,17 @@ def single_completion_summary(runtime: dict[str, Any], induction: dict[str, Any]
         "failures": induction["failures"],
         "blocker": None if len(induction["failures"]) == 0 else "Some single-group local objects still fail induction on the current 194.1.1.1 / groupType=1 path.",
     }
+    if projection_payload is not None:
+        apply_standard_projection_fields(summary, projection_payload, "single")
     return summary, quotient_summary, quotient_generators
 
 
-def double_completion_summary(runtime: dict[str, Any], induction: dict[str, Any], family_objects: dict[str, list[dict[str, Any]]]) -> tuple[dict[str, Any], dict[str, Any] | None, dict[str, Any] | None]:
+def double_completion_summary(
+    runtime: dict[str, Any],
+    induction: dict[str, Any],
+    family_objects: dict[str, list[dict[str, Any]]],
+    projection_payload: dict[str, Any] | None = None,
+) -> tuple[dict[str, Any], dict[str, Any] | None, dict[str, Any] | None]:
     candidate_ids = [candidate["generator_id"] for candidate in induction["candidates"]]
     ai_coords = bs_coordinate_matrix(runtime["bs_analysis"], induction["candidates"])
     quotient_summary, quotient_generators = quotient_artifacts(2, runtime["bs_analysis"], ai_coords, candidate_ids)
@@ -800,6 +885,8 @@ def double_completion_summary(runtime: dict[str, Any], induction: dict[str, Any]
         "failures": induction["failures"],
         "blocker": None if len(induction["failures"]) == 0 else "Some double-group projective local objects still fail induction on the current 194.1.1.1 / groupType=2 path.",
     }
+    if projection_payload is not None:
+        apply_standard_projection_fields(summary, projection_payload, "double")
     return summary, quotient_summary, quotient_generators
 
 
@@ -807,6 +894,7 @@ def build_stage2_audit(
     helper_payload: dict[str, Any],
     single_summary: dict[str, Any],
     double_summary: dict[str, Any],
+    projection_payload: dict[str, Any],
 ) -> str:
     inventory = helper_payload["inventory_json"]["families"]
     nonabelian = [entry["family_id"] for entry in inventory if entry["nonabelian"]]
@@ -830,7 +918,7 @@ def build_stage2_audit(
             f"- AI candidate count / distinct vectors: `{single_summary['generated_ai_candidate_count']}` / `{single_summary['distinct_unknown_vector_count']}`.",
             f"- Rank(AI) vs Rank(BS): `{single_summary['rank_ai_in_bs_coordinates']}` / `{single_summary['rank_bs']}`.",
             f"- Raw internal quotient status: `{single_summary['quotient_status']}`; raw internal quotient `{single_summary['raw_internal_quotient_group']}`.",
-            f"- Standard-space projection status: `{single_summary['standard_space_projection_status']}`.",
+            f"- Standard-space projection status: `{single_summary['standard_space_projection_status']}` with final rank(BS/AI) `{single_summary['final_rank_bs']}` / `{single_summary['final_rank_ai']}` and quotient `{single_summary['quotient_group']}`.",
             f"- Interpretation warning: {single_summary['interpretation_warning']}",
             "",
             "## Double-Group Feed-Back",
@@ -839,49 +927,62 @@ def build_stage2_audit(
             f"- AI candidate count / distinct vectors: `{double_summary['generated_ai_candidate_count']}` / `{double_summary['distinct_unknown_vector_count']}`.",
             f"- Rank(AI) vs Rank(BS): `{double_summary['rank_ai_in_bs_coordinates']}` / `{double_summary['rank_bs']}`.",
             f"- Raw internal quotient status: `{double_summary['quotient_status']}`; raw internal quotient `{double_summary['raw_internal_quotient_group']}`.",
-            f"- Standard-space projection status: `{double_summary['standard_space_projection_status']}`.",
+            f"- Standard-space projection status: `{double_summary['standard_space_projection_status']}` with final rank(BS/AI) `{double_summary['final_rank_bs']}` / `{double_summary['final_rank_ai']}` and quotient `{double_summary['quotient_group']}`.",
             f"- Interpretation warning: {double_summary['interpretation_warning']}",
+            "",
+            "## Final Standard Projection",
+            "",
+            f"- Projection contract type: `{projection_payload['projection_contract_type']}`.",
+            f"- Current point-row shell: `{projection_payload['row_translation']['current_point_row_ordering']}`.",
+            f"- External ordinary row shell: `{projection_payload['row_translation']['external_standard_row_ordering']}`.",
+            f"- Common free-generator rank killed by the final quotient contract: `{projection_payload['common_free_generator_rank']}`.",
+            f"- Common free-generator ids: `{', '.join(common_free_generator_ids(projection_payload))}`.",
             "",
             "## Portability Verdict",
             "",
-            "- The stage-2 library is genuinely reusable at the site-symmetry-type level rather than at the family-id level.",
-            "- The single-group portability statement is upgraded from pilot success to a full local-library-backed AI completion on the fixed second group.",
-            "- The double-group portability statement is now stronger than the stage-1 seed: the SG 194 projective local library is in place and can be fed through the same induction route.",
-            "- The remaining blocker is no longer local-library construction. It is the missing projection from the raw internal BS-space quotient to the final SG194 standard indicator layer.",
+            "- The stage-2 library remains genuinely reusable at the site-symmetry-type level rather than at the family-id level.",
+            "- The missing standard-space projection is now implemented mechanically rather than left as a documentation boundary.",
+            "- Single and double now both land in the same final 13-dimensional ordinary SG194 standard BS layer with trivial final quotient.",
         ]
     )
 
 
-
-def build_stage2_summary(single_summary: dict[str, Any], double_summary: dict[str, Any]) -> dict[str, Any]:
+def build_stage2_summary(
+    single_summary: dict[str, Any],
+    double_summary: dict[str, Any],
+    projection_payload: dict[str, Any],
+) -> dict[str, Any]:
     all_local_objects_complete = single_summary["ai_from_trivial_prototype_to_complete"] and double_summary["ai_from_minimal_to_complete"]
-    raw_internal_projection_blocker = (
-        "The extracted quotient is still only the raw internal BS-space quotient; projection to the final SG194 standard indicator space is still missing."
-    )
     return {
         "target_group": TARGET_GROUP,
         "nonabelian_single_library_built": True,
         "nonabelian_double_library_built": True,
         "single_group_unblocked": bool(single_summary["ai_from_trivial_prototype_to_complete"]),
         "double_group_unblocked": bool(double_summary["ai_from_minimal_to_complete"]),
-        "quotient_scope": "raw_internal_bs_space",
+        "quotient_scope": "raw_internal_bs_space_with_final_standard_projection",
         "single_rank_bs_raw_internal": single_summary["rank_bs_raw_internal"],
         "double_rank_bs_raw_internal": double_summary["rank_bs_raw_internal"],
         "single_rank_ai_in_bs_coordinates": single_summary["rank_ai_in_bs_coordinates"],
         "double_rank_ai_in_bs_coordinates": double_summary["rank_ai_in_bs_coordinates"],
         "single_raw_internal_quotient_group": single_summary["raw_internal_quotient_group"],
         "double_raw_internal_quotient_group": double_summary["raw_internal_quotient_group"],
-        "standard_space_projection_status": "missing",
+        "standard_space_projection_status": "implemented",
+        "projection_contract_type": projection_payload["projection_contract_type"],
+        "current_to_standard_row_translation_json": str(standard_projection.ROW_TRANSLATION_JSON),
+        "standard_space_projection_summary_json": str(standard_projection.PROJECTION_SUMMARY_JSON),
+        "common_free_generator_rank": projection_payload["common_free_generator_rank"],
+        "single_final_rank_bs": single_summary["final_rank_bs"],
+        "single_final_rank_ai": single_summary["final_rank_ai"],
+        "double_final_rank_bs": double_summary["final_rank_bs"],
+        "double_final_rank_ai": double_summary["final_rank_ai"],
+        "single_final_quotient_group": single_summary["quotient_group"],
+        "double_final_quotient_group": double_summary["quotient_group"],
         "interpretation_warning": (
-            "The quotients reported here are raw internal BS-space quotients and must not yet be presented as final SG194 standard indicators."
+            "The raw internal quotients are preserved as provenance, and the final SG194 ordinary standard quotients are now computed through the explicit current-to-standard elimination contract."
         ),
-        "main_blocker": (
-            raw_internal_projection_blocker
-            if all_local_objects_complete
-            else (double_summary["blocker"] or single_summary["blocker"])
-        ),
+        "main_blocker": None if all_local_objects_complete else (double_summary["blocker"] or single_summary["blocker"]),
         "next_blocker": (
-            "Separate the raw internal quotient from the final standard quotient in every downstream report, then derive the missing standard-space projection if a reviewer asks for the final SG194 indicator layer."
+            "Review the explicit current-to-standard projection contract and the three common free-generator directions now killed in the final quotient."
             if all_local_objects_complete
             else "Stabilize whichever induction failures remain before claiming a complete portability upgrade."
         ),
@@ -897,16 +998,24 @@ def build_report_tex(
     inventory_json: dict[str, Any],
     single_runtime: dict[str, Any],
     double_runtime: dict[str, Any],
+    projection_payload: dict[str, Any],
 ) -> str:
     inventory_rows = "\n".join(
         f"{entry['family_id']} & {entry['representative_coordinate']} & {entry['multiplicity']} & {entry['site_symmetry_label']} & {entry['group_order']} & {entry['abelian']} & {entry['nonabelian']} \\\\" 
         for entry in inventory_json["families"]
     )
-    single_q = latex_group_string(single_summary["raw_internal_quotient_group"] or "blocked")
-    double_q = latex_group_string(double_summary["raw_internal_quotient_group"] or "blocked")
+    single_q = latex_group_string(single_summary["quotient_group"] or "blocked")
+    double_q = latex_group_string(double_summary["quotient_group"] or "blocked")
     single_shape = tuple(single_runtime["bs_analysis"]["matrix_shape"])
     double_shape = tuple(double_runtime["bs_analysis"]["matrix_shape"])
-    interpretation_warning = single_summary["interpretation_warning"]
+    block_translation = ", ".join(
+        f"{item['current_block']} -> {item['external_block']}"
+        for item in projection_payload["row_translation"]["block_translation"]
+    )
+    free_lines = "\n".join(
+        rf"\item \texttt{{{latex_escape(item['common_free_generator_id'])}}}: {format_support_for_latex(item['support_on_current_point_rows'])}"
+        for item in projection_payload["common_free_generators"]
+    )
     return r"""
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
@@ -925,7 +1034,8 @@ Reference group: \texttt{%s}. Fixed target group: \texttt{%s}. This stage addres
 \item a family-by-family SG 194 site-symmetry inventory,
 \item a reusable single-group local-irrep library,
 \item a reusable double-group projective local-irrep library under \texttt{factor\_su2},
-\item immediate feed-back into the \texttt{groupType=1} and \texttt{groupType=2} AI workflow on \texttt{194.1.1.1}, together with explicit raw-internal quotient extraction.
+\item immediate feed-back into the \texttt{groupType=1} and \texttt{groupType=2} AI workflow on \texttt{194.1.1.1},
+\item and the final ordinary standard-space reduction from the common 16-dimensional current BS layer to the final 13-dimensional SG194 ordinary standard layer.
 \end{enumerate}
 
 \section{SG 194 Non-Abelian Site-Symmetry Inventory}
@@ -942,32 +1052,52 @@ family & representative & mult & site symmetry & order & abelian & nonabelian & 
 \end{center}
 The true non-abelian types are \texttt{C3v / 3m} on families \texttt{e,f}, \texttt{D3h-like / -6m2} on families \texttt{b,c,d}, and \texttt{D3d-like / -3m} on family \texttt{a}.
 
-\section{Single-Group Updated Result on 194.1.1.1}
-The stage-2 single-group outcome is:
+\section{Current Point Space And Standard Target}
+The current authoritative runtime ambient is the 42-row ordering
+\texttt{%s}.
+Its physical point-space shell is the first 34 rows
+\texttt{%s},
+while the trailing synthetic rows are
+\texttt{%s}.
+
+The final ordinary standard target is the external 34-row row language
+\texttt{%s}.
+The block identification is:
+\texttt{%s}.
+
+\section{Common Quotient Contract}
+Single and double currently share the same 16-dimensional BS space. Their raw internal quotient is the same free rank-3 object, and the same three common free directions are killed by the final standard projection:
+\begin{itemize}
+%s
+\end{itemize}
+
+The explicit projection matrix from current BS coordinates to external ordinary rows is recorded in \texttt{%s}.
+
+\section{Single-Group Final Result on 194.1.1.1}
+The final single-group outcome is:
 \begin{itemize}
 \item AI completion status: \texttt{%s},
 \item generated local objects: %d,
 \item distinct induced unknown vectors: %d,
-\item $\mathrm{rank}(BS) = %d$ and $\mathrm{rank}(AI) = %d$,
-\item raw internal quotient: $%s$,
-\item final standard quotient: \texttt{missing}.
+\item raw $\mathrm{rank}(BS) = %d$ and raw $\mathrm{rank}(AI) = %d$,
+\item final $\mathrm{rank}(BS_{\mathrm{std}}) = %d$ and final $\mathrm{rank}(AI_{\mathrm{std}}) = %d$,
+\item raw internal quotient: \texttt{%s},
+\item final standard quotient: $%s$.
 \end{itemize}
 The BS background still comes from the audited with-planes matrix on \texttt{194.1.1.1}, with shape $(%d,%d)$, rank %d, and nullity %d.
 
-\section{Double-Group Updated Result on 194.1.1.1}
-The stage-2 double-group outcome is:
+\section{Double-Group Final Result on 194.1.1.1}
+The final double-group outcome is:
 \begin{itemize}
 \item AI completion status: \texttt{%s},
 \item generated local objects: %d,
 \item distinct induced unknown vectors: %d,
-\item $\mathrm{rank}(BS_{\mathrm{double}}) = %d$ and $\mathrm{rank}(AI_{\mathrm{double}}) = %d$,
-\item raw internal quotient: $%s$,
-\item final standard quotient: \texttt{missing}.
+\item raw $\mathrm{rank}(BS_{\mathrm{double}}) = %d$ and raw $\mathrm{rank}(AI_{\mathrm{double}}) = %d$,
+\item final $\mathrm{rank}(BS_{\mathrm{std,double}}) = %d$ and final $\mathrm{rank}(AI_{\mathrm{std,double}}) = %d$,
+\item raw internal quotient: \texttt{%s},
+\item final standard quotient: $%s$.
 \end{itemize}
 The double-group BS background uses the same with-planes geometry and has shape $(%d,%d)$, rank %d, and nullity %d.
-
-\section{Interpretation Boundary}
-%s
 
 \section{Implementation Mapping}
 \begin{itemize}
@@ -976,22 +1106,40 @@ The double-group BS background uses the same with-planes geometry and has shape 
 \item double local library: \texttt{sg194\_double\_local\_corep\_library.json},
 \item single AI completion summary: \texttt{group\_194\_1\_1\_1\_single\_ai\_completion\_summary.json},
 \item double AI completion summary: \texttt{group\_194\_1\_1\_1\_double\_ai\_completion\_summary.json},
-\item stage-2 audit summary: \texttt{workflow\_portability\_stage2\_summary\_194.1.1.1.json}.
+\item stage-2 audit summary: \texttt{workflow\_portability\_stage2\_summary\_194.1.1.1.json},
+\item current-to-standard row translation: \texttt{%s},
+\item final projection summary: \texttt{%s}.
 \end{itemize}
 
 \section{Conclusion and Remaining Questions}
-Within the present fixed SG 194 controlled case, the local-library blocker is removed. What remains is not a local-library failure but an interpretation boundary: the raw internal quotient is now available, while the final standard-indicator projection is still missing and must remain reported as missing.
+Within the present fixed SG 194 controlled case, the local-library blocker is removed and the final standard-indicator projection is no longer missing. The current code chain now carries an explicit ordinary standard-space reduction whose final result is
+\[
+\mathrm{rank}(BS_{\mathrm{std}}) = \mathrm{rank}(AI_{\mathrm{std}}) = 13,
+\qquad
+BS_{\mathrm{std}}/AI_{\mathrm{std}} = \mathrm{trivial},
+\]
+for both the single and double authoritative stage-2 lines.
 
 \end{document}
 """ % (
         REFERENCE_GROUP,
         TARGET_GROUP,
         inventory_rows,
+        latex_escape(str(projection_payload["row_translation"]["current_runtime_unknown_ordering"])),
+        latex_escape(str(projection_payload["row_translation"]["current_point_row_ordering"])),
+        latex_escape(str(projection_payload["row_translation"]["synthetic_boundary_rows"])),
+        latex_escape(str(projection_payload["row_translation"]["external_standard_row_ordering"])),
+        latex_escape(block_translation),
+        free_lines,
+        latex_escape(standard_projection.PROJECTION_SUMMARY_JSON.name),
         single_summary["ai_from_trivial_prototype_to_complete"],
         single_summary["generated_ai_candidate_count"],
         single_summary["distinct_unknown_vector_count"],
         single_summary["rank_bs_raw_internal"],
         single_summary["rank_ai_in_bs_coordinates"],
+        single_summary["final_rank_bs"],
+        single_summary["final_rank_ai"],
+        latex_escape(single_summary["raw_internal_quotient_group"]),
         single_q,
         single_shape[0],
         single_shape[1],
@@ -1002,12 +1150,16 @@ Within the present fixed SG 194 controlled case, the local-library blocker is re
         double_summary["distinct_unknown_vector_count"],
         double_summary["rank_bs_raw_internal"],
         double_summary["rank_ai_in_bs_coordinates"],
+        double_summary["final_rank_bs"],
+        double_summary["final_rank_ai"],
+        latex_escape(double_summary["raw_internal_quotient_group"]),
         double_q,
         double_shape[0],
         double_shape[1],
         double_runtime["bs_analysis"]["rank"],
         double_runtime["bs_analysis"]["nullity"],
-        interpretation_warning,
+        latex_escape(standard_projection.ROW_TRANSLATION_JSON.name),
+        latex_escape(standard_projection.PROJECTION_SUMMARY_JSON.name),
     )
 
 
@@ -1039,10 +1191,14 @@ def build_handoff(stage2_summary: dict[str, Any], single_summary: dict[str, Any]
             f"- Double status: `{double_summary['completeness_status']}` with raw internal quotient `{double_summary['raw_internal_quotient_group']}` and final standard quotient `{double_final}`.",
             f"- Quotient scope: `{stage2_summary['quotient_scope']}`",
             f"- Interpretation warning: {stage2_summary['interpretation_warning']}",
-            f"- Main blocker: {stage2_summary['main_blocker']}",
+            f"- Projection contract type: `{stage2_summary['projection_contract_type']}`",
+            f"- Common free-generator rank: `{stage2_summary['common_free_generator_rank']}`",
+            f"- Main blocker: `{stage2_summary['main_blocker']}`",
             f"- Next unique target: {stage2_summary['next_blocker']}",
             "- Files to read first:",
             "  - workflow_portability_report_stage2_194.1.1.1.pdf",
+            f"  - {standard_projection.PROJECTION_SUMMARY_JSON.name}",
+            f"  - {standard_projection.ROW_TRANSLATION_JSON.name}",
             "  - sg194_nonabelian_site_symmetry_inventory.md",
             "  - workflow_portability_stage2_audit_194.1.1.1.md",
             "  - group_194_1_1_1_single_ai_completion_summary.json",
@@ -1060,11 +1216,13 @@ def build_next_step_prompt(stage2_summary: dict[str, Any]) -> str:
 
         Read these files first:
         1. workflow_portability_report_stage2_194.1.1.1.tex
-        2. sg194_nonabelian_site_symmetry_inventory.md
-        3. workflow_portability_stage2_audit_194.1.1.1.md
-        4. group_194_1_1_1_single_ai_completion_summary.json
-        5. group_194_1_1_1_double_ai_completion_summary.json
-        6. current_status_194.1.1.1_stage2.json
+        2. {standard_projection.PROJECTION_SUMMARY_JSON.name}
+        3. {standard_projection.ROW_TRANSLATION_JSON.name}
+        4. sg194_nonabelian_site_symmetry_inventory.md
+        5. workflow_portability_stage2_audit_194.1.1.1.md
+        6. group_194_1_1_1_single_ai_completion_summary.json
+        7. group_194_1_1_1_double_ai_completion_summary.json
+        8. current_status_194.1.1.1_stage2.json
 
         Current verified facts:
         - nonabelian_single_library_built = {stage2_summary['nonabelian_single_library_built']}
@@ -1074,11 +1232,16 @@ def build_next_step_prompt(stage2_summary: dict[str, Any]) -> str:
         - single_raw_internal_quotient_group = {stage2_summary['single_raw_internal_quotient_group']}
         - double_raw_internal_quotient_group = {stage2_summary['double_raw_internal_quotient_group']}
         - standard_space_projection_status = {stage2_summary['standard_space_projection_status']}
-        - main_blocker = {stage2_summary['main_blocker']}
+        - single_final_rank_bs = {stage2_summary['single_final_rank_bs']}
+        - single_final_rank_ai = {stage2_summary['single_final_rank_ai']}
+        - single_final_quotient_group = {stage2_summary['single_final_quotient_group']}
+        - double_final_rank_bs = {stage2_summary['double_final_rank_bs']}
+        - double_final_rank_ai = {stage2_summary['double_final_rank_ai']}
+        - double_final_quotient_group = {stage2_summary['double_final_quotient_group']}
 
         Do not change the target group.
         Do not go back to 10.4.1.31 except as an audited reference.
-        The next unique task is: keep the raw internal quotient and the final SG194 standard quotient separated in every downstream report, and only derive the missing standard-space projection if a review explicitly asks for the final indicator layer.
+        The next unique task is: review the explicit current-to-standard elimination contract and confirm that the authoritative stage-2 outputs now cite final BS = 13 and final quotient = trivial.
         """
     ).strip()
 
@@ -1108,19 +1271,22 @@ def build_package_readme(tree: list[str]) -> str:
             "## Interpretation Boundary",
             "",
             "- The extracted quotient files are raw internal BS-space quotients.",
-            "- The final SG194 standard quotient remains missing in this package and is reported as missing on purpose.",
+            "- The raw internal quotient is still preserved as provenance.",
+            "- The final SG194 ordinary standard quotient is now implemented through the explicit current-to-standard elimination contract.",
             "- Any legacy BS-vs-AI separation material in this package is included as historical reference only, not as active current evidence.",
             "",
             "## Suggested Review Order",
             "",
             "1. `workflow_portability_report_stage2_194.1.1.1.pdf`",
-            "2. `sg194_nonabelian_site_symmetry_inventory.md`",
-            "3. `workflow_portability_stage2_audit_194.1.1.1.md`",
-            "4. `workflow_portability_stage2_summary_194.1.1.1.json`",
-            "5. `group_194_1_1_1_single_ai_completion_summary.json`",
-            "6. `group_194_1_1_1_double_ai_completion_summary.json`",
-            "7. `handoff_sg194_1941111_bs_ai_bug_audit_v1.md`",
-            "8. `current_status_sg194_1941111_bs_ai_bug_audit_v1.json`",
+            f"2. `{standard_projection.PROJECTION_SUMMARY_JSON.name}`",
+            f"3. `{standard_projection.ROW_TRANSLATION_JSON.name}`",
+            "4. `sg194_nonabelian_site_symmetry_inventory.md`",
+            "5. `workflow_portability_stage2_audit_194.1.1.1.md`",
+            "6. `workflow_portability_stage2_summary_194.1.1.1.json`",
+            "7. `group_194_1_1_1_single_ai_completion_summary.json`",
+            "8. `group_194_1_1_1_double_ai_completion_summary.json`",
+            "9. `handoff_sg194_1941111_bs_ai_bug_audit_v1.md`",
+            "10. `current_status_sg194_1941111_bs_ai_bug_audit_v1.json`",
             "",
             "## Stage-2 PDF Report",
             "",
@@ -1155,8 +1321,10 @@ def build_package() -> list[str]:
         HANDOFF_MD,
         CURRENT_STATUS_JSON,
         NEXT_STEP_PROMPT_TXT,
+        *STANDARD_PROJECTION_OUTPUTS,
         ROOT / "debug_sg194_nonabelian_local_library.py",
         ROOT / "debug_workflow_portability_stage2_194.1.1.1.py",
+        ROOT / "debug_sg194_standard_space_projection_v1.py",
         REPORT_PDF,
         REPORT_TEX,
         ROOT / "workflow_portability_summary_194.1.1.1.json",
@@ -1226,6 +1394,7 @@ def validate_outputs() -> None:
         HANDOFF_MD,
         CURRENT_STATUS_JSON,
         NEXT_STEP_PROMPT_TXT,
+        *STANDARD_PROJECTION_OUTPUTS,
         REPORT_TEX,
         REPORT_PDF,
         PACKAGE_TARBALL,
@@ -1234,6 +1403,7 @@ def validate_outputs() -> None:
             raise FileNotFoundError(path)
     helper = load_helper_module()
     helper.validate_outputs()
+    standard_projection.validate_outputs()
 
 
 def print_terminal_summary(
@@ -1242,6 +1412,7 @@ def print_terminal_summary(
     double_summary: dict[str, Any],
     single_q: dict[str, Any] | None,
     double_q: dict[str, Any] | None,
+    projection_payload: dict[str, Any],
     tree: list[str],
 ) -> None:
     nonabelian = {}
@@ -1262,17 +1433,25 @@ def print_terminal_summary(
     print(f"   {single_summary['raw_internal_quotient_group']}")
     print("7. 当前 double-group raw internal quotient 是什么？")
     print(f"   {double_summary['raw_internal_quotient_group']}")
-    print("8. 为什么这些 quotient 还不能直接当最终 SG194 standard quotient？")
-    print(f"   {double_summary['interpretation_warning'] or single_summary['interpretation_warning']}")
-    print("9. PDF 报告是否已成功生成？")
+    print("8. 最终 standard-space rank(BS) / rank(AI) 是什么？")
+    print(
+        "   "
+        f"single={single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}, "
+        f"double={double_summary['final_rank_bs']}/{double_summary['final_rank_ai']}"
+    )
+    print("9. 最终 standard quotient 是什么？")
+    print(f"   single={single_summary['quotient_group']}, double={double_summary['quotient_group']}")
+    print("10. 最终 projection contract 是什么？")
+    print(f"   {projection_payload['projection_contract_type']}")
+    print("11. PDF 报告是否已成功生成？")
     print(f"   {REPORT_PDF.exists()}")
-    print("10. PDF 报告文件路径是什么？")
+    print("12. PDF 报告文件路径是什么？")
     print(f"   {REPORT_PDF}")
-    print("11. handoff/status/next-step 文件是否都已生成？")
+    print("13. handoff/status/next-step 文件是否都已生成？")
     print(f"   {HANDOFF_MD.exists() and CURRENT_STATUS_JSON.exists() and NEXT_STEP_PROMPT_TXT.exists()}")
-    print("12. 新压缩包完整路径是什么？")
+    print("14. 新压缩包完整路径是什么？")
     print(f"   {PACKAGE_TARBALL}")
-    print("13. 压缩包内文件树是什么？")
+    print("15. 压缩包内文件树是什么？")
     for line in tree:
         print(f"   {line}")
 
@@ -1301,18 +1480,26 @@ def main() -> None:
 
     single_induction = induce_objects(port, single_runtime, helper_payload["family_single_local_irreps"], "single_local_irrep_library")
     double_induction = induce_objects(port, double_runtime, helper_payload["family_double_local_irreps"], "double_projective_local_irrep_library")
+    projection_payload = standard_projection.generate_outputs(
+        single_runtime,
+        double_runtime,
+        single_induction,
+        double_induction,
+    )
 
     single_summary, single_quotient, single_generators = single_completion_summary(
         single_runtime,
         single_induction,
         helper_payload["family_single_local_irreps"],
+        projection_payload,
     )
     double_summary, double_quotient, double_generators = double_completion_summary(
         double_runtime,
         double_induction,
         helper_payload["family_double_local_irreps"],
+        projection_payload,
     )
-    stage2_summary = build_stage2_summary(single_summary, double_summary)
+    stage2_summary = build_stage2_summary(single_summary, double_summary, projection_payload)
 
     write_json(SINGLE_AI_COMPLETION_JSON, single_summary)
     write_json(DOUBLE_AI_COMPLETION_JSON, double_summary)
@@ -1323,7 +1510,7 @@ def main() -> None:
         write_json(DOUBLE_INDICATOR_GROUP_JSON, double_quotient)
         write_json(DOUBLE_INDICATOR_GENERATORS_JSON, double_generators)
 
-    audit_text = build_stage2_audit(helper_payload, single_summary, double_summary)
+    audit_text = build_stage2_audit(helper_payload, single_summary, double_summary, projection_payload)
     write_text(STAGE2_AUDIT_MD, audit_text)
     write_json(STAGE2_SUMMARY_JSON, stage2_summary)
 
@@ -1334,6 +1521,16 @@ def main() -> None:
         "double_raw_internal_quotient_group": stage2_summary["double_raw_internal_quotient_group"],
         "standard_space_projection_status": stage2_summary["standard_space_projection_status"],
         "interpretation_warning": stage2_summary["interpretation_warning"],
+        "projection_contract_type": stage2_summary["projection_contract_type"],
+        "common_free_generator_rank": stage2_summary["common_free_generator_rank"],
+        "current_to_standard_row_translation_json": stage2_summary["current_to_standard_row_translation_json"],
+        "standard_space_projection_summary_json": stage2_summary["standard_space_projection_summary_json"],
+        "single_final_rank_bs": stage2_summary["single_final_rank_bs"],
+        "single_final_rank_ai": stage2_summary["single_final_rank_ai"],
+        "double_final_rank_bs": stage2_summary["double_final_rank_bs"],
+        "double_final_rank_ai": stage2_summary["double_final_rank_ai"],
+        "single_final_quotient_group": stage2_summary["single_final_quotient_group"],
+        "double_final_quotient_group": stage2_summary["double_final_quotient_group"],
         "single_status": single_summary,
         "double_status": double_summary,
         "key_matrices": {
@@ -1359,6 +1556,7 @@ def main() -> None:
         helper_payload["inventory_json"],
         single_runtime,
         double_runtime,
+        projection_payload,
     )
     write_text(REPORT_TEX, report_tex)
     compile_report()
@@ -1371,6 +1569,7 @@ def main() -> None:
         double_summary,
         single_quotient,
         double_quotient,
+        projection_payload,
         tree,
     )
 

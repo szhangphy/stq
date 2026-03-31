@@ -5,11 +5,13 @@
 - package file: `review_package_sg194_stage2_closeout_followup_v2.tar.gz`
 - package directory: `review_package_sg194_stage2_closeout_followup_v2/`
 - current contract:
-  - the stage2 quotient fields are raw internal BS-space quotients
-  - final SG194 standard quotient is still missing and must remain reported as missing
-  - current local stage2 completion summaries use `rank_bs = 16`, `raw_internal_quotient_group = Z^3`, and `quotient_group = null`
+  - the raw internal stage2 quotient fields remain preserved as provenance
+  - the final ordinary SG194 standard quotient is now implemented through the current-to-standard elimination contract
+  - current local stage2 completion summaries use `rank_bs_raw_internal = 16`, `raw_internal_quotient_group = Z^3`, `final_rank_bs = 13`, and `quotient_group = trivial`
 - recommended reading order:
   - `workflow_portability_report_stage2_194.1.1.1.pdf`
+  - `sg194_standard_space_projection_summary_v1.json`
+  - `sg194_current_to_standard_row_translation_v1.json`
   - `workflow_portability_stage2_summary_194.1.1.1.json`
   - `group_194_1_1_1_single_ai_completion_summary.json`
   - `group_194_1_1_1_double_ai_completion_summary.json`

@@ -19,19 +19,22 @@
 ## Interpretation Boundary
 
 - The extracted quotient files are raw internal BS-space quotients.
-- The final SG194 standard quotient remains missing in this package and is reported as missing on purpose.
+- The raw internal quotient is still preserved as provenance.
+- The final SG194 ordinary standard quotient is now implemented through the explicit current-to-standard elimination contract.
 - Any legacy BS-vs-AI separation material in this package is included as historical reference only, not as active current evidence.
 
 ## Suggested Review Order
 
 1. `workflow_portability_report_stage2_194.1.1.1.pdf`
-2. `sg194_nonabelian_site_symmetry_inventory.md`
-3. `workflow_portability_stage2_audit_194.1.1.1.md`
-4. `workflow_portability_stage2_summary_194.1.1.1.json`
-5. `group_194_1_1_1_single_ai_completion_summary.json`
-6. `group_194_1_1_1_double_ai_completion_summary.json`
-7. `handoff_sg194_1941111_bs_ai_bug_audit_v1.md`
-8. `current_status_sg194_1941111_bs_ai_bug_audit_v1.json`
+2. `sg194_standard_space_projection_summary_v1.json`
+3. `sg194_current_to_standard_row_translation_v1.json`
+4. `sg194_nonabelian_site_symmetry_inventory.md`
+5. `workflow_portability_stage2_audit_194.1.1.1.md`
+6. `workflow_portability_stage2_summary_194.1.1.1.json`
+7. `group_194_1_1_1_single_ai_completion_summary.json`
+8. `group_194_1_1_1_double_ai_completion_summary.json`
+9. `handoff_sg194_1941111_bs_ai_bug_audit_v1.md`
+10. `current_status_sg194_1941111_bs_ai_bug_audit_v1.json`
 
 ## Stage-2 PDF Report
 
@@ -52,6 +55,7 @@ review_package_sg194_stage2_closeout_followup_v2/
   - current_status_sg194_1941111_bs_ai_bug_audit_v1.json
   - current_status_sg194_bs_ai_separation.json
   - debug_sg194_nonabelian_local_library.py
+  - debug_sg194_standard_space_projection_v1.py
   - debug_workflow_portability_stage2_194.1.1.1.py
   - double_group_ai_completeness_audit_10.4.1.31.md
   - double_group_ai_completeness_summary_10.4.1.31.json
@@ -87,10 +91,16 @@ review_package_sg194_stage2_closeout_followup_v2/
   - sg194_1941111_bs_ai_bug_audit_summary_v1.json
   - sg194_bs_ai_separation_report.md
   - sg194_bs_ai_separation_summary.json
+  - sg194_current_point_space_snapshot_v1.json
+  - sg194_current_to_standard_row_translation_v1.json
   - sg194_double_local_corep_library.json
+  - sg194_final_bs_ai_closeout_next_step_prompt_v1.txt
+  - sg194_final_bs_ai_closeout_report_v1.md
+  - sg194_final_bs_ai_closeout_status_v1.json
   - sg194_nonabelian_site_symmetry_inventory.json
   - sg194_nonabelian_site_symmetry_inventory.md
   - sg194_single_local_irrep_library.json
+  - sg194_standard_space_projection_summary_v1.json
   - single_group_ai_completeness_audit.md
   - single_group_ai_completeness_summary.json
   - single_group_bs_mod_ai_single_summary.json

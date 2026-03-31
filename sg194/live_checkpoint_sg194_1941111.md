@@ -1,34 +1,32 @@
-# Live Checkpoint: SG194 194.1.1.1 Repo Consistency Closeout
+# Live Checkpoint: SG194 194.1.1.1 Final Standard-Space Closeout
 
-- Last updated: 2026-03-31 18:14:31 +0800
+- Last updated: 2026-03-31 20:05:18 +0800
 - Branch: `sg194-special`
-- Latest synced `sg194-special`: `a53a9af`
+- Latest synced `sg194-special`: `36a66b7`
 - Latest synced `main`: `a7b4e4d`
-- Phase: verification complete; stage2 closeout package and handoff bundle are created; git commit/push pending
+- Phase: final standard-space projection implemented; validation complete; git commit/push pending
 
 ## Latest state
 
-1. Double complement followup is accepted as finished for this phase.
-2. Local stage2 JSON outputs already carry the corrected raw-internal quotient contract.
-3. bs\_ai\_separation is explicit legacy/stale reference and now points to the stage2 closeout outputs as the current authoritative evidence path.
-4. Repo-top and vendored `common/` portability chains both pass blocked `spglib` / `pymatgen` import verification.
-5. The regenerated stage2 closeout-v2 review package contains `README.md`, refreshed `SG_utils.py` / `SSGReps.py` / `rep_utils.py`, bs\_ai legacy files, and checkpoint copies.
-6. The lightweight handoff bundle directory/tarball plus `repo_consistency_closeout_bundle_manifest_v1.md` are already present on disk.
-7. The regenerated bs\_ai review package contains the current-authoritative-path warning in its README and status files.
-8. The required compile/import/regression commands all passed.
+1. The current authoritative physical point-space shell is the 34-row `P1..P6` block ordering.
+2. The final ordinary SG194 standard comparison shell is the 34-row `GM/A/K/H/M/L` ordering.
+3. The current-to-standard mapping is explicit and no longer missing.
+4. The decisive contract kills the three common raw `Z^3` free directions while anchoring onto the external ordinary 13-generator AI basis.
+5. The authoritative stage2 outputs now report single final `BS=13`, final `AI=13`, quotient `trivial`.
+6. The authoritative stage2 outputs now report double final `BS=13`, final `AI=13`, quotient `trivial`.
+7. The stage2 report PDF exists and `python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate` passes.
 
 ## Latest commands
 
 1. `python3 -m py_compile common/*.py`
 2. `python3 -m py_compile sg194/*.py`
-3. blocked-import verification for repo-top and vendored `SG_utils` / `rep_utils` / `SSGReps`
-4. `python3 sg194/debug_sg194_bs_ai_separation.py`
-5. `python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py`
-6. `python3 sg194/debug_sg194_double_patch.py`
-7. `python3 sg194/debug_sg194_double_complement_patch_v1.py`
+3. `python3 sg194/debug_sg194_standard_space_projection_v1.py --validate`
+4. `python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py`
+5. `python3 -c '<load stage2 module, rebuild report tex/pdf from authoritative JSON, run compile_report()>'`
+6. `python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate`
 
 ## Next
 
-1. Review the staged diff and remove any out-of-scope old review-package files before commit.
-2. Commit the in-scope source/artifact/package/checkpoint outputs on `sg194-special`.
+1. Review the staged diff and keep unrelated old review-package directories/tarballs plus LaTeX aux/log files out of the commit.
+2. Commit the in-scope source and authoritative outputs on `sg194-special`.
 3. Push `origin/sg194-special`.
