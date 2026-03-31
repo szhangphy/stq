@@ -1,104 +1,109 @@
 {
-  "current_time": "2026-04-01 04:24:44 +0800",
-  "task_scope": "SG194 benchmark takeover / benchmark reconciliation: make the copied topmat magnetic benchmark the only benchmark-authoritative SG194 conclusion and de-authorize internal stage2 13/trivial claims for benchmark use.",
-  "current_branch": "sg194-special",
-  "repo_root_relative": ".",
-  "remote": "git@github.com:szhangphy/stq.git",
-  "head_commit_short_before_checkpoint": "82df8fc",
-  "rolling_stage_snapshots": [
-    {
-      "stage": 1,
-      "label": "authoritative_file_inventory",
-      "status": "completed",
-      "summary": "Audited benchmark-oracle, current raw, phase-aware, stage2, unresolved external-matrix, README, handoff, live checkpoint, and historical stage2 package entrypoints as authoritative-looking SG194 files."
-    },
-    {
-      "stage": 2,
-      "label": "benchmark_authoritative_status",
-      "status": "completed",
-      "summary": "Wrote current_status_1941111_benchmark_v1.json/.md with benchmark-authoritative SG194 result classification Z6, dBS = 10, dAI = 10."
-    },
-    {
-      "stage": 3,
-      "label": "object_ladder",
-      "status": "completed",
-      "summary": "Wrote sg194_object_ladder_and_benchmark_map_v1.json/.md distinguishing benchmark oracle, current raw, phase-aware prototype, anchored stage2 claim, and unresolved external-matrix status."
-    },
-    {
-      "stage": 4,
-      "label": "deauthorization",
-      "status": "completed",
-      "summary": "De-authorized current_status_194.1.1.1_stage2.json, workflow_portability_stage2_summary_194.1.1.1.json, and the single/double AI completion summaries by marking them superseded for benchmark use."
-    },
-    {
-      "stage": 5,
-      "label": "readme_handoff_checkpoint_unification",
-      "status": "completed",
-      "summary": "Rewrote sg194/README.md benchmark-first, rewrote handoff_194.1.1.1_stage2.md as superseded-for-benchmark-use, and refreshed this rolling checkpoint around benchmark takeover."
-    },
-    {
-      "stage": 6,
-      "label": "review_package",
-      "status": "completed",
-      "summary": "Generated review_package_sg194_benchmark_takeover_v1/ plus review_package_sg194_benchmark_takeover_v1.tar.gz containing the benchmark status, ladder, inventory, benchmark verdict, reconciliation files, README, checkpoint, and downgraded stage2 summaries."
-    },
-    {
-      "stage": 7,
-      "label": "pre_commit",
-      "status": "completed",
-      "summary": "Mechanical validation passed for py_compile, benchmark takeover consistency, and review package contents; the branch is ready for commit/push."
-    }
+  "active_blockers": [
+    "Accessible external magnetic-group sources confirm OG 194.1.1494 / BNS 194.263 and Type-I, but do not separately expose the suffixless SSG 194.1.1.1 label as an external field."
+  ],
+  "authoritative_artifacts": {
+    "benchmark_status_json": "sg194/current_status_1941111_benchmark_v1.json",
+    "benchmark_verdict_json": "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
+    "independent_verify_json": "sg194/sg194_topmat_independent_verify_v1.json",
+    "inventory_json": "sg194/sg194_authoritative_file_inventory_v1.json",
+    "object_ladder_json": "sg194/sg194_object_ladder_and_benchmark_map_v1.json",
+    "path_sanitization_json": "sg194/sg194_benchmark_path_sanitization_v1.json"
+  },
+  "commands_run": [
+    "python3 sg194/sg194_topmat_experimental_compute_v2.py",
+    "python3 sg194/sg194_topmat_independent_verify_v1.py",
+    "python3 sg194/debug_sg194_benchmark_hardening_v1.py --write",
+    "python3 -m py_compile sg194/*.py",
+    "python3 sg194/debug_sg194_benchmark_hardening_v1.py --validate"
   ],
   "confirmed_findings": [
-    "The only benchmark-authoritative SG194 result in this round is classification Z6 with dBS = 10 and dAI = 10.",
-    "SSG 194.1.1.1 is treated in this round as the same benchmark target as its no-time-reversal magnetic counterpart OG 194.1.1494 / BNS 194.263.",
-    "This SSG/BNS unification remains a project benchmark convention plus magnetic-counterpart mapping layer, not a separately scraped suffixless external field.",
-    "current raw is an internal raw object, not the benchmark.",
-    "phase-aware is a local prototype raw repair path, not the benchmark.",
-    "The old stage2 13/13/trivial claim is retained only as an internally anchored reduced quotient claim and is superseded for benchmark use.",
-    "current_status_sg194_external_matrix_final.json remains useful only as an unresolved current-to-external mapping-layer status."
+    "The benchmark-authoritative SG194 result remains classification Z6 with dBS = 10 and dAI = 10.",
+    "SSG 194.1.1.1 is the spin-space-group object whose no-time-reversal magnetic counterpart is OG 194.1.1494 / BNS 194.263, and this round treats them as the same benchmark target for topological classification / dBS / dAI comparison.",
+    "The suffixless SSG label remains a project benchmark convention plus magnetic-counterpart mapping layer rather than a separately scraped external field.",
+    "Repo-local benchmark delivery paths are now relative-path-first in the benchmark authoritative/supporting JSON files targeted by this round.",
+    "The old 13/trivial stage2/workflow/completion files remain preserved only as internal/superseded historical snapshots."
   ],
-  "commands_run": [
-    "python3 /data/home/szhang/.codex/skills/codex-autoresearch/scripts/autoresearch_resume_check.py --repo /data/work/szhang/ssg/comprel",
-    "python3 sg194/debug_sg194_benchmark_takeover_v1.py --write",
-    "python3 -m py_compile sg194/*.py",
-    "python3 sg194/debug_sg194_benchmark_takeover_v1.py --validate"
-  ],
+  "current_branch": "sg194-special",
+  "current_time": "2026-04-01 04:54:02 ",
   "files_added_in_scope": [
-    "sg194/current_status_1941111_benchmark_v1.json",
-    "sg194/current_status_1941111_benchmark_v1.md",
-    "sg194/sg194_object_ladder_and_benchmark_map_v1.json",
-    "sg194/sg194_object_ladder_and_benchmark_map_v1.md",
-    "sg194/sg194_authoritative_file_inventory_v1.json",
-    "sg194/sg194_authoritative_file_inventory_v1.md",
-    "sg194/sg194_benchmark_takeover_report_v1.md",
-    "sg194/debug_sg194_benchmark_takeover_v1.py",
-    "sg194/review_package_sg194_benchmark_takeover_v1/",
-    "sg194/review_package_sg194_benchmark_takeover_v1.tar.gz"
+    "sg194/sg194_topmat_independent_verify_v1.py",
+    "sg194/sg194_topmat_independent_verify_v1.json",
+    "sg194/sg194_topmat_independent_verify_v1.md",
+    "sg194/sg194_benchmark_path_sanitization_v1.json",
+    "sg194/sg194_benchmark_path_sanitization_v1.md",
+    "sg194/sg194_superseded_file_deemphasis_v1.json",
+    "sg194/sg194_superseded_file_deemphasis_v1.md",
+    "sg194/debug_sg194_benchmark_hardening_v1.py",
+    "sg194/review_package_sg194_benchmark_hardening_v1",
+    "sg194/review_package_sg194_benchmark_hardening_v1.tar.gz"
   ],
   "files_updated_in_scope": [
+    "sg194/current_status_1941111_benchmark_v1.json",
+    "sg194/current_status_1941111_benchmark_v1.md",
+    "sg194/sg194_external_benchmark_from_topmat_v3.json",
+    "sg194/sg194_current_vs_external_object_matching_v3.json",
+    "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
+    "sg194/sg194_authoritative_file_inventory_v1.json",
+    "sg194/sg194_object_ladder_and_benchmark_map_v1.json",
     "sg194/current_status_194.1.1.1_stage2.json",
     "sg194/workflow_portability_stage2_summary_194.1.1.1.json",
     "sg194/group_194_1_1_1_single_ai_completion_summary.json",
     "sg194/group_194_1_1_1_double_ai_completion_summary.json",
-    "sg194/current_status_sg194_external_matrix_final.json",
     "sg194/README.md",
-    "sg194/handoff_194.1.1.1_stage2.md",
     "sg194/live_checkpoint_sg194_1941111.json",
     "sg194/live_checkpoint_sg194_1941111.md"
   ],
-  "authoritative_artifacts": {
-    "benchmark_status_json": "sg194/current_status_1941111_benchmark_v1.json",
-    "object_ladder_json": "sg194/sg194_object_ladder_and_benchmark_map_v1.json",
-    "inventory_json": "sg194/sg194_authoritative_file_inventory_v1.json",
-    "benchmark_verdict_json": "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
-    "object_matching_json": "sg194/sg194_current_vs_external_object_matching_v3.json"
-  },
-  "active_blockers": [
-    "Accessible external magnetic-group sources confirm OG 194.1.1494 / BNS 194.263 and Type-I, but do not separately expose the suffixless SSG 194.1.1.1 label as an external field."
-  ],
+  "head_commit_short_before_checkpoint": "13a01c2",
   "next_actions": [
-    "Review the diff for unrelated user changes and stage only the in-scope benchmark takeover files.",
+    "Review the hardening diff and stage only the in-scope SG194 benchmark files.",
     "Commit on sg194-special and push origin/sg194-special."
-  ]
+  ],
+  "remote": "git@github.com:szhangphy/stq.git",
+  "repo_root_relative": ".",
+  "rolling_stage_snapshots": [
+    {
+      "label": "independent_verify",
+      "stage": 1,
+      "status": "completed",
+      "summary": "Ran sg194_topmat_experimental_compute_v2.py and the new sg194_topmat_independent_verify_v1.py; both returned classification Z6 with dBS = 10 and dAI = 10."
+    },
+    {
+      "label": "path_inventory",
+      "stage": 2,
+      "status": "completed",
+      "summary": "Identified repo-local absolute path pollution in benchmark authoritative/supporting JSON files before cleanup."
+    },
+    {
+      "label": "path_sanitization",
+      "stage": 3,
+      "status": "completed",
+      "summary": "Rewrote benchmark authoritative/supporting JSON files to repo-relative path semantics and recorded the cleanup in sg194_benchmark_path_sanitization_v1.json/.md."
+    },
+    {
+      "label": "superseded_deemphasis",
+      "stage": 4,
+      "status": "completed",
+      "summary": "Added do-not-use banners and historical snapshots to the old 13/trivial stage2/workflow/completion files."
+    },
+    {
+      "label": "readme_checkpoint_refresh",
+      "stage": 5,
+      "status": "completed",
+      "summary": "Refreshed README and this rolling checkpoint to reflect benchmark hardening rather than benchmark takeover only."
+    },
+    {
+      "label": "review_package",
+      "stage": 6,
+      "status": "completed",
+      "summary": "Built review_package_sg194_benchmark_hardening_v1/ and .tar.gz with benchmark_authoritative and internal_superseded subdirectories plus REVIEW_MAP.md."
+    },
+    {
+      "label": "validation",
+      "stage": 7,
+      "status": "completed",
+      "summary": "py_compile, independent verifier, and benchmark hardening validation all passed; repo is ready for commit/push."
+    }
+  ],
+  "task_scope": "SG194 benchmark hardening / benchmark cleanup: second independent verification, path sanitization, superseded-file deemphasis, and layered review package delivery."
 }

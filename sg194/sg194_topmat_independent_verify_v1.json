@@ -1,0 +1,89 @@
+{
+  "consistency_cross_checks": {
+    "basis_invariants": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      6
+    ],
+    "basis_invariants_match_smith_diagonal": true,
+    "lindex_finite_factors_match_quotient": true,
+    "lindex_indicator_group_factors": [
+      6
+    ]
+  },
+  "generated_at": "2026-03-31T20:48:44+00:00",
+  "independent_method": {
+    "basis_row_minor_determinant": 1,
+    "basis_row_minor_indices_0_based": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      9,
+      11,
+      16,
+      20
+    ],
+    "does_not_reuse_sg194_topmat_experimental_compute_v2_internal_functions": true,
+    "summary": "Independent verifier that parses the copied topmat reference data, selects a full-rank 10x10 basis row minor from basis_194.263.txt, solves each MsgAI column through that row minor, verifies full-row reconstruction, and then performs Smith decomposition on the resulting AI-in-BS integer matrix."
+  },
+  "input_files": {
+    "basis": "sg194/topmat_reference_v3/data/output/basis_194.263.txt",
+    "lindex": "sg194/topmat_reference_v3/data/output/Lindex_194.263.txt",
+    "msg_ai": "sg194/topmat_reference_v3/data/output/MsgAI_194.263.txt"
+  },
+  "result": {
+    "classification": "Z6",
+    "dAI": 10,
+    "dBS": 10,
+    "finite_part": [
+      6
+    ],
+    "free_rank": 0,
+    "indicator_group": "Z6",
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      6
+    ]
+  },
+  "shapes": {
+    "ai_in_bs": [
+      10,
+      33
+    ],
+    "basis": [
+      22,
+      10
+    ],
+    "msg_ai": [
+      22,
+      33
+    ]
+  },
+  "target": {
+    "external_mapping_caveat": "Accessible external magnetic-group sources in this round directly confirm the OG/BNS object and its Type-I character. They do not independently expose the suffixless SSG label 194.1.1.1 used in this repo, so the suffixless SSG identification remains a project/user benchmark convention layer.",
+    "magnetic_group_bns": "194.263",
+    "magnetic_group_og": "194.1.1494",
+    "magnetic_type": "Type-I",
+    "project_round_unification_statement": "SSG 194.1.1.1 is the spin-space-group object whose no-time-reversal magnetic counterpart is OG 194.1.1494 / BNS 194.263, and this round treats them as the same benchmark target for topological classification / dBS / dAI comparison.",
+    "spin_space_group": "194.1.1.1",
+    "time_reversal": "absent"
+  }
+}
