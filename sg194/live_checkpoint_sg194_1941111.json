@@ -1,44 +1,98 @@
 {
-  "current_time": "2026-03-31 23:11:58 +0800",
-  "task_scope": "SG194 194.1.1.1 upstream raw-BS gap audit plus extracted-package full rerun audit on top of baseline commit 70fdd3f.",
+  "current_time": "2026-04-01 04:27:00 +0800",
+  "task_scope": "SG194 unified benchmark audit for SSG 194.1.1.1 treated together with OG 194.1.1494 / BNS 194.263, using read-only topmat_src plus copied-source local compute inside sg194/.",
   "current_branch": "sg194-special",
   "repo_root_relative": ".",
   "remote": "git@github.com:szhangphy/stq.git",
-  "head_commit_short": "70fdd3f",
+  "head_commit_short_before_checkpoint": "70fdd3f",
+  "rolling_stage_snapshots": [
+    {
+      "stage": 1,
+      "label": "readonly_audit",
+      "status": "completed",
+      "summary": "Read-only audited topmat.py, work_ind.sh, dealfort.py, msginfo, Lindex_194.263.txt, basis_194.263.txt, MsgAI_194.263.txt, OrigAI_194.263.txt, mwyck-mag/194.263.txt, pairfiles_msghspk/194.263.txt, and mkpoints/194.txt."
+    },
+    {
+      "stage": 2,
+      "label": "object_lookup",
+      "status": "completed",
+      "summary": "msginfo row 1493 confirms OG 1494 <-> BNS 194.263 with Type-I / no time reversal."
+    },
+    {
+      "stage": 3,
+      "label": "readonly_run",
+      "status": "completed",
+      "summary": "Read-only topmat direct run succeeded and produced indout Z6=0, for a generated sample tqc.data."
+    },
+    {
+      "stage": 4,
+      "label": "copied_compute",
+      "status": "completed",
+      "summary": "Copied-source benchmark computation completed in sg194/topmat_reference_v3/ without modifying /data/home/szhang/soft_sz/topmat_src."
+    },
+    {
+      "stage": 5,
+      "label": "benchmark_values",
+      "status": "completed",
+      "summary": "Resolved benchmark classification Z6 with dBS = 10, dAI = 10, Smith diagonal [1,1,1,1,1,1,1,1,1,6]."
+    },
+    {
+      "stage": 6,
+      "label": "current_vs_external_matching",
+      "status": "completed",
+      "summary": "Classified current raw as Z^3 raw quotient, phase-aware as raw repair prototype, and older anchored trivial claim as superseded by later unresolved external-matrix status."
+    },
+    {
+      "stage": 7,
+      "label": "pre_commit",
+      "status": "pending",
+      "summary": "All required v3/v2/v1 SG194 benchmark artifacts are present; pending staging, commit, and push."
+    }
+  ],
   "confirmed_findings": [
-    "The raw internal BS gap is carried by exactly three common free generators: P3_R5-P3_R6, P3_R5+P4_R1, and P3_R1+P3_R2+P4_R3.",
-    "Those generators are only touched by the three L2 rows, and no plane row touches P3/P4 at all.",
-    "build_line_block/build_plane_block use phase-stripped character, while induce_candidate uses linear_character together with explicit Bloch phase exp(-ik\u00b7t).",
-    "The phase/subduction audit therefore points to a little-co-group vs full little-group mismatch as the implementation cause of the missing effective constraints.",
-    "The extracted v3 package full rerun passed = True and regenerated the expected stage2/projection/report outputs inside the extracted package."
+    "SSG 194.1.1.1 is treated in this round as the same benchmark target as its no-time-reversal magnetic counterpart OG 194.1.1494 / BNS 194.263.",
+    "topmat_src can directly evaluate an indicator value and exposes enough reference data to recover the benchmark classification, but it does not directly print scalar dBS or dAI.",
+    "The direct magnetic classification for the unified target is Z6.",
+    "The copied experimental compute gives dBS = 10 and dAI = 10.",
+    "The user-priority Z6 hypothesis is supported.",
+    "Bilbao-level external checks in this round confirm the magnetic object identity and Type-I character, but do not independently expose the SSG 194.1.1.1 label.",
+    "The current repo raw and phase-aware objects are not themselves the final external benchmark object."
   ],
   "commands_run": [
-    "python3 sg194/debug_sg194_upstream_raw_bs_gap_audit_v1.py",
-    "python3 sg194/debug_sg194_package_full_rerun_test_v1.py",
-    "python3 -m py_compile common/*.py",
-    "python3 -m py_compile sg194/*.py"
+    "python3 /data/home/szhang/.codex/skills/codex-autoresearch/scripts/autoresearch_resume_check.py --repo /data/work/szhang/ssg/comprel",
+    "python3 sg194/sg194_topmat_experimental_compute_v2.py",
+    "python3 /data/home/szhang/soft_sz/topmat_src/topmat.py -og 1494 -sg 194 -mode 2",
+    "python3 - <<'PY' ... independent SymPy rank / Smith verification on basis_194.263.txt and MsgAI_194.263.txt"
   ],
-  "files_modified": [
-    "sg194/debug_sg194_upstream_raw_bs_gap_audit_v1.py",
-    "sg194/debug_sg194_package_full_rerun_test_v1.py",
-    "sg194/sg194_upstream_raw_bs_gap_audit_v1.json",
-    "sg194/sg194_upstream_raw_bs_gap_audit_v1.md",
-    "sg194/sg194_phase_and_subduction_audit_v1.json",
-    "sg194/sg194_phase_and_subduction_audit_v1.md",
-    "sg194/sg194_package_full_rerun_test_v1.json",
-    "sg194/sg194_package_full_rerun_test_v1.md",
-    "sg194/sg194_upstream_raw_bs_fix_plan_v1.md"
+  "files_added_in_scope": [
+    "sg194/sg194_topmat_readonly_audit_v3.json",
+    "sg194/sg194_topmat_readonly_audit_v3.md",
+    "sg194/sg194_external_benchmark_from_topmat_v3.json",
+    "sg194/sg194_external_benchmark_from_topmat_v3.md",
+    "sg194/sg194_topmat_experimental_compute_v2.py",
+    "sg194/sg194_topmat_experimental_compute_v2.json",
+    "sg194/sg194_topmat_experimental_compute_v2.md",
+    "sg194/sg194_current_vs_external_object_matching_v3.json",
+    "sg194/sg194_current_vs_external_object_matching_v3.md",
+    "sg194/sg194_topmat_copied_sources_manifest_v2.json",
+    "sg194/sg194_topmat_copied_sources_manifest_v2.md",
+    "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
+    "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.md"
   ],
   "authoritative_artifacts": {
-    "raw_gap_audit_json": "sg194_upstream_raw_bs_gap_audit_v1.json",
-    "phase_audit_json": "sg194_phase_and_subduction_audit_v1.json",
-    "package_full_rerun_json": "sg194_package_full_rerun_test_v1.json",
-    "fix_plan_md": "sg194_upstream_raw_bs_fix_plan_v1.md"
+    "readonly_audit_json": "sg194/sg194_topmat_readonly_audit_v3.json",
+    "external_benchmark_json": "sg194/sg194_external_benchmark_from_topmat_v3.json",
+    "experimental_compute_json": "sg194/sg194_topmat_experimental_compute_v2.json",
+    "object_matching_json": "sg194/sg194_current_vs_external_object_matching_v3.json",
+    "benchmark_verdict_json": "sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json"
   },
-  "next_actions": [
-    "Review the in-scope diff for the two new audit scripts and generated audit outputs.",
-    "Commit the raw-gap / phase / package-full-rerun audit files.",
-    "Push origin/sg194-special."
+  "active_blockers": [
+    "Bilbao/accessible web sources directly confirm OG 194.1.1494 / BNS 194.263 but not the SSG 194.1.1.1 label as a separately surfaced external field.",
+    "The outer working directory /data/work/szhang/ssg/comprel is not itself a git repository; commit/push must happen from stq_repo_export/repo."
   ],
-  "active_blockers": []
+  "next_actions": [
+    "Stage only the in-scope SG194 benchmark files and refreshed live checkpoint.",
+    "Commit the SG194 topmat benchmark deliverables on sg194-special.",
+    "Push origin/sg194-special."
+  ]
 }

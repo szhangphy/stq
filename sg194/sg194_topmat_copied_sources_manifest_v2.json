@@ -1,0 +1,126 @@
+{
+  "copied_files": [
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/original_sources/topmat.py",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "ef6058e5b71a389cf6dc35ccf595220a0172a642cdd1742dd0810fb14b86f45b",
+      "copied_tree_modified_after_copy": false,
+      "role": "Read-only top-level CLI entrypoint for -mode 2 indicator evaluation.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/topmat.py",
+      "source_sha256": "ef6058e5b71a389cf6dc35ccf595220a0172a642cdd1742dd0810fb14b86f45b",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/original_sources/work_ind.sh",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "9eb52c78cb5bd908b55c1ca7a29aa761f86fdc7c7fe42bc7fde6c397f69107be",
+      "copied_tree_modified_after_copy": false,
+      "role": "Read-only shell wrapper that invokes dealfort.py and writes indout/inderr.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/work_ind.sh",
+      "source_sha256": "9eb52c78cb5bd908b55c1ca7a29aa761f86fdc7c7fe42bc7fde6c397f69107be",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/original_sources/dealfort.py",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "7c42435af826b4e2553c1efd315ab3227a341962ca5c4aac2c2608321efb5e9f",
+      "copied_tree_modified_after_copy": false,
+      "role": "Read-only implementation of calc_ind() and dormant BR decomposition hooks.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/dealfort.py",
+      "source_sha256": "7c42435af826b4e2553c1efd315ab3227a341962ca5c4aac2c2608321efb5e9f",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/data/msginfo",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "bb47ceb92333d3c6e5ede8494e4c6dfeab38d326191dcde82ead2e3e8fdc54ca",
+      "copied_tree_modified_after_copy": false,
+      "role": "OG/BNS/type lookup table; contains OG 1494 <-> BNS 194.263 mapping.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/msginfo",
+      "source_sha256": "bb47ceb92333d3c6e5ede8494e4c6dfeab38d326191dcde82ead2e3e8fdc54ca",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/data/output/Lindex_194.263.txt",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "78629bc409b5c706cb7c7a3f7637676808313706f7bfac8284a44751d4440228",
+      "copied_tree_modified_after_copy": false,
+      "role": "Indicator metadata/formula table for BNS 194.263.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/Lindex_194.263.txt",
+      "source_sha256": "78629bc409b5c706cb7c7a3f7637676808313706f7bfac8284a44751d4440228",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/data/output/MsgAI_194.263.txt",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "15d18881d072770e9906a8288e51dcc1172692211f5914b435e694b34112c95c",
+      "copied_tree_modified_after_copy": false,
+      "role": "Magnetic AI generators in the 22-row magnetic-kirrep coordinate space.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/MsgAI_194.263.txt",
+      "source_sha256": "15d18881d072770e9906a8288e51dcc1172692211f5914b435e694b34112c95c",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/data/output/OrigAI_194.263.txt",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "561b9de835b0075aea9ccef0eabcf0790fc3642234c1b77227860670df57aae1",
+      "copied_tree_modified_after_copy": false,
+      "role": "Ordinary/original AI generators; not the direct magnetic dAI object used here.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/OrigAI_194.263.txt",
+      "source_sha256": "561b9de835b0075aea9ccef0eabcf0790fc3642234c1b77227860670df57aae1",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/data/output/basis_194.263.txt",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "6ab26084e311d28304f15e0e62c0d8a6439b1a97840edd8e37292419dd1b3501",
+      "copied_tree_modified_after_copy": false,
+      "role": "Magnetic BS basis and invariant factors for BNS 194.263.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/basis_194.263.txt",
+      "source_sha256": "6ab26084e311d28304f15e0e62c0d8a6439b1a97840edd8e37292419dd1b3501",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/data/mwyck-mag/194.263.txt",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "c45664c3c5a4f43d3b9cb2dba93fafef4756c27a61108488aa3a18c9b6b81e0d",
+      "copied_tree_modified_after_copy": false,
+      "role": "Magnetic Wyckoff data used by topmat reference workflows.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/mwyck-mag/194.263.txt",
+      "source_sha256": "c45664c3c5a4f43d3b9cb2dba93fafef4756c27a61108488aa3a18c9b6b81e0d",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/data/pairfiles_msghspk/194.263.txt",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "c8caf0c937cd4b98b8a9e4019a830391106894857c7a5176919462e4443eb780",
+      "copied_tree_modified_after_copy": false,
+      "role": "Magnetic high-symmetry k-point pairing file for BNS 194.263.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/pairfiles_msghspk/194.263.txt",
+      "source_sha256": "c8caf0c937cd4b98b8a9e4019a830391106894857c7a5176919462e4443eb780",
+      "source_tree_modified": false
+    },
+    {
+      "copied": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3/data/mkpoints_194.txt",
+      "copied_bytes_identical_to_source": true,
+      "copied_sha256": "5d6c8d65191fc2a16e27efb41269d64a0b15e0aeb2fb5281716573e051d701bd",
+      "copied_tree_modified_after_copy": false,
+      "role": "Reference k-point path data copied under a renamed local filename.",
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/mkpoints/194.txt",
+      "source_sha256": "5d6c8d65191fc2a16e27efb41269d64a0b15e0aeb2fb5281716573e051d701bd",
+      "source_tree_modified": false
+    }
+  ],
+  "copied_root": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/topmat_reference_v3",
+  "copy_purpose": "Retain immutable reference snapshots inside the current repo so that benchmark computations for 194.1.1.1 / 194.1.1494 / 194.263 can be re-run locally without modifying /data/home/szhang/soft_sz/topmat_src.",
+  "generated_at": "2026-03-31T19:54:04+00:00",
+  "local_modifications_after_copy": [
+    {
+      "path": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_topmat_experimental_compute_v2.py",
+      "purpose": "Experimental benchmark driver that reads the copied reference files and writes JSON/MD deliverables; it does not modify the copied source snapshots."
+    }
+  ],
+  "source_root": "/data/home/szhang/soft_sz/topmat_src",
+  "source_root_read_only_in_this_round": true,
+  "source_tree_modified": false
+}

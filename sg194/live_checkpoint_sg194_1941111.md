@@ -1,26 +1,61 @@
 # SG194 194.1.1.1 Live Checkpoint
 
-- Current time: 2026-03-31 23:11:58 +0800
+- Current time: 2026-04-01 04:27:00 +0800
 - Branch: `sg194-special`
-- HEAD: `70fdd3f`
+- HEAD before this checkpoint update: `70fdd3f`
+- Task scope: SG194 unified benchmark audit for `SSG 194.1.1.1` treated together with `OG 194.1.1494 / BNS 194.263`, using read-only `topmat_src` plus copied-source local compute inside `sg194/`.
+
+## Rolling Stages
+
+1. Read-only `topmat_src` audit completed.
+   Audited `topmat.py`, `work_ind.sh`, `dealfort.py`, `BilBaoData/msginfo`, `Lindex_194.263.txt`, `basis_194.263.txt`, `MsgAI_194.263.txt`, `OrigAI_194.263.txt`, `mwyck-mag/194.263.txt`, `pairfiles_msghspk/194.263.txt`, and `mkpoints/194.txt`.
+2. Read-only object lookup confirmed.
+   `msginfo` row 1493 maps OG `1494` to BNS `194.263` with Type-I / no time reversal.
+3. Read-only direct run completed.
+   `python3 /data/home/szhang/soft_sz/topmat_src/topmat.py -og 1494 -sg 194 -mode 2` was executed in a temporary directory with generated `tqc.data` and returned `indout = Z6=0,`.
+4. Copied-source benchmark compute completed.
+   The copied reference tree `sg194/topmat_reference_v3/` was used without modifying `/data/home/szhang/soft_sz/topmat_src`.
+5. Benchmark values resolved.
+   `basis_194.263.txt` gives BS rank `10`; `MsgAI_194.263.txt` lifted into the BS basis also has rank `10`; Smith nonzero diagonal is `[1, 1, 1, 1, 1, 1, 1, 1, 1, 6]`, so the complete benchmark classification is `Z6`.
+6. Current-vs-external object matching completed.
+   Current raw objects are `Z^3` raw internal quotients, the phase-aware object is a local raw compatibility repair prototype, and the older anchored trivial claim is superseded by a later unresolved external-matrix status.
+7. Commit/push closeout pending.
+   The required v3/v2/v1 benchmark artifacts have been generated under `sg194/`; remaining work is checkpointed staging, commit, and push.
 
 ## Confirmed Findings
 
-1. The raw internal BS gap is carried by exactly three common free generators: P3_R5-P3_R6, P3_R5+P4_R1, and P3_R1+P3_R2+P4_R3.
-2. Those generators are only touched by the three L2 rows, and no plane row touches P3/P4 at all.
-3. build_line_block/build_plane_block use phase-stripped character, while induce_candidate uses linear_character together with explicit Bloch phase exp(-ik·t).
-4. The phase/subduction audit therefore points to a little-co-group vs full little-group mismatch as the implementation cause of the missing effective constraints.
-5. The extracted v3 package full rerun passed = True and regenerated the expected stage2/projection/report outputs inside the extracted package.
+1. `SSG 194.1.1.1` is treated in this round as the same benchmark target as its no-time-reversal magnetic counterpart `OG 194.1.1494 / BNS 194.263`.
+2. `topmat_src` can directly evaluate an indicator value and exposes enough reference data to recover the benchmark classification, but it does not directly print scalar `dBS` or `dAI`.
+3. The direct magnetic classification for the unified target is `Z6`.
+4. The copied experimental compute gives `dBS = 10` and `dAI = 10`.
+5. The user-priority `Z6` hypothesis is supported, not merely unresolved.
+6. Bilbao-level external checks in this round confirm the magnetic object identity and Type-I character, but do not independently expose the `SSG 194.1.1.1` label.
+7. The current repo's raw and phase-aware objects are not themselves the final external benchmark object.
 
 ## Commands Run
 
-1. `python3 sg194/debug_sg194_upstream_raw_bs_gap_audit_v1.py`
-2. `python3 sg194/debug_sg194_package_full_rerun_test_v1.py`
-3. `python3 -m py_compile common/*.py`
-4. `python3 -m py_compile sg194/*.py`
+1. `python3 /data/home/szhang/.codex/skills/codex-autoresearch/scripts/autoresearch_resume_check.py --repo /data/work/szhang/ssg/comprel`
+2. `python3 sg194/sg194_topmat_experimental_compute_v2.py`
+3. `python3 /data/home/szhang/soft_sz/topmat_src/topmat.py -og 1494 -sg 194 -mode 2`
+4. `python3 - <<'PY' ...` independent SymPy rank / Smith verification on `basis_194.263.txt` and `MsgAI_194.263.txt`
 
-## Next Actions
+## Files Added In Scope
 
-1. Review the in-scope diff for the two new audit scripts and generated audit outputs.
-2. Commit the raw-gap / phase / package-full-rerun audit files.
-3. Push origin/sg194-special.
+1. `sg194/sg194_topmat_readonly_audit_v3.json`
+2. `sg194/sg194_topmat_readonly_audit_v3.md`
+3. `sg194/sg194_external_benchmark_from_topmat_v3.json`
+4. `sg194/sg194_external_benchmark_from_topmat_v3.md`
+5. `sg194/sg194_topmat_experimental_compute_v2.py`
+6. `sg194/sg194_topmat_experimental_compute_v2.json`
+7. `sg194/sg194_topmat_experimental_compute_v2.md`
+8. `sg194/sg194_current_vs_external_object_matching_v3.json`
+9. `sg194/sg194_current_vs_external_object_matching_v3.md`
+10. `sg194/sg194_topmat_copied_sources_manifest_v2.json`
+11. `sg194/sg194_topmat_copied_sources_manifest_v2.md`
+12. `sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json`
+13. `sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.md`
+
+## Active Blockers
+
+1. Bilbao/accessible web sources directly confirm `OG 194.1.1494 / BNS 194.263`, but not the `SSG 194.1.1.1` label as a separately surfaced external field.
+2. The outer working directory `/data/work/szhang/ssg/comprel` is not itself a git repository; commit/push must happen from `stq_repo_export/repo`.

@@ -1,0 +1,157 @@
+{
+  "generated_at": "2026-03-31T19:54:04+00:00",
+  "object_mapping_from_msginfo": {
+    "bns_number": "194.263",
+    "inference": "OG 1494 <-> BNS 194.263 and the object is Type-I.",
+    "msginfo_path": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/msginfo",
+    "msginfo_row_number_1_based": 1493,
+    "og_number": 1494,
+    "og_symbol": "194.1.1494",
+    "type": 1
+  },
+  "readonly_audited_paths": [
+    "/data/home/szhang/soft_sz/topmat_src/topmat.py",
+    "/data/home/szhang/soft_sz/topmat_src/work_ind.sh",
+    "/data/home/szhang/soft_sz/topmat_src/dealfort.py",
+    "/data/home/szhang/soft_sz/topmat_src/BilBaoData/msginfo",
+    "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/Lindex_194.263.txt",
+    "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/MsgAI_194.263.txt",
+    "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/OrigAI_194.263.txt",
+    "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/basis_194.263.txt",
+    "/data/home/szhang/soft_sz/topmat_src/BilBaoData/mwyck-mag/194.263.txt",
+    "/data/home/szhang/soft_sz/topmat_src/BilBaoData/mkpoints/194.txt",
+    "/data/home/szhang/soft_sz/topmat_src/BilBaoData/pairfiles_msghspk/194.263.txt"
+  ],
+  "readonly_code_references": [
+    {
+      "file": "/data/home/szhang/soft_sz/topmat_src/topmat.py",
+      "lines": [
+        17,
+        18
+      ],
+      "meaning": "mode == 2 selects the cal_SI indicator-evaluation workflow."
+    },
+    {
+      "file": "/data/home/szhang/soft_sz/topmat_src/topmat.py",
+      "lines": [
+        180,
+        181
+      ],
+      "meaning": "The cal_SI path shells out to work_ind.sh and then prints indout."
+    },
+    {
+      "file": "/data/home/szhang/soft_sz/topmat_src/work_ind.sh",
+      "lines": [
+        3,
+        4
+      ],
+      "meaning": "The wrapper deletes old indout/inderr and calls dealfort.py --ind --soc."
+    },
+    {
+      "file": "/data/home/szhang/soft_sz/topmat_src/dealfort.py",
+      "lines": [
+        560,
+        593
+      ],
+      "meaning": "calc_ind() loads msginfo and Lindex_<bns>.txt to evaluate magnetic indicators."
+    },
+    {
+      "file": "/data/home/szhang/soft_sz/topmat_src/dealfort.py",
+      "lines": [
+        47,
+        48
+      ],
+      "meaning": "read_SiteK() expects BilBaoData/BRlist2_A/SiteK_<sg>.cht for BR decomposition."
+    },
+    {
+      "file": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/msginfo",
+      "lines": [
+        1493
+      ],
+      "meaning": "OG 1494 is mapped to BNS 194.263 with type 1."
+    }
+  ],
+  "readonly_direct_run": {
+    "command": [
+      "python3",
+      "/data/home/szhang/soft_sz/topmat_src/topmat.py",
+      "-og",
+      "1494",
+      "-sg",
+      "194",
+      "-mode",
+      "2"
+    ],
+    "cwd": "/tmp/sg194_topmat_ro_test_4jc1ehga",
+    "inderr": "",
+    "indout": "Z6=0,\n",
+    "returncode": 0,
+    "stderr": "sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\nbash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)\n",
+    "stdout": "The input data is calculated with spin-orbit coupling.\nZ6=0,\n\n",
+    "success": true
+  },
+  "summary": {
+    "classification_inferred_from_data_files": "Z6",
+    "copied_experimental_compute_needed_for_dBS_dAI": true,
+    "dAI_available_directly_from_cli": false,
+    "dBS_available_directly_from_cli": false,
+    "readonly_run_indicator_output": "Z6=0,\n",
+    "readonly_run_successful": true
+  },
+  "target": {
+    "external_mapping_caveat": "Accessible external magnetic-group sources in this round directly confirm the OG/BNS object and its Type-I character. They do not independently expose the suffixless SSG label 194.1.1.1 used in this repo. An external SSG source consulted in this round uses a more refined suffix-decorated notation (for example 194.1.1.1.L), so the suffixless SSG identification is treated here as the project/user benchmark convention rather than as a separately scraped Bilbao field.",
+    "magnetic_group_bns": "194.263",
+    "magnetic_group_og": "194.1.1494",
+    "magnetic_type": "Type-I",
+    "project_round_unification_statement": "SSG 194.1.1.1 is the spin-space-group object whose no-time-reversal magnetic counterpart is OG 194.1.1494 / BNS 194.263, and this round treats them as the same benchmark target for topological classification / dBS / dAI comparison.",
+    "spin_space_group": "194.1.1.1",
+    "time_reversal": "absent"
+  },
+  "topmat_readonly_capabilities": {
+    "BR_decomposition_path": {
+      "available": false,
+      "blocked_by_missing_source_data": true,
+      "code_hook": "dealfort.py::read_SiteK",
+      "missing_path": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/BRlist2_A"
+    },
+    "classification_from_reference_data_files": {
+      "available": true,
+      "basis_invariants": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        6
+      ],
+      "indicator_group_factors": [
+        6
+      ],
+      "supporting_files": [
+        "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/Lindex_194.263.txt",
+        "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/basis_194.263.txt"
+      ]
+    },
+    "direct_cli_full_classification": {
+      "available": false,
+      "note": "The CLI evaluates indicator values for a supplied tqc.data, not the benchmark classification lattice by itself."
+    },
+    "direct_cli_indicator_value": {
+      "available": true,
+      "entrypoint": "/data/home/szhang/soft_sz/topmat_src/topmat.py",
+      "workflow": "topmat.py -mode 2 -> work_ind.sh -> dealfort.py --ind -> Lindex_194.263.txt"
+    },
+    "direct_dAI_scalar_output": {
+      "available": false,
+      "note": "MsgAI_194.263.txt contains AI generators, but topmat_src does not print dAI directly as a CLI scalar."
+    },
+    "direct_dBS_scalar_output": {
+      "available": false,
+      "note": "basis_194.263.txt contains the BS basis, but topmat_src does not print dBS directly as a CLI scalar."
+    }
+  }
+}
