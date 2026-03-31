@@ -1,0 +1,458 @@
+{
+  "target_group": "194.1.1.1",
+  "raw_rank_bs_single": 16,
+  "raw_rank_bs_double": 16,
+  "raw_rank_ai_single": 13,
+  "raw_rank_ai_double": 13,
+  "raw_quotient_group_single": "Z^3",
+  "raw_quotient_group_double": "Z^3",
+  "common_free_generator_count": 3,
+  "common_free_generators": [
+    {
+      "generator_id": "common_free_generator_1",
+      "single_indicator_id": "single_free_generator_1",
+      "double_indicator_id": "double_free_generator_1",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "label": "P3_R5",
+          "coeff": -1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "P3": [
+          "P3_R5",
+          "P3_R6"
+        ]
+      }
+    },
+    {
+      "generator_id": "common_free_generator_2",
+      "single_indicator_id": "single_free_generator_2",
+      "double_indicator_id": "double_free_generator_2",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "P3": [
+          "P3_R5"
+        ],
+        "P4": [
+          "P4_R1"
+        ]
+      }
+    },
+    {
+      "generator_id": "common_free_generator_3",
+      "single_indicator_id": "single_free_generator_3",
+      "double_indicator_id": "double_free_generator_3",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "support": [
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": 1
+        }
+      ],
+      "support_blocks": {
+        "P3": [
+          "P3_R1",
+          "P3_R2"
+        ],
+        "P4": [
+          "P4_R3"
+        ]
+      }
+    }
+  ],
+  "p3_p4_sector_summary": {
+    "sector_rows": [
+      "P3_R1",
+      "P3_R2",
+      "P3_R3",
+      "P3_R4",
+      "P3_R5",
+      "P3_R6",
+      "P4_R1",
+      "P4_R2",
+      "P4_R3"
+    ],
+    "touching_constraint_rows": [
+      {
+        "source_type": "line",
+        "source_id": "L2",
+        "basis_id": "L2_R1",
+        "restricted_row": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "restricted_support": [
+          {
+            "label": "P3_R2",
+            "coeff": 1
+          },
+          {
+            "label": "P3_R3",
+            "coeff": 1
+          },
+          {
+            "label": "P4_R3",
+            "coeff": -1
+          }
+        ]
+      },
+      {
+        "source_type": "line",
+        "source_id": "L2",
+        "basis_id": "L2_R2",
+        "restricted_row": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "restricted_support": [
+          {
+            "label": "P3_R1",
+            "coeff": 1
+          },
+          {
+            "label": "P3_R4",
+            "coeff": 1
+          },
+          {
+            "label": "P4_R3",
+            "coeff": -1
+          }
+        ]
+      },
+      {
+        "source_type": "line",
+        "source_id": "L2",
+        "basis_id": "L2_R3",
+        "restricted_row": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          -1,
+          -1,
+          0
+        ],
+        "restricted_support": [
+          {
+            "label": "P3_R5",
+            "coeff": 1
+          },
+          {
+            "label": "P3_R6",
+            "coeff": 1
+          },
+          {
+            "label": "P4_R1",
+            "coeff": -1
+          },
+          {
+            "label": "P4_R2",
+            "coeff": -1
+          }
+        ]
+      }
+    ],
+    "touching_source_counts": {
+      "L2": 3
+    },
+    "touching_plane_ids": [],
+    "touching_line_ids": [
+      "L2"
+    ],
+    "restricted_matrix_shape": [
+      3,
+      9
+    ],
+    "restricted_matrix_rank": 3,
+    "restricted_matrix_nullity": 6
+  },
+  "l2_line_equations": [
+    {
+      "basis_id": "L2_R1",
+      "terms": [
+        {
+          "label": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "basis_id": "L2_R2",
+      "terms": [
+        {
+          "label": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R3",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "basis_id": "L2_R3",
+      "terms": [
+        {
+          "label": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "label": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "label": "P4_R1",
+          "coeff": -1
+        },
+        {
+          "label": "P4_R2",
+          "coeff": -1
+        }
+      ]
+    }
+  ],
+  "single_with_planes_generator_residuals": [
+    {
+      "generator_id": "common_free_generator_1",
+      "nonzero_residual_rows": [],
+      "touched_rows": [
+        {
+          "row_index": 8,
+          "source_type": "line",
+          "source_id": "L2",
+          "basis_id": "L2_R3",
+          "row_support": [
+            "P3_R5",
+            "P3_R6"
+          ],
+          "residual": 0
+        }
+      ]
+    },
+    {
+      "generator_id": "common_free_generator_2",
+      "nonzero_residual_rows": [],
+      "touched_rows": [
+        {
+          "row_index": 8,
+          "source_type": "line",
+          "source_id": "L2",
+          "basis_id": "L2_R3",
+          "row_support": [
+            "P3_R5",
+            "P4_R1"
+          ],
+          "residual": 0
+        }
+      ]
+    },
+    {
+      "generator_id": "common_free_generator_3",
+      "nonzero_residual_rows": [],
+      "touched_rows": [
+        {
+          "row_index": 6,
+          "source_type": "line",
+          "source_id": "L2",
+          "basis_id": "L2_R1",
+          "row_support": [
+            "P3_R2",
+            "P4_R3"
+          ],
+          "residual": 0
+        },
+        {
+          "row_index": 7,
+          "source_type": "line",
+          "source_id": "L2",
+          "basis_id": "L2_R2",
+          "row_support": [
+            "P3_R1",
+            "P4_R3"
+          ],
+          "residual": 0
+        }
+      ]
+    }
+  ],
+  "double_with_planes_generator_residuals": [
+    {
+      "generator_id": "common_free_generator_1",
+      "nonzero_residual_rows": [],
+      "touched_rows": [
+        {
+          "row_index": 8,
+          "source_type": "line",
+          "source_id": "L2",
+          "basis_id": "L2_R3",
+          "row_support": [
+            "P3_R5",
+            "P3_R6"
+          ],
+          "residual": 0
+        }
+      ]
+    },
+    {
+      "generator_id": "common_free_generator_2",
+      "nonzero_residual_rows": [],
+      "touched_rows": [
+        {
+          "row_index": 8,
+          "source_type": "line",
+          "source_id": "L2",
+          "basis_id": "L2_R3",
+          "row_support": [
+            "P3_R5",
+            "P4_R1"
+          ],
+          "residual": 0
+        }
+      ]
+    },
+    {
+      "generator_id": "common_free_generator_3",
+      "nonzero_residual_rows": [],
+      "touched_rows": [
+        {
+          "row_index": 6,
+          "source_type": "line",
+          "source_id": "L2",
+          "basis_id": "L2_R1",
+          "row_support": [
+            "P3_R2",
+            "P4_R3"
+          ],
+          "residual": 0
+        },
+        {
+          "row_index": 7,
+          "source_type": "line",
+          "source_id": "L2",
+          "basis_id": "L2_R2",
+          "row_support": [
+            "P3_R1",
+            "P4_R3"
+          ],
+          "residual": 0
+        }
+      ]
+    }
+  ],
+  "classification": {
+    "primary": "missing_effective_constraints_in_P3_P4_sector",
+    "secondary": [
+      "wrong_use_of_little_co_group_vs_full_little_group_representation",
+      "wrong_handling_of_translational_Bloch_phase_e_minus_ik_t_in_compatibility_subduction"
+    ],
+    "not_supported_by_evidence": [
+      "wrong_endpoint_restriction_geometry",
+      "wrong_plane_gluing_on_existing_P3_P4_planes",
+      "wrong_little_group_representation_construction_in_induction"
+    ],
+    "verdict": "The three raw free directions survive because the current P3/P4 sector is only seen by the three L2 co-group equations, and no plane row touches P3/P4 at all. Algebraically this leaves the K/H sector underconstrained; implementation-wise the compatibility builder is using a phase-stripped character layer rather than a full little-group/projective subduction object."
+  }
+}

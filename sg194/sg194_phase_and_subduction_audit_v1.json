@@ -1,0 +1,1577 @@
+{
+  "target_group": "194.1.1.1",
+  "source_code_evidence": {
+    "build_line_block_uses_character": {
+      "file": "sg194/debug_workflow_portability_194.1.1.1.py",
+      "line": 921
+    },
+    "build_plane_block_uses_character": {
+      "file": "sg194/debug_workflow_portability_194.1.1.1.py",
+      "line": 1034
+    },
+    "induce_candidate_explicit_bloch_phase": {
+      "file": "sg194/debug_workflow_portability_194.1.1.1.py",
+      "line": 1200
+    },
+    "induce_candidate_uses_linear_character": {
+      "file": "sg194/debug_workflow_portability_194.1.1.1.py",
+      "line": 1202
+    },
+    "ssgreps_linear_character_formula": {
+      "file": "common/SSGReps.py",
+      "line": 708
+    }
+  },
+  "phase_relation_examples": {
+    "single_L2": {
+      "kconv": [
+        2.094395102393,
+        2.094395102393,
+        1.256637061436
+      ],
+      "operations": [
+        {
+          "operation_index": 0,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 1,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 2,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 3,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.809016994375,
+            "imag": -0.587785252292
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 4,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.809016994375,
+            "imag": -0.587785252292
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 5,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.809016994375,
+            "imag": -0.587785252292
+          },
+          "phase_is_trivial": false
+        }
+      ],
+      "rep_checks": [
+        {
+          "rep_index": 1,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": [
+            {
+              "operation_index": 3,
+              "raw_character": {
+                "real": -1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.809016994375,
+                "imag": 0.587785252292
+              }
+            },
+            {
+              "operation_index": 4,
+              "raw_character": {
+                "real": -1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.809016994375,
+                "imag": 0.587785252292
+              }
+            },
+            {
+              "operation_index": 5,
+              "raw_character": {
+                "real": -1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.809016994375,
+                "imag": 0.587785252292
+              }
+            }
+          ]
+        },
+        {
+          "rep_index": 2,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": [
+            {
+              "operation_index": 3,
+              "raw_character": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": 0.809016994375,
+                "imag": -0.587785252292
+              }
+            },
+            {
+              "operation_index": 4,
+              "raw_character": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": 0.809016994375,
+                "imag": -0.587785252292
+              }
+            },
+            {
+              "operation_index": 5,
+              "raw_character": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": 0.809016994375,
+                "imag": -0.587785252292
+              }
+            }
+          ]
+        },
+        {
+          "rep_index": 3,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        }
+      ]
+    },
+    "single_P3": {
+      "kconv": [
+        2.094395102393,
+        2.094395102393,
+        0.0
+      ],
+      "operations": [
+        {
+          "operation_index": 0,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 1,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 2,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 3,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 4,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 5,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 6,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 7,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 8,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 9,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 10,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 11,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        }
+      ],
+      "rep_checks": [
+        {
+          "rep_index": 1,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 2,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 3,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 4,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 5,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 6,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        }
+      ]
+    },
+    "single_P4": {
+      "kconv": [
+        4.188790204786,
+        4.188790204786,
+        3.14159265359
+      ],
+      "operations": [
+        {
+          "operation_index": 0,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 1,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 2,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 3,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 4,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 5,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 6,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 7,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 8,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 9,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 10,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 11,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        }
+      ],
+      "rep_checks": [
+        {
+          "rep_index": 1,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": [
+            {
+              "operation_index": 7,
+              "raw_character": {
+                "real": -1.732050807569,
+                "imag": 0.0
+              },
+              "linear_character": {
+                "real": 0.0,
+                "imag": 1.732050807569
+              }
+            },
+            {
+              "operation_index": 8,
+              "raw_character": {
+                "real": 1.732050807569,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": 0.0,
+                "imag": -1.732050807569
+              }
+            }
+          ]
+        },
+        {
+          "rep_index": 2,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": [
+            {
+              "operation_index": 7,
+              "raw_character": {
+                "real": 1.732050807569,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.0,
+                "imag": -1.732050807569
+              }
+            },
+            {
+              "operation_index": 8,
+              "raw_character": {
+                "real": -1.732050807569,
+                "imag": 0.0
+              },
+              "linear_character": {
+                "real": 0.0,
+                "imag": 1.732050807569
+              }
+            }
+          ]
+        },
+        {
+          "rep_index": 3,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        }
+      ]
+    },
+    "double_L2": {
+      "kconv": [
+        2.094395102393,
+        2.094395102393,
+        1.256637061436
+      ],
+      "operations": [
+        {
+          "operation_index": 0,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 1,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 2,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 3,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.809016994375,
+            "imag": -0.587785252292
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 4,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.809016994375,
+            "imag": -0.587785252292
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 5,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.809016994375,
+            "imag": -0.587785252292
+          },
+          "phase_is_trivial": false
+        }
+      ],
+      "rep_checks": [
+        {
+          "rep_index": 1,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": [
+            {
+              "operation_index": 3,
+              "raw_character": {
+                "real": -1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.809016994375,
+                "imag": 0.587785252292
+              }
+            },
+            {
+              "operation_index": 4,
+              "raw_character": {
+                "real": -1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.809016994375,
+                "imag": 0.587785252292
+              }
+            },
+            {
+              "operation_index": 5,
+              "raw_character": {
+                "real": -1.0,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.809016994375,
+                "imag": 0.587785252292
+              }
+            }
+          ]
+        },
+        {
+          "rep_index": 2,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": [
+            {
+              "operation_index": 3,
+              "raw_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "linear_character": {
+                "real": 0.809016994375,
+                "imag": -0.587785252292
+              }
+            },
+            {
+              "operation_index": 4,
+              "raw_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "linear_character": {
+                "real": 0.809016994375,
+                "imag": -0.587785252292
+              }
+            },
+            {
+              "operation_index": 5,
+              "raw_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "linear_character": {
+                "real": 0.809016994375,
+                "imag": -0.587785252292
+              }
+            }
+          ]
+        },
+        {
+          "rep_index": 3,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        }
+      ]
+    },
+    "double_P3": {
+      "kconv": [
+        2.094395102393,
+        2.094395102393,
+        0.0
+      ],
+      "operations": [
+        {
+          "operation_index": 0,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 1,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 2,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 3,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 4,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 5,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 6,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 7,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 8,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 9,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 10,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 11,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        }
+      ],
+      "rep_checks": [
+        {
+          "rep_index": 1,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 2,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 3,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 4,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 5,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        },
+        {
+          "rep_index": 6,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        }
+      ]
+    },
+    "double_P4": {
+      "kconv": [
+        4.188790204786,
+        4.188790204786,
+        3.14159265359
+      ],
+      "operations": [
+        {
+          "operation_index": 0,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 1,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 2,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 3,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 4,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 5,
+          "tau": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "phase_is_trivial": true
+        },
+        {
+          "operation_index": 6,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 7,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 8,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 9,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 10,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        },
+        {
+          "operation_index": 11,
+          "tau": [
+            0.0,
+            0.0,
+            0.5
+          ],
+          "phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "phase_is_trivial": false
+        }
+      ],
+      "rep_checks": [
+        {
+          "rep_index": 1,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": [
+            {
+              "operation_index": 7,
+              "raw_character": {
+                "real": -1.732050807569,
+                "imag": 0.0
+              },
+              "linear_character": {
+                "real": 0.0,
+                "imag": 1.732050807569
+              }
+            },
+            {
+              "operation_index": 8,
+              "raw_character": {
+                "real": 1.732050807569,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.0,
+                "imag": -1.732050807569
+              }
+            }
+          ]
+        },
+        {
+          "rep_index": 2,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": [
+            {
+              "operation_index": 7,
+              "raw_character": {
+                "real": 1.732050807569,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": 0.0,
+                "imag": -1.732050807569
+              }
+            },
+            {
+              "operation_index": 8,
+              "raw_character": {
+                "real": -1.732050807569,
+                "imag": -0.0
+              },
+              "linear_character": {
+                "real": -0.0,
+                "imag": 1.732050807569
+              }
+            }
+          ]
+        },
+        {
+          "rep_index": 3,
+          "max_linear_equals_raw_times_phase_error": 0.0,
+          "nontrivial_phase_examples": []
+        }
+      ]
+    }
+  },
+  "subduction_tests": {
+    "single_L2_using_character": {
+      "line_id": "L2",
+      "flavor": "character_json",
+      "endpoint_reports": [
+        {
+          "endpoint_id": "P3",
+          "rep_reports": [
+            {
+              "rep_id": "P3_R1",
+              "status": "ok",
+              "coefficients": [
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "rep_id": "P3_R2",
+              "status": "ok",
+              "coefficients": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "rep_id": "P3_R3",
+              "status": "ok",
+              "coefficients": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "rep_id": "P3_R4",
+              "status": "ok",
+              "coefficients": [
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "rep_id": "P3_R5",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P3_R6",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "endpoint_id": "P4",
+          "rep_reports": [
+            {
+              "rep_id": "P4_R1",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P4_R2",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P4_R3",
+              "status": "ok",
+              "coefficients": [
+                1,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "single_L2_using_linear_character": {
+      "line_id": "L2",
+      "flavor": "linear_character_json",
+      "endpoint_reports": [
+        {
+          "endpoint_id": "P3",
+          "rep_reports": [
+            {
+              "rep_id": "P3_R1",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            },
+            {
+              "rep_id": "P3_R2",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            },
+            {
+              "rep_id": "P3_R3",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            },
+            {
+              "rep_id": "P3_R4",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            },
+            {
+              "rep_id": "P3_R5",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P3_R6",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "endpoint_id": "P4",
+          "rep_reports": [
+            {
+              "rep_id": "P4_R1",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P4_R2",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P4_R3",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            }
+          ]
+        }
+      ]
+    },
+    "double_L2_using_character": {
+      "line_id": "L2",
+      "flavor": "character_json",
+      "endpoint_reports": [
+        {
+          "endpoint_id": "P3",
+          "rep_reports": [
+            {
+              "rep_id": "P3_R1",
+              "status": "ok",
+              "coefficients": [
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "rep_id": "P3_R2",
+              "status": "ok",
+              "coefficients": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "rep_id": "P3_R3",
+              "status": "ok",
+              "coefficients": [
+                1,
+                0,
+                0
+              ]
+            },
+            {
+              "rep_id": "P3_R4",
+              "status": "ok",
+              "coefficients": [
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "rep_id": "P3_R5",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P3_R6",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "endpoint_id": "P4",
+          "rep_reports": [
+            {
+              "rep_id": "P4_R1",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P4_R2",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P4_R3",
+              "status": "ok",
+              "coefficients": [
+                1,
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "double_L2_using_linear_character": {
+      "line_id": "L2",
+      "flavor": "linear_character_json",
+      "endpoint_reports": [
+        {
+          "endpoint_id": "P3",
+          "rep_reports": [
+            {
+              "rep_id": "P3_R1",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            },
+            {
+              "rep_id": "P3_R2",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            },
+            {
+              "rep_id": "P3_R3",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            },
+            {
+              "rep_id": "P3_R4",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            },
+            {
+              "rep_id": "P3_R5",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P3_R6",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "endpoint_id": "P4",
+          "rep_reports": [
+            {
+              "rep_id": "P4_R1",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P4_R2",
+              "status": "ok",
+              "coefficients": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "rep_id": "P4_R3",
+              "status": "inconsistent",
+              "error": "The system is inconsistent."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "verdict": {
+    "compatibility_builder_uses_phase_stripped_character": true,
+    "induction_builder_uses_full_linear_character_with_bloch_phase": true,
+    "little_co_group_vs_full_little_group_mismatch_present": true,
+    "most_likely_effect": "On the K/H line L2, the current compatibility builder collapses the nonsymmorphic phase-bearing sector to three raw-character equations. Those equations are exactly the ones that leave the common Z^3 directions alive."
+  }
+}

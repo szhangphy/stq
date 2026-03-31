@@ -1,36 +1,22 @@
-Resume the SG194 194.1.1.1 final-standard-space clean closeout from the current repository root.
+Resume SG194 194.1.1.1 from the raw-gap / phase / full-rerun audit state.
 
-Last refreshed:
-- 2026-03-31 21:38:57 +0800
+Last refreshed: 2026-03-31 23:11:58 +0800
+Branch: sg194-special
+HEAD: 70fdd3f
 
-Branch and HEAD:
-- active branch: sg194-special
-- current HEAD: e5d261f
-- remote: git@github.com:szhangphy/stq.git
-
-Current hard facts:
-- final-standard-space contract = externally anchored current-to-standard elimination contract
-- internal ambient identity proof = not claimed
-- single_vs_external_union_rank_in_current_point_rows = 17
-- double_vs_external_union_rank_in_current_point_rows = 17
-- single final rank(BS) = 13
-- single final rank(AI) = 13
-- single final quotient = trivial
-- double final rank(BS) = 13
-- double final rank(AI) = 13
-- double final quotient = trivial
-- package tarball = review_package_sg194_stage2_closeout_followup_v3.tar.gz
-- package smoke tests passed =  True
+Current facts:
+- raw free generators = {P3_R5-P3_R6, P3_R5+P4_R1, P3_R1+P3_R2+P4_R3}
+- only L2 touches P3/P4; no plane row touches P3/P4
+- compatibility builder uses raw character; induction uses linear_character + exp(-ik·t)
+- extracted v3 package full rerun passed
 
 Read first:
-1. sg194/sg194_standard_space_projection_summary_v1.json
-2. sg194/current_status_194.1.1.1_stage2.json
-3. sg194/workflow_portability_stage2_summary_194.1.1.1.json
-4. sg194/workflow_portability_report_stage2_194.1.1.1.pdf
-5. sg194/review_package_sg194_stage2_closeout_followup_v3/REPRODUCIBILITY_MANIFEST.md
+1. sg194/sg194_upstream_raw_bs_gap_audit_v1.md
+2. sg194/sg194_phase_and_subduction_audit_v1.md
+3. sg194/sg194_package_full_rerun_test_v1.md
+4. sg194/sg194_upstream_raw_bs_fix_plan_v1.md
 
 Immediate next actions:
-1. review the in-scope git diff only
-2. git add the v3 clean-closeout source and generated outputs
-3. commit on sg194-special
-4. push origin sg194-special
+1. inspect diff
+2. git add the new audit scripts and outputs
+3. commit and push
