@@ -1,0 +1,139 @@
+{
+  "group_spec_fields": [
+    {
+      "name": "key",
+      "type": "str"
+    },
+    {
+      "name": "group_id",
+      "type": "str"
+    },
+    {
+      "name": "title",
+      "type": "str"
+    },
+    {
+      "name": "description",
+      "type": "str"
+    },
+    {
+      "name": "home_subdir",
+      "type": "str"
+    },
+    {
+      "name": "adapter_key",
+      "type": "str"
+    },
+    {
+      "name": "modes",
+      "type": "tuple[str, ...]"
+    },
+    {
+      "name": "row_languages",
+      "type": "tuple[str, ...]"
+    },
+    {
+      "name": "artifacts",
+      "type": "dict[str, str]"
+    },
+    {
+      "name": "producer_commands",
+      "type": "tuple[ProducerCommand, ...]"
+    },
+    {
+      "name": "special_rules",
+      "type": "dict[str, Any]"
+    },
+    {
+      "name": "expected_results",
+      "type": "dict[str, dict[str, Any]]"
+    },
+    {
+      "name": "benchmark",
+      "type": "dict[str, Any]"
+    },
+    {
+      "name": "final_object_ids",
+      "type": "dict[str, str]"
+    },
+    {
+      "name": "capabilities",
+      "type": "dict[str, Any]"
+    },
+    {
+      "name": "trust_level",
+      "type": "str"
+    },
+    {
+      "name": "runnable",
+      "type": "bool"
+    },
+    {
+      "name": "readiness_note",
+      "type": "str | None"
+    }
+  ],
+  "producer_command_fields": [
+    {
+      "name": "label",
+      "type": "str"
+    },
+    {
+      "name": "script_relpath",
+      "type": "str"
+    },
+    {
+      "name": "validate_args",
+      "type": "tuple[str, ...]"
+    },
+    {
+      "name": "refresh_args",
+      "type": "tuple[str, ...]"
+    },
+    {
+      "name": "note",
+      "type": "str | None"
+    }
+  ],
+  "specs": [
+    {
+      "key": "sg194",
+      "group_id": "194.1.1.1",
+      "runnable": true,
+      "trust_level": "accepted_group_specific_final_objects",
+      "row_languages": [
+        "raw",
+        "target",
+        "all"
+      ],
+      "modes": [
+        "single",
+        "double",
+        "both"
+      ],
+      "readiness_note": null
+    },
+    {
+      "key": "ssg10_4_1_31",
+      "group_id": "10.4.1.31",
+      "runnable": true,
+      "trust_level": "symmetry_operations_only",
+      "row_languages": [
+        "raw",
+        "target",
+        "all"
+      ],
+      "modes": [
+        "single",
+        "double",
+        "both"
+      ],
+      "readiness_note": "This spec is real and runnable, but it is intentionally limited to symmetry-ops-backed readiness. No BS/AI/quotient conclusion is emitted until generic builders from symmetry operations exist."
+    }
+  ],
+  "notes": {
+    "repo_relative_artifacts": true,
+    "producer_commands_are_repo_relative": true,
+    "adapter_key_is_the_group_specific_plugin_boundary": true
+  }
+}

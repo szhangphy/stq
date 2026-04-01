@@ -1,77 +1,87 @@
 {
-  "current_time": "2026-04-01 15:05:51 +0800",
-  "task_scope": "SG194 modular pipeline refactor and extensibility audit.",
+  "current_time": "2026-04-01 15:44:02 +0800",
+  "task_scope": "SG194 modular pipeline v2 refactor with real second-group onboarding under symmetry-operations-only trust.",
   "current_branch": "sg194-special",
   "repo_root_relative": ".",
   "remote": "git@github.com:szhangphy/stq.git",
-  "head_commit_short": "8cb81be",
-  "package_name": "review_package_sg194_modular_pipeline_v1",
-  "package_tarball": "review_package_sg194_modular_pipeline_v1.tar.gz",
+  "head_commit_short": "72485d6",
+  "package_name": "review_package_sg194_modular_pipeline_v2",
+  "package_tarball": "review_package_sg194_modular_pipeline_v2.tar.gz",
   "confirmed_findings": [
-    "The new unified entrypoint is `sg194/run_group_pipeline.py`.",
+    "The unified entrypoint is still `sg194/run_group_pipeline.py`, but it now dispatches to `pipeline_v2`.",
     "The modular driver preserves the accepted SG194 split: single exact target = 13/13/trivial, double benchmark-facing target = 10/10/Z6.",
-    "The driver can also validate a second template spec (`template-hex`) without SG194-specific runtime artifacts.",
-    "Legacy SG194 scripts remain as backends/forensic audits rather than the main orchestration layer.",
-    "The old `review_package_sg194_single_jk_pairing_proof_v1` package has been retired in favor of the modular pipeline package."
+    "A real second-group spec (`10.4.1.31`) is now registered, but only under `symmetry_operations_only` trust.",
+    "The second-group adapter intentionally emits readiness/blocker outputs instead of reusing old BS/AI/quotient conclusions.",
+    "The old `review_package_sg194_modular_pipeline_v1` package has been retired in favor of the v2 package."
   ],
   "ruled_out_hypotheses": [
-    "SG194 still needs ad hoc one-off debug scripts as the only runnable entrypoint.",
-    "The current code structure is already directly extensible to other groups without interface refactor.",
-    "The modular refactor changed the accepted SG194 single/double final results."
+    "Second-group onboarding requires trusting the existing 10.4.1.31 quotient summaries.",
+    "The v2 refactor changed the accepted SG194 single/double final results.",
+    "A template-only second-group scaffold is enough for this phase."
   ],
   "commands_run": [
-    "python3 -m py_compile sg194/*.py sg194/pipeline_v1/*.py",
-    "python3 sg194/debug_sg194_extensibility_audit_v1.py",
-    "python3 sg194/run_group_pipeline.py --group sg194 --mode both --row-language all --output-dir sg194/pipeline_runs/sg194_both_all_latest --validate --build-package",
-    "python3 sg194/run_group_pipeline.py --group template-hex --mode both --row-language all --output-dir sg194/pipeline_runs/template_hex_all_latest --validate",
-    "python3 sg194/debug_sg194_pipeline_consistency_v1.py"
+    "python3 -m py_compile sg194/debug_sg194_extensibility_audit_v2.py sg194/debug_sg194_pipeline_consistency_v2.py sg194/debug_sg194_second_group_smoke_test_v1.py sg194/run_group_pipeline.py sg194/pipeline_v2/*.py sg194/pipeline_v2/adapters/*.py",
+    "python3 sg194/debug_sg194_second_group_smoke_test_v1.py",
+    "python3 sg194/debug_sg194_extensibility_audit_v2.py",
+    "python3 sg194/run_group_pipeline.py --group sg194 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/sg194_both_all_latest --validate --build-package",
+    "python3 sg194/run_group_pipeline.py --group 10.4.1.31 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/ssg10_4_1_31_both_all_latest --validate --build-package",
+    "python3 sg194/debug_sg194_pipeline_consistency_v2.py",
+    "python3 sg194/debug_sg194_pipeline_consistency_v2.py --validate"
   ],
   "files_modified": [
-    "sg194/pipeline_v1/__init__.py",
-    "sg194/pipeline_v1/utils.py",
-    "sg194/pipeline_v1/models.py",
-    "sg194/pipeline_v1/specs.py",
-    "sg194/pipeline_v1/sg194_special.py",
-    "sg194/pipeline_v1/legacy_bridge.py",
-    "sg194/pipeline_v1/geometry.py",
-    "sg194/pipeline_v1/alignment.py",
-    "sg194/pipeline_v1/bs_ai.py",
-    "sg194/pipeline_v1/quotient.py",
-    "sg194/pipeline_v1/checks.py",
-    "sg194/pipeline_v1/reporting.py",
-    "sg194/pipeline_v1/driver.py",
+    "sg194/pipeline_v2/__init__.py",
+    "sg194/pipeline_v2/models.py",
+    "sg194/pipeline_v2/utils.py",
+    "sg194/pipeline_v2/legacy_bridge.py",
+    "sg194/pipeline_v2/geometry.py",
+    "sg194/pipeline_v2/alignment.py",
+    "sg194/pipeline_v2/bs_ai.py",
+    "sg194/pipeline_v2/quotient.py",
+    "sg194/pipeline_v2/checks.py",
+    "sg194/pipeline_v2/reporting.py",
+    "sg194/pipeline_v2/driver.py",
+    "sg194/pipeline_v2/specs.py",
+    "sg194/pipeline_v2/adapters/__init__.py",
+    "sg194/pipeline_v2/adapters/base.py",
+    "sg194/pipeline_v2/adapters/sg194.py",
+    "sg194/pipeline_v2/adapters/ssg10_4_1_31.py",
     "sg194/run_group_pipeline.py",
-    "sg194/debug_sg194_extensibility_audit_v1.py",
-    "sg194/debug_sg194_pipeline_consistency_v1.py",
+    "sg194/debug_sg194_second_group_smoke_test_v1.py",
+    "sg194/debug_sg194_extensibility_audit_v2.py",
+    "sg194/debug_sg194_pipeline_consistency_v2.py",
     "sg194/README.md",
     "sg194/live_checkpoint_sg194_1941111.json",
     "sg194/live_checkpoint_sg194_1941111.md"
   ],
   "scripts_passed": [
-    "python3 -m py_compile sg194/*.py sg194/pipeline_v1/*.py",
-    "python3 sg194/debug_sg194_extensibility_audit_v1.py",
-    "python3 sg194/run_group_pipeline.py --group sg194 --mode both --row-language all --output-dir sg194/pipeline_runs/sg194_both_all_latest --validate --build-package",
-    "python3 sg194/run_group_pipeline.py --group template-hex --mode both --row-language all --output-dir sg194/pipeline_runs/template_hex_all_latest --validate",
-    "python3 sg194/debug_sg194_pipeline_consistency_v1.py"
+    "python3 -m py_compile sg194/debug_sg194_extensibility_audit_v2.py sg194/debug_sg194_pipeline_consistency_v2.py sg194/debug_sg194_second_group_smoke_test_v1.py sg194/run_group_pipeline.py sg194/pipeline_v2/*.py sg194/pipeline_v2/adapters/*.py",
+    "python3 sg194/debug_sg194_second_group_smoke_test_v1.py",
+    "python3 sg194/debug_sg194_extensibility_audit_v2.py",
+    "python3 sg194/run_group_pipeline.py --group sg194 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/sg194_both_all_latest --validate --build-package",
+    "python3 sg194/run_group_pipeline.py --group 10.4.1.31 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/ssg10_4_1_31_both_all_latest --validate --build-package",
+    "python3 sg194/debug_sg194_pipeline_consistency_v2.py",
+    "python3 sg194/debug_sg194_pipeline_consistency_v2.py --validate"
   ],
   "scripts_failed": [],
   "active_blockers": [
-    "The modular architecture is only partially generic so far: new groups still need explicit geometry/alignment adapters and artifact specs."
+    "The framework is now adapter-pluggable, but a generic builder from trusted symmetry operations to full geometry/current-row/AI/quotient still does not exist."
   ],
   "next_actions": [
-    "Review the modular pipeline diff and cleanup diff together.",
-    "Commit on sg194-special.",
-    "Push origin/sg194-special."
+    "Review the pipeline_v2 diff and second-group ops-only onboarding contract together.",
+    "Commit on `sg194-special`.",
+    "Push `origin/sg194-special`."
   ],
   "github_sync_status": {
     "checkpoint_files_synced_to_branch": false,
     "remote_branch": "origin/sg194-special",
-    "head_commit_short": "8cb81be"
+    "head_commit_short": "72485d6"
   },
   "authoritative_artifacts": {
-    "driver_spec_json": "sg194_pipeline_driver_spec_v1.json",
-    "extensibility_audit_json": "sg194_extensibility_audit_v1.json",
-    "consistency_checks_json": "sg194_pipeline_consistency_checks_v1.json",
+    "driver_spec_json": "sg194_pipeline_driver_spec_v2.json",
+    "extensibility_audit_json": "sg194_extensibility_audit_v2.json",
+    "consistency_checks_json": "sg194_pipeline_consistency_checks_v2.json",
+    "group_spec_contract_json": "sg194_group_spec_contract_v1.json",
+    "second_group_onboarding_json": "sg194_second_group_onboarding_v1.json",
     "current_status_json": "current_status_194.1.1.1_stage2.json",
     "benchmark_status_json": "current_status_1941111_benchmark_v1.json"
   }

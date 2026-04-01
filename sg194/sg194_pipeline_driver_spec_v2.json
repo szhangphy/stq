@@ -1,0 +1,24 @@
+{
+  "entrypoint": "sg194/run_group_pipeline.py",
+  "backend_driver": "sg194/pipeline_v2/driver.py",
+  "cli_args": [
+    "--group",
+    "--mode single|double|both",
+    "--row-language raw|target|all",
+    "--output-dir",
+    "--validate",
+    "--build-package",
+    "--refresh",
+    "--list-groups"
+  ],
+  "outputs": [
+    "geometry_summary",
+    "representation_alignment_summary",
+    "bs_results",
+    "ai_results",
+    "quotient_results",
+    "final_status_summary",
+    "consistency_checks",
+    "package_manifest"
+  ]
+}

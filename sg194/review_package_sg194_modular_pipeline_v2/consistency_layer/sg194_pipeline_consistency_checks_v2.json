@@ -1,0 +1,82 @@
+{
+  "driver_script": "sg194/run_group_pipeline.py",
+  "commands": [
+    {
+      "command": "python3 /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_second_group_smoke_test_v1.py",
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "{\n  \"group\": \"10.4.1.31\",\n  \"trust_policy\": \"symmetry_operations_only\"\n}",
+      "stderr": ""
+    },
+    {
+      "command": "python3 /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_extensibility_audit_v2.py",
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "{\n  \"status\": \"ok\",\n  \"registered_specs\": [\n    \"sg194\",\n    \"ssg10_4_1_31\"\n  ]\n}",
+      "stderr": ""
+    },
+    {
+      "command": "python3 /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/run_group_pipeline.py --group sg194 --mode both --row-language all --output-dir /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/sg194_both_all_latest --validate --build-package",
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "pipeline ok: group=194.1.1.1 mode=both row_language=all all_passed=True trust=accepted_group_specific_final_objects output_dir=/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/sg194_both_all_latest",
+      "stderr": ""
+    },
+    {
+      "command": "python3 /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/run_group_pipeline.py --group 10.4.1.31 --mode both --row-language all --output-dir /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/ssg10_4_1_31_both_all_latest --validate --build-package",
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "pipeline ok: group=10.4.1.31 mode=both row_language=all all_passed=True trust=symmetry_operations_only output_dir=/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/ssg10_4_1_31_both_all_latest",
+      "stderr": ""
+    }
+  ],
+  "sg194": {
+    "single": {
+      "dBS": 13,
+      "dAI": 13,
+      "classification": "trivial"
+    },
+    "double": {
+      "dBS": 10,
+      "dAI": 10,
+      "classification": "Z6"
+    }
+  },
+  "second_group": {
+    "group": "10.4.1.31",
+    "trust_policy": "symmetry_operations_only",
+    "final_results_available": false,
+    "primary_blocker": "generic_current_row_compatibility_builder",
+    "missing_generic_builders": [
+      "generic_k_geometry_builder_from_symmetry_ops",
+      "generic_current_row_compatibility_builder",
+      "generic_local_ai_builder_from_site_symmetry_data",
+      "generic_direct_quotient_builder_once_bs_ai_exist"
+    ],
+    "final_status": {
+      "generated_at": "2026-04-01T15:43:18+08:00",
+      "group": "10.4.1.31",
+      "status": "partial_onboarding_only",
+      "single_final": {
+        "object_kind": "not_available_from_symmetry_ops_only",
+        "dBS": null,
+        "dAI": null,
+        "classification": null,
+        "row_language_kind": "not_built_from_symmetry_ops_only",
+        "blocker": "generic_current_row_compatibility_builder"
+      },
+      "double_final": {
+        "object_kind": "not_available_from_symmetry_ops_only",
+        "dBS": null,
+        "dAI": null,
+        "classification": null,
+        "row_language_kind": "not_built_from_symmetry_ops_only",
+        "blocker": "generic_current_row_compatibility_builder"
+      },
+      "same_final_object": null,
+      "relation": "final_objects_not_constructed_from_symmetry_ops_only",
+      "note": "A real second-group spec is now wired into the pipeline, but under a strict symmetry-operations-only trust policy. Full geometry/current-row/AI/quotient builders remain unavailable, so the driver must stop at explicit readiness/blocker output."
+    }
+  },
+  "all_passed": true
+}

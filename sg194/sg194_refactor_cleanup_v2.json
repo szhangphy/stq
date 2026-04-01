@@ -1,0 +1,22 @@
+{
+  "git_deleted": [
+    "sg194/review_package_sg194_modular_pipeline_v1",
+    "sg194/review_package_sg194_modular_pipeline_v1.tar.gz"
+  ],
+  "local_deleted": [
+    "sg194/pipeline_runs_v2/sg194_both_all_latest",
+    "sg194/pipeline_runs_v2/sg194_both_all_latest.tar.gz",
+    "sg194/pipeline_runs_v2/ssg10_4_1_31_both_all_latest",
+    "sg194/pipeline_runs_v2/ssg10_4_1_31_both_all_latest.tar.gz",
+    "sg194/pipeline_runs_v2"
+  ],
+  "kept_as_backends": [
+    "sg194/pipeline_v1",
+    "sg194/debug_workflow_portability_194.1.1.1.py",
+    "sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "sg194/debug_sg194_standard_space_projection_v1.py",
+    "sg194/debug_sg194_single_exact_target_alignment_v1.py",
+    "sg194/debug_sg194_single_jk_pairing_proof_v1.py",
+    "sg194/debug_sg194_single_exact_alignment_regression_v1.py"
+  ]
+}

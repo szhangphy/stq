@@ -1,0 +1,87 @@
+{
+  "current_state": "partially_generic_but_now_adapter_pluggable",
+  "can_onboard_other_groups_today": "partially",
+  "structural_obstacles": [
+    "Group adapters still own artifact interpretation and final-object semantics.",
+    "No generic builder yet exists from symmetry operations all the way to BS/AI/quotient."
+  ],
+  "data_adapter_obstacles": [
+    "Each new group still needs a producer or trusted artifact binding.",
+    "Target-row-language builders remain group-dependent unless a generic translation layer is added."
+  ],
+  "semantic_obstacles": [
+    "SG194 double benchmark-facing semantics are still group-specific.",
+    "SG194 single j/k canonicalization remains an isolated normalization hook.",
+    "10.4.1.31 is only admitted under symmetry-operations-only trust."
+  ],
+  "generic_modules": [
+    "pipeline_v2/models.py",
+    "pipeline_v2/utils.py",
+    "pipeline_v2/legacy_bridge.py",
+    "pipeline_v2/geometry.py",
+    "pipeline_v2/alignment.py",
+    "pipeline_v2/bs_ai.py",
+    "pipeline_v2/quotient.py",
+    "pipeline_v2/checks.py",
+    "pipeline_v2/reporting.py",
+    "pipeline_v2/driver.py",
+    "pipeline_v2/adapters/base.py"
+  ],
+  "sg194_special_modules": [
+    "pipeline_v2/adapters/sg194.py",
+    "debug_workflow_portability_194.1.1.1.py",
+    "debug_workflow_portability_stage2_194.1.1.1.py",
+    "debug_sg194_standard_space_projection_v1.py",
+    "debug_sg194_single_exact_target_alignment_v1.py",
+    "debug_sg194_single_jk_pairing_proof_v1.py",
+    "debug_sg194_single_exact_alignment_regression_v1.py"
+  ],
+  "second_group_modules": [
+    "pipeline_v2/adapters/ssg10_4_1_31.py",
+    "debug_sg194_second_group_smoke_test_v1.py"
+  ],
+  "registered_specs": [
+    {
+      "key": "sg194",
+      "group_id": "194.1.1.1",
+      "title": "SG194 exact single / benchmark-facing double pipeline",
+      "runnable": true,
+      "row_languages": [
+        "raw",
+        "target",
+        "all"
+      ],
+      "modes": [
+        "single",
+        "double",
+        "both"
+      ],
+      "trust_level": "accepted_group_specific_final_objects",
+      "readiness_note": null
+    },
+    {
+      "key": "ssg10_4_1_31",
+      "group_id": "10.4.1.31",
+      "title": "10.4.1.31 symmetry-ops-only onboarding probe",
+      "runnable": true,
+      "row_languages": [
+        "raw",
+        "target",
+        "all"
+      ],
+      "modes": [
+        "single",
+        "double",
+        "both"
+      ],
+      "trust_level": "symmetry_operations_only",
+      "readiness_note": "This spec is real and runnable, but it is intentionally limited to symmetry-ops-backed readiness. No BS/AI/quotient conclusion is emitted until generic builders from symmetry operations exist."
+    }
+  ],
+  "second_group_status": {
+    "group": "10.4.1.31",
+    "trust_level": "symmetry_operations_only",
+    "final_results_available": false,
+    "why_not": "This spec is real and runnable, but it is intentionally limited to symmetry-ops-backed readiness. No BS/AI/quotient conclusion is emitted until generic builders from symmetry operations exist."
+  }
+}

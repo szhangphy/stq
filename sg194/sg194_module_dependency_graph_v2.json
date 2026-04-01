@@ -1,0 +1,147 @@
+{
+  "nodes": [
+    "pipeline_v2/__init__.py",
+    "pipeline_v2/adapters/__init__.py",
+    "pipeline_v2/adapters/base.py",
+    "pipeline_v2/adapters/sg194.py",
+    "pipeline_v2/adapters/ssg10_4_1_31.py",
+    "pipeline_v2/alignment.py",
+    "pipeline_v2/bs_ai.py",
+    "pipeline_v2/checks.py",
+    "pipeline_v2/driver.py",
+    "pipeline_v2/geometry.py",
+    "pipeline_v2/legacy_bridge.py",
+    "pipeline_v2/models.py",
+    "pipeline_v2/quotient.py",
+    "pipeline_v2/reporting.py",
+    "pipeline_v2/sg194_special.py",
+    "pipeline_v2/specs.py",
+    "pipeline_v2/utils.py"
+  ],
+  "edges": [
+    {
+      "from": "pipeline_v2/__init__.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/adapters/__init__.py",
+      "to": "pipeline_v2/adapters/sg194.py"
+    },
+    {
+      "from": "pipeline_v2/adapters/__init__.py",
+      "to": "pipeline_v2/adapters/ssg10_4_1_31.py"
+    },
+    {
+      "from": "pipeline_v2/adapters/base.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/adapters/sg194.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/adapters/sg194.py",
+      "to": "pipeline_v2/utils.py"
+    },
+    {
+      "from": "pipeline_v2/adapters/ssg10_4_1_31.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/adapters/ssg10_4_1_31.py",
+      "to": "pipeline_v2/utils.py"
+    },
+    {
+      "from": "pipeline_v2/alignment.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/bs_ai.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/bs_ai.py",
+      "to": "pipeline_v2/utils.py"
+    },
+    {
+      "from": "pipeline_v2/checks.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/checks.py",
+      "to": "pipeline_v2/utils.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/alignment.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/bs_ai.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/checks.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/geometry.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/legacy_bridge.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/quotient.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/reporting.py"
+    },
+    {
+      "from": "pipeline_v2/driver.py",
+      "to": "pipeline_v2/specs.py"
+    },
+    {
+      "from": "pipeline_v2/geometry.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/legacy_bridge.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/legacy_bridge.py",
+      "to": "pipeline_v2/utils.py"
+    },
+    {
+      "from": "pipeline_v2/quotient.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/quotient.py",
+      "to": "pipeline_v2/utils.py"
+    },
+    {
+      "from": "pipeline_v2/reporting.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/reporting.py",
+      "to": "pipeline_v2/utils.py"
+    },
+    {
+      "from": "pipeline_v2/sg194_special.py",
+      "to": "pipeline_v2/models.py"
+    },
+    {
+      "from": "pipeline_v2/specs.py",
+      "to": "pipeline_v2/models.py"
+    }
+  ]
+}
