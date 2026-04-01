@@ -1,0 +1,74 @@
+{
+  "generated_at": "2026-04-01T12:27:55+08:00",
+  "target_group": "194.1.1.1",
+  "bs_object_language": {
+    "kind": "raw_current_with_planes_42_unknown_shell",
+    "source_files": [
+      "sg194/group_194_1_1_1_single_full_compatibility_with_planes.json",
+      "sg194/group_194_1_1_1_single_bs_analysis.json"
+    ],
+    "unknown_ordering_count": 42,
+    "matrix_shape": [
+      58,
+      42
+    ],
+    "rank": 26,
+    "nullity_dBS": 16
+  },
+  "ai_object_language": {
+    "kind": "raw_current_with_planes_42_unknown_shell",
+    "source_functions": [
+      "induce_objects",
+      "bs_coordinate_matrix"
+    ],
+    "source_file": "sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "candidate_count": 45,
+    "candidate_vector_lengths": [
+      42
+    ],
+    "ai_coordinate_matrix_shape": [
+      16,
+      45
+    ],
+    "ai_rank_dAI": 13
+  },
+  "quotient_presentation": {
+    "kind": "single_raw_current_bs_over_single_raw_current_ai",
+    "source_function": "quotient_artifacts",
+    "source_file": "sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "rank_bs": 16,
+    "rank_ai": 13,
+    "quotient_group": "Z^3",
+    "free_rank": 3,
+    "finite_part": [],
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "bs_ai_quotient_same_object_language": true,
+  "same_target_row_language": false,
+  "stale_legacy_artifacts_detected": {
+    "candidate_unknown_ordering_len": 62,
+    "candidate_bs_basis_ordering_len": 29,
+    "basis_unknown_ordering_len": 62,
+    "ai_in_bs_matrix_shape": [
+      29,
+      13
+    ],
+    "legacy_raw_quotient_free_rank": 16,
+    "note": "These 62-row / 29-basis artifacts are not the active stage2 single object and should not be used as current evidence."
+  },
+  "verdict": "The active single BS, AI, and quotient are computed in one raw-current 42-unknown row language. They are not in the ordinary standard target row language, so the recomputed 16/13/Z^3 result remains a raw-current result."
+}

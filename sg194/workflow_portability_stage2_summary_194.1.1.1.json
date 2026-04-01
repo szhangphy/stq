@@ -4,7 +4,7 @@
   "nonabelian_double_library_built": true,
   "single_group_unblocked": true,
   "double_group_unblocked": true,
-  "quotient_scope": "mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
+  "quotient_scope": "mixed_single_same_geometry_raw_current_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
   "single_rank_bs_raw_internal": 16,
   "double_rank_bs_raw_internal": 16,
   "single_rank_ai_in_bs_coordinates": 13,
@@ -46,7 +46,7 @@
   "double_final_rank_ai": 10,
   "single_final_quotient_group": "Z^3",
   "double_final_quotient_group": "Z6",
-  "interpretation_warning": "The single and double source layers are now deliberately split. Single publishes its direct raw BS/AI quotient 16/13/Z^3 without double inheritance, while double keeps the source-internalized benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The legacy 13/13/trivial projection is retained only as auxiliary provenance.",
-  "main_blocker": "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path is no longer inherited, but it still lacks a direct single ordinary current-to-standard derivation, so its honest direct result remains the raw BS/AI quotient 16/13/Z^3.",
+  "interpretation_warning": "The single and double source layers are now deliberately split. Single publishes its same-geometry raw-current BS/AI quotient 16/13/Z^3 without double inheritance and without claiming a standard target mapping, while double keeps the source-internalized benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The legacy 13/13/trivial projection is retained only as auxiliary provenance.",
+  "main_blocker": "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path is no longer inherited and now shares the same geometry backbone as double, but it still lacks a direct single ordinary current-to-standard derivation, so its honest same-geometry raw-current result remains the BS/AI quotient 16/13/Z^3.",
   "next_blocker": "If further cleanup is requested, derive a direct single ordinary current-to-standard quotient without external anchoring or double inheritance, and retire any remaining reports that still describe single as inherited."
 }

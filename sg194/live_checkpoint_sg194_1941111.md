@@ -1,5 +1,6 @@
 # Live Checkpoint
 
-- single direct result: `16 / 13 / Z^3`
-- single inheritance marker count: `0`
-- double remains internalized at `10 / 10 / Z6`.
+- geometry identical: `True`
+- same object language: `True`
+- recomputed single same-geometry raw-current result: `16 / 13 / Z^3`
+- this is still not a single-target standard result.

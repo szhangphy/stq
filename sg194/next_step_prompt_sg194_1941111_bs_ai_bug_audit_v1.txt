@@ -1,11 +1,11 @@
 Resume the SG194 194.1.1.1 source benchmark internalization work from the current repository root.
 
 Last refreshed:
-- 2026-04-01 11:24:58 +0800
+- 2026-04-01 12:24:20 +0800
 
 Branch and HEAD:
 - active branch: sg194-special
-- current HEAD: 798c499
+- current HEAD: ea25018
 - remote: git@github.com:szhangphy/stq.git
 
 Current hard facts:

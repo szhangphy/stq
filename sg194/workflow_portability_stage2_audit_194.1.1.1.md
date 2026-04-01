@@ -17,8 +17,8 @@
 - Rank(AI) vs Rank(BS): `13` / `16`.
 - Raw internal quotient status: `standard_projected`; raw internal quotient `Z^3`.
 - Legacy internal stage2 projection: `13` / `13` with quotient `trivial`.
-- Published source result: `single_direct_internal_raw_bs_mod_ai_v1` with rank(BS/AI) `16` / `13` and quotient `Z^3`.
-- Interpretation warning: The single published result is now taken directly from the single source object's raw BS/AI quotient, namely rank(BS/AI) = 16/13 with quotient Z^3. The legacy 13/13/trivial ordinary projection is preserved only as an auxiliary externally anchored layer and is not used as the direct single result. No double-source benchmark inheritance remains in the single path.
+- Published source result: `single_same_geometry_raw_current_row_language_v2` with rank(BS/AI) `16` / `13` and quotient `Z^3`.
+- Interpretation warning: The single source path now explicitly reuses the same k-geometry backbone as the double path, but its published numerical result remains a raw-current object rather than a standard target object. The single raw-current BS/AI quotient is rank(BS/AI) = 16/13 with quotient Z^3. The legacy 13/13/trivial ordinary projection is preserved only as auxiliary externally anchored provenance, and the single current raw result must not be identified with a single-target standard-space result.
 
 ## Double-Group Feed-Back
 

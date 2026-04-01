@@ -46,6 +46,7 @@ SINGLE_INHERITANCE_AUDIT_MD = ROOT / "sg194_single_inheritance_removal_audit_v1.
 PACKAGE_NAME = "review_package_sg194_single_direct_result_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
+PARITY_FIX_SCRIPT = ROOT / "debug_sg194_single_target_row_language_fix_v1.py"
 
 TRACKED_DELETE_TARGETS = [
     "sg194/review_package_sg194_internalization_fix_v1",
@@ -707,6 +708,9 @@ def build_package() -> None:
 
 
 def validate() -> None:
+    if PARITY_FIX_SCRIPT.exists():
+        subprocess.run(["python3", str(PARITY_FIX_SCRIPT), "--validate"], cwd=REPO_ROOT, check=True)
+        return
     summary = load_json(SINGLE_DIRECT_SUMMARY_JSON)
     audit = load_json(SINGLE_INHERITANCE_AUDIT_JSON)
     current_stage2 = load_json(CURRENT_STAGE2_JSON)
@@ -723,6 +727,13 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--validate", action="store_true")
     args = parser.parse_args()
+
+    if PARITY_FIX_SCRIPT.exists():
+        command = ["python3", str(PARITY_FIX_SCRIPT)]
+        if args.validate:
+            command.append("--validate")
+        subprocess.run(command, cwd=REPO_ROOT, check=True)
+        return
 
     if args.validate:
         validate()

@@ -532,8 +532,8 @@ def apply_single_direct_result_fields(
     benchmark_gap = direct_rank_bs - int(benchmark_oracle["dBS"])
     summary.update(
         {
-            "published_result_source": "single_direct_internal_raw_bs_mod_ai_v1",
-            "published_result_scope": "direct_single_internal_raw_bs_mod_ai_not_inherited_from_double",
+            "published_result_source": "single_same_geometry_raw_current_row_language_v2",
+            "published_result_scope": "same_geometry_single_raw_current_row_language_not_standard_target",
             "benchmark_oracle_file": BENCHMARK_STATUS_JSON.name,
             "benchmark_oracle_classification": benchmark_oracle["classification"],
             "benchmark_oracle_indicator_group": benchmark_oracle["indicator_group"],
@@ -548,35 +548,40 @@ def apply_single_direct_result_fields(
             "source_bs_gap_to_benchmark_after_internalization": benchmark_gap,
             "benchmark_gap_not_resolved": True,
             "benchmark_internalization_dependency": None,
-            "final_result_kind": "single_direct_internal_raw_bs_mod_ai_object",
+            "final_result_kind": "single_same_geometry_raw_current_object",
             "bs_internalization_status": "direct_single_internal_computation",
             "ai_internalization_status": "direct_single_internal_computation",
             "quotient_derivation_mode": "direct_smith_on_single_raw_bs_over_ai",
             "quotient_direct_current_lattice_derivation": True,
+            "geometry_backbone_mode": "shared_with_double_runtime_by_construction",
+            "bs_ai_same_object_language": True,
+            "object_language_kind": "raw_current_with_planes_42_unknown_shell",
+            "single_target_row_language_internalized": False,
             "final_rank_bs": direct_rank_bs,
             "final_rank_ai": direct_rank_ai,
             "quotient_group": direct_quotient,
             "standard_quotient_group": legacy_standard_quotient,
             "standard_space_projection_status": "auxiliary_legacy_projection_available_not_used_for_single_direct_result",
             "interpretation_warning": (
-                "The single published result is now taken directly from the single source object's raw BS/AI quotient, "
-                f"namely rank(BS/AI) = {direct_rank_bs}/{direct_rank_ai} with quotient {direct_quotient}. "
-                "The legacy 13/13/trivial ordinary projection is preserved only as an auxiliary externally anchored layer "
-                "and is not used as the direct single result. No double-source benchmark inheritance remains in the single path."
+                "The single source path now explicitly reuses the same k-geometry backbone as the double path, "
+                "but its published numerical result remains a raw-current object rather than a standard target object. "
+                f"The single raw-current BS/AI quotient is rank(BS/AI) = {direct_rank_bs}/{direct_rank_ai} with quotient {direct_quotient}. "
+                "The legacy 13/13/trivial ordinary projection is preserved only as auxiliary externally anchored provenance, "
+                "and the single current raw result must not be identified with a single-target standard-space result."
             ),
             "remaining_internal_mapping_blocker": (
-                "The direct single raw BS/AI quotient is now explicit, but a direct single ordinary current-to-standard "
-                "mapping still does not exist. The auxiliary 13/13/trivial projection remains non-direct, and the single path "
-                "should not be identified with the benchmark target without an independent single standard-space derivation."
+                "The single BS, AI, and quotient now live in one explicit raw-current row language with the same geometry "
+                "backbone used by the double runtime, but a direct single ordinary current-to-standard mapping still does not "
+                "exist. The auxiliary 13/13/trivial projection remains non-direct, so the single raw-current result should not "
+                "be identified with a single-target standard-space result without an independent single standard-space derivation."
             ),
         }
     )
     return summary
 
 
-def build_single_runtime(port, module, ssg_dict, *, line_phase_profile: str | None = None) -> dict[str, Any]:
-    ctx = port.load_context(module, TARGET_GROUP, "single", ssg_dict)
-    prepared_kgeom = port.prepare_kgeometry(TARGET_GROUP)
+def build_shared_kgeometry(port, group_number: str = TARGET_GROUP) -> dict[str, Any]:
+    prepared_kgeom = port.prepare_kgeometry(group_number)
     kgeom_payload = prepared_kgeom["payload"]
     grouped = prepared_kgeom["grouped"]
     kgeom = {"payload": kgeom_payload, "grouped": grouped, "connectivity": kgeom_payload}
@@ -584,9 +589,24 @@ def build_single_runtime(port, module, ssg_dict, *, line_phase_profile: str | No
     kgeom["synthetic_boundary_points"] = synthetic_points
     port.augment_connectivity_with_boundary_points(kgeom, synthetic_points)
     port.build_point_instance_entries(kgeom)
+    return kgeom
+
+
+def build_single_runtime(
+    port,
+    module,
+    ssg_dict,
+    *,
+    shared_kgeom: dict[str, Any] | None = None,
+    line_phase_profile: str | None = None,
+) -> dict[str, Any]:
+    ctx = port.load_context(module, TARGET_GROUP, "single", ssg_dict)
+    kgeom = shared_kgeom if shared_kgeom is not None else build_shared_kgeometry(port, TARGET_GROUP)
     ctx["kgeom"] = kgeom
 
     captures = port.build_manifold_capture(module, TARGET_GROUP, ssg_dict, ctx, "single", kgeom)
+    grouped = kgeom["grouped"]
+    synthetic_points = kgeom["synthetic_boundary_points"]
     point_ids = [item["id"] for item in grouped["points"]] + [item["id"] for item in synthetic_points]
     line_blocks = [
         port.build_line_block(line, captures, phase_aware_profile=line_phase_profile)
@@ -622,22 +642,26 @@ def build_double_runtime(
     port,
     module,
     ssg_dict,
-    single_kgeom: dict[str, Any],
+    single_kgeom: dict[str, Any] | None = None,
     *,
+    shared_kgeom: dict[str, Any] | None = None,
     line_phase_profile: str | None = None,
 ) -> dict[str, Any]:
+    runtime_kgeom = shared_kgeom if shared_kgeom is not None else single_kgeom
+    if runtime_kgeom is None:
+        runtime_kgeom = build_shared_kgeometry(port, TARGET_GROUP)
     ctx = port.load_context(module, TARGET_GROUP, "double", ssg_dict)
-    ctx["kgeom"] = single_kgeom
-    captures = port.build_manifold_capture(module, TARGET_GROUP, ssg_dict, ctx, "double", single_kgeom)
-    point_ids = [item["id"] for item in single_kgeom["grouped"]["points"]] + [item["id"] for item in single_kgeom["synthetic_boundary_points"]]
+    ctx["kgeom"] = runtime_kgeom
+    captures = port.build_manifold_capture(module, TARGET_GROUP, ssg_dict, ctx, "double", runtime_kgeom)
+    point_ids = [item["id"] for item in runtime_kgeom["grouped"]["points"]] + [item["id"] for item in runtime_kgeom["synthetic_boundary_points"]]
     line_blocks = [
         port.build_line_block(line, captures, phase_aware_profile=line_phase_profile)
-        for line in single_kgeom["grouped"]["lines"]
+        for line in runtime_kgeom["grouped"]["lines"]
     ]
     line_full = port.build_global_compatibility(line_blocks, point_ids)
     plane_blocks = [
         port.build_plane_block(plane, plane["corner_entries"], captures)
-        for plane in single_kgeom["grouped"]["planes"]
+        for plane in runtime_kgeom["grouped"]["planes"]
     ]
     with_planes = port.build_with_planes_compatibility(line_full, plane_blocks)
     bs_analysis = port.analyze_kernel(with_planes)
@@ -648,6 +672,7 @@ def build_double_runtime(
     )
     return {
         "ctx": ctx,
+        "kgeom": runtime_kgeom,
         "captures": captures,
         "line_blocks": line_blocks,
         "plane_blocks": plane_blocks,
@@ -1275,7 +1300,7 @@ def build_stage2_summary(
         "nonabelian_double_library_built": True,
         "single_group_unblocked": bool(single_summary["ai_from_trivial_prototype_to_complete"]),
         "double_group_unblocked": bool(double_summary["ai_from_minimal_to_complete"]),
-        "quotient_scope": "mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
+        "quotient_scope": "mixed_single_same_geometry_raw_current_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
         "single_rank_bs_raw_internal": single_summary["rank_bs_raw_internal"],
         "double_rank_bs_raw_internal": double_summary["rank_bs_raw_internal"],
         "single_rank_ai_in_bs_coordinates": single_summary["rank_ai_in_bs_coordinates"],
@@ -1312,15 +1337,16 @@ def build_stage2_summary(
         "double_final_quotient_group": double_summary["quotient_group"],
         "interpretation_warning": (
             "The single and double source layers are now deliberately split. "
-            f"Single publishes its direct raw BS/AI quotient {single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/"
-            f"{single_summary['quotient_group']} without double inheritance, while double keeps the source-internalized "
+            f"Single publishes its same-geometry raw-current BS/AI quotient {single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/"
+            f"{single_summary['quotient_group']} without double inheritance and without claiming a standard target mapping, while double keeps the source-internalized "
             f"benchmark-facing 10/10/{double_summary['quotient_group']} path with exact current/external spinorial alignment "
             f"{double_internalization['rank_record']}. The legacy 13/13/trivial projection is retained only as auxiliary provenance."
         ),
         "main_blocker": (
             "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel "
-            "current/external generator-space identity. The single path is no longer inherited, but it still lacks a direct "
-            "single ordinary current-to-standard derivation, so its honest direct result remains the raw BS/AI quotient "
+            "current/external generator-space identity. The single path is no longer inherited and now shares the same "
+            "geometry backbone as double, but it still lacks a direct single ordinary current-to-standard derivation, so its "
+            "honest same-geometry raw-current result remains the BS/AI quotient "
             f"{single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/{single_summary['quotient_group']}."
             if all_local_objects_complete
             else (double_summary["blocker"] or single_summary["blocker"])
@@ -2213,8 +2239,9 @@ def main() -> None:
     module = port.load_ssgreps_module()
     ssg_dict = port.load_ssg_dict(TARGET_GROUP)
 
-    single_runtime = build_single_runtime(port, module, ssg_dict)
-    double_runtime = build_double_runtime(port, module, ssg_dict, single_runtime["kgeom"])
+    shared_kgeom = build_shared_kgeometry(port, TARGET_GROUP)
+    single_runtime = build_single_runtime(port, module, ssg_dict, shared_kgeom=shared_kgeom)
+    double_runtime = build_double_runtime(port, module, ssg_dict, shared_kgeom=shared_kgeom)
 
     single_induction = induce_objects(port, single_runtime, helper_payload["family_single_local_irreps"], "single_local_irrep_library")
     double_induction = induce_objects(port, double_runtime, helper_payload["family_double_local_irreps"], "double_projective_local_irrep_library")
@@ -2259,7 +2286,7 @@ def main() -> None:
     current_status = {
         "target_group": TARGET_GROUP,
         "quotient_scope": stage2_summary["quotient_scope"],
-        "published_result_scope": "mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_target",
+        "published_result_scope": "mixed_single_same_geometry_raw_current_and_double_internalized_benchmark_target",
         "benchmark_oracle_file": benchmark_oracle["file"],
         "benchmark_oracle_indicator_group": benchmark_oracle["indicator_group"],
         "benchmark_oracle_rank_bs": benchmark_oracle["dBS"],

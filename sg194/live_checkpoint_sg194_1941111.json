@@ -1,116 +1,20 @@
 {
-  "current_time": "2026-04-01 11:24:58 +0800",
-  "task_scope": "SG194 194.1.1.1 source benchmark internalization plus cleanup packaging.",
+  "current_time": "2026-04-01 12:27:55 +0800",
+  "task_scope": "SG194 single geometry parity / object-language audit / stale-single cleanup.",
   "current_branch": "sg194-special",
-  "repo_root_relative": ".",
-  "remote": "git@github.com:szhangphy/stq.git",
-  "head_commit_short": "798c499",
-  "package_name": "review_package_sg194_internalization_fix_v1",
-  "package_tarball": "review_package_sg194_internalization_fix_v1.tar.gz",
+  "head_commit_short": "ea25018",
+  "package_name": "review_package_sg194_single_mode_parity_fix_v1",
+  "package_tarball": "review_package_sg194_single_mode_parity_fix_v1.tar.gz",
   "confirmed_findings": [
-    "The final-standard-space implementation remains an externally anchored current-to-standard elimination contract, not an internal ambient row-space identity proof.",
-    "single_vs_external_union_rank_in_current_point_rows = 17.",
-    "double_vs_external_union_rank_in_current_point_rows = 17.",
-    "The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.",
-    "Single published rank(BS/AI)/quotient = 16/13/Z^3; legacy internal layer = 13/13/trivial.",
-    "Double published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.",
-    "The extracted-package smoke tests over review_package_sg194_internalization_fix_v1.tar.gz passed = True."
+    "Single and double use the same 58x42 with-planes compatibility backbone and the same unknown ordering.",
+    "Single BS, AI, and quotient are computed in one raw-current 42-unknown row language.",
+    "Legacy 13/13/trivial enters only through the historical projection/reporting path, not the active single AI computation.",
+    "Recomputed single same-geometry raw-current result = 16/13/Z^3.",
+    "Stale single-direct package removed = True."
   ],
-  "ruled_out_hypotheses": [
-    "The final standard result is an unproved ambient row-space identity inside the current 34-row shell.",
-    "The final quotient is still missing or unavailable.",
-    "The review package still depends on /data/work absolute paths for the smoke-tested validate path."
-  ],
-  "commands_run": [
-    "python3 -m py_compile common/*.py",
-    "python3 -m py_compile sg194/*.py",
-    "python3 sg194/debug_sg194_standard_space_projection_v1.py --validate",
-    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py",
-    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate"
-  ],
-  "files_modified": [
-    "sg194/debug_sg194_standard_space_projection_v1.py",
-    "sg194/debug_sg194_stage2_package_dependency_audit_v1.py",
-    "sg194/debug_workflow_portability_194.1.1.1.py",
-    "sg194/debug_workflow_portability_stage2_194.1.1.1.py",
-    "sg194/README.md",
-    "sg194/current_status_194.1.1.1_stage2.json",
-    "sg194/workflow_portability_stage2_summary_194.1.1.1.json",
-    "sg194/workflow_portability_stage2_audit_194.1.1.1.md",
-    "sg194/handoff_194.1.1.1_stage2.md",
-    "sg194/next_step_prompt_194.1.1.1_stage2.txt",
-    "sg194/workflow_portability_report_stage2_194.1.1.1.tex",
-    "sg194/workflow_portability_report_stage2_194.1.1.1.pdf",
-    "sg194/group_194_1_1_1_single_ai_completion_summary.json",
-    "sg194/group_194_1_1_1_double_ai_completion_summary.json",
-    "sg194/sg194_current_point_space_snapshot_v1.json",
-    "sg194/sg194_current_to_standard_row_translation_v1.json",
-    "sg194/sg194_standard_space_projection_summary_v1.json",
-    "sg194/sg194_final_bs_ai_closeout_status_v1.json",
-    "sg194/sg194_final_bs_ai_closeout_report_v1.md",
-    "sg194/sg194_final_bs_ai_closeout_next_step_prompt_v1.txt",
-    "sg194/sg194_stage2_package_dependency_audit_v1.json",
-    "sg194/sg194_stage2_package_dependency_audit_v1.md",
-    "sg194/sg194_package_smoke_test_v1.json",
-    "sg194/sg194_package_smoke_test_v1.md",
-    "sg194/review_package_sg194_internalization_fix_v1/README.md",
-    "sg194/review_package_sg194_internalization_fix_v1/REPRODUCIBILITY_MANIFEST.md",
-    "sg194/review_package_sg194_internalization_fix_v1/reproducibility_manifest_v1.json",
-    "sg194/review_package_sg194_internalization_fix_v1.tar.gz"
-  ],
-  "scripts_passed": [
-    "python3 -m py_compile common/*.py",
-    "python3 -m py_compile sg194/*.py",
-    "python3 sg194/debug_sg194_standard_space_projection_v1.py --validate",
-    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py",
-    "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate"
-  ],
-  "scripts_failed": [],
   "active_blockers": [
-    "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path is no longer inherited, but it still lacks a direct single ordinary current-to-standard derivation, so its honest direct result remains the raw BS/AI quotient 16/13/Z^3."
+    "Single still lacks an independent ordinary current-to-standard mapping, so the same-geometry 16/13/Z^3 result remains a raw-current result."
   ],
-  "next_actions": [
-    "Review the git diff for in-scope source internalization and cleanup changes only.",
-    "Commit on sg194-special.",
-    "Push origin/sg194-special."
-  ],
-  "github_sync_status": {
-    "checkpoint_files_synced_to_branch": false,
-    "remote_branch": "origin/sg194-special",
-    "head_commit_short": "798c499"
-  },
-  "authoritative_artifacts": {
-    "stage2_summary_json": "workflow_portability_stage2_summary_194.1.1.1.json",
-    "current_status_json": "current_status_194.1.1.1_stage2.json",
-    "single_summary_json": "group_194_1_1_1_single_ai_completion_summary.json",
-    "double_summary_json": "group_194_1_1_1_double_ai_completion_summary.json",
-    "projection_summary_json": "sg194_standard_space_projection_summary_v1.json",
-    "package_dependency_audit_json": "sg194_stage2_package_dependency_audit_v1.json",
-    "package_smoke_json": "sg194_package_smoke_test_v1.json"
-  },
-  "projection_contract_type": "common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators",
-  "single_direct_result": {
-    "dBS": 16,
-    "dAI": 13,
-    "classification": "Z^3",
-    "finite_part": [],
-    "free_rank": 3,
-    "smith_diagonal_nonzero": [
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1,
-      1
-    ]
-  },
-  "single_inheritance_marker_count": 0,
-  "updated_at": "2026-04-01T11:33:28+08:00"
+  "single_result_scope": "same_geometry_raw_current_not_standard_target",
+  "updated_at": "2026-04-01T12:27:55+08:00"
 }

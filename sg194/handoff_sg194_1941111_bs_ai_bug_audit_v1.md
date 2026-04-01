@@ -1,8 +1,8 @@
 # SG194 194.1.1.1 Internalization Fix Handoff v1
 
-        - Current time: 2026-04-01 11:24:58 +0800
+        - Current time: 2026-04-01 12:24:20 +0800
         - Branch: `sg194-special`
-        - Current HEAD: `798c499`
+        - Current HEAD: `ea25018`
         - Repo root (relative): `.`
         - Remote: `git@github.com:szhangphy/stq.git`
         - Current subtask: keep the benchmark-facing SG194 result sourced by the internalized double spinorial path while cleaning historical adoption-era leftovers

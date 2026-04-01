@@ -1,7 +1,7 @@
 {
   "target_group": "194.1.1.1",
-  "quotient_scope": "mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
-  "published_result_scope": "mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_target",
+  "quotient_scope": "mixed_single_same_geometry_raw_current_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
+  "published_result_scope": "mixed_single_same_geometry_raw_current_and_double_internalized_benchmark_target",
   "benchmark_oracle_file": "current_status_1941111_benchmark_v1.json",
   "benchmark_oracle_indicator_group": "Z6",
   "benchmark_oracle_rank_bs": 10,
@@ -31,7 +31,7 @@
   "single_legacy_internal_projected_quotient_group": "trivial",
   "double_legacy_internal_projected_quotient_group": "trivial",
   "standard_space_projection_status": "source_internalization_active_legacy_projection_historical_only",
-  "interpretation_warning": "The single and double source layers are now deliberately split. Single publishes its direct raw BS/AI quotient 16/13/Z^3 without double inheritance, while double keeps the source-internalized benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The legacy 13/13/trivial projection is retained only as auxiliary provenance.",
+  "interpretation_warning": "The single and double source layers are now deliberately split. Single publishes its same-geometry raw-current BS/AI quotient 16/13/Z^3 without double inheritance and without claiming a standard target mapping, while double keeps the source-internalized benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The legacy 13/13/trivial projection is retained only as auxiliary provenance.",
   "projection_contract_type": "common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators",
   "common_free_generator_rank": 3,
   "current_to_standard_row_translation_json": "sg194_current_to_standard_row_translation_v1.json",
@@ -111,7 +111,7 @@
     ],
     "standard_space_projection_status": "auxiliary_legacy_projection_available_not_used_for_single_direct_result",
     "quotient_group": "Z^3",
-    "interpretation_warning": "The single published result is now taken directly from the single source object's raw BS/AI quotient, namely rank(BS/AI) = 16/13 with quotient Z^3. The legacy 13/13/trivial ordinary projection is preserved only as an auxiliary externally anchored layer and is not used as the direct single result. No double-source benchmark inheritance remains in the single path.",
+    "interpretation_warning": "The single source path now explicitly reuses the same k-geometry backbone as the double path, but its published numerical result remains a raw-current object rather than a standard target object. The single raw-current BS/AI quotient is rank(BS/AI) = 16/13 with quotient Z^3. The legacy 13/13/trivial ordinary projection is preserved only as auxiliary externally anchored provenance, and the single current raw result must not be identified with a single-target standard-space result.",
     "missing_families": [],
     "failures": [],
     "blocker": null,
@@ -134,8 +134,8 @@
     "single_vs_external_union_rank_in_current_point_rows": 17,
     "double_vs_external_union_rank_in_current_point_rows": 17,
     "union_rank_interpretation": "The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.",
-    "published_result_source": "single_direct_internal_raw_bs_mod_ai_v1",
-    "published_result_scope": "direct_single_internal_raw_bs_mod_ai_not_inherited_from_double",
+    "published_result_source": "single_same_geometry_raw_current_row_language_v2",
+    "published_result_scope": "same_geometry_single_raw_current_row_language_not_standard_target",
     "benchmark_oracle_file": "current_status_1941111_benchmark_v1.json",
     "benchmark_oracle_classification": "Z6",
     "benchmark_oracle_indicator_group": "Z6",
@@ -150,12 +150,16 @@
     "source_bs_gap_to_benchmark_after_internalization": 6,
     "benchmark_gap_not_resolved": true,
     "benchmark_internalization_dependency": null,
-    "final_result_kind": "single_direct_internal_raw_bs_mod_ai_object",
+    "final_result_kind": "single_same_geometry_raw_current_object",
     "bs_internalization_status": "direct_single_internal_computation",
     "ai_internalization_status": "direct_single_internal_computation",
     "quotient_derivation_mode": "direct_smith_on_single_raw_bs_over_ai",
     "quotient_direct_current_lattice_derivation": true,
-    "remaining_internal_mapping_blocker": "The direct single raw BS/AI quotient is now explicit, but a direct single ordinary current-to-standard mapping still does not exist. The auxiliary 13/13/trivial projection remains non-direct, and the single path should not be identified with the benchmark target without an independent single standard-space derivation."
+    "geometry_backbone_mode": "shared_with_double_runtime_by_construction",
+    "bs_ai_same_object_language": true,
+    "object_language_kind": "raw_current_with_planes_42_unknown_shell",
+    "single_target_row_language_internalized": false,
+    "remaining_internal_mapping_blocker": "The single BS, AI, and quotient now live in one explicit raw-current row language with the same geometry backbone used by the double runtime, but a direct single ordinary current-to-standard mapping still does not exist. The auxiliary 13/13/trivial projection remains non-direct, so the single raw-current result should not be identified with a single-target standard-space result without an independent single standard-space derivation."
   },
   "double_status": {
     "target_group": "194.1.1.1",
@@ -291,6 +295,6 @@
     "double_rank": 26,
     "double_nullity": 16
   },
-  "blocker": "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path is no longer inherited, but it still lacks a direct single ordinary current-to-standard derivation, so its honest direct result remains the raw BS/AI quotient 16/13/Z^3.",
+  "blocker": "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path is no longer inherited and now shares the same geometry backbone as double, but it still lacks a direct single ordinary current-to-standard derivation, so its honest same-geometry raw-current result remains the BS/AI quotient 16/13/Z^3.",
   "next_step": "If further cleanup is requested, derive a direct single ordinary current-to-standard quotient without external anchoring or double inheritance, and retire any remaining reports that still describe single as inherited."
 }
