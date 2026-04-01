@@ -90,12 +90,11 @@ SG194_SPEC = GroupSpec(
 GROUP222_SPEC = GroupSpec(
     key="ssg222_1_1_1",
     group_id="222.1.1.1",
-    title="222.1.1.1 / 222.1.1601 (OG) generic-probe pipeline with oracle-backed finalization",
+    title="222.1.1.1 / 222.1.1601 (OG) backend-free generic pipeline",
     description=(
-        "Real second-group probe under a strict trust policy: only symmetry-operation evidence "
-        "is trusted on the generic path. The current generic builders are still provisional and "
-        "must not be treated as a verified final classifier when they produce a BS/AI gap; copied "
-        "topmat oracle data for the equivalent OG object 222.1.1601 are tracked separately."
+        "Backend-free generic path under a strict trust policy: only symmetry-operation evidence "
+        "is allowed on the native compute path. Copied topmat data for the equivalent OG object "
+        "222.1.1601 are retained strictly as external compare/sanity-check artifacts."
     ),
     home_subdir="sg194",
     adapter_key="ssg222_generic_probe",
@@ -103,32 +102,30 @@ GROUP222_SPEC = GroupSpec(
     row_languages=("raw", "target", "all"),
     artifacts={
         "identity_map": "sg194/sg194_222_og1601_identity_map_v1.json",
-        "generality_verdict": "sg194/sg194_generality_verdict_v1.json",
-        "case_by_case_map": "sg194/sg194_case_by_case_map_v1.json",
-        "ai_filter_bug_audit": "sg194/sg194_ai_filter_bug_audit_v1.json",
-        "dropped_ai_candidates": "sg194/sg194_dropped_ai_candidates_v1.json",
+        "generality_verdict": "sg194/sg194_generality_verdict_v3.json",
+        "case_by_case_map": "sg194/sg194_case_by_case_map_v3.json",
+        "ai_filter_bug_audit": "sg194/sg194_ai_filter_bug_fix_v2.json",
+        "dropped_ai_candidates": "sg194/sg194_dropped_ai_candidates_v3.json",
         "topmat_oracle": "sg194/sg194_topmat_oracle_from_copy_v1.json",
-        "single_final_v3": "sg194/sg194_222_single_final_result_v3.json",
-        "double_final_v3": "sg194/sg194_222_double_final_result_v3.json",
-        "final_summary_v3": "sg194/sg194_222_final_classification_summary_v3.json",
-        "status_semantics_v3": "sg194/sg194_pipeline_status_semantics_v3.json",
+        "oracle_compare_v1": "sg194/sg194_222_generic_vs_topmat_oracle_v1.json",
+        "status_semantics_v5": "sg194/sg194_pipeline_status_semantics_v5.json",
     },
     producer_commands=(
         ProducerCommand(
-            label="generality_audit",
-            script_relpath="sg194/debug_sg194_generality_audit_v1.py",
+            label="generic_path_purity_audit",
+            script_relpath="sg194/debug_sg194_generic_path_purity_audit_v1.py",
         ),
         ProducerCommand(
-            label="ai_filter_bug_audit",
-            script_relpath="sg194/debug_sg194_ai_filter_bug_audit_v1.py",
+            label="backend_free_generic_probe",
+            script_relpath="sg194/debug_sg194_222_generic_probe_v1.py",
+        ),
+        ProducerCommand(
+            label="generic_194_regression",
+            script_relpath="sg194/debug_sg194_194_generic_regression_v1.py",
         ),
         ProducerCommand(
             label="topmat_oracle_compare",
             script_relpath="sg194/debug_sg194_topmat_oracle_compare_v1.py",
-        ),
-        ProducerCommand(
-            label="finalization_probe",
-            script_relpath="sg194/debug_sg194_222_finalization_probe_v1.py",
         ),
     ),
     builder_backend="generic_symmetry_ops",
@@ -139,10 +136,13 @@ GROUP222_SPEC = GroupSpec(
         "equivalent_topmat_msg_key": "222.98",
         "current_row_language_kind": "generic_canonical_point_row_language_from_symmetry_ops",
         "target_object_kind": "generic_direct_point_row_language_object",
-        "generic_path_status": "provisional_until_ai_filter_gap_removed",
+        "generic_path_status": "backend_free_native_path",
         "oracle_policy": "copied_topmat_src_only_no_edits_to_original_tree",
     },
-    final_object_ids={},
+    final_object_ids={
+        "single": "single_target_direct",
+        "double": "double_target_direct",
+    },
     capabilities={
         "full_geometry": True,
         "target_alignment": True,
@@ -153,14 +153,13 @@ GROUP222_SPEC = GroupSpec(
         "generic_current_row_compatibility": True,
         "generic_local_ai_embedding": True,
         "generic_direct_quotient": True,
-        "oracle_finalization": True,
+        "oracle_compare_only": True,
     },
     coordinate_policy=coordinate_contract(),
-    trust_level="symmetry_operations_only_plus_copied_og_oracle",
+    trust_level="backend_free_generic_symmetry_ops_with_external_oracle_compare",
     readiness_note=(
-        "This spec is real and runnable, but the generic compatibility/local-AI/quotient path is "
-        "still provisional. Verified final reporting is currently oracle-backed for the equivalent "
-        "OG object 222.1.1601, while the generic direct path is retained as a bug-audit probe."
+        "This spec is real and runnable. Native final slots come only from the backend-free generic "
+        "path, while copied topmat results for the equivalent OG object 222.1.1601 remain compare-only."
     ),
 )
 

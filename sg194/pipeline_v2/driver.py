@@ -6,10 +6,10 @@ from typing import Any
 
 from .adapters import get_adapter
 from .alignment import build_alignment_summary
+from .artifact_io import ensure_producer_state, load_artifacts
 from .bs_ai import build_ai_summary, build_bs_summary, build_result_objects, filter_result_objects
 from .checks import build_consistency_checks
 from .geometry import build_geometry_summary
-from .legacy_bridge import ensure_producer_state, load_artifacts
 from .models import PipelineRunConfig
 from .quotient import build_quotient_summary
 from .reporting import finalize_output_package, write_pipeline_outputs

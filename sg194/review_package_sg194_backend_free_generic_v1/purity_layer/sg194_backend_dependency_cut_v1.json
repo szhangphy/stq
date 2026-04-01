@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-04-02T04:47:34+08:00",
+  "cut_status": {
+    "generic_builders_to_special_backend": true,
+    "generic_driver_to_legacy_bridge_for_generic_specs": true,
+    "oracle_override_into_native_final_slots": true
+  },
+  "remaining_reference_only_dependencies": [
+    "sg194/current_status_194.1.1.1_stage2.json",
+    "sg194/sg194_topmat_oracle_from_copy_v1.json"
+  ]
+}

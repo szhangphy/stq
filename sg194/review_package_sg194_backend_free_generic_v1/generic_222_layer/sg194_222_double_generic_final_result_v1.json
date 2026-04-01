@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-04-02T04:47:15+08:00",
+  "group": "222.1.1.1",
+  "equivalent_og_object": "222.1.1601",
+  "mode": "double",
+  "backend_free_generic_path": true,
+  "dBS": 11,
+  "dAI": 10,
+  "classification": "Z x Z4",
+  "free_rank": 1,
+  "finite_part": [
+    4
+  ],
+  "availability": "provisional",
+  "verification_status": "failed_due_to_rejected_or_unembedded_ai_candidates_before_final_quotient",
+  "ai_candidate_count": 32,
+  "ai_candidate_count_used": 22,
+  "ai_incompatible_count": 10,
+  "ai_embedding_failure_count": 0,
+  "source_files": [
+    "sg194/pipeline_v2/runtime_backend_free.py",
+    "sg194/pipeline_v2/local_irreps.py"
+  ]
+}

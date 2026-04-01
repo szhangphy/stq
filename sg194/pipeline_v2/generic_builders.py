@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import importlib.util
 import json
 from fractions import Fraction
 from functools import lru_cache
@@ -10,40 +9,33 @@ from typing import Any
 import numpy as np
 import sympy as sp
 
+from . import local_irreps as runtime_local_irreps
+from . import runtime_backend_free
 from .utils import now_iso
 
 
 ROOT = Path(__file__).resolve().parents[1]
-STAGE1_BACKEND = ROOT / "debug_workflow_portability_194.1.1.1.py"
-LOCAL_LIBRARY_BACKEND = ROOT / "debug_sg194_nonabelian_local_library.py"
+RUNTIME_BACKEND = ROOT / "pipeline_v2" / "runtime_backend_free.py"
+LOCAL_IRREP_BACKEND = ROOT / "pipeline_v2" / "local_irreps.py"
 
 GENERIC_TARGET_ROW_LANGUAGE = "generic_canonical_point_row_language_from_symmetry_ops"
 GENERIC_TARGET_OBJECT_KIND = "generic_direct_point_row_language_object"
 LINE_SAMPLE = Fraction(1, 5)
 
 
-def _load_module(name: str, path: Path):
-    spec = importlib.util.spec_from_file_location(name, path)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"unable to load backend module from {path}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-
-
 @lru_cache(maxsize=1)
 def stage1_backend():
-    return _load_module("sg194_stage1_backend", STAGE1_BACKEND)
+    return runtime_backend_free
 
 
 @lru_cache(maxsize=1)
 def local_library_backend():
-    return _load_module("sg194_local_library_backend", LOCAL_LIBRARY_BACKEND)
+    return runtime_local_irreps
 
 
 @lru_cache(maxsize=1)
 def ssgreps_module():
-    return stage1_backend().load_ssgreps_module()
+    return runtime_backend_free.load_ssgreps_module()
 
 
 def _class_key(restricted_vector: list[dict[str, Any]]) -> str:
@@ -94,14 +86,17 @@ def shared_geometry_bundle(group_id: str) -> dict[str, Any]:
     kgeom["synthetic_boundary_points"] = synthetic_points
     port.augment_connectivity_with_boundary_points(kgeom, synthetic_points)
     port.build_point_instance_entries(kgeom)
-    point_ids = [item["id"] for item in grouped["points"]] + [item["id"] for item in synthetic_points]
+    real_point_ids = [item["id"] for item in grouped["points"]]
+    all_point_ids = real_point_ids + [item["id"] for item in synthetic_points]
     return {
         "group_id": group_id,
         "kgeom": kgeom,
         "grouped": grouped,
         "payload": payload,
         "synthetic_points": synthetic_points,
-        "point_ids": point_ids,
+        "real_point_ids": real_point_ids,
+        "all_point_ids": all_point_ids,
+        "target_point_ids": real_point_ids,
     }
 
 
@@ -592,6 +587,7 @@ def _build_quotient_from_candidates(
     point_ids: list[str],
     unknown_ordering: list[str],
     bs_analysis: dict[str, Any],
+    compatibility: dict[str, Any],
     induced: dict[str, Any],
 ) -> dict[str, Any]:
     port = stage1_backend()
@@ -617,19 +613,50 @@ def _build_quotient_from_candidates(
         )
     coords = []
     compatible_candidates = []
-    incompatible_candidates = []
+    rejected_candidates = []
     embedding_failures = []
+    compatibility_rows = list(compatibility.get("global_matrix_rows", []))
     for candidate in induced["candidates"]:
+        if not candidate.get("compatibility_zero", False):
+            residual_rows = []
+            for item in candidate.get("nonzero_residual_rows", []):
+                row_index = int(item["row_index"])
+                if 0 <= row_index < len(compatibility_rows):
+                    residual_rows.append(
+                        {
+                            "row_index": row_index,
+                            "residual": int(item["residual"]),
+                            "row": compatibility_rows[row_index],
+                        }
+                    )
+                else:
+                    residual_rows.append(
+                        {
+                            "row_index": row_index,
+                            "residual": int(item["residual"]),
+                        }
+                    )
+            rejected_candidates.append(
+                {
+                    "generator_id": candidate.get("generator_id"),
+                    "family_letter": candidate.get("family_letter"),
+                    "reason": "nonzero_compatibility_residual_in_native_current_rows",
+                    "compatibility_zero": False,
+                    "compatibility_residual_norm": candidate.get("compatibility_residual_norm"),
+                    "nonzero_residual_rows": residual_rows,
+                }
+            )
+            continue
         point_vector = [int(candidate["unknown_vector"][index]) for index in point_indices]
         try:
             coords.append(_solve_ai_in_bs_coordinates(point_bs_matrix, point_vector))
             compatible_candidates.append(candidate)
         except Exception as exc:  # pragma: no cover - diagnostic path
-            incompatible_candidates.append(
+            embedding_failures.append(
                 {
                     "generator_id": candidate.get("generator_id"),
                     "family_letter": candidate.get("family_letter"),
-                    "reason": f"point_shell_extension_failed: {exc}",
+                    "reason": f"target_point_shell_embedding_failed: {exc}",
                 }
             )
     ai_in_bs = sp.Matrix(coords).T if coords else sp.zeros(bs_rank, 0)
@@ -650,9 +677,9 @@ def _build_quotient_from_candidates(
         "ai_candidate_count": induced["candidate_count"],
         "ai_candidate_count_used": len(compatible_candidates),
         "ai_failure_count": induced["failure_count"],
-        "ai_incompatible_count": len(incompatible_candidates),
-        "ai_embedding_failure_count": 0,
-        "ai_incompatible_candidates": incompatible_candidates,
+        "ai_incompatible_count": len(rejected_candidates),
+        "ai_embedding_failure_count": len(embedding_failures),
+        "ai_incompatible_candidates": rejected_candidates,
         "ai_embedding_failures": embedding_failures,
         "ai_in_bs_matrix_shape": [int(ai_in_bs.rows), int(ai_in_bs.cols)],
         "compatibility_check_mode": "point_shell_projection_over_full_kernel_basis",
@@ -660,6 +687,7 @@ def _build_quotient_from_candidates(
         "point_shell_rank": bs_rank,
         "point_unknown_count": len(point_unknown_ordering),
         "point_unknown_ordering": point_unknown_ordering,
+        "native_target_point_ids": list(point_ids),
     }
 
 
@@ -684,7 +712,7 @@ def generic_mode_bundle(group_id: str, mode: str) -> dict[str, Any]:
         shared["grouped"],
         captures,
     )
-    compatibility = _build_generic_compatibility(group_id, shared["grouped"], shared["point_ids"], captures)
+    compatibility = _build_generic_compatibility(group_id, shared["grouped"], shared["all_point_ids"], captures)
     bs_analysis = port.analyze_kernel(compatibility)
     local_library = _build_local_irrep_library(ctx, mode)
     induced = _induce_all_candidates(
@@ -695,9 +723,10 @@ def generic_mode_bundle(group_id: str, mode: str) -> dict[str, Any]:
         local_library,
     )
     quotient = _build_quotient_from_candidates(
-        shared["point_ids"],
+        shared["target_point_ids"],
         bs_analysis["unknown_ordering"],
         bs_analysis,
+        compatibility,
         induced,
     )
     return {
@@ -744,7 +773,7 @@ def generic_geometry_summary(group_id: str) -> dict[str, Any]:
                 "common/swyckoff_k.py",
                 "common/swyckoff_r.py",
             ],
-            "producer_backend": str(STAGE1_BACKEND.relative_to(ROOT.parent)),
+            "backend_runtime_module": str(RUNTIME_BACKEND.relative_to(ROOT.parent)),
         },
     }
 
@@ -773,8 +802,8 @@ def generic_alignment_summary(group_id: str) -> dict[str, Any]:
         "status": "available",
         "row_language_kind": "generic_current_row_shell_from_symmetry_ops",
         "coordinate_system": "post_supercell_primitive_basis_for_pipeline_modules",
-        "point_count": len(shared["point_ids"]),
-        "point_ids": list(shared["point_ids"]),
+        "point_count": len(shared["target_point_ids"]),
+        "point_ids": list(shared["target_point_ids"]),
     }
     local_ai_seed_builder = {
         "status": "available",
@@ -823,14 +852,14 @@ def generic_result_objects(group_id: str) -> list[dict[str, Any]]:
         availability = "available"
         direct_quotient_status = "available"
         verification_status = "direct_code_computation_internal_consistency_passed"
-        if quotient["ai_failure_count"] or quotient["ai_embedding_failure_count"]:
+        if quotient["ai_failure_count"] or quotient["ai_embedding_failure_count"] or quotient["ai_incompatible_count"]:
             availability = "provisional"
-            direct_quotient_status = "provisional_due_to_incomplete_ai_embedding_or_compatibility"
-            verification_status = "failed_due_to_incomplete_ai_embedding_or_compatibility"
-        elif quotient["ai_incompatible_count"] or quotient["dBS"] != quotient["dAI"]:
+            direct_quotient_status = "provisional_due_to_rejected_or_unembedded_ai_candidates"
+            verification_status = "failed_due_to_rejected_or_unembedded_ai_candidates_before_final_quotient"
+        elif quotient["dBS"] != quotient["dAI"]:
             availability = "provisional"
-            direct_quotient_status = "provisional_due_to_ai_filter_gap"
-            verification_status = "failed_due_to_ai_filter_gap_after_point_shell_projection"
+            direct_quotient_status = "provisional_due_to_native_dbs_dai_gap"
+            verification_status = "warning_native_generic_result_has_nontrivial_free_part"
         results.append(
             {
                 "object_id": f"{mode}_raw_shell",
@@ -847,7 +876,7 @@ def generic_result_objects(group_id: str) -> list[dict[str, Any]]:
                 "quotient_derivation_mode": "not_applicable_current_row_shell_only",
                 "exact_alignment_status": "not_applicable_current_row_shell_only",
                 "current_row_shell_status": "available",
-                "source_files": [str(STAGE1_BACKEND.relative_to(ROOT.parent))],
+                "source_files": [str(RUNTIME_BACKEND.relative_to(ROOT.parent))],
             }
         )
         results.append(
@@ -879,10 +908,10 @@ def generic_result_objects(group_id: str) -> list[dict[str, Any]]:
                 "smith_diagonal_nonzero": quotient["smith_diagonal_nonzero"],
                 "ai_incompatible_candidates": quotient["ai_incompatible_candidates"],
                 "ai_embedding_failures": quotient["ai_embedding_failures"],
-                "ai_filter_mode": "exact_point_shell_embedding_solve",
+                "ai_filter_mode": "native_target_point_shell_embedding_without_silent_drop",
                 "source_files": [
-                    str(STAGE1_BACKEND.relative_to(ROOT.parent)),
-                    str(LOCAL_LIBRARY_BACKEND.relative_to(ROOT.parent)),
+                    str(RUNTIME_BACKEND.relative_to(ROOT.parent)),
+                    str(LOCAL_IRREP_BACKEND.relative_to(ROOT.parent)),
                 ],
             }
         )

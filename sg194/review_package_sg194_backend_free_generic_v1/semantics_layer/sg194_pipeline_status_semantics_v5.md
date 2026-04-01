@@ -1,0 +1,10 @@
+# Pipeline Status Semantics v5
+
+- `available`: `The native object was built without rejected or unembedded AI candidates and is internally consistent at the published object layer.`
+- `provisional`: `A native object was computed, but it is not a verified final result because a blocker remains at the same object layer.`
+- `backend_free_generic_final_available`: `Pipeline final slots are populated from the backend-free native path, not from SG194-special backend code and not from oracle overwrite.`
+- `warning_native_generic_result_has_nontrivial_free_part`: `The native path reached a raw quotient with a surviving free part; this is a real computed object, but not the accepted SG194 target object.`
+- `failed_due_to_rejected_or_unembedded_ai_candidates_before_final_quotient`: `The old silent-drop bug is no longer hidden: rejected or unembedded AI candidates remain, so the quotient cannot be claimed as a verified final classification.`
+
+- oracle policy: `{'native_final_slots_source': 'backend_free_generic_path', 'copied_topmat_role': 'compare_only', 'oracle_override_allowed': False}`
+- current examples: `{'194.1.1.1': {'single': {'availability': 'provisional', 'verification_status': 'warning_native_generic_result_has_nontrivial_free_part', 'blocker': 'backend_free_generic_path_currently_stops_at_raw_current_point_object_16_13_Z3; sg194_single_exact_target_projection_builder_not_yet_extracted_into_pipeline_v2'}, 'double': {'availability': 'provisional', 'verification_status': 'warning_native_generic_result_has_nontrivial_free_part', 'blocker': 'backend_free_generic_path_currently_stops_at_raw_current_point_object_16_13_Z3; sg194_double_spinorial_33_channel_internalization_builder_not_yet_extracted_into_pipeline_v2'}}, '222.1.1.1 / 222.1.1601(OG)': {'single': {'availability': 'provisional', 'verification_status': 'failed_due_to_rejected_or_unembedded_ai_candidates_before_final_quotient'}, 'double': {'availability': 'provisional', 'verification_status': 'failed_due_to_rejected_or_unembedded_ai_candidates_before_final_quotient'}}}`

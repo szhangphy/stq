@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-04-02T04:56:40+08:00",
+  "group": "194.1.1.1",
+  "backend_free_generic_path": true,
+  "single": {
+    "generated_at": "2026-04-02T04:56:40+08:00",
+    "group": "194.1.1.1",
+    "object_id": "single_target_direct",
+    "mode": "single",
+    "row_language_kind": "generic_canonical_point_row_language_from_symmetry_ops",
+    "object_kind": "generic_direct_point_row_language_object",
+    "availability": "provisional",
+    "verification_status": "warning_native_generic_result_has_nontrivial_free_part",
+    "dBS": 16,
+    "dAI": 13,
+    "classification": "Z^3",
+    "free_rank": 3,
+    "finite_part": [],
+    "quotient_derivation_mode": "direct_generic_bs_over_ai_smith",
+    "ai_candidate_count": 45,
+    "ai_candidate_count_used": 45,
+    "ai_incompatible_count": 0,
+    "ai_embedding_failure_count": 0,
+    "source_files": [
+      "sg194/pipeline_v2/runtime_backend_free.py",
+      "sg194/pipeline_v2/local_irreps.py"
+    ],
+    "accepted_special_reference": {
+      "dBS": 13,
+      "dAI": 13,
+      "classification": "trivial"
+    },
+    "matches_accepted_special": false
+  },
+  "double": {
+    "generated_at": "2026-04-02T04:56:40+08:00",
+    "group": "194.1.1.1",
+    "object_id": "double_target_direct",
+    "mode": "double",
+    "row_language_kind": "generic_canonical_point_row_language_from_symmetry_ops",
+    "object_kind": "generic_direct_point_row_language_object",
+    "availability": "provisional",
+    "verification_status": "warning_native_generic_result_has_nontrivial_free_part",
+    "dBS": 16,
+    "dAI": 13,
+    "classification": "Z^3",
+    "free_rank": 3,
+    "finite_part": [],
+    "quotient_derivation_mode": "direct_generic_bs_over_ai_smith",
+    "ai_candidate_count": 45,
+    "ai_candidate_count_used": 45,
+    "ai_incompatible_count": 0,
+    "ai_embedding_failure_count": 0,
+    "source_files": [
+      "sg194/pipeline_v2/runtime_backend_free.py",
+      "sg194/pipeline_v2/local_irreps.py"
+    ],
+    "accepted_special_reference": {
+      "dBS": 10,
+      "dAI": 10,
+      "classification": "Z6"
+    },
+    "matches_accepted_special": false
+  },
+  "accepted_special_reference": {
+    "single": {
+      "dBS": 13,
+      "dAI": 13,
+      "classification": "trivial"
+    },
+    "double": {
+      "dBS": 10,
+      "dAI": 10,
+      "classification": "Z6"
+    }
+  },
+  "matches_accepted_special": {
+    "single": false,
+    "double": false
+  },
+  "blockers": [
+    {
+      "mode": "single",
+      "blocker": "backend_free_generic_path_currently_stops_at_raw_current_point_object_16_13_Z3; sg194_single_exact_target_projection_builder_not_yet_extracted_into_pipeline_v2"
+    },
+    {
+      "mode": "double",
+      "blocker": "backend_free_generic_path_currently_stops_at_raw_current_point_object_16_13_Z3; sg194_double_spinorial_33_channel_internalization_builder_not_yet_extracted_into_pipeline_v2"
+    }
+  ]
+}

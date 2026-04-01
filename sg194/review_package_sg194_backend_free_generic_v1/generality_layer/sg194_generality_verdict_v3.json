@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-04-02T04:47:34+08:00",
+  "truly_general": false,
+  "backend_free_generic_path": true,
+  "truly_generic_modules": [
+    "sg194/pipeline_v2/generic_builders.py",
+    "sg194/pipeline_v2/geometry.py",
+    "sg194/pipeline_v2/alignment.py",
+    "sg194/pipeline_v2/bs_ai.py",
+    "sg194/pipeline_v2/quotient.py",
+    "sg194/pipeline_v2/checks.py",
+    "sg194/pipeline_v2/driver.py",
+    "sg194/pipeline_v2/artifact_io.py",
+    "sg194/pipeline_v2/adapters/ssg222_1_1_1.py"
+  ],
+  "still_fake_generic_modules": [
+    "sg194/pipeline_v2/runtime_backend_free.py",
+    "sg194/pipeline_v2/runtime_bridge.py",
+    "sg194/pipeline_v2/runtime_group_ops.py",
+    "sg194/pipeline_v2/local_irreps.py",
+    "sg194/pipeline_v2/adapters/sg194.py",
+    "sg194/pipeline_v2/specs.py::SG194_SPEC"
+  ],
+  "remaining_case_specific_modules": [
+    "sg194/pipeline_v2/adapters/sg194.py",
+    "sg194/pipeline_v2/specs.py::SG194_SPEC"
+  ],
+  "case_by_case_blockers": [
+    {
+      "group": "194.1.1.1",
+      "mode": "single",
+      "status": "backend_free_generic_path_currently_stops_at_raw_current_point_object_16_13_Z3; sg194_single_exact_target_projection_builder_not_yet_extracted_into_pipeline_v2"
+    },
+    {
+      "group": "194.1.1.1",
+      "mode": "double",
+      "status": "backend_free_generic_path_currently_stops_at_raw_current_point_object_16_13_Z3; sg194_double_spinorial_33_channel_internalization_builder_not_yet_extracted_into_pipeline_v2"
+    },
+    {
+      "group": "222.1.1.1 / 222.1.1601(OG)",
+      "mode": "single",
+      "status": "native_result_provisional_due_to_rejected_ai_candidates_in_families_a_b_g"
+    },
+    {
+      "group": "222.1.1.1 / 222.1.1601(OG)",
+      "mode": "double",
+      "status": "native_result_provisional_due_to_rejected_ai_candidates_in_families_a_b_g"
+    }
+  ]
+}

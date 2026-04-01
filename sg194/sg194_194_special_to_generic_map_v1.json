@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-04-02T04:56:40+08:00",
+  "group": "194.1.1.1",
+  "layers": [
+    {
+      "layer": "geometry",
+      "generic_path_status": "implemented_in_backend_free_runtime_module",
+      "special_reference_status": "retained_in_current_status_194.1.1.1_stage2.json"
+    },
+    {
+      "layer": "current_row_shell",
+      "generic_path_status": "generic_current_row_shell_from_symmetry_ops",
+      "special_reference_status": "shared_with_double_runtime_by_construction"
+    },
+    {
+      "layer": "compatibility",
+      "generic_path_status": "generic_current_row_compatibility_from_runtime_backend_free",
+      "special_reference_status": "group_specific_stage2_reference_only"
+    },
+    {
+      "layer": "target_alignment",
+      "generic_path_status": "raw_current_point_object_only_backend_free_sg194_target_projection_not_yet_extracted",
+      "special_reference_status": "single_exact_target_alignment_and_double_benchmark_internalization"
+    },
+    {
+      "layer": "local_ai_embedding",
+      "generic_path_status": "generic_local_irrep_library_in_pipeline_v2",
+      "special_reference_status": "group_specific_stage2_reference_only"
+    },
+    {
+      "layer": "quotient",
+      "generic_path_status": "native_target_point_shell_embedding_without_silent_drop",
+      "special_reference_status": "single_exact_target_quotient_plus_double_internalized_benchmark_quotient"
+    },
+    {
+      "layer": "consistency_checks",
+      "generic_path_status": "raw_current_consistency_only_sg194_target_object_regression_not_yet_closed",
+      "special_reference_status": "accepted_special_path_regression_reference_available"
+    },
+    {
+      "layer": "final_status_generation",
+      "generic_path_status": "backend_free_raw_current_results_only_no_sg194_target_final_object_builder",
+      "special_reference_status": "accepted_group_specific_final_objects"
+    }
+  ]
+}
