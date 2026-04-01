@@ -17,8 +17,8 @@
 - Rank(AI) vs Rank(BS): `13` / `16`.
 - Raw internal quotient status: `standard_projected`; raw internal quotient `Z^3`.
 - Legacy internal stage2 projection: `13` / `13` with quotient `trivial`.
-- Published source result: `historical_legacy_projection_retired_from_active_benchmark_pipeline` with rank(BS/AI) `10` / `10` and quotient `Z6`.
-- Interpretation warning: The single ordinary stage-2 route is retained as an auxiliary ordinary-language provenance layer. Its historical 13/13/trivial projection is no longer an operational dependency for the benchmark target. The benchmark-facing SG194 result is inherited from the matched target object once the double spinorial source path has been internalized at rank(BS/AI) = 10/10 with quotient Z6.
+- Published source result: `single_direct_internal_raw_bs_mod_ai_v1` with rank(BS/AI) `16` / `13` and quotient `Z^3`.
+- Interpretation warning: The single published result is now taken directly from the single source object's raw BS/AI quotient, namely rank(BS/AI) = 16/13 with quotient Z^3. The legacy 13/13/trivial ordinary projection is preserved only as an auxiliary externally anchored layer and is not used as the direct single result. No double-source benchmark inheritance remains in the single path.
 
 ## Double-Group Feed-Back
 

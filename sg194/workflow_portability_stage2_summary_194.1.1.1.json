@@ -4,7 +4,7 @@
   "nonabelian_double_library_built": true,
   "single_group_unblocked": true,
   "double_group_unblocked": true,
-  "quotient_scope": "source_internalized_benchmark_layer_with_historical_raw_provenance",
+  "quotient_scope": "mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
   "single_rank_bs_raw_internal": 16,
   "double_rank_bs_raw_internal": 16,
   "single_rank_ai_in_bs_coordinates": 13,
@@ -40,13 +40,13 @@
   "single_vs_external_union_rank_in_current_point_rows": 17,
   "double_vs_external_union_rank_in_current_point_rows": 17,
   "union_rank_interpretation": "The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.",
-  "single_final_rank_bs": 10,
-  "single_final_rank_ai": 10,
+  "single_final_rank_bs": 16,
+  "single_final_rank_ai": 13,
   "double_final_rank_bs": 10,
   "double_final_rank_ai": 10,
-  "single_final_quotient_group": "Z6",
+  "single_final_quotient_group": "Z^3",
   "double_final_quotient_group": "Z6",
-  "interpretation_warning": "The raw internal quotient and the legacy internal 13/13/trivial projection are preserved only as provenance. The active benchmark-facing SG194 result now comes from the source-computed double spinorial 33-generator internalization path, whose exact current/external rank record is {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The final Z6 quotient is inherited from the matched benchmark target rather than from blind publication overwrite.",
-  "main_blocker": "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. Remaining follow-up is narrower: the single ordinary path is still inherited rather than directly benchmark-layer derived, and the final Z6 quotient is still emitted as matched-target inference instead of as a standalone raw-current lattice derivation.",
-  "next_blocker": "If further cleanup is requested, retire the remaining adoption-era source-BS artifacts, keep only the internalized double active path, and optionally derive a direct single ordinary benchmark-layer witness."
+  "interpretation_warning": "The single and double source layers are now deliberately split. Single publishes its direct raw BS/AI quotient 16/13/Z^3 without double inheritance, while double keeps the source-internalized benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The legacy 13/13/trivial projection is retained only as auxiliary provenance.",
+  "main_blocker": "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path is no longer inherited, but it still lacks a direct single ordinary current-to-standard derivation, so its honest direct result remains the raw BS/AI quotient 16/13/Z^3.",
+  "next_blocker": "If further cleanup is requested, derive a direct single ordinary current-to-standard quotient without external anchoring or double inheritance, and retire any remaining reports that still describe single as inherited."
 }

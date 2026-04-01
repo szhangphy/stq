@@ -1,0 +1,28 @@
+{
+  "target_group": "194.1.1.1",
+  "single_inheritance_marker_count": 0,
+  "markers": {
+    "published_result_source_inherited_marker_removed": true,
+    "published_result_scope_inherited_marker_removed": true,
+    "bs_internalization_status_inherited_marker_removed": true,
+    "ai_internalization_status_inherited_marker_removed": true,
+    "quotient_derivation_mode_inherited_marker_removed": true,
+    "top_level_single_quotient_derivation_marker_removed": true
+  },
+  "single_direct_result": {
+    "published_result_source": "single_direct_internal_raw_bs_mod_ai_v1",
+    "published_result_scope": "direct_single_internal_raw_bs_mod_ai_not_inherited_from_double",
+    "quotient_derivation_mode": "direct_smith_on_single_raw_bs_over_ai"
+  },
+  "remaining_double_mentions_inside_single_status": [
+    {
+      "field": "interpretation_warning",
+      "value": "The single published result is now taken directly from the single source object's raw BS/AI quotient, namely rank(BS/AI) = 16/13 with quotient Z^3. The legacy 13/13/trivial ordinary projection is preserved only as an auxiliary externally anchored layer and is not used as the direct single result. No double-source benchmark inheritance remains in the single path."
+    },
+    {
+      "field": "published_result_scope",
+      "value": "direct_single_internal_raw_bs_mod_ai_not_inherited_from_double"
+    }
+  ],
+  "audit_verdict": "Single no longer inherits its published result from double. Remaining double mentions are informational benchmark-gap caveats only."
+}

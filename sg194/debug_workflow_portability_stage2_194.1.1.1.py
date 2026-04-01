@@ -517,51 +517,57 @@ def apply_double_internalization_fields(
     return summary
 
 
-def apply_single_target_inheritance_fields(
+def apply_single_direct_result_fields(
     summary: dict[str, Any],
-    internalization: dict[str, Any],
+    benchmark_oracle: dict[str, Any],
 ) -> dict[str, Any]:
     legacy_rank_bs = summary.get("final_rank_bs")
     legacy_rank_ai = summary.get("final_rank_ai")
     legacy_quotient_group = summary.get("quotient_group")
     legacy_projection_status = summary.get("standard_space_projection_status")
-    legacy_gap = None if legacy_rank_bs is None else int(legacy_rank_bs) - int(internalization["rank_bs"])
+    legacy_standard_quotient = summary.get("standard_quotient_group")
+    direct_rank_bs = int(summary["rank_bs_raw_internal"])
+    direct_rank_ai = int(summary["rank_ai_raw_internal"])
+    direct_quotient = summary["raw_internal_quotient_group"]
+    benchmark_gap = direct_rank_bs - int(benchmark_oracle["dBS"])
     summary.update(
         {
-            "published_result_source": "matched_benchmark_target_inherited_via_double_internalization_v1",
-            "published_result_scope": "benchmark_target_inherited_from_internalized_double_path_not_direct_single_computation",
+            "published_result_source": "single_direct_internal_raw_bs_mod_ai_v1",
+            "published_result_scope": "direct_single_internal_raw_bs_mod_ai_not_inherited_from_double",
             "benchmark_oracle_file": BENCHMARK_STATUS_JSON.name,
-            "benchmark_oracle_classification": internalization["classification"],
-            "benchmark_oracle_indicator_group": internalization["quotient_group"],
-            "benchmark_oracle_rank_bs": internalization["rank_bs"],
-            "benchmark_oracle_rank_ai": internalization["rank_ai"],
+            "benchmark_oracle_classification": benchmark_oracle["classification"],
+            "benchmark_oracle_indicator_group": benchmark_oracle["indicator_group"],
+            "benchmark_oracle_rank_bs": benchmark_oracle["dBS"],
+            "benchmark_oracle_rank_ai": benchmark_oracle["dAI"],
             "legacy_internal_projected_rank_bs": legacy_rank_bs,
             "legacy_internal_projected_rank_ai": legacy_rank_ai,
             "legacy_internal_projected_quotient_group": legacy_quotient_group,
             "legacy_internal_standard_space_projection_status": legacy_projection_status,
-            "source_bs_gap_to_benchmark_before_internalization": legacy_gap,
-            "source_bs_gap_to_benchmark_after_internalization": 0,
-            "benchmark_internalization_dependency": "double_spinorial_internalization_v1",
-            "final_result_kind": "single_target_inherited_from_internalized_double_object",
-            "bs_internalization_status": "inherited_from_double_internalization",
-            "ai_internalization_status": "inherited_from_double_internalization",
-            "quotient_derivation_mode": "inherited_from_internalized_double_target_object",
-            "quotient_direct_current_lattice_derivation": False,
-            "final_rank_bs": internalization["rank_bs"],
-            "final_rank_ai": internalization["rank_ai"],
-            "quotient_group": internalization["quotient_group"],
-            "standard_quotient_group": internalization["quotient_group"],
-            "standard_space_projection_status": "historical_legacy_projection_retired_from_active_benchmark_pipeline",
+            "legacy_internal_projected_standard_quotient_group": legacy_standard_quotient,
+            "source_bs_gap_to_benchmark_before_internalization": benchmark_gap,
+            "source_bs_gap_to_benchmark_after_internalization": benchmark_gap,
+            "benchmark_gap_not_resolved": True,
+            "benchmark_internalization_dependency": None,
+            "final_result_kind": "single_direct_internal_raw_bs_mod_ai_object",
+            "bs_internalization_status": "direct_single_internal_computation",
+            "ai_internalization_status": "direct_single_internal_computation",
+            "quotient_derivation_mode": "direct_smith_on_single_raw_bs_over_ai",
+            "quotient_direct_current_lattice_derivation": True,
+            "final_rank_bs": direct_rank_bs,
+            "final_rank_ai": direct_rank_ai,
+            "quotient_group": direct_quotient,
+            "standard_quotient_group": legacy_standard_quotient,
+            "standard_space_projection_status": "auxiliary_legacy_projection_available_not_used_for_single_direct_result",
             "interpretation_warning": (
-                "The single ordinary stage-2 route is retained as an auxiliary ordinary-language provenance layer. "
-                "Its historical 13/13/trivial projection is no longer an operational dependency for the benchmark target. "
-                "The benchmark-facing SG194 result is inherited from the matched target object once the double spinorial "
-                f"source path has been internalized at rank(BS/AI) = {internalization['rank_bs']}/{internalization['rank_ai']} "
-                f"with quotient {internalization['quotient_group']}."
+                "The single published result is now taken directly from the single source object's raw BS/AI quotient, "
+                f"namely rank(BS/AI) = {direct_rank_bs}/{direct_rank_ai} with quotient {direct_quotient}. "
+                "The legacy 13/13/trivial ordinary projection is preserved only as an auxiliary externally anchored layer "
+                "and is not used as the direct single result. No double-source benchmark inheritance remains in the single path."
             ),
             "remaining_internal_mapping_blocker": (
-                "The single ordinary publication is no longer a blind benchmark overwrite, but it is still inherited from the "
-                "internalized double target object rather than derived as a direct single ordinary benchmark-layer computation."
+                "The direct single raw BS/AI quotient is now explicit, but a direct single ordinary current-to-standard "
+                "mapping still does not exist. The auxiliary 13/13/trivial projection remains non-direct, and the single path "
+                "should not be identified with the benchmark target without an independent single standard-space derivation."
             ),
         }
     )
@@ -1222,7 +1228,7 @@ def build_stage2_audit(
             f"- Rank(AI) vs Rank(BS): `{single_summary['rank_ai_in_bs_coordinates']}` / `{single_summary['rank_bs']}`.",
             f"- Raw internal quotient status: `{single_summary['quotient_status']}`; raw internal quotient `{single_summary['raw_internal_quotient_group']}`.",
             f"- Legacy internal stage2 projection: `{single_summary['legacy_internal_projected_rank_bs']}` / `{single_summary['legacy_internal_projected_rank_ai']}` with quotient `{single_summary['legacy_internal_projected_quotient_group']}`.",
-            f"- Published source result: `{single_summary['standard_space_projection_status']}` with rank(BS/AI) `{single_summary['final_rank_bs']}` / `{single_summary['final_rank_ai']}` and quotient `{single_summary['quotient_group']}`.",
+            f"- Published source result: `{single_summary['published_result_source']}` with rank(BS/AI) `{single_summary['final_rank_bs']}` / `{single_summary['final_rank_ai']}` and quotient `{single_summary['quotient_group']}`.",
             f"- Interpretation warning: {single_summary['interpretation_warning']}",
             "",
             "## Double-Group Feed-Back",
@@ -1269,7 +1275,7 @@ def build_stage2_summary(
         "nonabelian_double_library_built": True,
         "single_group_unblocked": bool(single_summary["ai_from_trivial_prototype_to_complete"]),
         "double_group_unblocked": bool(double_summary["ai_from_minimal_to_complete"]),
-        "quotient_scope": "source_internalized_benchmark_layer_with_historical_raw_provenance",
+        "quotient_scope": "mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
         "single_rank_bs_raw_internal": single_summary["rank_bs_raw_internal"],
         "double_rank_bs_raw_internal": double_summary["rank_bs_raw_internal"],
         "single_rank_ai_in_bs_coordinates": single_summary["rank_ai_in_bs_coordinates"],
@@ -1305,23 +1311,23 @@ def build_stage2_summary(
         "single_final_quotient_group": single_summary["quotient_group"],
         "double_final_quotient_group": double_summary["quotient_group"],
         "interpretation_warning": (
-            "The raw internal quotient and the legacy internal 13/13/trivial projection are preserved only as provenance. "
-            "The active benchmark-facing SG194 result now comes from the source-computed double spinorial 33-generator "
-            "internalization path, whose exact current/external rank record is "
-            f"{double_internalization['rank_record']}. The final Z6 quotient is inherited from the matched benchmark target "
-            "rather than from blind publication overwrite."
+            "The single and double source layers are now deliberately split. "
+            f"Single publishes its direct raw BS/AI quotient {single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/"
+            f"{single_summary['quotient_group']} without double inheritance, while double keeps the source-internalized "
+            f"benchmark-facing 10/10/{double_summary['quotient_group']} path with exact current/external spinorial alignment "
+            f"{double_internalization['rank_record']}. The legacy 13/13/trivial projection is retained only as auxiliary provenance."
         ),
         "main_blocker": (
             "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel "
-            "current/external generator-space identity. Remaining follow-up is narrower: the single ordinary path is still "
-            "inherited rather than directly benchmark-layer derived, and the final Z6 quotient is still emitted as matched-target "
-            "inference instead of as a standalone raw-current lattice derivation."
+            "current/external generator-space identity. The single path is no longer inherited, but it still lacks a direct "
+            "single ordinary current-to-standard derivation, so its honest direct result remains the raw BS/AI quotient "
+            f"{single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/{single_summary['quotient_group']}."
             if all_local_objects_complete
             else (double_summary["blocker"] or single_summary["blocker"])
         ),
         "next_blocker": (
-            "If further cleanup is requested, retire the remaining adoption-era source-BS artifacts, keep only the internalized "
-            "double active path, and optionally derive a direct single ordinary benchmark-layer witness."
+            "If further cleanup is requested, derive a direct single ordinary current-to-standard quotient without external "
+            "anchoring or double inheritance, and retire any remaining reports that still describe single as inherited."
             if all_local_objects_complete
             else "Stabilize whichever induction failures remain before claiming a complete portability upgrade."
         ),
@@ -1547,7 +1553,7 @@ def build_handoff(stage2_summary: dict[str, Any], single_summary: dict[str, Any]
             "# Handoff for 194.1.1.1 Stage 2",
             "",
             f"- Target group: `{TARGET_GROUP}`",
-            f"- Single status: `{single_summary['completeness_status']}` with raw internal quotient `{single_summary['raw_internal_quotient_group']}`, legacy internal projected quotient `{single_summary['legacy_internal_projected_quotient_group']}`, and inherited benchmark-target quotient `{single_final}`.",
+            f"- Single status: `{single_summary['completeness_status']}` with raw internal quotient `{single_summary['raw_internal_quotient_group']}`, auxiliary legacy projected quotient `{single_summary['legacy_internal_projected_quotient_group']}`, and direct single published quotient `{single_final}`.",
             f"- Double status: `{double_summary['completeness_status']}` with raw internal quotient `{double_summary['raw_internal_quotient_group']}`, legacy internal projected quotient `{double_summary['legacy_internal_projected_quotient_group']}`, and source-internalized benchmark-target quotient `{double_final}`.",
             f"- Quotient scope: `{stage2_summary['quotient_scope']}`",
             f"- Interpretation warning: {stage2_summary['interpretation_warning']}",
@@ -1608,7 +1614,7 @@ The current workspace already completed the SG 194 stage-2 local-library run on 
 
         Do not change the target group.
         Do not go back to 10.4.1.31 except as an audited reference.
-        The next unique task is: decide whether to derive a direct single ordinary-to-benchmark identification or to keep the single path auxiliary while the active benchmark target stays tied to the internalized double spinorial path.
+        The next unique task is: derive an independent single ordinary current-to-standard identification if needed, but do not replace the direct single raw result with double inheritance or benchmark overwrite.
         """
     ).strip()
 
@@ -2121,6 +2127,8 @@ def validate_outputs() -> None:
         raise RuntimeError("stage2 current status still reports direct benchmark adoption")
     if current_status["single_status"]["published_result_source"] == "benchmark_oracle_adoption_v1":
         raise RuntimeError("single status still reports direct benchmark adoption")
+    if current_status["single_status"]["published_result_source"] == "matched_benchmark_target_inherited_via_double_internalization_v1":
+        raise RuntimeError("single status still reports inherited double publication")
     if current_status["double_status"]["published_result_source"] == "benchmark_oracle_adoption_v1":
         raise RuntimeError("double status still reports direct benchmark adoption")
 
@@ -2231,7 +2239,7 @@ def main() -> None:
     )
     benchmark_oracle = load_benchmark_oracle()
     double_internalization = load_double_internalization_snapshot(benchmark_oracle)
-    apply_single_target_inheritance_fields(single_summary, double_internalization)
+    apply_single_direct_result_fields(single_summary, benchmark_oracle)
     apply_double_internalization_fields(double_summary, double_internalization)
     stage2_summary = build_stage2_summary(single_summary, double_summary, projection_payload, double_internalization)
 
@@ -2251,7 +2259,7 @@ def main() -> None:
     current_status = {
         "target_group": TARGET_GROUP,
         "quotient_scope": stage2_summary["quotient_scope"],
-        "published_result_scope": "source_internalized_benchmark_target_via_double_spinorial_alignment",
+        "published_result_scope": "mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_target",
         "benchmark_oracle_file": benchmark_oracle["file"],
         "benchmark_oracle_indicator_group": benchmark_oracle["indicator_group"],
         "benchmark_oracle_rank_bs": benchmark_oracle["dBS"],

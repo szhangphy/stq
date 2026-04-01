@@ -1,0 +1,37 @@
+{
+  "target_group": "194.1.1.1",
+  "derivation_mode": "direct_smith_on_single_active_bs_over_single_ai",
+  "result_kind": "single_active_source_quotient",
+  "active_quotient_presentation": {
+    "source_function": "quotient_artifacts",
+    "source_file": "sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "quotient_json": "sg194/group_194_1_1_1_single_indicator_group_summary.json",
+    "generator_json": "sg194/group_194_1_1_1_single_indicator_generators.json",
+    "matrix_shape": [
+      16,
+      45
+    ],
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "finite_part": [],
+    "free_rank": 3
+  },
+  "classification_single": "Z^3",
+  "finite_part": [],
+  "free_rank": 3,
+  "direct": true,
+  "inherits_from_double": false
+}

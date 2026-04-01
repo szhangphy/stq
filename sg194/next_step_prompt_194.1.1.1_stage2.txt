@@ -21,9 +21,9 @@ The current workspace already completed the SG 194 stage-2 local-library run on 
 - single_vs_external_union_rank_in_current_point_rows = 17
 - double_vs_external_union_rank_in_current_point_rows = 17
 - single_legacy_internal_projected_rank_bs = 13
-- single_final_rank_bs = 10
-- single_final_rank_ai = 10
-        - single_final_quotient_group = Z6
+- single_final_rank_bs = 16
+- single_final_rank_ai = 13
+        - single_final_quotient_group = Z^3
 - double_legacy_internal_projected_rank_bs = 13
         - double_final_rank_bs = 10
         - double_final_rank_ai = 10
@@ -31,4 +31,4 @@ The current workspace already completed the SG 194 stage-2 local-library run on 
 
         Do not change the target group.
         Do not go back to 10.4.1.31 except as an audited reference.
-        The next unique task is: decide whether to derive a direct single ordinary-to-benchmark identification or to keep the single path auxiliary while the active benchmark target stays tied to the internalized double spinorial path.
+        The next unique task is: derive an independent single ordinary current-to-standard identification if needed, but do not replace the direct single raw result with double inheritance or benchmark overwrite.

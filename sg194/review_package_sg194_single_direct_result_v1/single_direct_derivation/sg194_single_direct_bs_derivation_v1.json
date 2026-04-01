@@ -1,0 +1,27 @@
+{
+  "target_group": "194.1.1.1",
+  "derivation_mode": "direct_single_source_object",
+  "result_kind": "single_active_source_bs_rank",
+  "active_compatibility_matrix": {
+    "source_function": "build_single_runtime -> analyze_kernel",
+    "source_file": "sg194/debug_workflow_portability_stage2_194.1.1.1.py",
+    "compatibility_json": "sg194/group_194_1_1_1_single_full_compatibility_with_planes.json",
+    "matrix_shape": [
+      58,
+      42
+    ],
+    "rank": 26,
+    "nullity": 16,
+    "unknown_ordering_count": 42
+  },
+  "active_bs_basis": {
+    "source_json": "sg194/group_194_1_1_1_single_bs_analysis.json",
+    "basis_kind": "single_active_bs_basis_after_line_and_plane_compatibility",
+    "dimension_dBS": 16,
+    "projected_point_space_rank": 16,
+    "legacy_auxiliary_projected_rank": 13
+  },
+  "dBS_single": 16,
+  "direct": true,
+  "inherits_from_double": false
+}

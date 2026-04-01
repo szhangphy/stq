@@ -1,8 +1,8 @@
 # SG194 194.1.1.1 Internalization Fix Report v1
 
-        - Current time: 2026-04-01 06:36:58 +0800
+        - Current time: 2026-04-01 11:24:58 +0800
         - Branch: `sg194-special`
-        - Current HEAD: `3538eca`
+        - Current HEAD: `798c499`
         - Repo root (relative): `.`
         - Remote: `git@github.com:szhangphy/stq.git`
         - Package: `review_package_sg194_internalization_fix_v1`
@@ -13,7 +13,7 @@
 2. single_vs_external_union_rank_in_current_point_rows = 17.
 3. double_vs_external_union_rank_in_current_point_rows = 17.
 4. The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.
-5. Single published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.
+5. Single published rank(BS/AI)/quotient = 16/13/Z^3; legacy internal layer = 13/13/trivial.
 6. Double published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.
 7. The extracted-package smoke tests over review_package_sg194_internalization_fix_v1.tar.gz passed = True.
 

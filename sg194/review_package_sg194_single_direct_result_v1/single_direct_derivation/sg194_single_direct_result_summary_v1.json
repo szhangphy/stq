@@ -1,0 +1,62 @@
+{
+  "target_group": "194.1.1.1",
+  "single_direct_result": {
+    "dBS": 16,
+    "dAI": 13,
+    "classification": "Z^3",
+    "finite_part": [],
+    "free_rank": 3,
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "directness_verdict": {
+    "inherits_from_double": false,
+    "matched_target_inference": false,
+    "benchmark_oracle_overwrite": false,
+    "completely_direct": true
+  },
+  "historical_inherited_single_snapshot_from_baseline_commit": {
+    "baseline_commit": "798c4998c946d2fc253a05242e39a5adb71c29d3",
+    "published_result_source": "matched_benchmark_target_inherited_via_double_internalization_v1",
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6"
+  },
+  "current_stage2_single_status": {
+    "published_result_source": "single_direct_internal_raw_bs_mod_ai_v1",
+    "published_result_scope": "direct_single_internal_raw_bs_mod_ai_not_inherited_from_double",
+    "dBS": 16,
+    "dAI": 13,
+    "classification": "Z^3"
+  },
+  "current_stage2_double_status": {
+    "published_result_source": "double_spinorial_internalization_v1",
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6"
+  },
+  "benchmark_oracle": {
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6"
+  },
+  "consistency_check": {
+    "single_direct_equals_historical_inherited_single": false,
+    "single_direct_equals_current_double": false,
+    "single_direct_equals_benchmark": false
+  },
+  "verdict": "The direct single source result is 16/13/Z^3. It does not agree with the old inherited single 10/10/Z6 snapshot, and it also does not agree with the double internalized benchmark-target result 10/10/Z6."
+}

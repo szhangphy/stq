@@ -1,17 +1,17 @@
 # Handoff for 194.1.1.1 Stage 2
 
 - Target group: `194.1.1.1`
-- Single status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and inherited benchmark-target quotient `Z6`.
+- Single status: `complete` with raw internal quotient `Z^3`, auxiliary legacy projected quotient `trivial`, and direct single published quotient `Z^3`.
 - Double status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and source-internalized benchmark-target quotient `Z6`.
-- Quotient scope: `source_internalized_benchmark_layer_with_historical_raw_provenance`
-- Interpretation warning: The raw internal quotient and the legacy internal 13/13/trivial projection are preserved only as provenance. The active benchmark-facing SG194 result now comes from the source-computed double spinorial 33-generator internalization path, whose exact current/external rank record is {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The final Z6 quotient is inherited from the matched benchmark target rather than from blind publication overwrite.
+- Quotient scope: `mixed_single_direct_raw_bs_mod_ai_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection`
+- Interpretation warning: The single and double source layers are now deliberately split. Single publishes its direct raw BS/AI quotient 16/13/Z^3 without double inheritance, while double keeps the source-internalized benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The legacy 13/13/trivial projection is retained only as auxiliary provenance.
 - Projection contract type: `common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators`
 - `single_vs_external_union_rank_in_current_point_rows = 17`
 - `double_vs_external_union_rank_in_current_point_rows = 17`
 - Union-rank meaning: The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.
 - Common free-generator rank: `3`
-- Main blocker: `The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. Remaining follow-up is narrower: the single ordinary path is still inherited rather than directly benchmark-layer derived, and the final Z6 quotient is still emitted as matched-target inference instead of as a standalone raw-current lattice derivation.`
-- Next unique target: If further cleanup is requested, retire the remaining adoption-era source-BS artifacts, keep only the internalized double active path, and optionally derive a direct single ordinary benchmark-layer witness.
+- Main blocker: `The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path is no longer inherited, but it still lacks a direct single ordinary current-to-standard derivation, so its honest direct result remains the raw BS/AI quotient 16/13/Z^3.`
+- Next unique target: If further cleanup is requested, derive a direct single ordinary current-to-standard quotient without external anchoring or double inheritance, and retire any remaining reports that still describe single as inherited.
 - Files to read first:
   - workflow_portability_report_stage2_194.1.1.1.pdf
   - sg194_standard_space_projection_summary_v1.json
