@@ -1,0 +1,16 @@
+{
+  "changes": [
+    "extracted exact line/plane compatibility builders from the SG194 special path",
+    "added canonical line representative search to stabilize line endpoint subduction",
+    "switched non-SG194 single local-library construction to generic characters",
+    "upgraded projective center separation to a deterministic robust separator search",
+    "cached heavy real-space Wyckoff payloads inside the stage1 backend",
+    "promoted exact point-shell AI embedding filtering to a generic quotient precondition"
+  ],
+  "group": "222.1.1.1",
+  "outcome": {
+    "double_final_available": true,
+    "driver_validate_passes": true,
+    "single_final_available": true
+  }
+}

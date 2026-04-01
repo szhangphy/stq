@@ -1,0 +1,20 @@
+{
+  "git_deleted": [
+    "sg194/review_package_sg194_modular_pipeline_v3",
+    "sg194/review_package_sg194_modular_pipeline_v3.tar.gz",
+    "sg194/sg194_generic_builder_gap_v1.json",
+    "sg194/sg194_generic_builder_gap_v1.md",
+    "sg194/sg194_generic_builder_fix_attempt_v1.json",
+    "sg194/sg194_generic_builder_fix_attempt_v1.md"
+  ],
+  "local_deleted": [
+    "sg194/tmp_222_L3_probe.json",
+    "sg194/tmp_222_single_probe.json",
+    "sg194/tmp_222_double_probe.json",
+    "sg194/pipeline_runs_v2",
+    "sg194/pipeline_runs_v2_tmp"
+  ],
+  "post_cleanup_expectation": "no transient run outputs or superseded v1/v3 generic-builder artifacts remain",
+  "round_scope": "generic-builder extraction from SG194 special path plus 222.1.1.1 direct finalization",
+  "status": "executed"
+}

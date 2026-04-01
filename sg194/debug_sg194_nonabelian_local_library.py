@@ -273,6 +273,106 @@ def s3_class_tag(local_index: int, record: dict[str, Any]) -> str:
     return "Sigma"
 
 
+def _count_distinct_complex(values: list[complex], tol: float = 1e-8) -> int:
+    clusters: list[complex] = []
+    for value in values:
+        if any(abs(value - existing) <= tol for existing in clusters):
+            continue
+        clusters.append(value)
+    return len(clusters)
+
+
+def generic_abelian_single_characters_for_record(record: dict[str, Any]) -> list[dict[str, Any]]:
+    order = record["group_order"]
+    mult_table = record["multiplication_table_local"]
+    cocycle = np.ones((order, order), dtype=complex)
+    left_regular = build_left_regular_matrices(mult_table, cocycle)
+
+    trials = [
+        [complex(index + 1, (index + 1) ** 2) for index in range(order)],
+        [complex(2 * index + 1, index + 1) for index in range(order)],
+        [complex(index + 1, 3 * index + 2) for index in range(order)],
+        [complex(index + 1, (-1) ** index * (index + 2)) for index in range(order)],
+    ]
+
+    eigenvectors = None
+    for coeffs in trials:
+        combo = np.zeros((order, order), dtype=complex)
+        for local_index, coeff in enumerate(coeffs):
+            combo += coeff * left_regular[local_index]
+        eigenvalues, trial_vectors = np.linalg.eig(combo)
+        if _count_distinct_complex([complex(value) for value in eigenvalues]) == order:
+            eigenvectors = trial_vectors
+            break
+    if eigenvectors is None:
+        raise ValueError("unable to separate abelian local-group characters generically")
+
+    irreps = []
+    for column in range(order):
+        vector = eigenvectors[:, column]
+        norm = np.vdot(vector, vector)
+        if abs(norm) <= 1e-12:
+            continue
+        chars = []
+        for regular in left_regular:
+            value = np.vdot(vector, regular @ vector) / norm
+            chars.append(normalize_complex(value))
+        irreps.append({"dimension": 1, "character": chars})
+
+    unique_irreps: list[dict[str, Any]] = []
+    for item in irreps:
+        if any(
+            all(complex_close(left, right) for left, right in zip(item["character"], existing["character"]))
+            for existing in unique_irreps
+        ):
+            continue
+        unique_irreps.append(item)
+
+    if len(unique_irreps) != order:
+        raise ValueError(
+            f"expected {order} distinct abelian single-group characters, got {len(unique_irreps)}"
+        )
+
+    unique_irreps.sort(
+        key=lambda item: [complex_to_string(value) for value in item["character"]]
+    )
+    labeled = []
+    for index, item in enumerate(unique_irreps, start=1):
+        labeled.append(
+            {
+                "label": f"chi_{index:02d}",
+                "dimension": 1,
+                "character": item["character"],
+                "label_scheme": "generic_abelian_regular_character",
+            }
+        )
+    return labeled
+
+
+def generic_regular_single_characters_for_record(record: dict[str, Any]) -> list[dict[str, Any]]:
+    order = record["group_order"]
+    mult_table = record["multiplication_table_local"]
+    cocycle = np.ones((order, order), dtype=complex)
+    blocks = twisted_isotypic_blocks(mult_table, cocycle)
+    blocks.sort(
+        key=lambda item: (
+            int(item["dimension"]),
+            [complex_to_string(value) for value in item["character"]],
+        )
+    )
+    labeled = []
+    for index, block in enumerate(blocks, start=1):
+        labeled.append(
+            {
+                "label": f"chi_{int(block['dimension'])}d_{index:02d}",
+                "dimension": int(block["dimension"]),
+                "character": list(block["character"]),
+                "label_scheme": "generic_regular_decomposition",
+            }
+        )
+    return labeled
+
+
 def ordinary_single_characters_for_record(record: dict[str, Any]) -> list[dict[str, Any]]:
     order = record["group_order"]
     type_key = record["site_symmetry_type_key"]
@@ -371,8 +471,10 @@ def ordinary_single_characters_for_record(record: dict[str, Any]) -> list[dict[s
                     base = {"E": chi_e, "C3": chi_c3, "Sigma": chi_sigma}[tag]
                     chars.append(complex(base * parity_sign))
                 local_irreps.append({"label": label, "dimension": int(chi_e), "character": chars, "parity_local_index": parity})
+    elif record["abelian"]:
+        local_irreps.extend(generic_abelian_single_characters_for_record(record))
     else:
-        raise ValueError(f"unsupported single-group site type: {type_key}")
+        local_irreps.extend(generic_regular_single_characters_for_record(record))
 
     return local_irreps
 
@@ -460,32 +562,62 @@ def center_basis(mult_table: list[list[int]], cocycle: np.ndarray) -> list[np.nd
     return basis
 
 
+def _count_eigenvalue_groups(eigenvalues: np.ndarray, tol: float = 1e-8) -> int:
+    groups = 0
+    cursor = 0
+    while cursor < len(eigenvalues):
+        groups += 1
+        next_cursor = cursor + 1
+        while next_cursor < len(eigenvalues) and abs(eigenvalues[next_cursor] - eigenvalues[cursor]) < tol:
+            next_cursor += 1
+        cursor = next_cursor
+    return groups
+
+
+def _hermitian_center_components(center_mats: list[np.ndarray]) -> list[np.ndarray]:
+    components: list[np.ndarray] = []
+    for mat in center_mats:
+        hermitian = 0.5 * (mat + mat.conj().T)
+        antihermitian = (mat - mat.conj().T) / (2j)
+        if np.max(np.abs(hermitian)) > 1e-10:
+            components.append(hermitian)
+        if np.max(np.abs(antihermitian)) > 1e-10:
+            components.append(antihermitian)
+    if not components:
+        components.append(0.5 * (center_mats[0] + center_mats[0].conj().T))
+    return components
+
+
 def choose_center_separator(center_mats: list[np.ndarray]) -> tuple[np.ndarray, int]:
     if not center_mats:
         raise ValueError("empty center")
-    trials = [
+    target = len(center_mats)
+    components = _hermitian_center_components(center_mats)
+    prime_sequences = [
         [1.0],
         [1.0, 2.0],
         [1.0, 2.0, 3.0],
         [1.0, 3.0, 5.0, 7.0],
         [2.0, 5.0, 11.0, 17.0],
+        [2.0, 3.0, 5.0, 7.0, 11.0, 13.0],
+        [3.0, 5.0, 7.0, 11.0, 13.0, 17.0, 19.0],
     ]
-    target = len(center_mats)
-    for coeffs in trials:
+    for seq in prime_sequences:
         hermitian = np.zeros_like(center_mats[0], dtype=complex)
-        for idx, mat in enumerate(center_mats):
-            coeff = coeffs[idx % len(coeffs)]
-            hermitian += coeff * (mat + mat.conj().T)
+        for idx, mat in enumerate(components):
+            hermitian += seq[idx % len(seq)] * mat
         eigenvalues, _ = np.linalg.eigh(hermitian)
-        groups = 0
-        cursor = 0
-        while cursor < len(eigenvalues):
-            groups += 1
-            next_cursor = cursor + 1
-            while next_cursor < len(eigenvalues) and abs(eigenvalues[next_cursor] - eigenvalues[cursor]) < 1e-8:
-                next_cursor += 1
-            cursor = next_cursor
-        if groups == target:
+        if _count_eigenvalue_groups(eigenvalues) == target:
+            return hermitian, target
+
+    rng = np.random.default_rng(0)
+    for _ in range(64):
+        coeffs = rng.normal(size=len(components))
+        hermitian = np.zeros_like(center_mats[0], dtype=complex)
+        for coeff, mat in zip(coeffs, components):
+            hermitian += float(coeff) * mat
+        eigenvalues, _ = np.linalg.eigh(hermitian)
+        if _count_eigenvalue_groups(eigenvalues) == target:
             return hermitian, target
     raise ValueError("unable to separate center blocks")
 

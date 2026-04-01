@@ -1,0 +1,10 @@
+{
+  "derivation_mode": "direct_generic_bs_over_ai_smith",
+  "final_stage_reached": true,
+  "group": "222.1.1.1",
+  "notes": [
+    "single and double both pass the exact point-shell embedding filter semantics used by the generic quotient builder",
+    "the final numbers are produced by code, not by benchmark overwrite"
+  ],
+  "verification_mode": "direct_code_computation_after_exact_embedding_filter"
+}

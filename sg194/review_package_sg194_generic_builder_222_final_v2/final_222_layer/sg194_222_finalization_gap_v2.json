@@ -1,0 +1,10 @@
+{
+  "current_blocker": null,
+  "group": "222.1.1.1",
+  "old_blockers": [
+    "missing generic current-row compatibility",
+    "missing generic local AI embedding",
+    "double projective local-library center separation failure"
+  ],
+  "status": "resolved"
+}

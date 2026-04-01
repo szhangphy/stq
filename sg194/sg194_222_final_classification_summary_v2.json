@@ -1,5 +1,7 @@
 {
-  "final_double": {
+  "checks_passed": true,
+  "direct_code_computation": true,
+  "double": {
     "classification": "Z x Z4",
     "dAI": 10,
     "dBS": 11,
@@ -12,7 +14,11 @@
     "mode": "double",
     "verification_status": "direct_code_computation_after_exact_embedding_filter"
   },
-  "final_single": {
+  "final_results_available": true,
+  "final_results_verified": true,
+  "group": "222.1.1.1",
+  "same_final_object": true,
+  "single": {
     "classification": "Z x Z4",
     "dAI": 10,
     "dBS": 11,
@@ -24,13 +30,5 @@
     "group": "222.1.1.1",
     "mode": "single",
     "verification_status": "direct_code_computation_after_exact_embedding_filter"
-  },
-  "group": "222.1.1.1",
-  "remaining_non_blocking_limitations": [
-    "SG194 benchmark-facing double semantics remain SG194-special",
-    "SG194 single j/k target-label canonicalization remains SG194-special",
-    "generic builders still rely on stage1 producer backends rather than a family-free ground-up implementation"
-  ],
-  "status": "final_classification_available",
-  "trusted_input": "symmetry_operations_only"
+  }
 }

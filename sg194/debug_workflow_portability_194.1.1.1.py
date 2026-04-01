@@ -20,6 +20,7 @@ import tarfile
 import textwrap
 import tarfile as tarfile_module
 from fractions import Fraction
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Sequence, Tuple
 
@@ -325,12 +326,23 @@ def load_ssg_dict(group_number: str) -> dict[str, Any]:
     return next(item for item in ssg_list if item["ssgNum"] == group_number)
 
 
-def load_context(module: Any, group_number: str, group_label: str, ssg_dict: dict[str, Any]) -> dict[str, Any]:
-    ssg = module.loadSsgGroup(group_number, np.array([0.0, 0.0, 0.0]), group_label, ssg_dict)
+@lru_cache(maxsize=None)
+def _load_realspace_context_payload(group_number: str) -> dict[str, Any]:
     full_data, _ = swyckoff_r.load_irssg_data(group_number, 0)
     wyckoff_entries, _ = swyckoff_r.compute_wyckoff_output(group_number, fast=True)
     full_ops = [swyckoff_r.op_from_json(op) for op in full_data["operations"]]
     full_time_revs = [bool(flag) for flag in full_data["time_revs"]]
+    return {
+        "full_data": full_data,
+        "wyckoff_entries": wyckoff_entries,
+        "full_ops": full_ops,
+        "full_time_revs": full_time_revs,
+    }
+
+
+def load_context(module: Any, group_number: str, group_label: str, ssg_dict: dict[str, Any]) -> dict[str, Any]:
+    ssg = module.loadSsgGroup(group_number, np.array([0.0, 0.0, 0.0]), group_label, ssg_dict)
+    realspace = _load_realspace_context_payload(group_number)
     ctx = {
         "group_number": group_number,
         "group_label": group_label,
@@ -338,14 +350,14 @@ def load_context(module: Any, group_number: str, group_label: str, ssg_dict: dic
         "ssg_dict": ssg_dict,
         "supercell": np.array(ssg.superCell, dtype=float),
         "reciprocal_basis": [np.array(ssg.b1), np.array(ssg.b2), np.array(ssg.b3)],
-        "full_data": full_data,
-        "full_ops": full_ops,
-        "full_time_revs": full_time_revs,
-        "wyckoff_entries": wyckoff_entries,
+        "full_data": realspace["full_data"],
+        "full_ops": realspace["full_ops"],
+        "full_time_revs": realspace["full_time_revs"],
+        "wyckoff_entries": realspace["wyckoff_entries"],
     }
     ctx["raw_operations"] = single_expanded.raw_ops(ctx)
     ctx["group_tables"] = single_expanded.build_group_tables(ctx)
-    ctx["entries_by_letter"] = {entry["letter"]: entry for entry in wyckoff_entries}
+    ctx["entries_by_letter"] = {entry["letter"]: entry for entry in realspace["wyckoff_entries"]}
     return ctx
 
 
