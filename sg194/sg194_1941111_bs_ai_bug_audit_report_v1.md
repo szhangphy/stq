@@ -1,11 +1,11 @@
 # SG194 194.1.1.1 Internalization Fix Report v1
 
-        - Current time: 2026-04-01 13:45:50 +0800
+        - Current time: 2026-04-01 14:21:35 +0800
         - Branch: `sg194-special`
-        - Current HEAD: `7610fb5`
+        - Current HEAD: `5b5ec54`
         - Repo root (relative): `.`
         - Remote: `git@github.com:szhangphy/stq.git`
-        - Package: `review_package_sg194_single_target_result_v1`
+        - Package: `review_package_sg194_single_exact_target_alignment_v1`
 
         ## Key Findings
 
@@ -15,7 +15,7 @@
 4. The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.
 5. Single published rank(BS/AI)/quotient = 13/13/trivial; legacy internal layer = 13/13/trivial.
 6. Double published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.
-7. The extracted-package smoke tests over review_package_sg194_single_target_result_v1.tar.gz passed = True.
+7. The extracted-package smoke tests over review_package_sg194_single_exact_target_alignment_v1.tar.gz passed = True.
 
         ## Commands Run
 
@@ -51,7 +51,7 @@
 22. `sg194/sg194_stage2_package_dependency_audit_v1.md`
 23. `sg194/sg194_package_smoke_test_v1.json`
 24. `sg194/sg194_package_smoke_test_v1.md`
-25. `sg194/review_package_sg194_single_target_result_v1/README.md`
-26. `sg194/review_package_sg194_single_target_result_v1/REPRODUCIBILITY_MANIFEST.md`
-27. `sg194/review_package_sg194_single_target_result_v1/reproducibility_manifest_v1.json`
-28. `sg194/review_package_sg194_single_target_result_v1.tar.gz`
+25. `sg194/review_package_sg194_single_exact_target_alignment_v1/README.md`
+26. `sg194/review_package_sg194_single_exact_target_alignment_v1/REPRODUCIBILITY_MANIFEST.md`
+27. `sg194/review_package_sg194_single_exact_target_alignment_v1/reproducibility_manifest_v1.json`
+28. `sg194/review_package_sg194_single_exact_target_alignment_v1.tar.gz`

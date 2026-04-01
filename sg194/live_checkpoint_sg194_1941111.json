@@ -1,12 +1,12 @@
 {
-  "current_time": "2026-04-01 13:45:50 +0800",
+  "current_time": "2026-04-01 14:21:35 +0800",
   "task_scope": "SG194 194.1.1.1 source benchmark internalization plus cleanup packaging.",
   "current_branch": "sg194-special",
   "repo_root_relative": ".",
   "remote": "git@github.com:szhangphy/stq.git",
-  "head_commit_short": "7610fb5",
-  "package_name": "review_package_sg194_single_target_result_v1",
-  "package_tarball": "review_package_sg194_single_target_result_v1.tar.gz",
+  "head_commit_short": "5b5ec54",
+  "package_name": "review_package_sg194_single_exact_target_alignment_v1",
+  "package_tarball": "review_package_sg194_single_exact_target_alignment_v1.tar.gz",
   "confirmed_findings": [
     "The final-standard-space implementation remains an externally anchored current-to-standard elimination contract, not an internal ambient row-space identity proof.",
     "single_vs_external_union_rank_in_current_point_rows = 17.",
@@ -14,7 +14,7 @@
     "The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.",
     "Single published rank(BS/AI)/quotient = 13/13/trivial; legacy internal layer = 13/13/trivial.",
     "Double published rank(BS/AI)/quotient = 10/10/Z6; legacy internal layer = 13/13/trivial.",
-    "The extracted-package smoke tests over review_package_sg194_single_target_result_v1.tar.gz passed = True."
+    "The extracted-package smoke tests over review_package_sg194_single_exact_target_alignment_v1.tar.gz passed = True."
   ],
   "ruled_out_hypotheses": [
     "The final standard result is an unproved ambient row-space identity inside the current 34-row shell.",
@@ -53,10 +53,10 @@
     "sg194/sg194_stage2_package_dependency_audit_v1.md",
     "sg194/sg194_package_smoke_test_v1.json",
     "sg194/sg194_package_smoke_test_v1.md",
-    "sg194/review_package_sg194_single_target_result_v1/README.md",
-    "sg194/review_package_sg194_single_target_result_v1/REPRODUCIBILITY_MANIFEST.md",
-    "sg194/review_package_sg194_single_target_result_v1/reproducibility_manifest_v1.json",
-    "sg194/review_package_sg194_single_target_result_v1.tar.gz"
+    "sg194/review_package_sg194_single_exact_target_alignment_v1/README.md",
+    "sg194/review_package_sg194_single_exact_target_alignment_v1/REPRODUCIBILITY_MANIFEST.md",
+    "sg194/review_package_sg194_single_exact_target_alignment_v1/reproducibility_manifest_v1.json",
+    "sg194/review_package_sg194_single_exact_target_alignment_v1.tar.gz"
   ],
   "scripts_passed": [
     "python3 -m py_compile common/*.py",
@@ -77,7 +77,7 @@
   "github_sync_status": {
     "checkpoint_files_synced_to_branch": false,
     "remote_branch": "origin/sg194-special",
-    "head_commit_short": "7610fb5"
+    "head_commit_short": "5b5ec54"
   },
   "authoritative_artifacts": {
     "stage2_summary_json": "workflow_portability_stage2_summary_194.1.1.1.json",

@@ -1,7 +1,7 @@
 # SG194 Package Smoke Test v1
 
-- Package tarball: `review_package_sg194_single_target_result_v1.tar.gz`
-- Extracted package root: `review_package_sg194_single_target_result_v1`
+- Package tarball: `review_package_sg194_single_exact_target_alignment_v1.tar.gz`
+- Extracted package root: `review_package_sg194_single_exact_target_alignment_v1`
 - All passed: `True`
 
 ## Commands

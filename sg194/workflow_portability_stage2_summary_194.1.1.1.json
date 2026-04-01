@@ -34,6 +34,9 @@
     "k_A'": "j_A'",
     "k_A''": "j_A''"
   },
+  "single_target_generator_label_canonicalization_role": "external_ordinary_target_label_lookup_normalization",
+  "single_target_generator_label_canonicalization_scope": "single-valued ordinary target-row-language cache lookup only",
+  "single_target_generator_label_canonicalization_meaning": "The current single-valued ordinary j/k family labels are normalized to the external ordinary target-row naming before target-row comparison; this preserves the A'/A'' little-irrep labels and only swaps the family letters j <-> k where the target-row signatures demand it.",
   "single_target_exact_generator_identity_status": "available",
   "single_target_projected_current_matches_external_matrix_exactly": true,
   "single_target_exact_linear_target_alignment_exists": true,
@@ -64,6 +67,10 @@
   "double_final_rank_ai": 10,
   "single_final_quotient_group": "trivial",
   "double_final_quotient_group": "Z6",
+  "single_final_object_kind": "ordinary_single_exact_target_row_language_object",
+  "double_final_object_kind": "benchmark_facing_double_internalized_target_object",
+  "single_double_final_same_target_object": false,
+  "single_double_final_relation": "Single and double now share geometry but not the same final target object: single ends in the ordinary exact target-row-language object 13/13/trivial, while double ends in the benchmark-facing spinorial internalized target object 10/10/Z6.",
   "interpretation_warning": "The single and double source layers are now deliberately separated by target object. Single publishes the ordinary target-row-language result 13/13/trivial through exact current/external ordinary generator identity, with raw-current provenance still retained at 16/13/Z^3. Double keeps the benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The old 13/13/trivial projection is no longer a hidden auxiliary for single; it is the active single target result.",
   "main_blocker": "The target-row alignment blocker is resolved: the single current generator matrix now matches the cached external ordinary generator matrix exactly after canonicalizing the j/k labels, so the remaining mismatch to the benchmark oracle is an object/numerics issue rather than an unresolved target-row exactness defect.",
   "next_blocker": "If further work is requested, the next step is no longer target-row exactness; it is explaining why the exact single target object 13/13/trivial differs from the double benchmark-facing target 10/10/Z6."

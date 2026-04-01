@@ -470,6 +470,7 @@ def build_package() -> None:
                 "- Result: the single target-row-language current/external generator alignment is now exact.",
                 "- Single exact target result: `13 / 13 / trivial`.",
                 "- Benchmark oracle remains `10 / 10 / Z6` and is not overwritten here.",
+                "- This package is superseded for final review by `review_package_sg194_single_jk_pairing_proof_v1`, which adds the canonical j/k pairing proof and regression hardening.",
             ]
         ),
     )
@@ -540,8 +541,9 @@ def validate_outputs() -> None:
     assert single["final_rank_ai"] == 13
     assert single["quotient_group"] == "trivial"
     assert load_json(REVALIDATED_JSON)["classification"] == "trivial"
-    assert PACKAGE_DIR.exists()
-    assert PACKAGE_TARBALL.exists()
+    # The exact-alignment package can be retired by later hardening rounds; exactness
+    # validation should depend on the data/status outputs, not on the continued
+    # presence of the older review bundle.
 
 
 def main() -> None:

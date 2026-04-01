@@ -537,6 +537,12 @@ def generate_outputs(
             "single_and_double_free_generators_match": True,
             "single_generator_inventory_matches_external_ordinary_inventory": True,
             "single_generator_label_canonicalization": dict(SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION),
+            "single_generator_label_canonicalization_role": "external_ordinary_target_label_lookup_normalization",
+            "single_generator_label_canonicalization_scope": "single-valued ordinary target-row-language cache lookup only",
+            "single_generator_label_canonicalization_meaning": (
+                "The current single-valued ordinary j/k family labels are normalized to the external ordinary "
+                "target-row naming before target-row comparison; this does not mutate the raw current generator ids."
+            ),
             "single_external_lookup_labels": single_external_lookup_labels,
             "single_vs_double_ai_union_rank_in_bs_coordinates": int(sp.Matrix.hstack(single_ai_bs, double_ai_bs).rank()),
             "single_vs_double_ai_union_rank_in_current_point_rows": int(sp.Matrix.hstack(single_ai_point, double_ai_point).rank()),

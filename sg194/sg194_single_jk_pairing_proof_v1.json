@@ -1,25 +1,30 @@
 {
-  "generated_at": "2026-04-01T13:53:43+08:00",
+  "generated_at": "2026-04-01T14:24:14+08:00",
   "target_group": "194.1.1.1",
-  "root_cause_hypothesis": "The single-valued ordinary 12j / 12k generator labels are swapped relative to the external ordinary cache.",
+  "question": "Why is the single j/k canonical pairing representation-theoretically required rather than ad hoc relabeling?",
+  "target_row_language_kind": "ordinary_sg194_external_row_language",
+  "pairing_object_role": "external_ordinary_target_label_lookup_normalization",
+  "pairing_object_scope": "single-valued ordinary target-row-language cache lookup only",
   "problem_generators": [
     "j_A'",
     "j_A''",
     "k_A'",
     "k_A''"
   ],
-  "generator_diffs": [
+  "generator_meanings": [
     {
       "current_generator_id": "j_A'",
+      "family_letter": "j",
+      "little_irrep_label": "A'",
       "raw_external_label": "j_A'",
       "canonical_external_label": "k_A'",
-      "exact_external_matches": [
+      "unique_exact_external_matches": [
         "k_A'"
       ],
-      "raw_diff_support": [
+      "current_target_row_signature": [
         {
-          "row_label": "GM:*GM_2+",
-          "coeff": -1
+          "row_label": "GM:*GM_1+",
+          "coeff": 1
         },
         {
           "row_label": "GM:*GM_2-",
@@ -30,12 +35,12 @@
           "coeff": 1
         },
         {
-          "row_label": "GM:*GM_3-",
-          "coeff": -1
+          "row_label": "GM:*GM_4-",
+          "coeff": 1
         },
         {
           "row_label": "GM:*GM_5+",
-          "coeff": -1
+          "coeff": 1
         },
         {
           "row_label": "GM:*GM_5-",
@@ -47,23 +52,23 @@
         },
         {
           "row_label": "GM:*GM_6-",
-          "coeff": -1
-        },
-        {
-          "row_label": "A:*A_1",
           "coeff": 1
         },
         {
-          "row_label": "A:*A_2",
-          "coeff": -1
+          "row_label": "A:*A_1",
+          "coeff": 2
+        },
+        {
+          "row_label": "A:*A_3",
+          "coeff": 2
         },
         {
           "row_label": "K:*K_1",
-          "coeff": -1
+          "coeff": 1
         },
         {
           "row_label": "K:*K_4",
-          "coeff": -1
+          "coeff": 1
         },
         {
           "row_label": "K:*K_2",
@@ -75,15 +80,27 @@
         },
         {
           "row_label": "K:*K_5",
-          "coeff": -2
+          "coeff": 2
         },
         {
           "row_label": "K:*K_6",
           "coeff": 2
         },
         {
+          "row_label": "H:*H_3",
+          "coeff": 2
+        },
+        {
+          "row_label": "H:*H_1",
+          "coeff": 2
+        },
+        {
+          "row_label": "H:*H_2",
+          "coeff": 2
+        },
+        {
           "row_label": "M:*M_1+",
-          "coeff": -1
+          "coeff": 2
         },
         {
           "row_label": "M:*M_1-",
@@ -91,7 +108,7 @@
         },
         {
           "row_label": "M:*M_2+",
-          "coeff": -2
+          "coeff": 1
         },
         {
           "row_label": "M:*M_2-",
@@ -103,7 +120,7 @@
         },
         {
           "row_label": "M:*M_3-",
-          "coeff": -2
+          "coeff": 1
         },
         {
           "row_label": "M:*M_4+",
@@ -111,41 +128,42 @@
         },
         {
           "row_label": "M:*M_4-",
-          "coeff": -1
+          "coeff": 2
         },
         {
           "row_label": "L:*L_1",
-          "coeff": 1
+          "coeff": 4
         },
         {
           "row_label": "L:*L_2",
-          "coeff": -1
+          "coeff": 2
         }
-      ],
-      "canonical_diff_support": []
+      ]
     },
     {
       "current_generator_id": "j_A''",
+      "family_letter": "j",
+      "little_irrep_label": "A''",
       "raw_external_label": "j_A''",
       "canonical_external_label": "k_A''",
-      "exact_external_matches": [
+      "unique_exact_external_matches": [
         "k_A''"
       ],
-      "raw_diff_support": [
+      "current_target_row_signature": [
+        {
+          "row_label": "GM:*GM_1-",
+          "coeff": 1
+        },
         {
           "row_label": "GM:*GM_2+",
           "coeff": 1
         },
         {
-          "row_label": "GM:*GM_2-",
-          "coeff": -1
-        },
-        {
-          "row_label": "GM:*GM_3+",
-          "coeff": -1
-        },
-        {
           "row_label": "GM:*GM_3-",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_4+",
           "coeff": 1
         },
         {
@@ -154,23 +172,23 @@
         },
         {
           "row_label": "GM:*GM_5-",
-          "coeff": -1
+          "coeff": 1
         },
         {
           "row_label": "GM:*GM_6+",
-          "coeff": -1
+          "coeff": 1
         },
         {
           "row_label": "GM:*GM_6-",
           "coeff": 1
         },
         {
-          "row_label": "A:*A_1",
-          "coeff": -1
+          "row_label": "A:*A_2",
+          "coeff": 2
         },
         {
-          "row_label": "A:*A_2",
-          "coeff": 1
+          "row_label": "A:*A_3",
+          "coeff": 2
         },
         {
           "row_label": "K:*K_1",
@@ -182,11 +200,11 @@
         },
         {
           "row_label": "K:*K_2",
-          "coeff": -1
+          "coeff": 1
         },
         {
           "row_label": "K:*K_3",
-          "coeff": -1
+          "coeff": 1
         },
         {
           "row_label": "K:*K_5",
@@ -194,7 +212,19 @@
         },
         {
           "row_label": "K:*K_6",
-          "coeff": -2
+          "coeff": 2
+        },
+        {
+          "row_label": "H:*H_3",
+          "coeff": 2
+        },
+        {
+          "row_label": "H:*H_1",
+          "coeff": 2
+        },
+        {
+          "row_label": "H:*H_2",
+          "coeff": 2
         },
         {
           "row_label": "M:*M_1+",
@@ -202,7 +232,7 @@
         },
         {
           "row_label": "M:*M_1-",
-          "coeff": -1
+          "coeff": 2
         },
         {
           "row_label": "M:*M_2+",
@@ -210,11 +240,11 @@
         },
         {
           "row_label": "M:*M_2-",
-          "coeff": -2
+          "coeff": 1
         },
         {
           "row_label": "M:*M_3+",
-          "coeff": -2
+          "coeff": 1
         },
         {
           "row_label": "M:*M_3-",
@@ -222,7 +252,7 @@
         },
         {
           "row_label": "M:*M_4+",
-          "coeff": -1
+          "coeff": 2
         },
         {
           "row_label": "M:*M_4-",
@@ -230,141 +260,123 @@
         },
         {
           "row_label": "L:*L_1",
-          "coeff": -1
+          "coeff": 2
         },
         {
           "row_label": "L:*L_2",
-          "coeff": 1
+          "coeff": 4
         }
-      ],
-      "canonical_diff_support": []
+      ]
     },
     {
       "current_generator_id": "k_A'",
+      "family_letter": "k",
+      "little_irrep_label": "A'",
       "raw_external_label": "k_A'",
       "canonical_external_label": "j_A'",
-      "exact_external_matches": [
+      "unique_exact_external_matches": [
         "j_A'"
       ],
-      "raw_diff_support": [
+      "current_target_row_signature": [
         {
-          "row_label": "GM:*GM_2+",
+          "row_label": "GM:*GM_1+",
           "coeff": 1
         },
         {
-          "row_label": "GM:*GM_2-",
-          "coeff": -1
-        },
-        {
-          "row_label": "GM:*GM_3+",
-          "coeff": -1
+          "row_label": "GM:*GM_2+",
+          "coeff": 1
         },
         {
           "row_label": "GM:*GM_3-",
           "coeff": 1
         },
         {
-          "row_label": "GM:*GM_5+",
+          "row_label": "GM:*GM_4-",
           "coeff": 1
         },
         {
-          "row_label": "GM:*GM_5-",
-          "coeff": -1
-        },
-        {
-          "row_label": "GM:*GM_6+",
-          "coeff": -1
+          "row_label": "GM:*GM_5+",
+          "coeff": 2
         },
         {
           "row_label": "GM:*GM_6-",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "row_label": "A:*A_1",
-          "coeff": -1
+          "coeff": 1
         },
         {
           "row_label": "A:*A_2",
           "coeff": 1
         },
         {
+          "row_label": "A:*A_3",
+          "coeff": 2
+        },
+        {
           "row_label": "K:*K_1",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "row_label": "K:*K_4",
-          "coeff": 1
-        },
-        {
-          "row_label": "K:*K_2",
-          "coeff": -1
-        },
-        {
-          "row_label": "K:*K_3",
-          "coeff": -1
+          "coeff": 2
         },
         {
           "row_label": "K:*K_5",
+          "coeff": 4
+        },
+        {
+          "row_label": "H:*H_3",
           "coeff": 2
         },
         {
-          "row_label": "K:*K_6",
-          "coeff": -2
+          "row_label": "H:*H_1",
+          "coeff": 2
+        },
+        {
+          "row_label": "H:*H_2",
+          "coeff": 2
         },
         {
           "row_label": "M:*M_1+",
-          "coeff": 1
-        },
-        {
-          "row_label": "M:*M_1-",
-          "coeff": -1
+          "coeff": 3
         },
         {
           "row_label": "M:*M_2+",
-          "coeff": 2
-        },
-        {
-          "row_label": "M:*M_2-",
-          "coeff": -2
-        },
-        {
-          "row_label": "M:*M_3+",
-          "coeff": -2
+          "coeff": 3
         },
         {
           "row_label": "M:*M_3-",
-          "coeff": 2
-        },
-        {
-          "row_label": "M:*M_4+",
-          "coeff": -1
+          "coeff": 3
         },
         {
           "row_label": "M:*M_4-",
-          "coeff": 1
+          "coeff": 3
         },
         {
           "row_label": "L:*L_1",
-          "coeff": -1
+          "coeff": 3
         },
         {
           "row_label": "L:*L_2",
-          "coeff": 1
+          "coeff": 3
         }
-      ],
-      "canonical_diff_support": []
+      ]
     },
     {
       "current_generator_id": "k_A''",
+      "family_letter": "k",
+      "little_irrep_label": "A''",
       "raw_external_label": "k_A''",
       "canonical_external_label": "j_A''",
-      "exact_external_matches": [
+      "unique_exact_external_matches": [
         "j_A''"
       ],
-      "raw_diff_support": [
+      "current_target_row_signature": [
         {
-          "row_label": "GM:*GM_2+",
-          "coeff": -1
+          "row_label": "GM:*GM_1-",
+          "coeff": 1
         },
         {
           "row_label": "GM:*GM_2-",
@@ -375,24 +387,16 @@
           "coeff": 1
         },
         {
-          "row_label": "GM:*GM_3-",
-          "coeff": -1
-        },
-        {
-          "row_label": "GM:*GM_5+",
-          "coeff": -1
+          "row_label": "GM:*GM_4+",
+          "coeff": 1
         },
         {
           "row_label": "GM:*GM_5-",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "row_label": "GM:*GM_6+",
-          "coeff": 1
-        },
-        {
-          "row_label": "GM:*GM_6-",
-          "coeff": -1
+          "coeff": 2
         },
         {
           "row_label": "A:*A_1",
@@ -400,84 +404,118 @@
         },
         {
           "row_label": "A:*A_2",
-          "coeff": -1
+          "coeff": 1
         },
         {
-          "row_label": "K:*K_1",
-          "coeff": -1
-        },
-        {
-          "row_label": "K:*K_4",
-          "coeff": -1
+          "row_label": "A:*A_3",
+          "coeff": 2
         },
         {
           "row_label": "K:*K_2",
-          "coeff": 1
+          "coeff": 2
         },
         {
           "row_label": "K:*K_3",
-          "coeff": 1
-        },
-        {
-          "row_label": "K:*K_5",
-          "coeff": -2
+          "coeff": 2
         },
         {
           "row_label": "K:*K_6",
+          "coeff": 4
+        },
+        {
+          "row_label": "H:*H_3",
           "coeff": 2
         },
         {
-          "row_label": "M:*M_1+",
-          "coeff": -1
+          "row_label": "H:*H_1",
+          "coeff": 2
+        },
+        {
+          "row_label": "H:*H_2",
+          "coeff": 2
         },
         {
           "row_label": "M:*M_1-",
-          "coeff": 1
-        },
-        {
-          "row_label": "M:*M_2+",
-          "coeff": -2
+          "coeff": 3
         },
         {
           "row_label": "M:*M_2-",
-          "coeff": 2
+          "coeff": 3
         },
         {
           "row_label": "M:*M_3+",
-          "coeff": 2
-        },
-        {
-          "row_label": "M:*M_3-",
-          "coeff": -2
+          "coeff": 3
         },
         {
           "row_label": "M:*M_4+",
-          "coeff": 1
-        },
-        {
-          "row_label": "M:*M_4-",
-          "coeff": -1
+          "coeff": 3
         },
         {
           "row_label": "L:*L_1",
-          "coeff": 1
+          "coeff": 3
         },
         {
           "row_label": "L:*L_2",
-          "coeff": -1
+          "coeff": 3
         }
-      ],
-      "canonical_diff_support": []
+      ]
     }
   ],
-  "signed_permutation_verdict": {
-    "exists": true,
+  "raw_pairing_failure": {
+    "mismatch_rank": 1,
+    "mismatch_row_labels": [
+      "GM:*GM_2+",
+      "GM:*GM_2-",
+      "GM:*GM_3+",
+      "GM:*GM_3-",
+      "GM:*GM_5+",
+      "GM:*GM_5-",
+      "GM:*GM_6+",
+      "GM:*GM_6-",
+      "A:*A_1",
+      "A:*A_2",
+      "K:*K_1",
+      "K:*K_4",
+      "K:*K_2",
+      "K:*K_3",
+      "K:*K_5",
+      "K:*K_6",
+      "M:*M_1+",
+      "M:*M_1-",
+      "M:*M_2+",
+      "M:*M_2-",
+      "M:*M_3+",
+      "M:*M_3-",
+      "M:*M_4+",
+      "M:*M_4-",
+      "L:*L_1",
+      "L:*L_2"
+    ],
+    "mismatch_column_labels": [
+      "j_A'",
+      "j_A''",
+      "k_A'",
+      "k_A''"
+    ],
+    "verdict": "Raw pairing compares each current single j/k column to the wrong external ordinary family label and leaves a rank-1 residual."
+  },
+  "canonical_pairing_success": {
     "map": {
       "j_A'": "k_A'",
       "j_A''": "k_A''",
       "k_A'": "j_A'",
       "k_A''": "j_A''"
     },
-    "meaning": "The old residual is a pure label permutation inside the j/k ordinary family, not a geometry or projection defect."
-  }
+    "mismatch_rank": 0,
+    "projected_current_matches_external_matrix_exactly": true,
+    "exact_linear_target_alignment_exists": true
+  },
+  "proof_chain": [
+    "Target-row-language generator identity is decided by equality of the full projected target-row signatures.",
+    "Each problematic current single generator has exactly one external ordinary column with the same target-row signature.",
+    "Those unique exact matches preserve the A'/A'' little-irrep label and swap only the j/k family letter.",
+    "Under raw pairing, the same four columns are compared against non-identical target-row signatures and produce the rank-1 residual.",
+    "Therefore the j/k canonical pairing is the target-row-language normalization required for exact generator identity, not a benchmark overwrite and not free label tuning."
+  ],
+  "verdict": "The canonical j/k pairing is representation-theoretically justified by unique target-row-signature identity of the projected single generators against the external ordinary target basis."
 }

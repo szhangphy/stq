@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-04-01T14:24:14+08:00",
+  "target_group": "194.1.1.1",
+  "search_space": {
+    "problem_generators": [
+      "j_A'",
+      "j_A''",
+      "k_A'",
+      "k_A''"
+    ],
+    "permutation_count": 24,
+    "signed_permutation_count": 384
+  },
+  "exact_permutation_solutions": [
+    {
+      "map": {
+        "j_A'": "k_A'",
+        "j_A''": "k_A''",
+        "k_A'": "j_A'",
+        "k_A''": "j_A''"
+      }
+    }
+  ],
+  "exact_signed_permutation_solutions": [
+    {
+      "map": {
+        "j_A'": "k_A'",
+        "j_A''": "k_A''",
+        "k_A'": "j_A'",
+        "k_A''": "j_A''"
+      },
+      "signs": {
+        "j_A'": 1,
+        "j_A''": 1,
+        "k_A'": 1,
+        "k_A''": 1
+      }
+    }
+  ],
+  "canonical_solution": {
+    "j_A'": "k_A'",
+    "j_A''": "k_A''",
+    "k_A'": "j_A'",
+    "k_A''": "j_A''"
+  },
+  "canonical_solution_present": true,
+  "unique_under_permutation": true,
+  "unique_under_signed_permutation": true,
+  "gauge_equivalent_alternatives": [],
+  "verdict": "Among all 24 permutations, and among all 24 * 2^4 signed permutations, there is exactly one exact solution: swap j <-> k while keeping A'/A'' fixed. No alternative sign choices or gauge-equivalent pairings remain."
+}

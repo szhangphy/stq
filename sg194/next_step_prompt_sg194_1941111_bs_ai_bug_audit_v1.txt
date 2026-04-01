@@ -1,11 +1,11 @@
 Resume the SG194 194.1.1.1 source benchmark internalization work from the current repository root.
 
 Last refreshed:
-- 2026-04-01 13:45:50 +0800
+- 2026-04-01 14:21:35 +0800
 
 Branch and HEAD:
 - active branch: sg194-special
-- current HEAD: 7610fb5
+- current HEAD: 5b5ec54
 - remote: git@github.com:szhangphy/stq.git
 
 Current hard facts:
@@ -19,7 +19,7 @@ Current hard facts:
 - double published rank(BS) = 10
 - double published rank(AI) = 10
 - double published quotient = Z6
-- package tarball = review_package_sg194_single_target_result_v1.tar.gz
+- package tarball = review_package_sg194_single_exact_target_alignment_v1.tar.gz
 - package smoke tests passed =  True
 
 Read first:
@@ -27,7 +27,7 @@ Read first:
 2. sg194/current_status_194.1.1.1_stage2.json
 3. sg194/workflow_portability_stage2_summary_194.1.1.1.json
 4. sg194/workflow_portability_report_stage2_194.1.1.1.pdf
-5. sg194/review_package_sg194_single_target_result_v1/REPRODUCIBILITY_MANIFEST.md
+5. sg194/review_package_sg194_single_exact_target_alignment_v1/REPRODUCIBILITY_MANIFEST.md
 
 Immediate next actions:
 1. review the in-scope git diff only

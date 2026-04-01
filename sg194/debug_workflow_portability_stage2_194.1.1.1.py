@@ -390,6 +390,13 @@ def load_single_target_projection_snapshot(
         "generator_column_count": len(current_labels),
         "generator_inventory_matches_external": True,
         "generator_label_canonicalization": dict(SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION),
+        "generator_label_canonicalization_role": "external_ordinary_target_label_lookup_normalization",
+        "generator_label_canonicalization_scope": "single-valued ordinary target-row-language cache lookup only",
+        "generator_label_canonicalization_meaning": (
+            "The current single-valued ordinary j/k family labels are normalized to the external ordinary target-row "
+            "naming before target-row comparison; this preserves the A'/A'' little-irrep labels and only swaps the "
+            "family letters j <-> k where the target-row signatures demand it."
+        ),
         "generator_external_lookup_labels": external_lookup_labels,
         "common_ai_basis_generator_ids": list(projection_payload["common_ai_basis_generator_ids"]),
         "common_free_generator_rank": int(projection_payload["common_free_generator_rank"]),
@@ -765,6 +772,15 @@ def apply_single_target_result_fields(
             "single_target_common_ai_basis_generator_ids": target_snapshot["common_ai_basis_generator_ids"],
             "single_target_common_free_generator_rank": target_snapshot["common_free_generator_rank"],
             "single_target_generator_label_canonicalization": target_snapshot["generator_label_canonicalization"],
+            "single_target_generator_label_canonicalization_role": target_snapshot[
+                "generator_label_canonicalization_role"
+            ],
+            "single_target_generator_label_canonicalization_scope": target_snapshot[
+                "generator_label_canonicalization_scope"
+            ],
+            "single_target_generator_label_canonicalization_meaning": target_snapshot[
+                "generator_label_canonicalization_meaning"
+            ],
             "single_target_projected_current_matches_external_matrix_exactly": target_snapshot[
                 "projected_current_matches_external_matrix_exactly"
             ],
@@ -1562,6 +1578,15 @@ def build_stage2_summary(
         "single_target_projection_matrix_shape": single_target_snapshot["projection_matrix_shape"],
         "single_target_generator_column_count": single_target_snapshot["generator_column_count"],
         "single_target_generator_label_canonicalization": single_target_snapshot["generator_label_canonicalization"],
+        "single_target_generator_label_canonicalization_role": single_target_snapshot[
+            "generator_label_canonicalization_role"
+        ],
+        "single_target_generator_label_canonicalization_scope": single_target_snapshot[
+            "generator_label_canonicalization_scope"
+        ],
+        "single_target_generator_label_canonicalization_meaning": single_target_snapshot[
+            "generator_label_canonicalization_meaning"
+        ],
         "single_target_exact_generator_identity_status": single_target_snapshot["exact_generator_identity_status"],
         "single_target_projected_current_matches_external_matrix_exactly": single_target_snapshot[
             "projected_current_matches_external_matrix_exactly"
@@ -1589,6 +1614,14 @@ def build_stage2_summary(
         "double_final_rank_ai": double_summary["final_rank_ai"],
         "single_final_quotient_group": single_summary["quotient_group"],
         "double_final_quotient_group": double_summary["quotient_group"],
+        "single_final_object_kind": "ordinary_single_exact_target_row_language_object",
+        "double_final_object_kind": "benchmark_facing_double_internalized_target_object",
+        "single_double_final_same_target_object": False,
+        "single_double_final_relation": (
+            "Single and double now share geometry but not the same final target object: single ends in the ordinary "
+            "exact target-row-language object 13/13/trivial, while double ends in the benchmark-facing spinorial "
+            "internalized target object 10/10/Z6."
+        ),
         "interpretation_warning": (
             "The single and double source layers are now deliberately separated by target object. "
             f"Single publishes the ordinary target-row-language result {single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/"
@@ -2400,18 +2433,6 @@ def validate_outputs() -> None:
                 ROOT / package_audit.PACKAGE_MANIFEST_JSON_NAME,
             ]
         )
-    else:
-        required_paths.extend(
-            [
-                PACKAGE_TARBALL,
-                PACKAGE_AUDIT_JSON,
-                PACKAGE_AUDIT_MD,
-                PACKAGE_SMOKE_JSON,
-                PACKAGE_SMOKE_MD,
-                PACKAGE_DIR / package_audit.PACKAGE_MANIFEST_MD_NAME,
-                PACKAGE_DIR / package_audit.PACKAGE_MANIFEST_JSON_NAME,
-            ]
-        )
     for path in required_paths:
         if not path.exists():
             raise FileNotFoundError(path)
@@ -2575,6 +2596,15 @@ def main() -> None:
         "single_target_projection_status": stage2_summary["single_target_projection_status"],
         "single_target_row_language_kind": stage2_summary["single_target_row_language_kind"],
         "single_target_generator_label_canonicalization": stage2_summary["single_target_generator_label_canonicalization"],
+        "single_target_generator_label_canonicalization_role": stage2_summary[
+            "single_target_generator_label_canonicalization_role"
+        ],
+        "single_target_generator_label_canonicalization_scope": stage2_summary[
+            "single_target_generator_label_canonicalization_scope"
+        ],
+        "single_target_generator_label_canonicalization_meaning": stage2_summary[
+            "single_target_generator_label_canonicalization_meaning"
+        ],
         "single_target_exact_generator_identity_status": stage2_summary["single_target_exact_generator_identity_status"],
         "single_target_projected_current_matches_external_matrix_exactly": stage2_summary[
             "single_target_projected_current_matches_external_matrix_exactly"
@@ -2614,6 +2644,10 @@ def main() -> None:
         "double_final_rank_ai": stage2_summary["double_final_rank_ai"],
         "single_final_quotient_group": stage2_summary["single_final_quotient_group"],
         "double_final_quotient_group": stage2_summary["double_final_quotient_group"],
+        "single_final_object_kind": stage2_summary["single_final_object_kind"],
+        "double_final_object_kind": stage2_summary["double_final_object_kind"],
+        "single_double_final_same_target_object": stage2_summary["single_double_final_same_target_object"],
+        "single_double_final_relation": stage2_summary["single_double_final_relation"],
         "single_final_quotient_derivation_mode": single_summary["quotient_derivation_mode"],
         "double_final_quotient_derivation_mode": double_summary["quotient_derivation_mode"],
         "single_vs_external_union_rank_in_current_point_rows": stage2_summary["single_vs_external_union_rank_in_current_point_rows"],

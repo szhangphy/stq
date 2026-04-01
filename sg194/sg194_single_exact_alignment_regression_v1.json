@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-04-01T14:24:16+08:00",
+  "target_group": "194.1.1.1",
+  "command_checks": [
+    {
+      "name": "stage2_validate",
+      "command": "python3 sg194/debug_workflow_portability_stage2_194.1.1.1.py --validate",
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "validated workflow portability stage-2 outputs",
+      "stderr": ""
+    },
+    {
+      "name": "single_exact_alignment_validate",
+      "command": "python3 sg194/debug_sg194_single_exact_target_alignment_v1.py --validate",
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "validated sg194 single exact target alignment outputs",
+      "stderr": ""
+    }
+  ],
+  "semantic_checks": [
+    {
+      "name": "single_exact_alignment_exists",
+      "passed": true,
+      "actual": {
+        "single_target_exact_generator_identity_status": "available",
+        "single_target_projection_mismatch_rank": 0
+      }
+    },
+    {
+      "name": "raw_pairing_still_fails",
+      "passed": true,
+      "actual": 1
+    },
+    {
+      "name": "canonical_pairing_exact",
+      "passed": true,
+      "actual": 0
+    },
+    {
+      "name": "pairing_uniqueness",
+      "passed": true,
+      "actual": {
+        "unique_under_permutation": true,
+        "unique_under_signed_permutation": true
+      }
+    },
+    {
+      "name": "single_final_stable",
+      "passed": true,
+      "actual": {
+        "dBS": 13,
+        "dAI": 13,
+        "classification": "trivial"
+      }
+    },
+    {
+      "name": "double_final_stable",
+      "passed": true,
+      "actual": {
+        "dBS": 10,
+        "dAI": 10,
+        "classification": "Z6"
+      }
+    },
+    {
+      "name": "single_double_not_conflated",
+      "passed": true,
+      "actual": "Single and double now share geometry but not the same final target object: single ends in the ordinary exact target-row-language object 13/13/trivial, while double ends in the benchmark-facing spinorial internalized target object 10/10/Z6."
+    }
+  ],
+  "single_final": {
+    "dBS": 13,
+    "dAI": 13,
+    "classification": "trivial"
+  },
+  "double_final": {
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6"
+  },
+  "all_passed": true
+}
