@@ -1,0 +1,24 @@
+# Modularization Plan V3
+
+## Module Layers
+
+- `models`
+- `specs`
+- `coordinates`
+- `geometry`
+- `alignment`
+- `bs_ai`
+- `quotient`
+- `checks`
+- `reporting`
+- `driver`
+- `adapters`
+
+## Generic Builder Progress
+
+- `geometry_builder_from_symmetry_ops`: `available`
+- `current_row_shell_builder`: `available`
+- `local_ai_seed_builder`: `available`
+- `generic_current_row_compatibility_builder`: `missing`
+- `generic_local_ai_embedding_builder`: `missing`
+- `generic_direct_quotient_builder`: `missing`
