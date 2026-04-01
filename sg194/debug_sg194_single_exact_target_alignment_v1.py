@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""SG194-specific single exact-alignment audit backend.
+
+This remains a targeted SG194 verification tool behind the modular pipeline.
+Use `run_group_pipeline.py` for unified execution.
+"""
 from __future__ import annotations
 
 import argparse

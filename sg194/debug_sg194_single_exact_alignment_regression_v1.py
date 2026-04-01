@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""SG194-specific exact-alignment regression helper.
+
+The modular pipeline calls this as a SG194-special regression backend.
+Use `run_group_pipeline.py` for unified runs.
+"""
 from __future__ import annotations
 
 import argparse

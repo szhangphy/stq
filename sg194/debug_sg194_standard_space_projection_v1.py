@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""SG194-specific target-row projection backend.
+
+This remains a forensic SG194 projection builder behind the modular pipeline.
+Use `run_group_pipeline.py` for unified execution.
+"""
 from __future__ import annotations
 
 import argparse

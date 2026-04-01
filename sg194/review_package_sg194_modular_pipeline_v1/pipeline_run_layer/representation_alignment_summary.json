@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-04-01T15:07:46+08:00",
+  "group": "194.1.1.1",
+  "special_rules": {
+    "group_specific_rules": {
+      "single_target_label_normalization": {
+        "kind": "external_ordinary_target_label_lookup_normalization",
+        "mapping": {
+          "j_A'": "k_A'",
+          "j_A''": "k_A''",
+          "k_A'": "j_A'",
+          "k_A''": "j_A''"
+        },
+        "scope": "single-valued ordinary target-row-language cache lookup only",
+        "proof_artifact": "sg194_single_jk_pairing_proof_v1.json"
+      },
+      "raw_row_language_kind": "raw_current_with_planes_42_unknown_shell",
+      "target_row_language_kind": "ordinary_sg194_external_row_language",
+      "double_target_object_kind": "benchmark_facing_double_internalized_target_object",
+      "single_target_object_kind": "ordinary_single_exact_target_row_language_object"
+    },
+    "group_specific_rule_count": 5,
+    "has_single_target_label_normalization": true
+  },
+  "single": {
+    "raw": {
+      "row_language_kind": "raw_current_with_planes_42_unknown_shell",
+      "exact_alignment_status": "not_applicable_raw_current_object",
+      "object_kind": "raw_current_provenance_object"
+    },
+    "target": {
+      "row_language_kind": "ordinary_sg194_external_row_language",
+      "exact_alignment_status": "available",
+      "exact_linear_target_alignment_exists": true,
+      "projection_mismatch_rank": 0,
+      "object_kind": "ordinary_single_exact_target_row_language_object",
+      "bs_ai_same_object_language": true,
+      "generator_label_canonicalization_role": "external_ordinary_target_label_lookup_normalization",
+      "generator_label_canonicalization_scope": "single-valued ordinary target-row-language cache lookup only"
+    }
+  },
+  "double": {
+    "raw": {
+      "row_language_kind": "raw_current_with_planes_42_unknown_shell",
+      "exact_alignment_status": "not_applicable_raw_current_object",
+      "object_kind": "raw_current_provenance_object"
+    },
+    "target": {
+      "row_language_kind": "ordinary_sg194_external_row_language",
+      "exact_alignment_status": "source_internalized_via_double_spinorial_generator_alignment",
+      "target_object_match": true,
+      "object_kind": "benchmark_facing_double_internalized_target_object",
+      "benchmark_oracle_file": "current_status_1941111_benchmark_v1.json"
+    }
+  }
+}

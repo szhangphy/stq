@@ -1,0 +1,314 @@
+{
+  "target_group": "194.1.1.1",
+  "verdict": "The pre-refactor codebase is not directly extensible to other groups: core math and matrix routines are reusable, but the workflow is gated by SG194-specific paths, group ids, benchmark conventions, and status/package side effects. After this round, the new modular pipeline is structurally extensible, but a new group still needs a group spec plus geometry/alignment adapters.",
+  "current_state_summary": {
+    "generic_now": [
+      "unified pipeline driver interface",
+      "result-object normalization",
+      "consistency-check runner",
+      "reporting/package manifest writer",
+      "template second-group spec path"
+    ],
+    "still_sg194_specific": [
+      "legacy stage1/stage2 builders",
+      "external ordinary target cache contract",
+      "single j/k canonical pairing normalization",
+      "benchmark-facing double target interpretation"
+    ],
+    "hard_blockers_for_new_group": [
+      "no generic geometry adapter beyond SG194 legacy scripts",
+      "no group-neutral external cache loader beyond SG194 artifact names",
+      "no generic special-rule registry outside the SG194 spec map"
+    ]
+  },
+  "core_script_scans": [
+    {
+      "file": "debug_workflow_portability_194.1.1.1.py",
+      "hardcoded_hit_categories": [
+        "group_id"
+      ],
+      "hardcoded_hit_count": 8,
+      "sample_hits": {
+        "group_id": [
+          {
+            "line": 58,
+            "text": "SINGLE_SUMMARY_JSON = ROOT / \"group_194_1_1_1_single_pilot_summary.json\""
+          },
+          {
+            "line": 59,
+            "text": "SINGLE_AUDIT_MD = ROOT / \"group_194_1_1_1_single_pilot_audit.md\""
+          },
+          {
+            "line": 60,
+            "text": "DOUBLE_SUMMARY_JSON = ROOT / \"group_194_1_1_1_double_pilot_summary.json\""
+          },
+          {
+            "line": 61,
+            "text": "DOUBLE_AUDIT_MD = ROOT / \"group_194_1_1_1_double_pilot_audit.md\""
+          },
+          {
+            "line": 68,
+            "text": "SINGLE_KMANIFOLDS_JSON = ROOT / \"group_194_1_1_1_single_kmanifolds.json\""
+          },
+          {
+            "line": 69,
+            "text": "SINGLE_CONNECTIVITY_JSON = ROOT / \"group_194_1_1_1_single_connectivity.json\""
+          },
+          {
+            "line": 70,
+            "text": "SINGLE_LITTLE_GROUPS_JSON = ROOT / \"group_194_1_1_1_single_little_groups.json\""
+          },
+          {
+            "line": 71,
+            "text": "SINGLE_LINE_COMPAT_JSON = ROOT / \"group_194_1_1_1_single_line_compatibility.json\""
+          }
+        ]
+      }
+    },
+    {
+      "file": "debug_workflow_portability_stage2_194.1.1.1.py",
+      "hardcoded_hit_categories": [
+        "benchmark_value",
+        "group_id",
+        "sg194_pairing"
+      ],
+      "hardcoded_hit_count": 17,
+      "sample_hits": {
+        "group_id": [
+          {
+            "line": 42,
+            "text": "SINGLE_AI_COMPLETION_JSON = ROOT / \"group_194_1_1_1_single_ai_completion_summary.json\""
+          },
+          {
+            "line": 43,
+            "text": "DOUBLE_AI_COMPLETION_JSON = ROOT / \"group_194_1_1_1_double_ai_completion_summary.json\""
+          },
+          {
+            "line": 44,
+            "text": "SINGLE_INDICATOR_GROUP_JSON = ROOT / \"group_194_1_1_1_single_indicator_group_summary.json\""
+          },
+          {
+            "line": 45,
+            "text": "SINGLE_INDICATOR_GENERATORS_JSON = ROOT / \"group_194_1_1_1_single_indicator_generators.json\""
+          },
+          {
+            "line": 46,
+            "text": "DOUBLE_INDICATOR_GROUP_JSON = ROOT / \"group_194_1_1_1_double_indicator_group_summary.json\""
+          },
+          {
+            "line": 47,
+            "text": "DOUBLE_INDICATOR_GENERATORS_JSON = ROOT / \"group_194_1_1_1_double_indicator_generators.json\""
+          },
+          {
+            "line": 58,
+            "text": "DOUBLE_PATCHED_GROUP_SUMMARY_JSON = ROOT / \"group_194_1_1_1_double_indicator_group_summary_patched_v2.json\""
+          },
+          {
+            "line": 59,
+            "text": "DOUBLE_PATCHED_CANDIDATES_JSON = ROOT / \"raw_194_1_1_1_double_ai_candidates_patched_v2.json\""
+          }
+        ],
+        "sg194_pairing": [
+          {
+            "line": 120,
+            "text": "\"j_A'\": \"k_A'\","
+          },
+          {
+            "line": 121,
+            "text": "\"j_A''\": \"k_A''\","
+          },
+          {
+            "line": 122,
+            "text": "\"k_A'\": \"j_A'\","
+          },
+          {
+            "line": 123,
+            "text": "\"k_A''\": \"j_A''\","
+          }
+        ],
+        "benchmark_value": [
+          {
+            "line": 277,
+            "text": "\"33-generator current/external alignment. The final Z6 quotient is therefore inherited \""
+          },
+          {
+            "line": 1628,
+            "text": "\"internalized target object 10/10/Z6.\""
+          },
+          {
+            "line": 1657,
+            "text": "\"single target object 13/13/trivial differs from the double benchmark-facing target 10/10/Z6.\""
+          },
+          {
+            "line": 2333,
+            "text": "3. The active double benchmark-facing result is `rank(BS)=10`, `rank(AI)=10`, final quotient `Z6`."
+          },
+          {
+            "line": 2371,
+            "text": "- double published quotient = Z6"
+          }
+        ]
+      }
+    },
+    {
+      "file": "debug_sg194_standard_space_projection_v1.py",
+      "hardcoded_hit_categories": [
+        "group_id",
+        "sg194_pairing"
+      ],
+      "hardcoded_hit_count": 8,
+      "sample_hits": {
+        "group_id": [
+          {
+            "line": 32,
+            "text": "SINGLE_INDICATOR_GENERATORS_JSON = ROOT / \"group_194_1_1_1_single_indicator_generators.json\""
+          },
+          {
+            "line": 33,
+            "text": "DOUBLE_INDICATOR_GENERATORS_JSON = ROOT / \"group_194_1_1_1_double_indicator_generators.json\""
+          },
+          {
+            "line": 382,
+            "text": "6. group_194_1_1_1_single_ai_completion_summary.json"
+          },
+          {
+            "line": 383,
+            "text": "7. group_194_1_1_1_double_ai_completion_summary.json"
+          }
+        ],
+        "sg194_pairing": [
+          {
+            "line": 46,
+            "text": "\"j_A'\": \"k_A'\","
+          },
+          {
+            "line": 47,
+            "text": "\"j_A''\": \"k_A''\","
+          },
+          {
+            "line": 48,
+            "text": "\"k_A'\": \"j_A'\","
+          },
+          {
+            "line": 49,
+            "text": "\"k_A''\": \"j_A''\","
+          }
+        ]
+      }
+    },
+    {
+      "file": "debug_sg194_single_exact_target_alignment_v1.py",
+      "hardcoded_hit_categories": [
+        "benchmark_value",
+        "sg194_pairing"
+      ],
+      "hardcoded_hit_count": 5,
+      "sample_hits": {
+        "sg194_pairing": [
+          {
+            "line": 303,
+            "text": "\"j_A'\": \"k_A'\","
+          },
+          {
+            "line": 304,
+            "text": "\"j_A''\": \"k_A''\","
+          },
+          {
+            "line": 305,
+            "text": "\"k_A'\": \"j_A'\","
+          },
+          {
+            "line": 306,
+            "text": "\"k_A''\": \"j_A''\","
+          }
+        ],
+        "benchmark_value": [
+          {
+            "line": 477,
+            "text": "\"- Benchmark oracle remains `10 / 10 / Z6` and is not overwritten here.\","
+          }
+        ]
+      }
+    },
+    {
+      "file": "debug_sg194_single_jk_pairing_proof_v1.py",
+      "hardcoded_hit_categories": [
+        "benchmark_value",
+        "sg194_pairing"
+      ],
+      "hardcoded_hit_count": 9,
+      "sample_hits": {
+        "sg194_pairing": [
+          {
+            "line": 66,
+            "text": "\"j_A'\": \"k_A'\","
+          },
+          {
+            "line": 67,
+            "text": "\"j_A''\": \"k_A''\","
+          },
+          {
+            "line": 68,
+            "text": "\"k_A'\": \"j_A'\","
+          },
+          {
+            "line": 69,
+            "text": "\"k_A''\": \"j_A''\","
+          }
+        ],
+        "benchmark_value": [
+          {
+            "line": 352,
+            "text": "\"Read single 13/13/trivial as the exact ordinary target-row-language object. Read double 10/10/Z6 as the \""
+          },
+          {
+            "line": 447,
+            "text": "\"- Double benchmark-facing result: `10 / 10 / Z6`.\","
+          },
+          {
+            "line": 494,
+            "text": "assert current[\"double_final_quotient_group\"] == \"Z6\""
+          },
+          {
+            "line": 555,
+            "text": "\"- double benchmark-facing status must be read as the spinorial internalized benchmark object `10/10/Z6`.\","
+          },
+          {
+            "line": 568,
+            "text": "\"- double benchmark-facing target: `10 / 10 / Z6`.\","
+          }
+        ]
+      }
+    },
+    {
+      "file": "debug_sg194_single_exact_alignment_regression_v1.py",
+      "hardcoded_hit_categories": [
+        "benchmark_value"
+      ],
+      "hardcoded_hit_count": 2,
+      "sample_hits": {
+        "benchmark_value": [
+          {
+            "line": 131,
+            "text": "and current[\"double_final_quotient_group\"] == \"Z6\""
+          },
+          {
+            "line": 170,
+            "text": "assert payload[\"double_final\"] == {\"dBS\": 10, \"dAI\": 10, \"classification\": \"Z6\"}"
+          }
+        ]
+      }
+    }
+  ],
+  "future_group_readiness": {
+    "template_spec_available": true,
+    "template_spec_key": "template-hex",
+    "next_required_extension_points": [
+      "group_spec",
+      "geometry adapter",
+      "representation adapter",
+      "alignment normalizer",
+      "result expectation contract"
+    ]
+  }
+}

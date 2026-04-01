@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""Legacy SG194 stage2 backend.
+
+This script still builds the accepted SG194 single/double status artifacts.
+The unified entrypoint for orchestrated runs is `run_group_pipeline.py`.
+"""
 from __future__ import annotations
 
 import argparse

@@ -1,0 +1,14 @@
+{
+  "group": "194.1.1.1",
+  "spec_key": "sg194",
+  "output_dir": "sg194/pipeline_runs/sg194_both_all_latest",
+  "files": {
+    "geometry": "sg194/pipeline_runs/sg194_both_all_latest/geometry_summary.md",
+    "alignment": "sg194/pipeline_runs/sg194_both_all_latest/representation_alignment_summary.md",
+    "bs": "sg194/pipeline_runs/sg194_both_all_latest/bs_results.md",
+    "ai": "sg194/pipeline_runs/sg194_both_all_latest/ai_results.md",
+    "quotient": "sg194/pipeline_runs/sg194_both_all_latest/quotient_results.md",
+    "final_status": "sg194/pipeline_runs/sg194_both_all_latest/final_status_summary.md",
+    "checks": "sg194/pipeline_runs/sg194_both_all_latest/consistency_checks.md"
+  }
+}

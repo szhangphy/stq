@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-04-01T15:07:46+08:00",
+  "group": "194.1.1.1",
+  "objects": [
+    {
+      "object_id": "single_raw_current",
+      "mode": "single",
+      "row_language_level": "raw",
+      "classification": "Z^3",
+      "free_rank": 3,
+      "finite_part": [],
+      "quotient_derivation_mode": "direct_raw_current_provenance",
+      "exact_alignment_status": "not_applicable"
+    },
+    {
+      "object_id": "single_target_exact",
+      "mode": "single",
+      "row_language_level": "target",
+      "classification": "trivial",
+      "free_rank": 0,
+      "finite_part": [],
+      "quotient_derivation_mode": "direct_target_level_smith_on_projected_single_bs_over_projected_single_ai",
+      "exact_alignment_status": "available"
+    },
+    {
+      "object_id": "double_raw_current",
+      "mode": "double",
+      "row_language_level": "raw",
+      "classification": "Z^3",
+      "free_rank": 3,
+      "finite_part": [],
+      "quotient_derivation_mode": "direct_raw_current_provenance",
+      "exact_alignment_status": "not_applicable"
+    },
+    {
+      "object_id": "double_target_benchmark_facing",
+      "mode": "double",
+      "row_language_level": "target",
+      "classification": "Z6",
+      "free_rank": 0,
+      "finite_part": [
+        6
+      ],
+      "quotient_derivation_mode": "matched_target_inference_after_exact_double_generator_space_identity",
+      "exact_alignment_status": "source_internalized_via_double_spinorial_generator_alignment"
+    }
+  ]
+}

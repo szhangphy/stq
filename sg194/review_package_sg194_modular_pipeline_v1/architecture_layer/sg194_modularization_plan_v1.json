@@ -1,0 +1,60 @@
+{
+  "target_group": "194.1.1.1",
+  "new_modules": [
+    {
+      "module": "pipeline_v1/models.py",
+      "role": "shared data contracts"
+    },
+    {
+      "module": "pipeline_v1/specs.py",
+      "role": "group spec registry and template spec"
+    },
+    {
+      "module": "pipeline_v1/legacy_bridge.py",
+      "role": "legacy producer validation and artifact loading"
+    },
+    {
+      "module": "pipeline_v1/geometry.py",
+      "role": "shared geometry summary builder"
+    },
+    {
+      "module": "pipeline_v1/alignment.py",
+      "role": "row-language/alignment summary builder"
+    },
+    {
+      "module": "pipeline_v1/bs_ai.py",
+      "role": "BS/AI result-object normalization"
+    },
+    {
+      "module": "pipeline_v1/quotient.py",
+      "role": "quotient summary normalization"
+    },
+    {
+      "module": "pipeline_v1/checks.py",
+      "role": "consistency and regression checks"
+    },
+    {
+      "module": "pipeline_v1/reporting.py",
+      "role": "unified JSON/MD outputs and package manifests"
+    },
+    {
+      "module": "pipeline_v1/driver.py",
+      "role": "unified orchestrator"
+    },
+    {
+      "module": "run_group_pipeline.py",
+      "role": "human-facing entrypoint"
+    }
+  ],
+  "migration_boundaries": [
+    "geometry construction remains in the legacy SG194 backend for now",
+    "stage2 accepted semantics remain in the legacy SG194 backend for now",
+    "new groups plug in through GroupSpec + legacy/generic adapters instead of new ad hoc debug scripts"
+  ],
+  "success_criteria": [
+    "single exact target remains 13/13/trivial",
+    "double benchmark-facing target remains 10/10/Z6",
+    "driver emits one consistent output bundle",
+    "driver validates both SG194 and a second template spec path"
+  ]
+}

@@ -1,24 +1,35 @@
-# SG194 Single Direct Result
+# SG194 Modular Pipeline
 
-## Benchmark-first entrypoint
+## Unified Entrypoint
 
-- benchmark-authoritative status: `current_status_1941111_benchmark_v1.json`
-- benchmark result for the current project convention target: `classification = Z6`, `dBS = 10`, `dAI = 10`
-- benchmark oracle source: `sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json`
+- entrypoint: `run_group_pipeline.py`
+- driver spec: `sg194_pipeline_driver_spec_v1.json`
+- extensibility audit: `sg194_extensibility_audit_v1.json`
+- consistency summary: `sg194_pipeline_consistency_checks_v1.json`
 
-## Active source workflow status
+## Accepted SG194 Results
 
-- active single direct source object: `16 / 13 / Z^3`
-- active double source object: `10 / 10 / Z6`
-- auxiliary single legacy projection: `13 / 13 / trivial`
-- benchmark oracle is not overwritten into the single path
+- single exact target object: `13 / 13 / trivial`
+- double benchmark-facing target object: `10 / 10 / Z6`
+- single and double share geometry but do not share the same final target object
 
-## Review package
+## SG194-Special Backends
 
-- package file: `review_package_sg194_single_direct_result_v1.tar.gz`
-- package directory: `review_package_sg194_single_direct_result_v1/`
+- `debug_workflow_portability_194.1.1.1.py`
+- `debug_workflow_portability_stage2_194.1.1.1.py`
+- `debug_sg194_standard_space_projection_v1.py`
+- `debug_sg194_single_exact_target_alignment_v1.py`
+- `debug_sg194_single_jk_pairing_proof_v1.py`
+- `debug_sg194_single_exact_alignment_regression_v1.py`
+
+These remain SG194-specific forensic/backend scripts. Use the unified driver for normal runs.
+
+## Review Package
+
+- package file: `review_package_sg194_modular_pipeline_v1.tar.gz`
+- package directory: `review_package_sg194_modular_pipeline_v1/`
 
 ## Cleanup
 
-- cleanup report: `sg194_remaining_cleanup_v1.json`
-- single inheritance audit: `sg194_single_inheritance_removal_audit_v1.json`
+- cleanup report: `sg194_refactor_cleanup_v1.json`
+- retired old package: `review_package_sg194_single_jk_pairing_proof_v1`

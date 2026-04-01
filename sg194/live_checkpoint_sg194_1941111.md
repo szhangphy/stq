@@ -1,32 +1,30 @@
-# SG194 194.1.1.1 Internalization Fix Live Checkpoint
+# SG194 Modular Pipeline Live Checkpoint
 
-        - Current time: 2026-04-01 14:21:35 +0800
-        - Branch: `sg194-special`
-        - Current HEAD: `5b5ec54`
-        - Repo root (relative): `.`
-        - Remote: `git@github.com:szhangphy/stq.git`
-        - Current subtask: keep the benchmark-facing SG194 result sourced by the internalized double spinorial path while cleaning historical adoption-era leftovers
+- Current time: 2026-04-01 15:05:51 +0800
+- Branch: `sg194-special`
+- Current HEAD: `8cb81be`
+- Current subtask: modularize SG194 into a reusable pipeline with one unified entrypoint
 
-        ## Accepted hard facts
+## Accepted hard facts
 
-        1. The active single target-row-language result is `rank(BS)=13`, `rank(AI)=13`, final quotient `trivial`.
-        2. The single raw-current provenance remains `16/13/Z^3`, but it is no longer the published single answer.
-        3. The active double benchmark-facing result is `rank(BS)=10`, `rank(AI)=10`, final quotient `Z6`.
-        4. The single target result comes from the external ordinary projection contract, while the double benchmark layer comes from the exact spinorial generator-space internalization path.
-        5. The review package carries dependency audit and reproducibility manifest files, plus extracted-package smoke-test evidence.
+1. Single exact target remains `13 / 13 / trivial`.
+2. Double benchmark-facing target remains `10 / 10 / Z6`.
+3. Single and double share geometry but not the same final target object.
+4. The unified entrypoint is now `sg194/run_group_pipeline.py`.
+5. The old single j/k proof package is retired; the new review package is `review_package_sg194_modular_pipeline_v1`.
 
-        ## Read First
+## Read First
 
-        1. `sg194/sg194_standard_space_projection_summary_v1.json`
-2. `sg194/current_status_194.1.1.1_stage2.json`
-3. `sg194/workflow_portability_stage2_summary_194.1.1.1.json`
-4. `sg194/workflow_portability_report_stage2_194.1.1.1.pdf`
-5. `sg194/review_package_sg194_single_exact_target_alignment_v1/REPRODUCIBILITY_MANIFEST.md`
-6. `sg194/sg194_stage2_package_dependency_audit_v1.md`
-7. `sg194/sg194_package_smoke_test_v1.md`
+1. `sg194/sg194_extensibility_audit_v1.json`
+2. `sg194/sg194_pipeline_driver_spec_v1.json`
+3. `sg194/sg194_pipeline_consistency_checks_v1.json`
+4. `sg194/current_status_194.1.1.1_stage2.json`
+5. `sg194/current_status_1941111_benchmark_v1.json`
+6. `sg194/review_package_sg194_modular_pipeline_v1/README.md`
+7. `sg194/review_package_sg194_modular_pipeline_v1/REVIEW_MAP.md`
 
-        ## Immediate Next Step
+## Immediate Next Step
 
-        1. Review the git diff for in-scope source internalization and cleanup changes only.
-2. Commit on sg194-special.
-3. Push origin/sg194-special.
+1. Review the modular pipeline diff and cleanup diff together.
+2. Commit on `sg194-special`.
+3. Push `origin/sg194-special`.

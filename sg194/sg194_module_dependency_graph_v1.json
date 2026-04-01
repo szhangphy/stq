@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    "pipeline_v1/models.py",
+    "pipeline_v1/specs.py",
+    "pipeline_v1/legacy_bridge.py",
+    "pipeline_v1/geometry.py",
+    "pipeline_v1/alignment.py",
+    "pipeline_v1/bs_ai.py",
+    "pipeline_v1/quotient.py",
+    "pipeline_v1/checks.py",
+    "pipeline_v1/reporting.py",
+    "pipeline_v1/driver.py",
+    "run_group_pipeline.py"
+  ],
+  "edges": [
+    {
+      "from": "run_group_pipeline.py",
+      "to": "pipeline_v1/driver.py"
+    },
+    {
+      "from": "pipeline_v1/driver.py",
+      "to": "pipeline_v1/specs.py"
+    },
+    {
+      "from": "pipeline_v1/driver.py",
+      "to": "pipeline_v1/legacy_bridge.py"
+    },
+    {
+      "from": "pipeline_v1/driver.py",
+      "to": "pipeline_v1/geometry.py"
+    },
+    {
+      "from": "pipeline_v1/driver.py",
+      "to": "pipeline_v1/alignment.py"
+    },
+    {
+      "from": "pipeline_v1/driver.py",
+      "to": "pipeline_v1/bs_ai.py"
+    },
+    {
+      "from": "pipeline_v1/driver.py",
+      "to": "pipeline_v1/quotient.py"
+    },
+    {
+      "from": "pipeline_v1/driver.py",
+      "to": "pipeline_v1/checks.py"
+    },
+    {
+      "from": "pipeline_v1/driver.py",
+      "to": "pipeline_v1/reporting.py"
+    },
+    {
+      "from": "pipeline_v1/alignment.py",
+      "to": "pipeline_v1/sg194_special.py"
+    },
+    {
+      "from": "pipeline_v1/legacy_bridge.py",
+      "to": "pipeline_v1/utils.py"
+    },
+    {
+      "from": "pipeline_v1/reporting.py",
+      "to": "pipeline_v1/utils.py"
+    }
+  ],
+  "legacy_backend_boundary": [
+    "debug_workflow_portability_194.1.1.1.py",
+    "debug_workflow_portability_stage2_194.1.1.1.py",
+    "debug_sg194_standard_space_projection_v1.py",
+    "debug_sg194_single_exact_target_alignment_v1.py",
+    "debug_sg194_single_jk_pairing_proof_v1.py",
+    "debug_sg194_single_exact_alignment_regression_v1.py"
+  ]
+}

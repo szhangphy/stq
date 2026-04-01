@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""SG194-specific j/k pairing forensic audit.
+
+The modular pipeline keeps this as a forensic proof/regression helper rather
+than the primary entrypoint. Use `run_group_pipeline.py` for unified runs.
+"""
 from __future__ import annotations
 
 import argparse

@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-04-01T15:07:46+08:00",
+  "group": "194.1.1.1",
+  "single_final": {
+    "object_kind": "ordinary_single_exact_target_row_language_object",
+    "dBS": 13,
+    "dAI": 13,
+    "classification": "trivial",
+    "row_language_kind": "ordinary_sg194_external_row_language"
+  },
+  "double_final": {
+    "object_kind": "benchmark_facing_double_internalized_target_object",
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6",
+    "row_language_kind": "ordinary_sg194_external_row_language"
+  },
+  "same_final_object": false,
+  "relation": "Single and double now share geometry but not the same final target object: single ends in the ordinary exact target-row-language object 13/13/trivial, while double ends in the benchmark-facing spinorial internalized target object 10/10/Z6."
+}

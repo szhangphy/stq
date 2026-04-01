@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""Legacy SG194 stage1 backend.
+
+This script remains the SG194-specific raw geometry/runtime producer.
+The unified entrypoint for current runs is `run_group_pipeline.py`.
+"""
 from __future__ import annotations
 
 import argparse
