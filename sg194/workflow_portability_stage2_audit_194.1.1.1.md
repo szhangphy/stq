@@ -16,12 +16,13 @@
 - AI candidate count / distinct vectors: `45` / `45`.
 - Rank(AI) vs Rank(BS): `13` / `16`.
 - Raw internal quotient status: `standard_projected`; raw internal quotient `Z^3`.
-- Target-row-language result: `single_target_projection_contract_v1` with rank(BS/AI) `13` / `13` and quotient `trivial`.
+- Target-row-language result: `single_target_exact_generator_alignment_v1` with rank(BS/AI) `13` / `13` and quotient `trivial`.
 - Raw-current provenance retained separately at `16` / `13` with quotient `Z^3`.
-- Exact projected current/external generator match: `False`.
-- Exact linear target-alignment existence: `False`.
-- Target-layer blocker relative to double-style exact internalization: An exact single current/external target-generator alignment matrix does not exist for the present single BS-coordinate generator matrix against the cached external ordinary generator matrix.
-- Interpretation warning: The single final result is no longer the raw-current 16/13/Z^3 object. It is now the target-row-language result 13/13/trivial computed directly in the external ordinary target rows via the common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators contract. The raw-current 16/13/Z^3 quotient is retained only as provenance. The single final target-row-language result is computed directly in the external ordinary target rows through the current-to-standard projection contract. This is not benchmark overwrite and not inheritance from the double path. However, unlike the double spinorial benchmark path, the single current/external generator matrices are not related by an exact full-column linear identity: `projected_current_matches_external_matrix_exactly = False` and `exact_linear_target_alignment_exists = False`.
+- Exact projected current/external generator match: `True`.
+- Exact linear target-alignment existence: `True`.
+- Single generator-label canonicalization: `{"j_A'": "k_A'", "j_A''": "k_A''", "k_A'": "j_A'", "k_A''": "j_A''"}`.
+- Target-layer blocker relative to double-style exact internalization: None
+- Interpretation warning: The single final result is no longer the raw-current 16/13/Z^3 object. It is now the target-row-language result 13/13/trivial computed directly in the external ordinary target rows via the common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators contract. The raw-current 16/13/Z^3 quotient is retained only as provenance. The single final target-row-language result is computed directly in the external ordinary target rows through the current-to-standard projection contract. This is not benchmark overwrite and not inheritance from the double path. The projected single current generator matrix now matches the cached external ordinary generator matrix exactly after canonicalizing the single ordinary j/k generator labels to the external naming.
 
 ## Double-Group Feed-Back
 

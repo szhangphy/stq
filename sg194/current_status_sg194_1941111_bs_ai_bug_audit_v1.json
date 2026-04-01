@@ -1,10 +1,10 @@
 {
-  "current_time": "2026-04-01 13:13:59 +0800",
+  "current_time": "2026-04-01 13:45:50 +0800",
   "task_scope": "SG194 194.1.1.1 source benchmark internalization plus cleanup packaging.",
   "current_branch": "sg194-special",
   "repo_root_relative": ".",
   "remote": "git@github.com:szhangphy/stq.git",
-  "head_commit_short": "efaac77",
+  "head_commit_short": "7610fb5",
   "package_name": "review_package_sg194_single_target_result_v1",
   "package_tarball": "review_package_sg194_single_target_result_v1.tar.gz",
   "confirmed_findings": [
@@ -67,7 +67,7 @@
   ],
   "scripts_failed": [],
   "active_blockers": [
-    "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path now has its own target-row-language result 13/13/trivial, but the missing layer relative to the double-style exact internalization remains the current/external single generator alignment: `exact_linear_target_alignment_exists = False` and `projected_current_matches_external_matrix_exactly = False`."
+    "The target-row alignment blocker is resolved: the single current generator matrix now matches the cached external ordinary generator matrix exactly after canonicalizing the j/k labels, so the remaining mismatch to the benchmark oracle is an object/numerics issue rather than an unresolved target-row exactness defect."
   ],
   "next_actions": [
     "Review the git diff for in-scope source internalization and cleanup changes only.",
@@ -77,7 +77,7 @@
   "github_sync_status": {
     "checkpoint_files_synced_to_branch": false,
     "remote_branch": "origin/sg194-special",
-    "head_commit_short": "efaac77"
+    "head_commit_short": "7610fb5"
   },
   "authoritative_artifacts": {
     "stage2_summary_json": "workflow_portability_stage2_summary_194.1.1.1.json",

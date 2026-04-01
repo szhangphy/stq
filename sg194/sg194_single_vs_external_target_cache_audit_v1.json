@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-04-01T13:53:43+08:00",
+  "target_group": "194.1.1.1",
+  "external_cache_file": "sg194_external_ordinary_generator_matrix.json",
+  "generator_inventory_matches": true,
+  "raw_label_pairing_exact": false,
+  "canonical_label_pairing_exact": true,
+  "cache_compatible_with_current_single_mode": true,
+  "root_cause": "The cache is compatible. The failure came from target-label pairing under the raw single j/k naming, not from an incompatible external ordinary cache."
+}

@@ -1,0 +1,483 @@
+{
+  "generated_at": "2026-04-01T13:53:43+08:00",
+  "target_group": "194.1.1.1",
+  "root_cause_hypothesis": "The single-valued ordinary 12j / 12k generator labels are swapped relative to the external ordinary cache.",
+  "problem_generators": [
+    "j_A'",
+    "j_A''",
+    "k_A'",
+    "k_A''"
+  ],
+  "generator_diffs": [
+    {
+      "current_generator_id": "j_A'",
+      "raw_external_label": "j_A'",
+      "canonical_external_label": "k_A'",
+      "exact_external_matches": [
+        "k_A'"
+      ],
+      "raw_diff_support": [
+        {
+          "row_label": "GM:*GM_2+",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_2-",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_3+",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_3-",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_5+",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_5-",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_6+",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_6-",
+          "coeff": -1
+        },
+        {
+          "row_label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "row_label": "A:*A_2",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_1",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_4",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_2",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_3",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_5",
+          "coeff": -2
+        },
+        {
+          "row_label": "K:*K_6",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_1+",
+          "coeff": -1
+        },
+        {
+          "row_label": "M:*M_1-",
+          "coeff": 1
+        },
+        {
+          "row_label": "M:*M_2+",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_2-",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_3+",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_3-",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_4+",
+          "coeff": 1
+        },
+        {
+          "row_label": "M:*M_4-",
+          "coeff": -1
+        },
+        {
+          "row_label": "L:*L_1",
+          "coeff": 1
+        },
+        {
+          "row_label": "L:*L_2",
+          "coeff": -1
+        }
+      ],
+      "canonical_diff_support": []
+    },
+    {
+      "current_generator_id": "j_A''",
+      "raw_external_label": "j_A''",
+      "canonical_external_label": "k_A''",
+      "exact_external_matches": [
+        "k_A''"
+      ],
+      "raw_diff_support": [
+        {
+          "row_label": "GM:*GM_2+",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_2-",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_3+",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_3-",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_5+",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_5-",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_6+",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_6-",
+          "coeff": 1
+        },
+        {
+          "row_label": "A:*A_1",
+          "coeff": -1
+        },
+        {
+          "row_label": "A:*A_2",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_2",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_3",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_5",
+          "coeff": 2
+        },
+        {
+          "row_label": "K:*K_6",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "row_label": "M:*M_1-",
+          "coeff": -1
+        },
+        {
+          "row_label": "M:*M_2+",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_2-",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_3+",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_3-",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_4+",
+          "coeff": -1
+        },
+        {
+          "row_label": "M:*M_4-",
+          "coeff": 1
+        },
+        {
+          "row_label": "L:*L_1",
+          "coeff": -1
+        },
+        {
+          "row_label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "canonical_diff_support": []
+    },
+    {
+      "current_generator_id": "k_A'",
+      "raw_external_label": "k_A'",
+      "canonical_external_label": "j_A'",
+      "exact_external_matches": [
+        "j_A'"
+      ],
+      "raw_diff_support": [
+        {
+          "row_label": "GM:*GM_2+",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_2-",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_3+",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_3-",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_5+",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_5-",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_6+",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_6-",
+          "coeff": 1
+        },
+        {
+          "row_label": "A:*A_1",
+          "coeff": -1
+        },
+        {
+          "row_label": "A:*A_2",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_1",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_4",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_2",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_3",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_5",
+          "coeff": 2
+        },
+        {
+          "row_label": "K:*K_6",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_1+",
+          "coeff": 1
+        },
+        {
+          "row_label": "M:*M_1-",
+          "coeff": -1
+        },
+        {
+          "row_label": "M:*M_2+",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_2-",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_3+",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_3-",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_4+",
+          "coeff": -1
+        },
+        {
+          "row_label": "M:*M_4-",
+          "coeff": 1
+        },
+        {
+          "row_label": "L:*L_1",
+          "coeff": -1
+        },
+        {
+          "row_label": "L:*L_2",
+          "coeff": 1
+        }
+      ],
+      "canonical_diff_support": []
+    },
+    {
+      "current_generator_id": "k_A''",
+      "raw_external_label": "k_A''",
+      "canonical_external_label": "j_A''",
+      "exact_external_matches": [
+        "j_A''"
+      ],
+      "raw_diff_support": [
+        {
+          "row_label": "GM:*GM_2+",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_2-",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_3+",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_3-",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_5+",
+          "coeff": -1
+        },
+        {
+          "row_label": "GM:*GM_5-",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_6+",
+          "coeff": 1
+        },
+        {
+          "row_label": "GM:*GM_6-",
+          "coeff": -1
+        },
+        {
+          "row_label": "A:*A_1",
+          "coeff": 1
+        },
+        {
+          "row_label": "A:*A_2",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_1",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_4",
+          "coeff": -1
+        },
+        {
+          "row_label": "K:*K_2",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_3",
+          "coeff": 1
+        },
+        {
+          "row_label": "K:*K_5",
+          "coeff": -2
+        },
+        {
+          "row_label": "K:*K_6",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_1+",
+          "coeff": -1
+        },
+        {
+          "row_label": "M:*M_1-",
+          "coeff": 1
+        },
+        {
+          "row_label": "M:*M_2+",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_2-",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_3+",
+          "coeff": 2
+        },
+        {
+          "row_label": "M:*M_3-",
+          "coeff": -2
+        },
+        {
+          "row_label": "M:*M_4+",
+          "coeff": 1
+        },
+        {
+          "row_label": "M:*M_4-",
+          "coeff": -1
+        },
+        {
+          "row_label": "L:*L_1",
+          "coeff": 1
+        },
+        {
+          "row_label": "L:*L_2",
+          "coeff": -1
+        }
+      ],
+      "canonical_diff_support": []
+    }
+  ],
+  "signed_permutation_verdict": {
+    "exists": true,
+    "map": {
+      "j_A'": "k_A'",
+      "j_A''": "k_A''",
+      "k_A'": "j_A'",
+      "k_A''": "j_A''"
+    },
+    "meaning": "The old residual is a pure label permutation inside the j/k ordinary family, not a geometry or projection defect."
+  }
+}

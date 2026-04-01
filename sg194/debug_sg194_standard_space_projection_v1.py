@@ -36,6 +36,18 @@ STANDARD_BLOCK_TRANSLATION = [
     ("P6", "L"),
 ]
 
+# Keep in sync with debug_workflow_portability_stage2_194.1.1.1.py.
+SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION = {
+    "j_A'": "k_A'",
+    "j_A''": "k_A''",
+    "k_A'": "j_A'",
+    "k_A''": "j_A''",
+}
+
+
+def canonical_single_external_target_label(generator_id: str) -> str:
+    return SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION.get(generator_id, generator_id)
+
 
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text())
@@ -415,8 +427,9 @@ def generate_outputs(
     single_ids = [candidate["generator_id"] for candidate in single_induction["candidates"]]
     if set(single_ids) != set(external_cols):
         raise RuntimeError("single current generator ids no longer match the cached external ordinary generator inventory")
+    single_external_lookup_labels = [canonical_single_external_target_label(label) for label in single_ids]
     external_index = {label: idx for idx, label in enumerate(external_cols)}
-    external_reordered = sp.Matrix.hstack(*[external_matrix[:, external_index[label]] for label in single_ids])
+    external_reordered = sp.Matrix.hstack(*[external_matrix[:, external_index[label]] for label in single_external_lookup_labels])
 
     chosen_indices = find_common_basis_indices(single_ai_bs, external_reordered)
     chosen_ids = [single_ids[idx] for idx in chosen_indices]
@@ -523,6 +536,8 @@ def generate_outputs(
             "single_and_double_bs_spaces_coincide": True,
             "single_and_double_free_generators_match": True,
             "single_generator_inventory_matches_external_ordinary_inventory": True,
+            "single_generator_label_canonicalization": dict(SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION),
+            "single_external_lookup_labels": single_external_lookup_labels,
             "single_vs_double_ai_union_rank_in_bs_coordinates": int(sp.Matrix.hstack(single_ai_bs, double_ai_bs).rank()),
             "single_vs_double_ai_union_rank_in_current_point_rows": int(sp.Matrix.hstack(single_ai_point, double_ai_point).rank()),
             "single_vs_external_union_rank_in_current_point_rows": int(sp.Matrix.hstack(single_ai_point, external_reordered).rank()),

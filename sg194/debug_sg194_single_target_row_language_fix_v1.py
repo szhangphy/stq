@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ROOT.parent
-TARGET_SCRIPT = ROOT / "debug_sg194_single_target_result_v1.py"
+TARGET_SCRIPT = ROOT / "debug_sg194_single_exact_target_alignment_v1.py"
 
 
 def main() -> None:

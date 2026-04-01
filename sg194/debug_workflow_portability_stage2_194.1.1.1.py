@@ -55,7 +55,7 @@ DOUBLE_PATCHED_CANDIDATES_JSON = ROOT / "raw_194_1_1_1_double_ai_candidates_patc
 DOUBLE_PATCHED_AI_IN_BS_JSON = ROOT / "raw_194_1_1_1_double_ai_in_bs_matrix_patched_v2.json"
 EXTERNAL_SPINORIAL_MATRIX_JSON = ROOT / "sg194_external_spinorial_generator_matrix.json"
 
-PACKAGE_NAME = "review_package_sg194_single_target_result_v1"
+PACKAGE_NAME = "review_package_sg194_single_exact_target_alignment_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 PACKAGE_AUDIT_JSON = ROOT / "sg194_stage2_package_dependency_audit_v1.json"
@@ -106,6 +106,21 @@ STANDARD_PROJECTION_OUTPUTS = [
     standard_projection.FINAL_CLOSEOUT_STATUS_JSON,
     standard_projection.FINAL_CLOSEOUT_NEXT_STEP_PROMPT_TXT,
 ]
+
+# In the current single-valued runtime, the locally induced 12j / 12k ordinary
+# labels arrive swapped relative to the external ordinary cache. Canonicalize
+# them before any target-row comparison so generator ids and external columns
+# refer to the same object.
+SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION = {
+    "j_A'": "k_A'",
+    "j_A''": "k_A''",
+    "k_A'": "j_A'",
+    "k_A''": "j_A''",
+}
+
+
+def canonical_single_external_target_label(generator_id: str) -> str:
+    return SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION.get(generator_id, generator_id)
 
 
 def load_stage1_module():
@@ -289,8 +304,9 @@ def load_single_target_projection_snapshot(
     current_labels = [candidate["generator_id"] for candidate in induction["candidates"]]
     if set(current_labels) != set(external_labels):
         raise RuntimeError("single target snapshot lost ordinary external generator-inventory parity")
+    external_lookup_labels = [canonical_single_external_target_label(label) for label in current_labels]
     external_reordered = sp.Matrix.hstack(
-        *[external_matrix[:, external_labels.index(label)] for label in current_labels]
+        *[external_matrix[:, external_labels.index(label)] for label in external_lookup_labels]
     )
     current_ai_bs = bs_coordinate_matrix(runtime["bs_analysis"], induction["candidates"])
     projection_matrix = sp.Matrix(projection_payload["projection_matrix_bs_to_standard_rows"])
@@ -328,15 +344,53 @@ def load_single_target_projection_snapshot(
         for row_idx in range(mismatch.rows)
         if any(int(mismatch[row_idx, col_idx]) != 0 for col_idx in range(mismatch.cols))
     ]
+    exact_generator_identity = exact_solution_exists and projected_matches_external
+    interpretation_warning = (
+        "The single final target-row-language result is computed directly in the external ordinary target rows "
+        "through the current-to-standard projection contract. This is not benchmark overwrite and not inheritance "
+        "from the double path. The projected single current generator matrix now matches the cached external ordinary "
+        "generator matrix exactly after canonicalizing the single ordinary j/k generator labels to the external naming."
+        if exact_generator_identity
+        else (
+            "The single final target-row-language result is computed directly in the external ordinary target rows "
+            "through the current-to-standard projection contract. This is not benchmark overwrite and not inheritance "
+            "from the double path. However, unlike the double spinorial benchmark path, the single current/external "
+            "generator matrices are not related by an exact full-column linear identity: "
+            f"`projected_current_matches_external_matrix_exactly = {projected_matches_external}` and "
+            f"`exact_linear_target_alignment_exists = {exact_solution_exists}`."
+        )
+    )
+    blocking_gap = (
+        None
+        if exact_generator_identity
+        else (
+            "An exact single current/external target-generator alignment matrix does not exist for the present "
+            "single BS-coordinate generator matrix against the cached external ordinary generator matrix."
+            if not exact_solution_exists
+            else (
+                "The present projection contract lands in the target rows, but the explicit projection used for the "
+                "published target result still differs from the cached external ordinary matrix on a residual rank-"
+                f"{int(mismatch.rank())} mismatch subspace."
+                if not projected_matches_external
+                else None
+            )
+        )
+    )
     if int(projected_current.rank()) != int(projection_matrix.rank()):
         raise RuntimeError("single target projection lost BS/AI rank parity in target rows")
     return {
-        "status": "single_target_projection_contract_active",
+        "status": (
+            "single_target_exact_generator_alignment_active"
+            if exact_generator_identity
+            else "single_target_projection_contract_active"
+        ),
         "target_row_language_kind": "ordinary_sg194_external_row_language",
         "projection_contract_type": projection_payload["projection_contract_type"],
         "projection_matrix_shape": [projection_matrix.rows, projection_matrix.cols],
         "generator_column_count": len(current_labels),
         "generator_inventory_matches_external": True,
+        "generator_label_canonicalization": dict(SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION),
+        "generator_external_lookup_labels": external_lookup_labels,
         "common_ai_basis_generator_ids": list(projection_payload["common_ai_basis_generator_ids"]),
         "common_free_generator_rank": int(projection_payload["common_free_generator_rank"]),
         "rank_bs": int(projection_matrix.rank()),
@@ -358,32 +412,13 @@ def load_single_target_projection_snapshot(
         "exact_linear_target_alignment_matrix_rank": (
             int(exact_solution_matrix.rank()) if exact_solution_matrix is not None else None
         ),
-        "exact_generator_identity_status": (
-            "available" if exact_solution_exists and projected_matches_external else "missing"
-        ),
+        "exact_generator_identity_status": ("available" if exact_generator_identity else "missing"),
         "direct_target_derivation": True,
         "benchmark_overwrite": False,
         "inherited_from_double": False,
-        "interpretation_warning": (
-            "The single final target-row-language result is computed directly in the external ordinary target rows "
-            "through the current-to-standard projection contract. This is not benchmark overwrite and not inheritance "
-            "from the double path. However, unlike the double spinorial benchmark path, the single current/external "
-            "generator matrices are not related by an exact full-column linear identity: "
-            f"`projected_current_matches_external_matrix_exactly = {projected_matches_external}` and "
-            f"`exact_linear_target_alignment_exists = {exact_solution_exists}`."
-        ),
-        "blocking_gap_to_double_style_internalization": (
-            "An exact single current/external target-generator alignment matrix does not exist for the present "
-            "single BS-coordinate generator matrix against the cached external ordinary generator matrix."
-            if not exact_solution_exists
-            else (
-                "The present projection contract lands in the target rows, but the explicit projection used for the "
-                "published target result still differs from the cached external ordinary matrix on a residual rank-"
-                f"{int(mismatch.rank())} mismatch subspace."
-                if not projected_matches_external
-                else None
-            )
-        ),
+        "interpretation_warning": interpretation_warning,
+        "blocking_gap_to_double_style_internalization": blocking_gap,
+        "generator_label_canonicalization": dict(SINGLE_ORDINARY_EXTERNAL_LABEL_CANONICALIZATION),
         "evidence_files": [
             artifact_ref(standard_projection.PROJECTION_SUMMARY_JSON),
             "sg194_external_ordinary_generator_matrix.json",
@@ -663,10 +698,22 @@ def apply_single_target_result_fields(
     raw_rank_ai = int(summary["rank_ai_raw_internal"])
     raw_quotient = summary["raw_internal_quotient_group"]
     benchmark_gap = raw_rank_bs - int(benchmark_oracle["dBS"])
+    target_gap = int(target_snapshot["rank_bs"]) - int(benchmark_oracle["dBS"])
+    exact_target_alignment = bool(target_snapshot["exact_linear_target_alignment_exists"]) and bool(
+        target_snapshot["projected_current_matches_external_matrix_exactly"]
+    )
     summary.update(
         {
-            "published_result_source": "single_target_projection_contract_v1",
-            "published_result_scope": "single_target_row_language_via_external_ordinary_projection_contract",
+            "published_result_source": (
+                "single_target_exact_generator_alignment_v1"
+                if exact_target_alignment
+                else "single_target_projection_contract_v1"
+            ),
+            "published_result_scope": (
+                "single_target_row_language_via_exact_current_external_generator_identity"
+                if exact_target_alignment
+                else "single_target_row_language_via_external_ordinary_projection_contract"
+            ),
             "benchmark_oracle_file": BENCHMARK_STATUS_JSON.name,
             "benchmark_oracle_classification": benchmark_oracle["classification"],
             "benchmark_oracle_indicator_group": benchmark_oracle["indicator_group"],
@@ -681,12 +728,24 @@ def apply_single_target_result_fields(
             "raw_current_rank_ai": raw_rank_ai,
             "raw_current_quotient_group": raw_quotient,
             "source_bs_gap_to_benchmark_before_internalization": benchmark_gap,
-            "source_bs_gap_to_benchmark_after_internalization": benchmark_gap,
-            "benchmark_gap_not_resolved": True,
+            "source_bs_gap_to_benchmark_after_internalization": target_gap,
+            "benchmark_gap_not_resolved": target_gap != 0,
             "benchmark_internalization_dependency": None,
-            "final_result_kind": "single_target_row_language_object_via_projection_contract",
-            "bs_internalization_status": "direct_single_target_projection_contract",
-            "ai_internalization_status": "direct_single_target_projection_contract",
+            "final_result_kind": (
+                "single_exact_internalized_target_row_language_object"
+                if exact_target_alignment
+                else "single_target_row_language_object_via_projection_contract"
+            ),
+            "bs_internalization_status": (
+                "exact_single_target_generator_identity"
+                if exact_target_alignment
+                else "direct_single_target_projection_contract"
+            ),
+            "ai_internalization_status": (
+                "exact_single_target_generator_identity"
+                if exact_target_alignment
+                else "direct_single_target_projection_contract"
+            ),
             "quotient_derivation_mode": target_snapshot["quotient_derivation_mode"],
             "quotient_direct_target_lattice_derivation": target_snapshot["quotient_direct_target_lattice_derivation"],
             "quotient_direct_current_lattice_derivation": target_snapshot["quotient_direct_current_lattice_derivation"],
@@ -694,13 +753,18 @@ def apply_single_target_result_fields(
             "bs_ai_same_object_language": True,
             "object_language_kind": target_snapshot["target_row_language_kind"],
             "single_target_row_language_active": True,
-            "single_target_row_language_internalized": False,
-            "single_target_row_language_entry_mode": "externally_anchored_projection_contract",
+            "single_target_row_language_internalized": exact_target_alignment,
+            "single_target_row_language_entry_mode": (
+                "exact_current_external_generator_identity"
+                if exact_target_alignment
+                else "externally_anchored_projection_contract"
+            ),
             "single_target_generator_inventory_matches_external": target_snapshot["generator_inventory_matches_external"],
             "single_target_projection_matrix_shape": target_snapshot["projection_matrix_shape"],
             "single_target_projection_contract_type": target_snapshot["projection_contract_type"],
             "single_target_common_ai_basis_generator_ids": target_snapshot["common_ai_basis_generator_ids"],
             "single_target_common_free_generator_rank": target_snapshot["common_free_generator_rank"],
+            "single_target_generator_label_canonicalization": target_snapshot["generator_label_canonicalization"],
             "single_target_projected_current_matches_external_matrix_exactly": target_snapshot[
                 "projected_current_matches_external_matrix_exactly"
             ],
@@ -720,7 +784,11 @@ def apply_single_target_result_fields(
             "final_rank_ai": target_snapshot["rank_ai"],
             "quotient_group": target_snapshot["quotient_group"],
             "standard_quotient_group": target_snapshot["quotient_group"],
-            "standard_space_projection_status": "active_single_target_projection_contract",
+            "standard_space_projection_status": (
+                "active_single_target_exact_generator_alignment"
+                if exact_target_alignment
+                else "active_single_target_projection_contract"
+            ),
             "interpretation_warning": (
                 "The single final result is no longer the raw-current 16/13/Z^3 object. "
                 f"It is now the target-row-language result {target_snapshot['rank_bs']}/{target_snapshot['rank_ai']}/"
@@ -1412,6 +1480,7 @@ def build_stage2_audit(
             f"- Raw-current provenance retained separately at `{single_summary['raw_current_rank_bs']}` / `{single_summary['raw_current_rank_ai']}` with quotient `{single_summary['raw_current_quotient_group']}`.",
             f"- Exact projected current/external generator match: `{single_target_snapshot['projected_current_matches_external_matrix_exactly']}`.",
             f"- Exact linear target-alignment existence: `{single_target_snapshot['exact_linear_target_alignment_exists']}`.",
+            f"- Single generator-label canonicalization: `{single_target_snapshot['generator_label_canonicalization']}`.",
             f"- Target-layer blocker relative to double-style exact internalization: {single_target_snapshot['blocking_gap_to_double_style_internalization']}",
             f"- Interpretation warning: {single_summary['interpretation_warning']}",
             "",
@@ -1454,13 +1523,20 @@ def build_stage2_summary(
     single_target_snapshot: dict[str, Any],
 ) -> dict[str, Any]:
     all_local_objects_complete = single_summary["ai_from_trivial_prototype_to_complete"] and double_summary["ai_from_minimal_to_complete"]
+    single_exact_target_alignment = bool(single_target_snapshot["exact_linear_target_alignment_exists"]) and bool(
+        single_target_snapshot["projected_current_matches_external_matrix_exactly"]
+    )
     return {
         "target_group": TARGET_GROUP,
         "nonabelian_single_library_built": True,
         "nonabelian_double_library_built": True,
         "single_group_unblocked": bool(single_summary["ai_from_trivial_prototype_to_complete"]),
         "double_group_unblocked": bool(double_summary["ai_from_minimal_to_complete"]),
-        "quotient_scope": "single_target_projection_contract_plus_double_internalized_benchmark_layer_with_raw_single_provenance",
+        "quotient_scope": (
+            "single_target_exact_alignment_plus_double_internalized_benchmark_layer_with_raw_single_provenance"
+            if single_exact_target_alignment
+            else "single_target_projection_contract_plus_double_internalized_benchmark_layer_with_raw_single_provenance"
+        ),
         "single_rank_bs_raw_internal": single_summary["rank_bs_raw_internal"],
         "double_rank_bs_raw_internal": double_summary["rank_bs_raw_internal"],
         "single_rank_ai_in_bs_coordinates": single_summary["rank_ai_in_bs_coordinates"],
@@ -1473,7 +1549,11 @@ def build_stage2_summary(
         "double_legacy_internal_projected_rank_ai": double_summary["legacy_internal_projected_rank_ai"],
         "single_legacy_internal_projected_quotient_group": single_summary["legacy_internal_projected_quotient_group"],
         "double_legacy_internal_projected_quotient_group": double_summary["legacy_internal_projected_quotient_group"],
-        "standard_space_projection_status": "single_target_projection_contract_active_double_benchmark_internalization_active",
+        "standard_space_projection_status": (
+            "single_target_exact_alignment_active_double_benchmark_internalization_active"
+            if single_exact_target_alignment
+            else "single_target_projection_contract_active_double_benchmark_internalization_active"
+        ),
         "projection_contract_type": projection_payload["projection_contract_type"],
         "current_to_standard_row_translation_json": artifact_ref(standard_projection.ROW_TRANSLATION_JSON),
         "standard_space_projection_summary_json": artifact_ref(standard_projection.PROJECTION_SUMMARY_JSON),
@@ -1481,6 +1561,7 @@ def build_stage2_summary(
         "single_target_row_language_kind": single_target_snapshot["target_row_language_kind"],
         "single_target_projection_matrix_shape": single_target_snapshot["projection_matrix_shape"],
         "single_target_generator_column_count": single_target_snapshot["generator_column_count"],
+        "single_target_generator_label_canonicalization": single_target_snapshot["generator_label_canonicalization"],
         "single_target_exact_generator_identity_status": single_target_snapshot["exact_generator_identity_status"],
         "single_target_projected_current_matches_external_matrix_exactly": single_target_snapshot[
             "projected_current_matches_external_matrix_exactly"
@@ -1511,12 +1592,19 @@ def build_stage2_summary(
         "interpretation_warning": (
             "The single and double source layers are now deliberately separated by target object. "
             f"Single publishes the ordinary target-row-language result {single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/"
-            f"{single_summary['quotient_group']} through an external projection contract, with raw-current provenance still retained at "
+            f"{single_summary['quotient_group']} through "
+            f"{'exact current/external ordinary generator identity' if single_exact_target_alignment else 'an external projection contract'}, "
+            "with raw-current provenance still retained at "
             f"{single_summary['raw_current_rank_bs']}/{single_summary['raw_current_rank_ai']}/{single_summary['raw_current_quotient_group']}. "
             f"Double keeps the benchmark-facing 10/10/{double_summary['quotient_group']} path with exact current/external spinorial alignment "
             f"{double_internalization['rank_record']}. The old 13/13/trivial projection is no longer a hidden auxiliary for single; it is the active single target result."
         ),
         "main_blocker": (
+            "The target-row alignment blocker is resolved: the single current generator matrix now matches the cached external "
+            "ordinary generator matrix exactly after canonicalizing the j/k labels, so the remaining mismatch to the benchmark "
+            "oracle is an object/numerics issue rather than an unresolved target-row exactness defect."
+            if single_exact_target_alignment and all_local_objects_complete
+            else
             "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel "
             "current/external generator-space identity. The single path now has its own target-row-language result "
             f"{single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/{single_summary['quotient_group']}, "
@@ -1527,6 +1615,10 @@ def build_stage2_summary(
             else (double_summary["blocker"] or single_summary["blocker"])
         ),
         "next_blocker": (
+            "If further work is requested, the next step is no longer target-row exactness; it is explaining why the exact "
+            "single target object 13/13/trivial differs from the double benchmark-facing target 10/10/Z6."
+            if single_exact_target_alignment and all_local_objects_complete
+            else
             "If further cleanup is requested, either repair the residual single current/external generator mismatch in the "
             "ordinary target rows or keep documenting the single target result as a projection-contract result distinct from "
             "the double benchmark-target internalization."
@@ -2471,13 +2563,18 @@ def main() -> None:
     current_status = {
         "target_group": TARGET_GROUP,
         "quotient_scope": stage2_summary["quotient_scope"],
-        "published_result_scope": "single_target_projection_contract_and_double_internalized_benchmark_target",
+        "published_result_scope": (
+            "single_target_exact_alignment_and_double_internalized_benchmark_target"
+            if stage2_summary["single_target_exact_generator_identity_status"] == "available"
+            else "single_target_projection_contract_and_double_internalized_benchmark_target"
+        ),
         "benchmark_oracle_file": benchmark_oracle["file"],
         "benchmark_oracle_indicator_group": benchmark_oracle["indicator_group"],
         "benchmark_oracle_rank_bs": benchmark_oracle["dBS"],
         "benchmark_oracle_rank_ai": benchmark_oracle["dAI"],
         "single_target_projection_status": stage2_summary["single_target_projection_status"],
         "single_target_row_language_kind": stage2_summary["single_target_row_language_kind"],
+        "single_target_generator_label_canonicalization": stage2_summary["single_target_generator_label_canonicalization"],
         "single_target_exact_generator_identity_status": stage2_summary["single_target_exact_generator_identity_status"],
         "single_target_projected_current_matches_external_matrix_exactly": stage2_summary[
             "single_target_projected_current_matches_external_matrix_exactly"

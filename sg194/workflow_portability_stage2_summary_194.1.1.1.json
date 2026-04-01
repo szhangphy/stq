@@ -4,7 +4,7 @@
   "nonabelian_double_library_built": true,
   "single_group_unblocked": true,
   "double_group_unblocked": true,
-  "quotient_scope": "single_target_projection_contract_plus_double_internalized_benchmark_layer_with_raw_single_provenance",
+  "quotient_scope": "single_target_exact_alignment_plus_double_internalized_benchmark_layer_with_raw_single_provenance",
   "single_rank_bs_raw_internal": 16,
   "double_rank_bs_raw_internal": 16,
   "single_rank_ai_in_bs_coordinates": 13,
@@ -17,22 +17,28 @@
   "double_legacy_internal_projected_rank_ai": 13,
   "single_legacy_internal_projected_quotient_group": "trivial",
   "double_legacy_internal_projected_quotient_group": "trivial",
-  "standard_space_projection_status": "single_target_projection_contract_active_double_benchmark_internalization_active",
+  "standard_space_projection_status": "single_target_exact_alignment_active_double_benchmark_internalization_active",
   "projection_contract_type": "common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators",
   "current_to_standard_row_translation_json": "sg194_current_to_standard_row_translation_v1.json",
   "standard_space_projection_summary_json": "sg194_standard_space_projection_summary_v1.json",
-  "single_target_projection_status": "single_target_projection_contract_active",
+  "single_target_projection_status": "single_target_exact_generator_alignment_active",
   "single_target_row_language_kind": "ordinary_sg194_external_row_language",
   "single_target_projection_matrix_shape": [
     34,
     16
   ],
   "single_target_generator_column_count": 45,
-  "single_target_exact_generator_identity_status": "missing",
-  "single_target_projected_current_matches_external_matrix_exactly": false,
-  "single_target_exact_linear_target_alignment_exists": false,
-  "single_target_exact_linear_target_alignment_failed_row": 2,
-  "single_target_projection_mismatch_rank": 1,
+  "single_target_generator_label_canonicalization": {
+    "j_A'": "k_A'",
+    "j_A''": "k_A''",
+    "k_A'": "j_A'",
+    "k_A''": "j_A''"
+  },
+  "single_target_exact_generator_identity_status": "available",
+  "single_target_projected_current_matches_external_matrix_exactly": true,
+  "single_target_exact_linear_target_alignment_exists": true,
+  "single_target_exact_linear_target_alignment_failed_row": null,
+  "single_target_projection_mismatch_rank": 0,
   "double_internalization_status": "source_internalized_via_double_spinorial_generator_alignment",
   "double_internalization_profile": "sg194_double_complement_patch_v1",
   "double_internalization_rank_record": {
@@ -58,7 +64,7 @@
   "double_final_rank_ai": 10,
   "single_final_quotient_group": "trivial",
   "double_final_quotient_group": "Z6",
-  "interpretation_warning": "The single and double source layers are now deliberately separated by target object. Single publishes the ordinary target-row-language result 13/13/trivial through an external projection contract, with raw-current provenance still retained at 16/13/Z^3. Double keeps the benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The old 13/13/trivial projection is no longer a hidden auxiliary for single; it is the active single target result.",
-  "main_blocker": "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path now has its own target-row-language result 13/13/trivial, but the missing layer relative to the double-style exact internalization remains the current/external single generator alignment: `exact_linear_target_alignment_exists = False` and `projected_current_matches_external_matrix_exactly = False`.",
-  "next_blocker": "If further cleanup is requested, either repair the residual single current/external generator mismatch in the ordinary target rows or keep documenting the single target result as a projection-contract result distinct from the double benchmark-target internalization."
+  "interpretation_warning": "The single and double source layers are now deliberately separated by target object. Single publishes the ordinary target-row-language result 13/13/trivial through exact current/external ordinary generator identity, with raw-current provenance still retained at 16/13/Z^3. Double keeps the benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The old 13/13/trivial projection is no longer a hidden auxiliary for single; it is the active single target result.",
+  "main_blocker": "The target-row alignment blocker is resolved: the single current generator matrix now matches the cached external ordinary generator matrix exactly after canonicalizing the j/k labels, so the remaining mismatch to the benchmark oracle is an object/numerics issue rather than an unresolved target-row exactness defect.",
+  "next_blocker": "If further work is requested, the next step is no longer target-row exactness; it is explaining why the exact single target object 13/13/trivial differs from the double benchmark-facing target 10/10/Z6."
 }

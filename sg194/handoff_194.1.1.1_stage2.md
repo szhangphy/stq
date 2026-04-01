@@ -3,15 +3,15 @@
 - Target group: `194.1.1.1`
 - Single status: `complete` with raw internal quotient `Z^3`, raw-current provenance `Z^3`, and active single target quotient `trivial`.
 - Double status: `complete` with raw internal quotient `Z^3`, legacy internal projected quotient `trivial`, and source-internalized benchmark-target quotient `Z6`.
-- Quotient scope: `single_target_projection_contract_plus_double_internalized_benchmark_layer_with_raw_single_provenance`
-- Interpretation warning: The single and double source layers are now deliberately separated by target object. Single publishes the ordinary target-row-language result 13/13/trivial through an external projection contract, with raw-current provenance still retained at 16/13/Z^3. Double keeps the benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The old 13/13/trivial projection is no longer a hidden auxiliary for single; it is the active single target result.
+- Quotient scope: `single_target_exact_alignment_plus_double_internalized_benchmark_layer_with_raw_single_provenance`
+- Interpretation warning: The single and double source layers are now deliberately separated by target object. Single publishes the ordinary target-row-language result 13/13/trivial through exact current/external ordinary generator identity, with raw-current provenance still retained at 16/13/Z^3. Double keeps the benchmark-facing 10/10/Z6 path with exact current/external spinorial alignment {'current_rank': 10, 'external_rank': 10, 'union_rank': 10, 'intersection_rank': 10, 'current_only_dimension': 0, 'external_only_dimension': 0}. The old 13/13/trivial projection is no longer a hidden auxiliary for single; it is the active single target result.
 - Projection contract type: `common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators`
 - `single_vs_external_union_rank_in_current_point_rows = 17`
 - `double_vs_external_union_rank_in_current_point_rows = 17`
 - Union-rank meaning: The external ordinary 13-generator span does not coincide with the current 13-generator AI span as an identical subspace inside the current 34-row ambient point shell; the final 13-dimensional standard layer is therefore externally anchored rather than internally identified.
 - Common free-generator rank: `3`
-- Main blocker: `The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel current/external generator-space identity. The single path now has its own target-row-language result 13/13/trivial, but the missing layer relative to the double-style exact internalization remains the current/external single generator alignment: `exact_linear_target_alignment_exists = False` and `projected_current_matches_external_matrix_exactly = False`.`
-- Next unique target: If further cleanup is requested, either repair the residual single current/external generator mismatch in the ordinary target rows or keep documenting the single target result as a projection-contract result distinct from the double benchmark-target internalization.
+- Main blocker: `The target-row alignment blocker is resolved: the single current generator matrix now matches the cached external ordinary generator matrix exactly after canonicalizing the j/k labels, so the remaining mismatch to the benchmark oracle is an object/numerics issue rather than an unresolved target-row exactness defect.`
+- Next unique target: If further work is requested, the next step is no longer target-row exactness; it is explaining why the exact single target object 13/13/trivial differs from the double benchmark-facing target 10/10/Z6.
 - Files to read first:
   - workflow_portability_report_stage2_194.1.1.1.pdf
   - sg194_standard_space_projection_summary_v1.json

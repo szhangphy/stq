@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-04-01T13:53:43+08:00",
+  "target_group": "194.1.1.1",
+  "derivation_mode": "single_target_exact_generator_alignment_v1",
+  "target_row_language_kind": "ordinary_sg194_external_row_language",
+  "exact_internalized_result": true,
+  "benchmark_overwrite": false,
+  "inherited_from_double": false,
+  "dBS": 13,
+  "dAI": 13,
+  "classification": "trivial",
+  "comparison": {
+    "raw_current": {
+      "dBS": 16,
+      "dAI": 13,
+      "classification": "Z^3"
+    },
+    "single_exact_target": {
+      "dBS": 13,
+      "dAI": 13,
+      "classification": "trivial"
+    },
+    "double_target": {
+      "dBS": 10,
+      "dAI": 10,
+      "classification": "Z6"
+    },
+    "benchmark_oracle": {
+      "classification": "Z6",
+      "dAI": 10,
+      "dBS": 10,
+      "finite_part": [
+        6
+      ],
+      "free_rank": 0,
+      "indicator_group": "Z6",
+      "smith_diagonal_nonzero": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        6
+      ]
+    }
+  }
+}
