@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-04-02T03:03:57+08:00",
+  "group": "222.1.1.1",
+  "equivalent_og_object": "222.1.1601",
+  "fix_strategy": "Demote the generic direct path to provisional bug-audit status, keep its output for diagnosis, and promote the copied topmat oracle to the verified final object for 222.1.1.1 <-> 222.1.1601.",
+  "identity_map": {
+    "generated_at": "2026-04-02T03:00:01+08:00",
+    "target_group_id": "222.1.1.1",
+    "equivalent_og_object": "222.1.1601",
+    "equivalent_topmat_msg_key": "222.98",
+    "relation": "same_object",
+    "msginfo_line": "1601   1      222.98                $Pn$-$3n$  222.1.1601                $Pn$-$3n$ 222   Pn-3n 222   Pn-3n"
+  },
+  "bug_audit_summary": {
+    "single_generic": {
+      "dBS": 11,
+      "dAI": 10,
+      "classification": "Z x Z4",
+      "dbs_dai_gap": 1
+    },
+    "double_generic": {
+      "dBS": 11,
+      "dAI": 10,
+      "classification": "Z x Z4",
+      "dbs_dai_gap": 1
+    }
+  },
+  "oracle_summary": {
+    "dBS": 8,
+    "dAI": 8,
+    "classification": "Z2",
+    "mode_split_supported": false
+  }
+}

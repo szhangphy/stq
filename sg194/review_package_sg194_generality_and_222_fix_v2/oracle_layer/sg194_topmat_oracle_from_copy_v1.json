@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-04-02T03:00:01+08:00",
+  "group": "222.1.1.1",
+  "equivalent_og_object": "222.1.1601",
+  "equivalent_topmat_msg_key": "222.98",
+  "oracle_scope": "unified_og_object_not_mode_split",
+  "mode_split_supported": false,
+  "supports_final_classification": true,
+  "basis_file": "sg194/external_oracles/topmat_src_copy_v1/BilBaoData/output/basis_222.98.txt",
+  "msgai_file": "sg194/external_oracles/topmat_src_copy_v1/BilBaoData/output/MsgAI_222.98.txt",
+  "origai_file": "sg194/external_oracles/topmat_src_copy_v1/BilBaoData/output/OrigAI_222.98.txt",
+  "msginfo_line": "1601   1      222.98                $Pn$-$3n$  222.1.1601                $Pn$-$3n$ 222   Pn-3n 222   Pn-3n",
+  "basis_shape": [
+    14,
+    8
+  ],
+  "basis_rank": 8,
+  "msgai_shape": [
+    14,
+    27
+  ],
+  "msgai_row_labels_match_basis": true,
+  "origai_shape": [
+    37,
+    27
+  ],
+  "origai_row_labels_match_basis": false,
+  "dBS": 8,
+  "dAI": 8,
+  "classification": "Z2",
+  "smith_diagonal_nonzero": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+  ],
+  "finite_part": [
+    2
+  ],
+  "free_rank": 0,
+  "ai_candidate_count": 27,
+  "ai_candidate_count_used": 27,
+  "ai_failures": [],
+  "origai_note": "OrigAI_222.98.txt is not directly comparable to basis_222.98.txt because its row labels do not match the basis row language."
+}

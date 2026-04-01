@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-04-02T03:00:01+08:00",
+  "copied_root": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/external_oracles/topmat_src_copy_v1",
+  "entries": [
+    {
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/msginfo",
+      "copied_to": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/external_oracles/topmat_src_copy_v1/BilBaoData/msginfo",
+      "modified_after_copy": false
+    },
+    {
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/Lindex_222.98.txt",
+      "copied_to": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/external_oracles/topmat_src_copy_v1/BilBaoData/output/Lindex_222.98.txt",
+      "modified_after_copy": false
+    },
+    {
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/basis_222.98.txt",
+      "copied_to": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/external_oracles/topmat_src_copy_v1/BilBaoData/output/basis_222.98.txt",
+      "modified_after_copy": false
+    },
+    {
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/MsgAI_222.98.txt",
+      "copied_to": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/external_oracles/topmat_src_copy_v1/BilBaoData/output/MsgAI_222.98.txt",
+      "modified_after_copy": false
+    },
+    {
+      "source": "/data/home/szhang/soft_sz/topmat_src/BilBaoData/output/OrigAI_222.98.txt",
+      "copied_to": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/external_oracles/topmat_src_copy_v1/BilBaoData/output/OrigAI_222.98.txt",
+      "modified_after_copy": false
+    }
+  ],
+  "modified_files_after_copy": []
+}

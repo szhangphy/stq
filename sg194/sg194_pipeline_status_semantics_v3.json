@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-04-02T02:50:28+08:00",
+  "group": "222.1.1.1",
+  "equivalent_og_object": "222.1.1601",
+  "status_fields": {
+    "checks_passed": "True only when required consistency checks pass; diagnostic generic-probe failures do not flip this field.",
+    "final_results_available": "True when both single and double final output slots are populated.",
+    "final_results_verified": "True only when required checks pass and both final slots carry non-failing verification status."
+  },
+  "current_values": {
+    "checks_passed": true,
+    "diagnostic_checks_passed": false,
+    "final_results_available": true,
+    "final_results_verified": true,
+    "final_result_source": "copied_topmat_oracle_direct_file_computation",
+    "generic_path_bug_present": true
+  }
+}
