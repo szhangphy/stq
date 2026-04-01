@@ -1,0 +1,42 @@
+# SG194 Single Target Result v1
+
+- Active single final answer is now computed in target rows.
+- Exact generator identity is still not available.
+
+```json
+{
+  "generated_at": "2026-04-01T13:15:42+08:00",
+  "single_target_result": {
+    "dBS": 13,
+    "dAI": 13,
+    "classification": "trivial",
+    "quotient_group": "trivial",
+    "free_rank": 0,
+    "finite_part": [],
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "direct_target_derivation": true,
+    "benchmark_overwrite": false,
+    "inherited_from_double": false,
+    "same_as_benchmark": false
+  },
+  "target_row_language_kind": "ordinary_sg194_external_row_language",
+  "direct_derivation_scope": "projected_single_bs_over_projected_single_ai_in_external_ordinary_target_rows",
+  "exact_generator_identity_status": "missing",
+  "exact_linear_target_alignment_exists": false,
+  "mismatch_rank_after_projection": 1
+}
+```

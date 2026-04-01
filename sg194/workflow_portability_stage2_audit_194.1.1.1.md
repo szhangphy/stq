@@ -16,9 +16,12 @@
 - AI candidate count / distinct vectors: `45` / `45`.
 - Rank(AI) vs Rank(BS): `13` / `16`.
 - Raw internal quotient status: `standard_projected`; raw internal quotient `Z^3`.
-- Legacy internal stage2 projection: `13` / `13` with quotient `trivial`.
-- Published source result: `single_same_geometry_raw_current_row_language_v2` with rank(BS/AI) `16` / `13` and quotient `Z^3`.
-- Interpretation warning: The single source path now explicitly reuses the same k-geometry backbone as the double path, but its published numerical result remains a raw-current object rather than a standard target object. The single raw-current BS/AI quotient is rank(BS/AI) = 16/13 with quotient Z^3. The legacy 13/13/trivial ordinary projection is preserved only as auxiliary externally anchored provenance, and the single current raw result must not be identified with a single-target standard-space result.
+- Target-row-language result: `single_target_projection_contract_v1` with rank(BS/AI) `13` / `13` and quotient `trivial`.
+- Raw-current provenance retained separately at `16` / `13` with quotient `Z^3`.
+- Exact projected current/external generator match: `False`.
+- Exact linear target-alignment existence: `False`.
+- Target-layer blocker relative to double-style exact internalization: An exact single current/external target-generator alignment matrix does not exist for the present single BS-coordinate generator matrix against the cached external ordinary generator matrix.
+- Interpretation warning: The single final result is no longer the raw-current 16/13/Z^3 object. It is now the target-row-language result 13/13/trivial computed directly in the external ordinary target rows via the common_bs_coordinate_projection_anchored_on_external_ordinary_AI_and_killing_common_Z3_free_generators contract. The raw-current 16/13/Z^3 quotient is retained only as provenance. The single final target-row-language result is computed directly in the external ordinary target rows through the current-to-standard projection contract. This is not benchmark overwrite and not inheritance from the double path. However, unlike the double spinorial benchmark path, the single current/external generator matrices are not related by an exact full-column linear identity: `projected_current_matches_external_matrix_exactly = False` and `exact_linear_target_alignment_exists = False`.
 
 ## Double-Group Feed-Back
 

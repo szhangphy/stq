@@ -1,6 +1,6 @@
 {
-  "package_name": "review_package_sg194_internalization_fix_v1",
-  "package_root": "review_package_sg194_internalization_fix_v1/",
+  "package_name": "review_package_sg194_single_target_result_v1",
+  "package_root": "review_package_sg194_single_target_result_v1/",
   "all_required_present": true,
   "missing_files": [],
   "validate_required_files": [

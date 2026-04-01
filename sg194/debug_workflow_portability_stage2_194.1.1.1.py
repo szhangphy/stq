@@ -55,7 +55,7 @@ DOUBLE_PATCHED_CANDIDATES_JSON = ROOT / "raw_194_1_1_1_double_ai_candidates_patc
 DOUBLE_PATCHED_AI_IN_BS_JSON = ROOT / "raw_194_1_1_1_double_ai_in_bs_matrix_patched_v2.json"
 EXTERNAL_SPINORIAL_MATRIX_JSON = ROOT / "sg194_external_spinorial_generator_matrix.json"
 
-PACKAGE_NAME = "review_package_sg194_internalization_fix_v1"
+PACKAGE_NAME = "review_package_sg194_single_target_result_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 PACKAGE_AUDIT_JSON = ROOT / "sg194_stage2_package_dependency_audit_v1.json"
@@ -257,6 +257,138 @@ def load_double_internalization_snapshot(benchmark_oracle: dict[str, Any]) -> di
             "33-generator current/external alignment. The final Z6 quotient is therefore inherited "
             "from the matched benchmark target rather than injected as a blind publication override."
         ),
+    }
+
+
+def solve_left_projection_matrix(
+    source_columns: sp.Matrix,
+    target_columns: sp.Matrix,
+) -> tuple[bool, sp.Matrix | None, int | None, str | None]:
+    source_transposed = source_columns.T
+    solved_rows: list[sp.Matrix] = []
+    for row_index in range(target_columns.rows):
+        rhs = target_columns.row(row_index).T
+        try:
+            solution = source_transposed.gauss_jordan_solve(rhs)[0]
+        except ValueError as exc:
+            return False, None, row_index, str(exc)
+        if source_transposed * solution != rhs:
+            return False, None, row_index, "candidate row solution failed exact reconstruction"
+        solved_rows.append(solution.T)
+    return True, sp.Matrix.vstack(*solved_rows), None, None
+
+
+def load_single_target_projection_snapshot(
+    runtime: dict[str, Any],
+    induction: dict[str, Any],
+    projection_payload: dict[str, Any],
+) -> dict[str, Any]:
+    external = load_json(ROOT / "sg194_external_ordinary_generator_matrix.json")
+    external_labels = list(external["column_labels"])
+    external_matrix = sp.Matrix(external["matrix_entries"])
+    current_labels = [candidate["generator_id"] for candidate in induction["candidates"]]
+    if set(current_labels) != set(external_labels):
+        raise RuntimeError("single target snapshot lost ordinary external generator-inventory parity")
+    external_reordered = sp.Matrix.hstack(
+        *[external_matrix[:, external_labels.index(label)] for label in current_labels]
+    )
+    current_ai_bs = bs_coordinate_matrix(runtime["bs_analysis"], induction["candidates"])
+    projection_matrix = sp.Matrix(projection_payload["projection_matrix_bs_to_standard_rows"])
+    projected_current = projection_matrix * current_ai_bs
+    projected_bs_image_cols = projection_matrix.columnspace()
+    projected_bs_image = (
+        sp.Matrix.hstack(*projected_bs_image_cols) if projected_bs_image_cols else sp.zeros(projection_matrix.rows, 0)
+    )
+    projected_ai_in_bs = (
+        projected_bs_image.gauss_jordan_solve(projected_current)[0]
+        if projected_bs_image.cols
+        else sp.zeros(0, projected_current.cols)
+    )
+    diagonal, _, _ = smith_normal_decomp(projected_ai_in_bs, domain=ZZ)
+    smith = [
+        abs(int(diagonal[idx, idx]))
+        for idx in range(min(diagonal.rows, diagonal.cols))
+        if int(diagonal[idx, idx]) != 0
+    ]
+    finite_part = [value for value in smith if value > 1]
+    free_rank = int(projected_bs_image.cols - len(smith))
+    exact_solution_exists, exact_solution_matrix, failed_row_index, failed_row_reason = solve_left_projection_matrix(
+        current_ai_bs,
+        external_reordered,
+    )
+    projected_matches_external = projected_current == external_reordered
+    mismatch = projected_current - external_reordered
+    mismatch_columns = [
+        current_labels[col_idx]
+        for col_idx in range(mismatch.cols)
+        if any(int(mismatch[row_idx, col_idx]) != 0 for row_idx in range(mismatch.rows))
+    ]
+    mismatch_rows = [
+        external["row_labels"][row_idx]
+        for row_idx in range(mismatch.rows)
+        if any(int(mismatch[row_idx, col_idx]) != 0 for col_idx in range(mismatch.cols))
+    ]
+    if int(projected_current.rank()) != int(projection_matrix.rank()):
+        raise RuntimeError("single target projection lost BS/AI rank parity in target rows")
+    return {
+        "status": "single_target_projection_contract_active",
+        "target_row_language_kind": "ordinary_sg194_external_row_language",
+        "projection_contract_type": projection_payload["projection_contract_type"],
+        "projection_matrix_shape": [projection_matrix.rows, projection_matrix.cols],
+        "generator_column_count": len(current_labels),
+        "generator_inventory_matches_external": True,
+        "common_ai_basis_generator_ids": list(projection_payload["common_ai_basis_generator_ids"]),
+        "common_free_generator_rank": int(projection_payload["common_free_generator_rank"]),
+        "rank_bs": int(projection_matrix.rank()),
+        "rank_ai": int(projected_current.rank()),
+        "quotient_group": quotient_group_string(free_rank, finite_part),
+        "free_rank": free_rank,
+        "finite_part": finite_part,
+        "smith_diagonal_nonzero": smith,
+        "quotient_derivation_mode": "direct_target_level_smith_on_projected_single_bs_over_projected_single_ai",
+        "quotient_direct_target_lattice_derivation": True,
+        "quotient_direct_current_lattice_derivation": False,
+        "projected_current_matches_external_matrix_exactly": projected_matches_external,
+        "mismatch_rank_after_projection": int(mismatch.rank()),
+        "mismatch_column_labels": mismatch_columns,
+        "mismatch_row_labels": mismatch_rows,
+        "exact_linear_target_alignment_exists": exact_solution_exists,
+        "exact_linear_target_alignment_failed_row": failed_row_index,
+        "exact_linear_target_alignment_failure_reason": failed_row_reason,
+        "exact_linear_target_alignment_matrix_rank": (
+            int(exact_solution_matrix.rank()) if exact_solution_matrix is not None else None
+        ),
+        "exact_generator_identity_status": (
+            "available" if exact_solution_exists and projected_matches_external else "missing"
+        ),
+        "direct_target_derivation": True,
+        "benchmark_overwrite": False,
+        "inherited_from_double": False,
+        "interpretation_warning": (
+            "The single final target-row-language result is computed directly in the external ordinary target rows "
+            "through the current-to-standard projection contract. This is not benchmark overwrite and not inheritance "
+            "from the double path. However, unlike the double spinorial benchmark path, the single current/external "
+            "generator matrices are not related by an exact full-column linear identity: "
+            f"`projected_current_matches_external_matrix_exactly = {projected_matches_external}` and "
+            f"`exact_linear_target_alignment_exists = {exact_solution_exists}`."
+        ),
+        "blocking_gap_to_double_style_internalization": (
+            "An exact single current/external target-generator alignment matrix does not exist for the present "
+            "single BS-coordinate generator matrix against the cached external ordinary generator matrix."
+            if not exact_solution_exists
+            else (
+                "The present projection contract lands in the target rows, but the explicit projection used for the "
+                "published target result still differs from the cached external ordinary matrix on a residual rank-"
+                f"{int(mismatch.rank())} mismatch subspace."
+                if not projected_matches_external
+                else None
+            )
+        ),
+        "evidence_files": [
+            artifact_ref(standard_projection.PROJECTION_SUMMARY_JSON),
+            "sg194_external_ordinary_generator_matrix.json",
+            SINGLE_AI_COMPLETION_JSON.name,
+        ],
     }
 
 
@@ -517,23 +649,24 @@ def apply_double_internalization_fields(
     return summary
 
 
-def apply_single_direct_result_fields(
+def apply_single_target_result_fields(
     summary: dict[str, Any],
     benchmark_oracle: dict[str, Any],
+    target_snapshot: dict[str, Any],
 ) -> dict[str, Any]:
     legacy_rank_bs = summary.get("final_rank_bs")
     legacy_rank_ai = summary.get("final_rank_ai")
     legacy_quotient_group = summary.get("quotient_group")
     legacy_projection_status = summary.get("standard_space_projection_status")
     legacy_standard_quotient = summary.get("standard_quotient_group")
-    direct_rank_bs = int(summary["rank_bs_raw_internal"])
-    direct_rank_ai = int(summary["rank_ai_raw_internal"])
-    direct_quotient = summary["raw_internal_quotient_group"]
-    benchmark_gap = direct_rank_bs - int(benchmark_oracle["dBS"])
+    raw_rank_bs = int(summary["rank_bs_raw_internal"])
+    raw_rank_ai = int(summary["rank_ai_raw_internal"])
+    raw_quotient = summary["raw_internal_quotient_group"]
+    benchmark_gap = raw_rank_bs - int(benchmark_oracle["dBS"])
     summary.update(
         {
-            "published_result_source": "single_same_geometry_raw_current_row_language_v2",
-            "published_result_scope": "same_geometry_single_raw_current_row_language_not_standard_target",
+            "published_result_source": "single_target_projection_contract_v1",
+            "published_result_scope": "single_target_row_language_via_external_ordinary_projection_contract",
             "benchmark_oracle_file": BENCHMARK_STATUS_JSON.name,
             "benchmark_oracle_classification": benchmark_oracle["classification"],
             "benchmark_oracle_indicator_group": benchmark_oracle["indicator_group"],
@@ -544,37 +677,59 @@ def apply_single_direct_result_fields(
             "legacy_internal_projected_quotient_group": legacy_quotient_group,
             "legacy_internal_standard_space_projection_status": legacy_projection_status,
             "legacy_internal_projected_standard_quotient_group": legacy_standard_quotient,
+            "raw_current_rank_bs": raw_rank_bs,
+            "raw_current_rank_ai": raw_rank_ai,
+            "raw_current_quotient_group": raw_quotient,
             "source_bs_gap_to_benchmark_before_internalization": benchmark_gap,
             "source_bs_gap_to_benchmark_after_internalization": benchmark_gap,
             "benchmark_gap_not_resolved": True,
             "benchmark_internalization_dependency": None,
-            "final_result_kind": "single_same_geometry_raw_current_object",
-            "bs_internalization_status": "direct_single_internal_computation",
-            "ai_internalization_status": "direct_single_internal_computation",
-            "quotient_derivation_mode": "direct_smith_on_single_raw_bs_over_ai",
-            "quotient_direct_current_lattice_derivation": True,
+            "final_result_kind": "single_target_row_language_object_via_projection_contract",
+            "bs_internalization_status": "direct_single_target_projection_contract",
+            "ai_internalization_status": "direct_single_target_projection_contract",
+            "quotient_derivation_mode": target_snapshot["quotient_derivation_mode"],
+            "quotient_direct_target_lattice_derivation": target_snapshot["quotient_direct_target_lattice_derivation"],
+            "quotient_direct_current_lattice_derivation": target_snapshot["quotient_direct_current_lattice_derivation"],
             "geometry_backbone_mode": "shared_with_double_runtime_by_construction",
             "bs_ai_same_object_language": True,
-            "object_language_kind": "raw_current_with_planes_42_unknown_shell",
+            "object_language_kind": target_snapshot["target_row_language_kind"],
+            "single_target_row_language_active": True,
             "single_target_row_language_internalized": False,
-            "final_rank_bs": direct_rank_bs,
-            "final_rank_ai": direct_rank_ai,
-            "quotient_group": direct_quotient,
-            "standard_quotient_group": legacy_standard_quotient,
-            "standard_space_projection_status": "auxiliary_legacy_projection_available_not_used_for_single_direct_result",
+            "single_target_row_language_entry_mode": "externally_anchored_projection_contract",
+            "single_target_generator_inventory_matches_external": target_snapshot["generator_inventory_matches_external"],
+            "single_target_projection_matrix_shape": target_snapshot["projection_matrix_shape"],
+            "single_target_projection_contract_type": target_snapshot["projection_contract_type"],
+            "single_target_common_ai_basis_generator_ids": target_snapshot["common_ai_basis_generator_ids"],
+            "single_target_common_free_generator_rank": target_snapshot["common_free_generator_rank"],
+            "single_target_projected_current_matches_external_matrix_exactly": target_snapshot[
+                "projected_current_matches_external_matrix_exactly"
+            ],
+            "single_target_exact_linear_target_alignment_exists": target_snapshot["exact_linear_target_alignment_exists"],
+            "single_target_exact_linear_target_alignment_failed_row": target_snapshot[
+                "exact_linear_target_alignment_failed_row"
+            ],
+            "single_target_exact_linear_target_alignment_failure_reason": target_snapshot[
+                "exact_linear_target_alignment_failure_reason"
+            ],
+            "single_target_exact_generator_identity_status": target_snapshot["exact_generator_identity_status"],
+            "single_target_projection_mismatch_rank": target_snapshot["mismatch_rank_after_projection"],
+            "single_target_projection_mismatch_column_labels": target_snapshot["mismatch_column_labels"],
+            "single_target_projection_mismatch_row_labels": target_snapshot["mismatch_row_labels"],
+            "target_row_language_kind": target_snapshot["target_row_language_kind"],
+            "final_rank_bs": target_snapshot["rank_bs"],
+            "final_rank_ai": target_snapshot["rank_ai"],
+            "quotient_group": target_snapshot["quotient_group"],
+            "standard_quotient_group": target_snapshot["quotient_group"],
+            "standard_space_projection_status": "active_single_target_projection_contract",
             "interpretation_warning": (
-                "The single source path now explicitly reuses the same k-geometry backbone as the double path, "
-                "but its published numerical result remains a raw-current object rather than a standard target object. "
-                f"The single raw-current BS/AI quotient is rank(BS/AI) = {direct_rank_bs}/{direct_rank_ai} with quotient {direct_quotient}. "
-                "The legacy 13/13/trivial ordinary projection is preserved only as auxiliary externally anchored provenance, "
-                "and the single current raw result must not be identified with a single-target standard-space result."
+                "The single final result is no longer the raw-current 16/13/Z^3 object. "
+                f"It is now the target-row-language result {target_snapshot['rank_bs']}/{target_snapshot['rank_ai']}/"
+                f"{target_snapshot['quotient_group']} computed directly in the external ordinary target rows via the "
+                f"{target_snapshot['projection_contract_type']} contract. "
+                "The raw-current 16/13/Z^3 quotient is retained only as provenance. "
+                f"{target_snapshot['interpretation_warning']}"
             ),
-            "remaining_internal_mapping_blocker": (
-                "The single BS, AI, and quotient now live in one explicit raw-current row language with the same geometry "
-                "backbone used by the double runtime, but a direct single ordinary current-to-standard mapping still does not "
-                "exist. The auxiliary 13/13/trivial projection remains non-direct, so the single raw-current result should not "
-                "be identified with a single-target standard-space result without an independent single standard-space derivation."
-            ),
+            "remaining_internal_mapping_blocker": target_snapshot["blocking_gap_to_double_style_internalization"],
         }
     )
     return summary
@@ -1229,6 +1384,7 @@ def build_stage2_audit(
     single_summary: dict[str, Any],
     double_summary: dict[str, Any],
     projection_payload: dict[str, Any],
+    single_target_snapshot: dict[str, Any],
 ) -> str:
     inventory = helper_payload["inventory_json"]["families"]
     nonabelian = [entry["family_id"] for entry in inventory if entry["nonabelian"]]
@@ -1252,8 +1408,11 @@ def build_stage2_audit(
             f"- AI candidate count / distinct vectors: `{single_summary['generated_ai_candidate_count']}` / `{single_summary['distinct_unknown_vector_count']}`.",
             f"- Rank(AI) vs Rank(BS): `{single_summary['rank_ai_in_bs_coordinates']}` / `{single_summary['rank_bs']}`.",
             f"- Raw internal quotient status: `{single_summary['quotient_status']}`; raw internal quotient `{single_summary['raw_internal_quotient_group']}`.",
-            f"- Legacy internal stage2 projection: `{single_summary['legacy_internal_projected_rank_bs']}` / `{single_summary['legacy_internal_projected_rank_ai']}` with quotient `{single_summary['legacy_internal_projected_quotient_group']}`.",
-            f"- Published source result: `{single_summary['published_result_source']}` with rank(BS/AI) `{single_summary['final_rank_bs']}` / `{single_summary['final_rank_ai']}` and quotient `{single_summary['quotient_group']}`.",
+            f"- Target-row-language result: `{single_summary['published_result_source']}` with rank(BS/AI) `{single_summary['final_rank_bs']}` / `{single_summary['final_rank_ai']}` and quotient `{single_summary['quotient_group']}`.",
+            f"- Raw-current provenance retained separately at `{single_summary['raw_current_rank_bs']}` / `{single_summary['raw_current_rank_ai']}` with quotient `{single_summary['raw_current_quotient_group']}`.",
+            f"- Exact projected current/external generator match: `{single_target_snapshot['projected_current_matches_external_matrix_exactly']}`.",
+            f"- Exact linear target-alignment existence: `{single_target_snapshot['exact_linear_target_alignment_exists']}`.",
+            f"- Target-layer blocker relative to double-style exact internalization: {single_target_snapshot['blocking_gap_to_double_style_internalization']}",
             f"- Interpretation warning: {single_summary['interpretation_warning']}",
             "",
             "## Double-Group Feed-Back",
@@ -1292,6 +1451,7 @@ def build_stage2_summary(
     double_summary: dict[str, Any],
     projection_payload: dict[str, Any],
     double_internalization: dict[str, Any],
+    single_target_snapshot: dict[str, Any],
 ) -> dict[str, Any]:
     all_local_objects_complete = single_summary["ai_from_trivial_prototype_to_complete"] and double_summary["ai_from_minimal_to_complete"]
     return {
@@ -1300,7 +1460,7 @@ def build_stage2_summary(
         "nonabelian_double_library_built": True,
         "single_group_unblocked": bool(single_summary["ai_from_trivial_prototype_to_complete"]),
         "double_group_unblocked": bool(double_summary["ai_from_minimal_to_complete"]),
-        "quotient_scope": "mixed_single_same_geometry_raw_current_and_double_internalized_benchmark_layer_with_historical_auxiliary_projection",
+        "quotient_scope": "single_target_projection_contract_plus_double_internalized_benchmark_layer_with_raw_single_provenance",
         "single_rank_bs_raw_internal": single_summary["rank_bs_raw_internal"],
         "double_rank_bs_raw_internal": double_summary["rank_bs_raw_internal"],
         "single_rank_ai_in_bs_coordinates": single_summary["rank_ai_in_bs_coordinates"],
@@ -1313,10 +1473,23 @@ def build_stage2_summary(
         "double_legacy_internal_projected_rank_ai": double_summary["legacy_internal_projected_rank_ai"],
         "single_legacy_internal_projected_quotient_group": single_summary["legacy_internal_projected_quotient_group"],
         "double_legacy_internal_projected_quotient_group": double_summary["legacy_internal_projected_quotient_group"],
-        "standard_space_projection_status": "source_internalization_active_legacy_projection_historical_only",
+        "standard_space_projection_status": "single_target_projection_contract_active_double_benchmark_internalization_active",
         "projection_contract_type": projection_payload["projection_contract_type"],
         "current_to_standard_row_translation_json": artifact_ref(standard_projection.ROW_TRANSLATION_JSON),
         "standard_space_projection_summary_json": artifact_ref(standard_projection.PROJECTION_SUMMARY_JSON),
+        "single_target_projection_status": single_target_snapshot["status"],
+        "single_target_row_language_kind": single_target_snapshot["target_row_language_kind"],
+        "single_target_projection_matrix_shape": single_target_snapshot["projection_matrix_shape"],
+        "single_target_generator_column_count": single_target_snapshot["generator_column_count"],
+        "single_target_exact_generator_identity_status": single_target_snapshot["exact_generator_identity_status"],
+        "single_target_projected_current_matches_external_matrix_exactly": single_target_snapshot[
+            "projected_current_matches_external_matrix_exactly"
+        ],
+        "single_target_exact_linear_target_alignment_exists": single_target_snapshot["exact_linear_target_alignment_exists"],
+        "single_target_exact_linear_target_alignment_failed_row": single_target_snapshot[
+            "exact_linear_target_alignment_failed_row"
+        ],
+        "single_target_projection_mismatch_rank": single_target_snapshot["mismatch_rank_after_projection"],
         "double_internalization_status": double_internalization["status"],
         "double_internalization_profile": double_internalization["profile"],
         "double_internalization_rank_record": double_internalization["rank_record"],
@@ -1336,24 +1509,27 @@ def build_stage2_summary(
         "single_final_quotient_group": single_summary["quotient_group"],
         "double_final_quotient_group": double_summary["quotient_group"],
         "interpretation_warning": (
-            "The single and double source layers are now deliberately split. "
-            f"Single publishes its same-geometry raw-current BS/AI quotient {single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/"
-            f"{single_summary['quotient_group']} without double inheritance and without claiming a standard target mapping, while double keeps the source-internalized "
-            f"benchmark-facing 10/10/{double_summary['quotient_group']} path with exact current/external spinorial alignment "
-            f"{double_internalization['rank_record']}. The legacy 13/13/trivial projection is retained only as auxiliary provenance."
+            "The single and double source layers are now deliberately separated by target object. "
+            f"Single publishes the ordinary target-row-language result {single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/"
+            f"{single_summary['quotient_group']} through an external projection contract, with raw-current provenance still retained at "
+            f"{single_summary['raw_current_rank_bs']}/{single_summary['raw_current_rank_ai']}/{single_summary['raw_current_quotient_group']}. "
+            f"Double keeps the benchmark-facing 10/10/{double_summary['quotient_group']} path with exact current/external spinorial alignment "
+            f"{double_internalization['rank_record']}. The old 13/13/trivial projection is no longer a hidden auxiliary for single; it is the active single target result."
         ),
         "main_blocker": (
             "The active double benchmark-target object is internalized at BS/AI = 10/10 through the exact 33-channel "
-            "current/external generator-space identity. The single path is no longer inherited and now shares the same "
-            "geometry backbone as double, but it still lacks a direct single ordinary current-to-standard derivation, so its "
-            "honest same-geometry raw-current result remains the BS/AI quotient "
-            f"{single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/{single_summary['quotient_group']}."
+            "current/external generator-space identity. The single path now has its own target-row-language result "
+            f"{single_summary['final_rank_bs']}/{single_summary['final_rank_ai']}/{single_summary['quotient_group']}, "
+            "but the missing layer relative to the double-style exact internalization remains the current/external single "
+            f"generator alignment: `exact_linear_target_alignment_exists = {single_target_snapshot['exact_linear_target_alignment_exists']}` "
+            f"and `projected_current_matches_external_matrix_exactly = {single_target_snapshot['projected_current_matches_external_matrix_exactly']}`."
             if all_local_objects_complete
             else (double_summary["blocker"] or single_summary["blocker"])
         ),
         "next_blocker": (
-            "If further cleanup is requested, derive a direct single ordinary current-to-standard quotient without external "
-            "anchoring or double inheritance, and retire any remaining reports that still describe single as inherited."
+            "If further cleanup is requested, either repair the residual single current/external generator mismatch in the "
+            "ordinary target rows or keep documenting the single target result as a projection-contract result distinct from "
+            "the double benchmark-target internalization."
             if all_local_objects_complete
             else "Stabilize whichever induction failures remain before claiming a complete portability upgrade."
         ),
@@ -1579,7 +1755,7 @@ def build_handoff(stage2_summary: dict[str, Any], single_summary: dict[str, Any]
             "# Handoff for 194.1.1.1 Stage 2",
             "",
             f"- Target group: `{TARGET_GROUP}`",
-            f"- Single status: `{single_summary['completeness_status']}` with raw internal quotient `{single_summary['raw_internal_quotient_group']}`, auxiliary legacy projected quotient `{single_summary['legacy_internal_projected_quotient_group']}`, and direct single published quotient `{single_final}`.",
+            f"- Single status: `{single_summary['completeness_status']}` with raw internal quotient `{single_summary['raw_internal_quotient_group']}`, raw-current provenance `{single_summary['raw_current_quotient_group']}`, and active single target quotient `{single_final}`.",
             f"- Double status: `{double_summary['completeness_status']}` with raw internal quotient `{double_summary['raw_internal_quotient_group']}`, legacy internal projected quotient `{double_summary['legacy_internal_projected_quotient_group']}`, and source-internalized benchmark-target quotient `{double_final}`.",
             f"- Quotient scope: `{stage2_summary['quotient_scope']}`",
             f"- Interpretation warning: {stage2_summary['interpretation_warning']}",
@@ -1629,10 +1805,12 @@ The current workspace already completed the SG 194 stage-2 local-library run on 
 - standard_space_projection_status = {stage2_summary['standard_space_projection_status']}
 - single_vs_external_union_rank_in_current_point_rows = {stage2_summary['single_vs_external_union_rank_in_current_point_rows']}
 - double_vs_external_union_rank_in_current_point_rows = {stage2_summary['double_vs_external_union_rank_in_current_point_rows']}
-- single_legacy_internal_projected_rank_bs = {stage2_summary['single_legacy_internal_projected_rank_bs']}
+        - single_legacy_internal_projected_rank_bs = {stage2_summary['single_legacy_internal_projected_rank_bs']}
 - single_final_rank_bs = {stage2_summary['single_final_rank_bs']}
 - single_final_rank_ai = {stage2_summary['single_final_rank_ai']}
         - single_final_quotient_group = {stage2_summary['single_final_quotient_group']}
+- single_target_exact_generator_identity_status = {stage2_summary['single_target_exact_generator_identity_status']}
+- single_target_projected_current_matches_external_matrix_exactly = {stage2_summary['single_target_projected_current_matches_external_matrix_exactly']}
 - double_legacy_internal_projected_rank_bs = {stage2_summary['double_legacy_internal_projected_rank_bs']}
         - double_final_rank_bs = {stage2_summary['double_final_rank_bs']}
         - double_final_rank_ai = {stage2_summary['double_final_rank_ai']}
@@ -1640,7 +1818,7 @@ The current workspace already completed the SG 194 stage-2 local-library run on 
 
         Do not change the target group.
         Do not go back to 10.4.1.31 except as an audited reference.
-        The next unique task is: derive an independent single ordinary current-to-standard identification if needed, but do not replace the direct single raw result with double inheritance or benchmark overwrite.
+        The next unique task is: keep the single target-row-language result separate from the raw-current provenance and, if further work is needed, repair the residual single current/external generator mismatch rather than reverting to raw-current publication.
         """
     ).strip()
 
@@ -2020,10 +2198,10 @@ def build_rolling_checkpoint_handoff(payload: dict[str, Any]) -> str:
 
         ## Accepted hard facts
 
-        1. The active benchmark-facing SG194 result now reports `rank(BS)=10`, `rank(AI)=10`, final quotient `Z6`.
-        2. The historical internal reduced layer is still `13/13/trivial`, but it is retained only as provenance.
-        3. The implementation still keeps the externally anchored current-to-standard elimination contract for the historical ordinary-language projection; that contract is no longer the active benchmark layer.
-        4. The active benchmark layer is now tied to the source-computed double spinorial 33-generator internalization path.
+        1. The active single target-row-language result is `rank(BS)=13`, `rank(AI)=13`, final quotient `trivial`.
+        2. The single raw-current provenance remains `16/13/Z^3`, but it is no longer the published single answer.
+        3. The active double benchmark-facing result is `rank(BS)=10`, `rank(AI)=10`, final quotient `Z6`.
+        4. The single target result comes from the external ordinary projection contract, while the double benchmark layer comes from the exact spinorial generator-space internalization path.
         5. The review package carries dependency audit and reproducibility manifest files, plus extracted-package smoke-test evidence.
 
         ## Read First
@@ -2055,9 +2233,9 @@ def build_rolling_checkpoint_prompt(payload: dict[str, Any]) -> str:
         - internal ambient identity proof = not claimed
         - single_vs_external_union_rank_in_current_point_rows = 17
         - double_vs_external_union_rank_in_current_point_rows = 17
-        - single published rank(BS) = 10
-        - single published rank(AI) = 10
-        - single published quotient = Z6
+        - single published rank(BS) = 13
+        - single published rank(AI) = 13
+        - single published quotient = trivial
         - double published rank(BS) = 10
         - double published rank(AI) = 10
         - double published quotient = Z6
@@ -2266,9 +2444,16 @@ def main() -> None:
     )
     benchmark_oracle = load_benchmark_oracle()
     double_internalization = load_double_internalization_snapshot(benchmark_oracle)
-    apply_single_direct_result_fields(single_summary, benchmark_oracle)
+    single_target_snapshot = load_single_target_projection_snapshot(single_runtime, single_induction, projection_payload)
+    apply_single_target_result_fields(single_summary, benchmark_oracle, single_target_snapshot)
     apply_double_internalization_fields(double_summary, double_internalization)
-    stage2_summary = build_stage2_summary(single_summary, double_summary, projection_payload, double_internalization)
+    stage2_summary = build_stage2_summary(
+        single_summary,
+        double_summary,
+        projection_payload,
+        double_internalization,
+        single_target_snapshot,
+    )
 
     write_json(SINGLE_AI_COMPLETION_JSON, single_summary)
     write_json(DOUBLE_AI_COMPLETION_JSON, double_summary)
@@ -2279,18 +2464,28 @@ def main() -> None:
         write_json(DOUBLE_INDICATOR_GROUP_JSON, double_quotient)
         write_json(DOUBLE_INDICATOR_GENERATORS_JSON, double_generators)
 
-    audit_text = build_stage2_audit(helper_payload, single_summary, double_summary, projection_payload)
+    audit_text = build_stage2_audit(helper_payload, single_summary, double_summary, projection_payload, single_target_snapshot)
     write_text(STAGE2_AUDIT_MD, audit_text)
     write_json(STAGE2_SUMMARY_JSON, stage2_summary)
 
     current_status = {
         "target_group": TARGET_GROUP,
         "quotient_scope": stage2_summary["quotient_scope"],
-        "published_result_scope": "mixed_single_same_geometry_raw_current_and_double_internalized_benchmark_target",
+        "published_result_scope": "single_target_projection_contract_and_double_internalized_benchmark_target",
         "benchmark_oracle_file": benchmark_oracle["file"],
         "benchmark_oracle_indicator_group": benchmark_oracle["indicator_group"],
         "benchmark_oracle_rank_bs": benchmark_oracle["dBS"],
         "benchmark_oracle_rank_ai": benchmark_oracle["dAI"],
+        "single_target_projection_status": stage2_summary["single_target_projection_status"],
+        "single_target_row_language_kind": stage2_summary["single_target_row_language_kind"],
+        "single_target_exact_generator_identity_status": stage2_summary["single_target_exact_generator_identity_status"],
+        "single_target_projected_current_matches_external_matrix_exactly": stage2_summary[
+            "single_target_projected_current_matches_external_matrix_exactly"
+        ],
+        "single_target_exact_linear_target_alignment_exists": stage2_summary[
+            "single_target_exact_linear_target_alignment_exists"
+        ],
+        "single_target_projection_mismatch_rank": stage2_summary["single_target_projection_mismatch_rank"],
         "double_internalization_status": double_internalization["status"],
         "double_internalization_profile": double_internalization["profile"],
         "double_internalization_rank_record": double_internalization["rank_record"],

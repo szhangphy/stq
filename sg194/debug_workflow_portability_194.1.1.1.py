@@ -2139,6 +2139,11 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
         "target_group": TARGET_GROUP,
         "benchmark_authoritative": False,
         "object_scope": "raw_internal_source_layer_only",
+        "raw_current_object_language_kind": "raw_current_with_planes_42_unknown_shell",
+        "stage2_target_transition": (
+            "Stage 2 is responsible for lifting these raw/current objects either into the ordinary external target rows "
+            "or into the double benchmark-facing target object, depending on representation mode."
+        ),
         "benchmark_relation": (
             "This stage1 workflow only emits raw/current SG194 source objects. "
             "Benchmark-facing internalization happens later in debug_workflow_portability_stage2_194.1.1.1.py."

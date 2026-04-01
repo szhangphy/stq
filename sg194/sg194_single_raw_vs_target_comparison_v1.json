@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-04-01T13:15:42+08:00",
+  "single_raw_current_object": {
+    "dBS": 16,
+    "dAI": 13,
+    "rank_bs": 16,
+    "rank_ai": 13,
+    "classification": "Z^3"
+  },
+  "single_target_row_language_object": {
+    "dBS": 13,
+    "dAI": 13,
+    "classification": "trivial",
+    "quotient_group": "trivial",
+    "free_rank": 0,
+    "finite_part": [],
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "direct_target_derivation": true,
+    "benchmark_overwrite": false,
+    "inherited_from_double": false,
+    "same_as_benchmark": false
+  },
+  "double_target_row_language_object": {
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6"
+  },
+  "benchmark_oracle": {
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6"
+  },
+  "verdict": "These are not the same object. The single raw-current object is 16/13/Z^3; the active single target-row-language result is 13/13/trivial; the double benchmark-facing target object and the benchmark oracle remain 10/10/Z6."
+}

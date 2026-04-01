@@ -1,20 +1,47 @@
 {
-  "current_time": "2026-04-01 12:27:55 +0800",
-  "task_scope": "SG194 single geometry parity / object-language audit / stale-single cleanup.",
-  "current_branch": "sg194-special",
-  "head_commit_short": "ea25018",
-  "package_name": "review_package_sg194_single_mode_parity_fix_v1",
-  "package_tarball": "review_package_sg194_single_mode_parity_fix_v1.tar.gz",
-  "confirmed_findings": [
-    "Single and double use the same 58x42 with-planes compatibility backbone and the same unknown ordering.",
-    "Single BS, AI, and quotient are computed in one raw-current 42-unknown row language.",
-    "Legacy 13/13/trivial enters only through the historical projection/reporting path, not the active single AI computation.",
-    "Recomputed single same-geometry raw-current result = 16/13/Z^3.",
-    "Stale single-direct package removed = True."
-  ],
-  "active_blockers": [
-    "Single still lacks an independent ordinary current-to-standard mapping, so the same-geometry 16/13/Z^3 result remains a raw-current result."
-  ],
-  "single_result_scope": "same_geometry_raw_current_not_standard_target",
-  "updated_at": "2026-04-01T12:27:55+08:00"
+  "current_time": "2026-04-01T13:15:42+08:00",
+  "package_name": "review_package_sg194_single_target_result_v1",
+  "package_tarball": "review_package_sg194_single_target_result_v1.tar.gz",
+  "single_target_result": {
+    "dBS": 13,
+    "dAI": 13,
+    "classification": "trivial",
+    "quotient_group": "trivial",
+    "free_rank": 0,
+    "finite_part": [],
+    "smith_diagonal_nonzero": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "direct_target_derivation": true,
+    "benchmark_overwrite": false,
+    "inherited_from_double": false,
+    "same_as_benchmark": false
+  },
+  "single_raw_current_provenance": {
+    "dBS": 16,
+    "dAI": 13,
+    "rank_bs": 16,
+    "rank_ai": 13,
+    "classification": "Z^3"
+  },
+  "double_target_result": {
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6"
+  },
+  "single_target_exact_generator_identity_status": "missing",
+  "cleanup_git_deleted": [],
+  "cleanup_local_deleted": []
 }

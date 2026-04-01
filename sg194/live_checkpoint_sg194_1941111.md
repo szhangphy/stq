@@ -1,6 +1,7 @@
-# Live Checkpoint
+# SG194 Live Checkpoint
 
-- geometry identical: `True`
-- same object language: `True`
-- recomputed single same-geometry raw-current result: `16 / 13 / Z^3`
-- this is still not a single-target standard result.
+- package = `review_package_sg194_single_target_result_v1`
+- single target result = `13 / 13 / trivial`
+- single raw-current provenance = `16 / 13 / Z^3`
+- double benchmark-target result = `10 / 10 / Z6`
+- single exact generator identity status = `missing`
