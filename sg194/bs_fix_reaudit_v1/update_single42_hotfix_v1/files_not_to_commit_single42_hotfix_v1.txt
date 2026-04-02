@@ -1,0 +1,24 @@
+autoresearch-state.prev.json | autoresearch session scratch state; unrelated to the SSG 194 single hotfix deliverable
+research-results.prev.tsv | autoresearch scratch table; unrelated to the SSG 194 single hotfix deliverable
+sg194/bs_fix_reaudit_v1/__pycache__/build_external_review_package_v1.cpython-312.pyc | transient bytecode cache
+sg194/bs_fix_reaudit_v1/__pycache__/build_reaudit_artifacts.cpython-312.pyc | transient bytecode cache
+sg194/bs_fix_reaudit_v1/experiment/__pycache__/debug_sg194_bs_fix_experiment_v1.cpython-312.pyc | transient bytecode cache
+sg194/bs_fix_reaudit_v1/bug_candidates_full.json | older broad-scope reaudit artifact; not needed for this focused upload branch
+sg194/bs_fix_reaudit_v1/bug_candidates_full.md | older broad-scope reaudit artifact; not needed for this focused upload branch
+sg194/bs_fix_reaudit_v1/build_reaudit_artifacts.py | older broad-scope packaging helper; not needed for this focused upload branch
+sg194/bs_fix_reaudit_v1/handoff/current_status_ultra_detailed.json | previous long-form handoff from the broader audit; superseded by this branch-specific update
+sg194/bs_fix_reaudit_v1/handoff/handoff_ultra_detailed.md | previous long-form handoff from the broader audit; superseded by this branch-specific update
+sg194/bs_fix_reaudit_v1/handoff/next_codex_prompt_ultra_detailed.txt | previous long-form prompt from the broader audit; superseded by this branch-specific update
+sg194/bs_fix_reaudit_v1/logs/bs_fix_experiment_probe_logs.json | probe log from the earlier broad audit; not required for this focused upload
+sg194/bs_fix_reaudit_v1/minimal_active_object_definition.json | earlier broad audit artifact; not required for this focused upload
+sg194/bs_fix_reaudit_v1/minimal_active_object_definition.md | earlier broad audit artifact; not required for this focused upload
+sg194/bs_fix_reaudit_v1/minimal_patch_plan.json | earlier broad audit artifact; not required for this focused upload
+sg194/bs_fix_reaudit_v1/minimal_patch_plan.md | earlier broad audit artifact; not required for this focused upload
+sg194/bs_fix_reaudit_v1/review_package_ssg194_bs_fix_v1.tar.gz | older internal review package archive; this upload uses the external review package instead
+sg194/bs_fix_reaudit_v1/review_package_ssg194_bs_fix_v1/ | older internal review package tree; this upload uses the external review package instead
+sg194/bs_fix_reaudit_v1/runtime_call_graph.json | earlier broad audit artifact; not required for this focused upload
+sg194/bs_fix_reaudit_v1/runtime_call_graph.md | earlier broad audit artifact; not required for this focused upload
+sg194/bs_fix_reaudit_v1/source_reading_inventory.json | earlier broad audit artifact; not required for this focused upload
+sg194/bs_fix_reaudit_v1/source_reading_inventory.md | earlier broad audit artifact; not required for this focused upload
+sg194/bs_fix_reaudit_v1/top_5_real_bugs.json | earlier broad audit artifact; the external review package already carries the review-facing bug writeup
+sg194/bs_fix_reaudit_v1/top_5_real_bugs.md | earlier broad audit artifact; the external review package already carries the review-facing bug writeup

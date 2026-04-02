@@ -1,0 +1,310 @@
+{
+  "before_linear_character_failure": {
+    "field": "linear_character",
+    "matched_unitary_indices": [
+      0,
+      23
+    ],
+    "restricted_vector_for_P1_R1": [
+      {
+        "real": 0.9999999999999998,
+        "imag": -2.129514520908229e-17
+      },
+      {
+        "real": -1.0,
+        "imag": 2.129514520908239e-17
+      }
+    ],
+    "numeric_coefficients_for_P1_R1": [
+      {
+        "real": 0.8117449009293664,
+        "imag": 0.39091574123401485
+      },
+      {
+        "real": 0.18825509907063315,
+        "imag": -0.3909157412340149
+      }
+    ]
+  },
+  "after_character_success": {
+    "compatibility_field": "character",
+    "plane_basis_labels": [
+      "S3_R1",
+      "S3_R2"
+    ],
+    "equations_head": [
+      {
+        "point_id": "P1",
+        "basis_id": "S3_R1",
+        "terms": [
+          {
+            "unknown": "P1_R1",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R4",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R6",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R7",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R9",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R10",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R11",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R12",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "S3_R1",
+            "coeff": -1,
+            "side": "plane"
+          }
+        ]
+      },
+      {
+        "point_id": "P1",
+        "basis_id": "S3_R2",
+        "terms": [
+          {
+            "unknown": "P1_R2",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R3",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R5",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R8",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R9",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R10",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R11",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P1_R12",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "S3_R2",
+            "coeff": -1,
+            "side": "plane"
+          }
+        ]
+      },
+      {
+        "point_id": "P2",
+        "basis_id": "S3_R1",
+        "terms": [
+          {
+            "unknown": "P2_R1",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P2_R2",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P2_R3",
+            "coeff": 2,
+            "side": "point"
+          },
+          {
+            "unknown": "S3_R1",
+            "coeff": -1,
+            "side": "plane"
+          }
+        ]
+      },
+      {
+        "point_id": "P2",
+        "basis_id": "S3_R2",
+        "terms": [
+          {
+            "unknown": "P2_R1",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P2_R2",
+            "coeff": 1,
+            "side": "point"
+          },
+          {
+            "unknown": "P2_R3",
+            "coeff": 2,
+            "side": "point"
+          },
+          {
+            "unknown": "S3_R2",
+            "coeff": -1,
+            "side": "plane"
+          }
+        ]
+      }
+    ],
+    "matrix_rows_head": [
+      [
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ]
+    ]
+  }
+}

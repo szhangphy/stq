@@ -1,0 +1,65 @@
+{
+  "check_id": "single42_hotfix_v1_consistency",
+  "status": "pass_with_scope_limits",
+  "active_object": "raw current with-planes 42-unknown shell",
+  "authoritative_single_reference": {
+    "source": "sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1/evidence/current_authoritative_success.json",
+    "matrix_shape": [
+      61,
+      42
+    ],
+    "rank": 29,
+    "nullity": 13,
+    "ai_trivial_generators_count": 12,
+    "rank_trivial_family_span": 11,
+    "all_trivial_generators_compatibility_zero": true
+  },
+  "current_source_checks": {
+    "authoritative_field_scope": {
+      "line_builder_field": "character",
+      "plane_builder_field": "character",
+      "scope_claim": "authoritative builders only"
+    },
+    "generic_public_status_after": {
+      "single_raw_shell": "available",
+      "single_target_pending": "blocked",
+      "double_raw_shell": "available",
+      "double_target_pending": "blocked",
+      "single_bundle_matrix_shape": [
+        61,
+        42
+      ],
+      "single_bundle_unknown_tail": [
+        "S1_R1",
+        "S1_R2",
+        "S2_R1",
+        "S2_R2",
+        "S3_R1",
+        "S3_R2",
+        "S4_R1",
+        "S4_R2"
+      ]
+    }
+  },
+  "package_snapshot_checks": {
+    "source_snapshot_matches": true,
+    "output_snapshot_matches": true,
+    "archive_contains_current_line_output": true,
+    "evidence": [
+      "sg194/debug_workflow_portability_194.1.1.1.py matches package sources/final snapshot",
+      "sg194/pipeline_v2/runtime_backend_free.py matches package sources/final snapshot",
+      "sg194/pipeline_v2/generic_builders.py matches package sources/final snapshot",
+      "single line/full/bs/ai/little-groups JSON outputs match package outputs/final snapshots"
+    ]
+  },
+  "package_builder_fix": {
+    "file": "sg194/bs_fix_reaudit_v1/build_external_review_package_v1.py",
+    "description": "Move output snapshot capture after the active dumps are rebuilt so outputs/final cannot lag the latest single authoritative rerun",
+    "effect": "external review package now matches current worktree for the key single authoritative outputs"
+  },
+  "scope_limits": [
+    "No final quotient closeout is claimed",
+    "No double repair is claimed",
+    "No stage2 or benchmark/internalization updates are claimed"
+  ]
+}

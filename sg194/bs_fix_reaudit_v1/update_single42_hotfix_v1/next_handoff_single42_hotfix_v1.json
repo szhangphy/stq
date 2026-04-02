@@ -1,0 +1,51 @@
+{
+  "handoff_id": "single42_hotfix_v1",
+  "status": "not_final",
+  "active_object": "raw current with-planes 42-unknown shell",
+  "authoritative_single": {
+    "matrix_shape": [
+      61,
+      42
+    ],
+    "rank": 29,
+    "nullity": 13,
+    "tail_unknowns": [
+      "S1_R1",
+      "S1_R2",
+      "S2_R1",
+      "S2_R2",
+      "S3_R1",
+      "S3_R2",
+      "S4_R1",
+      "S4_R2"
+    ]
+  },
+  "safe_assumptions": [
+    "authoritative line builder uses character",
+    "authoritative plane builder uses character",
+    "single raw shell remains the active object",
+    "generic/public target publication is still blocked",
+    "external review package now matches current source and current outputs for the key audited files"
+  ],
+  "read_first": [
+    "sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/update_status_single42_hotfix_v1.md",
+    "sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/consistency_check_single42_hotfix_v1.md",
+    "sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1/README.md",
+    "sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1/bugs/top_5_bugs.md",
+    "sg194/debug_workflow_portability_194.1.1.1.py",
+    "sg194/pipeline_v2/runtime_backend_free.py",
+    "sg194/pipeline_v2/generic_builders.py"
+  ],
+  "do_not_do": [
+    "Do not switch to Bilbao comparison",
+    "Do not switch to magnetic-group analysis",
+    "Do not revive benchmark/internalization as the main task",
+    "Do not claim a double repair",
+    "Do not claim final BS/AI closeout"
+  ],
+  "next_legitimate_work": [
+    "Keep all future work anchored to the same single authoritative 42-shell object",
+    "If patching continues, scope it explicitly to remaining generic target-builder or AI completeness blockers",
+    "If packaging continues, open a fresh upload-specific branch again"
+  ]
+}

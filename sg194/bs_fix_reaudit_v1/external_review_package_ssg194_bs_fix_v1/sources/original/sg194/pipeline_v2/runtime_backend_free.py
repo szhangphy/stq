@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Legacy SG194 stage1 backend.
+"""Backend-free generic runtime extracted into pipeline_v2.
 
-This script remains the SG194-specific raw geometry/runtime producer.
-The unified entrypoint for current runs is `run_group_pipeline.py`.
+This module is the reusable runtime implementation used by the generic path.
+It intentionally lives inside ``sg194/pipeline_v2`` so the core builders no
+longer import or call the older SG194-special debug backends.
 """
 from __future__ import annotations
 
@@ -24,28 +25,24 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Sequence, Tuple
 
-ROOT = Path(__file__).resolve().parent
-COMMON_ROOT = next(
-    (candidate for candidate in (ROOT.parent / "common", ROOT / "common") if candidate.exists()),
-    ROOT.parent / "common",
-)
+ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = ROOT.parent
+COMMON_ROOT = REPO_ROOT / "common"
 COMMON_SSGREPS_ROOT = COMMON_ROOT / "SSGReps"
 COMMON_SSG_DATA_ROOT = COMMON_SSGREPS_ROOT / "ssg_data"
 IDENTIFY_PKL = COMMON_SSG_DATA_ROOT / "identify.pkl"
 IDENTIFY_TAR = COMMON_SSG_DATA_ROOT / "identify.pkl.tar.gz"
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-if str(COMMON_ROOT) not in sys.path:
-    sys.path.insert(0, str(COMMON_ROOT))
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 import numpy as np
 import sympy as sp
 from sympy.matrices.normalforms import smith_normal_form
 
-import debug_single_group_ai_bridge as bridge
-import debug_single_group_ai_expanded as single_expanded
-import swyckoff_k
-import swyckoff_r
+from common import swyckoff_k, swyckoff_r
+
+from . import runtime_bridge as bridge
+from . import runtime_group_ops as single_expanded
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
@@ -87,6 +84,8 @@ AUTHORITATIVE_PHASE_AWARE_PROFILE = "phase_aware_l2_projective_v1"
 AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND = (
     "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1"
 )
+RETIRED_INTRINSIC_BUILDER_KIND = "retired_intrinsic_class_sum_compare_only_non_authoritative"
+RETIRED_EXTRINSIC_BUILDER_KIND = "retired_extrinsic_star_augmented_compare_only_non_authoritative"
 
 REFERENCE_BASELINE_FILES = [
     "single_group_ai_completeness_summary.json",
@@ -675,6 +674,104 @@ def infer_plane_connectivity(planes: Sequence[dict], lines: Sequence[dict], ctx:
     return line_plane, unmatched
 
 
+def _line_embedding_in_plane(
+    line_anchor: Sequence[Fraction],
+    line_basis: Sequence[Fraction],
+    plane_anchor: Sequence[Fraction],
+    plane_basis: Sequence[Sequence[Fraction]],
+) -> dict[str, list[str]] | None:
+    plane_matrix = sp.Matrix(
+        [
+            [sp.Rational(to_fraction(value).numerator, to_fraction(value).denominator) for value in plane_basis[0]],
+            [sp.Rational(to_fraction(value).numerator, to_fraction(value).denominator) for value in plane_basis[1]],
+        ]
+    ).T
+    offset = sp.Matrix(
+        [
+            sp.Rational(to_fraction(line_value - plane_value).numerator, to_fraction(line_value - plane_value).denominator)
+            for line_value, plane_value in zip(line_anchor, plane_anchor)
+        ]
+    )
+    direction = sp.Matrix(
+        [sp.Rational(to_fraction(value).numerator, to_fraction(value).denominator) for value in line_basis]
+    )
+    try:
+        anchor_coords = plane_matrix.gauss_jordan_solve(offset)[0]
+        direction_coords = plane_matrix.gauss_jordan_solve(direction)[0]
+    except Exception:
+        return None
+    return {
+        "anchor_coords": [str(sp.simplify(value)) for value in anchor_coords],
+        "direction_coords": [str(sp.simplify(value)) for value in direction_coords],
+    }
+
+
+def _point_embedding_in_plane(
+    point_coords: Sequence[Fraction],
+    plane_anchor: Sequence[Fraction],
+    plane_basis: Sequence[Sequence[Fraction]],
+) -> list[str] | None:
+    plane_matrix = sp.Matrix(
+        [
+            [sp.Rational(to_fraction(value).numerator, to_fraction(value).denominator) for value in plane_basis[0]],
+            [sp.Rational(to_fraction(value).numerator, to_fraction(value).denominator) for value in plane_basis[1]],
+        ]
+    ).T
+    offset = sp.Matrix(
+        [
+            sp.Rational(to_fraction(point_value - plane_value).numerator, to_fraction(point_value - plane_value).denominator)
+            for point_value, plane_value in zip(point_coords, plane_anchor)
+        ]
+    )
+    try:
+        plane_coords = plane_matrix.gauss_jordan_solve(offset)[0]
+    except Exception:
+        return None
+    return [str(sp.simplify(value)) for value in plane_coords]
+
+
+def annotate_special_line_plane_incidences(planes: Sequence[dict], lines: Sequence[dict]) -> list[dict[str, Any]]:
+    incidences: list[dict[str, Any]] = []
+    for line in lines:
+        line["containing_planes"] = []
+    for plane in planes:
+        boundary_ids = {
+            entry["line_id"]
+            for entry in plane.get("boundary_lines", [])
+            if entry.get("line_id")
+        }
+        contained_special_lines: list[dict[str, Any]] = []
+        for line in lines:
+            embedding = _line_embedding_in_plane(
+                line["_anchor"],
+                line["_basis"][0],
+                plane["_anchor"],
+                plane["_basis"],
+            )
+            if embedding is None:
+                continue
+            entry = {
+                "plane_id": plane["id"],
+                "line_id": line["id"],
+                "incidence_role": "boundary" if line["id"] in boundary_ids else "interior",
+                "plane_coordinates": embedding,
+            }
+            contained_special_lines.append(entry)
+            line["containing_planes"].append(
+                {
+                    "plane_id": plane["id"],
+                    "incidence_role": entry["incidence_role"],
+                    "plane_coordinates": dict(embedding),
+                }
+            )
+            incidences.append(dict(entry))
+        plane["contained_special_lines"] = contained_special_lines
+        plane["interior_special_lines"] = [
+            item for item in contained_special_lines if item["incidence_role"] == "interior"
+        ]
+    return incidences
+
+
 def strip_internal_fields(entries: Sequence[dict]) -> List[dict]:
     return [{key: value for key, value in entry.items() if not key.startswith("_")} for entry in entries]
 
@@ -690,6 +787,7 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
     annotate_special_manifolds(lines, planes, ctx, line_orbit_to_id, plane_orbit_to_id)
     point_line, unmatched_endpoints = infer_line_connectivity(points, lines)
     line_plane, unmatched_plane_boundaries = infer_plane_connectivity(planes, lines, ctx, line_orbit_to_id, plane_orbit_to_id)
+    special_line_plane_incidences = annotate_special_line_plane_incidences(planes, lines)
     payload = {
         "group_number": group_number,
         "objects": strip_internal_fields(points + lines + planes),
@@ -697,6 +795,7 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
         "point_line": point_line,
         "unmatched_line_endpoints": unmatched_endpoints,
         "line_plane": line_plane,
+        "special_line_plane_incidences": special_line_plane_incidences,
         "unmatched_plane_boundaries": unmatched_plane_boundaries,
     }
     return {"grouped": grouped, "payload": payload}
@@ -925,32 +1024,6 @@ def coerce_integer_coeffs(coeffs: list[sp.Expr], context: str) -> list[int]:
     return result
 
 
-def solve_numeric_integer_decomposition(
-    basis_matrix: sp.Matrix,
-    restricted: sp.Matrix,
-    context: str,
-    *,
-    tol: float = 1e-8,
-) -> list[int]:
-    basis = np.array(
-        [[complex(value.evalf()) for value in row] for row in basis_matrix.tolist()],
-        dtype=complex,
-    )
-    rhs = np.array([complex(value.evalf()) for value in restricted], dtype=complex)
-    coeffs, _residuals, rank, _singular_values = np.linalg.lstsq(basis, rhs, rcond=None)
-    if int(rank) != int(basis.shape[1]):
-        raise ValueError(f"non-unique numeric decomposition in {context}")
-    rounded: list[int] = []
-    for coeff in coeffs:
-        if abs(coeff.imag) > tol or abs(coeff.real - round(coeff.real)) > tol:
-            raise ValueError(f"non-integral numeric decomposition in {context}: {coeffs.tolist()}")
-        rounded.append(int(round(coeff.real)))
-    reconstructed = basis @ np.array(rounded, dtype=complex)
-    if not np.allclose(reconstructed, rhs, atol=tol):
-        raise ValueError(f"numeric reconstruction failed in {context}")
-    return rounded
-
-
 def _mode_label_from_raw(raw: dict[str, Any]) -> str:
     return {1: "single", 2: "double"}.get(int(raw.get("group_type", 0)), f"groupType={raw.get('group_type')}")
 
@@ -1048,33 +1121,28 @@ def solve_unique_integer_decomposition(
     rep_id: str,
     field: str,
 ) -> list[int]:
-    context = f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}"
     if basis_matrix.rows != restricted.rows:
         raise ValueError(
-            f"{context}: "
+            f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}: "
             f"basis/restriction row mismatch expected={basis_matrix.rows} actual={restricted.rows}"
         )
-    try:
-        return solve_numeric_integer_decomposition(basis_matrix, restricted, context)
-    except Exception as numeric_exc:
-        numeric_error = numeric_exc
     try:
         solution, params = basis_matrix.gauss_jordan_solve(restricted)
     except Exception as exc:
         raise ValueError(
-            f"{context}: numeric_fallback={numeric_error}; exact_solver={exc}"
+            f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}: {exc}"
         ) from exc
     if params.rows * params.cols:
         raise ValueError(
-            f"{context}: numeric_fallback={numeric_error}; exact_solver=non-unique decomposition"
+            f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}: non-unique decomposition"
         )
     if basis_matrix * solution != restricted:
         raise ValueError(
-            f"{context}: numeric_fallback={numeric_error}; exact_solver=exact reconstruction failed"
+            f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}: exact reconstruction failed"
         )
     return coerce_integer_coeffs(
         list(solution),
-        context,
+        f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}",
     )
 
 
@@ -1104,14 +1172,20 @@ def identical_restriction_classes(
     matched: list[int],
     *,
     field: str,
+    extra_fingerprints: dict[str, dict[str, Any]] | None = None,
     tol: float = 1e-8,
 ) -> list[dict[str, Any]]:
     vectors = capture_character_vectors(endpoint_raw, field, matched)
     classes: list[dict[str, Any]] = []
     for rep_index, restricted_vector in enumerate(vectors, start=1):
         rep_id = f"{endpoint_id}_R{rep_index}"
+        extra_fingerprint = extra_fingerprints.get(rep_id) if extra_fingerprints else None
+        extra_key = json.dumps(extra_fingerprint, sort_keys=True, separators=(",", ":")) if extra_fingerprint else ""
         for existing in classes:
-            if all(abs(left - right) <= tol for left, right in zip(existing["_vector"], restricted_vector)):
+            if (
+                all(abs(left - right) <= tol for left, right in zip(existing["_vector"], restricted_vector))
+                and existing["_extra_key"] == extra_key
+            ):
                 existing["rep_ids"].append(rep_id)
                 break
         else:
@@ -1119,13 +1193,139 @@ def identical_restriction_classes(
                 {
                     "rep_ids": [rep_id],
                     "restricted_vector": complex_list_to_json(restricted_vector),
+                    "extra_fingerprint": extra_fingerprint,
                     "_vector": restricted_vector,
+                    "_extra_key": extra_key,
                 }
             )
     for existing in classes:
         existing["class_size"] = len(existing["rep_ids"])
         del existing["_vector"]
+        del existing["_extra_key"]
     return classes
+
+
+def _line_decomposition_signature(rep: dict[str, Any]) -> list[list[Any]]:
+    return [
+        [basis_label, int(coeff)]
+        for basis_label, coeff in sorted(rep.get("decomposition_on_line_basis", {}).items())
+    ]
+
+
+def _normalized_complex_json_vector(values: Sequence[complex], tol: float = 1e-8) -> list[dict[str, float]]:
+    normalized = []
+    for value in values:
+        complex_value = complex(value)
+        real = 0.0 if abs(complex_value.real) <= tol else float(complex_value.real)
+        imag = 0.0 if abs(complex_value.imag) <= tol else float(complex_value.imag)
+        if abs(real - round(real)) <= tol:
+            real = float(round(real))
+        if abs(imag - round(imag)) <= tol:
+            imag = float(round(imag))
+        normalized.append(complex(real, imag))
+    return complex_list_to_json(normalized)
+
+
+def _restriction_class_key(
+    restricted_vector: list[dict[str, Any]],
+    extra_fingerprint: dict[str, Any] | None = None,
+) -> str:
+    payload = {"restricted_vector": restricted_vector}
+    if extra_fingerprint is not None:
+        payload["extra_fingerprint"] = extra_fingerprint
+    return json.dumps(payload, sort_keys=True, separators=(",", ":"))
+
+
+def _endpoint_star_fingerprints_for_line(
+    endpoint_entry: dict[str, Any],
+    current_line_id: str,
+    endpoint_raw: dict[str, Any],
+    rep_index: int,
+    captures: dict[str, Any],
+    *,
+    field: str,
+) -> list[dict[str, Any]]:
+    fingerprints = []
+    for line_id in sorted(endpoint_entry.get("incident_lines", [])):
+        if line_id == current_line_id:
+            continue
+        line_raw = captures[line_id]
+        matched_line = matched_unitary_indices(line_raw, endpoint_raw)
+        line_vectors = capture_character_vectors(endpoint_raw, field, matched_line)
+        fingerprints.append(
+            {
+                "manifold_id": line_id,
+                "manifold_type": "line",
+                "restricted_vector": _normalized_complex_json_vector(line_vectors[rep_index - 1]),
+            }
+        )
+    for plane_id in sorted(endpoint_entry.get("incident_planes", [])):
+        plane_raw = captures[plane_id]
+        matched_plane = matched_unitary_indices(plane_raw, endpoint_raw)
+        plane_vectors = capture_character_vectors(endpoint_raw, field, matched_plane)
+        fingerprints.append(
+            {
+                "manifold_id": plane_id,
+                "manifold_type": "plane",
+                "restricted_vector": _normalized_complex_json_vector(plane_vectors[rep_index - 1]),
+            }
+        )
+    return fingerprints
+
+
+def intrinsic_restriction_fingerprint_for_line(
+    line_obj: dict[str, Any],
+    endpoint_entry: dict[str, Any],
+    endpoint_raw: dict[str, Any],
+    rep_index: int,
+    captures: dict[str, Any],
+    coarse_block: dict[str, Any],
+    field: str,
+) -> dict[str, Any]:
+    line_raw = captures[line_obj["id"]]
+    matched_line = matched_unitary_indices(line_raw, endpoint_raw)
+    restricted_vector = capture_character_vectors(endpoint_raw, field, matched_line)[rep_index - 1]
+    endpoint_id = endpoint_entry["point_id"]
+    rep_id = f"{endpoint_id}_R{rep_index}"
+    decomposition = {
+        item["rep_id"]: item
+        for item in coarse_block["endpoint_decompositions"][endpoint_id]
+    }
+    return {
+        "fingerprint_kind": "line_intrinsic_restriction_v1",
+        "field": field,
+        "line_id": line_obj["id"],
+        "endpoint_id": endpoint_id,
+        "capture_id": endpoint_entry.get("capture_id", endpoint_id),
+        "line_restricted_vector": _normalized_complex_json_vector(restricted_vector),
+        "line_basis_decomposition": _line_decomposition_signature(decomposition[rep_id]),
+    }
+
+
+def extrinsic_star_fingerprint_for_line(
+    line_obj: dict[str, Any],
+    endpoint_entry: dict[str, Any],
+    endpoint_raw: dict[str, Any],
+    rep_index: int,
+    captures: dict[str, Any],
+    *,
+    field: str,
+) -> dict[str, Any]:
+    return {
+        "fingerprint_kind": "line_extrinsic_star_augmented_v1",
+        "field": field,
+        "line_id": line_obj["id"],
+        "line_containing_planes": list(line_obj.get("containing_planes", [])),
+        "endpoint_plane_incidences": list(endpoint_entry.get("plane_incidences", [])),
+        "point_star_restrictions": _endpoint_star_fingerprints_for_line(
+            endpoint_entry,
+            line_obj["id"],
+            endpoint_raw,
+            rep_index,
+            captures,
+            field=field,
+        ),
+    }
 
 
 def phase_aware_l2_profile_config(profile: str | None) -> tuple[str, str | None]:
@@ -1206,7 +1406,7 @@ def phase_aware_l2_refinement(
     }
 
 
-def build_line_block(
+def build_line_block_coarse(
     line_obj: dict[str, Any],
     captures: dict[str, Any],
     phase_aware_profile: str | None = None,
@@ -1223,12 +1423,13 @@ def build_line_block(
     ]
     endpoint_ids = [endpoint["point_id"] for endpoint in endpoint_entries]
     line_raw = captures[line_id]
-    # Source-layer endpoint subduction for 194.1.1.1 must stay in character
-    # language. The linear_character basis is not integer-solvable on the
-    # failing lines and breaks the authoritative BS construction.
-    field = "character"
+    field = "linear_character"
     line_basis_labels = [f"{line_id}_R{i}" for i in range(1, len(line_raw[field]) + 1)]
-    line_basis_matrix = _exact_basis_matrix_from_capture(line_raw, field, manifold_id=line_id)
+    line_basis_matrix = _exact_basis_matrix_from_capture(
+        line_raw,
+        field,
+        manifold_id=line_id,
+    )
     endpoint_decompositions: dict[str, Any] = {}
     equations = []
     matrix_rows = []
@@ -1279,7 +1480,20 @@ def build_line_block(
                 if coeff:
                     terms.append({"unknown": rep["rep_id"], "coeff": coeff, "side": side})
         matrix_rows.append(row)
-        equations.append({"basis_id": basis_label, "terms": terms})
+        equations.append(
+            {
+                "basis_id": basis_label,
+                "terms": terms,
+                "builder_variant": "coarse",
+                "row_kind": "line_basis_decomposition",
+                "uses_extrinsic_data": False,
+                "endpoint_support": {},
+                "class_members": [],
+                "intrinsic_fingerprint_by_rep": {},
+                "extrinsic_fingerprint_by_rep": {},
+                "coarse_signature_by_rep": {},
+            }
+        )
     phase_aware_refinement = {
         "profile": "legacy",
         "selected_endpoint_id": None,
@@ -1306,10 +1520,19 @@ def build_line_block(
                     "phase_aware_refinement": True,
                     "restriction_class_rep_ids": equation["restriction_class_rep_ids"],
                     "selected_endpoint_id": equation["selected_endpoint_id"],
+                    "builder_variant": "coarse",
+                    "row_kind": "phase_aware_endpoint_class",
+                    "uses_extrinsic_data": False,
+                    "endpoint_support": {},
+                    "class_members": list(equation["restriction_class_rep_ids"]),
+                    "intrinsic_fingerprint_by_rep": {},
+                    "extrinsic_fingerprint_by_rep": {},
+                    "coarse_signature_by_rep": {},
                 }
             )
     return {
         "status": "success",
+        "builder_variant": "coarse",
         "line_id": line_id,
         "endpoint_ids": endpoint_ids,
         "line_sample_point": line_obj["sample_point"],
@@ -1320,13 +1543,6 @@ def build_line_block(
         "equations": equations,
         "matrix_rows": matrix_rows,
         "line_basis_labels": line_basis_labels,
-        "compatibility_field": field,
-        "compatibility_builder_kind": AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND,
-        "phase_aware_profile_used": (
-            phase_aware_refinement["profile"]
-            if phase_aware_refinement["profile"] != "legacy"
-            else "legacy"
-        ),
         "line_group_signature": {
             "n_ops_total": len(line_raw["rotC"]),
             "n_unitary_ops": line_raw["unitary_operation_count"],
@@ -1335,7 +1551,258 @@ def build_line_block(
             "torsion": list(line_raw["torsion"]),
         },
         "phase_aware_refinement": phase_aware_refinement,
+        "compatibility_field": field,
+        "compatibility_builder_kind": AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND,
+        "phase_aware_profile_used": (
+            phase_aware_refinement["profile"]
+            if phase_aware_refinement["profile"] != "legacy"
+            else "legacy"
+        ),
     }
+
+
+def build_line_block_from_coarse_restriction(
+    line_obj: dict[str, Any],
+    captures: dict[str, Any],
+    *,
+    field: str = "linear_character",
+) -> dict[str, Any]:
+    block = build_line_block_coarse(line_obj, captures, phase_aware_profile=None)
+    return {
+        **block,
+        "builder_variant": "coarse",
+        "restriction_class_builder": {
+            "status": "compare_only",
+            "builder_kind": "coarse_basis_decomposition_only",
+            "field": field,
+            "restriction_classes_by_endpoint": {},
+            "row_count": len(block["equations"]),
+            "uses_extrinsic_data": False,
+        },
+        "coarse_compare": {
+            "builder_kind": "coarse_basis_decomposition_only",
+            "equation_count": len(block["equations"]),
+            "matrix_row_count": len(block["matrix_rows"]),
+        },
+    }
+
+
+def _line_endpoint_entries(line_obj: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "point_id": endpoint["point_id"],
+            "point_coordinates": endpoint["point_coordinates"],
+            "capture_id": endpoint.get("capture_id", endpoint["point_id"]),
+            "incident_lines": list(endpoint.get("incident_lines", [])),
+            "incident_planes": list(endpoint.get("incident_planes", [])),
+            "plane_incidences": list(endpoint.get("plane_incidences", [])),
+        }
+        for endpoint in line_obj["endpoints"]
+    ]
+
+
+def _build_line_block_from_restriction_classes(
+    line_obj: dict[str, Any],
+    captures: dict[str, Any],
+    *,
+    builder_variant: str,
+    field: str = "linear_character",
+) -> dict[str, Any]:
+    if builder_variant not in {"intrinsic", "extrinsic"}:
+        raise ValueError(f"unsupported restriction-class builder variant: {builder_variant}")
+
+    coarse_block = build_line_block_coarse(line_obj, captures, phase_aware_profile=None)
+    endpoint_entries = _line_endpoint_entries(line_obj)
+    endpoint_ids = [endpoint["point_id"] for endpoint in endpoint_entries]
+    line_raw = captures[line_obj["id"]]
+    restriction_classes_by_endpoint: dict[str, list[dict[str, Any]]] = {}
+    class_support: dict[str, dict[str, Any]] = {}
+    intrinsic_fingerprints_by_rep: dict[str, dict[str, Any]] = {}
+    extrinsic_fingerprints_by_rep: dict[str, dict[str, Any]] = {}
+    coarse_signature_by_rep: dict[str, list[list[Any]]] = {}
+
+    for endpoint_entry in endpoint_entries:
+        endpoint_id = endpoint_entry["point_id"]
+        capture_id = endpoint_entry["capture_id"]
+        endpoint_raw = captures[capture_id]
+        matched = matched_unitary_indices(line_raw, endpoint_raw)
+        extra_fingerprints: dict[str, dict[str, Any]] | None = {} if builder_variant == "extrinsic" else None
+        for rep_index in range(1, len(endpoint_raw[field]) + 1):
+            rep_id = f"{endpoint_id}_R{rep_index}"
+            intrinsic_fingerprints_by_rep[rep_id] = intrinsic_restriction_fingerprint_for_line(
+                line_obj,
+                endpoint_entry,
+                endpoint_raw,
+                rep_index,
+                captures,
+                coarse_block,
+                field=field,
+            )
+            coarse_signature_by_rep[rep_id] = intrinsic_fingerprints_by_rep[rep_id]["line_basis_decomposition"]
+            if extra_fingerprints is not None:
+                extra_fingerprints[rep_id] = extrinsic_star_fingerprint_for_line(
+                    line_obj,
+                    endpoint_entry,
+                    endpoint_raw,
+                    rep_index,
+                    captures,
+                    field=field,
+                )
+                extrinsic_fingerprints_by_rep[rep_id] = extra_fingerprints[rep_id]
+        classes = identical_restriction_classes(
+            endpoint_id,
+            endpoint_raw,
+            matched,
+            field=field,
+            extra_fingerprints=extra_fingerprints,
+        )
+        restriction_classes_by_endpoint[endpoint_id] = classes
+        for entry in classes:
+            class_key = _restriction_class_key(
+                entry["restricted_vector"],
+                entry.get("extra_fingerprint") if builder_variant == "extrinsic" else None,
+            )
+            support = class_support.setdefault(
+                class_key,
+                {
+                    "restricted_vector": entry["restricted_vector"],
+                    "extra_fingerprint": entry.get("extra_fingerprint"),
+                    "members_by_endpoint": {},
+                },
+            )
+            support["members_by_endpoint"][endpoint_id] = list(entry["rep_ids"])
+
+    local_index = {unknown: index for index, unknown in enumerate(coarse_block["local_unknown_ordering"])}
+    restriction_equations: list[dict[str, Any]] = []
+    restriction_rows = []
+    for class_index, class_key in enumerate(sorted(class_support), start=1):
+        support = class_support[class_key]
+        endpoint_support = {endpoint_id: list(support["members_by_endpoint"].get(endpoint_id, [])) for endpoint_id in endpoint_ids}
+        terms = []
+        for endpoint_id, side in zip(endpoint_ids, ("left", "right")):
+            coeff = 1 if side == "left" else -1
+            for rep_id in endpoint_support.get(endpoint_id, []):
+                terms.append({"unknown": rep_id, "coeff": coeff, "side": side})
+        if not terms:
+            continue
+        class_members = [rep_id for endpoint_id in endpoint_ids for rep_id in endpoint_support.get(endpoint_id, [])]
+        equation = {
+            "basis_id": f"{line_obj['id']}_{builder_variant}_class_{class_index:02d}",
+            "terms": terms,
+            "builder_variant": builder_variant,
+            "row_kind": "restriction_class_sum",
+            "endpoint_support": endpoint_support,
+            "class_members": class_members,
+            "restricted_vector": support["restricted_vector"],
+            "intrinsic_fingerprint_by_rep": {
+                rep_id: intrinsic_fingerprints_by_rep[rep_id]
+                for rep_id in class_members
+            },
+            "extrinsic_fingerprint_by_rep": (
+                {
+                    rep_id: extrinsic_fingerprints_by_rep[rep_id]
+                    for rep_id in class_members
+                }
+                if builder_variant == "extrinsic"
+                else {}
+            ),
+            "coarse_signature_by_rep": {
+                rep_id: coarse_signature_by_rep[rep_id]
+                for rep_id in class_members
+            },
+            "uses_extrinsic_data": builder_variant == "extrinsic",
+            "line_containing_planes": list(line_obj.get("containing_planes", [])),
+        }
+        restriction_equations.append(equation)
+        row = [0] * len(coarse_block["local_unknown_ordering"])
+        for term in terms:
+            row[local_index[term["unknown"]]] += int(term["coeff"])
+        restriction_rows.append(row)
+
+    builder_kind = (
+        RETIRED_INTRINSIC_BUILDER_KIND
+        if builder_variant == "intrinsic"
+        else RETIRED_EXTRINSIC_BUILDER_KIND
+    )
+    return {
+        **coarse_block,
+        "status": "retired_compare_only_non_authoritative",
+        "builder_variant": builder_variant,
+        "equations": restriction_equations,
+        "matrix_rows": restriction_rows,
+        "line_group_signature": {
+            **coarse_block["line_group_signature"],
+            "containing_plane_count": len(line_obj.get("containing_planes", [])),
+        },
+        "restriction_class_builder": {
+            "status": "retired_compare_only_non_authoritative",
+            "builder_kind": builder_kind,
+            "field": field,
+            "containing_planes": list(line_obj.get("containing_planes", [])),
+            "restriction_classes_by_endpoint": restriction_classes_by_endpoint,
+            "row_count": len(restriction_equations),
+            "uses_extrinsic_data": builder_variant == "extrinsic",
+        },
+        "phase_aware_refinement": {
+            "profile": "disabled_in_backend_free_generic_primary_path",
+            "selected_endpoint_id": None,
+            "restriction_classes_by_endpoint": {},
+            "refinement_equations": [],
+        },
+        "coarse_compare": {
+            "builder_kind": "basis_decomposition_compare_only",
+            "equation_count": len(coarse_block["equations"]),
+            "matrix_row_count": len(coarse_block["matrix_rows"]),
+        },
+    }
+
+
+def build_line_block_from_intrinsic_restriction_classes(
+    line_obj: dict[str, Any],
+    captures: dict[str, Any],
+    *,
+    field: str = "linear_character",
+) -> dict[str, Any]:
+    return _build_line_block_from_restriction_classes(
+        line_obj,
+        captures,
+        builder_variant="intrinsic",
+        field=field,
+    )
+
+
+def build_line_block_from_extrinsic_star_augmented_classes(
+    line_obj: dict[str, Any],
+    captures: dict[str, Any],
+    *,
+    field: str = "linear_character",
+) -> dict[str, Any]:
+    return _build_line_block_from_restriction_classes(
+        line_obj,
+        captures,
+        builder_variant="extrinsic",
+        field=field,
+    )
+
+
+def build_line_block(
+    line_obj: dict[str, Any],
+    captures: dict[str, Any],
+    phase_aware_profile: str | None = AUTHORITATIVE_PHASE_AWARE_PROFILE,
+    *,
+    builder_variant: str = "authoritative",
+) -> dict[str, Any]:
+    if builder_variant in {"authoritative", "coarse"}:
+        return build_line_block_coarse(
+            line_obj,
+            captures,
+            phase_aware_profile=phase_aware_profile,
+        )
+    if builder_variant == "intrinsic":
+        return build_line_block_from_intrinsic_restriction_classes(line_obj, captures, field="linear_character")
+    if builder_variant == "extrinsic":
+        raise ValueError("extrinsic line builder is retired and non-authoritative")
+    raise ValueError(f"unsupported builder_variant: {builder_variant}")
 
 
 def build_global_compatibility(line_blocks: list[dict[str, Any]], point_ids: list[str]) -> dict[str, Any]:
@@ -1358,12 +1825,16 @@ def build_global_compatibility(line_blocks: list[dict[str, Any]], point_ids: lis
             row = [0] * len(ordering)
             for term in equation["terms"]:
                 row[unknown_index[term["unknown"]]] += int(term["coeff"])
+            metadata = {key: value for key, value in equation.items() if key != "terms"}
             global_rows.append(
                 {
                     "source_type": "line",
                     "line_id": block["line_id"],
                     "basis_id": equation["basis_id"],
                     "row_index_within_source": row_index,
+                    "builder_variant": block.get("builder_variant", "coarse"),
+                    "equation_metadata": metadata,
+                    **metadata,
                     "matrix_row": row,
                 }
             )
@@ -1528,11 +1999,13 @@ def build_plane_block(plane_obj: dict[str, Any], corner_entries: list[dict[str, 
     plane_id = plane_obj["id"]
     plane_raw = captures[plane_id]
     plane_unitary_ops = [operation_key_from_capture(plane_raw, op_index) for op_index in plane_raw["unitary_capture_indices"]]
-    # Plane auxiliary coordinates stay in the intended 42-shell only in
-    # character language; linear_character fails on S3 corner restrictions.
-    field = "character"
+    field = "linear_character"
     plane_basis_labels = [f"{plane_id}_R{i}" for i in range(1, len(plane_raw[field]) + 1)]
-    plane_basis_matrix = _exact_basis_matrix_from_capture(plane_raw, field, manifold_id=plane_id)
+    plane_basis_matrix = _exact_basis_matrix_from_capture(
+        plane_raw,
+        field,
+        manifold_id=plane_id,
+    )
     local_unknown_ordering: list[str] = []
     corner_decompositions: dict[str, Any] = {}
     equations = []
@@ -1624,6 +2097,7 @@ def build_with_planes_compatibility(line_full: dict[str, Any], plane_blocks: lis
             row = [0] * len(ordering)
             for term in equation["terms"]:
                 row[unknown_index[term["unknown"]]] += int(term["coeff"])
+            row_metadata = {key: value for key, value in equation.items() if key != "terms"}
             rows.append(
                 {
                     "source_type": "plane",
@@ -1631,6 +2105,8 @@ def build_with_planes_compatibility(line_full: dict[str, Any], plane_blocks: lis
                     "point_id": equation["point_id"],
                     "basis_id": equation["basis_id"],
                     "row_index_within_source": row_index,
+                    "equation_metadata": row_metadata,
+                    **row_metadata,
                     "matrix_row": row,
                 }
             )
@@ -1745,7 +2221,13 @@ def induce_candidate(
         point_row_translation,
     )
     unknown_vector = unknown_vector_from_multiplicities(translated_multiplicities, unknown_ordering)
-    compatibility_zero = all(int(value) == 0 for value in list(sp.Matrix(global_matrix) * sp.Matrix(unknown_vector)))
+    compatibility_residual = [int(value) for value in list(sp.Matrix(global_matrix) * sp.Matrix(unknown_vector))]
+    nonzero_residual_rows = [
+        {"row_index": row_index, "residual": value}
+        for row_index, value in enumerate(compatibility_residual)
+        if value != 0
+    ]
+    compatibility_zero = not nonzero_residual_rows
     return {
         "family_letter": entry["letter"],
         "representative_coordinate": entry["representative_coordinate"],
@@ -1757,6 +2239,9 @@ def induce_candidate(
         "raw_unknown_vector": raw_unknown_vector,
         "unknown_vector": unknown_vector,
         "compatibility_zero": compatibility_zero,
+        "compatibility_residual_norm": sum(abs(value) for value in compatibility_residual),
+        "compatibility_residual_vector": compatibility_residual,
+        "nonzero_residual_rows": nonzero_residual_rows,
         "point_row_translation_profile": (
             point_row_translation["profile"]
             if point_row_translation and point_row_translation.get("enabled")
@@ -1779,32 +2264,82 @@ def build_point_instance_entries(kgeom: dict[str, Any]) -> list[dict[str, Any]]:
     point_lookup.update({point["id"]: point for point in kgeom.get("synthetic_boundary_points", [])})
     point_by_coord = build_synthetic_kpoint_map(kgeom)
     point_instances: list[dict[str, Any]] = []
+    point_instance_lookup: dict[str, dict[str, Any]] = {}
     seen: set[str] = set()
 
     def ensure_point_instance(point_id: str, coords: Sequence[str]) -> str:
         representative_coords = point_lookup[point_id]["sample_point"]
-        if list(coords) == list(representative_coords):
-            return point_id
-        capture_id = point_capture_id(point_id, coords)
-        if capture_id not in seen:
-            point_instances.append(
-                {
-                    "capture_id": capture_id,
-                    "point_id": point_id,
-                    "point_coordinates": list(coords),
-                }
-            )
+        capture_id = point_id if list(coords) == list(representative_coords) else point_capture_id(point_id, coords)
+        if capture_id not in point_instance_lookup:
+            point_instance_lookup[capture_id] = {
+                "capture_id": capture_id,
+                "point_id": point_id,
+                "point_coordinates": list(coords),
+                "incident_lines": [],
+                "incident_planes": [],
+                "plane_incidences": [],
+            }
+        if capture_id != point_id and capture_id not in seen:
+            point_instances.append(point_instance_lookup[capture_id])
             seen.add(capture_id)
         return capture_id
+
+    for point in point_lookup.values():
+        ensure_point_instance(point["id"], point["sample_point"])
 
     for line in kgeom["grouped"]["lines"]:
         for endpoint in line["endpoints"]:
             endpoint["capture_id"] = ensure_point_instance(endpoint["point_id"], endpoint["point_coordinates"])
+            point_instance_lookup[endpoint["capture_id"]]["incident_lines"].append(line["id"])
     for plane in kgeom["grouped"]["planes"]:
         corner_entries = derive_plane_corner_entries(plane, point_by_coord)
         for corner in corner_entries:
             corner["capture_id"] = ensure_point_instance(corner["point_id"], corner["point_coordinates"])
         plane["corner_entries"] = corner_entries
+
+    for instance in point_instance_lookup.values():
+        coords = [Fraction(value) for value in instance["point_coordinates"]]
+        for plane in kgeom["grouped"]["planes"]:
+            plane_coords = _point_embedding_in_plane(coords, plane["_anchor"], plane["_basis"])
+            if plane_coords is None:
+                continue
+            role = "corner" if any(
+                corner.get("capture_id") == instance["capture_id"]
+                for corner in plane.get("corner_entries", [])
+            ) else "interior_or_boundary_noncorner"
+            instance["incident_planes"].append(plane["id"])
+            instance["plane_incidences"].append(
+                {
+                    "plane_id": plane["id"],
+                    "plane_coordinates": plane_coords,
+                    "incidence_role": role,
+                }
+            )
+
+    point_instance_lookup_by_point: dict[str, list[dict[str, Any]]] = {}
+    for instance in point_instance_lookup.values():
+        instance["incident_lines"] = sorted(set(instance["incident_lines"]))
+        instance["incident_planes"] = sorted(set(instance["incident_planes"]))
+        point_instance_lookup_by_point.setdefault(instance["point_id"], []).append(instance)
+
+    for point in point_lookup.values():
+        instances = point_instance_lookup_by_point.get(point["id"], [])
+        point["incident_lines"] = sorted({line_id for item in instances for line_id in item["incident_lines"]})
+        point["incident_planes"] = sorted({plane_id for item in instances for plane_id in item["incident_planes"]})
+
+    for line in kgeom["grouped"]["lines"]:
+        for endpoint in line["endpoints"]:
+            instance = point_instance_lookup[endpoint["capture_id"]]
+            endpoint["incident_lines"] = list(instance["incident_lines"])
+            endpoint["incident_planes"] = list(instance["incident_planes"])
+            endpoint["plane_incidences"] = list(instance["plane_incidences"])
+    for plane in kgeom["grouped"]["planes"]:
+        for corner in plane.get("corner_entries", []):
+            instance = point_instance_lookup[corner["capture_id"]]
+            corner["incident_lines"] = list(instance["incident_lines"])
+            corner["incident_planes"] = list(instance["incident_planes"])
+            corner["plane_incidences"] = list(instance["plane_incidences"])
+    kgeom["point_instance_lookup"] = point_instance_lookup
     kgeom["point_instance_entries"] = point_instances
     return point_instances
 
@@ -1943,7 +2478,12 @@ def build_single_pilot(
     point_ids = [item["id"] for item in grouped["points"]] + [item["id"] for item in synthetic_points]
     print("[pilot] single: line blocks")
     line_blocks = [
-        build_line_block(line, captures, phase_aware_profile=line_phase_profile)
+        build_line_block(
+            line,
+            captures,
+            phase_aware_profile=line_phase_profile,
+            builder_variant="authoritative",
+        )
         for line in grouped["lines"]
     ]
     line_full = build_global_compatibility(line_blocks, point_ids)
@@ -2078,7 +2618,12 @@ def build_double_pilot(
     point_ids = [item["id"] for item in single_kgeom["grouped"]["points"]] + [item["id"] for item in single_kgeom["synthetic_boundary_points"]]
     print("[pilot] double: line blocks")
     line_blocks = [
-        build_line_block(line, captures, phase_aware_profile=line_phase_profile)
+        build_line_block(
+            line,
+            captures,
+            phase_aware_profile=line_phase_profile,
+            builder_variant="authoritative",
+        )
         for line in single_kgeom["grouped"]["lines"]
     ]
     line_full = build_global_compatibility(line_blocks, point_ids)

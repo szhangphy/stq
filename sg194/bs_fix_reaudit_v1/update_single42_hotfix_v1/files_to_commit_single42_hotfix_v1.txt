@@ -1,0 +1,22 @@
+sg194/debug_workflow_portability_194.1.1.1.py | single authoritative hotfix source; contains the active line/plane builder fixes
+sg194/pipeline_v2/runtime_backend_free.py | runtime path used by generic/public checks; needed to preserve current raw-shell vs target-pending semantics
+sg194/pipeline_v2/generic_builders.py | generic/public row-language labeling fix; needed so raw 42-shell is not mislabeled
+sg194/group_194_1_1_1_single_line_compatibility.json | regenerated authoritative single output; must travel with the current source
+sg194/group_194_1_1_1_single_full_compatibility_with_planes.json | regenerated authoritative single output; active 42-shell matrix lives here
+sg194/group_194_1_1_1_single_bs_analysis.json | regenerated authoritative BS kernel summary for the active 42-shell object
+sg194/group_194_1_1_1_single_ai_trivial_generators.json | regenerated authoritative trivial AI generators aligned with the current source
+sg194/group_194_1_1_1_single_little_groups.json | regenerated little-group capture used by the current authoritative run
+sg194/bs_fix_reaudit_v1/build_external_review_package_v1.py | upload-specific builder fixed to snapshot outputs after rebuilding current dumps
+sg194/bs_fix_reaudit_v1/experiment/debug_sg194_bs_fix_experiment_v1.py | minimal diagnostic experiment script for the hotfix branch
+sg194/bs_fix_reaudit_v1/experiment/bs_fix_experiment_report.json | machine-readable experiment result tied to this hotfix branch
+sg194/bs_fix_reaudit_v1/experiment/bs_fix_experiment_report.md | human-readable experiment result tied to this hotfix branch
+sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1/ | external code-review package; commit recursively
+sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1.tar.gz | packaged external code-review archive for this branch
+sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/update_status_single42_hotfix_v1.json | current WIP status for this upload branch
+sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/update_status_single42_hotfix_v1.md | human-readable status for this upload branch
+sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/consistency_check_single42_hotfix_v1.json | machine-readable consistency result for this upload branch
+sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/consistency_check_single42_hotfix_v1.md | human-readable consistency result for this upload branch
+sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/files_to_commit_single42_hotfix_v1.txt | explicit commit list for this upload branch
+sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/files_not_to_commit_single42_hotfix_v1.txt | explicit non-commit list for this upload branch
+sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/next_handoff_single42_hotfix_v1.md | next-session handoff scoped to the current WIP branch
+sg194/bs_fix_reaudit_v1/update_single42_hotfix_v1/next_handoff_single42_hotfix_v1.json | machine-readable next-session handoff scoped to the current WIP branch

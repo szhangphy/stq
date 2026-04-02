@@ -1,0 +1,71 @@
+{
+  "update_id": "single42_hotfix_v1",
+  "branch": "sg194-1941111-upload-single42-hotfix-v1",
+  "status": "wip_not_final",
+  "scope": "single authoritative 42-shell hotfix consistency follow-up only",
+  "active_object": {
+    "object_id": "single_raw_current_with_planes_42_unknown_shell",
+    "description": "raw current with-planes 42-unknown shell",
+    "matrix_shape": [
+      61,
+      42
+    ],
+    "rank": 29,
+    "nullity": 13,
+    "tail_unknowns": [
+      "S1_R1",
+      "S1_R2",
+      "S2_R1",
+      "S2_R2",
+      "S3_R1",
+      "S3_R2",
+      "S4_R1",
+      "S4_R2"
+    ]
+  },
+  "hotfix_scope_this_round": [
+    "Recheck current source against authoritative single 42-shell outputs",
+    "Confirm character-based authoritative line and plane builders remain the active path",
+    "Confirm external review package snapshots now match current source and current JSON outputs",
+    "Prepare a minimal upload-specific handoff/update package for this WIP branch"
+  ],
+  "bugs_fixed_in_current_source_semantics": [
+    {
+      "title": "Authoritative line builder used linear_character where character is required",
+      "status": "fixed_for_current_authoritative_single_path"
+    },
+    {
+      "title": "Authoritative plane builder used linear_character where character is required",
+      "status": "fixed_for_current_authoritative_single_path"
+    },
+    {
+      "title": "Exact solver rejected valid integer decompositions on float-snapped captures",
+      "status": "fixed_for_current_authoritative_single_path"
+    },
+    {
+      "title": "Generic compatibility mislabeled the raw 42-shell as target row language",
+      "status": "corrected_to_current_raw_shell_vs_target_pending_split"
+    },
+    {
+      "title": "Generic/public result objects published a projected quotient as the active target object",
+      "status": "corrected_to_target_pending_blocked_publication"
+    }
+  ],
+  "still_open": [
+    "This is not a final BS/AI closeout; AI completeness is still blocked for non-abelian SG 194 site symmetries",
+    "Generic/public target semantics still lack a same-shell target builder",
+    "Double mode received only a non-destructive status check; no new double repair is claimed in this upload",
+    "Stage2/benchmark/internalization directions remain out of scope for this branch"
+  ],
+  "double_non_destructive_check": {
+    "performed": true,
+    "claim": "double_raw_shell still available and double_target_pending still blocked",
+    "no_new_double_fix_claimed": true
+  },
+  "external_review_package": {
+    "path": "sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1",
+    "archive": "sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1.tar.gz",
+    "status": "rebuilt_after_snapshot_order_fix",
+    "consistency_with_current_source": true
+  }
+}

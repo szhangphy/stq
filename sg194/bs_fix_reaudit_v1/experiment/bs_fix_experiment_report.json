@@ -1,0 +1,369 @@
+{
+  "generated_at": "2026-04-03T01:56:23+08:00",
+  "target_group": "194.1.1.1",
+  "current_authoritative_runtime": {
+    "status": "success",
+    "matrix_shape": [
+      61,
+      42
+    ],
+    "rank": 29,
+    "nullity": 13,
+    "unknown_count": 42,
+    "point_space_dimension": null,
+    "phase_aware_profile": "phase_aware_l2_projective_v1",
+    "all_trivial_generators_compatibility_zero": true
+  },
+  "l1_numeric_decomposition_probe": {
+    "matched_indices_for_P1_R1": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "samples": [
+      {
+        "coords": [
+          0.0,
+          0.0,
+          0.2
+        ],
+        "rank": 6,
+        "coeffs": [
+          [
+            0.0,
+            -1.0157095037560548e-17
+          ],
+          [
+            0.9045084971874738,
+            0.29389262614623646
+          ],
+          [
+            -8.673617379884035e-17,
+            -2.7755575615628914e-16
+          ],
+          [
+            0.09549150281252633,
+            -0.29389262614623657
+          ],
+          [
+            1.3704315460216776e-16,
+            -2.220446049250313e-16
+          ],
+          [
+            -1.1102230246251565e-16,
+            -1.1102230246251565e-16
+          ]
+        ],
+        "residual_norm": 1.7594978087153222e-15,
+        "nearest_integer_coeffs": [
+          0,
+          null,
+          0,
+          null,
+          0,
+          0
+        ],
+        "nearest_integer_residual_norm": 3.4641016151377544
+      },
+      {
+        "coords": [
+          0.0,
+          0.0,
+          0.8
+        ],
+        "rank": 6,
+        "coeffs": [
+          [
+            0.0,
+            1.6799065778706217e-18
+          ],
+          [
+            0.09549150281252627,
+            0.29389262614623657
+          ],
+          [
+            2.220446049250313e-16,
+            -1.5265566588595902e-16
+          ],
+          [
+            0.9045084971874735,
+            -0.29389262614623646
+          ],
+          [
+            1.1102230246251565e-16,
+            -8.326672684688674e-17
+          ],
+          [
+            -5.551115123125783e-17,
+            2.636779683484747e-16
+          ]
+        ],
+        "residual_norm": 1.708736477429784e-15,
+        "nearest_integer_coeffs": [
+          0,
+          null,
+          0,
+          null,
+          0,
+          0
+        ],
+        "nearest_integer_residual_norm": 3.4641016151377544
+      }
+    ],
+    "verdict": "Both tested L1 sample points admit only complex non-integer coefficients for P1_R1 on the sampled line basis, so the active unique-integer basis-decomposition ansatz is invalid for L1."
+  },
+  "direct_restriction_class_fallback_probe": {
+    "before": {
+      "status": "success",
+      "matrix_shape": [
+        61,
+        42
+      ],
+      "rank": 29,
+      "nullity": 13,
+      "unknown_count": 42,
+      "point_space_dimension": null,
+      "phase_aware_profile": "phase_aware_l2_projective_v1",
+      "all_trivial_generators_compatibility_zero": true
+    },
+    "after": {
+      "matrix_shape": [
+        102,
+        34
+      ],
+      "rank": 27,
+      "nullity": 7,
+      "unknown_count": 34,
+      "line_rows": 43,
+      "plane_rows": 59,
+      "line_fallbacks": [
+        {
+          "line_id": "L1",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 9
+        },
+        {
+          "line_id": "L2",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 5
+        },
+        {
+          "line_id": "L3",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 7
+        },
+        {
+          "line_id": "L4",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 8
+        },
+        {
+          "line_id": "L5",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 6
+        },
+        {
+          "line_id": "L6",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 5
+        },
+        {
+          "line_id": "L7",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 3
+        }
+      ],
+      "plane_fallbacks": [
+        {
+          "plane_id": "S1",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 14
+        },
+        {
+          "plane_id": "S2",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 21
+        },
+        {
+          "plane_id": "S3",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 12
+        },
+        {
+          "plane_id": "S4",
+          "reason": "experiment bypassed exact builder",
+          "row_count": 12
+        }
+      ],
+      "unknown_ordering_head": [
+        "P1_R1",
+        "P1_R2",
+        "P1_R3",
+        "P1_R4",
+        "P1_R5",
+        "P1_R6",
+        "P1_R7",
+        "P1_R8",
+        "P1_R9",
+        "P1_R10"
+      ],
+      "unknown_ordering_tail": [
+        "P5_R1",
+        "P5_R2",
+        "P5_R3",
+        "P5_R4",
+        "P5_R5",
+        "P5_R6",
+        "P5_R7",
+        "P5_R8",
+        "P6_R1",
+        "P6_R2"
+      ],
+      "basis_vector_count": 7,
+      "basis_vectors_head": [
+        {
+          "id": "basis_01",
+          "vector": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "basis_02",
+          "vector": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "id": "basis_03",
+          "vector": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    "intended_42_shell_unknown_count": 42,
+    "fallback_unknown_count": 34,
+    "dropped_unknowns_vs_intended_42_shell": [
+      "S1_R1",
+      "S1_R2",
+      "S2_R1",
+      "S2_R2",
+      "S3_R1",
+      "S3_R2",
+      "S4_R1",
+      "S4_R2"
+    ],
+    "added_unknowns_vs_intended_42_shell": [],
+    "same_object_as_intended_42_shell": false,
+    "ai_candidates_still_in_same_object": false,
+    "verdict": "The cache-driven restriction-class rebuild proves that removing the exact basis-decomposition path makes BS matrix construction terminate again, but the rebuilt object collapses to a 34-point shell rather than preserving the intended 42-unknown with-planes shell, so it is diagnostic only."
+  }
+}

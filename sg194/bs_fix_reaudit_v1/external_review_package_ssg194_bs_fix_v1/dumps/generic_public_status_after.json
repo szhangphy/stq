@@ -1,0 +1,177 @@
+{
+  "result_objects": [
+    {
+      "object_id": "single_raw_shell",
+      "mode": "single",
+      "row_language_level": "raw",
+      "row_language_kind": "generic_current_row_shell_from_symmetry_ops",
+      "object_kind": "generic_current_row_shell",
+      "availability": "available",
+      "dBS": null,
+      "dAI": null,
+      "classification": null,
+      "free_rank": null,
+      "finite_part": [],
+      "quotient_derivation_mode": "not_applicable_current_row_shell_only",
+      "exact_alignment_status": "not_applicable_current_row_shell_only",
+      "current_row_shell_status": "available",
+      "source_files": [
+        "sg194/pipeline_v2/runtime_backend_free.py"
+      ]
+    },
+    {
+      "object_id": "single_target_pending",
+      "mode": "single",
+      "builder_variant": "authoritative",
+      "row_language_level": "target",
+      "row_language_kind": "generic_target_row_language_pending_same_shell_builder",
+      "object_kind": "generic_target_object_pending",
+      "availability": "blocked",
+      "dBS": null,
+      "dAI": null,
+      "classification": null,
+      "free_rank": null,
+      "finite_part": [],
+      "surviving_ai_rank": 12,
+      "surviving_classification": "Z x Z2",
+      "surviving_free_rank": 1,
+      "surviving_finite_part": [
+        2
+      ],
+      "quotient_derivation_mode": "blocked_projected_point_shell_is_diagnostic_only",
+      "exact_alignment_status": "blocked_mixed_full_shell_and_projected_point_shell_semantics",
+      "current_row_compatibility_status": "available",
+      "target_alignment_status": "blocked_missing_same_shell_generic_target_builder",
+      "local_ai_embedding_status": "diagnostic_only_projected_point_shell",
+      "direct_quotient_status": "diagnostic_only_projected_point_shell",
+      "verification_status": "blocked_projected_point_shell_result_not_published_as_active_object",
+      "ai_candidate_count": 45,
+      "ai_candidate_count_used": 45,
+      "ai_failure_count": 0,
+      "ai_incompatible_count": 0,
+      "ai_embedding_failure_count": 0,
+      "dbs_dai_gap": 1,
+      "smith_diagonal_nonzero": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "ai_incompatible_candidates": [],
+      "ai_embedding_failures": [],
+      "ai_filter_mode": "diagnostic_point_shell_projection_over_full_kernel_basis",
+      "blocker": "generic/public target semantics still require a same-shell builder; projected 34-point quotient is diagnostic only",
+      "diagnostic_projected_point_shell_dbs": 13,
+      "diagnostic_projected_point_shell_dai": 12,
+      "diagnostic_projected_point_shell_classification": "Z x Z2",
+      "source_files": [
+        "sg194/pipeline_v2/runtime_backend_free.py",
+        "sg194/pipeline_v2/local_irreps.py"
+      ]
+    },
+    {
+      "object_id": "double_raw_shell",
+      "mode": "double",
+      "row_language_level": "raw",
+      "row_language_kind": "generic_current_row_shell_from_symmetry_ops",
+      "object_kind": "generic_current_row_shell",
+      "availability": "available",
+      "dBS": null,
+      "dAI": null,
+      "classification": null,
+      "free_rank": null,
+      "finite_part": [],
+      "quotient_derivation_mode": "not_applicable_current_row_shell_only",
+      "exact_alignment_status": "not_applicable_current_row_shell_only",
+      "current_row_shell_status": "available",
+      "source_files": [
+        "sg194/pipeline_v2/runtime_backend_free.py"
+      ]
+    },
+    {
+      "object_id": "double_target_pending",
+      "mode": "double",
+      "builder_variant": "authoritative",
+      "row_language_level": "target",
+      "row_language_kind": "generic_target_row_language_pending_same_shell_builder",
+      "object_kind": "generic_target_object_pending",
+      "availability": "blocked",
+      "dBS": null,
+      "dAI": null,
+      "classification": null,
+      "free_rank": null,
+      "finite_part": [],
+      "surviving_ai_rank": 12,
+      "surviving_classification": "Z x Z2",
+      "surviving_free_rank": 1,
+      "surviving_finite_part": [
+        2
+      ],
+      "quotient_derivation_mode": "blocked_projected_point_shell_is_diagnostic_only",
+      "exact_alignment_status": "blocked_mixed_full_shell_and_projected_point_shell_semantics",
+      "current_row_compatibility_status": "available",
+      "target_alignment_status": "blocked_missing_same_shell_generic_target_builder",
+      "local_ai_embedding_status": "diagnostic_only_projected_point_shell",
+      "direct_quotient_status": "diagnostic_only_projected_point_shell",
+      "verification_status": "blocked_projected_point_shell_result_not_published_as_active_object",
+      "ai_candidate_count": 45,
+      "ai_candidate_count_used": 45,
+      "ai_failure_count": 0,
+      "ai_incompatible_count": 0,
+      "ai_embedding_failure_count": 0,
+      "dbs_dai_gap": 1,
+      "smith_diagonal_nonzero": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "ai_incompatible_candidates": [],
+      "ai_embedding_failures": [],
+      "ai_filter_mode": "diagnostic_point_shell_projection_over_full_kernel_basis",
+      "blocker": "generic/public target semantics still require a same-shell builder; projected 34-point quotient is diagnostic only",
+      "diagnostic_projected_point_shell_dbs": 13,
+      "diagnostic_projected_point_shell_dai": 12,
+      "diagnostic_projected_point_shell_classification": "Z x Z2",
+      "source_files": [
+        "sg194/pipeline_v2/runtime_backend_free.py",
+        "sg194/pipeline_v2/local_irreps.py"
+      ]
+    }
+  ],
+  "single_bundle_summary": {
+    "compatibility_row_language_kind": "generic_current_row_shell_from_symmetry_ops",
+    "compatibility_matrix_shape": [
+      61,
+      42
+    ],
+    "unknown_ordering_tail": [
+      "S1_R1",
+      "S1_R2",
+      "S2_R1",
+      "S2_R2",
+      "S3_R1",
+      "S3_R2",
+      "S4_R1",
+      "S4_R2"
+    ],
+    "quotient_compatibility_check_mode": "point_shell_projection_over_full_kernel_basis",
+    "diagnostic_projected_point_shell_classification": "Z x Z2"
+  }
+}

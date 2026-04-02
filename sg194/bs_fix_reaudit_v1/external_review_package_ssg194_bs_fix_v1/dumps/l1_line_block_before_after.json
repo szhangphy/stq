@@ -1,0 +1,230 @@
+{
+  "before_linear_character_failure": {
+    "field": "linear_character",
+    "matched_unitary_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "restricted_vector_for_P1_R1": [
+      {
+        "real": 0.9999999999999998,
+        "imag": -2.129514520908229e-17
+      },
+      {
+        "real": 0.9999999999999999,
+        "imag": -2.129514520908229e-17
+      },
+      {
+        "real": 0.9999999999999997,
+        "imag": -2.1295145209083202e-17
+      },
+      {
+        "real": -0.9999999999999998,
+        "imag": 2.1295145209083375e-17
+      },
+      {
+        "real": -1.0,
+        "imag": 2.1295145209083745e-17
+      },
+      {
+        "real": -0.9999999999999997,
+        "imag": 2.1295145209081723e-17
+      },
+      {
+        "real": 0.9999999999999997,
+        "imag": -2.1295145209083178e-17
+      },
+      {
+        "real": 1.0,
+        "imag": -2.129514520908234e-17
+      },
+      {
+        "real": 1.0000000000000002,
+        "imag": -2.1295145209083695e-17
+      },
+      {
+        "real": -0.9999999999999998,
+        "imag": 2.1295145209082537e-17
+      },
+      {
+        "real": -0.9999999999999998,
+        "imag": 2.1295145209083917e-17
+      },
+      {
+        "real": -1.0,
+        "imag": 2.129514520908239e-17
+      }
+    ],
+    "numeric_coefficients_for_P1_R1": [
+      {
+        "real": -9.614813431917817e-17,
+        "imag": 9.27228693847794e-19
+      },
+      {
+        "real": 0.904508497187474,
+        "imag": 0.2938926261462364
+      },
+      {
+        "real": -3.3306690738754696e-16,
+        "imag": 6.938893903907228e-18
+      },
+      {
+        "real": 0.09549150281252648,
+        "imag": -0.29389262614623635
+      },
+      {
+        "real": 1.1102230246251565e-16,
+        "imag": -5.551115123125783e-17
+      },
+      {
+        "real": -2.220446049250313e-16,
+        "imag": -1.1102230246251565e-16
+      }
+    ],
+    "nearest_integer_residual_norm": 3.464101615137754
+  },
+  "after_character_success": {
+    "compatibility_field": "character",
+    "line_basis_labels": [
+      "L1_R1",
+      "L1_R2",
+      "L1_R3",
+      "L1_R4",
+      "L1_R5",
+      "L1_R6"
+    ],
+    "endpoint_decomposition_P1_R1": {
+      "rep_id": "P1_R1",
+      "rep_degree": 1,
+      "torsion": 0,
+      "decomposition_on_line_basis": {
+        "L1_R2": 1
+      }
+    },
+    "equations_head": [
+      {
+        "basis_id": "L1_R1",
+        "terms": [
+          {
+            "unknown": "P1_R2",
+            "coeff": 1,
+            "side": "left"
+          },
+          {
+            "unknown": "P1_R3",
+            "coeff": 1,
+            "side": "left"
+          },
+          {
+            "unknown": "P2_R1",
+            "coeff": -1,
+            "side": "right"
+          }
+        ]
+      },
+      {
+        "basis_id": "L1_R2",
+        "terms": [
+          {
+            "unknown": "P1_R1",
+            "coeff": 1,
+            "side": "left"
+          },
+          {
+            "unknown": "P1_R4",
+            "coeff": 1,
+            "side": "left"
+          },
+          {
+            "unknown": "P2_R2",
+            "coeff": -1,
+            "side": "right"
+          }
+        ]
+      },
+      {
+        "basis_id": "L1_R3",
+        "terms": [
+          {
+            "unknown": "P1_R6",
+            "coeff": 1,
+            "side": "left"
+          },
+          {
+            "unknown": "P1_R7",
+            "coeff": 1,
+            "side": "left"
+          },
+          {
+            "unknown": "P2_R1",
+            "coeff": -1,
+            "side": "right"
+          }
+        ]
+      }
+    ],
+    "matrix_rows_head": [
+      [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0
+      ]
+    ]
+  }
+}

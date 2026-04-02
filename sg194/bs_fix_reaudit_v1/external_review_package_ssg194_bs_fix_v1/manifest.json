@@ -1,0 +1,116 @@
+{
+  "generated_at": "2026-04-03T02:26:02+08:00",
+  "target_group": "194.1.1.1",
+  "source_manifest": {
+    "generated_at": "2026-04-03T02:22:46+08:00",
+    "files": [
+      {
+        "path": "sg194/debug_workflow_portability_194.1.1.1.py",
+        "final_snapshot": "sources/final/sg194/debug_workflow_portability_194.1.1.1.py",
+        "original_snapshot_status": "from_git_head"
+      },
+      {
+        "path": "sg194/pipeline_v2/runtime_backend_free.py",
+        "final_snapshot": "sources/final/sg194/pipeline_v2/runtime_backend_free.py",
+        "original_snapshot_status": "from_git_head"
+      },
+      {
+        "path": "sg194/pipeline_v2/generic_builders.py",
+        "final_snapshot": "sources/final/sg194/pipeline_v2/generic_builders.py",
+        "original_snapshot_status": "from_git_head"
+      },
+      {
+        "path": "sg194/pipeline_v2/bs_ai.py",
+        "final_snapshot": "sources/final/sg194/pipeline_v2/bs_ai.py",
+        "original_snapshot_status": "from_git_head"
+      },
+      {
+        "path": "sg194/bs_fix_reaudit_v1/experiment/debug_sg194_bs_fix_experiment_v1.py",
+        "final_snapshot": "sources/final/sg194/bs_fix_reaudit_v1/experiment/debug_sg194_bs_fix_experiment_v1.py",
+        "original_snapshot_status": "missing_from_head"
+      },
+      {
+        "path": "sg194/bs_fix_reaudit_v1/build_external_review_package_v1.py",
+        "final_snapshot": "sources/final/sg194/bs_fix_reaudit_v1/build_external_review_package_v1.py",
+        "original_snapshot_status": "missing_from_head"
+      }
+    ]
+  },
+  "output_manifest": {
+    "generated_at": "2026-04-03T02:26:02+08:00",
+    "files": [
+      {
+        "path": "sg194/group_194_1_1_1_single_ai_trivial_generators.json",
+        "final_snapshot": "outputs/final/sg194/group_194_1_1_1_single_ai_trivial_generators.json",
+        "original_snapshot_status": "from_git_head"
+      },
+      {
+        "path": "sg194/group_194_1_1_1_single_bs_analysis.json",
+        "final_snapshot": "outputs/final/sg194/group_194_1_1_1_single_bs_analysis.json",
+        "original_snapshot_status": "from_git_head"
+      },
+      {
+        "path": "sg194/group_194_1_1_1_single_full_compatibility_with_planes.json",
+        "final_snapshot": "outputs/final/sg194/group_194_1_1_1_single_full_compatibility_with_planes.json",
+        "original_snapshot_status": "from_git_head"
+      },
+      {
+        "path": "sg194/group_194_1_1_1_single_line_compatibility.json",
+        "final_snapshot": "outputs/final/sg194/group_194_1_1_1_single_line_compatibility.json",
+        "original_snapshot_status": "from_git_head"
+      },
+      {
+        "path": "sg194/group_194_1_1_1_single_little_groups.json",
+        "final_snapshot": "outputs/final/sg194/group_194_1_1_1_single_little_groups.json",
+        "original_snapshot_status": "from_git_head"
+      }
+    ]
+  },
+  "patch_manifest": {
+    "generated_at": "2026-04-03T02:22:47+08:00",
+    "tracked_files": [
+      "sg194/debug_workflow_portability_194.1.1.1.py",
+      "sg194/group_194_1_1_1_single_ai_trivial_generators.json",
+      "sg194/group_194_1_1_1_single_bs_analysis.json",
+      "sg194/group_194_1_1_1_single_full_compatibility_with_planes.json",
+      "sg194/group_194_1_1_1_single_line_compatibility.json",
+      "sg194/group_194_1_1_1_single_little_groups.json",
+      "sg194/pipeline_v2/generic_builders.py",
+      "sg194/pipeline_v2/runtime_backend_free.py"
+    ],
+    "untracked_files": [
+      "sg194/bs_fix_reaudit_v1/experiment/debug_sg194_bs_fix_experiment_v1.py",
+      "sg194/bs_fix_reaudit_v1/build_external_review_package_v1.py"
+    ],
+    "overall_patch": "patches/overall.patch"
+  },
+  "repro_manifest": {
+    "first_failure_command": "python3 /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1/repro/reproduce_original_first_failure.py",
+    "diagnostic_experiment_command": "bash /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1/repro/run_current_diagnostic_experiment.sh"
+  },
+  "first_failure": {
+    "command": "python3 /data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/bs_fix_reaudit_v1/external_review_package_ssg194_bs_fix_v1/repro/reproduce_original_first_failure.py",
+    "returncode": 1,
+    "stdout_path": "evidence/first_failure/stdout.txt",
+    "stderr_path": "evidence/first_failure/stderr.txt",
+    "exit_code_path": "evidence/first_failure/exit_code.txt",
+    "input_object_path": "evidence/first_failure/input_object.json"
+  },
+  "active_after": {
+    "matrix_shape": [
+      61,
+      42
+    ],
+    "rank": 29,
+    "nullity": 13,
+    "unknown_count": 42
+  },
+  "diagnostic_fallback": {
+    "matrix_shape": [
+      102,
+      34
+    ],
+    "rank": 27,
+    "nullity": 7
+  }
+}

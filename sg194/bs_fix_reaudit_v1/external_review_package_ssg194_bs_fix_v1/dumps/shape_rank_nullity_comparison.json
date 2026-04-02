@@ -1,0 +1,283 @@
+{
+  "active_42_shell": {
+    "matrix_shape": [
+      61,
+      42
+    ],
+    "rank": 29,
+    "nullity": 13,
+    "unknown_count": 42,
+    "unknown_ordering": [
+      "P1_R1",
+      "P1_R2",
+      "P1_R3",
+      "P1_R4",
+      "P1_R5",
+      "P1_R6",
+      "P1_R7",
+      "P1_R8",
+      "P1_R9",
+      "P1_R10",
+      "P1_R11",
+      "P1_R12",
+      "P2_R1",
+      "P2_R2",
+      "P2_R3",
+      "P3_R1",
+      "P3_R2",
+      "P3_R3",
+      "P3_R4",
+      "P3_R5",
+      "P3_R6",
+      "P4_R1",
+      "P4_R2",
+      "P4_R3",
+      "P5_R1",
+      "P5_R2",
+      "P5_R3",
+      "P5_R4",
+      "P5_R5",
+      "P5_R6",
+      "P5_R7",
+      "P5_R8",
+      "P6_R1",
+      "P6_R2",
+      "S1_R1",
+      "S1_R2",
+      "S2_R1",
+      "S2_R2",
+      "S3_R1",
+      "S3_R2",
+      "S4_R1",
+      "S4_R2"
+    ]
+  },
+  "diagnostic_fallback_34_shell": {
+    "matrix_shape": [
+      102,
+      34
+    ],
+    "rank": 27,
+    "nullity": 7,
+    "unknown_count": 34,
+    "line_rows": 43,
+    "plane_rows": 59,
+    "line_fallbacks": [
+      {
+        "line_id": "L1",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 9
+      },
+      {
+        "line_id": "L2",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 5
+      },
+      {
+        "line_id": "L3",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 7
+      },
+      {
+        "line_id": "L4",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 8
+      },
+      {
+        "line_id": "L5",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 6
+      },
+      {
+        "line_id": "L6",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 5
+      },
+      {
+        "line_id": "L7",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 3
+      }
+    ],
+    "plane_fallbacks": [
+      {
+        "plane_id": "S1",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 14
+      },
+      {
+        "plane_id": "S2",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 21
+      },
+      {
+        "plane_id": "S3",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 12
+      },
+      {
+        "plane_id": "S4",
+        "reason": "experiment bypassed exact builder",
+        "row_count": 12
+      }
+    ],
+    "unknown_ordering_head": [
+      "P1_R1",
+      "P1_R2",
+      "P1_R3",
+      "P1_R4",
+      "P1_R5",
+      "P1_R6",
+      "P1_R7",
+      "P1_R8",
+      "P1_R9",
+      "P1_R10"
+    ],
+    "unknown_ordering_tail": [
+      "P5_R1",
+      "P5_R2",
+      "P5_R3",
+      "P5_R4",
+      "P5_R5",
+      "P5_R6",
+      "P5_R7",
+      "P5_R8",
+      "P6_R1",
+      "P6_R2"
+    ],
+    "basis_vector_count": 7,
+    "basis_vectors_head": [
+      {
+        "id": "basis_01",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "basis_02",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "basis_03",
+        "vector": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "same_object_as_intended_42_shell": false,
+  "same_object_judgement_basis": {
+    "dropped_unknowns_vs_intended_42_shell": [
+      "S1_R1",
+      "S1_R2",
+      "S2_R1",
+      "S2_R2",
+      "S3_R1",
+      "S3_R2",
+      "S4_R1",
+      "S4_R2"
+    ],
+    "added_unknowns_vs_intended_42_shell": []
+  }
+}

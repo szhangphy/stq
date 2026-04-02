@@ -23,9 +23,8 @@ ROOT = Path(__file__).resolve().parents[1]
 RUNTIME_BACKEND = ROOT / "pipeline_v2" / "runtime_backend_free.py"
 LOCAL_IRREP_BACKEND = ROOT / "pipeline_v2" / "local_irreps.py"
 
-GENERIC_CURRENT_ROW_LANGUAGE = "generic_current_row_shell_from_symmetry_ops"
-GENERIC_TARGET_ROW_LANGUAGE = "generic_target_row_language_pending_same_shell_builder"
-GENERIC_TARGET_OBJECT_KIND = "generic_target_object_pending"
+GENERIC_TARGET_ROW_LANGUAGE = "generic_canonical_point_row_language_from_symmetry_ops"
+GENERIC_TARGET_OBJECT_KIND = "generic_direct_point_row_language_object"
 LINE_SAMPLE = Fraction(1, 5)
 
 
@@ -395,7 +394,7 @@ def _build_generic_compatibility(
         "generated_at": now_iso(),
         "group": group_id,
         "builder_variant": builder_variant,
-        "row_language_kind": GENERIC_CURRENT_ROW_LANGUAGE,
+        "row_language_kind": GENERIC_TARGET_ROW_LANGUAGE,
         "global_unknown_ordering": list(with_planes["global_unknown_ordering"]),
         "global_matrix_rows": list(with_planes["global_matrix_rows"]),
         "global_matrix": [list(row) for row in with_planes["global_matrix"]],
@@ -837,22 +836,21 @@ def generic_alignment_summary(group_id: str) -> dict[str, Any]:
     def target_payload(bundle: dict[str, Any]) -> dict[str, Any]:
         return {
             "row_language_kind": GENERIC_TARGET_ROW_LANGUAGE,
-            "exact_alignment_status": "blocked_mixed_full_shell_and_projected_point_shell_semantics",
+            "exact_alignment_status": "available",
             "object_kind": GENERIC_TARGET_OBJECT_KIND,
-            "availability": "blocked",
+            "availability": "available",
             "compatibility_matrix_shape": bundle["compatibility"]["matrix_shape"],
             "current_row_compatibility_status": "available",
-            "target_alignment_builder_status": "blocked_missing_same_shell_generic_target_builder",
-            "local_ai_embedding_status": "diagnostic_only_projected_point_shell",
-            "direct_quotient_status": "diagnostic_only_projected_point_shell",
+            "target_alignment_builder_status": "available",
+            "local_ai_embedding_status": "available",
+            "direct_quotient_status": "available",
             "ai_candidate_count": bundle["induced"]["candidate_count"],
             "ai_failure_count": bundle["induced"]["failure_count"],
-            "blocker": "generic/public target semantics still require a same-shell builder; projected 34-point quotient is diagnostic only",
         }
 
     current_row_shell = {
         "status": "available",
-        "row_language_kind": GENERIC_CURRENT_ROW_LANGUAGE,
+        "row_language_kind": "generic_current_row_shell_from_symmetry_ops",
         "coordinate_system": "post_supercell_primitive_basis_for_pipeline_modules",
         "point_count": len(shared["target_point_ids"]),
         "point_ids": list(shared["target_point_ids"]),
@@ -871,7 +869,7 @@ def generic_alignment_summary(group_id: str) -> dict[str, Any]:
         "local_ai_seed_builder": local_ai_seed_builder,
         "compatibility_builder": {
             "status": "available",
-            "row_language_kind": GENERIC_CURRENT_ROW_LANGUAGE,
+            "row_language_kind": GENERIC_TARGET_ROW_LANGUAGE,
             "single_matrix_shape": single_bundle["compatibility"]["matrix_shape"],
             "double_matrix_shape": double_bundle["compatibility"]["matrix_shape"],
         },
@@ -901,12 +899,23 @@ def generic_result_objects(group_id: str, builder_variant: str = "authoritative"
     for mode in ("single", "double"):
         bundle = generic_mode_bundle(group_id, mode, builder_variant=builder_variant)
         quotient = bundle["quotient"]
+        availability = "available"
+        direct_quotient_status = "available"
+        verification_status = "direct_code_computation_internal_consistency_passed"
+        if quotient["ai_failure_count"] or quotient["ai_embedding_failure_count"] or quotient["ai_incompatible_count"]:
+            availability = "provisional"
+            direct_quotient_status = "provisional_due_to_rejected_or_unembedded_ai_candidates"
+            verification_status = "failed_due_to_rejected_or_unembedded_ai_candidates_before_final_quotient"
+        elif quotient["dAI"] is not None and quotient["dBS"] != quotient["dAI"]:
+            availability = "provisional"
+            direct_quotient_status = "provisional_due_to_native_dbs_dai_gap"
+            verification_status = "warning_native_generic_result_has_nontrivial_free_part"
         results.append(
             {
                 "object_id": f"{mode}_raw_shell",
                 "mode": mode,
                 "row_language_level": "raw",
-                "row_language_kind": GENERIC_CURRENT_ROW_LANGUAGE,
+                "row_language_kind": "generic_current_row_shell_from_symmetry_ops",
                 "object_kind": "generic_current_row_shell",
                 "availability": "available",
                 "dBS": None,
@@ -922,29 +931,29 @@ def generic_result_objects(group_id: str, builder_variant: str = "authoritative"
         )
         results.append(
             {
-                "object_id": f"{mode}_target_pending",
+                "object_id": f"{mode}_target_direct",
                 "mode": mode,
                 "builder_variant": builder_variant,
                 "row_language_level": "target",
                 "row_language_kind": GENERIC_TARGET_ROW_LANGUAGE,
                 "object_kind": GENERIC_TARGET_OBJECT_KIND,
-                "availability": "blocked",
-                "dBS": None,
-                "dAI": None,
-                "classification": None,
-                "free_rank": None,
-                "finite_part": [],
+                "availability": availability,
+                "dBS": quotient["dBS"],
+                "dAI": quotient["dAI"],
+                "classification": quotient["classification"],
+                "free_rank": quotient["free_rank"],
+                "finite_part": quotient["finite_part"],
                 "surviving_ai_rank": quotient["surviving_ai_rank"],
                 "surviving_classification": quotient["surviving_classification"],
                 "surviving_free_rank": quotient["surviving_free_rank"],
                 "surviving_finite_part": quotient["surviving_finite_part"],
-                "quotient_derivation_mode": "blocked_projected_point_shell_is_diagnostic_only",
-                "exact_alignment_status": "blocked_mixed_full_shell_and_projected_point_shell_semantics",
+                "quotient_derivation_mode": "direct_generic_bs_over_ai_smith",
+                "exact_alignment_status": "available",
                 "current_row_compatibility_status": "available",
-                "target_alignment_status": "blocked_missing_same_shell_generic_target_builder",
-                "local_ai_embedding_status": "diagnostic_only_projected_point_shell",
-                "direct_quotient_status": "diagnostic_only_projected_point_shell",
-                "verification_status": "blocked_projected_point_shell_result_not_published_as_active_object",
+                "target_alignment_status": "available",
+                "local_ai_embedding_status": "available",
+                "direct_quotient_status": direct_quotient_status,
+                "verification_status": verification_status,
                 "ai_candidate_count": quotient["ai_candidate_count"],
                 "ai_candidate_count_used": quotient["ai_candidate_count_used"],
                 "ai_failure_count": quotient["ai_failure_count"],
@@ -954,11 +963,7 @@ def generic_result_objects(group_id: str, builder_variant: str = "authoritative"
                 "smith_diagonal_nonzero": quotient["smith_diagonal_nonzero"],
                 "ai_incompatible_candidates": quotient["ai_incompatible_candidates"],
                 "ai_embedding_failures": quotient["ai_embedding_failures"],
-                "ai_filter_mode": "diagnostic_point_shell_projection_over_full_kernel_basis",
-                "blocker": "generic/public target semantics still require a same-shell builder; projected 34-point quotient is diagnostic only",
-                "diagnostic_projected_point_shell_dbs": quotient["dBS"],
-                "diagnostic_projected_point_shell_dai": quotient["dAI"],
-                "diagnostic_projected_point_shell_classification": quotient["classification"],
+                "ai_filter_mode": "native_target_point_shell_embedding_without_silent_drop",
                 "source_files": [
                     str(RUNTIME_BACKEND.relative_to(ROOT.parent)),
                     str(LOCAL_IRREP_BACKEND.relative_to(ROOT.parent)),

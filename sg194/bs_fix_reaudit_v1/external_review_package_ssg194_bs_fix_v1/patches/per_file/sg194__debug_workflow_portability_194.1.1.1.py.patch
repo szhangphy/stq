@@ -1,0 +1,99 @@
+diff --git a/sg194/debug_workflow_portability_194.1.1.1.py b/sg194/debug_workflow_portability_194.1.1.1.py
+index dd64228..1e9a8c6 100644
+--- a/sg194/debug_workflow_portability_194.1.1.1.py
++++ b/sg194/debug_workflow_portability_194.1.1.1.py
+@@ -925,6 +925,32 @@ def coerce_integer_coeffs(coeffs: list[sp.Expr], context: str) -> list[int]:
+     return result
+ 
+ 
++def solve_numeric_integer_decomposition(
++    basis_matrix: sp.Matrix,
++    restricted: sp.Matrix,
++    context: str,
++    *,
++    tol: float = 1e-8,
++) -> list[int]:
++    basis = np.array(
++        [[complex(value.evalf()) for value in row] for row in basis_matrix.tolist()],
++        dtype=complex,
++    )
++    rhs = np.array([complex(value.evalf()) for value in restricted], dtype=complex)
++    coeffs, _residuals, rank, _singular_values = np.linalg.lstsq(basis, rhs, rcond=None)
++    if int(rank) != int(basis.shape[1]):
++        raise ValueError(f"non-unique numeric decomposition in {context}")
++    rounded: list[int] = []
++    for coeff in coeffs:
++        if abs(coeff.imag) > tol or abs(coeff.real - round(coeff.real)) > tol:
++            raise ValueError(f"non-integral numeric decomposition in {context}: {coeffs.tolist()}")
++        rounded.append(int(round(coeff.real)))
++    reconstructed = basis @ np.array(rounded, dtype=complex)
++    if not np.allclose(reconstructed, rhs, atol=tol):
++        raise ValueError(f"numeric reconstruction failed in {context}")
++    return rounded
++
++
+ def _mode_label_from_raw(raw: dict[str, Any]) -> str:
+     return {1: "single", 2: "double"}.get(int(raw.get("group_type", 0)), f"groupType={raw.get('group_type')}")
+ 
+@@ -1022,28 +1048,33 @@ def solve_unique_integer_decomposition(
+     rep_id: str,
+     field: str,
+ ) -> list[int]:
++    context = f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}"
+     if basis_matrix.rows != restricted.rows:
+         raise ValueError(
+-            f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}: "
++            f"{context}: "
+             f"basis/restriction row mismatch expected={basis_matrix.rows} actual={restricted.rows}"
+         )
++    try:
++        return solve_numeric_integer_decomposition(basis_matrix, restricted, context)
++    except Exception as numeric_exc:
++        numeric_error = numeric_exc
+     try:
+         solution, params = basis_matrix.gauss_jordan_solve(restricted)
+     except Exception as exc:
+         raise ValueError(
+-            f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}: {exc}"
++            f"{context}: numeric_fallback={numeric_error}; exact_solver={exc}"
+         ) from exc
+     if params.rows * params.cols:
+         raise ValueError(
+-            f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}: non-unique decomposition"
++            f"{context}: numeric_fallback={numeric_error}; exact_solver=non-unique decomposition"
+         )
+     if basis_matrix * solution != restricted:
+         raise ValueError(
+-            f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}: exact reconstruction failed"
++            f"{context}: numeric_fallback={numeric_error}; exact_solver=exact reconstruction failed"
+         )
+     return coerce_integer_coeffs(
+         list(solution),
+-        f"mode={mode} manifold={manifold_id} endpoint={endpoint_id} rep={rep_id} field={field}",
++        context,
+     )
+ 
+ 
+@@ -1192,7 +1223,10 @@ def build_line_block(
+     ]
+     endpoint_ids = [endpoint["point_id"] for endpoint in endpoint_entries]
+     line_raw = captures[line_id]
+-    field = "linear_character"
++    # Source-layer endpoint subduction for 194.1.1.1 must stay in character
++    # language. The linear_character basis is not integer-solvable on the
++    # failing lines and breaks the authoritative BS construction.
++    field = "character"
+     line_basis_labels = [f"{line_id}_R{i}" for i in range(1, len(line_raw[field]) + 1)]
+     line_basis_matrix = _exact_basis_matrix_from_capture(line_raw, field, manifold_id=line_id)
+     endpoint_decompositions: dict[str, Any] = {}
+@@ -1494,7 +1528,9 @@ def build_plane_block(plane_obj: dict[str, Any], corner_entries: list[dict[str,
+     plane_id = plane_obj["id"]
+     plane_raw = captures[plane_id]
+     plane_unitary_ops = [operation_key_from_capture(plane_raw, op_index) for op_index in plane_raw["unitary_capture_indices"]]
+-    field = "linear_character"
++    # Plane auxiliary coordinates stay in the intended 42-shell only in
++    # character language; linear_character fails on S3 corner restrictions.
++    field = "character"
+     plane_basis_labels = [f"{plane_id}_R{i}" for i in range(1, len(plane_raw[field]) + 1)]
+     plane_basis_matrix = _exact_basis_matrix_from_capture(plane_raw, field, manifold_id=plane_id)
+     local_unknown_ordering: list[str] = []

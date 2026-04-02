@@ -1,0 +1,226 @@
+{
+  "stdout": "[pilot] single: geometry\n[pilot] single: manifold capture\n[pilot] single: line blocks\n[pilot] single: plane blocks\n[pilot] single: atomic prototype\n",
+  "summary": {
+    "target_group": "194.1.1.1",
+    "group_type": 1,
+    "geometry_status": "success",
+    "compatibility_status": {
+      "line_blocks_built": 7,
+      "synthetic_boundary_points_added": 0,
+      "point_line_relations": 14,
+      "unmatched_line_endpoints_before_augmentation": 0,
+      "plane_blocks_built": 4,
+      "status": "success",
+      "authoritative_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+      "phase_aware_profile": "phase_aware_l2_projective_v1"
+    },
+    "BS_status": {
+      "status": "success",
+      "matrix_shape": [
+        61,
+        42
+      ],
+      "rank": 29,
+      "nullity": 13,
+      "smith_diagonal": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2
+      ]
+    },
+    "AI_status": {
+      "status": "partial",
+      "trivial_generators_count": 12,
+      "rank_trivial_family_span": 11,
+      "all_trivial_generators_compatibility_zero": true
+    },
+    "completeness_status": {
+      "status": "blocked",
+      "blocker": "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly."
+    },
+    "quotient_status": {
+      "status": "blocked",
+      "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."
+    },
+    "blocker": "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly."
+  },
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P1_R9",
+    "P1_R10",
+    "P1_R11",
+    "P1_R12",
+    "P2_R1",
+    "P2_R2",
+    "P2_R3",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P4_R1",
+    "P4_R2",
+    "P4_R3",
+    "P5_R1",
+    "P5_R2",
+    "P5_R3",
+    "P5_R4",
+    "P5_R5",
+    "P5_R6",
+    "P5_R7",
+    "P5_R8",
+    "P6_R1",
+    "P6_R2",
+    "S1_R1",
+    "S1_R2",
+    "S2_R1",
+    "S2_R2",
+    "S3_R1",
+    "S3_R2",
+    "S4_R1",
+    "S4_R2"
+  ],
+  "point_row_translation": {
+    "profile": "phase_aware_point_row_translation_v1",
+    "enabled": true,
+    "line_id": "L2",
+    "selected_endpoint_id": "P3",
+    "selected_endpoint_override": null,
+    "other_endpoint_id": "P4",
+    "selected_endpoint_class_actions": [
+      {
+        "class_id": "L2_phase_aware_class_01",
+        "endpoint_id": "P3",
+        "rep_ids": [
+          "P3_R1",
+          "P3_R4"
+        ],
+        "rep_indices": [
+          0,
+          3
+        ],
+        "class_size": 2,
+        "basis_labels": [
+          "L2_R2"
+        ],
+        "unknown_indices": [
+          15,
+          18
+        ],
+        "action": "replicate_class_sum_on_members"
+      },
+      {
+        "class_id": "L2_phase_aware_class_02",
+        "endpoint_id": "P3",
+        "rep_ids": [
+          "P3_R2",
+          "P3_R3"
+        ],
+        "rep_indices": [
+          1,
+          2
+        ],
+        "class_size": 2,
+        "basis_labels": [
+          "L2_R1"
+        ],
+        "unknown_indices": [
+          16,
+          17
+        ],
+        "action": "replicate_class_sum_on_members"
+      },
+      {
+        "class_id": "L2_phase_aware_class_03",
+        "endpoint_id": "P3",
+        "rep_ids": [
+          "P3_R5",
+          "P3_R6"
+        ],
+        "rep_indices": [
+          4,
+          5
+        ],
+        "class_size": 2,
+        "basis_labels": [
+          "L2_R3"
+        ],
+        "unknown_indices": [
+          19,
+          20
+        ],
+        "action": "replicate_class_sum_on_members"
+      }
+    ],
+    "other_endpoint_scalings": [
+      {
+        "endpoint_id": "P4",
+        "rep_id": "P4_R1",
+        "rep_index": 0,
+        "factor": 2,
+        "touched_basis_labels": [
+          "L2_R3"
+        ],
+        "unknown_index": 21,
+        "action": "scale_opposite_endpoint_multiplicity"
+      },
+      {
+        "endpoint_id": "P4",
+        "rep_id": "P4_R2",
+        "rep_index": 1,
+        "factor": 2,
+        "touched_basis_labels": [
+          "L2_R3"
+        ],
+        "unknown_index": 22,
+        "action": "scale_opposite_endpoint_multiplicity"
+      },
+      {
+        "endpoint_id": "P4",
+        "rep_id": "P4_R3",
+        "rep_index": 2,
+        "factor": 2,
+        "touched_basis_labels": [
+          "L2_R1",
+          "L2_R2"
+        ],
+        "unknown_index": 23,
+        "action": "scale_opposite_endpoint_multiplicity"
+      }
+    ]
+  }
+}

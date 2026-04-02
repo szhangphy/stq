@@ -1,0 +1,753 @@
+diff --git a/sg194/group_194_1_1_1_single_line_compatibility.json b/sg194/group_194_1_1_1_single_line_compatibility.json
+index bf36841..b4a1e2e 100644
+--- a/sg194/group_194_1_1_1_single_line_compatibility.json
++++ b/sg194/group_194_1_1_1_single_line_compatibility.json
+@@ -407,6 +407,9 @@
+         "L1_R5",
+         "L1_R6"
+       ],
++      "compatibility_field": "character",
++      "compatibility_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
++      "phase_aware_profile_used": "legacy",
+       "line_group_signature": {
+         "n_ops_total": 12,
+         "n_unitary_ops": 12,
+@@ -427,6 +430,12 @@
+           0,
+           0
+         ]
++      },
++      "phase_aware_refinement": {
++        "profile": "legacy",
++        "selected_endpoint_id": null,
++        "restriction_classes_by_endpoint": {},
++        "refinement_equations": []
+       }
+     },
+     {
+@@ -611,6 +620,69 @@
+               "side": "right"
+             }
+           ]
++        },
++        {
++          "basis_id": "L2_phase_aware_class_01",
++          "terms": [
++            {
++              "unknown": "P3_R1",
++              "coeff": 1,
++              "side": "phase_aware_endpoint_class"
++            },
++            {
++              "unknown": "P3_R4",
++              "coeff": -1,
++              "side": "phase_aware_endpoint_class"
++            }
++          ],
++          "phase_aware_refinement": true,
++          "restriction_class_rep_ids": [
++            "P3_R1",
++            "P3_R4"
++          ],
++          "selected_endpoint_id": "P3"
++        },
++        {
++          "basis_id": "L2_phase_aware_class_02",
++          "terms": [
++            {
++              "unknown": "P3_R2",
++              "coeff": 1,
++              "side": "phase_aware_endpoint_class"
++            },
++            {
++              "unknown": "P3_R3",
++              "coeff": -1,
++              "side": "phase_aware_endpoint_class"
++            }
++          ],
++          "phase_aware_refinement": true,
++          "restriction_class_rep_ids": [
++            "P3_R2",
++            "P3_R3"
++          ],
++          "selected_endpoint_id": "P3"
++        },
++        {
++          "basis_id": "L2_phase_aware_class_03",
++          "terms": [
++            {
++              "unknown": "P3_R5",
++              "coeff": 1,
++              "side": "phase_aware_endpoint_class"
++            },
++            {
++              "unknown": "P3_R6",
++              "coeff": -1,
++              "side": "phase_aware_endpoint_class"
++            }
++          ],
++          "phase_aware_refinement": true,
++          "restriction_class_rep_ids": [
++            "P3_R5",
++            "P3_R6"
++          ],
++          "selected_endpoint_id": "P3"
+         }
+       ],
+       "matrix_rows": [
+@@ -646,6 +718,39 @@
+           -1,
+           -1,
+           0
++        ],
++        [
++          1,
++          0,
++          0,
++          -1,
++          0,
++          0,
++          0,
++          0,
++          0
++        ],
++        [
++          0,
++          1,
++          -1,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0
++        ],
++        [
++          0,
++          0,
++          0,
++          0,
++          1,
++          -1,
++          0,
++          0,
++          0
+         ]
+       ],
+       "line_basis_labels": [
+@@ -653,6 +758,9 @@
+         "L2_R2",
+         "L2_R3"
+       ],
++      "compatibility_field": "character",
++      "compatibility_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
++      "phase_aware_profile_used": "phase_aware_l2_projective_v1",
+       "line_group_signature": {
+         "n_ops_total": 6,
+         "n_unitary_ops": 6,
+@@ -667,6 +775,242 @@
+           0,
+           0
+         ]
++      },
++      "phase_aware_refinement": {
++        "profile": "phase_aware_l2_projective_v1",
++        "selected_endpoint_id": "P3",
++        "restriction_classes_by_endpoint": {
++          "P3": [
++            {
++              "rep_ids": [
++                "P3_R1",
++                "P3_R4"
++              ],
++              "restricted_vector": [
++                {
++                  "real": 1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": 1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": 1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": 1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": 1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": 1.0,
++                  "imag": -0.0
++                }
++              ],
++              "class_size": 2
++            },
++            {
++              "rep_ids": [
++                "P3_R2",
++                "P3_R3"
++              ],
++              "restricted_vector": [
++                {
++                  "real": 1.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": 1.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": 1.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": -1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": -1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": -1.0,
++                  "imag": -0.0
++                }
++              ],
++              "class_size": 2
++            },
++            {
++              "rep_ids": [
++                "P3_R5",
++                "P3_R6"
++              ],
++              "restricted_vector": [
++                {
++                  "real": 2.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": -1.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": -1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": 0.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": 0.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": -0.0,
++                  "imag": 0.0
++                }
++              ],
++              "class_size": 2
++            }
++          ],
++          "P4": [
++            {
++              "rep_ids": [
++                "P4_R1",
++                "P4_R2"
++              ],
++              "restricted_vector": [
++                {
++                  "real": 2.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": -1.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": -1.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": -0.0,
++                  "imag": -0.0
++                },
++                {
++                  "real": 0.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": -0.0,
++                  "imag": -0.0
++                }
++              ],
++              "class_size": 2
++            },
++            {
++              "rep_ids": [
++                "P4_R3"
++              ],
++              "restricted_vector": [
++                {
++                  "real": 2.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": 2.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": 2.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": 0.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": 0.0,
++                  "imag": 0.0
++                },
++                {
++                  "real": 0.0,
++                  "imag": 0.0
++                }
++              ],
++              "class_size": 1
++            }
++          ]
++        },
++        "refinement_equations": [
++          {
++            "basis_id": "L2_phase_aware_class_01",
++            "terms": [
++              {
++                "unknown": "P3_R1",
++                "coeff": 1,
++                "side": "phase_aware_endpoint_class"
++              },
++              {
++                "unknown": "P3_R4",
++                "coeff": -1,
++                "side": "phase_aware_endpoint_class"
++              }
++            ],
++            "restriction_class_rep_ids": [
++              "P3_R1",
++              "P3_R4"
++            ],
++            "selected_endpoint_id": "P3"
++          },
++          {
++            "basis_id": "L2_phase_aware_class_02",
++            "terms": [
++              {
++                "unknown": "P3_R2",
++                "coeff": 1,
++                "side": "phase_aware_endpoint_class"
++              },
++              {
++                "unknown": "P3_R3",
++                "coeff": -1,
++                "side": "phase_aware_endpoint_class"
++              }
++            ],
++            "restriction_class_rep_ids": [
++              "P3_R2",
++              "P3_R3"
++            ],
++            "selected_endpoint_id": "P3"
++          },
++          {
++            "basis_id": "L2_phase_aware_class_03",
++            "terms": [
++              {
++                "unknown": "P3_R5",
++                "coeff": 1,
++                "side": "phase_aware_endpoint_class"
++              },
++              {
++                "unknown": "P3_R6",
++                "coeff": -1,
++                "side": "phase_aware_endpoint_class"
++              }
++            ],
++            "restriction_class_rep_ids": [
++              "P3_R5",
++              "P3_R6"
++            ],
++            "selected_endpoint_id": "P3"
++          }
++        ]
+       }
+     },
+     {
+@@ -1126,6 +1470,9 @@
+         "L3_R3",
+         "L3_R4"
+       ],
++      "compatibility_field": "character",
++      "compatibility_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
++      "phase_aware_profile_used": "legacy",
+       "line_group_signature": {
+         "n_ops_total": 4,
+         "n_unitary_ops": 4,
+@@ -1142,6 +1489,12 @@
+           0,
+           0
+         ]
++      },
++      "phase_aware_refinement": {
++        "profile": "legacy",
++        "selected_endpoint_id": null,
++        "restriction_classes_by_endpoint": {},
++        "refinement_equations": []
+       }
+     },
+     {
+@@ -1601,6 +1954,9 @@
+         "L4_R3",
+         "L4_R4"
+       ],
++      "compatibility_field": "character",
++      "compatibility_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
++      "phase_aware_profile_used": "legacy",
+       "line_group_signature": {
+         "n_ops_total": 4,
+         "n_unitary_ops": 4,
+@@ -1617,6 +1973,12 @@
+           0,
+           0
+         ]
++      },
++      "phase_aware_refinement": {
++        "profile": "legacy",
++        "selected_endpoint_id": null,
++        "restriction_classes_by_endpoint": {},
++        "refinement_equations": []
+       }
+     },
+     {
+@@ -1884,6 +2246,9 @@
+         "L5_R3",
+         "L5_R4"
+       ],
++      "compatibility_field": "character",
++      "compatibility_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
++      "phase_aware_profile_used": "legacy",
+       "line_group_signature": {
+         "n_ops_total": 4,
+         "n_unitary_ops": 4,
+@@ -1900,6 +2265,12 @@
+           0,
+           0
+         ]
++      },
++      "phase_aware_refinement": {
++        "profile": "legacy",
++        "selected_endpoint_id": null,
++        "restriction_classes_by_endpoint": {},
++        "refinement_equations": []
+       }
+     },
+     {
+@@ -2107,6 +2478,9 @@
+         "L6_R3",
+         "L6_R4"
+       ],
++      "compatibility_field": "character",
++      "compatibility_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
++      "phase_aware_profile_used": "legacy",
+       "line_group_signature": {
+         "n_ops_total": 4,
+         "n_unitary_ops": 4,
+@@ -2123,6 +2497,12 @@
+           0,
+           0
+         ]
++      },
++      "phase_aware_refinement": {
++        "profile": "legacy",
++        "selected_endpoint_id": null,
++        "restriction_classes_by_endpoint": {},
++        "refinement_equations": []
+       }
+     },
+     {
+@@ -2249,6 +2629,9 @@
+       "line_basis_labels": [
+         "L7_R1"
+       ],
++      "compatibility_field": "character",
++      "compatibility_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
++      "phase_aware_profile_used": "legacy",
+       "line_group_signature": {
+         "n_ops_total": 4,
+         "n_unitary_ops": 4,
+@@ -2259,6 +2642,12 @@
+         "torsion": [
+           0
+         ]
++      },
++      "phase_aware_refinement": {
++        "profile": "legacy",
++        "selected_endpoint_id": null,
++        "restriction_classes_by_endpoint": {},
++        "refinement_equations": []
+       }
+     }
+   ],
+@@ -2678,6 +3067,132 @@
+           0
+         ]
+       },
++      {
++        "source_type": "line",
++        "line_id": "L2",
++        "basis_id": "L2_phase_aware_class_01",
++        "row_index_within_source": 3,
++        "matrix_row": [
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          1,
++          0,
++          0,
++          -1,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0
++        ]
++      },
++      {
++        "source_type": "line",
++        "line_id": "L2",
++        "basis_id": "L2_phase_aware_class_02",
++        "row_index_within_source": 4,
++        "matrix_row": [
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          1,
++          -1,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0
++        ]
++      },
++      {
++        "source_type": "line",
++        "line_id": "L2",
++        "basis_id": "L2_phase_aware_class_03",
++        "row_index_within_source": 5,
++        "matrix_row": [
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          1,
++          -1,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0,
++          0
++        ]
++      },
+       {
+         "source_type": "line",
+         "line_id": "L3",
+@@ -3718,6 +4233,114 @@
+         0,
+         0
+       ],
++      [
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        1,
++        0,
++        0,
++        -1,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0
++      ],
++      [
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        1,
++        -1,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0
++      ],
++      [
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        1,
++        -1,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0,
++        0
++      ],
+       [
+         0,
+         0,
