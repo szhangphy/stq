@@ -1,0 +1,19 @@
+{
+  "group": "194.1.1.1",
+  "extrinsic_active_path_removed": true,
+  "runtime_build_line_block_default_builder_variant": "authoritative",
+  "generic_mode_bundle_default_builder_variant": "authoritative",
+  "generic_result_objects_default_builder_variant": "authoritative",
+  "extrinsic_calls_raise": true,
+  "retired_compare_only_builders_present": [
+    "intrinsic_class_sum_compare_only",
+    "legacy_standard_space_projection"
+  ],
+  "stage2_role": "consumer_of_authoritative_stage1_runtime_only",
+  "stage2_uses_projection_override": false,
+  "stage2_uses_benchmark_override": false,
+  "authoritative_result_files": [
+    "sg194_authoritative_single_result_v1.json",
+    "sg194_authoritative_double_result_v1.json"
+  ]
+}

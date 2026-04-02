@@ -1,0 +1,30 @@
+`python3 -u sg194/debug_sg194_remove_extrinsic_fix_v1.py` key output:
+
+```text
+[1/6] load modules
+[2/6] build stage2 consumer outputs from authoritative runtime
+[3/6] build authoritative generic bundles
+[4/6] write audits
+[5/6] final validation
+[6/6] done
+{
+  "single_nullity": null,
+  "single_final_rank_ai": null,
+  "double_nullity": null,
+  "double_final_rank_ai": null,
+  "authoritative_builder": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1"
+}
+```
+
+First exact-solve blocker exposed before the final guarded rerun:
+
+```text
+mode=single manifold=L1 endpoint=P1 rep=P1_R1 field=linear_character: Linear system has no solution
+```
+
+Targeted field probe outcome:
+
+```text
+L6 / P2 under character: exact = False
+L6 / P2 under linear_character: exact = True with integer solutions [1,1,0,0], [0,0,1,1], [1,1,1,1]
+```

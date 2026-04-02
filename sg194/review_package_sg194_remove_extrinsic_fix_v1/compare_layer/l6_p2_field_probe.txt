@@ -1,0 +1,23 @@
+Targeted probe on the first post-LU exact-solve blocker:
+
+Context:
+- mode = single
+- manifold = L6
+- endpoint = P2
+- matched unitary indices = [0, 10, 15, 19]
+
+Result:
+- field = character
+  P2_R1: params_shape = (0, 1), exact = False
+  P2_R2: params_shape = (0, 1), exact = False
+  P2_R3: params_shape = (0, 1), exact = False
+
+- field = linear_character
+  P2_R1: params_shape = (0, 1), exact = True,  solution = [1, 1, 0, 0]
+  P2_R2: params_shape = (0, 1), exact = True,  solution = [0, 0, 1, 1]
+  P2_R3: params_shape = (0, 1), exact = True,  solution = [1, 1, 1, 1]
+
+Interpretation:
+- `character` is not an authoritative exact basis-decomposition field for this restriction probe.
+- The active authoritative builder was therefore unified to `linear_character`.
+- After that switch, the first remaining blocker moved to `L1 / P1 / P1_R1`.

@@ -1,0 +1,2643 @@
+{
+  "generated_at": "2026-04-02T15:54:38+08:00",
+  "group": "194.1.1.1",
+  "variants": {
+    "coarse": {
+      "single": {
+        "builder_variant": "coarse",
+        "matrix_shape": [
+          58,
+          42
+        ],
+        "rank": 26,
+        "nullity": 16,
+        "line_row_count": {
+          "L1": 6,
+          "L2": 3,
+          "L3": 4,
+          "L4": 4,
+          "L5": 4,
+          "L6": 4,
+          "L7": 1
+        },
+        "global_row_count": 58,
+        "ai_candidate_count": 45,
+        "ai_candidate_count_used": 45,
+        "ai_incompatible_count": 0,
+        "ai_embedding_failure_count": 0,
+        "surviving_ai_rank": 13,
+        "final_dAI": 13,
+        "surviving_classification": "Z^3",
+        "final_classification": "Z^3"
+      },
+      "double": {
+        "builder_variant": "coarse",
+        "matrix_shape": [
+          58,
+          42
+        ],
+        "rank": 26,
+        "nullity": 16,
+        "line_row_count": {
+          "L1": 6,
+          "L2": 3,
+          "L3": 4,
+          "L4": 4,
+          "L5": 4,
+          "L6": 4,
+          "L7": 1
+        },
+        "global_row_count": 58,
+        "ai_candidate_count": 45,
+        "ai_candidate_count_used": 45,
+        "ai_incompatible_count": 0,
+        "ai_embedding_failure_count": 0,
+        "surviving_ai_rank": 13,
+        "final_dAI": 13,
+        "surviving_classification": "Z^3",
+        "final_classification": "Z^3"
+      }
+    },
+    "intrinsic": {
+      "single": {
+        "builder_variant": "intrinsic",
+        "matrix_shape": [
+          79,
+          42
+        ],
+        "rank": 35,
+        "nullity": 7,
+        "line_row_count": {
+          "L1": 9,
+          "L2": 5,
+          "L3": 9,
+          "L4": 10,
+          "L5": 6,
+          "L6": 5,
+          "L7": 3
+        },
+        "global_row_count": 79,
+        "ai_candidate_count": 45,
+        "ai_candidate_count_used": 0,
+        "ai_incompatible_count": 45,
+        "ai_embedding_failure_count": 0,
+        "surviving_ai_rank": 0,
+        "final_dAI": null,
+        "surviving_classification": "Z^7",
+        "final_classification": null
+      },
+      "double": {
+        "builder_variant": "intrinsic",
+        "matrix_shape": [
+          77,
+          42
+        ],
+        "rank": 35,
+        "nullity": 7,
+        "line_row_count": {
+          "L1": 9,
+          "L2": 5,
+          "L3": 9,
+          "L4": 8,
+          "L5": 6,
+          "L6": 5,
+          "L7": 3
+        },
+        "global_row_count": 77,
+        "ai_candidate_count": 45,
+        "ai_candidate_count_used": 0,
+        "ai_incompatible_count": 45,
+        "ai_embedding_failure_count": 0,
+        "surviving_ai_rank": 0,
+        "final_dAI": null,
+        "surviving_classification": "Z^7",
+        "final_classification": null
+      }
+    },
+    "extrinsic": {
+      "single": {
+        "builder_variant": "extrinsic",
+        "matrix_shape": [
+          111,
+          42
+        ],
+        "rank": 41,
+        "nullity": 1,
+        "line_row_count": {
+          "L1": 15,
+          "L2": 8,
+          "L3": 16,
+          "L4": 20,
+          "L5": 10,
+          "L6": 5,
+          "L7": 5
+        },
+        "global_row_count": 111,
+        "ai_candidate_count": 45,
+        "ai_candidate_count_used": 0,
+        "ai_incompatible_count": 45,
+        "ai_embedding_failure_count": 0,
+        "surviving_ai_rank": 0,
+        "final_dAI": null,
+        "surviving_classification": "Z",
+        "final_classification": null
+      },
+      "double": {
+        "builder_variant": "extrinsic",
+        "matrix_shape": [
+          111,
+          42
+        ],
+        "rank": 41,
+        "nullity": 1,
+        "line_row_count": {
+          "L1": 15,
+          "L2": 8,
+          "L3": 16,
+          "L4": 20,
+          "L5": 10,
+          "L6": 5,
+          "L7": 5
+        },
+        "global_row_count": 111,
+        "ai_candidate_count": 45,
+        "ai_candidate_count_used": 0,
+        "ai_incompatible_count": 45,
+        "ai_embedding_failure_count": 0,
+        "surviving_ai_rank": 0,
+        "final_dAI": null,
+        "surviving_classification": "Z",
+        "final_classification": null
+      }
+    }
+  },
+  "single": {
+    "coarse_vs_intrinsic_kernel": {
+      "label": "single_coarse_minus_intrinsic",
+      "dimension": 9,
+      "big_nullity": 16,
+      "sub_nullity": 7,
+      "subspace_containment": true,
+      "support": [
+        {
+          "direction_id": "single_coarse_minus_intrinsic_01",
+          "nonzero_points": [
+            "P1",
+            "P2",
+            "P5",
+            "P6",
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": 1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R2",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": 1
+              }
+            ],
+            "P6": [
+              {
+                "unknown": "P6_R2",
+                "coeff": 1
+              }
+            ],
+            "S1": [
+              {
+                "unknown": "S1_R2",
+                "coeff": 2
+              }
+            ],
+            "S2": [
+              {
+                "unknown": "S2_R1",
+                "coeff": 2
+              }
+            ],
+            "S3": [
+              {
+                "unknown": "S3_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "S3_R2",
+                "coeff": 1
+              }
+            ],
+            "S4": [
+              {
+                "unknown": "S4_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "S4_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_intrinsic_02",
+          "nonzero_points": [
+            "P1",
+            "P5",
+            "S2"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              }
+            ],
+            "S2": [
+              {
+                "unknown": "S2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "S2_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_intrinsic_03",
+          "nonzero_points": [
+            "P1",
+            "P2",
+            "P5",
+            "P6",
+            "S1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R2",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R6",
+                "coeff": -1
+              }
+            ],
+            "P6": [
+              {
+                "unknown": "P6_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P6_R2",
+                "coeff": 1
+              }
+            ],
+            "S1": [
+              {
+                "unknown": "S1_R1",
+                "coeff": -2
+              },
+              {
+                "unknown": "S1_R2",
+                "coeff": 2
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_intrinsic_04",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R4",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_intrinsic_05",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_intrinsic_06",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R9",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R10",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_intrinsic_07",
+          "nonzero_points": [
+            "P1",
+            "P2"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R9",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R11",
+                "coeff": 1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_intrinsic_08",
+          "nonzero_points": [
+            "P3",
+            "P4"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P3_R2",
+                "coeff": 1
+              }
+            ],
+            "P4": [
+              {
+                "unknown": "P4_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_intrinsic_09",
+          "nonzero_points": [
+            "P3",
+            "P4"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R5",
+                "coeff": 1
+              }
+            ],
+            "P4": [
+              {
+                "unknown": "P4_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "coarse_vs_extrinsic_kernel": {
+      "label": "single_coarse_minus_extrinsic",
+      "dimension": 15,
+      "big_nullity": 16,
+      "sub_nullity": 1,
+      "subspace_containment": true,
+      "support": [
+        {
+          "direction_id": "single_coarse_minus_extrinsic_01",
+          "nonzero_points": [
+            "P1",
+            "P2",
+            "P5",
+            "P6",
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": 1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R2",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": 1
+              }
+            ],
+            "P6": [
+              {
+                "unknown": "P6_R2",
+                "coeff": 1
+              }
+            ],
+            "S1": [
+              {
+                "unknown": "S1_R2",
+                "coeff": 2
+              }
+            ],
+            "S2": [
+              {
+                "unknown": "S2_R1",
+                "coeff": 2
+              }
+            ],
+            "S3": [
+              {
+                "unknown": "S3_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "S3_R2",
+                "coeff": 1
+              }
+            ],
+            "S4": [
+              {
+                "unknown": "S4_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "S4_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_02",
+          "nonzero_points": [
+            "P1",
+            "P5",
+            "S2"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              }
+            ],
+            "S2": [
+              {
+                "unknown": "S2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "S2_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_03",
+          "nonzero_points": [
+            "P1",
+            "P2",
+            "P5",
+            "P6",
+            "S1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R2",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R6",
+                "coeff": -1
+              }
+            ],
+            "P6": [
+              {
+                "unknown": "P6_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P6_R2",
+                "coeff": 1
+              }
+            ],
+            "S1": [
+              {
+                "unknown": "S1_R1",
+                "coeff": -2
+              },
+              {
+                "unknown": "S1_R2",
+                "coeff": 2
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_04",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R4",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_05",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R4",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_06",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_07",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R6",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R7",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_08",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R9",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R10",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_09",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_10",
+          "nonzero_points": [
+            "P1",
+            "P2"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R9",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R11",
+                "coeff": 1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_11",
+          "nonzero_points": [
+            "P3",
+            "P4"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P3_R2",
+                "coeff": 1
+              }
+            ],
+            "P4": [
+              {
+                "unknown": "P4_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_12",
+          "nonzero_points": [
+            "P3",
+            "P4"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R5",
+                "coeff": 1
+              }
+            ],
+            "P4": [
+              {
+                "unknown": "P4_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_13",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R6",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_14",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R11",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R12",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_coarse_minus_extrinsic_15",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "intrinsic_vs_extrinsic_kernel": {
+      "label": "single_intrinsic_minus_extrinsic",
+      "dimension": 6,
+      "big_nullity": 7,
+      "sub_nullity": 1,
+      "subspace_containment": true,
+      "support": [
+        {
+          "direction_id": "single_intrinsic_minus_extrinsic_01",
+          "nonzero_points": [
+            "P5"
+          ],
+          "per_point": {
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R4",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R6",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_intrinsic_minus_extrinsic_02",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_intrinsic_minus_extrinsic_03",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R9",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R10",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R11",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R12",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_intrinsic_minus_extrinsic_04",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R4",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_intrinsic_minus_extrinsic_05",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R6",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "single_intrinsic_minus_extrinsic_06",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "double": {
+    "coarse_vs_intrinsic_kernel": {
+      "label": "double_coarse_minus_intrinsic",
+      "dimension": 9,
+      "big_nullity": 16,
+      "sub_nullity": 7,
+      "subspace_containment": true,
+      "support": [
+        {
+          "direction_id": "double_coarse_minus_intrinsic_01",
+          "nonzero_points": [
+            "P1",
+            "P2",
+            "P5",
+            "P6",
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": 1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R2",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": 1
+              }
+            ],
+            "P6": [
+              {
+                "unknown": "P6_R2",
+                "coeff": 1
+              }
+            ],
+            "S1": [
+              {
+                "unknown": "S1_R2",
+                "coeff": 2
+              }
+            ],
+            "S2": [
+              {
+                "unknown": "S2_R1",
+                "coeff": 2
+              }
+            ],
+            "S3": [
+              {
+                "unknown": "S3_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "S3_R2",
+                "coeff": 1
+              }
+            ],
+            "S4": [
+              {
+                "unknown": "S4_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "S4_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_intrinsic_02",
+          "nonzero_points": [
+            "P1",
+            "P5",
+            "S2"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              }
+            ],
+            "S2": [
+              {
+                "unknown": "S2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "S2_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_intrinsic_03",
+          "nonzero_points": [
+            "P1",
+            "P2",
+            "P5",
+            "P6",
+            "S1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R2",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R6",
+                "coeff": -1
+              }
+            ],
+            "P6": [
+              {
+                "unknown": "P6_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P6_R2",
+                "coeff": 1
+              }
+            ],
+            "S1": [
+              {
+                "unknown": "S1_R1",
+                "coeff": -2
+              },
+              {
+                "unknown": "S1_R2",
+                "coeff": 2
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_intrinsic_04",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R4",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_intrinsic_05",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_intrinsic_06",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R9",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R10",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_intrinsic_07",
+          "nonzero_points": [
+            "P1",
+            "P2"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R9",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R11",
+                "coeff": 1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_intrinsic_08",
+          "nonzero_points": [
+            "P3",
+            "P4"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P3_R2",
+                "coeff": 1
+              }
+            ],
+            "P4": [
+              {
+                "unknown": "P4_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_intrinsic_09",
+          "nonzero_points": [
+            "P3",
+            "P4"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R5",
+                "coeff": 1
+              }
+            ],
+            "P4": [
+              {
+                "unknown": "P4_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "coarse_vs_extrinsic_kernel": {
+      "label": "double_coarse_minus_extrinsic",
+      "dimension": 15,
+      "big_nullity": 16,
+      "sub_nullity": 1,
+      "subspace_containment": true,
+      "support": [
+        {
+          "direction_id": "double_coarse_minus_extrinsic_01",
+          "nonzero_points": [
+            "P1",
+            "P2",
+            "P5",
+            "P6",
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": 1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R2",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": 1
+              }
+            ],
+            "P6": [
+              {
+                "unknown": "P6_R2",
+                "coeff": 1
+              }
+            ],
+            "S1": [
+              {
+                "unknown": "S1_R2",
+                "coeff": 2
+              }
+            ],
+            "S2": [
+              {
+                "unknown": "S2_R1",
+                "coeff": 2
+              }
+            ],
+            "S3": [
+              {
+                "unknown": "S3_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "S3_R2",
+                "coeff": 1
+              }
+            ],
+            "S4": [
+              {
+                "unknown": "S4_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "S4_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_02",
+          "nonzero_points": [
+            "P1",
+            "P5",
+            "S2"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              }
+            ],
+            "S2": [
+              {
+                "unknown": "S2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "S2_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_03",
+          "nonzero_points": [
+            "P1",
+            "P2",
+            "P5",
+            "P6",
+            "S1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R2",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R6",
+                "coeff": -1
+              }
+            ],
+            "P6": [
+              {
+                "unknown": "P6_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P6_R2",
+                "coeff": 1
+              }
+            ],
+            "S1": [
+              {
+                "unknown": "S1_R1",
+                "coeff": -2
+              },
+              {
+                "unknown": "S1_R2",
+                "coeff": 2
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_04",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R4",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_05",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R4",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_06",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_07",
+          "nonzero_points": [
+            "P1",
+            "P5"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": 1
+              }
+            ],
+            "P5": [
+              {
+                "unknown": "P5_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R6",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R7",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_08",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R9",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R10",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_09",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_10",
+          "nonzero_points": [
+            "P1",
+            "P2"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R9",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R11",
+                "coeff": 1
+              }
+            ],
+            "P2": [
+              {
+                "unknown": "P2_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P2_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_11",
+          "nonzero_points": [
+            "P3",
+            "P4"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R1",
+                "coeff": 1
+              },
+              {
+                "unknown": "P3_R2",
+                "coeff": 1
+              }
+            ],
+            "P4": [
+              {
+                "unknown": "P4_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_12",
+          "nonzero_points": [
+            "P3",
+            "P4"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R5",
+                "coeff": 1
+              }
+            ],
+            "P4": [
+              {
+                "unknown": "P4_R2",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_13",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R6",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_14",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R11",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R12",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_coarse_minus_extrinsic_15",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "intrinsic_vs_extrinsic_kernel": {
+      "label": "double_intrinsic_minus_extrinsic",
+      "dimension": 6,
+      "big_nullity": 7,
+      "sub_nullity": 1,
+      "subspace_containment": true,
+      "support": [
+        {
+          "direction_id": "double_intrinsic_minus_extrinsic_01",
+          "nonzero_points": [
+            "P5"
+          ],
+          "per_point": {
+            "P5": [
+              {
+                "unknown": "P5_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R4",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R6",
+                "coeff": 1
+              },
+              {
+                "unknown": "P5_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P5_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_intrinsic_minus_extrinsic_02",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R9",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R10",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R11",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R12",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_intrinsic_minus_extrinsic_03",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R2",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R3",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_intrinsic_minus_extrinsic_04",
+          "nonzero_points": [
+            "P1"
+          ],
+          "per_point": {
+            "P1": [
+              {
+                "unknown": "P1_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R2",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R3",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R4",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R6",
+                "coeff": 1
+              },
+              {
+                "unknown": "P1_R7",
+                "coeff": -1
+              },
+              {
+                "unknown": "P1_R8",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_intrinsic_minus_extrinsic_05",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R1",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R4",
+                "coeff": 1
+              }
+            ]
+          }
+        },
+        {
+          "direction_id": "double_intrinsic_minus_extrinsic_06",
+          "nonzero_points": [
+            "P3"
+          ],
+          "per_point": {
+            "P3": [
+              {
+                "unknown": "P3_R5",
+                "coeff": -1
+              },
+              {
+                "unknown": "P3_R6",
+                "coeff": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "answers": {
+    "q1_intrinsic_gives_13": false,
+    "q1_extrinsic_gives_13": false,
+    "q1_coarse_gives_13": false
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "group": "194.1.1.1",
+  "authoritative_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+  "phase_aware_profile": "phase_aware_l2_projective_v1",
+  "single": {
+    "matrix_shape": null,
+    "rank": null,
+    "nullity": null,
+    "line_block_success_count": null,
+    "plane_block_success_count": null,
+    "final_rank_ai": null,
+    "final_classification": null,
+    "failure": "mode=single manifold=L1 endpoint=P1 rep=P1_R1 field=linear_character: Linear system has no solution"
+  },
+  "double": {
+    "matrix_shape": null,
+    "rank": null,
+    "nullity": null,
+    "line_block_success_count": null,
+    "plane_block_success_count": null,
+    "final_rank_ai": null,
+    "final_classification": null,
+    "failure": "mode=single manifold=L1 endpoint=P1 rep=P1_R1 field=linear_character: Linear system has no solution"
+  },
+  "stage2_consumer_probe": {
+    "stage2_role": "consumer_of_authoritative_stage1_runtime_only",
+    "single_nullity": null,
+    "double_nullity": null,
+    "single_phase_aware_profile": null,
+    "double_phase_aware_profile": null,
+    "failure": "mode=single manifold=L1 endpoint=P1 rep=P1_R1 field=linear_character: Linear system has no solution"
+  },
+  "decomposition_failures": [
+    "mode=single manifold=L1 endpoint=P1 rep=P1_R1 field=linear_character: Linear system has no solution",
+    "mode=single manifold=L1 endpoint=P1 rep=P1_R1 field=linear_character: Linear system has no solution"
+  ]
+}

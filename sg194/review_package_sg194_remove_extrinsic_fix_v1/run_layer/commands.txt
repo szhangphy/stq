@@ -1,0 +1,5 @@
+1. `python3 -m py_compile sg194/pipeline_v2/runtime_backend_free.py sg194/pipeline_v2/generic_builders.py sg194/debug_workflow_portability_194.1.1.1.py sg194/debug_workflow_portability_stage2_194.1.1.1.py sg194/debug_sg194_standard_space_projection_v1.py sg194/debug_sg194_remove_extrinsic_fix_v1.py`
+2. `python3 -u sg194/debug_sg194_remove_extrinsic_fix_v1.py`
+3. targeted field probe on `L6 / P2` comparing `character` vs `linear_character`
+4. `git status --short --branch`
+5. `git diff --stat`

@@ -1,0 +1,48 @@
+{
+  "group": "194.1.1.1",
+  "active_authoritative_builder": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+  "phase_aware_profile": "phase_aware_l2_projective_v1",
+  "solver_migrations": [
+    {
+      "file": "sg194/debug_workflow_portability_194.1.1.1.py",
+      "functions": [
+        "build_line_block",
+        "build_plane_block"
+      ],
+      "previous_solver": "LUsolve",
+      "current_solver": "gauss_jordan_solve_with_unique_integer_assertions"
+    },
+    {
+      "file": "sg194/pipeline_v2/runtime_backend_free.py",
+      "functions": [
+        "build_line_block_coarse",
+        "build_plane_block"
+      ],
+      "previous_solver": "LUsolve",
+      "current_solver": "gauss_jordan_solve_with_unique_integer_assertions"
+    }
+  ],
+  "phase_aware_default_entrypoints": [
+    "sg194/debug_workflow_portability_194.1.1.1.py::build_single_pilot",
+    "sg194/debug_workflow_portability_194.1.1.1.py::build_double_pilot",
+    "sg194/debug_workflow_portability_stage2_194.1.1.1.py::build_single_runtime",
+    "sg194/debug_workflow_portability_stage2_194.1.1.1.py::build_double_runtime",
+    "sg194/pipeline_v2/generic_builders.py::generic_mode_bundle"
+  ],
+  "non_unique_decomposition_detected": false,
+  "non_integral_decomposition_detected": false,
+  "runtime_probe": {
+    "single": {
+      "matrix_shape": null,
+      "nullity": null
+    },
+    "double": {
+      "matrix_shape": null,
+      "nullity": null
+    }
+  },
+  "run_failures": [
+    "mode=single manifold=L1 endpoint=P1 rep=P1_R1 field=linear_character: Linear system has no solution",
+    "mode=single manifold=L1 endpoint=P1 rep=P1_R1 field=linear_character: Linear system has no solution"
+  ]
+}
