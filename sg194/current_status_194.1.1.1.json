@@ -1,5 +1,10 @@
 {
   "target_group": "194.1.1.1",
+  "benchmark_authoritative": false,
+  "object_scope": "raw_internal_source_layer_only",
+  "raw_current_object_language_kind": "raw_current_with_planes_42_unknown_shell",
+  "stage2_target_transition": "Stage 2 is responsible for lifting these raw/current objects either into the ordinary external target rows or into the double benchmark-facing target object, depending on representation mode.",
+  "benchmark_relation": "This stage1 workflow only emits raw/current SG194 source objects. Benchmark-facing internalization happens later in debug_workflow_portability_stage2_194.1.1.1.py.",
   "single_status": {
     "target_group": "194.1.1.1",
     "group_type": 1,
@@ -10,16 +15,20 @@
       "point_line_relations": 14,
       "unmatched_line_endpoints_before_augmentation": 0,
       "plane_blocks_built": 4,
-      "status": "success"
+      "status": "success",
+      "authoritative_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+      "phase_aware_profile": "phase_aware_l2_projective_v1",
+      "published_object_kind": "automatic_reduced_final_point_path_shell",
+      "diagnostic_raw_with_planes_retained": true
     },
     "BS_status": {
       "status": "success",
       "matrix_shape": [
-        58,
-        42
+        29,
+        34
       ],
-      "rank": 26,
-      "nullity": 16,
+      "rank": 23,
+      "nullity": 11,
       "smith_diagonal": [
         1,
         1,
@@ -43,17 +52,18 @@
         1,
         1,
         1,
-        1,
-        1,
-        1,
-        1
+        2
+      ],
+      "diagnostic_raw_with_planes_matrix_shape": [
+        61,
+        42
       ]
     },
     "AI_status": {
       "status": "partial",
       "trivial_generators_count": 12,
-      "rank_trivial_family_span": 12,
-      "all_trivial_generators_compatibility_zero": true
+      "rank_trivial_family_span": 11,
+      "all_trivial_generators_compatibility_zero": false
     },
     "completeness_status": {
       "status": "blocked",
@@ -75,11 +85,11 @@
     "kspace_backbone_status": {
       "status": "success",
       "matrix_shape": [
-        58,
-        42
+        29,
+        34
       ],
-      "rank": 26,
-      "nullity": 16,
+      "rank": 23,
+      "nullity": 11,
       "smith_diagonal": [
         1,
         1,
@@ -103,10 +113,14 @@
         1,
         1,
         1,
-        1,
-        1,
-        1,
-        1
+        2
+      ],
+      "authoritative_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+      "phase_aware_profile": "phase_aware_l2_projective_v1",
+      "published_object_kind": "automatic_reduced_final_point_path_shell",
+      "diagnostic_raw_with_planes_matrix_shape": [
+        61,
+        42
       ]
     },
     "point_like_AI_status": {
@@ -121,21 +135,18 @@
   },
   "key_matrices": {
     "single_matrix_shape": [
-      58,
-      42
+      29,
+      34
     ],
-    "single_rank": 26,
-    "single_nullity": 16,
+    "single_rank": 23,
+    "single_nullity": 11,
     "double_matrix_shape": [
-      58,
-      42
+      29,
+      34
     ],
-    "double_rank": 26,
-    "double_nullity": 16
+    "double_rank": 23,
+    "double_nullity": 11
   },
   "blocker": "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly.",
-  "next_step": "Extend the local site-symmetry irrep/corep library on 194.1.1.1 so the AI lattice can be completed honestly.",
-  "benchmark_authoritative": false,
-  "object_scope": "raw_internal_source_layer_only",
-  "benchmark_relation": "This stage1 workflow only emits raw/current SG194 source objects. Benchmark-facing internalization happens later in debug_workflow_portability_stage2_194.1.1.1.py."
+  "next_step": "Extend the local site-symmetry irrep/corep library on 194.1.1.1 so the AI lattice can be completed honestly."
 }

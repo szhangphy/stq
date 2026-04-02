@@ -15,14 +15,14 @@ Current verified facts:
 - main_blocker = Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly.
 
 Current single-group matrix status:
-- shape = [58, 42]
-- rank = 26
-- nullity = 16
+- shape = [29, 34]
+- rank = 23
+- nullity = 11
 
 Current double-group matrix status:
-- shape = [58, 42]
-- rank = 26
-- nullity = 16
+- shape = [29, 34]
+- rank = 23
+- nullity = 11
 
 Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
 The next unique task is: implement a generic local real-space irrep/corep builder for the SG 194 site symmetries so that the current partial AI prototypes on 194.1.1.1 can be upgraded to an honest AI completeness audit and, if successful, quotient extraction.

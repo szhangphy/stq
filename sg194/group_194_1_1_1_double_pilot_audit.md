@@ -4,7 +4,7 @@
 
 - All special points, lines, and planes of 194.1.1.1 were captured successfully under `groupType=2`.
 - The same synthetic-boundary augmentation used by the single-group pilot also closes the double-group spatial connectivity layer.
-- The double-group with-planes k-space backbone was assembled successfully from raw/linear characters and subgroup restriction data.
+- The raw double-group with-planes 42-shell is retained as a diagnostic object, while the published double BS object uses the automatically reduced point/path shell.
 
 ## Minimal Prototype
 
@@ -14,4 +14,5 @@
 ## Current Limit
 
 - A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness.
+- Final point/path shell sizes: `6` points / `7` paths.
 - Therefore the present run establishes a reusable double-group seed and a reusable double-group k-space backbone, but not yet a full point-like / parametric AI census or any final double quotient.

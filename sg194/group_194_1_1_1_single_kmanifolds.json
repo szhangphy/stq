@@ -1514,7 +1514,7 @@
             "is_separately_listed_special_line": true,
             "reason": "Matches an existing 1D manifold orbit."
           },
-          "line_id": null
+          "line_id": "L5"
         },
         {
           "boundary_condition": "w = 0",
@@ -2052,7 +2052,7 @@
             "is_separately_listed_special_line": true,
             "reason": "Matches an existing 1D manifold orbit."
           },
-          "line_id": null
+          "line_id": "L3"
         },
         {
           "boundary_condition": "v = 1/2",
@@ -2957,7 +2957,7 @@
             "is_separately_listed_special_line": true,
             "reason": "Matches an existing 1D manifold orbit."
           },
-          "line_id": null
+          "line_id": "L6"
         },
         {
           "boundary_condition": "v = 1/2",
@@ -4605,7 +4605,7 @@
               "is_separately_listed_special_line": true,
               "reason": "Matches an existing 1D manifold orbit."
             },
-            "line_id": null
+            "line_id": "L5"
           },
           {
             "boundary_condition": "w = 0",
@@ -5105,7 +5105,7 @@
               "is_separately_listed_special_line": true,
               "reason": "Matches an existing 1D manifold orbit."
             },
-            "line_id": null
+            "line_id": "L3"
           },
           {
             "boundary_condition": "v = 1/2",
@@ -5934,7 +5934,7 @@
               "is_separately_listed_special_line": true,
               "reason": "Matches an existing 1D manifold orbit."
             },
-            "line_id": null
+            "line_id": "L6"
           },
           {
             "boundary_condition": "v = 1/2",
@@ -6284,6 +6284,12 @@
         "derived_line": "(0, 0, w)"
       },
       {
+        "line_id": "L5",
+        "plane_id": "S1",
+        "boundary_condition": "v = 1/2",
+        "derived_line": "(0, 1/2, w)"
+      },
+      {
         "line_id": "L3",
         "plane_id": "S1",
         "boundary_condition": "w = 0",
@@ -6300,6 +6306,12 @@
         "plane_id": "S2",
         "boundary_condition": "u = 0",
         "derived_line": "(0, v, 0)"
+      },
+      {
+        "line_id": "L3",
+        "plane_id": "S2",
+        "boundary_condition": "v = 0",
+        "derived_line": "(u, 0, 0)"
       },
       {
         "line_id": "L1",
@@ -6330,82 +6342,15 @@
         "plane_id": "S4",
         "boundary_condition": "u = 0",
         "derived_line": "(0, v, 1/2)"
+      },
+      {
+        "line_id": "L6",
+        "plane_id": "S4",
+        "boundary_condition": "v = 0",
+        "derived_line": "(u, 0, 1/2)"
       }
     ],
     "unmatched_plane_boundaries": [
-      {
-        "plane_id": "S1",
-        "boundary_condition": "v = 1/2",
-        "boundary_role": "geometric_boundary_line",
-        "derived_line": "(0, 1/2, w)",
-        "parameters": [
-          "w"
-        ],
-        "constraints": [
-          "0 < w",
-          "w < 1/2"
-        ],
-        "sample_point": [
-          "0",
-          "1/2",
-          "1/5"
-        ],
-        "symmetry_summary": {
-          "generic_point": [
-            "0",
-            "1/2",
-            "1/5"
-          ],
-          "generic_stabilizer_size": 4,
-          "generic_rotation_stabilizer_size": 4,
-          "pointwise_stabilizer_size": 4,
-          "pointwise_rotation_stabilizer_size": 4,
-          "site_symmetry": "m[x] * 2[z] * m[120]",
-          "site_symmetry_custom": "1",
-          "unitary_site_symmetry": "?"
-        },
-        "closure_under_pointwise_stabilizer": [
-          {
-            "dimension": 1,
-            "x0": [
-              "0",
-              "0",
-              "0"
-            ],
-            "basis_vecs": [
-              [
-                "0",
-                "0",
-                "1"
-              ]
-            ],
-            "line_id": "L1",
-            "plane_id": null
-          },
-          {
-            "dimension": 1,
-            "x0": [
-              "0",
-              "1/2",
-              "0"
-            ],
-            "basis_vecs": [
-              [
-                "0",
-                "0",
-                "1"
-              ]
-            ],
-            "line_id": "L5",
-            "plane_id": null
-          }
-        ],
-        "special_line_orbit_match": "L5",
-        "classification": {
-          "is_separately_listed_special_line": true,
-          "reason": "Matches an existing 1D manifold orbit."
-        }
-      },
       {
         "plane_id": "S2",
         "boundary_condition": "u = 1/2",
@@ -6487,79 +6432,6 @@
         "classification": {
           "is_separately_listed_special_line": false,
           "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S2, S4, so this is treated as a geometric boundary only."
-        }
-      },
-      {
-        "plane_id": "S2",
-        "boundary_condition": "v = 0",
-        "boundary_role": "geometric_boundary_line",
-        "derived_line": "(u, 0, 0)",
-        "parameters": [
-          "u"
-        ],
-        "constraints": [
-          "0 < u",
-          "u < 1/2"
-        ],
-        "sample_point": [
-          "1/5",
-          "0",
-          "0"
-        ],
-        "symmetry_summary": {
-          "generic_point": [
-            "1/5",
-            "0",
-            "0"
-          ],
-          "generic_stabilizer_size": 4,
-          "generic_rotation_stabilizer_size": 4,
-          "pointwise_stabilizer_size": 4,
-          "pointwise_rotation_stabilizer_size": 4,
-          "site_symmetry": "m[y] * m[z] * 2[210]",
-          "site_symmetry_custom": "1",
-          "unitary_site_symmetry": "?"
-        },
-        "closure_under_pointwise_stabilizer": [
-          {
-            "dimension": 1,
-            "x0": [
-              "0",
-              "0",
-              "0"
-            ],
-            "basis_vecs": [
-              [
-                "1",
-                "0",
-                "0"
-              ]
-            ],
-            "line_id": "L3",
-            "plane_id": null
-          },
-          {
-            "dimension": 1,
-            "x0": [
-              "0",
-              "0",
-              "1/2"
-            ],
-            "basis_vecs": [
-              [
-                "1",
-                "0",
-                "0"
-              ]
-            ],
-            "line_id": "L6",
-            "plane_id": null
-          }
-        ],
-        "special_line_orbit_match": "L3",
-        "classification": {
-          "is_separately_listed_special_line": true,
-          "reason": "Matches an existing 1D manifold orbit."
         }
       },
       {
@@ -6730,79 +6602,6 @@
       },
       {
         "plane_id": "S4",
-        "boundary_condition": "v = 0",
-        "boundary_role": "geometric_boundary_line",
-        "derived_line": "(u, 0, 1/2)",
-        "parameters": [
-          "u"
-        ],
-        "constraints": [
-          "0 < u",
-          "u < 1/2"
-        ],
-        "sample_point": [
-          "1/5",
-          "0",
-          "1/2"
-        ],
-        "symmetry_summary": {
-          "generic_point": [
-            "1/5",
-            "0",
-            "1/2"
-          ],
-          "generic_stabilizer_size": 4,
-          "generic_rotation_stabilizer_size": 4,
-          "pointwise_stabilizer_size": 4,
-          "pointwise_rotation_stabilizer_size": 4,
-          "site_symmetry": "m[y] * m[z] * 2[210]",
-          "site_symmetry_custom": "1",
-          "unitary_site_symmetry": "?"
-        },
-        "closure_under_pointwise_stabilizer": [
-          {
-            "dimension": 1,
-            "x0": [
-              "0",
-              "0",
-              "0"
-            ],
-            "basis_vecs": [
-              [
-                "1",
-                "0",
-                "0"
-              ]
-            ],
-            "line_id": "L3",
-            "plane_id": null
-          },
-          {
-            "dimension": 1,
-            "x0": [
-              "0",
-              "0",
-              "1/2"
-            ],
-            "basis_vecs": [
-              [
-                "1",
-                "0",
-                "0"
-              ]
-            ],
-            "line_id": "L6",
-            "plane_id": null
-          }
-        ],
-        "special_line_orbit_match": "L6",
-        "classification": {
-          "is_separately_listed_special_line": true,
-          "reason": "Matches an existing 1D manifold orbit."
-        }
-      },
-      {
-        "plane_id": "S4",
         "boundary_condition": "v = 1/2",
         "boundary_role": "geometric_boundary_line",
         "derived_line": "(u, 1/2, 1/2)",
@@ -6885,5 +6684,8215 @@
         }
       }
     ]
+  },
+  "final_object_reduction": {
+    "reduction_kind": "automatic_reduced_final_point_path_shell_v1",
+    "raw_counts": {
+      "grouped_point_count": 6,
+      "grouped_line_count": 7,
+      "grouped_plane_count": 4,
+      "synthetic_boundary_point_count": 0,
+      "point_capture_alias_count": 5,
+      "candidate_path_count": 62,
+      "kept_final_path_count": 7,
+      "discarded_duplicate_path_count": 55
+    },
+    "point_shell": [
+      {
+        "point_id": "P1",
+        "label": "a",
+        "representative_coordinates": [
+          "0",
+          "0",
+          "0"
+        ],
+        "aliases": [
+          {
+            "coordinates": [
+              "0",
+              "0",
+              "0"
+            ],
+            "capture_id": "P1"
+          }
+        ]
+      },
+      {
+        "point_id": "P2",
+        "label": "b",
+        "representative_coordinates": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "aliases": [
+          {
+            "coordinates": [
+              "0",
+              "0",
+              "1/2"
+            ],
+            "capture_id": "P2"
+          }
+        ]
+      },
+      {
+        "point_id": "P3",
+        "label": "c",
+        "representative_coordinates": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "aliases": [
+          {
+            "coordinates": [
+              "1/3",
+              "1/3",
+              "0"
+            ],
+            "capture_id": "P3"
+          },
+          {
+            "coordinates": [
+              "2/3",
+              "2/3",
+              "0"
+            ],
+            "capture_id": "P3"
+          }
+        ]
+      },
+      {
+        "point_id": "P4",
+        "label": "d",
+        "representative_coordinates": [
+          "2/3",
+          "2/3",
+          "1/2"
+        ],
+        "aliases": [
+          {
+            "coordinates": [
+              "2/3",
+              "2/3",
+              "1/2"
+            ],
+            "capture_id": "P4"
+          },
+          {
+            "coordinates": [
+              "1/3",
+              "1/3",
+              "1/2"
+            ],
+            "capture_id": "P4__1d3_1d3_1d2"
+          }
+        ]
+      },
+      {
+        "point_id": "P5",
+        "label": "f",
+        "representative_coordinates": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "aliases": [
+          {
+            "coordinates": [
+              "1/2",
+              "0",
+              "0"
+            ],
+            "capture_id": "P5"
+          },
+          {
+            "coordinates": [
+              "1/2",
+              "1/2",
+              "0"
+            ],
+            "capture_id": "P5__1d2_1d2_0"
+          },
+          {
+            "coordinates": [
+              "0",
+              "1/2",
+              "0"
+            ],
+            "capture_id": "P5__0_1d2_0"
+          }
+        ]
+      },
+      {
+        "point_id": "P6",
+        "label": "g",
+        "representative_coordinates": [
+          "1/2",
+          "0",
+          "1/2"
+        ],
+        "aliases": [
+          {
+            "coordinates": [
+              "1/2",
+              "0",
+              "1/2"
+            ],
+            "capture_id": "P6"
+          },
+          {
+            "coordinates": [
+              "1/2",
+              "1/2",
+              "1/2"
+            ],
+            "capture_id": "P6__1d2_1d2_1d2"
+          },
+          {
+            "coordinates": [
+              "0",
+              "1/2",
+              "1/2"
+            ],
+            "capture_id": "P6__0_1d2_1d2"
+          }
+        ]
+      }
+    ],
+    "final_point_ids": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6"
+    ],
+    "candidate_paths": [
+      {
+        "candidate_id": "CANDIDATE_PATH_001",
+        "source_kind": "listed_line",
+        "source_id": "L1",
+        "source_line_id": "L1",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "-w"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "0",
+          "3/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_002",
+        "source_kind": "listed_line",
+        "source_id": "L1",
+        "source_line_id": "L1",
+        "branch_index": 2,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_003",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "source_line_id": "L2",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/3",
+          "1/3",
+          "-w"
+        ],
+        "anchor": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P3",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/3",
+          "1/3",
+          "3/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_004",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "source_line_id": "L2",
+        "branch_index": 2,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/3",
+          "1/3",
+          "w"
+        ],
+        "anchor": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P3",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/3",
+          "1/3",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_005",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "source_line_id": "L2",
+        "branch_index": 3,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "2/3",
+          "2/3",
+          "-w"
+        ],
+        "anchor": [
+          "2/3",
+          "2/3",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P3",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "2/3",
+          "2/3",
+          "3/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_006",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "source_line_id": "L2",
+        "branch_index": 4,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "2/3",
+          "2/3",
+          "w"
+        ],
+        "anchor": [
+          "2/3",
+          "2/3",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P3",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "2/3",
+          "2/3",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_007",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__1d2_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_008",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "0",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "0",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_009",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "3/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_010",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_011",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__1d2_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "3/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_012",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "0",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "0",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_013",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "2/3",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_014",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/2",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_015",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "1/6",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_016",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__1d2_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_017",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "5/6",
+          "1/3",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_018",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "1/2",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_019",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "5/6",
+          "5/6",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_020",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__1d2_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "3/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_021",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "2v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "2",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/3",
+          "5/6",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_022",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "2v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "2",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "3/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_023",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-2v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-2",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "2/3",
+          "1/6",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_024",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-2v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-2",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_025",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "0",
+          "-w"
+        ],
+        "anchor": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "0",
+          "3/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_026",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 2,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "0",
+          "w"
+        ],
+        "anchor": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_027",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 3,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "1/2",
+          "-w"
+        ],
+        "anchor": [
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__1d2_1d2_0",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "1/2",
+          "3/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_028",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 4,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "1/2",
+          "w"
+        ],
+        "anchor": [
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__1d2_1d2_0",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "1/2",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_029",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 5,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "1/2",
+          "-w"
+        ],
+        "anchor": [
+          "0",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__0_1d2_0",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/2",
+          "3/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_030",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 6,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "1/2",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__0_1d2_0",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/2",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_031",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_032",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "0",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "0",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_033",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "0",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "3/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_034",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_035",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "3/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_036",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "0",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "0",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_037",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "2/3",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_038",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/2",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_039",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "1/6",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_040",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_041",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "5/6",
+          "1/3",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_042",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "1/2",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_043",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "5/6",
+          "5/6",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_044",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "3/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_045",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "2v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "2",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/3",
+          "5/6",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_046",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "2v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "2",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "3/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_047",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-2v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-2",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "2/3",
+          "1/6",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_048",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-2v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-2",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_049",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S1::v = 0",
+        "source_line_id": "L1",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_050",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S1::v = 1/2",
+        "source_line_id": "L5",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "1/2",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__0_1d2_0",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/2",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_051",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S1::w = 0",
+        "source_line_id": "L3",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_052",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S1::w = 1/2",
+        "source_line_id": "L6",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_053",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S2::u = 0",
+        "source_line_id": "L3",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_054",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S2::v = 0",
+        "source_line_id": "L3",
+        "branch_index": 1,
+        "parameter_name": "u",
+        "coordinate_expressions": [
+          "u",
+          "0",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "0",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_055",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::v = 0",
+        "source_line_id": "L1",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_056",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::v = 1/2",
+        "source_line_id": "L5",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "-1",
+          "w"
+        ],
+        "anchor": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_057",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::w = 0",
+        "source_line_id": "L4",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "2/3",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_058",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::w = 0",
+        "source_line_id": "L4",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/2",
+          "0"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_059",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::w = 1/2",
+        "source_line_id": "L7",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "2/3",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_060",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::w = 1/2",
+        "source_line_id": "L7",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/2",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_061",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S4::u = 0",
+        "source_line_id": "L6",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_062",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S4::v = 0",
+        "source_line_id": "L6",
+        "branch_index": 1,
+        "parameter_name": "u",
+        "coordinate_expressions": [
+          "u",
+          "0",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "0",
+          "1/2"
+        ],
+        "selection_status": "candidate"
+      }
+    ],
+    "discarded_paths": [
+      {
+        "candidate_id": "CANDIDATE_PATH_002",
+        "source_kind": "listed_line",
+        "source_id": "L1",
+        "source_line_id": "L1",
+        "branch_index": 2,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_049",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S1::v = 0",
+        "source_line_id": "L1",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_055",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::v = 0",
+        "source_line_id": "L1",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_019",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "5/6",
+          "5/6",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_013",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "2/3",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_017",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "5/6",
+          "1/3",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_021",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "2v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "2",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/3",
+          "5/6",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_023",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-2v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-2",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "2/3",
+          "1/6",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_057",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::w = 0",
+        "source_line_id": "L4",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "2/3",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_009",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "3/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_010",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_012",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "0",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "0",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_051",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S1::w = 0",
+        "source_line_id": "L3",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_053",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S2::u = 0",
+        "source_line_id": "L3",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_054",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S2::v = 0",
+        "source_line_id": "L3",
+        "branch_index": 1,
+        "parameter_name": "u",
+        "coordinate_expressions": [
+          "u",
+          "0",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "0",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_007",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__1d2_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_011",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__1d2_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "3/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_016",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__1d2_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_020",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__1d2_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "3/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_014",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/2",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_018",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "1/2",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_022",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "2v",
+          "-v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "2",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "3/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_024",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-2v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-2",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5__0_1d2_0"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "1/4",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_058",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::w = 0",
+        "source_line_id": "L4",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/2",
+          "0"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_043",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "5/6",
+          "5/6",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_037",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "2/3",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_041",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "5/6",
+          "1/3",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_045",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "2v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "2",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/3",
+          "5/6",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_047",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-2v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-2",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "2/3",
+          "1/6",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_059",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::w = 1/2",
+        "source_line_id": "L7",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "2/3",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_033",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "0",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "3/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_034",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_036",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "0",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "0",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_052",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S1::w = 1/2",
+        "source_line_id": "L6",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_061",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S4::u = 0",
+        "source_line_id": "L6",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "0",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "0",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_062",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S4::v = 0",
+        "source_line_id": "L6",
+        "branch_index": 1,
+        "parameter_name": "u",
+        "coordinate_expressions": [
+          "u",
+          "0",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "0",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_031",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_035",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "3/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_040",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_044",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 4,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "3/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_038",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/2",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_042",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 3,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "1/2",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_046",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 5,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "2v",
+          "-v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "2",
+          "-1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "3/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_048",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 6,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-2v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-2",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "1/4",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_060",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::w = 1/2",
+        "source_line_id": "L7",
+        "branch_index": 1,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "-2v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "-2",
+          "0"
+        ],
+        "branch_complexity": 3,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/4",
+          "1/2",
+          "1/2"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_004",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "source_line_id": "L2",
+        "branch_index": 2,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/3",
+          "1/3",
+          "w"
+        ],
+        "anchor": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P3",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/3",
+          "1/3",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_005",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "source_line_id": "L2",
+        "branch_index": 3,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "2/3",
+          "2/3",
+          "-w"
+        ],
+        "anchor": [
+          "2/3",
+          "2/3",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P3",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "2/3",
+          "2/3",
+          "3/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_006",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "source_line_id": "L2",
+        "branch_index": 4,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "2/3",
+          "2/3",
+          "w"
+        ],
+        "anchor": [
+          "2/3",
+          "2/3",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "2/3",
+            "2/3",
+            "0"
+          ],
+          [
+            "2/3",
+            "2/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P3",
+          "P4"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "2/3",
+          "2/3",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_026",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 2,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "0",
+          "w"
+        ],
+        "anchor": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_027",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 3,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "1/2",
+          "-w"
+        ],
+        "anchor": [
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__1d2_1d2_0",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "1/2",
+          "3/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_028",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 4,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "1/2",
+          "w"
+        ],
+        "anchor": [
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__1d2_1d2_0",
+          "P6__1d2_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "1/2",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_029",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 5,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "1/2",
+          "-w"
+        ],
+        "anchor": [
+          "0",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__0_1d2_0",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/2",
+          "3/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_030",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 6,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "1/2",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__0_1d2_0",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/2",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_050",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S1::v = 1/2",
+        "source_line_id": "L5",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "1/2",
+          "w"
+        ],
+        "anchor": [
+          "0",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "1/2",
+            "0"
+          ],
+          [
+            "0",
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5__0_1d2_0",
+          "P6__0_1d2_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "1/2",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_056",
+        "source_kind": "plane_boundary_orbit_match",
+        "source_id": "S3::v = 1/2",
+        "source_line_id": "L5",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "-1",
+          "w"
+        ],
+        "anchor": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "0",
+          "1/4"
+        ],
+        "selection_status": "discarded_duplicate_endpoint_pair",
+        "selection_reason": "Discarded because another candidate with the same final endpoint pair has lower branch complexity or higher selection priority."
+      }
+    ],
+    "kept_paths": [
+      {
+        "candidate_id": "CANDIDATE_PATH_001",
+        "source_kind": "listed_line",
+        "source_id": "L1",
+        "source_line_id": "L1",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "-w"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P2"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "0",
+          "0",
+          "3/4"
+        ],
+        "selection_status": "kept_final_representative",
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "final_path_id": "FPATH01"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_015",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "source_line_id": "L4",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P3"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P3"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "1/6",
+          "0"
+        ],
+        "selection_status": "kept_final_representative",
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "final_path_id": "FPATH02"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_008",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "source_line_id": "L3",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "0",
+          "0"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "-1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_ids": [
+          "P1",
+          "P5"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "0"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P1",
+          "P5"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "0",
+          "0"
+        ],
+        "selection_status": "kept_final_representative",
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "final_path_id": "FPATH03"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_039",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "source_line_id": "L7",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "1",
+          "1",
+          "0"
+        ],
+        "branch_complexity": 2,
+        "endpoint_pair": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "sample_parameter": "1/6",
+        "sample_point": [
+          "1/6",
+          "1/6",
+          "1/2"
+        ],
+        "selection_status": "kept_final_representative",
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "final_path_id": "FPATH04"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_032",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "source_line_id": "L6",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "coordinate_expressions": [
+          "-v",
+          "0",
+          "1/2"
+        ],
+        "anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "basis": [
+          "-1",
+          "0",
+          "0"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P2",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P2",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "3/4",
+          "0",
+          "1/2"
+        ],
+        "selection_status": "kept_final_representative",
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "final_path_id": "FPATH05"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_003",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "source_line_id": "L2",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/3",
+          "1/3",
+          "-w"
+        ],
+        "anchor": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_ids": [
+          "P3",
+          "P4"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/3",
+            "1/3",
+            "0"
+          ],
+          [
+            "1/3",
+            "1/3",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P3",
+          "P4__1d3_1d3_1d2"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/3",
+          "1/3",
+          "3/4"
+        ],
+        "selection_status": "kept_final_representative",
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "final_path_id": "FPATH06"
+      },
+      {
+        "candidate_id": "CANDIDATE_PATH_025",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "source_line_id": "L5",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "coordinate_expressions": [
+          "1/2",
+          "0",
+          "-w"
+        ],
+        "anchor": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "basis": [
+          "0",
+          "0",
+          "-1"
+        ],
+        "branch_complexity": 1,
+        "endpoint_pair": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_ids": [
+          "P5",
+          "P6"
+        ],
+        "endpoint_coordinates": [
+          [
+            "1/2",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "0",
+            "1/2"
+          ]
+        ],
+        "endpoint_capture_ids": [
+          "P5",
+          "P6"
+        ],
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "sample_parameter": "1/4",
+        "sample_point": [
+          "1/2",
+          "0",
+          "3/4"
+        ],
+        "selection_status": "kept_final_representative",
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "final_path_id": "FPATH07"
+      }
+    ],
+    "final_line_specs": [
+      {
+        "id": "FPATH01",
+        "source_line_id": "L1",
+        "source_kind": "listed_line",
+        "source_id": "L1",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "coordinate_expressions": [
+          "0",
+          "0",
+          "-w"
+        ],
+        "parametrization": "(0, 0, -w)",
+        "sample_point": [
+          "0",
+          "0",
+          "3/4"
+        ],
+        "_anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "_basis": [
+          [
+            "0",
+            "0",
+            "-1"
+          ]
+        ],
+        "_params": [
+          "w"
+        ],
+        "endpoints": [
+          {
+            "boundary_condition": "w = 0",
+            "point_id": "P1",
+            "point_coordinates": [
+              "0",
+              "0",
+              "0"
+            ],
+            "capture_id": "P1"
+          },
+          {
+            "boundary_condition": "w = 1/2",
+            "point_id": "P2",
+            "point_coordinates": [
+              "0",
+              "0",
+              "1/2"
+            ],
+            "capture_id": "P2"
+          }
+        ],
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "selection_source_metadata": {
+          "source_line_id": "L1",
+          "source_kind": "listed_line",
+          "source_id": "L1",
+          "branch_index": 1,
+          "endpoint_pair": [
+            "P1",
+            "P2"
+          ],
+          "branch_complexity": 1
+        }
+      },
+      {
+        "id": "FPATH02",
+        "source_line_id": "L4",
+        "source_kind": "listed_line",
+        "source_id": "L4",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "0"
+        ],
+        "parametrization": "(v, v, 0)",
+        "sample_point": [
+          "1/6",
+          "1/6",
+          "0"
+        ],
+        "_anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "_basis": [
+          [
+            "1",
+            "1",
+            "0"
+          ]
+        ],
+        "_params": [
+          "v"
+        ],
+        "endpoints": [
+          {
+            "boundary_condition": "v = 0",
+            "point_id": "P1",
+            "point_coordinates": [
+              "0",
+              "0",
+              "0"
+            ],
+            "capture_id": "P1"
+          },
+          {
+            "boundary_condition": "v = 1/3",
+            "point_id": "P3",
+            "point_coordinates": [
+              "1/3",
+              "1/3",
+              "0"
+            ],
+            "capture_id": "P3"
+          }
+        ],
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "selection_source_metadata": {
+          "source_line_id": "L4",
+          "source_kind": "listed_line",
+          "source_id": "L4",
+          "branch_index": 2,
+          "endpoint_pair": [
+            "P1",
+            "P3"
+          ],
+          "branch_complexity": 2
+        }
+      },
+      {
+        "id": "FPATH03",
+        "source_line_id": "L3",
+        "source_kind": "listed_line",
+        "source_id": "L3",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "coordinate_expressions": [
+          "-v",
+          "0",
+          "0"
+        ],
+        "parametrization": "(-v, 0, 0)",
+        "sample_point": [
+          "3/4",
+          "0",
+          "0"
+        ],
+        "_anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "_basis": [
+          [
+            "-1",
+            "0",
+            "0"
+          ]
+        ],
+        "_params": [
+          "v"
+        ],
+        "endpoints": [
+          {
+            "boundary_condition": "v = 0",
+            "point_id": "P1",
+            "point_coordinates": [
+              "0",
+              "0",
+              "0"
+            ],
+            "capture_id": "P1"
+          },
+          {
+            "boundary_condition": "v = 1/2",
+            "point_id": "P5",
+            "point_coordinates": [
+              "1/2",
+              "0",
+              "0"
+            ],
+            "capture_id": "P5"
+          }
+        ],
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "selection_source_metadata": {
+          "source_line_id": "L3",
+          "source_kind": "listed_line",
+          "source_id": "L3",
+          "branch_index": 2,
+          "endpoint_pair": [
+            "P1",
+            "P5"
+          ],
+          "branch_complexity": 1
+        }
+      },
+      {
+        "id": "FPATH04",
+        "source_line_id": "L7",
+        "source_kind": "listed_line",
+        "source_id": "L7",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "parameter_interval": [
+          "0",
+          "1/3"
+        ],
+        "coordinate_expressions": [
+          "v",
+          "v",
+          "1/2"
+        ],
+        "parametrization": "(v, v, 1/2)",
+        "sample_point": [
+          "1/6",
+          "1/6",
+          "1/2"
+        ],
+        "_anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "_basis": [
+          [
+            "1",
+            "1",
+            "0"
+          ]
+        ],
+        "_params": [
+          "v"
+        ],
+        "endpoints": [
+          {
+            "boundary_condition": "v = 0",
+            "point_id": "P2",
+            "point_coordinates": [
+              "0",
+              "0",
+              "1/2"
+            ],
+            "capture_id": "P2"
+          },
+          {
+            "boundary_condition": "v = 1/3",
+            "point_id": "P4",
+            "point_coordinates": [
+              "1/3",
+              "1/3",
+              "1/2"
+            ],
+            "capture_id": "P4__1d3_1d3_1d2"
+          }
+        ],
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "selection_source_metadata": {
+          "source_line_id": "L7",
+          "source_kind": "listed_line",
+          "source_id": "L7",
+          "branch_index": 2,
+          "endpoint_pair": [
+            "P2",
+            "P4"
+          ],
+          "branch_complexity": 2
+        }
+      },
+      {
+        "id": "FPATH05",
+        "source_line_id": "L6",
+        "source_kind": "listed_line",
+        "source_id": "L6",
+        "branch_index": 2,
+        "parameter_name": "v",
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "coordinate_expressions": [
+          "-v",
+          "0",
+          "1/2"
+        ],
+        "parametrization": "(-v, 0, 1/2)",
+        "sample_point": [
+          "3/4",
+          "0",
+          "1/2"
+        ],
+        "_anchor": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "_basis": [
+          [
+            "-1",
+            "0",
+            "0"
+          ]
+        ],
+        "_params": [
+          "v"
+        ],
+        "endpoints": [
+          {
+            "boundary_condition": "v = 0",
+            "point_id": "P2",
+            "point_coordinates": [
+              "0",
+              "0",
+              "1/2"
+            ],
+            "capture_id": "P2"
+          },
+          {
+            "boundary_condition": "v = 1/2",
+            "point_id": "P6",
+            "point_coordinates": [
+              "1/2",
+              "0",
+              "1/2"
+            ],
+            "capture_id": "P6"
+          }
+        ],
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "selection_source_metadata": {
+          "source_line_id": "L6",
+          "source_kind": "listed_line",
+          "source_id": "L6",
+          "branch_index": 2,
+          "endpoint_pair": [
+            "P2",
+            "P6"
+          ],
+          "branch_complexity": 1
+        }
+      },
+      {
+        "id": "FPATH06",
+        "source_line_id": "L2",
+        "source_kind": "listed_line",
+        "source_id": "L2",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "coordinate_expressions": [
+          "1/3",
+          "1/3",
+          "-w"
+        ],
+        "parametrization": "(1/3, 1/3, -w)",
+        "sample_point": [
+          "1/3",
+          "1/3",
+          "3/4"
+        ],
+        "_anchor": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "_basis": [
+          [
+            "0",
+            "0",
+            "-1"
+          ]
+        ],
+        "_params": [
+          "w"
+        ],
+        "endpoints": [
+          {
+            "boundary_condition": "w = 0",
+            "point_id": "P3",
+            "point_coordinates": [
+              "1/3",
+              "1/3",
+              "0"
+            ],
+            "capture_id": "P3"
+          },
+          {
+            "boundary_condition": "w = 1/2",
+            "point_id": "P4",
+            "point_coordinates": [
+              "1/3",
+              "1/3",
+              "1/2"
+            ],
+            "capture_id": "P4__1d3_1d3_1d2"
+          }
+        ],
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "selection_source_metadata": {
+          "source_line_id": "L2",
+          "source_kind": "listed_line",
+          "source_id": "L2",
+          "branch_index": 1,
+          "endpoint_pair": [
+            "P3",
+            "P4"
+          ],
+          "branch_complexity": 1
+        }
+      },
+      {
+        "id": "FPATH07",
+        "source_line_id": "L5",
+        "source_kind": "listed_line",
+        "source_id": "L5",
+        "branch_index": 1,
+        "parameter_name": "w",
+        "parameter_interval": [
+          "0",
+          "1/2"
+        ],
+        "coordinate_expressions": [
+          "1/2",
+          "0",
+          "-w"
+        ],
+        "parametrization": "(1/2, 0, -w)",
+        "sample_point": [
+          "1/2",
+          "0",
+          "3/4"
+        ],
+        "_anchor": [
+          "1/2",
+          "0",
+          "0"
+        ],
+        "_basis": [
+          [
+            "0",
+            "0",
+            "-1"
+          ]
+        ],
+        "_params": [
+          "w"
+        ],
+        "endpoints": [
+          {
+            "boundary_condition": "w = 0",
+            "point_id": "P5",
+            "point_coordinates": [
+              "1/2",
+              "0",
+              "0"
+            ],
+            "capture_id": "P5"
+          },
+          {
+            "boundary_condition": "w = 1/2",
+            "point_id": "P6",
+            "point_coordinates": [
+              "1/2",
+              "0",
+              "1/2"
+            ],
+            "capture_id": "P6"
+          }
+        ],
+        "selection_reason": "Selected as the simplest available representative for this endpoint pair after deduplicating orbit-equivalent raw/path candidates.",
+        "selection_source_metadata": {
+          "source_line_id": "L5",
+          "source_kind": "listed_line",
+          "source_id": "L5",
+          "branch_index": 1,
+          "endpoint_pair": [
+            "P5",
+            "P6"
+          ],
+          "branch_complexity": 1
+        }
+      }
+    ],
+    "capture_lookup_size": 10,
+    "published_unknown_ordering": [
+      "P1_R1",
+      "P1_R2",
+      "P1_R3",
+      "P1_R4",
+      "P1_R5",
+      "P1_R6",
+      "P1_R7",
+      "P1_R8",
+      "P1_R9",
+      "P1_R10",
+      "P1_R11",
+      "P1_R12",
+      "P2_R1",
+      "P2_R2",
+      "P2_R3",
+      "P3_R1",
+      "P3_R2",
+      "P3_R3",
+      "P3_R4",
+      "P3_R5",
+      "P3_R6",
+      "P4_R1",
+      "P4_R2",
+      "P4_R3",
+      "P5_R1",
+      "P5_R2",
+      "P5_R3",
+      "P5_R4",
+      "P5_R5",
+      "P5_R6",
+      "P5_R7",
+      "P5_R8",
+      "P6_R1",
+      "P6_R2"
+    ],
+    "published_path_ids": [
+      "FPATH01",
+      "FPATH02",
+      "FPATH03",
+      "FPATH04",
+      "FPATH05",
+      "FPATH06",
+      "FPATH07"
+    ]
+  },
+  "final_object_vs_bilbao_equivalent_check": {
+    "actual_point_ids": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6"
+    ],
+    "expected_point_ids": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6"
+    ],
+    "actual_path_pairs": [
+      [
+        "P1",
+        "P2"
+      ],
+      [
+        "P1",
+        "P3"
+      ],
+      [
+        "P1",
+        "P5"
+      ],
+      [
+        "P2",
+        "P4"
+      ],
+      [
+        "P2",
+        "P6"
+      ],
+      [
+        "P3",
+        "P4"
+      ],
+      [
+        "P5",
+        "P6"
+      ]
+    ],
+    "expected_path_pairs": [
+      [
+        "P1",
+        "P2"
+      ],
+      [
+        "P1",
+        "P3"
+      ],
+      [
+        "P1",
+        "P5"
+      ],
+      [
+        "P2",
+        "P4"
+      ],
+      [
+        "P2",
+        "P6"
+      ],
+      [
+        "P3",
+        "P4"
+      ],
+      [
+        "P5",
+        "P6"
+      ]
+    ],
+    "point_ids_match": true,
+    "point_count_match": true,
+    "path_pair_set_match": true,
+    "path_count_match": true
   }
 }

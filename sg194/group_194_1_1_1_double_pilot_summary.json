@@ -8,11 +8,11 @@
   "kspace_backbone_status": {
     "status": "success",
     "matrix_shape": [
-      58,
-      42
+      29,
+      34
     ],
-    "rank": 26,
-    "nullity": 16,
+    "rank": 23,
+    "nullity": 11,
     "smith_diagonal": [
       1,
       1,
@@ -36,10 +36,14 @@
       1,
       1,
       1,
-      1,
-      1,
-      1,
-      1
+      2
+    ],
+    "authoritative_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+    "phase_aware_profile": "phase_aware_l2_projective_v1",
+    "published_object_kind": "automatic_reduced_final_point_path_shell",
+    "diagnostic_raw_with_planes_matrix_shape": [
+      61,
+      42
     ]
   },
   "point_like_AI_status": {

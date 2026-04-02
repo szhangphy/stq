@@ -79,6 +79,13 @@ def build_result_objects(
     alignment: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     if _is_generic_spec(spec):
+        if spec.group_id == "194.1.1.1":
+            raise RuntimeError(
+                "Generic/public publication for 194.1.1.1 is blocked until the "
+                "automatic reduced final point/path builder is wired into the "
+                "generic path; raw 42-shell and projected shells remain "
+                "diagnostic-only and must not be published as final target objects."
+            )
         return generic_result_objects(spec.group_id)
     return adapter.build_result_objects(spec, artifacts)
 

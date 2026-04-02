@@ -1514,7 +1514,7 @@
             "is_separately_listed_special_line": true,
             "reason": "Matches an existing 1D manifold orbit."
           },
-          "line_id": null
+          "line_id": "L5"
         },
         {
           "boundary_condition": "w = 0",
@@ -2014,7 +2014,7 @@
             "is_separately_listed_special_line": true,
             "reason": "Matches an existing 1D manifold orbit."
           },
-          "line_id": null
+          "line_id": "L3"
         },
         {
           "boundary_condition": "v = 1/2",
@@ -2843,7 +2843,7 @@
             "is_separately_listed_special_line": true,
             "reason": "Matches an existing 1D manifold orbit."
           },
-          "line_id": null
+          "line_id": "L6"
         },
         {
           "boundary_condition": "v = 1/2",
@@ -3193,6 +3193,12 @@
       "derived_line": "(0, 0, w)"
     },
     {
+      "line_id": "L5",
+      "plane_id": "S1",
+      "boundary_condition": "v = 1/2",
+      "derived_line": "(0, 1/2, w)"
+    },
+    {
       "line_id": "L3",
       "plane_id": "S1",
       "boundary_condition": "w = 0",
@@ -3209,6 +3215,12 @@
       "plane_id": "S2",
       "boundary_condition": "u = 0",
       "derived_line": "(0, v, 0)"
+    },
+    {
+      "line_id": "L3",
+      "plane_id": "S2",
+      "boundary_condition": "v = 0",
+      "derived_line": "(u, 0, 0)"
     },
     {
       "line_id": "L1",
@@ -3239,82 +3251,15 @@
       "plane_id": "S4",
       "boundary_condition": "u = 0",
       "derived_line": "(0, v, 1/2)"
+    },
+    {
+      "line_id": "L6",
+      "plane_id": "S4",
+      "boundary_condition": "v = 0",
+      "derived_line": "(u, 0, 1/2)"
     }
   ],
   "unmatched_plane_boundaries": [
-    {
-      "plane_id": "S1",
-      "boundary_condition": "v = 1/2",
-      "boundary_role": "geometric_boundary_line",
-      "derived_line": "(0, 1/2, w)",
-      "parameters": [
-        "w"
-      ],
-      "constraints": [
-        "0 < w",
-        "w < 1/2"
-      ],
-      "sample_point": [
-        "0",
-        "1/2",
-        "1/5"
-      ],
-      "symmetry_summary": {
-        "generic_point": [
-          "0",
-          "1/2",
-          "1/5"
-        ],
-        "generic_stabilizer_size": 4,
-        "generic_rotation_stabilizer_size": 4,
-        "pointwise_stabilizer_size": 4,
-        "pointwise_rotation_stabilizer_size": 4,
-        "site_symmetry": "m[x] * 2[z] * m[120]",
-        "site_symmetry_custom": "1",
-        "unitary_site_symmetry": "?"
-      },
-      "closure_under_pointwise_stabilizer": [
-        {
-          "dimension": 1,
-          "x0": [
-            "0",
-            "0",
-            "0"
-          ],
-          "basis_vecs": [
-            [
-              "0",
-              "0",
-              "1"
-            ]
-          ],
-          "line_id": "L1",
-          "plane_id": null
-        },
-        {
-          "dimension": 1,
-          "x0": [
-            "0",
-            "1/2",
-            "0"
-          ],
-          "basis_vecs": [
-            [
-              "0",
-              "0",
-              "1"
-            ]
-          ],
-          "line_id": "L5",
-          "plane_id": null
-        }
-      ],
-      "special_line_orbit_match": "L5",
-      "classification": {
-        "is_separately_listed_special_line": true,
-        "reason": "Matches an existing 1D manifold orbit."
-      }
-    },
     {
       "plane_id": "S2",
       "boundary_condition": "u = 1/2",
@@ -3396,79 +3341,6 @@
       "classification": {
         "is_separately_listed_special_line": false,
         "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S2, S4, so this is treated as a geometric boundary only."
-      }
-    },
-    {
-      "plane_id": "S2",
-      "boundary_condition": "v = 0",
-      "boundary_role": "geometric_boundary_line",
-      "derived_line": "(u, 0, 0)",
-      "parameters": [
-        "u"
-      ],
-      "constraints": [
-        "0 < u",
-        "u < 1/2"
-      ],
-      "sample_point": [
-        "1/5",
-        "0",
-        "0"
-      ],
-      "symmetry_summary": {
-        "generic_point": [
-          "1/5",
-          "0",
-          "0"
-        ],
-        "generic_stabilizer_size": 4,
-        "generic_rotation_stabilizer_size": 4,
-        "pointwise_stabilizer_size": 4,
-        "pointwise_rotation_stabilizer_size": 4,
-        "site_symmetry": "m[y] * m[z] * 2[210]",
-        "site_symmetry_custom": "1",
-        "unitary_site_symmetry": "?"
-      },
-      "closure_under_pointwise_stabilizer": [
-        {
-          "dimension": 1,
-          "x0": [
-            "0",
-            "0",
-            "0"
-          ],
-          "basis_vecs": [
-            [
-              "1",
-              "0",
-              "0"
-            ]
-          ],
-          "line_id": "L3",
-          "plane_id": null
-        },
-        {
-          "dimension": 1,
-          "x0": [
-            "0",
-            "0",
-            "1/2"
-          ],
-          "basis_vecs": [
-            [
-              "1",
-              "0",
-              "0"
-            ]
-          ],
-          "line_id": "L6",
-          "plane_id": null
-        }
-      ],
-      "special_line_orbit_match": "L3",
-      "classification": {
-        "is_separately_listed_special_line": true,
-        "reason": "Matches an existing 1D manifold orbit."
       }
     },
     {
@@ -3635,79 +3507,6 @@
       "classification": {
         "is_separately_listed_special_line": false,
         "reason": "Pointwise stabilizer closes back to separately listed plane manifolds S2, S4, so this is treated as a geometric boundary only."
-      }
-    },
-    {
-      "plane_id": "S4",
-      "boundary_condition": "v = 0",
-      "boundary_role": "geometric_boundary_line",
-      "derived_line": "(u, 0, 1/2)",
-      "parameters": [
-        "u"
-      ],
-      "constraints": [
-        "0 < u",
-        "u < 1/2"
-      ],
-      "sample_point": [
-        "1/5",
-        "0",
-        "1/2"
-      ],
-      "symmetry_summary": {
-        "generic_point": [
-          "1/5",
-          "0",
-          "1/2"
-        ],
-        "generic_stabilizer_size": 4,
-        "generic_rotation_stabilizer_size": 4,
-        "pointwise_stabilizer_size": 4,
-        "pointwise_rotation_stabilizer_size": 4,
-        "site_symmetry": "m[y] * m[z] * 2[210]",
-        "site_symmetry_custom": "1",
-        "unitary_site_symmetry": "?"
-      },
-      "closure_under_pointwise_stabilizer": [
-        {
-          "dimension": 1,
-          "x0": [
-            "0",
-            "0",
-            "0"
-          ],
-          "basis_vecs": [
-            [
-              "1",
-              "0",
-              "0"
-            ]
-          ],
-          "line_id": "L3",
-          "plane_id": null
-        },
-        {
-          "dimension": 1,
-          "x0": [
-            "0",
-            "0",
-            "1/2"
-          ],
-          "basis_vecs": [
-            [
-              "1",
-              "0",
-              "0"
-            ]
-          ],
-          "line_id": "L6",
-          "plane_id": null
-        }
-      ],
-      "special_line_orbit_match": "L6",
-      "classification": {
-        "is_separately_listed_special_line": true,
-        "reason": "Matches an existing 1D manifold orbit."
       }
     },
     {

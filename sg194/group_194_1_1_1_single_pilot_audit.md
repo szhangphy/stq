@@ -2,9 +2,9 @@
 
 ## Outcome
 
-- Real-space geometry, k-space manifolds, little-group capture, line compatibility, plane augmentation, and the BS kernel construction all run on 194.1.1.1.
+- Real-space geometry, k-space manifolds, little-group capture, raw line compatibility, plane augmentation, and the BS kernel construction all run on 194.1.1.1.
 - The current pilot had to add `0` synthetic 0D boundary points because the raw k-geometry contains `0` line endpoints that are not emitted by `swyckoff_k.py` as separately listed special points.
-- That synthetic-boundary augmentation is the main code-level portability change relative to 10.4.1.31.
+- The final published single-group BS object is now the automatically reduced point/path shell; the raw with-planes 42-shell remains diagnostic only.
 
 ## Direct Reuse Successes
 
@@ -21,7 +21,9 @@
 
 ## Status Summary
 
-- BS matrix shape/rank/nullity: `[58, 42]`, `26`, `16`.
-- Trivial-family AI prototype count/rank: `12` / `12`.
+- BS matrix shape/rank/nullity: `[29, 34]`, `23`, `11`.
+- Final point/path shell sizes: `6` points / `7` paths.
+- Bilbao-equivalent sanity check (diagnostic only): point ids match = `True`, path pair set match = `True`.
+- Trivial-family AI prototype count/rank: `12` / `11`.
 - AI completeness: blocked. Reason: Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly.
 - Quotient / indicator extraction: blocked until a complete AI lattice exists.

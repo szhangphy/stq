@@ -24,6 +24,110 @@
       4
     ],
     "P3": [
+      4,
+      4,
+      4,
+      4,
+      8,
+      8
+    ],
+    "P4": [
+      8,
+      8,
+      8
+    ],
+    "P5": [
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "P6": [
+      6,
+      6
+    ],
+    "L1": [
+      2,
+      2,
+      2,
+      2,
+      4,
+      4
+    ],
+    "L2": [
+      4,
+      4,
+      8
+    ],
+    "L3": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "L4": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "L5": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "L6": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "L7": [
+      12
+    ],
+    "S1": [
+      12,
+      12
+    ],
+    "S2": [
+      12,
+      12
+    ],
+    "S3": [
+      12,
+      12
+    ],
+    "S4": [
+      12,
+      12
+    ]
+  },
+  "raw_manifold_multiplicities": {
+    "P1": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "P2": [
+      2,
+      2,
+      4
+    ],
+    "P3": [
       2,
       2,
       2,
@@ -679,6 +783,42 @@
       }
     ]
   },
+  "raw_unknown_vector": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    4,
+    2,
+    2,
+    2,
+    2,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    6,
+    6
+  ],
   "unknown_vector": [
     1,
     1,
@@ -695,15 +835,15 @@
     2,
     2,
     4,
-    2,
-    2,
-    2,
-    2,
     4,
     4,
     4,
     4,
-    4,
+    8,
+    8,
+    8,
+    8,
+    8,
     3,
     3,
     3,
@@ -713,20 +853,159 @@
     3,
     3,
     6,
-    6,
-    12,
-    12,
-    12,
-    12,
-    12,
-    12,
-    12,
-    12
+    6
   ],
-  "compatibility_zero": true,
+  "compatibility_zero": false,
+  "point_row_translation_profile": "phase_aware_point_row_translation_v1",
   "stabilizer_size": 1,
   "unitary_stabilizer_size": 1,
   "generator_id": "l_double_trivial",
   "bridge_reused": true,
-  "projective_note": "The real-space prototype uses the trivial stabilizer of family l, so the first portable double-group witness does not yet require a nontrivial local projective-character solver."
+  "projective_note": "The real-space prototype uses the trivial stabilizer of family l, so the first portable double-group witness does not yet require a nontrivial local projective-character solver.",
+  "object_role": "published_final_point_path_shell_minimal_witness",
+  "unknown_ordering": [
+    "P1_R1",
+    "P1_R2",
+    "P1_R3",
+    "P1_R4",
+    "P1_R5",
+    "P1_R6",
+    "P1_R7",
+    "P1_R8",
+    "P1_R9",
+    "P1_R10",
+    "P1_R11",
+    "P1_R12",
+    "P2_R1",
+    "P2_R2",
+    "P2_R3",
+    "P3_R1",
+    "P3_R2",
+    "P3_R3",
+    "P3_R4",
+    "P3_R5",
+    "P3_R6",
+    "P4_R1",
+    "P4_R2",
+    "P4_R3",
+    "P5_R1",
+    "P5_R2",
+    "P5_R3",
+    "P5_R4",
+    "P5_R5",
+    "P5_R6",
+    "P5_R7",
+    "P5_R8",
+    "P6_R1",
+    "P6_R2"
+  ],
+  "point_row_translation": {
+    "profile": "phase_aware_point_row_translation_v1",
+    "enabled": true,
+    "line_id": "FPATH06",
+    "selected_endpoint_id": "P3",
+    "selected_endpoint_override": null,
+    "other_endpoint_id": "P4",
+    "selected_endpoint_class_actions": [
+      {
+        "class_id": "FPATH06_phase_aware_class_01",
+        "endpoint_id": "P3",
+        "rep_ids": [
+          "P3_R1",
+          "P3_R4"
+        ],
+        "rep_indices": [
+          0,
+          3
+        ],
+        "class_size": 2,
+        "basis_labels": [
+          "FPATH06_R2"
+        ],
+        "unknown_indices": [
+          15,
+          18
+        ],
+        "action": "replicate_class_sum_on_members"
+      },
+      {
+        "class_id": "FPATH06_phase_aware_class_02",
+        "endpoint_id": "P3",
+        "rep_ids": [
+          "P3_R2",
+          "P3_R3"
+        ],
+        "rep_indices": [
+          1,
+          2
+        ],
+        "class_size": 2,
+        "basis_labels": [
+          "FPATH06_R1"
+        ],
+        "unknown_indices": [
+          16,
+          17
+        ],
+        "action": "replicate_class_sum_on_members"
+      },
+      {
+        "class_id": "FPATH06_phase_aware_class_03",
+        "endpoint_id": "P3",
+        "rep_ids": [
+          "P3_R5",
+          "P3_R6"
+        ],
+        "rep_indices": [
+          4,
+          5
+        ],
+        "class_size": 2,
+        "basis_labels": [
+          "FPATH06_R3"
+        ],
+        "unknown_indices": [
+          19,
+          20
+        ],
+        "action": "replicate_class_sum_on_members"
+      }
+    ],
+    "other_endpoint_scalings": [
+      {
+        "endpoint_id": "P4",
+        "rep_id": "P4_R1",
+        "rep_index": 0,
+        "factor": 2,
+        "touched_basis_labels": [
+          "FPATH06_R3"
+        ],
+        "unknown_index": 21,
+        "action": "scale_opposite_endpoint_multiplicity"
+      },
+      {
+        "endpoint_id": "P4",
+        "rep_id": "P4_R2",
+        "rep_index": 1,
+        "factor": 2,
+        "touched_basis_labels": [
+          "FPATH06_R3"
+        ],
+        "unknown_index": 22,
+        "action": "scale_opposite_endpoint_multiplicity"
+      },
+      {
+        "endpoint_id": "P4",
+        "rep_id": "P4_R3",
+        "rep_index": 2,
+        "factor": 2,
+        "touched_basis_labels": [
+          "FPATH06_R1",
+          "FPATH06_R2"
+        ],
+        "unknown_index": 23,
+        "action": "scale_opposite_endpoint_multiplicity"
+      }
+    ]
+  }
 }

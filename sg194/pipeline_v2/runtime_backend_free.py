@@ -42,6 +42,12 @@ from sympy.matrices.normalforms import smith_normal_form
 from common import swyckoff_k, swyckoff_r
 
 from . import runtime_bridge as bridge
+from .final_object_reduction import (
+    build_expected_check_markdown,
+    build_reduction_report_markdown,
+    compare_reduction_to_expected_pairs,
+    reduce_final_point_path_shell,
+)
 from . import runtime_group_ops as single_expanded
 
 REFERENCE_GROUP = "10.4.1.31"
@@ -75,6 +81,10 @@ DOUBLE_LITTLE_GROUPS_JSON = ROOT / "group_194_1_1_1_double_little_groups.json"
 DOUBLE_WITH_PLANES_JSON = ROOT / "group_194_1_1_1_double_full_compatibility_with_planes.json"
 DOUBLE_BS_JSON = ROOT / "group_194_1_1_1_double_bs_analysis.json"
 DOUBLE_MINIMAL_JSON = ROOT / "group_194_1_1_1_double_minimal_prototype.json"
+REDUCTION_REPORT_MD = ROOT / "bs_fix_reaudit_v1" / "final_object_reduction_report.md"
+REDUCTION_REPORT_JSON = ROOT / "bs_fix_reaudit_v1" / "final_object_reduction_report.json"
+REDUCTION_CHECK_MD = ROOT / "bs_fix_reaudit_v1" / "final_object_vs_bilbao_equivalent_check.md"
+REDUCTION_CHECK_JSON = ROOT / "bs_fix_reaudit_v1" / "final_object_vs_bilbao_equivalent_check.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -151,10 +161,12 @@ def json_default(value: Any) -> Any:
 
 
 def write_json(path: Path, obj: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, ensure_ascii=True, default=json_default) + "\n")
 
 
 def write_text(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text.rstrip() + "\n")
 
 
@@ -629,17 +641,19 @@ def infer_plane_connectivity(planes: Sequence[dict], lines: Sequence[dict], ctx:
                 candidate["symmetry_summary"] = symmetry_summary
                 candidate["closure_under_pointwise_stabilizer"] = closure
                 orbit_key = swyckoff_k.subspace_orbit_key(anchor, [free_basis], ctx["ops"])
-                candidate["special_line_orbit_match"] = line_orbit_to_id.get(orbit_key)
+                orbit_line_id = line_orbit_to_id.get(orbit_key)
+                candidate["special_line_orbit_match"] = orbit_line_id
                 candidate["classification"] = {
-                    "is_separately_listed_special_line": bool(line_orbit_to_id.get(orbit_key)),
-                    "reason": "Matches an existing 1D manifold orbit." if line_orbit_to_id.get(orbit_key) else "Does not match any listed 1D manifold orbit.",
+                    "is_separately_listed_special_line": bool(orbit_line_id),
+                    "reason": "Matches an existing 1D manifold orbit." if orbit_line_id else "Does not match any listed 1D manifold orbit.",
                 }
-                if line:
-                    candidate["line_id"] = line["id"]
+                matched_line_id = line["id"] if line else orbit_line_id
+                if matched_line_id is not None:
+                    candidate["line_id"] = matched_line_id
                     boundaries.append(candidate)
                     line_plane.append(
                         {
-                            "line_id": line["id"],
+                            "line_id": matched_line_id,
                             "plane_id": plane["id"],
                             "boundary_condition": condition,
                             "derived_line": candidate["parametrization"],
@@ -798,7 +812,13 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
         "special_line_plane_incidences": special_line_plane_incidences,
         "unmatched_plane_boundaries": unmatched_plane_boundaries,
     }
-    return {"grouped": grouped, "payload": payload}
+    return {
+        "grouped": grouped,
+        "payload": payload,
+        "ctx": ctx,
+        "line_orbit_to_id": line_orbit_to_id,
+        "plane_orbit_to_id": plane_orbit_to_id,
+    }
 
 
 def build_kgeometry(group_number: str) -> dict[str, Any]:
@@ -1444,6 +1464,7 @@ def build_line_block_coarse(
 ) -> dict[str, Any]:
     normalized_phase_profile, selected_endpoint_override = phase_aware_l2_profile_config(phase_aware_profile)
     line_id = line_obj["id"]
+    source_line_id = line_obj.get("source_line_id", line_id)
     endpoint_entries = [
         {
             "point_id": endpoint["point_id"],
@@ -1536,7 +1557,7 @@ def build_line_block_coarse(
     }
     if normalized_phase_profile == "phase_aware_l2_projective_v1":
         phase_aware_refinement = phase_aware_l2_refinement(
-            line_id,
+            source_line_id,
             endpoint_entries,
             captures,
             selected_endpoint_override=selected_endpoint_override,
@@ -1568,6 +1589,7 @@ def build_line_block_coarse(
         "status": "success",
         "builder_variant": "coarse",
         "line_id": line_id,
+        "source_line_id": source_line_id,
         "endpoint_ids": endpoint_ids,
         "line_sample_point": line_obj["sample_point"],
         "line_parametrization": line_obj["parametrization"],
@@ -1899,7 +1921,14 @@ def build_phase_aware_point_row_translation(
     if normalized_phase_profile != "phase_aware_l2_projective_v1":
         return translation
 
-    line_block = next((block for block in line_blocks if block["line_id"] == "L2"), None)
+    line_block = next(
+        (
+            block
+            for block in line_blocks
+            if block.get("source_line_id", block["line_id"]) == "L2"
+        ),
+        None,
+    )
     if line_block is None:
         return translation
 
@@ -2380,6 +2409,94 @@ def build_point_instance_entries(kgeom: dict[str, Any]) -> list[dict[str, Any]]:
     return point_instances
 
 
+def annotate_final_path_lines(
+    final_line_specs: Sequence[dict[str, Any]],
+    ctx: dict[str, Any],
+    line_orbit_to_id: dict[str, str],
+    plane_orbit_to_id: dict[str, str],
+) -> list[dict[str, Any]]:
+    lines: list[dict[str, Any]] = []
+    for spec in final_line_specs:
+        anchor = [Fraction(value) for value in spec["_anchor"]]
+        basis = [Fraction(value) for value in spec["_basis"][0]]
+        line = dict(spec)
+        line["symmetry_summary"] = subspace_symmetry_summary(anchor, [basis], ctx)
+        line["closure_under_pointwise_stabilizer"] = closure_components(
+            anchor,
+            [basis],
+            ctx,
+            line_orbit_to_id,
+            plane_orbit_to_id,
+        )
+        lines.append(line)
+    return lines
+
+
+def capture_final_path_lines(
+    module: Any,
+    group_number: str,
+    ssg_dict: dict[str, Any],
+    ctx: dict[str, Any],
+    group_label: str,
+    captures: dict[str, Any],
+    final_lines: Sequence[dict[str, Any]],
+) -> None:
+    for line in final_lines:
+        captures[line["id"]] = capture_little_group(
+            module,
+            group_number,
+            ssg_dict,
+            ctx,
+            group_label,
+            line["id"],
+            [float(Fraction(value)) for value in line["sample_point"]],
+        )
+
+
+def build_bilbao_equivalent_sanity_check(reduction: dict[str, Any]) -> dict[str, Any]:
+    return compare_reduction_to_expected_pairs(
+        reduction,
+        expected_point_ids=["P1", "P2", "P3", "P4", "P5", "P6"],
+        expected_endpoint_pairs=[
+            ["P1", "P2"],
+            ["P1", "P3"],
+            ["P1", "P5"],
+            ["P2", "P4"],
+            ["P2", "P6"],
+            ["P3", "P4"],
+            ["P5", "P6"],
+        ],
+    )
+
+
+def write_reduction_reports(
+    reduction: dict[str, Any],
+    sanity_check: dict[str, Any],
+    *,
+    published_line_full: dict[str, Any],
+    published_bs_analysis: dict[str, Any],
+    diagnostic_with_planes: dict[str, Any],
+    diagnostic_bs_analysis: dict[str, Any],
+) -> None:
+    reduction_payload = {
+        **reduction,
+        "published_line_matrix_shape": [
+            len(published_line_full["global_matrix"]),
+            len(published_line_full["global_unknown_ordering"]),
+        ],
+        "published_bs_analysis": published_bs_analysis,
+        "diagnostic_with_planes_matrix_shape": [
+            len(diagnostic_with_planes["global_matrix"]),
+            len(diagnostic_with_planes["global_unknown_ordering"]),
+        ],
+        "diagnostic_bs_analysis": diagnostic_bs_analysis,
+    }
+    write_json(REDUCTION_REPORT_JSON, reduction_payload)
+    write_text(REDUCTION_REPORT_MD, build_reduction_report_markdown(reduction_payload))
+    write_json(REDUCTION_CHECK_JSON, sanity_check)
+    write_text(REDUCTION_CHECK_MD, build_expected_check_markdown(sanity_check))
+
+
 def build_controlled_case() -> tuple[dict[str, Any], str]:
     try:
         import spglib
@@ -2502,7 +2619,14 @@ def build_single_pilot(
     prepared_kgeom = prepare_kgeometry(TARGET_GROUP)
     kgeom_payload = prepared_kgeom["payload"]
     grouped = prepared_kgeom["grouped"]
-    kgeom = {"payload": kgeom_payload, "grouped": grouped, "connectivity": kgeom_payload}
+    kgeom = {
+        "payload": kgeom_payload,
+        "grouped": grouped,
+        "connectivity": kgeom_payload,
+        "runtime_ctx": prepared_kgeom["ctx"],
+        "line_orbit_to_id": prepared_kgeom["line_orbit_to_id"],
+        "plane_orbit_to_id": prepared_kgeom["plane_orbit_to_id"],
+    }
     synthetic_points = build_synthetic_boundary_points(kgeom)
     kgeom["synthetic_boundary_points"] = synthetic_points
     augment_connectivity_with_boundary_points(kgeom, synthetic_points)
@@ -2512,8 +2636,8 @@ def build_single_pilot(
     captures = build_manifold_capture(module, TARGET_GROUP, ssg_dict, ctx, "single", kgeom)
 
     point_ids = [item["id"] for item in grouped["points"]] + [item["id"] for item in synthetic_points]
-    print("[pilot] single: line blocks")
-    line_blocks = [
+    print("[pilot] single: raw diagnostic line blocks")
+    raw_line_blocks = [
         build_line_block(
             line,
             captures,
@@ -2522,17 +2646,42 @@ def build_single_pilot(
         )
         for line in grouped["lines"]
     ]
-    line_full = build_global_compatibility(line_blocks, point_ids)
+    raw_line_full = build_global_compatibility(raw_line_blocks, point_ids)
 
-    print("[pilot] single: plane blocks")
+    print("[pilot] single: raw diagnostic plane blocks")
     plane_blocks = [build_plane_block(plane, plane["corner_entries"], captures) for plane in grouped["planes"]]
-    with_planes = build_with_planes_compatibility(line_full, plane_blocks)
-    bs_analysis = analyze_kernel(with_planes)
+    with_planes = build_with_planes_compatibility(raw_line_full, plane_blocks)
+    diagnostic_bs_analysis = analyze_kernel(with_planes)
+    print("[pilot] single: automatic final-object reduction")
+    reduction = reduce_final_point_path_shell(kgeom)
+    final_lines = annotate_final_path_lines(
+        reduction["final_line_specs"],
+        kgeom["runtime_ctx"],
+        kgeom["line_orbit_to_id"],
+        kgeom["plane_orbit_to_id"],
+    )
+    capture_final_path_lines(module, TARGET_GROUP, ssg_dict, ctx, "single", captures, final_lines)
+    final_line_blocks = [
+        build_line_block(
+            line,
+            captures,
+            phase_aware_profile=line_phase_profile,
+            builder_variant="authoritative",
+        )
+        for line in final_lines
+    ]
+    final_line_full = build_global_compatibility(final_line_blocks, reduction["final_point_ids"])
+    bs_analysis = analyze_kernel(final_line_full)
     point_row_translation = build_phase_aware_point_row_translation(
-        line_blocks,
+        final_line_blocks,
         bs_analysis["unknown_ordering"],
         phase_aware_profile=line_phase_profile,
     )
+    reduction["published_unknown_ordering"] = list(bs_analysis["unknown_ordering"])
+    reduction["published_path_ids"] = [block["line_id"] for block in final_line_blocks]
+    sanity_check = build_bilbao_equivalent_sanity_check(reduction)
+    kgeom["final_object_reduction"] = reduction
+    kgeom["final_published_lines"] = final_lines
 
     print("[pilot] single: atomic prototype")
     ai_candidates = []
@@ -2544,26 +2693,82 @@ def build_single_pilot(
             ctx,
             captures,
             bs_analysis["unknown_ordering"],
-            with_planes["global_matrix"],
+            final_line_full["global_matrix"],
             point_row_translation=point_row_translation,
         )
         candidate["generator_id"] = f"{entry['letter']}_trivial"
         ai_candidates.append(candidate)
     ai_matrix = sp.Matrix.hstack(*[sp.Matrix(candidate["unknown_vector"]) for candidate in ai_candidates]) if ai_candidates else sp.zeros(len(bs_analysis["unknown_ordering"]), 0)
     ai_rank = int(ai_matrix.rank()) if ai_candidates else 0
+    write_reduction_reports(
+        reduction,
+        sanity_check,
+        published_line_full=final_line_full,
+        published_bs_analysis=bs_analysis,
+        diagnostic_with_planes=with_planes,
+        diagnostic_bs_analysis=diagnostic_bs_analysis,
+    )
 
     write_json(SINGLE_KMANIFOLDS_JSON, {
         "group_number": TARGET_GROUP,
         "objects": strip_internal_fields(grouped["points"] + grouped["lines"] + grouped["planes"]),
         "synthetic_boundary_points": synthetic_points,
         "connectivity": kgeom_payload,
+        "final_object_reduction": reduction,
+        "final_object_vs_bilbao_equivalent_check": sanity_check,
     })
     write_json(SINGLE_CONNECTIVITY_JSON, kgeom_payload)
     write_json(SINGLE_LITTLE_GROUPS_JSON, captures)
-    write_json(SINGLE_LINE_COMPAT_JSON, {"line_blocks": line_blocks, "line_full": line_full})
-    write_json(SINGLE_WITH_PLANES_JSON, with_planes)
-    write_json(SINGLE_BS_JSON, bs_analysis)
-    write_json(SINGLE_AI_JSON, {"generators": ai_candidates, "rank_trivial_family_span": ai_rank})
+    write_json(
+        SINGLE_LINE_COMPAT_JSON,
+        {
+            "published_object_kind": "automatic_reduced_final_point_path_shell",
+            "path_set_kind": "automatic_reduced_final_point_path_shell",
+            "final_point_ids": reduction["final_point_ids"],
+            "final_path_ids": reduction["published_path_ids"],
+            "line_blocks": final_line_blocks,
+            "line_full": final_line_full,
+            "diagnostic_raw_line_blocks": raw_line_blocks,
+            "diagnostic_raw_line_full": raw_line_full,
+            "final_object_reduction": reduction,
+            "final_object_vs_bilbao_equivalent_check": sanity_check,
+        },
+    )
+    write_json(
+        SINGLE_WITH_PLANES_JSON,
+        {
+            "object_role": "diagnostic_internal_raw_with_planes_42_shell",
+            "published_status": "diagnostic_only",
+            **with_planes,
+            "diagnostic_bs_analysis": diagnostic_bs_analysis,
+        },
+    )
+    write_json(
+        SINGLE_BS_JSON,
+        {
+            **bs_analysis,
+            "object_role": "published_final_point_path_shell",
+            "path_set_kind": "automatic_reduced_final_point_path_shell",
+            "final_point_ids": reduction["final_point_ids"],
+            "final_path_ids": reduction["published_path_ids"],
+            "diagnostic_raw_with_planes": {
+                "matrix_shape": diagnostic_bs_analysis["matrix_shape"],
+                "rank": diagnostic_bs_analysis["rank"],
+                "nullity": diagnostic_bs_analysis["nullity"],
+            },
+            "final_object_vs_bilbao_equivalent_check": sanity_check,
+        },
+    )
+    write_json(
+        SINGLE_AI_JSON,
+        {
+            "object_role": "published_final_point_path_shell_ai_seed",
+            "unknown_ordering": bs_analysis["unknown_ordering"],
+            "point_row_translation": point_row_translation,
+            "generators": ai_candidates,
+            "rank_trivial_family_span": ai_rank,
+        },
+    )
 
     completeness_blocker = "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly."
     summary = {
@@ -2571,7 +2776,7 @@ def build_single_pilot(
         "group_type": 1,
         "geometry_status": "success",
         "compatibility_status": {
-            "line_blocks_built": len(line_blocks),
+            "line_blocks_built": len(final_line_blocks),
             "synthetic_boundary_points_added": len(synthetic_points),
             "point_line_relations": len(kgeom_payload["point_line"]),
             "unmatched_line_endpoints_before_augmentation": len(kgeom_payload["unmatched_line_endpoints"]),
@@ -2579,6 +2784,8 @@ def build_single_pilot(
             "status": "success",
             "authoritative_builder_kind": AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND,
             "phase_aware_profile": line_phase_profile,
+            "published_object_kind": "automatic_reduced_final_point_path_shell",
+            "diagnostic_raw_with_planes_retained": True,
         },
         "BS_status": {
             "status": "success",
@@ -2586,6 +2793,7 @@ def build_single_pilot(
             "rank": bs_analysis["rank"],
             "nullity": bs_analysis["nullity"],
             "smith_diagonal": bs_analysis["smith_diagonal"],
+            "diagnostic_raw_with_planes_matrix_shape": diagnostic_bs_analysis["matrix_shape"],
         },
         "AI_status": {
             "status": "partial",
@@ -2603,9 +2811,9 @@ def build_single_pilot(
         "",
         "## Outcome",
         "",
-        "- Real-space geometry, k-space manifolds, little-group capture, line compatibility, plane augmentation, and the BS kernel construction all run on 194.1.1.1.",
+        "- Real-space geometry, k-space manifolds, little-group capture, raw line compatibility, plane augmentation, and the BS kernel construction all run on 194.1.1.1.",
         f"- The current pilot had to add `{len(synthetic_points)}` synthetic 0D boundary points because the raw k-geometry contains `{len(kgeom_payload['unmatched_line_endpoints'])}` line endpoints that are not emitted by `swyckoff_k.py` as separately listed special points.",
-        "- That synthetic-boundary augmentation is the main code-level portability change relative to 10.4.1.31.",
+        "- The final published single-group BS object is now the automatically reduced point/path shell; the raw with-planes 42-shell remains diagnostic only.",
         "",
         "## Direct Reuse Successes",
         "",
@@ -2623,6 +2831,8 @@ def build_single_pilot(
         "## Status Summary",
         "",
         f"- BS matrix shape/rank/nullity: `{bs_analysis['matrix_shape']}`, `{bs_analysis['rank']}`, `{bs_analysis['nullity']}`.",
+        f"- Final point/path shell sizes: `{len(reduction['final_point_ids'])}` points / `{len(reduction['published_path_ids'])}` paths.",
+        f"- Bilbao-equivalent sanity check (diagnostic only): point ids match = `{sanity_check['point_ids_match']}`, path pair set match = `{sanity_check['path_pair_set_match']}`.",
         f"- Trivial-family AI prototype count/rank: `{len(ai_candidates)}` / `{ai_rank}`.",
         f"- AI completeness: blocked. Reason: {completeness_blocker}",
         "- Quotient / indicator extraction: blocked until a complete AI lattice exists.",
@@ -2633,7 +2843,11 @@ def build_single_pilot(
         "kgeom": kgeom,
         "captures": captures,
         "with_planes": with_planes,
+        "line_full": final_line_full,
         "bs_analysis": bs_analysis,
+        "diagnostic_bs_analysis": diagnostic_bs_analysis,
+        "reduction": reduction,
+        "sanity_check": sanity_check,
         "ai_candidates": ai_candidates,
         "point_row_translation": point_row_translation,
         "phase_aware_profile": line_phase_profile,
@@ -2652,8 +2866,8 @@ def build_double_pilot(
     print("[pilot] double: manifold capture")
     captures = build_manifold_capture(module, TARGET_GROUP, ssg_dict, ctx, "double", single_kgeom)
     point_ids = [item["id"] for item in single_kgeom["grouped"]["points"]] + [item["id"] for item in single_kgeom["synthetic_boundary_points"]]
-    print("[pilot] double: line blocks")
-    line_blocks = [
+    print("[pilot] double: raw diagnostic line blocks")
+    raw_line_blocks = [
         build_line_block(
             line,
             captures,
@@ -2662,13 +2876,28 @@ def build_double_pilot(
         )
         for line in single_kgeom["grouped"]["lines"]
     ]
-    line_full = build_global_compatibility(line_blocks, point_ids)
-    print("[pilot] double: plane blocks")
+    raw_line_full = build_global_compatibility(raw_line_blocks, point_ids)
+    print("[pilot] double: raw diagnostic plane blocks")
     plane_blocks = [build_plane_block(plane, plane["corner_entries"], captures) for plane in single_kgeom["grouped"]["planes"]]
-    with_planes = build_with_planes_compatibility(line_full, plane_blocks)
-    bs_analysis = analyze_kernel(with_planes)
+    with_planes = build_with_planes_compatibility(raw_line_full, plane_blocks)
+    diagnostic_bs_analysis = analyze_kernel(with_planes)
+    print("[pilot] double: automatic final-object reduction")
+    reduction = single_kgeom["final_object_reduction"]
+    final_lines = [dict(line) for line in single_kgeom["final_published_lines"]]
+    capture_final_path_lines(module, TARGET_GROUP, ssg_dict, ctx, "double", captures, final_lines)
+    final_line_blocks = [
+        build_line_block(
+            line,
+            captures,
+            phase_aware_profile=line_phase_profile,
+            builder_variant="authoritative",
+        )
+        for line in final_lines
+    ]
+    final_line_full = build_global_compatibility(final_line_blocks, reduction["final_point_ids"])
+    bs_analysis = analyze_kernel(final_line_full)
     point_row_translation = build_phase_aware_point_row_translation(
-        line_blocks,
+        final_line_blocks,
         bs_analysis["unknown_ordering"],
         phase_aware_profile=line_phase_profile,
     )
@@ -2682,7 +2911,7 @@ def build_double_pilot(
         ctx,
         captures,
         bs_analysis["unknown_ordering"],
-        with_planes["global_matrix"],
+        final_line_full["global_matrix"],
         point_row_translation=point_row_translation,
     )
     minimal["generator_id"] = "l_double_trivial"
@@ -2690,9 +2919,39 @@ def build_double_pilot(
     minimal["projective_note"] = "The real-space prototype uses the trivial stabilizer of family l, so the first portable double-group witness does not yet require a nontrivial local projective-character solver."
 
     write_json(DOUBLE_LITTLE_GROUPS_JSON, captures)
-    write_json(DOUBLE_WITH_PLANES_JSON, with_planes)
-    write_json(DOUBLE_BS_JSON, bs_analysis)
-    write_json(DOUBLE_MINIMAL_JSON, minimal)
+    write_json(
+        DOUBLE_WITH_PLANES_JSON,
+        {
+            "object_role": "diagnostic_internal_raw_with_planes_42_shell",
+            "published_status": "diagnostic_only",
+            **with_planes,
+            "diagnostic_bs_analysis": diagnostic_bs_analysis,
+        },
+    )
+    write_json(
+        DOUBLE_BS_JSON,
+        {
+            **bs_analysis,
+            "object_role": "published_final_point_path_shell",
+            "path_set_kind": "automatic_reduced_final_point_path_shell",
+            "final_point_ids": reduction["final_point_ids"],
+            "final_path_ids": reduction["published_path_ids"],
+            "diagnostic_raw_with_planes": {
+                "matrix_shape": diagnostic_bs_analysis["matrix_shape"],
+                "rank": diagnostic_bs_analysis["rank"],
+                "nullity": diagnostic_bs_analysis["nullity"],
+            },
+        },
+    )
+    write_json(
+        DOUBLE_MINIMAL_JSON,
+        {
+            **minimal,
+            "object_role": "published_final_point_path_shell_minimal_witness",
+            "unknown_ordering": bs_analysis["unknown_ordering"],
+            "point_row_translation": point_row_translation,
+        },
+    )
 
     blocker = "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
     summary = {
@@ -2710,6 +2969,8 @@ def build_double_pilot(
             "smith_diagonal": bs_analysis["smith_diagonal"],
             "authoritative_builder_kind": AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND,
             "phase_aware_profile": line_phase_profile,
+            "published_object_kind": "automatic_reduced_final_point_path_shell",
+            "diagnostic_raw_with_planes_matrix_shape": diagnostic_bs_analysis["matrix_shape"],
         },
         "point_like_AI_status": {"status": "blocked", "blocker": blocker},
         "parametric_status": {"status": "blocked", "blocker": blocker},
@@ -2722,7 +2983,7 @@ def build_double_pilot(
         "",
         "- All special points, lines, and planes of 194.1.1.1 were captured successfully under `groupType=2`.",
         "- The same synthetic-boundary augmentation used by the single-group pilot also closes the double-group spatial connectivity layer.",
-        "- The double-group with-planes k-space backbone was assembled successfully from raw/linear characters and subgroup restriction data.",
+        "- The raw double-group with-planes 42-shell is retained as a diagnostic object, while the published double BS object uses the automatically reduced point/path shell.",
         "",
         "## Minimal Prototype",
         "",
@@ -2732,13 +2993,17 @@ def build_double_pilot(
         "## Current Limit",
         "",
         f"- {blocker}",
+        f"- Final point/path shell sizes: `{len(reduction['final_point_ids'])}` points / `{len(reduction['published_path_ids'])}` paths.",
         "- Therefore the present run establishes a reusable double-group seed and a reusable double-group k-space backbone, but not yet a full point-like / parametric AI census or any final double quotient.",
     ]
     return {
         "summary": summary,
         "audit_text": "\n".join(lines),
         "with_planes": with_planes,
+        "line_full": final_line_full,
         "bs_analysis": bs_analysis,
+        "diagnostic_bs_analysis": diagnostic_bs_analysis,
+        "reduction": reduction,
         "minimal": minimal,
         "point_row_translation": point_row_translation,
         "phase_aware_profile": line_phase_profile,
