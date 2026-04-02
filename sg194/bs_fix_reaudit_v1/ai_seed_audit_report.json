@@ -1,0 +1,32 @@
+{
+  "ai_status": "seed_only",
+  "object_language": "published_final_point_path_shell_34_unknowns",
+  "unknown_count": 34,
+  "generator_count": 12,
+  "rank_trivial_family_span": 12,
+  "compatibility_zero_count": 4,
+  "compatibility_zero_family_letters": [
+    "l",
+    "j",
+    "f",
+    "e"
+  ],
+  "nonzero_residual_family_letters": [
+    "k",
+    "i",
+    "h",
+    "g",
+    "d",
+    "c",
+    "b",
+    "a"
+  ],
+  "point_row_translation_profile": "legacy",
+  "point_row_translation_enabled": false,
+  "missing_prerequisites": [
+    "complete nontrivial local irrep/corep library for SG 194 site symmetries",
+    "honest AI induction semantics on the published final point/path shell",
+    "AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis"
+  ],
+  "honest_ai_lattice_ready": false
+}

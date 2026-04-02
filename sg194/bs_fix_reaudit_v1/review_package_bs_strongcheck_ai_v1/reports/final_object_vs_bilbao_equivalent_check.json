@@ -1,0 +1,82 @@
+{
+  "actual_point_ids": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "expected_point_ids": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6"
+  ],
+  "actual_path_pairs": [
+    [
+      "P1",
+      "P2"
+    ],
+    [
+      "P1",
+      "P3"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P2",
+      "P4"
+    ],
+    [
+      "P2",
+      "P6"
+    ],
+    [
+      "P3",
+      "P4"
+    ],
+    [
+      "P5",
+      "P6"
+    ]
+  ],
+  "expected_path_pairs": [
+    [
+      "P1",
+      "P2"
+    ],
+    [
+      "P1",
+      "P3"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P2",
+      "P4"
+    ],
+    [
+      "P2",
+      "P6"
+    ],
+    [
+      "P3",
+      "P4"
+    ],
+    [
+      "P5",
+      "P6"
+    ]
+  ],
+  "point_ids_match": true,
+  "point_count_match": true,
+  "path_pair_set_match": true,
+  "path_count_match": true
+}

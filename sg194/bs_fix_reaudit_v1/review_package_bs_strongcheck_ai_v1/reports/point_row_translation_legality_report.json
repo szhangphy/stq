@@ -1,0 +1,208 @@
+{
+  "candidate_translation_profile": "phase_aware_point_row_translation_v1",
+  "candidate_translation_enabled": true,
+  "published_translation_profile": "legacy",
+  "published_translation_enabled": false,
+  "generator_count": 12,
+  "raw_compatibility_zero_count": 4,
+  "translated_compatibility_zero_count": 0,
+  "improved_count": 0,
+  "worsened_count": 12,
+  "unchanged_count": 0,
+  "legality_status": "removed",
+  "legality_reason": "phase-aware point-row translation is not retained on the published final point/path shell because the translated seed does not dominate the raw seed mechanically on the regenerated 34-unknown compatibility object.",
+  "generator_checks": [
+    {
+      "family_letter": "l",
+      "raw_compatibility_zero": true,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 0,
+      "translated_residual_norm": 36,
+      "raw_nonzero_rows": [],
+      "translated_nonzero_rows": [
+        6,
+        7,
+        8,
+        9,
+        14
+      ]
+    },
+    {
+      "family_letter": "k",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 8,
+      "translated_residual_norm": 18,
+      "raw_nonzero_rows": [
+        22,
+        23,
+        24
+      ],
+      "translated_nonzero_rows": [
+        6,
+        8,
+        14
+      ]
+    },
+    {
+      "family_letter": "j",
+      "raw_compatibility_zero": true,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 0,
+      "translated_residual_norm": 18,
+      "raw_nonzero_rows": [],
+      "translated_nonzero_rows": [
+        6,
+        7,
+        8,
+        9,
+        14
+      ]
+    },
+    {
+      "family_letter": "i",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 4,
+      "translated_residual_norm": 18,
+      "raw_nonzero_rows": [
+        22,
+        23
+      ],
+      "translated_nonzero_rows": [
+        6,
+        7,
+        8,
+        9,
+        14
+      ]
+    },
+    {
+      "family_letter": "h",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 4,
+      "translated_residual_norm": 9,
+      "raw_nonzero_rows": [
+        22,
+        23,
+        24
+      ],
+      "translated_nonzero_rows": [
+        6,
+        8,
+        14
+      ]
+    },
+    {
+      "family_letter": "g",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 2,
+      "translated_residual_norm": 9,
+      "raw_nonzero_rows": [
+        22,
+        23
+      ],
+      "translated_nonzero_rows": [
+        6,
+        7,
+        8,
+        9,
+        14
+      ]
+    },
+    {
+      "family_letter": "f",
+      "raw_compatibility_zero": true,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 0,
+      "translated_residual_norm": 6,
+      "raw_nonzero_rows": [],
+      "translated_nonzero_rows": [
+        6,
+        7,
+        8,
+        9,
+        14
+      ]
+    },
+    {
+      "family_letter": "e",
+      "raw_compatibility_zero": true,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 0,
+      "translated_residual_norm": 6,
+      "raw_nonzero_rows": [],
+      "translated_nonzero_rows": [
+        6,
+        7,
+        8,
+        9,
+        14
+      ]
+    },
+    {
+      "family_letter": "d",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 1,
+      "translated_residual_norm": 3,
+      "raw_nonzero_rows": [
+        24
+      ],
+      "translated_nonzero_rows": [
+        6,
+        8,
+        14
+      ]
+    },
+    {
+      "family_letter": "c",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 1,
+      "translated_residual_norm": 3,
+      "raw_nonzero_rows": [
+        24
+      ],
+      "translated_nonzero_rows": [
+        6,
+        8,
+        14
+      ]
+    },
+    {
+      "family_letter": "b",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 2,
+      "translated_residual_norm": 3,
+      "raw_nonzero_rows": [
+        22,
+        23
+      ],
+      "translated_nonzero_rows": [
+        6,
+        8,
+        14
+      ]
+    },
+    {
+      "family_letter": "a",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 2,
+      "translated_residual_norm": 3,
+      "raw_nonzero_rows": [
+        22,
+        23
+      ],
+      "translated_nonzero_rows": [
+        6,
+        7,
+        14
+      ]
+    }
+  ]
+}

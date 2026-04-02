@@ -1,0 +1,11 @@
+1. `reports/final_bs_strong_equivalence_report.md`
+2. `reports/final_path_signature_report.md`
+3. `reports/final_path_candidate_equivalence_report.md`
+4. `reports/point_row_translation_legality_report.md`
+5. `reports/ai_seed_audit_report.md`
+6. `outputs/group_194_1_1_1_single_line_compatibility.json`
+7. `outputs/group_194_1_1_1_single_bs_analysis.json`
+8. `outputs/group_194_1_1_1_single_ai_trivial_generators.json`
+9. `src/final_object_reduction.py`
+10. `src/debug_workflow_portability_194.1.1.1.py`
+11. `src/runtime_backend_free.py`
