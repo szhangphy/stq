@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-04-02T15:54:39+08:00",
+  "group": "194.1.1.1",
+  "mode": "single",
+  "builder_variant": "intrinsic",
+  "recommended_interpretation_builder_variant": "intrinsic",
+  "row_language_kind": "generic_canonical_point_row_language_from_symmetry_ops",
+  "object_kind": "generic_direct_point_row_language_object",
+  "availability": "provisional",
+  "verification_status": "failed_due_to_rejected_or_unembedded_ai_candidates_before_final_quotient",
+  "dBS": 7,
+  "dAI": null,
+  "final_dAI": null,
+  "classification": null,
+  "surviving_ai_rank": 0,
+  "surviving_classification": "Z^7",
+  "surviving_free_rank": 7,
+  "surviving_finite_part": [],
+  "ai_candidate_count": 45,
+  "ai_candidate_count_used": 0,
+  "ai_incompatible_count": 45,
+  "ai_embedding_failure_count": 0,
+  "compatibility_builder_kind": "generic_intrinsic_line_restriction_class_builder",
+  "bs_matrix_shape": [
+    79,
+    42
+  ],
+  "bs_rank": 35,
+  "bs_nullity": 7,
+  "direct_quotient_status": "provisional_due_to_rejected_or_unembedded_ai_candidates",
+  "final_dai_available": false,
+  "source_files": [
+    "sg194/pipeline_v2/runtime_backend_free.py",
+    "sg194/pipeline_v2/generic_builders.py",
+    "sg194/pipeline_v2/local_irreps.py"
+  ]
+}

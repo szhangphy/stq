@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-04-02T15:54:39+08:00",
+  "group": "194.1.1.1",
+  "checks": {
+    "compare_matches_variant_line_counts": true,
+    "provenance_covers_all_noncoarse_rows": true,
+    "restriction_class_audit_nonempty": true,
+    "single_result_matrix_shape_matches_intrinsic_run": true,
+    "double_result_matrix_shape_matches_intrinsic_run": true
+  },
+  "counts": {
+    "expected_noncoarse_row_records": 250,
+    "actual_noncoarse_row_records": 250
+  }
+}

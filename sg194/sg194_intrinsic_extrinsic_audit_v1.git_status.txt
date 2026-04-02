@@ -1,0 +1,18 @@
+## sg194-special...origin/sg194-special
+ M sg194/pipeline_v2/generic_builders.py
+ M sg194/pipeline_v2/runtime_backend_free.py
+?? sg194/debug_sg194_intrinsic_extrinsic_audit_v1.py
+?? sg194/sg194_194_double_generic_final_result_v3.json
+?? sg194/sg194_194_double_line_compatibility_variants_v1.json
+?? sg194/sg194_194_single_generic_final_result_v3.json
+?? sg194/sg194_194_single_line_compatibility_variants_v1.json
+?? sg194/sg194_ai_rejection_row_provenance_v1.json
+?? sg194/sg194_consistency_check_v1.json
+?? sg194/sg194_intrinsic_extrinsic_audit_v1.commands.txt
+?? sg194/sg194_intrinsic_extrinsic_audit_v1.stderr
+?? sg194/sg194_intrinsic_extrinsic_audit_v1.stdout
+?? sg194/sg194_intrinsic_vs_extrinsic_builder_compare_v1.json
+?? sg194/sg194_l2_l3_focus_audit_v1.md
+?? sg194/sg194_line_restriction_class_audit_v2.json
+?? sg194/sg194_line_restriction_class_audit_v2.md
+?? sg194/sg194_line_row_provenance_audit_v1.json

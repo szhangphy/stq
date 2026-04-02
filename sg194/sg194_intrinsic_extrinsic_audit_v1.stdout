@@ -1,0 +1,23 @@
+[audit] loading contexts
+[audit] single coarse
+[audit] single intrinsic
+[audit] single extrinsic
+[audit] double coarse
+[audit] double intrinsic
+[audit] double extrinsic
+[audit] writing artifacts
+[audit] consistency_passed=True
+{
+  "q1_intrinsic_gives_13": false,
+  "q1_extrinsic_gives_13": false,
+  "single_intrinsic_nullity": 7,
+  "single_extrinsic_nullity": 1,
+  "double_intrinsic_nullity": 7,
+  "double_extrinsic_nullity": 1,
+  "single_final_dAI": null,
+  "single_surviving_ai_rank": 0,
+  "double_final_dAI": null,
+  "double_surviving_ai_rank": 0,
+  "consistency_passed": true,
+  "package": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_sg194_intrinsic_extrinsic_audit_v1.tar.gz"
+}
