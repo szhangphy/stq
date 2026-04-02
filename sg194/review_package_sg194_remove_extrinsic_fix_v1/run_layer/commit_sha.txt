@@ -1,1 +1,1 @@
-pending_commit
+source_commit_before_package_finalize=0c60344

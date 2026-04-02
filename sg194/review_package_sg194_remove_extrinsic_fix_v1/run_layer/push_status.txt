@@ -1,1 +1,2 @@
-pending_push
+package_built_before_final_push=true
+final_push_status=see_repository_head_and_final_report
