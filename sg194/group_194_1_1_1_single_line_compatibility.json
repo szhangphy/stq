@@ -2150,27 +2150,27 @@
               "restricted_vector": [
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 }
               ],
               "class_size": 2
@@ -2224,19 +2224,19 @@
                 },
                 {
                   "real": -1.0,
-                  "imag": 0.0
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
                   "imag": 0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
                 }
               ],
               "class_size": 2
@@ -2251,27 +2251,27 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": -0.0
-                },
-                {
-                  "real": -1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": -1.0,
                   "imag": 0.0
+                },
+                {
+                  "real": -1.0,
+                  "imag": -0.0
                 },
                 {
                   "real": 0.0,
-                  "imag": 0.0
+                  "imag": -0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
                   "imag": 0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
                 }
               ],
               "class_size": 2
@@ -2283,26 +2283,26 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 2.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 2.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
                   "imag": -0.0
                 },
                 {
-                  "real": 0.0,
+                  "real": -0.0,
                   "imag": -0.0
                 },
                 {
-                  "real": 0.0,
-                  "imag": -0.0
-                },
-                {
-                  "real": 0.0,
+                  "real": -0.0,
                   "imag": -0.0
                 }
               ],
@@ -5773,27 +5773,27 @@
               "restricted_vector": [
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 }
               ],
               "class_size": 2
@@ -5847,19 +5847,19 @@
                 },
                 {
                   "real": -1.0,
-                  "imag": 0.0
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
                   "imag": 0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
                 }
               ],
               "class_size": 2
@@ -5874,27 +5874,27 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": -0.0
-                },
-                {
-                  "real": -1.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": -1.0,
                   "imag": 0.0
+                },
+                {
+                  "real": -1.0,
+                  "imag": -0.0
                 },
                 {
                   "real": 0.0,
-                  "imag": 0.0
+                  "imag": -0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
                   "imag": 0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
                 }
               ],
               "class_size": 2
@@ -5906,26 +5906,26 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 2.0,
-                  "imag": -0.0
+                  "imag": 0.0
                 },
                 {
                   "real": 2.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
                   "imag": -0.0
                 },
                 {
-                  "real": 0.0,
+                  "real": -0.0,
                   "imag": -0.0
                 },
                 {
-                  "real": 0.0,
-                  "imag": -0.0
-                },
-                {
-                  "real": 0.0,
+                  "real": -0.0,
                   "imag": -0.0
                 }
               ],

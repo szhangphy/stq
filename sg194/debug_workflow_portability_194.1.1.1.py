@@ -1909,6 +1909,8 @@ def write_reduction_reports(
 ) -> None:
     reduction_payload = {
         **reduction,
+        "final_point_count": len(reduction["final_point_ids"]),
+        "final_path_count": len(reduction["published_path_ids"]),
         "published_line_matrix_shape": [
             len(published_line_full["global_matrix"]),
             len(published_line_full["global_unknown_ordering"]),
@@ -2158,6 +2160,7 @@ def build_single_pilot(
         SINGLE_WITH_PLANES_JSON,
         {
             "object_role": "diagnostic_internal_raw_with_planes_42_shell",
+            "publication_role": "diagnostic_internal_raw_with_planes_shell",
             "published_status": "diagnostic_only",
             **with_planes,
             "diagnostic_bs_analysis": diagnostic_bs_analysis,
@@ -2333,6 +2336,7 @@ def build_double_pilot(
         DOUBLE_WITH_PLANES_JSON,
         {
             "object_role": "diagnostic_internal_raw_with_planes_42_shell",
+            "publication_role": "diagnostic_internal_raw_with_planes_shell",
             "published_status": "diagnostic_only",
             **with_planes,
             "diagnostic_bs_analysis": diagnostic_bs_analysis,

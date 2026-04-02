@@ -82,7 +82,7 @@ def build_result_objects(
         if spec.group_id == "194.1.1.1":
             raise RuntimeError(
                 "Generic/public publication for 194.1.1.1 is blocked until the "
-                "automatic reduced final point/path builder is wired into the "
+                "automatic_reduced_final_point_path_shell builder is wired into the "
                 "generic path; raw 42-shell and projected shells remain "
                 "diagnostic-only and must not be published as final target objects."
             )

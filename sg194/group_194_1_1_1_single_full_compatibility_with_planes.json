@@ -1,5 +1,6 @@
 {
   "object_role": "diagnostic_internal_raw_with_planes_42_shell",
+  "publication_role": "diagnostic_internal_raw_with_planes_shell",
   "published_status": "diagnostic_only",
   "global_unknown_ordering": [
     "P1_R1",
