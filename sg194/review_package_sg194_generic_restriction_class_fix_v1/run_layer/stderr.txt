@@ -1,0 +1,15 @@
+[progress] base ops: 24
+[progress] k-space time_revs applied: 24
+[progress] expanded ops: 24
+[warning] space_groups_json not found; site-symmetry labels may be less specific
+[progress] origin shift: (0.0, 0.0, 0.0)
+[progress] base ops: 24
+[progress] expanded ops: 24
+[warning] space_groups_json not found; site-symmetry labels may be less specific
+[progress] wyckoff count: 12
+[progress] origin shift: (0.0, 0.0, 0.5)
+[progress] base ops: 24
+[progress] expanded ops: 24
+[warning] space_groups_json not found; site-symmetry labels may be less specific
+[progress] wyckoff count: 12
+[warning] space_groups_json not found; site-symmetry labels may be less specific

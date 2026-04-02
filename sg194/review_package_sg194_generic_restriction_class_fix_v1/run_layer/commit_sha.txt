@@ -1,0 +1,1 @@
+final commit SHA is reported in the close-out message because package metadata is part of the commit itself.

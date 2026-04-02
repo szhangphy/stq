@@ -1,0 +1,72 @@
+{
+  "generated_at": "2026-04-02T14:04:04+08:00",
+  "group": "194.1.1.1",
+  "object_id": "double_target_direct",
+  "mode": "double",
+  "row_language_kind": "generic_canonical_point_row_language_from_symmetry_ops",
+  "object_kind": "generic_direct_point_row_language_object",
+  "availability": "provisional",
+  "verification_status": "failed_due_to_rejected_or_unembedded_ai_candidates_before_final_quotient",
+  "dBS": 13,
+  "dAI": 7,
+  "classification": "Z^6",
+  "free_rank": 6,
+  "finite_part": [],
+  "quotient_derivation_mode": "direct_generic_bs_over_ai_smith",
+  "ai_candidate_count": 45,
+  "ai_candidate_count_used": 21,
+  "ai_incompatible_count": 24,
+  "ai_embedding_failure_count": 0,
+  "source_files": [
+    "sg194/pipeline_v2/runtime_backend_free.py",
+    "sg194/pipeline_v2/local_irreps.py"
+  ],
+  "compatibility_builder_kind": "generic_restriction_class_primary_line_builder_with_instance_level_star_awareness",
+  "bs_matrix_shape": [
+    63,
+    42
+  ],
+  "bs_rank": 29,
+  "native_bs_nullity_fix_status": "fixed_to_13",
+  "ai_rejection_summary": {
+    "rejected_generator_ids": [
+      "i_proj_minus_i",
+      "i_proj_plus_i",
+      "g_proj_u_m1",
+      "g_proj_u_1",
+      "g_proj_g_m1",
+      "g_proj_g_1",
+      "d_proj_doubleprime_1d_1",
+      "d_proj_doubleprime_1d_2",
+      "d_proj_prime_1d_3",
+      "d_proj_prime_1d_4",
+      "d_proj_doubleprime_2d_5",
+      "d_proj_doubleprime_2d_6",
+      "c_proj_doubleprime_1d_1",
+      "c_proj_doubleprime_1d_2",
+      "c_proj_prime_1d_3",
+      "c_proj_prime_1d_4",
+      "c_proj_doubleprime_2d_5",
+      "c_proj_doubleprime_2d_6",
+      "a_proj_u_1d_1",
+      "a_proj_u_1d_2",
+      "a_proj_g_1d_3",
+      "a_proj_g_1d_4",
+      "a_proj_u_2d_5",
+      "a_proj_u_2d_6"
+    ],
+    "rejected_row_blocks": [
+      "line:L2:L2_restriction_class_P4_01",
+      "line:L3:L3_restriction_class_P5_01",
+      "line:L3:L3_restriction_class_P5_02",
+      "line:L3:L3_restriction_class_P5_03",
+      "line:L3:L3_restriction_class_P5_04"
+    ]
+  },
+  "accepted_special_reference": {
+    "dBS": 10,
+    "dAI": 10,
+    "classification": "Z6"
+  },
+  "matches_accepted_special": false
+}

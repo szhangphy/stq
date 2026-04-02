@@ -1,0 +1,4 @@
+python3 -m py_compile sg194/pipeline_v2/runtime_backend_free.py
+python3 -m py_compile sg194/pipeline_v2/generic_builders.py
+python3 -m py_compile sg194/debug_sg194_generic_restriction_class_fix_v1.py
+python3 sg194/debug_sg194_generic_restriction_class_fix_v1.py --validate

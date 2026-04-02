@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-04-02T14:04:04+08:00",
+  "group": "194.1.1.1",
+  "single": {
+    "line_row_compare": [
+      {
+        "line_id": "L1",
+        "old_coarse_row_count": 6,
+        "new_primary_row_count": 6,
+        "row_delta": 0
+      },
+      {
+        "line_id": "L2",
+        "old_coarse_row_count": 3,
+        "new_primary_row_count": 4,
+        "row_delta": 1
+      },
+      {
+        "line_id": "L3",
+        "old_coarse_row_count": 4,
+        "new_primary_row_count": 8,
+        "row_delta": 4
+      },
+      {
+        "line_id": "L4",
+        "old_coarse_row_count": 4,
+        "new_primary_row_count": 4,
+        "row_delta": 0
+      },
+      {
+        "line_id": "L5",
+        "old_coarse_row_count": 4,
+        "new_primary_row_count": 4,
+        "row_delta": 0
+      },
+      {
+        "line_id": "L6",
+        "old_coarse_row_count": 4,
+        "new_primary_row_count": 4,
+        "row_delta": 0
+      },
+      {
+        "line_id": "L7",
+        "old_coarse_row_count": 1,
+        "new_primary_row_count": 1,
+        "row_delta": 0
+      }
+    ],
+    "global_matrix_old": {
+      "shape": [
+        58,
+        42
+      ],
+      "rank": 26,
+      "nullity": 16
+    },
+    "global_matrix_new": {
+      "shape": [
+        63,
+        42
+      ],
+      "rank": 29,
+      "nullity": 13
+    }
+  },
+  "double": {
+    "line_row_compare": [
+      {
+        "line_id": "L1",
+        "old_coarse_row_count": 6,
+        "new_primary_row_count": 6,
+        "row_delta": 0
+      },
+      {
+        "line_id": "L2",
+        "old_coarse_row_count": 3,
+        "new_primary_row_count": 4,
+        "row_delta": 1
+      },
+      {
+        "line_id": "L3",
+        "old_coarse_row_count": 4,
+        "new_primary_row_count": 8,
+        "row_delta": 4
+      },
+      {
+        "line_id": "L4",
+        "old_coarse_row_count": 4,
+        "new_primary_row_count": 4,
+        "row_delta": 0
+      },
+      {
+        "line_id": "L5",
+        "old_coarse_row_count": 4,
+        "new_primary_row_count": 4,
+        "row_delta": 0
+      },
+      {
+        "line_id": "L6",
+        "old_coarse_row_count": 4,
+        "new_primary_row_count": 4,
+        "row_delta": 0
+      },
+      {
+        "line_id": "L7",
+        "old_coarse_row_count": 1,
+        "new_primary_row_count": 1,
+        "row_delta": 0
+      }
+    ],
+    "global_matrix_old": {
+      "shape": [
+        58,
+        42
+      ],
+      "rank": 26,
+      "nullity": 16
+    },
+    "global_matrix_new": {
+      "shape": [
+        63,
+        42
+      ],
+      "rank": 29,
+      "nullity": 13
+    }
+  }
+}
