@@ -1,0 +1,3314 @@
+{
+  "endpoint_pair_count": 7,
+  "selected_path_class_ids": [
+    "PCLASS01",
+    "PCLASS02",
+    "PCLASS03",
+    "PCLASS04",
+    "PCLASS05",
+    "PCLASS06",
+    "PCLASS08",
+    "PCLASS09"
+  ],
+  "endpoint_pairs": [
+    {
+      "endpoint_pair": [
+        "P1",
+        "P2"
+      ],
+      "candidate_count": 4,
+      "path_class_count": 1,
+      "selected_path_class_ids": [
+        "PCLASS01"
+      ],
+      "candidate_path_classes": [
+        {
+          "path_class_id": "PCLASS01",
+          "selected_as_final": true,
+          "selection_reason": "Selected as the canonical endpoint-pair skeleton representative: shortest primitive segment first, then listed-line priority, then branch simplicity.",
+          "representative_candidate_id": "CANDIDATE_PATH_001",
+          "representative_source_line_id": "L1",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L1",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_001",
+            "CANDIDATE_PATH_002",
+            "CANDIDATE_PATH_049",
+            "CANDIDATE_PATH_055"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 12,
+            "n_unitary_ops": 12,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              1,
+              1,
+              1,
+              1,
+              2,
+              2
+            ],
+            "torsion": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P1",
+              "reps": [
+                {
+                  "rep_id": "P1_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R5",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R6",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R7",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R8",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R9",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R5": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R10",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R5": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R11",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R6": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R12",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R6": 1
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P2",
+              "reps": [
+                {
+                  "rep_id": "P2_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R1": 1,
+                    "CANDIDATE_PATH_001_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P2_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R2": 1,
+                    "CANDIDATE_PATH_001_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P2_R3",
+                  "rep_degree": 4,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_001_R5": 1,
+                    "CANDIDATE_PATH_001_R6": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 6,
+            "row_rank": 6,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "-1"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 6,
+            "row_rank": 6,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "legacy",
+          "selection_stage": "endpoint_pair_skeleton",
+          "row_space_contained_in_selected_span": true
+        }
+      ],
+      "pair_verdict": "All candidates collapse to one strong path class."
+    },
+    {
+      "endpoint_pair": [
+        "P1",
+        "P3"
+      ],
+      "candidate_count": 7,
+      "path_class_count": 1,
+      "selected_path_class_ids": [
+        "PCLASS02"
+      ],
+      "candidate_path_classes": [
+        {
+          "path_class_id": "PCLASS02",
+          "selected_as_final": true,
+          "selection_reason": "Selected as the canonical endpoint-pair skeleton representative: shortest primitive segment first, then listed-line priority, then branch simplicity.",
+          "representative_candidate_id": "CANDIDATE_PATH_013",
+          "representative_source_line_id": "L4",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L4",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_013",
+            "CANDIDATE_PATH_015",
+            "CANDIDATE_PATH_017",
+            "CANDIDATE_PATH_019",
+            "CANDIDATE_PATH_021",
+            "CANDIDATE_PATH_023",
+            "CANDIDATE_PATH_057"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 4,
+            "n_unitary_ops": 4,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "torsion": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P1",
+              "reps": [
+                {
+                  "rep_id": "P1_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R5",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R6",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R7",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R8",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R9",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R2": 1,
+                    "CANDIDATE_PATH_013_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R10",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R1": 1,
+                    "CANDIDATE_PATH_013_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R11",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R1": 1,
+                    "CANDIDATE_PATH_013_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R12",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R2": 1,
+                    "CANDIDATE_PATH_013_R4": 1
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P3",
+              "reps": [
+                {
+                  "rep_id": "P3_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R5",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R1": 1,
+                    "CANDIDATE_PATH_013_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R6",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_013_R2": 1,
+                    "CANDIDATE_PATH_013_R4": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 4,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "-1",
+                "0"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 4,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "legacy",
+          "selection_stage": "endpoint_pair_skeleton",
+          "row_space_contained_in_selected_span": true
+        }
+      ],
+      "pair_verdict": "All candidates collapse to one strong path class."
+    },
+    {
+      "endpoint_pair": [
+        "P1",
+        "P5"
+      ],
+      "candidate_count": 16,
+      "path_class_count": 2,
+      "selected_path_class_ids": [
+        "PCLASS03",
+        "PCLASS04"
+      ],
+      "candidate_path_classes": [
+        {
+          "path_class_id": "PCLASS03",
+          "selected_as_final": true,
+          "selection_reason": "Selected first as the canonical endpoint-pair skeleton representative, then retained in the published shell together with an additional same-endpoint path class because the skeleton alone did not span the full candidate row language.",
+          "representative_candidate_id": "CANDIDATE_PATH_007",
+          "representative_source_line_id": "L3",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L3",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_007",
+            "CANDIDATE_PATH_008",
+            "CANDIDATE_PATH_009",
+            "CANDIDATE_PATH_010",
+            "CANDIDATE_PATH_011",
+            "CANDIDATE_PATH_012",
+            "CANDIDATE_PATH_051",
+            "CANDIDATE_PATH_053",
+            "CANDIDATE_PATH_054"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 4,
+            "n_unitary_ops": 4,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "torsion": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P1",
+              "reps": [
+                {
+                  "rep_id": "P1_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R5",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R6",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R7",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R8",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R9",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R2": 1,
+                    "CANDIDATE_PATH_007_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R10",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R1": 1,
+                    "CANDIDATE_PATH_007_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R11",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R1": 1,
+                    "CANDIDATE_PATH_007_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R12",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R2": 1,
+                    "CANDIDATE_PATH_007_R4": 1
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P5",
+              "reps": [
+                {
+                  "rep_id": "P5_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R5",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R6",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R7",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R8",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_007_R4": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 4,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "1",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "-1",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 4,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "legacy",
+          "selection_stage": "endpoint_pair_skeleton",
+          "row_space_contained_in_selected_span": true
+        },
+        {
+          "path_class_id": "PCLASS04",
+          "selected_as_final": true,
+          "selection_reason": "Added after the canonical endpoint-pair skeleton because it contributes independent row language not present in the skeleton span (rank 23 -> 24).",
+          "representative_candidate_id": "CANDIDATE_PATH_014",
+          "representative_source_line_id": "L4",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L4",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_014",
+            "CANDIDATE_PATH_016",
+            "CANDIDATE_PATH_018",
+            "CANDIDATE_PATH_020",
+            "CANDIDATE_PATH_022",
+            "CANDIDATE_PATH_024",
+            "CANDIDATE_PATH_058"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 4,
+            "n_unitary_ops": 4,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "torsion": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P1",
+              "reps": [
+                {
+                  "rep_id": "P1_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R5",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R6",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R7",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R8",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R9",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R2": 1,
+                    "CANDIDATE_PATH_014_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R10",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R1": 1,
+                    "CANDIDATE_PATH_014_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R11",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R1": 1,
+                    "CANDIDATE_PATH_014_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P1_R12",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R2": 1,
+                    "CANDIDATE_PATH_014_R4": 1
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P5",
+              "reps": [
+                {
+                  "rep_id": "P5_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R5",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R6",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R7",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R8",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_014_R4": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 4,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "-1",
+                "0"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 4,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "-1",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "legacy",
+          "selection_stage": "full_span_augmentation",
+          "row_space_contained_in_selected_span": true
+        }
+      ],
+      "pair_verdict": "Multiple strong path classes share this endpoint pair, and more than one must be retained because the endpoint-pair skeleton alone does not span the full candidate row language."
+    },
+    {
+      "endpoint_pair": [
+        "P2",
+        "P4"
+      ],
+      "candidate_count": 7,
+      "path_class_count": 1,
+      "selected_path_class_ids": [
+        "PCLASS05"
+      ],
+      "candidate_path_classes": [
+        {
+          "path_class_id": "PCLASS05",
+          "selected_as_final": true,
+          "selection_reason": "Selected as the canonical endpoint-pair skeleton representative: shortest primitive segment first, then listed-line priority, then branch simplicity.",
+          "representative_candidate_id": "CANDIDATE_PATH_037",
+          "representative_source_line_id": "L7",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L7",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_037",
+            "CANDIDATE_PATH_039",
+            "CANDIDATE_PATH_041",
+            "CANDIDATE_PATH_043",
+            "CANDIDATE_PATH_045",
+            "CANDIDATE_PATH_047",
+            "CANDIDATE_PATH_059"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 4,
+            "n_unitary_ops": 4,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              2
+            ],
+            "torsion": [
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P2",
+              "reps": [
+                {
+                  "rep_id": "P2_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_037_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P2_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_037_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P2_R3",
+                  "rep_degree": 4,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_037_R1": 2
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P4",
+              "reps": [
+                {
+                  "rep_id": "P4_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_037_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P4_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_037_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P4_R3",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_037_R1": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 1,
+            "row_rank": 1,
+            "smith_diagonal": [
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "1",
+                "2",
+                "-1",
+                "-1",
+                "-1"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 1,
+            "row_rank": 1,
+            "smith_diagonal": [
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "2",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "-1",
+                "-1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "legacy",
+          "selection_stage": "endpoint_pair_skeleton",
+          "row_space_contained_in_selected_span": true
+        }
+      ],
+      "pair_verdict": "All candidates collapse to one strong path class."
+    },
+    {
+      "endpoint_pair": [
+        "P2",
+        "P6"
+      ],
+      "candidate_count": 16,
+      "path_class_count": 2,
+      "selected_path_class_ids": [
+        "PCLASS06"
+      ],
+      "candidate_path_classes": [
+        {
+          "path_class_id": "PCLASS06",
+          "selected_as_final": true,
+          "selection_reason": "Selected as the canonical endpoint-pair skeleton representative: shortest primitive segment first, then listed-line priority, then branch simplicity.",
+          "representative_candidate_id": "CANDIDATE_PATH_031",
+          "representative_source_line_id": "L6",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L6",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_031",
+            "CANDIDATE_PATH_032",
+            "CANDIDATE_PATH_033",
+            "CANDIDATE_PATH_034",
+            "CANDIDATE_PATH_035",
+            "CANDIDATE_PATH_036",
+            "CANDIDATE_PATH_052",
+            "CANDIDATE_PATH_061",
+            "CANDIDATE_PATH_062"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 4,
+            "n_unitary_ops": 4,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "torsion": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P2",
+              "reps": [
+                {
+                  "rep_id": "P2_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_031_R1": 1,
+                    "CANDIDATE_PATH_031_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P2_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_031_R3": 1,
+                    "CANDIDATE_PATH_031_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P2_R3",
+                  "rep_degree": 4,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_031_R1": 1,
+                    "CANDIDATE_PATH_031_R2": 1,
+                    "CANDIDATE_PATH_031_R3": 1,
+                    "CANDIDATE_PATH_031_R4": 1
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P6",
+              "reps": [
+                {
+                  "rep_id": "P6_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_031_R1": 1,
+                    "CANDIDATE_PATH_031_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P6_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_031_R3": 1,
+                    "CANDIDATE_PATH_031_R4": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 2,
+            "smith_diagonal": [
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "1",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "1",
+                "0",
+                "-1"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 2,
+            "smith_diagonal": [
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "legacy",
+          "selection_stage": "endpoint_pair_skeleton",
+          "row_space_contained_in_selected_span": true
+        },
+        {
+          "path_class_id": "PCLASS07",
+          "selected_as_final": false,
+          "selection_reason": "Discarded because the published full-span selection already contains its row language after endpoint-pair skeleton selection and rank-closing augmentation.",
+          "representative_candidate_id": "CANDIDATE_PATH_038",
+          "representative_source_line_id": "L7",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L7",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_038",
+            "CANDIDATE_PATH_040",
+            "CANDIDATE_PATH_042",
+            "CANDIDATE_PATH_044",
+            "CANDIDATE_PATH_046",
+            "CANDIDATE_PATH_048",
+            "CANDIDATE_PATH_060"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 4,
+            "n_unitary_ops": 4,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              2
+            ],
+            "torsion": [
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P2",
+              "reps": [
+                {
+                  "rep_id": "P2_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_038_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P2_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_038_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P2_R3",
+                  "rep_degree": 4,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_038_R1": 2
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P6",
+              "reps": [
+                {
+                  "rep_id": "P6_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_038_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P6_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_038_R1": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 1,
+            "row_rank": 1,
+            "smith_diagonal": [
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "1",
+                "2",
+                "-1",
+                "-1"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 1,
+            "row_rank": 1,
+            "smith_diagonal": [
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "2",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "-1"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "legacy",
+          "selection_stage": "discarded",
+          "row_space_contained_in_selected_span": true
+        }
+      ],
+      "pair_verdict": "Multiple strong path classes share this endpoint pair; only classes whose row language is already contained in the published full-span shell are discarded."
+    },
+    {
+      "endpoint_pair": [
+        "P3",
+        "P4"
+      ],
+      "candidate_count": 4,
+      "path_class_count": 1,
+      "selected_path_class_ids": [
+        "PCLASS08"
+      ],
+      "candidate_path_classes": [
+        {
+          "path_class_id": "PCLASS08",
+          "selected_as_final": true,
+          "selection_reason": "Selected as the canonical endpoint-pair skeleton representative: shortest primitive segment first, then listed-line priority, then branch simplicity.",
+          "representative_candidate_id": "CANDIDATE_PATH_003",
+          "representative_source_line_id": "L2",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L2",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_003",
+            "CANDIDATE_PATH_004",
+            "CANDIDATE_PATH_005",
+            "CANDIDATE_PATH_006"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 6,
+            "n_unitary_ops": 6,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              1,
+              1,
+              2
+            ],
+            "torsion": [
+              0,
+              0,
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P3",
+              "reps": [
+                {
+                  "rep_id": "P3_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R5",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P3_R6",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R3": 1
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P4",
+              "reps": [
+                {
+                  "rep_id": "P4_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P4_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P4_R3",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_003_R1": 1,
+                    "CANDIDATE_PATH_003_R2": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 6,
+            "row_rank": 6,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "2"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1/2"
+              ],
+              [
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1/2"
+              ],
+              [
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1/2"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1/2"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "-1/2",
+                "-1/2",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "-1/2",
+                "-1/2",
+                "0"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 6,
+            "row_rank": 6,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1",
+              "1",
+              "2"
+            ],
+            "rref_basis_rows": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1/2",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1/2",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1/2",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1/2",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "-1/2",
+                "-1/2",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "-1/2",
+                "-1/2",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "phase_aware_l2_projective_v1",
+          "selection_stage": "endpoint_pair_skeleton",
+          "row_space_contained_in_selected_span": true
+        }
+      ],
+      "pair_verdict": "All candidates collapse to one strong path class."
+    },
+    {
+      "endpoint_pair": [
+        "P5",
+        "P6"
+      ],
+      "candidate_count": 8,
+      "path_class_count": 1,
+      "selected_path_class_ids": [
+        "PCLASS09"
+      ],
+      "candidate_path_classes": [
+        {
+          "path_class_id": "PCLASS09",
+          "selected_as_final": true,
+          "selection_reason": "Selected as the canonical endpoint-pair skeleton representative: shortest primitive segment first, then listed-line priority, then branch simplicity.",
+          "representative_candidate_id": "CANDIDATE_PATH_025",
+          "representative_source_line_id": "L5",
+          "representative_source_kind": "listed_line",
+          "representative_source_id": "L5",
+          "representative_branch_index": 1,
+          "candidate_ids": [
+            "CANDIDATE_PATH_025",
+            "CANDIDATE_PATH_026",
+            "CANDIDATE_PATH_027",
+            "CANDIDATE_PATH_028",
+            "CANDIDATE_PATH_029",
+            "CANDIDATE_PATH_030",
+            "CANDIDATE_PATH_050",
+            "CANDIDATE_PATH_056"
+          ],
+          "line_group_signature": {
+            "n_ops_total": 4,
+            "n_unitary_ops": 4,
+            "n_antiunitary_ops": 0,
+            "rep_degree": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "torsion": [
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "endpoint_decomposition_signature": [
+            {
+              "endpoint_id": "P5",
+              "reps": [
+                {
+                  "rep_id": "P5_R1",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R2",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R3",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R1": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R4",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R2": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R5",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R4": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R6",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R7",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P5_R8",
+                  "rep_degree": 1,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R4": 1
+                  }
+                }
+              ]
+            },
+            {
+              "endpoint_id": "P6",
+              "reps": [
+                {
+                  "rep_id": "P6_R1",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R1": 1,
+                    "CANDIDATE_PATH_025_R3": 1
+                  }
+                },
+                {
+                  "rep_id": "P6_R2",
+                  "rep_degree": 2,
+                  "torsion": 0,
+                  "decomposition_on_line_basis": {
+                    "CANDIDATE_PATH_025_R2": 1,
+                    "CANDIDATE_PATH_025_R4": 1
+                  }
+                }
+              ]
+            }
+          ],
+          "local_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 4,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "-1",
+                "0"
+              ]
+            ]
+          },
+          "global_row_space_signature": {
+            "row_count": 4,
+            "row_rank": 4,
+            "smith_diagonal": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "rref_basis_rows": [
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "-1",
+                "0"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "1",
+                "0",
+                "-1"
+              ],
+              [
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "1",
+                "0",
+                "-1",
+                "0"
+              ]
+            ]
+          },
+          "phase_aware_profile_used": "legacy",
+          "selection_stage": "endpoint_pair_skeleton",
+          "row_space_contained_in_selected_span": true
+        }
+      ],
+      "pair_verdict": "All candidates collapse to one strong path class."
+    }
+  ]
+}

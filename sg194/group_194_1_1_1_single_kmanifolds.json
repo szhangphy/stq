@@ -216961,6 +216961,7 @@
     "point_count_match": true,
     "path_pair_set_match": false,
     "unique_path_pair_set_match": true,
-    "path_count_match": false
+    "path_count_match": false,
+    "bilbao_equivalent_final_object_pass": false
   }
 }
