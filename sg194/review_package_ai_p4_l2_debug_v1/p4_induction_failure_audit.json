@@ -1,0 +1,3655 @@
+{
+  "manifold_id": "P4",
+  "character_field": "point=character, line=character, plane=character, default=character",
+  "induction_failure_count": 12,
+  "failure_family_ids": [
+    "c",
+    "d"
+  ],
+  "reference_passing_generator_ids_same_site_symmetry_type": [
+    "b_A1'",
+    "b_A1''",
+    "b_A2'",
+    "b_A2''",
+    "b_E'",
+    "b_E''"
+  ],
+  "records": [
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in c on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.4999999999999998+0.4999999999999646j), (6.505213034913027e-17+9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.4999999999999998+0.4999999999999646j), (6.505213034913027e-17+9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "c_A1''",
+      "family_id": "c",
+      "local_object_label": "A1''",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": -0.0,
+          "imag": -0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in c on P4 [character]: [(0.4999999999999997+0.4999999999999645j), (0.4999999999999997-0.4999999999999646j), (-1.8323016715005025e-17-9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.4999999999999997+0.4999999999999645j), (0.4999999999999997-0.4999999999999646j), (-1.8323016715005025e-17-9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "c_A2'",
+      "family_id": "c",
+      "local_object_label": "A2'",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in c on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.4999999999999998+0.4999999999999646j), (6.505213034913027e-17+9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.4999999999999998+0.4999999999999646j), (6.505213034913027e-17+9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "c_A2''",
+      "family_id": "c",
+      "local_object_label": "A2''",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": -0.0,
+          "imag": -0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in c on P4 [character]: [(0.4999999999999997+0.4999999999999645j), (0.4999999999999997-0.4999999999999646j), (-1.8323016715005025e-17-9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.4999999999999997+0.4999999999999645j), (0.4999999999999997-0.4999999999999646j), (-1.8323016715005025e-17-9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "c_E'",
+      "family_id": "c",
+      "local_object_label": "E'",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 1.0,
+          "imag": -0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in c on P4 [character]: [(0.5+0.4999999999999645j), (0.4999999999999999-0.4999999999999646j), (0.9999999999999998-9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.5+0.4999999999999645j), (0.4999999999999999-0.4999999999999646j), (0.9999999999999998-9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "c_E''",
+      "family_id": "c",
+      "local_object_label": "E''",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in c on P4 [character]: [(0.5-0.4999999999999645j), (0.4999999999999999+0.4999999999999646j), (0.9999999999999998+9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.5-0.4999999999999645j), (0.4999999999999999+0.4999999999999646j), (0.9999999999999998+9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in d on P4 [character]: [(0.4999999999999999+0.4999999999999645j), (0.4999999999999999-0.4999999999999646j), (1.0202342443088597e-16-9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.4999999999999999+0.4999999999999645j), (0.4999999999999999-0.4999999999999646j), (1.0202342443088597e-16-9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "d_A1''",
+      "family_id": "d",
+      "local_object_label": "A1''",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in d on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.4999999999999998+0.4999999999999646j), (6.505213034913027e-17+9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.4999999999999998+0.4999999999999646j), (6.505213034913027e-17+9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "d_A2'",
+      "family_id": "d",
+      "local_object_label": "A2'",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in d on P4 [character]: [(0.4999999999999999+0.4999999999999645j), (0.4999999999999999-0.4999999999999646j), (1.0202342443088597e-16-9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.4999999999999999+0.4999999999999645j), (0.4999999999999999-0.4999999999999646j), (1.0202342443088597e-16-9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "d_A2''",
+      "family_id": "d",
+      "local_object_label": "A2''",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in d on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.4999999999999998+0.4999999999999646j), (6.505213034913027e-17+9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.4999999999999998+0.4999999999999646j), (6.505213034913027e-17+9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "d_E'",
+      "family_id": "d",
+      "local_object_label": "E'",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in d on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.49999999999999983+0.4999999999999646j), (0.9999999999999998+9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.49999999999999967-0.4999999999999645j), (0.49999999999999983+0.4999999999999646j), (0.9999999999999998+9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    },
+    {
+      "generator_id": "d_E''",
+      "family_id": "d",
+      "local_object_label": "E''",
+      "site_symmetry_type_key": "D3h_like",
+      "manifold_id": "P4",
+      "character_field": "character",
+      "raw_band_character": [
+        {
+          "real": 4.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "gram": [
+        [
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "rhs": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 1.0,
+          "imag": -0.0
+        }
+      ],
+      "gram_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in d on P4 [character]: [(0.5+0.4999999999999645j), (0.49999999999999983-0.4999999999999646j), (0.9999999999999998-9.291612618200773e-17j)]",
+      "exact_solver_status": "solver_error",
+      "exact_solver_error": "Linear system has no solution",
+      "exact_solver_solution_before_rounding": null,
+      "why_declared_non_integral": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.5+0.4999999999999645j), (0.49999999999999983-0.4999999999999646j), (0.9999999999999998-9.291612618200773e-17j)])",
+      "issue_classification": "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    }
+  ]
+}

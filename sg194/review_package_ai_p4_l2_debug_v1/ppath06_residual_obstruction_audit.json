@@ -1,0 +1,746 @@
+{
+  "publication_path_id": "PPATH06",
+  "internal_path_id": "FPATH07",
+  "raw_line_id": "L2",
+  "endpoint_pair": [
+    "P3",
+    "P4"
+  ],
+  "row_indices": {
+    "raw42": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "internal_shell": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      28
+    ],
+    "publication_shell": [
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "row_details": [
+    {
+      "publication_row_index": 19,
+      "internal_row_index": 23,
+      "raw_row_index": 6,
+      "publication_path_id": "PPATH06",
+      "endpoint_pair": [
+        "P3",
+        "P4"
+      ],
+      "basis_id": "CANDIDATE_PATH_003_R1",
+      "row_kind": "line_basis_decomposition",
+      "member_internal_path_class_id": "PCLASS08",
+      "member_source_line_id": "L2",
+      "member_candidate_id": "CANDIDATE_PATH_003",
+      "terms": [
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "coeff": -1
+        }
+      ],
+      "matrix_row_nonzero_terms": [
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "publication_row_index": 20,
+      "internal_row_index": 24,
+      "raw_row_index": 7,
+      "publication_path_id": "PPATH06",
+      "endpoint_pair": [
+        "P3",
+        "P4"
+      ],
+      "basis_id": "CANDIDATE_PATH_003_R2",
+      "row_kind": "line_basis_decomposition",
+      "member_internal_path_class_id": "PCLASS08",
+      "member_source_line_id": "L2",
+      "member_candidate_id": "CANDIDATE_PATH_003",
+      "terms": [
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "coeff": -1
+        }
+      ],
+      "matrix_row_nonzero_terms": [
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "publication_row_index": 21,
+      "internal_row_index": 25,
+      "raw_row_index": 8,
+      "publication_path_id": "PPATH06",
+      "endpoint_pair": [
+        "P3",
+        "P4"
+      ],
+      "basis_id": "CANDIDATE_PATH_003_R3",
+      "row_kind": "line_basis_decomposition",
+      "member_internal_path_class_id": "PCLASS08",
+      "member_source_line_id": "L2",
+      "member_candidate_id": "CANDIDATE_PATH_003",
+      "terms": [
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": -1
+        }
+      ],
+      "matrix_row_nonzero_terms": [
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "coeff": -1
+        },
+        {
+          "unknown": "P4_R2",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "publication_row_index": 22,
+      "internal_row_index": 26,
+      "raw_row_index": 9,
+      "publication_path_id": "PPATH06",
+      "endpoint_pair": [
+        "P3",
+        "P4"
+      ],
+      "basis_id": "L2_phase_aware_class_01",
+      "row_kind": "line_basis_decomposition",
+      "member_internal_path_class_id": "PCLASS08",
+      "member_source_line_id": "L2",
+      "member_candidate_id": "CANDIDATE_PATH_003",
+      "terms": [
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": -1
+        }
+      ],
+      "matrix_row_nonzero_terms": [
+        {
+          "unknown": "P3_R1",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "publication_row_index": 23,
+      "internal_row_index": 27,
+      "raw_row_index": 10,
+      "publication_path_id": "PPATH06",
+      "endpoint_pair": [
+        "P3",
+        "P4"
+      ],
+      "basis_id": "L2_phase_aware_class_02",
+      "row_kind": "line_basis_decomposition",
+      "member_internal_path_class_id": "PCLASS08",
+      "member_source_line_id": "L2",
+      "member_candidate_id": "CANDIDATE_PATH_003",
+      "terms": [
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": -1
+        }
+      ],
+      "matrix_row_nonzero_terms": [
+        {
+          "unknown": "P3_R2",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "coeff": -1
+        }
+      ]
+    },
+    {
+      "publication_row_index": 24,
+      "internal_row_index": 28,
+      "raw_row_index": 11,
+      "publication_path_id": "PPATH06",
+      "endpoint_pair": [
+        "P3",
+        "P4"
+      ],
+      "basis_id": "L2_phase_aware_class_03",
+      "row_kind": "line_basis_decomposition",
+      "member_internal_path_class_id": "PCLASS08",
+      "member_source_line_id": "L2",
+      "member_candidate_id": "CANDIDATE_PATH_003",
+      "terms": [
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": -1
+        }
+      ],
+      "matrix_row_nonzero_terms": [
+        {
+          "unknown": "P3_R5",
+          "coeff": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "coeff": -1
+        }
+      ]
+    }
+  ],
+  "failing_generator_residuals": [
+    {
+      "generator_id": "a_A1g",
+      "family_id": "a",
+      "local_object_label": "A1g",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_A1u",
+      "family_id": "a",
+      "local_object_label": "A1u",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_A2g",
+      "family_id": "a",
+      "local_object_label": "A2g",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_A2u",
+      "family_id": "a",
+      "local_object_label": "A2u",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_A1''",
+      "family_id": "b",
+      "local_object_label": "A1''",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_A2'",
+      "family_id": "b",
+      "local_object_label": "A2'",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_A2''",
+      "family_id": "b",
+      "local_object_label": "A2''",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "generator_id": "b_E'",
+      "family_id": "b",
+      "local_object_label": "E'",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2
+      ]
+    },
+    {
+      "generator_id": "b_E''",
+      "family_id": "b",
+      "local_object_label": "E''",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "generator_id": "g_Ag",
+      "family_id": "g",
+      "local_object_label": "Ag",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_Au",
+      "family_id": "g",
+      "local_object_label": "Au",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_Bg",
+      "family_id": "g",
+      "local_object_label": "Bg",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "g_Bu",
+      "family_id": "g",
+      "local_object_label": "Bu",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "generator_id": "h_A1",
+      "family_id": "h",
+      "local_object_label": "A1",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -2
+      ]
+    },
+    {
+      "generator_id": "h_A2",
+      "family_id": "h",
+      "local_object_label": "A2",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        1,
+        -1,
+        2
+      ]
+    },
+    {
+      "generator_id": "h_B1",
+      "family_id": "h",
+      "local_object_label": "B1",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        -2
+      ]
+    },
+    {
+      "generator_id": "h_B2",
+      "family_id": "h",
+      "local_object_label": "B2",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        1,
+        -1,
+        2
+      ]
+    },
+    {
+      "generator_id": "i_A",
+      "family_id": "i",
+      "local_object_label": "A",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -2,
+        -2,
+        0
+      ]
+    },
+    {
+      "generator_id": "i_B",
+      "family_id": "i",
+      "local_object_label": "B",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "generator_id": "k_A'",
+      "family_id": "k",
+      "local_object_label": "A'",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        -2,
+        2,
+        -4
+      ]
+    },
+    {
+      "generator_id": "k_A''",
+      "family_id": "k",
+      "local_object_label": "A''",
+      "classification": "fails_on_raw42",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        2,
+        -2,
+        4
+      ]
+    }
+  ],
+  "passing_generator_residuals": [
+    {
+      "generator_id": "a_Eg",
+      "family_id": "a",
+      "local_object_label": "Eg",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "a_Eu",
+      "family_id": "a",
+      "local_object_label": "Eu",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "e_A1",
+      "family_id": "e",
+      "local_object_label": "A1",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "e_A2",
+      "family_id": "e",
+      "local_object_label": "A2",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "e_E",
+      "family_id": "e",
+      "local_object_label": "E",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_A1",
+      "family_id": "f",
+      "local_object_label": "A1",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_A2",
+      "family_id": "f",
+      "local_object_label": "A2",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "f_E",
+      "family_id": "f",
+      "local_object_label": "E",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "j_A'",
+      "family_id": "j",
+      "local_object_label": "A'",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "j_A''",
+      "family_id": "j",
+      "local_object_label": "A''",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "generator_id": "l_A",
+      "family_id": "l",
+      "local_object_label": "A",
+      "classification": "compatible_on_publication_shell",
+      "ppath06_residual_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "obstruction_explanation": "The three publication rows on PPATH06 are inherited directly from raw L2 via the internal FPATH07 layer. All three rows are pure pair-difference constraints on P3 multiplicities, so residuals survive publication reduction without involving any new P4-only terms."
+}

@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,array,hyperref}
+\title{Workflow Portability Pilot for 194.1.1.1}
+\author{Codex}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Task Background and Scope}
+The reference group is 10.4.1.31. Its single-group workflow has already been closed through AI completeness and the quotient
+\[
+BS_{\mathrm{single}}/AI_{\mathrm{single}} \cong \mathbb{Z}_2 \times \mathbb{Z}_2,
+\]
+while its double-group workflow has already been closed through the mixed quotient
+\[
+BS_{\mathrm{double}}/AI_{\mathrm{double}} \cong \mathbb{Z}^2 \times \mathbb{Z}_2^4.
+\]
+The fixed target of the present round is 194.1.1.1. The present round performs exactly three tasks: a controlled-case audit, a \texttt{groupType=1} portability pilot, and a \texttt{groupType=2} portability pilot. It does not attempt a database-wide theorem, it does not change the target group, and it does not revisit 10.4.1.31 except as an audited baseline.
+
+\section{Group and Coordinate Conventions}
+Group operations are represented as affine actions
+\[
+g : r \mapsto R_g r + \tau_g,
+\]
+with $R_g$ an integer matrix in the current crystal basis and $\tau_g$ a fractional translation. The real-space bridge reused from the audited 10.4.1.31 workflow is
+\[
+r_{\mathrm{conv}} = P\, r_{\mathrm{mag}}, \qquad
+P = \mathrm{diag}(1,2,2).
+\]
+The present code keeps the existing origin convention and uses zero origin shift throughout the portability pilot. Reciprocal-space sample points are written in the magnetic primitive reciprocal basis. For each special point, line, or plane, the script stores a parameterization
+\[
+k(u_1,\dots,u_d) = k_0 + \sum_i u_i b_i^{(\mathrm{sub})},
+\]
+together with an explicit sample point used for the little-group probe. The current pilot also records synthetic 0D boundary points whenever a line endpoint is geometrically present but is not emitted by \texttt{swyckoff\_k.py} as a separately listed special point.
+
+\section{k-Space Formalism}
+A special manifold is defined by its dimension, affine anchor, basis vectors, stabilizer, and a sample point. For a special momentum $k$, the little group is
+\[
+G_k = \{ g \in G \mid R_g k = k + K \text{ for some reciprocal lattice vector } K \}.
+\]
+The script captures the raw little-group characters from \texttt{SSGReps.load\_little\_group} and assembles compatibility equations by restricting endpoint representations to line little groups, and corner representations to plane little groups. With unknown multiplicity vector $n$, the compatibility system is
+\[
+C n = 0,
+\]
+and the band-structure lattice is defined by
+\[
+BS = \ker_{\mathbb Z}(C).
+\]
+The integer kernel is extracted by Smith normal form:
+\[
+U C V = \operatorname{diag}(d_1,\dots,d_r,0,\dots,0),
+\]
+where the last columns of $V$ form an integer basis of $\ker_{\mathbb Z}(C)$. In the present workflow, HNF/SNF machinery is used operationally to answer three separate questions: rank detection, nullity detection, and an integral basis for the kernel and later quotient computations.
+
+\section{Real-Space / AI Formalism}
+For a representative real-space point $r$, the site stabilizer is
+\[
+G_r = \{ g \in G \mid g r = r + R \text{ for some lattice vector } R \}.
+\]
+Wyckoff families are grouped by orbit type, multiplicity, and site symmetry. Local representations are attached to $G_r$, then induced to Bloch bands on k-space manifolds. The present code works with raw little-group characters stored in the JSON layer and reconstructs the linear character layer explicitly. The induction step must include the Bloch phase
+\[
+e^{- i k \cdot \tau_C},
+\]
+because the translated site contributes with a phase set by the conventional-coordinate displacement seen by the little-group operation. In the portable implementation this phase enters in the induced band character sum when a coset representative returns a site to itself modulo lattice translation. The atomic lattice is defined as
+\[
+AI = \operatorname{span}_{\mathbb Z} \{ a_1,a_2,\dots \},
+\]
+and the target quotient, when the atomic side is complete, is
+\[
+BS/AI.
+\]
+
+\section{Double-Group / Projective Formalism}
+The branch \texttt{groupType=1} treats single-valued local representations. The branch \texttt{groupType=2} treats double-valued / projective data, so the SU(2) factor system must be retained explicitly. In the current codebase this appears through the same audited double-group route used for 10.4.1.31, including the explicit \texttt{factor\_su2} treatment in the \texttt{SSGReps} stack. Therefore some formulas cannot be copied verbatim from the single-group branch: the relevant little objects are little corepresentations rather than ordinary irreps, and the projective sign structure must be respected before any restriction or induction statement is considered meaningful.
+
+\section{Algorithm Pipeline and Implementation Mapping}
+The present portability script follows the pipeline below.
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.12\linewidth}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.31\linewidth}}
+\toprule
+Step & Input & Output & Code mapping \\
+\midrule
+1 & group id, local JSON data & standardized operations and family/manifold lists & \texttt{swyckoff\_r.py}, \texttt{swyckoff\_k.py}, \texttt{load\_context}, \texttt{pick\_group\_entries} \\
+2 & special lines and planes & boundary connectivity, unmatched endpoints, synthetic 0D boundary points & \texttt{infer\_line\_connectivity}, \texttt{infer\_plane\_connectivity}, \texttt{build\_synthetic\_boundary\_points} \\
+3 & sample $k$ points & little-group raw/linear characters, stabilizer metadata & \texttt{SSGReps.load\_little\_group}, \texttt{capture\_little\_group}, \texttt{build\_manifold\_capture} \\
+4 & line endpoints or plane corners & compatibility blocks & \texttt{build\_line\_block}, \texttt{build\_plane\_block} \\
+5 & all local blocks & global compatibility matrix $C$ & \texttt{build\_global\_compatibility}, \texttt{build\_with\_planes\_compatibility} \\
+6 & $C$ & Smith data, rank, nullity, integer kernel basis & \texttt{analyze\_kernel} \\
+7 & real-space family, site stabilizer, orbit, local character & induced atomic candidate in BS coordinates & \texttt{trivial\_local\_character}, \texttt{induce\_candidate}, bridge helpers from \texttt{debug\_single\_group\_ai\_bridge.py} \\
+8 & single/double summaries & controlled-case and portability audits & \texttt{build\_controlled\_case}, \texttt{build\_portability\_summary}, \texttt{build\_package} \\
+\bottomrule
+\end{longtable}
+
+\section{Controlled-Case Audit on 194.1.1.1}
+The local toolchain identifies the spatial part of 194.1.1.1 as SG 194 with hall number 488. The standardized operation sets agree exactly with the hall-database representative of SG 194:
+\[
+G_{\mathrm{space}}(194.1.1.1) = G_{\mathrm{space}}(\mathrm{SG}\ 194)
+\]
+at the level of the operation-set comparison performed by the local code. The real-space family signatures and k-space manifold signatures also agree exactly. Therefore the present target is not merely ``close'' to SG 194; within the local setting/basis/origin conventions it is a controlled spatially equivalent test case. The local probe counts are: \texttt{groupType=1} little-group captures = 1, \texttt{groupType=2} little-group captures = 1.
+
+\section{Current Execution Results on 194.1.1.1}
+\subsection*{Single-group pilot}
+The single-group route succeeds through geometry, connectivity, line-layer compatibility, plane-augmented compatibility, and integer-kernel BS construction. The resulting compatibility matrix has
+\[
+\mathrm{shape}(C_{\mathrm{single}}) = 29 \times 34, \qquad
+\operatorname{rank} C_{\mathrm{single}} = 24, \qquad
+\operatorname{nullity} C_{\mathrm{single}} = 10.
+\]
+The script had to add 0 synthetic 0D boundary points because the raw special-point list is not connectivity-complete for this target. The present AI side is only partial: 10 trivial-family generators span rank 10. This means the pilot reaches an honest BS computation and an honest atomic prototype, but not yet an honest AI completeness audit or quotient extraction.
+
+\subsection*{Double-group pilot}
+The double-group route succeeds through feasibility, bridge reuse, induction reuse, and a full with-planes k-space backbone. The resulting double compatibility matrix has
+\[
+\mathrm{shape}(C_{\mathrm{double}}) = 29 \times 34, \qquad
+\operatorname{rank} C_{\mathrm{double}} = 24, \qquad
+\operatorname{nullity} C_{\mathrm{double}} = 10.
+\]
+The first reusable real-space witness is the minimal prototype on family \texttt{l} with trivial stabilizer. This already verifies that the spatial bridge, the Bloch phase, the double little-corep decomposition, and the with-planes backbone are not unique to 10.4.1.31. However, the current run does not yet enumerate point-like or parametric double local coreps for the nontrivial SG 194 site symmetries, so it does not reach a full double AI completeness audit or any final double quotient.
+
+\section{Comparison with the Closed 10.4.1.31 Baseline}
+The following modules port directly from 10.4.1.31: standardized real-space geometry, standardized k-space geometry, character-based little-group capture, compatibility assembly by subgroup matching, integer-kernel BS extraction, and the phase-corrected atomic induction bridge. The following modules do not yet port without additional target-specific work: published-shell integration/completion for the validated SG 194 local irrep/corep libraries, and automatic closure of omitted boundary endpoints without the current synthetic-point augmentation. Therefore the true reusable boundary of the workflow is already beyond one-group scripting for the spatial backbone, but still short of an honest portable AI completion layer.
+
+\section{Conclusion and Remaining Blockers}
+Controlled-case verdict: true. Single-group portability verdict: true. Double-group seed verdict: true. The main blocker is:
+\begin{quote}
+Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, but only 11 of 33 induced local objects satisfy compatibility on the publication-level shell. Classification counts across raw42 / internal honest shell / publication shell: \{'fails\_on\_raw42': 22, 'compatible\_on\_publication\_shell': 11, 'induction\_failure\_on\_raw42': 12\}. 22 candidates already fail on the diagnostic raw42 shell before any internal/publication reduction is applied. No candidate first fails on the internal full-span 8-path shell before publication reduction. No candidate first fails on the publication shell after passing the internal shell. On the publication shell the nonzero residual rows concentrate on path histogram \{'PPATH06': 48\}.
+\end{quote}
+The double-group next blocker is:
+\begin{quote}
+Non-abelian SG 194 projective local-corep libraries already exist and validate, but the published-shell double AI induction path is not yet wired beyond the current trivial-stabilizer witness.
+\end{quote}
+The present conclusions apply only to the current target 194.1.1.1, the current local setting/basis/origin conventions, and the current single-group / double-group formalism implemented in this repository.
+
+\end{document}

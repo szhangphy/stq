@@ -79,7 +79,7 @@ from pipeline_v2.final_object_reduction import (
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_publication_C_builder_v1"
+PACKAGE_NAME = "review_package_ai_p4_l2_debug_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -103,6 +103,7 @@ SINGLE_LINE_COMPAT_JSON = ROOT / "group_194_1_1_1_single_line_compatibility.json
 SINGLE_WITH_PLANES_JSON = ROOT / "group_194_1_1_1_single_full_compatibility_with_planes.json"
 SINGLE_BS_JSON = ROOT / "group_194_1_1_1_single_bs_analysis.json"
 SINGLE_AI_JSON = ROOT / "group_194_1_1_1_single_ai_trivial_generators.json"
+SINGLE_AI_ALL_OBJECTS_JSON = ROOT / "group_194_1_1_1_single_ai_all_induced_local_objects.json"
 
 DOUBLE_LITTLE_GROUPS_JSON = ROOT / "group_194_1_1_1_double_little_groups.json"
 DOUBLE_WITH_PLANES_JSON = ROOT / "group_194_1_1_1_double_full_compatibility_with_planes.json"
@@ -148,6 +149,16 @@ AI_HONEST_BLOCKER_MD = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.md
 AI_HONEST_BLOCKER_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.json"
 AI_OBSTRUCTION_DIAG_MD = ROOT / "bs_fix_reaudit_v1" / "ai_obstruction_diagnosis_report.md"
 AI_OBSTRUCTION_DIAG_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_obstruction_diagnosis_report.json"
+P4_INDUCTION_FAILURE_MD = ROOT / "bs_fix_reaudit_v1" / "p4_induction_failure_audit.md"
+P4_INDUCTION_FAILURE_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_induction_failure_audit.json"
+P4_PASSING_FAILING_MD = ROOT / "bs_fix_reaudit_v1" / "p4_passing_vs_failing_comparison.md"
+P4_PASSING_FAILING_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_passing_vs_failing_comparison.json"
+PPATH06_OBSTRUCTION_MD = ROOT / "bs_fix_reaudit_v1" / "ppath06_residual_obstruction_audit.md"
+PPATH06_OBSTRUCTION_JSON = ROOT / "bs_fix_reaudit_v1" / "ppath06_residual_obstruction_audit.json"
+LAYERWISE_L2_FPATH07_PPATH06_MD = ROOT / "bs_fix_reaudit_v1" / "l2_fpath07_ppath06_layerwise_comparison.md"
+LAYERWISE_L2_FPATH07_PPATH06_JSON = ROOT / "bs_fix_reaudit_v1" / "l2_fpath07_ppath06_layerwise_comparison.json"
+AI_ZERO_SUBSET_RANK_MD = ROOT / "bs_fix_reaudit_v1" / "ai_zero_subset_rank_report.md"
+AI_ZERO_SUBSET_RANK_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_zero_subset_rank_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -264,6 +275,16 @@ def complex_list_to_json(values: Sequence[complex]) -> list[dict[str, float]]:
 
 def complex_matrix_to_json(matrix: Sequence[Sequence[complex]]) -> list[list[dict[str, float]]]:
     return [complex_list_to_json(row) for row in matrix]
+
+
+def complex_from_json(value: Any) -> complex:
+    if isinstance(value, dict):
+        return complex(float(value.get("real", 0.0)), float(value.get("imag", 0.0)))
+    return complex(value)
+
+
+def complex_matrix_from_json(matrix: Sequence[Sequence[Any]]) -> list[list[complex]]:
+    return [[complex_from_json(value) for value in row] for row in matrix]
 
 
 def format_tree(root: Path) -> list[str]:
@@ -1810,6 +1831,196 @@ def _summarize_induction_character_field(character_field: str | dict[str, str]) 
     )
 
 
+class InductionFailure(ValueError):
+    def __init__(self, message: str, *, debug: dict[str, Any]) -> None:
+        super().__init__(message)
+        self.debug = debug
+
+
+def _complex_array_to_json(array: np.ndarray) -> list[Any]:
+    return complex_list_to_json([complex(value) for value in array.tolist()])
+
+
+def _complex_matrix_to_json(array: np.ndarray) -> list[list[Any]]:
+    return [_complex_array_to_json(row) for row in array]
+
+
+def _attempt_exact_integer_decomposition(
+    basis_matrix: sp.Matrix,
+    restricted: sp.Matrix,
+    context: str,
+) -> dict[str, Any]:
+    try:
+        solution, params = basis_matrix.gauss_jordan_solve(restricted)
+    except Exception as exc:
+        return {
+            "status": "solver_error",
+            "error": str(exc),
+            "solution_before_rounding": None,
+            "integral_solution": None,
+        }
+    if params.rows * params.cols:
+        return {
+            "status": "non_unique",
+            "error": "non-unique decomposition",
+            "solution_before_rounding": [complex(value.evalf()) for value in solution],
+            "integral_solution": None,
+        }
+    try:
+        integral_solution = coerce_integer_coeffs(list(solution), context)
+    except Exception as exc:
+        return {
+            "status": "non_integral",
+            "error": str(exc),
+            "solution_before_rounding": [complex(value.evalf()) for value in solution],
+            "integral_solution": None,
+        }
+    return {
+        "status": "integral",
+        "error": None,
+        "solution_before_rounding": [complex(value.evalf()) for value in solution],
+        "integral_solution": integral_solution,
+    }
+
+
+def _build_manifold_induction_trace(
+    entry: dict[str, Any],
+    local_character: dict[int, complex],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    manifold_id: str,
+    *,
+    character_field: str | dict[str, str],
+    orbit: Sequence[dict[str, Any]] | None = None,
+    stabilizer: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    info = captures[manifold_id]
+    manifold_character_field = _resolve_induction_character_field(
+        character_field,
+        manifold_id,
+        ctx["kgeom"],
+    )
+    orbit = (
+        orbit
+        if orbit is not None
+        else single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
+    )
+    stabilizer = (
+        stabilizer
+        if stabilizer is not None
+        else bridge.bridge_stabilizer_for_entry(entry, ctx)
+    )
+    stabilizer_unitary = set(stabilizer["unitary_indices"])
+    band_character: list[complex] = []
+    for op_index, rotation, translation in zip(
+        info["unitary_raw_indices"],
+        info["unitary_rotations"],
+        info["unitary_translations"],
+    ):
+        rot = np.array(rotation, dtype=float)
+        tau = np.array(translation, dtype=float)
+        total = 0j
+        for site in orbit:
+            coset_index = int(site["source_operation_index"])
+            conj_index = ctx["group_tables"]["compose"](
+                ctx["group_tables"]["inverse"][coset_index],
+                ctx["group_tables"]["compose"](op_index, coset_index),
+            )
+            if conj_index not in stabilizer_unitary:
+                continue
+            point_conv = np.array(site["conv_vector"], dtype=float)
+            delta = rot @ point_conv + tau - point_conv
+            fixed, _ = bridge.vector_is_lattice(ctx["supercell"], delta)
+            if not fixed:
+                continue
+            total += local_character[conj_index] * np.exp(
+                -1j * float(np.dot(np.array(info["kconv"], dtype=float), delta))
+            )
+        band_character.append(total)
+
+    chars = np.array(complex_matrix_from_json(info[manifold_character_field]), dtype=complex)
+    band = np.array(band_character, dtype=complex)
+    basis_matrix = sp.Matrix(chars.T.tolist())
+    restricted = sp.Matrix(list(band))
+    context = f"{entry['letter']} on {manifold_id} [{manifold_character_field}]"
+    numeric_basis = np.array(
+        [[complex(value.evalf()) for value in row] for row in basis_matrix.tolist()],
+        dtype=complex,
+    )
+    numeric_rhs = np.array([complex(value.evalf()) for value in restricted], dtype=complex)
+    lstsq_solution, _residuals, lstsq_rank, _singular_values = np.linalg.lstsq(
+        numeric_basis,
+        numeric_rhs,
+        rcond=None,
+    )
+    numeric_solver_status = "integral"
+    numeric_solver_error = None
+    rounded = None
+    try:
+        rounded = solve_numeric_integer_decomposition(basis_matrix, restricted, context)
+    except Exception as exc:
+        numeric_solver_status = "non_integral"
+        numeric_solver_error = str(exc)
+    gram = chars @ chars.conj().T / chars.shape[1]
+    rhs = chars.conj() @ band / chars.shape[1]
+    gram_solution = None
+    gram_error = None
+    try:
+        gram_solution = np.linalg.solve(gram, rhs)
+    except Exception as exc:
+        gram_error = str(exc)
+    exact_solver = _attempt_exact_integer_decomposition(basis_matrix, restricted, context)
+    integral_solution = rounded
+    if integral_solution is None and exact_solver["status"] == "integral":
+        integral_solution = list(exact_solver["integral_solution"])
+    if integral_solution is not None:
+        reconstructed = numeric_basis @ np.array(integral_solution, dtype=complex)
+        reconstruction_matches = bool(np.allclose(reconstructed, numeric_rhs, atol=1e-8))
+    else:
+        reconstruction_matches = False
+    return {
+        "manifold_id": manifold_id,
+        "character_field": manifold_character_field,
+        "unitary_raw_indices": [int(index) for index in info["unitary_raw_indices"]],
+        "stabilizer_unitary_indices": [int(index) for index in stabilizer["unitary_indices"]],
+        "band_character": list(band_character),
+        "band_character_json": complex_list_to_json(band_character),
+        "chars_matrix": chars.tolist(),
+        "chars_matrix_json": _complex_matrix_to_json(chars),
+        "gram": gram.tolist(),
+        "gram_json": _complex_matrix_to_json(gram),
+        "rhs": rhs.tolist(),
+        "rhs_json": _complex_array_to_json(rhs),
+        "numeric_lstsq_rank": int(lstsq_rank),
+        "numeric_solution_before_rounding": list(lstsq_solution),
+        "numeric_solution_before_rounding_json": _complex_array_to_json(lstsq_solution),
+        "numeric_solver_status": numeric_solver_status,
+        "numeric_solver_error": numeric_solver_error,
+        "gram_solution_before_rounding": (
+            list(gram_solution)
+            if gram_solution is not None
+            else None
+        ),
+        "gram_solution_before_rounding_json": (
+            _complex_array_to_json(gram_solution)
+            if gram_solution is not None
+            else None
+        ),
+        "gram_solver_error": gram_error,
+        "exact_solver_status": exact_solver["status"],
+        "exact_solver_error": exact_solver["error"],
+        "exact_solver_solution_before_rounding": exact_solver["solution_before_rounding"],
+        "exact_solver_solution_before_rounding_json": (
+            complex_list_to_json(exact_solver["solution_before_rounding"])
+            if exact_solver["solution_before_rounding"] is not None
+            else None
+        ),
+        "rounded_multiplicities": integral_solution,
+        "integral_success": integral_solution is not None,
+        "reconstruction_matches_band": reconstruction_matches,
+    }
+
+
 def induce_candidate(
     entry: dict[str, Any],
     local_character: dict[int, complex],
@@ -1823,7 +2034,6 @@ def induce_candidate(
 ) -> dict[str, Any]:
     orbit = single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
     stabilizer = bridge.bridge_stabilizer_for_entry(entry, ctx)
-    stabilizer_unitary = set(stabilizer["unitary_indices"])
     manifold_multiplicities: dict[str, list[int]] = {}
     manifold_band_characters: dict[str, list[dict[str, float]]] = {}
     manifold_character_fields: dict[str, str] = {}
@@ -1836,61 +2046,33 @@ def induce_candidate(
             + ctx["kgeom"]["grouped"]["planes"]
         )
     ]
+    manifold_induction_traces: dict[str, dict[str, Any]] = {}
     for manifold_id in manifold_ids:
-        info = captures[manifold_id]
-        manifold_character_field = _resolve_induction_character_field(
-            character_field,
+        trace = _build_manifold_induction_trace(
+            entry,
+            local_character,
+            ctx,
+            captures,
             manifold_id,
-            ctx["kgeom"],
+            character_field=character_field,
+            orbit=orbit,
+            stabilizer=stabilizer,
         )
-        manifold_character_fields[manifold_id] = manifold_character_field
-        band_character: list[complex] = []
-        for op_index, rotation, translation in zip(info["unitary_raw_indices"], info["unitary_rotations"], info["unitary_translations"]):
-            rot = np.array(rotation, dtype=float)
-            tau = np.array(translation, dtype=float)
-            total = 0j
-            for site in orbit:
-                coset_index = int(site["source_operation_index"])
-                conj_index = ctx["group_tables"]["compose"](
-                    ctx["group_tables"]["inverse"][coset_index],
-                    ctx["group_tables"]["compose"](op_index, coset_index),
-                )
-                if conj_index not in stabilizer_unitary:
-                    continue
-                point_conv = np.array(site["conv_vector"], dtype=float)
-                delta = rot @ point_conv + tau - point_conv
-                fixed, _ = bridge.vector_is_lattice(ctx["supercell"], delta)
-                if not fixed:
-                    continue
-                total += local_character[conj_index] * np.exp(-1j * float(np.dot(np.array(info["kconv"], dtype=float), delta)))
-            band_character.append(total)
-        chars = np.array(info[manifold_character_field], dtype=complex)
-        band = np.array(band_character, dtype=complex)
-        context = f"{entry['letter']} on {manifold_id} [{manifold_character_field}]"
-        basis_matrix = sp.Matrix(chars.T.tolist())
-        restricted = sp.Matrix(list(band))
-        numeric_error = None
-        try:
-            rounded = solve_numeric_integer_decomposition(basis_matrix, restricted, context)
-        except ValueError as exc:
-            numeric_error = str(exc)
-            gram = chars @ chars.conj().T / chars.shape[1]
-            rhs = chars.conj() @ band / chars.shape[1]
-            multiplicities = np.linalg.solve(gram, rhs)
-            rounded = [int(round(float(value.real))) for value in multiplicities]
-            if not np.allclose(multiplicities, np.rint(multiplicities.real), atol=1e-8):
-                raise ValueError(
-                    f"{entry['letter']} on {manifold_id}: non-integral multiplicities "
-                    f"(numeric_solver={numeric_error})"
-                )
-        recon = np.array(rounded, dtype=complex) @ chars
-        if not np.allclose(recon, band, atol=1e-8):
-            raise ValueError(
-                f"{entry['letter']} on {manifold_id}: reconstruction failed "
-                f"(numeric_solver={numeric_error})"
+        manifold_induction_traces[manifold_id] = trace
+        manifold_character_fields[manifold_id] = trace["character_field"]
+        manifold_band_characters[manifold_id] = trace["band_character_json"]
+        if not trace["integral_success"]:
+            raise InductionFailure(
+                f"{entry['letter']} on {manifold_id}: non-integral multiplicities "
+                f"(numeric_solver={trace['numeric_solver_error']})",
+                debug={
+                    "family_id": entry["letter"],
+                    "manifold_id": manifold_id,
+                    "character_field": trace["character_field"],
+                    "manifold_trace": trace,
+                },
             )
-        manifold_multiplicities[manifold_id] = rounded
-        manifold_band_characters[manifold_id] = complex_list_to_json(band_character)
+        manifold_multiplicities[manifold_id] = list(trace["rounded_multiplicities"])
     raw_manifold_multiplicities = {manifold_id: list(values) for manifold_id, values in manifold_multiplicities.items()}
     raw_unknown_vector = unknown_vector_from_multiplicities(raw_manifold_multiplicities, unknown_ordering)
     translated_multiplicities = apply_point_row_translation_to_multiplicities(
@@ -1928,6 +2110,15 @@ def induce_candidate(
         "manifold_character_fields": manifold_character_fields,
         "stabilizer_size": int(stabilizer["bridge_stabilizer_size"]),
         "unitary_stabilizer_size": int(stabilizer["bridge_unitary_count"]),
+        "induction_trace_summary": {
+            manifold_id: {
+                "character_field": trace["character_field"],
+                "integral_success": trace["integral_success"],
+                "numeric_solver_status": trace["numeric_solver_status"],
+                "exact_solver_status": trace["exact_solver_status"],
+            }
+            for manifold_id, trace in manifold_induction_traces.items()
+        },
     }
 
 
@@ -2252,6 +2443,7 @@ def build_ai_seed_audit_report(
     *,
     unknown_ordering: Sequence[str],
     library_integration_status: str = "not_attempted",
+    zero_subset_rank_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     ai_matrix = (
         sp.Matrix.hstack(*[sp.Matrix(candidate["unknown_vector"]) for candidate in ai_candidates])
@@ -2259,8 +2451,13 @@ def build_ai_seed_audit_report(
         else sp.zeros(len(unknown_ordering), 0)
     )
     compatibility_zero_count = sum(int(candidate["compatibility_zero"]) for candidate in ai_candidates)
+    ai_status = (
+        zero_subset_rank_report["ai_status"]
+        if zero_subset_rank_report is not None
+        else "seed_only"
+    )
     return {
-        "ai_status": "seed_only",
+        "ai_status": ai_status,
         "object_language": "publication_level_C_pub_34_unknowns",
         "unknown_count": len(unknown_ordering),
         "generator_count": len(ai_candidates),
@@ -2279,12 +2476,22 @@ def build_ai_seed_audit_report(
         "point_row_translation_profile": point_row_translation.get("profile"),
         "point_row_translation_enabled": bool(point_row_translation.get("enabled")),
         "library_integration_status": library_integration_status,
+        "publication_zero_subset_rank": (
+            zero_subset_rank_report["zero_subset_rank"]
+            if zero_subset_rank_report is not None
+            else 0
+        ),
+        "publication_zero_subset_generator_ids": (
+            list(zero_subset_rank_report["zero_generator_ids"])
+            if zero_subset_rank_report is not None
+            else []
+        ),
         "missing_prerequisites": [
-            "published-shell induction beyond the trivial seed is not yet closed on the current reduced shell",
-            "validated non-abelian local irrep/corep libraries are wired into the builder, but most induced local objects still fail compatibility on the current publication shell",
+            "published-shell induction beyond the currently verified compatibility-zero subset is not yet closed on the current publication shell",
+            "validated non-abelian local irrep/corep libraries are wired into the builder, but P4 induction failures and the PPATH06 residual obstruction still block a full AI lattice",
             "AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis",
         ],
-        "honest_ai_lattice_ready": False,
+        "honest_ai_lattice_ready": ai_status == "full_ai_lattice",
     }
 
 
@@ -2303,6 +2510,8 @@ def build_ai_seed_audit_markdown(report: dict[str, Any]) -> str:
             f"- Nonzero-residual family letters: `{report['nonzero_residual_family_letters']}`.",
             f"- Point-row translation profile/enabled: `{report['point_row_translation_profile']}` / `{report['point_row_translation_enabled']}`.",
             f"- Library integration status: `{report['library_integration_status']}`.",
+            f"- Publication zero-subset rank: `{report['publication_zero_subset_rank']}`.",
+            f"- Publication zero-subset generators: `{report['publication_zero_subset_generator_ids']}`.",
             f"- Honest AI lattice ready: `{report['honest_ai_lattice_ready']}`.",
             "- Missing prerequisites:",
             *[f"  - {item}" for item in report["missing_prerequisites"]],
@@ -2571,16 +2780,17 @@ def induce_family_objects(
                 family_success_map.setdefault(family, []).append(generator_id)
                 seen_vectors.setdefault(tuple(int(value) for value in candidate["unknown_vector"]), []).append(generator_id)
             except Exception as exc:
-                failures.append(
-                    {
-                        "generator_id": generator_id,
-                        "family_id": family,
-                        "local_object_label": local_object["label"],
-                        "site_symmetry_type_key": local_object.get("site_symmetry_type_key"),
-                        "site_symmetry_type_label": local_object.get("site_symmetry_type_label"),
-                        "error": str(exc),
-                    }
-                )
+                failure_record = {
+                    "generator_id": generator_id,
+                    "family_id": family,
+                    "local_object_label": local_object["label"],
+                    "site_symmetry_type_key": local_object.get("site_symmetry_type_key"),
+                    "site_symmetry_type_label": local_object.get("site_symmetry_type_label"),
+                    "error": str(exc),
+                }
+                if isinstance(exc, InductionFailure):
+                    failure_record["debug"] = exc.debug
+                failures.append(failure_record)
     duplicate_classes = [
         {
             "generator_ids": ids,
@@ -2930,8 +3140,503 @@ def build_ai_obstruction_diagnosis_markdown(report: dict[str, Any]) -> str:
     )
 
 
+def build_single_ai_all_induced_local_objects_payload(
+    induction: dict[str, Any],
+    *,
+    published_object_kind: str,
+    object_language: str,
+) -> dict[str, Any]:
+    candidates = []
+    for candidate in induction["candidates"]:
+        payload = dict(candidate)
+        payload["object_language"] = object_language
+        payload["published_object_kind"] = published_object_kind
+        candidates.append(payload)
+    return {
+        "object_role": "publication_level_C_pub_all_induced_local_objects",
+        "published_object_kind": published_object_kind,
+        "object_language": object_language,
+        "character_field_used": next(
+            (
+                candidate.get("character_field_used")
+                for candidate in candidates
+                if candidate.get("character_field_used")
+            ),
+            None,
+        ),
+        "candidate_count": len(candidates),
+        "candidates": candidates,
+    }
+
+
+def _build_local_object_index(
+    library_payload: dict[str, Any],
+) -> dict[str, dict[str, Any]]:
+    return {
+        f"{family}_{local_object['label']}": local_object
+        for family, objects in library_payload["family_single_local_irreps"].items()
+        for local_object in objects
+    }
+
+
+def _trace_local_object_on_manifold(
+    library_payload: dict[str, Any],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    generator_id: str,
+    manifold_id: str,
+    *,
+    character_field: str | dict[str, str],
+) -> dict[str, Any]:
+    local_index = _build_local_object_index(library_payload)
+    family_id, _label = generator_id.split("_", 1)
+    local_object = local_index[generator_id]
+    local_character = {
+        int(index): complex(value)
+        for index, value in local_object["character_on_unitary_stabilizer_complex"].items()
+    }
+    trace = _build_manifold_induction_trace(
+        ctx["entries_by_letter"][family_id],
+        local_character,
+        ctx,
+        captures,
+        manifold_id,
+        character_field=character_field,
+    )
+    trace.update(
+        {
+            "generator_id": generator_id,
+            "family_id": family_id,
+            "local_object_label": local_object["label"],
+            "local_object_dimension": int(local_object["dimension"]),
+            "site_symmetry_type_key": local_object.get("site_symmetry_type_key"),
+            "site_symmetry_type_label": local_object.get("site_symmetry_type_label"),
+            "local_object_character_on_unitary_stabilizer": {
+                str(index): complex(value)
+                for index, value in local_character.items()
+            },
+        }
+    )
+    return trace
+
+
+def _classify_p4_issue(
+    failing_trace: dict[str, Any],
+    reference_traces: Sequence[dict[str, Any]],
+) -> str:
+    same_chars_matrix = all(
+        failing_trace["chars_matrix_json"] == reference["chars_matrix_json"]
+        for reference in reference_traces
+    )
+    same_unitary_indices = all(
+        failing_trace["unitary_raw_indices"] == reference["unitary_raw_indices"]
+        for reference in reference_traces
+    )
+    any_reference_integral = any(reference["integral_success"] for reference in reference_traces)
+    if same_chars_matrix and same_unitary_indices and any_reference_integral:
+        return "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+    if not same_chars_matrix or not same_unitary_indices:
+        return "likely_P4_little_group_character_table_or_unitary_index_mismatch"
+    return "unresolved_non_integral_P4_induction_failure"
+
+
+def build_p4_induction_failure_audit(
+    library_payload: dict[str, Any],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    publication_induction: dict[str, Any],
+    *,
+    character_field: str | dict[str, str],
+) -> dict[str, Any]:
+    same_type_passing_generator_ids = sorted(
+        candidate["generator_id"]
+        for candidate in publication_induction["candidates"]
+        if candidate.get("site_symmetry_type_key") == "D3h_like"
+    )
+    reference_traces = [
+        _trace_local_object_on_manifold(
+            library_payload,
+            ctx,
+            captures,
+            generator_id,
+            "P4",
+            character_field=character_field,
+        )
+        for generator_id in same_type_passing_generator_ids[:2]
+    ]
+    records = []
+    for failure in publication_induction["failures"]:
+        if failure["family_id"] not in {"c", "d"}:
+            continue
+        trace = _trace_local_object_on_manifold(
+            library_payload,
+            ctx,
+            captures,
+            failure["generator_id"],
+            "P4",
+            character_field=character_field,
+        )
+        records.append(
+            {
+                "generator_id": failure["generator_id"],
+                "family_id": failure["family_id"],
+                "local_object_label": failure["local_object_label"],
+                "site_symmetry_type_key": failure.get("site_symmetry_type_key"),
+                "manifold_id": "P4",
+                "character_field": trace["character_field"],
+                "raw_band_character": trace["band_character_json"],
+                "chars_matrix": trace["chars_matrix_json"],
+                "gram": trace["gram_json"],
+                "rhs": trace["rhs_json"],
+                "numeric_solution_before_rounding": trace["numeric_solution_before_rounding_json"],
+                "gram_solution_before_rounding": trace["gram_solution_before_rounding_json"],
+                "numeric_solver_status": trace["numeric_solver_status"],
+                "numeric_solver_error": trace["numeric_solver_error"],
+                "exact_solver_status": trace["exact_solver_status"],
+                "exact_solver_error": trace["exact_solver_error"],
+                "exact_solver_solution_before_rounding": trace["exact_solver_solution_before_rounding_json"],
+                "why_declared_non_integral": failure["error"],
+                "issue_classification": _classify_p4_issue(trace, reference_traces),
+            }
+        )
+    return {
+        "manifold_id": "P4",
+        "character_field": _summarize_induction_character_field(character_field),
+        "induction_failure_count": len(records),
+        "failure_family_ids": sorted({record["family_id"] for record in records}),
+        "reference_passing_generator_ids_same_site_symmetry_type": same_type_passing_generator_ids,
+        "records": records,
+    }
+
+
+def build_p4_induction_failure_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# P4 Induction Failure Audit",
+        "",
+        f"- Manifold id: `{report['manifold_id']}`.",
+        f"- Character field: `{report['character_field']}`.",
+        f"- Induction failure count: `{report['induction_failure_count']}`.",
+        f"- Failure families: `{report['failure_family_ids']}`.",
+        f"- Same-type passing reference generators: `{report['reference_passing_generator_ids_same_site_symmetry_type']}`.",
+        "",
+    ]
+    for record in report["records"]:
+        lines.extend(
+            [
+                f"## {record['generator_id']}",
+                "",
+                f"- Family / label / site type: `{record['family_id']}` / `{record['local_object_label']}` / `{record['site_symmetry_type_key']}`.",
+                f"- Numeric solver status: `{record['numeric_solver_status']}`.",
+                f"- Exact solver status: `{record['exact_solver_status']}`.",
+                f"- Issue classification: `{record['issue_classification']}`.",
+                f"- Failure text: {record['why_declared_non_integral']}",
+                "",
+            ]
+        )
+    return "\n".join(lines)
+
+
+def build_p4_passing_vs_failing_comparison(
+    library_payload: dict[str, Any],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    publication_induction: dict[str, Any],
+    *,
+    character_field: str | dict[str, str],
+) -> dict[str, Any]:
+    passing_generator_id = next(
+        candidate["generator_id"]
+        for candidate in publication_induction["candidates"]
+        if candidate.get("site_symmetry_type_key") == "D3h_like"
+    )
+    failing_generator_ids = ["c_A1'", "d_A1'"]
+    compared = []
+    for generator_id in [passing_generator_id, *failing_generator_ids]:
+        trace = _trace_local_object_on_manifold(
+            library_payload,
+            ctx,
+            captures,
+            generator_id,
+            "P4",
+            character_field=character_field,
+        )
+        compared.append(
+            {
+                "generator_id": generator_id,
+                "family_id": trace["family_id"],
+                "local_object_label": trace["local_object_label"],
+                "site_symmetry_type_key": trace.get("site_symmetry_type_key"),
+                "raw_band_character": trace["band_character_json"],
+                "numeric_solution_before_rounding": trace["numeric_solution_before_rounding_json"],
+                "numeric_solver_status": trace["numeric_solver_status"],
+                "exact_solver_status": trace["exact_solver_status"],
+                "integral_success": trace["integral_success"],
+                "chars_matrix": trace["chars_matrix_json"],
+            }
+        )
+    return {
+        "manifold_id": "P4",
+        "passing_generator_id": passing_generator_id,
+        "failing_generator_ids": failing_generator_ids,
+        "same_chars_matrix_for_all_compared_objects": all(
+            record["chars_matrix"] == compared[0]["chars_matrix"]
+            for record in compared[1:]
+        ),
+        "compared_records": compared,
+        "first_mismatch_stage": (
+            "multiplicity_solve_on_P4"
+            if compared[0]["integral_success"] and any(not record["integral_success"] for record in compared[1:])
+            else "not_detected"
+        ),
+    }
+
+
+def build_p4_passing_vs_failing_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# P4 Passing vs Failing Comparison",
+        "",
+        f"- Manifold id: `{report['manifold_id']}`.",
+        f"- Passing reference generator: `{report['passing_generator_id']}`.",
+        f"- Failing generators: `{report['failing_generator_ids']}`.",
+        f"- Same chars matrix for all compared objects: `{report['same_chars_matrix_for_all_compared_objects']}`.",
+        f"- First mismatch stage: `{report['first_mismatch_stage']}`.",
+        "",
+    ]
+    for record in report["compared_records"]:
+        lines.append(
+            f"- `{record['generator_id']}`: integral_success=`{record['integral_success']}`, "
+            f"numeric_solver_status=`{record['numeric_solver_status']}`, exact_solver_status=`{record['exact_solver_status']}`, "
+            f"band_character=`{record['raw_band_character']}`."
+        )
+    return "\n".join(lines)
+
+
+def _row_index_lookup_from_line_full(line_full: dict[str, Any]) -> dict[str, list[int]]:
+    row_ranges, _row_to_line = build_line_block_row_maps(line_full["line_blocks"])
+    return row_ranges
+
+
+def build_ppath06_residual_obstruction_audit(
+    raw_line_full: dict[str, Any],
+    internal_line_full: dict[str, Any],
+    publication_line_full: dict[str, Any],
+    obstruction_report: dict[str, Any],
+) -> dict[str, Any]:
+    publication_row_ranges = _row_index_lookup_from_line_full(publication_line_full)
+    raw_row_ranges = _row_index_lookup_from_line_full(raw_line_full)
+    internal_row_ranges = _row_index_lookup_from_line_full(internal_line_full)
+    publication_rows = publication_row_ranges["PPATH06"]
+    raw_rows = raw_row_ranges["L2"]
+    internal_rows = internal_row_ranges["FPATH07"]
+    row_details = []
+    publication_equations = {
+        row_index: equation
+        for row_index, equation in zip(
+            publication_rows,
+            next(block["equations"] for block in publication_line_full["line_blocks"] if block["line_id"] == "PPATH06"),
+        )
+    }
+    for publication_row_index, raw_row_index, internal_row_index in zip(publication_rows, raw_rows, internal_rows):
+        provenance = publication_line_full["row_provenance"][publication_row_index]
+        equation = publication_equations[publication_row_index]
+        row_details.append(
+            {
+                "publication_row_index": publication_row_index,
+                "internal_row_index": internal_row_index,
+                "raw_row_index": raw_row_index,
+                "publication_path_id": provenance["publication_path_id"],
+                "endpoint_pair": provenance["endpoint_pair"],
+                "basis_id": provenance["basis_id"],
+                "row_kind": provenance["row_kind"],
+                "member_internal_path_class_id": provenance["member_internal_path_class_id"],
+                "member_source_line_id": provenance["member_source_line_id"],
+                "member_candidate_id": provenance["member_candidate_id"],
+                "terms": list(equation["terms"]),
+                "matrix_row_nonzero_terms": [
+                    {"unknown": publication_line_full["global_unknown_ordering"][col], "coeff": int(value)}
+                    for col, value in enumerate(provenance["matrix_row"])
+                    if int(value) != 0
+                ],
+            }
+        )
+    failing_generator_residuals = []
+    passing_generator_residuals = []
+    for record in obstruction_report["generator_records"]:
+        publication_state = record["publication_shell"]
+        residual_by_row = {item["row_index"]: int(item["residual"]) for item in publication_state["nonzero_rows"]}
+        payload = {
+            "generator_id": record["generator_id"],
+            "family_id": record["family_id"],
+            "local_object_label": record["local_object_label"],
+            "classification": record["classification"],
+            "ppath06_residual_vector": [int(residual_by_row.get(index, 0)) for index in publication_rows],
+        }
+        if publication_state["compatibility_zero"]:
+            passing_generator_residuals.append(payload)
+        elif publication_state["status"] == "nonzero_residual":
+            failing_generator_residuals.append(payload)
+    return {
+        "publication_path_id": "PPATH06",
+        "internal_path_id": "FPATH07",
+        "raw_line_id": "L2",
+        "endpoint_pair": ["P3", "P4"],
+        "row_indices": {
+            "raw42": raw_rows,
+            "internal_shell": internal_rows,
+            "publication_shell": publication_rows,
+        },
+        "row_details": row_details,
+        "failing_generator_residuals": failing_generator_residuals,
+        "passing_generator_residuals": passing_generator_residuals,
+        "obstruction_explanation": (
+            "The three publication rows on PPATH06 are inherited directly from raw L2 via the internal FPATH07 layer. "
+            "All three rows are pure pair-difference constraints on P3 multiplicities, so residuals survive publication reduction "
+            "without involving any new P4-only terms."
+        ),
+    }
+
+
+def build_ppath06_residual_obstruction_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# PPATH06 Residual Obstruction Audit",
+        "",
+        f"- Raw/internal/publication chain: `{report['raw_line_id']}` -> `{report['internal_path_id']}` -> `{report['publication_path_id']}`.",
+        f"- Endpoint pair: `{report['endpoint_pair']}`.",
+        f"- Row indices: `{report['row_indices']}`.",
+        f"- Explanation: {report['obstruction_explanation']}",
+        "",
+    ]
+    for row in report["row_details"]:
+        lines.append(
+            f"- publication row `{row['publication_row_index']}` / basis `{row['basis_id']}` / row_kind `{row['row_kind']}` / "
+            f"source line `{row['member_source_line_id']}` / terms `{row['matrix_row_nonzero_terms']}`."
+        )
+    return "\n".join(lines)
+
+
+def build_l2_fpath07_ppath06_layerwise_comparison(
+    raw_line_full: dict[str, Any],
+    internal_line_full: dict[str, Any],
+    publication_line_full: dict[str, Any],
+) -> dict[str, Any]:
+    raw_rows = _row_index_lookup_from_line_full(raw_line_full)["L2"]
+    internal_rows = _row_index_lookup_from_line_full(internal_line_full)["FPATH07"]
+    publication_rows = _row_index_lookup_from_line_full(publication_line_full)["PPATH06"]
+    comparisons = []
+    for raw_row_index, internal_row_index, publication_row_index in zip(raw_rows, internal_rows, publication_rows):
+        raw_row = raw_line_full["global_matrix_rows"][raw_row_index]
+        internal_row = internal_line_full["global_matrix_rows"][internal_row_index]
+        publication_row = publication_line_full["row_provenance"][publication_row_index]
+        comparisons.append(
+            {
+                "raw_row_index": raw_row_index,
+                "internal_row_index": internal_row_index,
+                "publication_row_index": publication_row_index,
+                "basis_id": publication_row["basis_id"],
+                "raw_source_line_id": raw_row["line_id"],
+                "internal_source_line_id": internal_row["line_id"],
+                "publication_source_line_id": publication_row["member_source_line_id"],
+                "raw_matrix_row": list(raw_row["matrix_row"]),
+                "internal_matrix_row": list(internal_row["matrix_row"]),
+                "publication_matrix_row": list(publication_row["matrix_row"]),
+                "all_matrix_rows_identical": (
+                    list(raw_row["matrix_row"]) == list(internal_row["matrix_row"]) == list(publication_row["matrix_row"])
+                ),
+            }
+        )
+    return {
+        "raw_line_id": "L2",
+        "internal_path_id": "FPATH07",
+        "publication_path_id": "PPATH06",
+        "row_mapping": comparisons,
+        "mapping_is_index_shift_only": all(item["all_matrix_rows_identical"] for item in comparisons),
+    }
+
+
+def build_l2_fpath07_ppath06_layerwise_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# L2 / FPATH07 / PPATH06 Layerwise Comparison",
+        "",
+        f"- Chain: `{report['raw_line_id']}` -> `{report['internal_path_id']}` -> `{report['publication_path_id']}`.",
+        f"- Mapping is index-shift only: `{report['mapping_is_index_shift_only']}`.",
+        "",
+    ]
+    for item in report["row_mapping"]:
+        lines.append(
+            f"- raw/internal/publication rows `{item['raw_row_index']}` / `{item['internal_row_index']}` / "
+            f"`{item['publication_row_index']}` share basis `{item['basis_id']}` and identical matrix rows = "
+            f"`{item['all_matrix_rows_identical']}`."
+        )
+    return "\n".join(lines)
+
+
+def build_ai_zero_subset_rank_report(induction: dict[str, Any]) -> dict[str, Any]:
+    zero_candidates = [
+        candidate
+        for candidate in induction["candidates"]
+        if candidate["compatibility_zero"]
+    ]
+    if zero_candidates:
+        zero_matrix = sp.Matrix.hstack(
+            *[sp.Matrix(candidate["unknown_vector"]) for candidate in zero_candidates]
+        )
+        zero_rank = int(zero_matrix.rank())
+        _rref, pivot_indices = zero_matrix.rref()
+    else:
+        zero_matrix = sp.zeros(0, 0)
+        zero_rank = 0
+        pivot_indices = tuple()
+    pivot_generator_ids = [zero_candidates[index]["generator_id"] for index in pivot_indices]
+    pivot_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(zero_candidates[index]["unknown_vector"]) for index in pivot_indices])
+        if pivot_indices
+        else sp.zeros(len(induction["candidates"][0]["unknown_vector"]) if induction["candidates"] else 0, 0)
+    )
+    dependencies = []
+    for index, candidate in enumerate(zero_candidates):
+        if index in pivot_indices:
+            continue
+        solution, params = pivot_matrix.gauss_jordan_solve(sp.Matrix(candidate["unknown_vector"]))
+        dependencies.append(
+            {
+                "generator_id": candidate["generator_id"],
+                "depends_on": {
+                    pivot_generator_ids[pivot_index]: str(sp.simplify(solution[pivot_index]))
+                    for pivot_index in range(len(pivot_generator_ids))
+                    if sp.simplify(solution[pivot_index]) != 0
+                },
+                "non_unique": bool(params.rows * params.cols),
+            }
+        )
+    return {
+        "zero_generator_ids": [candidate["generator_id"] for candidate in zero_candidates],
+        "zero_subset_rank": zero_rank,
+        "pivot_generator_ids": pivot_generator_ids,
+        "linear_dependencies": dependencies,
+        "forms_partial_ai_lattice": zero_rank > 0,
+        "ai_status": "partial_ai_lattice" if zero_rank > 0 else "seed_only",
+    }
+
+
+def build_ai_zero_subset_rank_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Zero-Subset Rank Report",
+            "",
+            f"- Zero generator ids: `{report['zero_generator_ids']}`.",
+            f"- Zero-subset rank: `{report['zero_subset_rank']}`.",
+            f"- Pivot generators: `{report['pivot_generator_ids']}`.",
+            f"- Forms partial AI lattice: `{report['forms_partial_ai_lattice']}`.",
+            f"- AI status: `{report['ai_status']}`.",
+            f"- Linear dependencies: `{report['linear_dependencies']}`.",
+        ]
+    )
+
+
 def build_ai_honest_blocker_report(
     integration_report: dict[str, Any],
+    p4_failure_audit: dict[str, Any] | None = None,
+    ppath06_audit: dict[str, Any] | None = None,
     obstruction_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if integration_report["integration_status"] == "wired_complete_candidate_set":
@@ -2944,6 +3649,20 @@ def build_ai_honest_blocker_report(
         }
     if obstruction_report is not None:
         blocker_stage = "published_shell_obstruction_diagnosis"
+        p4_phrase = ""
+        if p4_failure_audit is not None:
+            p4_phrase = (
+                f" The remaining induction failures are concentrated on manifold P4 "
+                f"across families {p4_failure_audit['failure_family_ids']} "
+                f"(count={p4_failure_audit['induction_failure_count']})."
+            )
+        ppath06_phrase = ""
+        if ppath06_audit is not None:
+            ppath06_phrase = (
+                f" Nonzero residuals on the publication shell are concentrated on "
+                f"{ppath06_audit['publication_path_id']} rows "
+                f"{ppath06_audit['row_indices']['publication_shell']}."
+            )
         blocker = (
             "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
             f"but only {integration_report['compatibility_zero_candidate_count']} of "
@@ -2951,6 +3670,8 @@ def build_ai_honest_blocker_report(
             f"Classification counts across raw42 / internal honest shell / publication shell: "
             f"{obstruction_report['classification_counts']}. "
             f"{obstruction_report['obstruction_summary']}"
+            f"{p4_phrase}"
+            f"{ppath06_phrase}"
         )
         return {
             "status": "blocked",
@@ -3355,6 +4076,37 @@ def build_single_pilot(
         },
         new_field_map=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
+    p4_induction_failure_audit = build_p4_induction_failure_audit(
+        local_library_payload,
+        ctx,
+        captures,
+        publication_library_induction,
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+    )
+    p4_passing_vs_failing_comparison = build_p4_passing_vs_failing_comparison(
+        local_library_payload,
+        ctx,
+        captures,
+        publication_library_induction,
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+    )
+    ppath06_residual_obstruction_audit = build_ppath06_residual_obstruction_audit(
+        raw_line_full,
+        internal_line_full,
+        publication_line_full,
+        ai_obstruction_diagnosis_report,
+    )
+    l2_fpath07_ppath06_layerwise_comparison = build_l2_fpath07_ppath06_layerwise_comparison(
+        raw_line_full,
+        internal_line_full,
+        publication_line_full,
+    )
+    ai_zero_subset_rank_report = build_ai_zero_subset_rank_report(publication_library_induction)
+    single_ai_all_induced_local_objects = build_single_ai_all_induced_local_objects_payload(
+        publication_library_induction,
+        published_object_kind=publication_shell["object_kind"],
+        object_language="publication_level_C_pub_34_unknowns",
+    )
     write_json(AI_CHARACTER_FIELD_ALIGNMENT_JSON, ai_character_field_alignment_report)
     write_text(
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
@@ -3367,6 +4119,8 @@ def build_single_pilot(
     )
     ai_honest_blocker_report = build_ai_honest_blocker_report(
         ai_library_integration_report,
+        p4_induction_failure_audit,
+        ppath06_residual_obstruction_audit,
         ai_obstruction_diagnosis_report,
     )
     ai_audit_report = build_ai_seed_audit_report(
@@ -3374,6 +4128,7 @@ def build_single_pilot(
         point_row_translation,
         unknown_ordering=publication_bs_analysis["unknown_ordering"],
         library_integration_status=ai_library_integration_report["integration_status"],
+        zero_subset_rank_report=ai_zero_subset_rank_report,
     )
     ai_audit_report["generator_failure_count"] = len(ai_candidate_failures)
     ai_audit_report["generator_failures"] = ai_candidate_failures
@@ -3394,6 +4149,17 @@ def build_single_pilot(
     write_text(AI_LIBRARY_INTEGRATION_MD, build_ai_library_integration_markdown(ai_library_integration_report))
     write_json(AI_OBSTRUCTION_DIAG_JSON, ai_obstruction_diagnosis_report)
     write_text(AI_OBSTRUCTION_DIAG_MD, build_ai_obstruction_diagnosis_markdown(ai_obstruction_diagnosis_report))
+    write_json(P4_INDUCTION_FAILURE_JSON, p4_induction_failure_audit)
+    write_text(P4_INDUCTION_FAILURE_MD, build_p4_induction_failure_markdown(p4_induction_failure_audit))
+    write_json(P4_PASSING_FAILING_JSON, p4_passing_vs_failing_comparison)
+    write_text(P4_PASSING_FAILING_MD, build_p4_passing_vs_failing_markdown(p4_passing_vs_failing_comparison))
+    write_json(PPATH06_OBSTRUCTION_JSON, ppath06_residual_obstruction_audit)
+    write_text(PPATH06_OBSTRUCTION_MD, build_ppath06_residual_obstruction_markdown(ppath06_residual_obstruction_audit))
+    write_json(LAYERWISE_L2_FPATH07_PPATH06_JSON, l2_fpath07_ppath06_layerwise_comparison)
+    write_text(LAYERWISE_L2_FPATH07_PPATH06_MD, build_l2_fpath07_ppath06_layerwise_markdown(l2_fpath07_ppath06_layerwise_comparison))
+    write_json(AI_ZERO_SUBSET_RANK_JSON, ai_zero_subset_rank_report)
+    write_text(AI_ZERO_SUBSET_RANK_MD, build_ai_zero_subset_rank_markdown(ai_zero_subset_rank_report))
+    write_json(SINGLE_AI_ALL_OBJECTS_JSON, single_ai_all_induced_local_objects)
     write_json(AI_HONEST_BLOCKER_JSON, ai_honest_blocker_report)
     write_text(AI_HONEST_BLOCKER_MD, build_ai_honest_blocker_markdown(ai_honest_blocker_report))
 
@@ -3506,12 +4272,21 @@ def build_single_pilot(
                 "compatibility_zero_count": ai_audit_report["compatibility_zero_count"],
                 "honest_ai_lattice_ready": ai_audit_report["honest_ai_lattice_ready"],
             },
+            "ai_zero_subset_rank_report": ai_zero_subset_rank_report,
             "ai_library_integration_report": {
                 "local_library_wired_into_ai_builder": ai_library_integration_report["local_library_wired_into_ai_builder"],
                 "integration_status": ai_library_integration_report["integration_status"],
                 "success_candidate_count": ai_library_integration_report["success_candidate_count"],
                 "failure_count": ai_library_integration_report["failure_count"],
                 "compatibility_zero_candidate_count": ai_library_integration_report["compatibility_zero_candidate_count"],
+            },
+            "p4_induction_failure_audit": {
+                "induction_failure_count": p4_induction_failure_audit["induction_failure_count"],
+                "failure_family_ids": p4_induction_failure_audit["failure_family_ids"],
+            },
+            "ppath06_residual_obstruction_audit": {
+                "publication_path_id": ppath06_residual_obstruction_audit["publication_path_id"],
+                "row_indices": ppath06_residual_obstruction_audit["row_indices"]["publication_shell"],
             },
             "ai_seed_delta_after_bs_fix_report": {
                 "residual_pattern_changed": ai_seed_delta_report["residual_pattern_changed"],
@@ -3570,9 +4345,14 @@ def build_single_pilot(
             "library_integration_success_candidate_count": ai_library_integration_report["success_candidate_count"],
             "library_integration_failure_count": ai_library_integration_report["failure_count"],
             "library_integration_compatibility_zero_candidate_count": ai_library_integration_report["compatibility_zero_candidate_count"],
+            "zero_subset_rank": ai_zero_subset_rank_report["zero_subset_rank"],
+            "zero_subset_generator_ids": ai_zero_subset_rank_report["zero_generator_ids"],
+            "p4_induction_failure_count": p4_induction_failure_audit["induction_failure_count"],
+            "p4_failure_family_ids": p4_induction_failure_audit["failure_family_ids"],
             "blocker_summary": ai_honest_blocker_report["blocker"],
             "obstruction_classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
             "published_fail_path_histogram": ai_obstruction_diagnosis_report["publication_fail_path_histogram"],
+            "published_fail_row_histogram": ai_obstruction_diagnosis_report["publication_fail_row_histogram"],
         },
         "completeness_status": {"status": "blocked", "blocker": completeness_blocker},
         "quotient_status": {"status": "blocked", "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."},
@@ -3862,7 +4642,7 @@ def build_portability_summary(controlled: dict[str, Any], single: dict[str, Any]
         "controlled_case_valid": bool(controlled["controlled_case_valid"]),
         "single_group_portable": bool(
             single["summary"]["BS_status"]["status"] == "success"
-            and single["summary"]["AI_status"]["status"] in {"seed_only", "partial_lattice", "full_lattice"}
+            and single["summary"]["AI_status"]["status"] in {"seed_only", "partial_ai_lattice", "full_ai_lattice"}
         ),
         "double_group_portable_seed": bool(double["summary"]["kspace_backbone_status"]["status"] == "success" and double["summary"]["induction_status"] == "success"),
         "main_blocker": single["summary"]["blocker"],
@@ -4151,9 +4931,8 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
         },
         "blocker": portability_summary["main_blocker"],
         "next_step": (
-            "The publication-level C_pub builder is now explicit. The next blocker is not library absence: "
-            "diagnose why most non-abelian local-library inductions still fail compatibility on the published shell "
-            "after full character alignment."
+            "The publication-level C_pub builder is fixed. The current AI blocker has two concrete pieces: "
+            "P4 induction failures for families c/d and the PPATH06 residual obstruction inherited from raw L2."
         ),
     }
 
@@ -4188,7 +4967,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: keep the publication-level C_pub fixed and diagnose why most local-library induced objects still fail compatibility on the published shell even after full character alignment on points/lines/planes.
+        The next unique task is: keep the publication-level C_pub fixed and diagnose the two concrete AI blockers on the published shell: P4 induction failures for families c/d and the PPATH06 residual obstruction inherited from raw L2.
         """
     ).strip() + "\n"
 
@@ -4216,6 +4995,8 @@ def build_package_readme() -> str:
             "- full-shell automorphism diagnostics for the P1-P5 double-class resolution",
             "- publication-shell reduction / Bilbao check / internal-vs-publication separation reports",
             "- AI full-character alignment plus library integration / obstruction diagnosis / honest blocker reports",
+            "- P4 induction-failure and PPATH06 residual-obstruction deep-dive reports",
+            "- zero-subset rank analysis for the current publication-shell AI candidates",
             "- PDF technical report",
             "- handoff / current_status / next_step_prompt",
             "",
@@ -4238,7 +5019,10 @@ def build_package_readme() -> str:
             f"11. {AI_FULL_CHARACTER_ALIGNMENT_MD.relative_to(ROOT)}",
             f"12. {AI_OBSTRUCTION_DIAG_MD.relative_to(ROOT)}",
             f"13. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
-            f"14. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            f"14. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
+            f"15. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
+            f"16. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
+            f"17. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -4272,12 +5056,23 @@ def build_package() -> None:
         AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
+        P4_INDUCTION_FAILURE_MD,
+        P4_INDUCTION_FAILURE_JSON,
+        P4_PASSING_FAILING_MD,
+        P4_PASSING_FAILING_JSON,
+        PPATH06_OBSTRUCTION_MD,
+        PPATH06_OBSTRUCTION_JSON,
+        LAYERWISE_L2_FPATH07_PPATH06_MD,
+        LAYERWISE_L2_FPATH07_PPATH06_JSON,
+        AI_ZERO_SUBSET_RANK_MD,
+        AI_ZERO_SUBSET_RANK_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
         AI_CHARACTER_FIELD_ALIGNMENT_JSON,
         AI_FULL_CHARACTER_ALIGNMENT_MD,
         AI_FULL_CHARACTER_ALIGNMENT_JSON,
         AI_HONEST_BLOCKER_MD,
         AI_HONEST_BLOCKER_JSON,
+        SINGLE_AI_ALL_OBJECTS_JSON,
         Path(__file__),
         HANDOFF_MD,
         CURRENT_STATUS_JSON,
@@ -4322,12 +5117,23 @@ def validate_outputs() -> None:
         AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
+        P4_INDUCTION_FAILURE_MD,
+        P4_INDUCTION_FAILURE_JSON,
+        P4_PASSING_FAILING_MD,
+        P4_PASSING_FAILING_JSON,
+        PPATH06_OBSTRUCTION_MD,
+        PPATH06_OBSTRUCTION_JSON,
+        LAYERWISE_L2_FPATH07_PPATH06_MD,
+        LAYERWISE_L2_FPATH07_PPATH06_JSON,
+        AI_ZERO_SUBSET_RANK_MD,
+        AI_ZERO_SUBSET_RANK_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
         AI_CHARACTER_FIELD_ALIGNMENT_JSON,
         AI_FULL_CHARACTER_ALIGNMENT_MD,
         AI_FULL_CHARACTER_ALIGNMENT_JSON,
         AI_HONEST_BLOCKER_MD,
         AI_HONEST_BLOCKER_JSON,
+        SINGLE_AI_ALL_OBJECTS_JSON,
         Path(__file__),
         HANDOFF_MD,
         CURRENT_STATUS_JSON,
