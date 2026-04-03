@@ -1,4 +1,4 @@
-# Automatic Final Object Reduction Report
+# Internal Honest Shell Reduction Report
 
 ## Counts
 
@@ -11,9 +11,9 @@
 - Discarded candidate rows / duplicates: `54`.
 - Selection augmentation path classes: `['PCLASS04']`.
 - Row-language full-span pass: `True`.
-- Bilbao-equivalent final-object pass: `False`.
+- Bilbao-equivalent final-object pass: `True`.
 
-## Final Point Shell
+## Internal Point Shell
 
 - `P1` at `(0, 0, 0)`; aliases: P1@(0, 0, 0).
 - `P2` at `(0, 0, 1/2)`; aliases: P2@(0, 0, 1/2).
@@ -22,7 +22,7 @@
 - `P5` at `(1/2, 0, 0)`; aliases: P5@(1/2, 0, 0), P5__1d2_1d2_0@(1/2, 1/2, 0), P5__0_1d2_0@(0, 1/2, 0).
 - `P6` at `(1/2, 0, 1/2)`; aliases: P6@(1/2, 0, 1/2), P6__1d2_1d2_1d2@(1/2, 1/2, 1/2), P6__0_1d2_1d2@(0, 1/2, 1/2).
 
-## Final Path Shell
+## Internal Honest Path Shell
 
 - `FPATH01`: `P1 -> P2` from `L1` branch `['0', '0', '-w']` (class `PCLASS01`, stage `endpoint_pair_skeleton`, rank gain `6`); reason: Selected as the canonical endpoint-pair skeleton representative: shortest primitive segment first, then listed-line priority, then branch simplicity.
 - `FPATH02`: `P1 -> P3` from `L4` branch `['v', '-2v', '0']` (class `PCLASS02`, stage `endpoint_pair_skeleton`, rank gain `4`); reason: Selected as the canonical endpoint-pair skeleton representative: shortest primitive segment first, then listed-line priority, then branch simplicity.

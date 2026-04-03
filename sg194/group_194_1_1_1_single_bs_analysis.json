@@ -36,7 +36,7 @@
     "P6_R2"
   ],
   "matrix_shape": [
-    33,
+    29,
     34
   ],
   "rank": 24,
@@ -71,12 +71,10 @@
     {
       "id": "basis_01",
       "vector": [
+        -1,
         1,
         -1,
-        0,
-        0,
         1,
-        -1,
         0,
         0,
         0,
@@ -95,54 +93,56 @@
         0,
         0,
         0,
-        1,
-        -1,
         0,
         0,
-        1,
-        -1,
         0,
         0,
-        -1,
-        1
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
       ]
     },
     {
       "id": "basis_02",
       "vector": [
         1,
-        -1,
-        -1,
-        -1,
-        0,
-        -2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        -2,
         0,
         0,
         -1,
+        0,
         -1,
-        -1,
-        -1,
-        0,
-        0,
-        0,
-        0,
-        -2,
         1,
-        -1,
-        -1,
-        -1,
-        0,
-        -2,
         0,
         0,
-        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
         0
       ]
     },
@@ -189,66 +189,9 @@
       "id": "basis_04",
       "vector": [
         1,
-        0,
-        0,
-        -1,
-        0,
-        -1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        -1,
-        0,
-        -1,
-        1,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "id": "basis_05",
-      "vector": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         -1,
         -1,
         -1,
-        -1,
-        1,
-        1,
-        2,
         0,
         -2,
         0,
@@ -257,10 +200,67 @@
         0,
         0,
         0,
+        -2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
         0,
         0,
         0,
+        0,
+        -2,
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        -2,
         0
+      ]
+    },
+    {
+      "id": "basis_05",
+      "vector": [
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1
       ]
     },
     {
@@ -359,15 +359,15 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        -1,
+        -1,
+        -1,
         -1,
         1,
+        1,
+        2,
         0,
+        -2,
         0,
         0,
         0,
@@ -383,29 +383,29 @@
     {
       "id": "basis_09",
       "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         -1,
         1,
-        -1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        -1,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -459,9 +459,9 @@
       ]
     }
   ],
-  "object_role": "published_final_point_path_shell",
-  "final_object_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
-  "path_set_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
+  "object_role": "published_publication_level_C_pub_kernel",
+  "final_object_kind": "publication_level_point_path_shell_v1",
+  "path_set_kind": "publication_level_point_path_shell_v1",
   "final_point_ids": [
     "P1",
     "P2",
@@ -471,16 +471,15 @@
     "P6"
   ],
   "final_path_ids": [
-    "FPATH01",
-    "FPATH02",
-    "FPATH03",
-    "FPATH04",
-    "FPATH05",
-    "FPATH06",
-    "FPATH07",
-    "FPATH08"
+    "PPATH01",
+    "PPATH02",
+    "PPATH03",
+    "PPATH04",
+    "PPATH05",
+    "PPATH06",
+    "PPATH07"
   ],
-  "final_selected_path_count": 8,
+  "final_selected_path_count": 7,
   "final_unique_endpoint_pair_count": 7,
   "actual_path_pairs": [
     [
@@ -490,10 +489,6 @@
     [
       "P1",
       "P3"
-    ],
-    [
-      "P1",
-      "P5"
     ],
     [
       "P1",
@@ -518,7 +513,7 @@
   ],
   "bs_strong_equivalence_pass": true,
   "row_language_full_span_pass": true,
-  "bilbao_equivalent_final_object_pass": false,
+  "bilbao_equivalent_final_object_pass": true,
   "diagnostic_raw_with_planes": {
     "matrix_shape": [
       61,
@@ -527,23 +522,14 @@
     "rank": 29,
     "nullity": 13
   },
-  "final_object_vs_bilbao_equivalent_check": {
-    "actual_point_ids": [
-      "P1",
-      "P2",
-      "P3",
-      "P4",
-      "P5",
-      "P6"
+  "diagnostic_internal_honest_shell": {
+    "path_count": 8,
+    "matrix_shape": [
+      33,
+      34
     ],
-    "expected_point_ids": [
-      "P1",
-      "P2",
-      "P3",
-      "P4",
-      "P5",
-      "P6"
-    ],
+    "rank": 24,
+    "nullity": 10,
     "actual_path_pairs": [
       [
         "P1",
@@ -577,8 +563,26 @@
         "P5",
         "P6"
       ]
+    ]
+  },
+  "publication_shell_vs_bilbao_check": {
+    "actual_point_ids": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6"
     ],
-    "actual_unique_path_pairs": [
+    "expected_point_ids": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6"
+    ],
+    "actual_path_pairs": [
       [
         "P1",
         "P2"
@@ -640,17 +644,16 @@
     ],
     "point_ids_match": true,
     "point_count_match": true,
-    "path_pair_set_match": false,
-    "unique_path_pair_set_match": true,
-    "path_count_match": false,
-    "bilbao_equivalent_final_object_pass": false
+    "path_pair_set_match": true,
+    "path_count_match": true,
+    "bilbao_equivalent_publication_pass": true
   },
   "final_bs_strong_equivalence_report": {
-    "selection_algorithm": "canonical endpoint-pair skeleton first, then deterministic rank-closing augmentation classes until the full candidate row language is spanned",
+    "internal_selection_algorithm": "canonical endpoint-pair skeleton first, then deterministic rank-closing augmentation classes until the full candidate row language is spanned",
     "candidate_path_count": 62,
-    "candidate_path_class_count": 9,
-    "selected_path_count": 8,
-    "selected_point_count": 6,
+    "internal_candidate_path_class_count": 9,
+    "internal_selected_path_count": 8,
+    "internal_selected_point_count": 6,
     "endpoint_pair_skeleton_path_class_ids": [
       "PCLASS01",
       "PCLASS02",
@@ -699,17 +702,62 @@
         "P6"
       ]
     ],
-    "expected_source_line_ids": [
+    "internal_selected_final_path_ids": [
+      "FPATH01",
+      "FPATH02",
+      "FPATH03",
+      "FPATH04",
+      "FPATH05",
+      "FPATH06",
+      "FPATH07",
+      "FPATH08"
+    ],
+    "internal_selected_source_line_ids": [
       "L1",
-      "L2",
+      "L4",
       "L3",
       "L4",
-      "L5",
+      "L7",
       "L6",
-      "L7"
+      "L2",
+      "L5"
     ],
-    "selected_source_line_ids_match_intrinsic_line_families": false,
-    "published_unknown_count": 34,
+    "publication_path_count": 7,
+    "publication_point_count": 6,
+    "publication_path_ids": [
+      "PPATH01",
+      "PPATH02",
+      "PPATH03",
+      "PPATH04",
+      "PPATH05",
+      "PPATH06",
+      "PPATH07"
+    ],
+    "publication_member_source_line_ids": [
+      [
+        "L1"
+      ],
+      [
+        "L4"
+      ],
+      [
+        "L3",
+        "L4"
+      ],
+      [
+        "L7"
+      ],
+      [
+        "L6"
+      ],
+      [
+        "L2"
+      ],
+      [
+        "L5"
+      ]
+    ],
+    "publication_unknown_count": 34,
     "published_unknown_ordering": [
       "P1_R1",
       "P1_R2",
@@ -747,32 +795,18 @@
       "P6_R2"
     ],
     "published_has_auxiliary_unknowns": false,
-    "published_bs_matrix_shape": [
+    "internal_bs_matrix_shape": [
       33,
       34
     ],
-    "published_bs_rank": 24,
-    "published_bs_nullity": 10,
-    "selected_final_path_ids": [
-      "FPATH01",
-      "FPATH02",
-      "FPATH03",
-      "FPATH04",
-      "FPATH05",
-      "FPATH06",
-      "FPATH07",
-      "FPATH08"
+    "internal_bs_rank": 24,
+    "internal_bs_nullity": 10,
+    "publication_bs_matrix_shape": [
+      29,
+      34
     ],
-    "selected_final_source_line_ids": [
-      "L1",
-      "L4",
-      "L3",
-      "L4",
-      "L7",
-      "L6",
-      "L2",
-      "L5"
-    ],
+    "publication_bs_rank": 24,
+    "publication_bs_nullity": 10,
     "actual_path_pairs": [
       [
         "P1",
@@ -781,10 +815,6 @@
       [
         "P1",
         "P3"
-      ],
-      [
-        "P1",
-        "P5"
       ],
       [
         "P1",
@@ -837,12 +867,11 @@
         "P6"
       ]
     ],
-    "path_count_match": false,
-    "path_pair_set_match": false,
-    "unique_path_pair_set_match": true,
+    "path_count_match": true,
+    "path_pair_set_match": true,
     "row_language_full_span_pass": true,
-    "bilbao_equivalent_final_object_pass": false,
+    "bilbao_equivalent_final_object_pass": true,
     "bs_strong_equivalence_pass": true,
-    "bs_strong_equivalence_semantics": "deprecated_alias_row_language_full_span_only"
+    "bs_strong_equivalence_semantics": "publication_object_semantics_only"
   }
 }

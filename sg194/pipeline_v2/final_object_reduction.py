@@ -952,9 +952,450 @@ def reduce_final_point_path_shell(kgeom: dict[str, Any]) -> dict[str, Any]:
     return reduction
 
 
+def _candidate_record_unknown_ordering(
+    reduction: dict[str, Any],
+) -> list[str]:
+    candidate_records = list(reduction.get("candidate_path_records", []))
+    if not candidate_records:
+        return []
+    ordering = list(candidate_records[0]["global_unknown_ordering"])
+    for record in candidate_records[1:]:
+        if list(record["global_unknown_ordering"]) != ordering:
+            raise ValueError("candidate path records disagree on global unknown ordering")
+    return ordering
+
+
+def build_publication_point_shell(
+    reduction: dict[str, Any],
+) -> dict[str, Any]:
+    point_shell = [
+        {
+            "point_id": point["point_id"],
+            "label": point.get("label"),
+            "representative_coordinates": list(point["representative_coordinates"]),
+            "aliases": list(point.get("aliases", [])),
+        }
+        for point in reduction.get("point_shell", [])
+    ]
+    unknown_ordering = _candidate_record_unknown_ordering(reduction)
+    point_unknown_ordering = _point_unknown_ordering(unknown_ordering)
+    publication_point_ids = [point["point_id"] for point in point_shell]
+    return {
+        "object_kind": "publication_point_shell",
+        "point_ids": publication_point_ids,
+        "points": point_shell,
+        "unknown_ordering": unknown_ordering,
+        "point_unknown_ordering": {
+            point_id: list(point_unknown_ordering.get(point_id, []))
+            for point_id in publication_point_ids
+        },
+        "unknown_count": len(unknown_ordering),
+    }
+
+
+def _canonical_line_restriction_key(
+    record: dict[str, Any],
+) -> tuple[Any, ...]:
+    basis_ids = _record_basis_ids(record)
+    basis_count = len(basis_ids)
+    endpoint_rows: list[tuple[str, list[tuple[int, int, tuple[int, ...]]]]] = []
+    for endpoint in record["endpoint_decomposition_signature"]:
+        rows: list[tuple[int, int, tuple[int, ...]]] = []
+        for rep in endpoint["reps"]:
+            vector = tuple(
+                int(rep["decomposition_on_line_basis"].get(basis_id, 0))
+                for basis_id in basis_ids
+            )
+            rows.append((int(rep["rep_degree"]), int(rep["torsion"]), vector))
+        endpoint_rows.append((endpoint["endpoint_id"], rows))
+
+    best_key = None
+    best_payload = None
+    for permutation in permutations(range(basis_count)):
+        endpoint_payload = []
+        endpoint_key = []
+        for endpoint_id, rows in endpoint_rows:
+            transformed_rows = sorted(
+                (
+                    degree,
+                    torsion,
+                    tuple(vector[index] for index in permutation),
+                )
+                for degree, torsion, vector in rows
+            )
+            endpoint_payload.append(
+                {
+                    "endpoint_id": endpoint_id,
+                    "rep_rows": [
+                        {
+                            "rep_degree": int(degree),
+                            "torsion": int(torsion),
+                            "line_basis_vector": list(vector),
+                        }
+                        for degree, torsion, vector in transformed_rows
+                    ],
+                }
+            )
+            endpoint_key.append((endpoint_id, tuple(transformed_rows)))
+        candidate_key = (
+            tuple(record["endpoint_pair"]),
+            _line_group_signature_key(record["line_group_signature"]),
+            tuple(endpoint_key),
+        )
+        if best_key is None or candidate_key < best_key:
+            best_key = candidate_key
+            best_payload = endpoint_payload
+    if best_key is None or best_payload is None:
+        raise ValueError("failed to canonicalize line restriction signature")
+    return best_key + (tuple(tuple(item["rep_rows"][row_index]["line_basis_vector"] for row_index in range(len(item["rep_rows"]))) for item in best_payload),)
+
+
+def canonicalize_line_restriction_signature(
+    record: dict[str, Any],
+) -> dict[str, Any]:
+    basis_ids = _record_basis_ids(record)
+    basis_count = len(basis_ids)
+    endpoint_rows: list[tuple[str, list[tuple[int, int, tuple[int, ...]]]]] = []
+    for endpoint in record["endpoint_decomposition_signature"]:
+        rows: list[tuple[int, int, tuple[int, ...]]] = []
+        for rep in endpoint["reps"]:
+            vector = tuple(
+                int(rep["decomposition_on_line_basis"].get(basis_id, 0))
+                for basis_id in basis_ids
+            )
+            rows.append((int(rep["rep_degree"]), int(rep["torsion"]), vector))
+        endpoint_rows.append((endpoint["endpoint_id"], rows))
+
+    best_key = None
+    best_payload = None
+    for permutation in permutations(range(basis_count)):
+        endpoint_payload = []
+        endpoint_key = []
+        for endpoint_id, rows in endpoint_rows:
+            transformed_rows = sorted(
+                (
+                    degree,
+                    torsion,
+                    tuple(vector[index] for index in permutation),
+                )
+                for degree, torsion, vector in rows
+            )
+            endpoint_payload.append(
+                {
+                    "endpoint_id": endpoint_id,
+                    "rep_rows": [
+                        {
+                            "rep_degree": int(degree),
+                            "torsion": int(torsion),
+                            "line_basis_vector": list(vector),
+                        }
+                        for degree, torsion, vector in transformed_rows
+                    ],
+                }
+            )
+            endpoint_key.append((endpoint_id, tuple(transformed_rows)))
+        candidate_key = (
+            tuple(record["endpoint_pair"]),
+            _line_group_signature_key(record["line_group_signature"]),
+            tuple(endpoint_key),
+        )
+        if best_key is None or candidate_key < best_key:
+            best_key = candidate_key
+            best_payload = endpoint_payload
+    if best_key is None or best_payload is None:
+        raise ValueError("failed to canonicalize line restriction signature")
+    return {
+        "endpoint_pair": list(record["endpoint_pair"]),
+        "line_group_signature": record["line_group_signature"],
+        "basis_count": basis_count,
+        "basis_permutation_count": factorial(basis_count),
+        "canonical_endpoint_signatures": best_payload,
+        "canonical_signature_key": repr(best_key),
+    }
+
+
+def _rank_gaining_row_records(
+    row_records: Sequence[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[list[int]]]:
+    selected: list[dict[str, Any]] = []
+    running_rows: list[list[int]] = []
+    running_rank = 0
+    for row_record in row_records:
+        row = [int(value) for value in row_record["matrix_row"]]
+        candidate_rank = _row_rank(running_rows + [row])
+        if candidate_rank > running_rank:
+            selected.append(
+                {
+                    **row_record,
+                    "matrix_row": list(row),
+                    "rank_gain": candidate_rank - running_rank,
+                }
+            )
+            running_rows.append(list(row))
+            running_rank = candidate_rank
+    return selected, running_rows
+
+
+def _publication_group_sort_key(
+    payload: dict[str, Any],
+    point_order: dict[str, int],
+) -> tuple[Any, ...]:
+    endpoint_pair = payload["endpoint_pair"]
+    left_id, right_id = endpoint_pair
+    return (
+        min(point_order[left_id], point_order[right_id]),
+        max(point_order[left_id], point_order[right_id]),
+        tuple(payload["member_source_line_ids"]),
+        tuple(payload["member_internal_path_class_ids"]),
+    )
+
+
+def build_publication_path_classes(
+    reduction: dict[str, Any],
+) -> dict[str, Any]:
+    point_order = {
+        point["point_id"]: index
+        for index, point in enumerate(reduction.get("point_shell", []))
+    }
+    grouped: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    for payload in reduction.get("path_classes", []):
+        representative = payload["candidate_records"][0]
+        publication_signature = canonicalize_line_restriction_signature(representative)
+        publication_key = (
+            tuple(payload["endpoint_pair"]),
+            _line_group_signature_key(payload["line_group_signature"]),
+            publication_signature["canonical_signature_key"],
+        )
+        grouped.setdefault(publication_key, []).append(payload)
+
+    publication_classes: list[dict[str, Any]] = []
+    for class_index, key in enumerate(
+        sorted(grouped, key=lambda item: _candidate_sort_key(grouped[item][0]["candidate_records"][0], point_order)),
+        start=1,
+    ):
+        members = sorted(
+            grouped[key],
+            key=lambda payload: _candidate_sort_key(payload["candidate_records"][0], point_order),
+        )
+        representative = members[0]["candidate_records"][0]
+        canonical_signature = canonicalize_line_restriction_signature(representative)
+        combined_row_records: list[dict[str, Any]] = []
+        combined_rows: list[list[int]] = []
+        for member in members:
+            member_record = member["candidate_records"][0]
+            for row_record in member_record["global_matrix_row_records"]:
+                payload = {
+                    **row_record,
+                    "matrix_row": list(row_record["matrix_row"]),
+                    "member_internal_path_class_id": member["path_class_id"],
+                    "member_candidate_id": member["representative_candidate_id"],
+                    "member_source_line_id": member["representative_source_line_id"],
+                    "member_source_kind": member["representative_source_kind"],
+                    "member_source_id": member["representative_source_id"],
+                    "member_branch_index": int(member["representative_branch_index"]),
+                }
+                combined_row_records.append(payload)
+                combined_rows.append(list(row_record["matrix_row"]))
+        selected_basis_row_records, selected_basis_rows = _rank_gaining_row_records(combined_row_records)
+        publication_classes.append(
+            {
+                "publication_path_class_id": f"PUBCLASS{class_index:02d}",
+                "endpoint_pair": list(members[0]["endpoint_pair"]),
+                "line_group_signature": members[0]["line_group_signature"],
+                "canonicalized_restriction_signature": canonical_signature,
+                "member_internal_path_class_ids": [member["path_class_id"] for member in members],
+                "member_candidate_ids": [member["representative_candidate_id"] for member in members],
+                "member_source_line_ids": [member["representative_source_line_id"] for member in members],
+                "member_source_kinds": [member["representative_source_kind"] for member in members],
+                "member_source_ids": [member["representative_source_id"] for member in members],
+                "aggregate_row_count": len(combined_rows),
+                "aggregate_row_rank": _row_rank(combined_rows),
+                "aggregate_row_space_signature": _row_space_signature(combined_rows),
+                "selected_basis_row_count": len(selected_basis_rows),
+                "selected_basis_row_rank": _row_rank(selected_basis_rows),
+                "selected_basis_row_records": selected_basis_row_records,
+                "selected_basis_rows": selected_basis_rows,
+                "publication_equivalence_reason": (
+                    "Raw strong path classes were merged because they share the same publication-level "
+                    "endpoint pair, line little-group type, and canonicalized endpoint restriction signature "
+                    "after basis-label permutations and endpoint-side relabel canonicalization."
+                ),
+                "selected_as_publication": False,
+                "selection_reason": None,
+            }
+        )
+
+    by_pair: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for payload in publication_classes:
+        by_pair.setdefault(tuple(payload["endpoint_pair"]), []).append(payload)
+
+    selected_classes: list[dict[str, Any]] = []
+    discarded_classes: list[dict[str, Any]] = []
+    for pair_key in sorted(by_pair):
+        running_rows: list[list[int]] = []
+        pair_classes = sorted(
+            by_pair[pair_key],
+            key=lambda payload: _publication_group_sort_key(payload, point_order),
+        )
+        for payload in pair_classes:
+            before_rank = _row_rank(running_rows)
+            after_rank = _row_rank(running_rows + payload["selected_basis_rows"])
+            if after_rank > before_rank:
+                payload["selected_as_publication"] = True
+                payload["selection_reason"] = (
+                    "Retained as the publication-level representative for this endpoint pair because "
+                    "its aggregated canonical row language adds independent compatibility rows "
+                    f"within the pair (rank {before_rank} -> {after_rank})."
+                )
+                selected_classes.append(payload)
+                running_rows.extend(payload["selected_basis_rows"])
+            else:
+                payload["selection_reason"] = (
+                    "Discarded at the publication level because its aggregated canonical row language "
+                    "is already contained in an earlier selected publication path class for the same endpoint pair."
+                )
+                discarded_classes.append(payload)
+
+    selected_classes.sort(key=lambda payload: _publication_group_sort_key(payload, point_order))
+    publication_paths: list[dict[str, Any]] = []
+    for path_index, payload in enumerate(selected_classes, start=1):
+        publication_paths.append(
+            {
+                "publication_path_id": f"PPATH{path_index:02d}",
+                "publication_path_class_id": payload["publication_path_class_id"],
+                "endpoint_pair": list(payload["endpoint_pair"]),
+                "line_group_signature": payload["line_group_signature"],
+                "member_internal_path_class_ids": list(payload["member_internal_path_class_ids"]),
+                "member_source_line_ids": list(payload["member_source_line_ids"]),
+                "member_candidate_ids": list(payload["member_candidate_ids"]),
+                "canonicalized_restriction_signature": payload["canonicalized_restriction_signature"],
+                "selected_basis_row_records": list(payload["selected_basis_row_records"]),
+                "selected_basis_rows": list(payload["selected_basis_rows"]),
+                "selection_reason": payload["selection_reason"],
+            }
+        )
+
+    return {
+        "publication_path_class_count": len(publication_classes),
+        "selected_publication_path_count": len(publication_paths),
+        "publication_path_classes": publication_classes,
+        "selected_publication_path_classes": selected_classes,
+        "discarded_publication_path_classes": discarded_classes,
+        "publication_paths": publication_paths,
+    }
+
+
+def build_publication_shell_candidate(
+    reduction: dict[str, Any],
+) -> dict[str, Any]:
+    publication_point_shell = build_publication_point_shell(reduction)
+    publication_path_payload = build_publication_path_classes(reduction)
+    return {
+        "object_kind": "publication_level_point_path_shell_v1",
+        "publication_point_shell": publication_point_shell,
+        "publication_point_ids": list(publication_point_shell["point_ids"]),
+        "publication_unknown_ordering": list(publication_point_shell["unknown_ordering"]),
+        "publication_unknown_count": int(publication_point_shell["unknown_count"]),
+        **publication_path_payload,
+        "publication_actual_path_pairs": [
+            list(path["endpoint_pair"])
+            for path in publication_path_payload["publication_paths"]
+        ],
+    }
+
+
+def build_publication_C_matrix(
+    publication_shell: dict[str, Any],
+) -> dict[str, Any]:
+    unknown_ordering = list(publication_shell["publication_unknown_ordering"])
+    publication_blocks: list[dict[str, Any]] = []
+    global_matrix: list[list[int]] = []
+    row_provenance: list[dict[str, Any]] = []
+    for path in publication_shell["publication_paths"]:
+        equations = []
+        for local_row_index, row_record in enumerate(path["selected_basis_row_records"]):
+            row = [int(value) for value in row_record["matrix_row"]]
+            terms = [
+                {"unknown": unknown_ordering[column_index], "coeff": int(value)}
+                for column_index, value in enumerate(row)
+                if int(value) != 0
+            ]
+            equation = {
+                "basis_id": row_record["basis_id"],
+                "row_kind": row_record.get("row_kind", "publication_path_basis"),
+                "terms": terms,
+                "row_index_within_publication_path": local_row_index,
+                "member_internal_path_class_id": row_record["member_internal_path_class_id"],
+                "member_source_line_id": row_record["member_source_line_id"],
+                "member_candidate_id": row_record["member_candidate_id"],
+            }
+            equations.append(equation)
+            row_provenance.append(
+                {
+                    "publication_path_id": path["publication_path_id"],
+                    "publication_path_class_id": path["publication_path_class_id"],
+                    "endpoint_pair": list(path["endpoint_pair"]),
+                    "member_internal_path_class_id": row_record["member_internal_path_class_id"],
+                    "member_source_line_id": row_record["member_source_line_id"],
+                    "member_candidate_id": row_record["member_candidate_id"],
+                    "basis_id": row_record["basis_id"],
+                    "row_kind": row_record.get("row_kind", "publication_path_basis"),
+                    "matrix_row": list(row),
+                }
+            )
+            global_matrix.append(list(row))
+        publication_blocks.append(
+            {
+                "line_id": path["publication_path_id"],
+                "path_id": path["publication_path_id"],
+                "publication_path_class_id": path["publication_path_class_id"],
+                "endpoint_pair": list(path["endpoint_pair"]),
+                "member_internal_path_class_ids": list(path["member_internal_path_class_ids"]),
+                "member_source_line_ids": list(path["member_source_line_ids"]),
+                "equations": equations,
+            }
+        )
+    return {
+        "object_role": "publication_level_C_matrix",
+        "publication_status": "published_final_object",
+        "global_unknown_ordering": unknown_ordering,
+        "global_matrix": global_matrix,
+        "line_blocks": publication_blocks,
+        "publication_path_blocks": publication_blocks,
+        "row_provenance": row_provenance,
+    }
+
+
+def compare_publication_shell_to_bilbao_expected(
+    publication_shell: dict[str, Any],
+    *,
+    expected_point_ids: Sequence[str],
+    expected_endpoint_pairs: Sequence[Sequence[str]],
+) -> dict[str, Any]:
+    actual_point_ids = list(publication_shell["publication_point_ids"])
+    actual_pairs = sorted(tuple(sorted(pair)) for pair in publication_shell["publication_actual_path_pairs"])
+    expected_pairs_sorted = sorted(tuple(sorted(pair)) for pair in expected_endpoint_pairs)
+    bilbao_equivalent_publication_pass = (
+        actual_point_ids == list(expected_point_ids)
+        and len(actual_pairs) == len(expected_pairs_sorted)
+        and actual_pairs == expected_pairs_sorted
+    )
+    return {
+        "actual_point_ids": actual_point_ids,
+        "expected_point_ids": list(expected_point_ids),
+        "actual_path_pairs": [list(pair) for pair in actual_pairs],
+        "expected_path_pairs": [list(pair) for pair in expected_pairs_sorted],
+        "point_ids_match": actual_point_ids == list(expected_point_ids),
+        "point_count_match": len(actual_point_ids) == len(expected_point_ids),
+        "path_pair_set_match": actual_pairs == expected_pairs_sorted,
+        "path_count_match": len(actual_pairs) == len(expected_pairs_sorted),
+        "bilbao_equivalent_publication_pass": bilbao_equivalent_publication_pass,
+    }
+
+
 def build_reduction_report_markdown(reduction: dict[str, Any]) -> str:
     lines = [
-        "# Automatic Final Object Reduction Report",
+        "# Internal Honest Shell Reduction Report",
         "",
         "## Counts",
         "",
@@ -969,7 +1410,7 @@ def build_reduction_report_markdown(reduction: dict[str, Any]) -> str:
         f"- Row-language full-span pass: `{reduction.get('row_language_full_span_pass')}`.",
         f"- Bilbao-equivalent final-object pass: `{reduction.get('bilbao_equivalent_final_object_pass')}`.",
         "",
-        "## Final Point Shell",
+        "## Internal Point Shell",
         "",
     ]
     for point in reduction["point_shell"]:
@@ -983,7 +1424,7 @@ def build_reduction_report_markdown(reduction: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "## Final Path Shell",
+            "## Internal Honest Path Shell",
             "",
         ]
     )
@@ -1038,22 +1479,161 @@ def compare_reduction_to_expected_pairs(
     }
 
 
-def build_expected_check_markdown(check: dict[str, Any]) -> str:
+def build_publication_shell_reduction_report(
+    reduction: dict[str, Any],
+    publication_shell: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "internal_honest_shell_path_count": len(reduction.get("kept_paths", [])),
+        "internal_honest_shell_path_pairs": [
+            list(path["endpoint_pair"])
+            for path in reduction.get("kept_paths", [])
+        ],
+        "publication_point_count": len(publication_shell["publication_point_ids"]),
+        "publication_path_class_count": publication_shell["publication_path_class_count"],
+        "publication_selected_path_count": publication_shell["selected_publication_path_count"],
+        "publication_actual_path_pairs": list(publication_shell["publication_actual_path_pairs"]),
+        "publication_unknown_count": int(publication_shell["publication_unknown_count"]),
+        "raw_line_count": int(reduction["raw_counts"]["grouped_line_count"]),
+        "candidate_path_count": int(reduction["raw_counts"]["candidate_path_count"]),
+        "publication_path_classes": [
+            {
+                "publication_path_class_id": payload["publication_path_class_id"],
+                "endpoint_pair": list(payload["endpoint_pair"]),
+                "selected_as_publication": bool(payload["selected_as_publication"]),
+                "member_internal_path_class_ids": list(payload["member_internal_path_class_ids"]),
+                "member_source_line_ids": list(payload["member_source_line_ids"]),
+                "aggregate_row_rank": int(payload["aggregate_row_rank"]),
+                "selected_basis_row_rank": int(payload["selected_basis_row_rank"]),
+                "selection_reason": payload["selection_reason"],
+            }
+            for payload in publication_shell["publication_path_classes"]
+        ],
+    }
+
+
+def build_publication_shell_reduction_markdown(report: dict[str, Any]) -> str:
     lines = [
-        "# Final Object vs Bilbao-Equivalent Sanity Check",
+        "# Publication Shell Reduction Report",
+        "",
+        f"- Internal honest shell path count: `{report['internal_honest_shell_path_count']}`.",
+        f"- Publication point count: `{report['publication_point_count']}`.",
+        f"- Publication path-class count: `{report['publication_path_class_count']}`.",
+        f"- Publication selected path count: `{report['publication_selected_path_count']}`.",
+        f"- Publication actual path pairs: `{report['publication_actual_path_pairs']}`.",
+        f"- Publication unknown count: `{report['publication_unknown_count']}`.",
+        "",
+        "## Publication Path Classes",
+        "",
+    ]
+    for payload in report["publication_path_classes"]:
+        lines.append(
+            "- "
+            + f"`{payload['publication_path_class_id']}` pair `{payload['endpoint_pair']}` "
+            + f"members `{payload['member_internal_path_class_ids']}` from raw lines "
+            + f"`{payload['member_source_line_ids']}`; selected = `{payload['selected_as_publication']}`; "
+            + f"aggregate rank `{payload['aggregate_row_rank']}`, selected-basis rank "
+            + f"`{payload['selected_basis_row_rank']}`; reason: {payload['selection_reason']}"
+        )
+    return "\n".join(lines)
+
+
+def build_publication_shell_vs_bilbao_markdown(check: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# Publication Shell vs Bilbao Check",
+            "",
+            f"- Point count match: `{check['point_count_match']}`.",
+            f"- Point id order match: `{check['point_ids_match']}`.",
+            f"- Path count match: `{check['path_count_match']}`.",
+            f"- Path pair set match: `{check['path_pair_set_match']}`.",
+            f"- Bilbao-equivalent publication pass: `{check['bilbao_equivalent_publication_pass']}`.",
+            "",
+            f"- Actual publication point ids: `{check['actual_point_ids']}`.",
+            f"- Actual publication path pairs: `{check['actual_path_pairs']}`.",
+            f"- Expected point ids: `{check['expected_point_ids']}`.",
+            f"- Expected path pairs: `{check['expected_path_pairs']}`.",
+        ]
+    )
+
+
+def build_internal_vs_publication_object_report(
+    reduction: dict[str, Any],
+    publication_shell: dict[str, Any],
+    internal_bs_analysis: dict[str, Any],
+    publication_bs_analysis: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "internal_honest_shell_path_count": len(reduction.get("kept_paths", [])),
+        "internal_honest_shell_rank": int(internal_bs_analysis["rank"]),
+        "internal_honest_shell_matrix_shape": list(internal_bs_analysis["matrix_shape"]),
+        "internal_honest_shell_actual_path_pairs": [
+            list(path["endpoint_pair"])
+            for path in reduction.get("kept_paths", [])
+        ],
+        "publication_shell_path_count": len(publication_shell["publication_paths"]),
+        "publication_shell_rank": int(publication_bs_analysis["rank"]),
+        "publication_shell_matrix_shape": list(publication_bs_analysis["matrix_shape"]),
+        "publication_shell_actual_path_pairs": list(publication_shell["publication_actual_path_pairs"]),
+        "objects_explicitly_separated": True,
+        "internal_usage": [
+            "diagnostic full-span bookkeeping",
+            "raw path-class obstruction analysis",
+            "phase-aware translation retirement diagnostics",
+            "AI obstruction debugging against the internal shell",
+        ],
+        "publication_usage": [
+            "published final C matrix",
+            "published BS kernel analysis",
+            "Bilbao-level point/path sanity check",
+            "published-shell AI compatibility testing",
+        ],
+        "separation_reason": (
+            "The internal honest shell is a fixed-label full-span diagnostic object; the publication shell "
+            "is a quotient over publication path classes built directly from raw line data and is the only "
+            "object that should be compared to Bilbao-facing semantics."
+        ),
+    }
+
+
+def build_internal_vs_publication_object_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Internal vs Publication Object Report",
+        "",
+        f"- Internal honest shell path count / rank: `{report['internal_honest_shell_path_count']}` / `{report['internal_honest_shell_rank']}`.",
+        f"- Publication shell path count / rank: `{report['publication_shell_path_count']}` / `{report['publication_shell_rank']}`.",
+        f"- Objects explicitly separated: `{report['objects_explicitly_separated']}`.",
+        f"- Separation reason: {report['separation_reason']}",
+        "",
+        "## Internal Usage",
+        "",
+    ]
+    for item in report["internal_usage"]:
+        lines.append(f"- {item}")
+    lines.extend(["", "## Publication Usage", ""])
+    for item in report["publication_usage"]:
+        lines.append(f"- {item}")
+    return "\n".join(lines)
+
+
+def build_expected_check_markdown(check: dict[str, Any]) -> str:
+    unique_path_pair_set_match = check.get("unique_path_pair_set_match", check["path_pair_set_match"])
+    actual_unique_path_pairs = check.get("actual_unique_path_pairs", check["actual_path_pairs"])
+    lines = [
+        "# Publication Object vs Bilbao-Equivalent Sanity Check",
         "",
         f"- Point count match: `{check['point_count_match']}`.",
         f"- Point id order match: `{check['point_ids_match']}`.",
         f"- Path count match: `{check['path_count_match']}`.",
         f"- Path pair set match: `{check['path_pair_set_match']}`.",
-        f"- Unique path pair set match: `{check['unique_path_pair_set_match']}`.",
-        f"- Bilbao-equivalent final-object pass: `{check['bilbao_equivalent_final_object_pass']}`.",
+        f"- Unique path pair set match: `{unique_path_pair_set_match}`.",
+        f"- Bilbao-equivalent publication pass: `{check.get('bilbao_equivalent_publication_pass', check.get('bilbao_equivalent_final_object_pass'))}`.",
         "",
         "## Actual",
         "",
-        f"- Final point ids: `{check['actual_point_ids']}`.",
-        f"- Final path endpoint pairs: `{check['actual_path_pairs']}`.",
-        f"- Final unique endpoint-pair set: `{check['actual_unique_path_pairs']}`.",
+        f"- Publication point ids: `{check['actual_point_ids']}`.",
+        f"- Publication path endpoint pairs: `{check['actual_path_pairs']}`.",
+        f"- Publication unique endpoint-pair set: `{actual_unique_path_pairs}`.",
         "",
         "## Expected",
         "",
@@ -2031,40 +2611,36 @@ def build_p1_p5_doubleclass_resolution_markdown(report: dict[str, Any]) -> str:
 
 def build_final_bs_strong_equivalence_report(
     reduction: dict[str, Any],
-    sanity_check: dict[str, Any],
+    publication_shell: dict[str, Any],
+    publication_check: dict[str, Any],
     published_line_full: dict[str, Any],
     published_bs_analysis: dict[str, Any],
+    internal_bs_analysis: dict[str, Any],
 ) -> dict[str, Any]:
     unknown_ordering = list(published_line_full["global_unknown_ordering"])
     has_auxiliary_unknowns = any(token.startswith("S") and "_R" in token for token in unknown_ordering)
-    selected_source_line_ids = [segment["source_line_id"] for segment in reduction["kept_paths"]]
-    expected_source_line_ids = list(reduction["listed_source_line_ids"])
-    source_line_family_match = sorted(selected_source_line_ids) == sorted(expected_source_line_ids)
-    selected_unique_endpoint_pair_count = len({tuple(segment["endpoint_pair"]) for segment in reduction["kept_paths"]})
-    target_unique_endpoint_pair_count = int(reduction["target_unique_endpoint_pair_count"])
     row_language_full_span_pass = (
         reduction["selected_rows_span_full_candidate_row_language"]
         and reduction["selected_row_rank"] == reduction["target_row_rank"]
-        and not has_auxiliary_unknowns
     )
     bilbao_equivalent_final_object_pass = (
-        row_language_full_span_pass
-        and sanity_check["point_ids_match"]
-        and sanity_check["point_count_match"]
-        and sanity_check["path_count_match"]
-        and sanity_check["path_pair_set_match"]
+        publication_check["point_ids_match"]
+        and publication_check["point_count_match"]
+        and publication_check["path_count_match"]
+        and publication_check["path_pair_set_match"]
+        and not has_auxiliary_unknowns
     )
     return {
-        "selection_algorithm": (
+        "internal_selection_algorithm": (
             reduction.get(
                 "selection_policy",
                 "canonical endpoint-pair skeleton plus deterministic full-span augmentation",
             )
         ),
         "candidate_path_count": reduction["raw_counts"]["candidate_path_count"],
-        "candidate_path_class_count": reduction["path_class_count"],
-        "selected_path_count": len(reduction["kept_paths"]),
-        "selected_point_count": len(reduction["final_point_ids"]),
+        "internal_candidate_path_class_count": reduction["path_class_count"],
+        "internal_selected_path_count": len(reduction["kept_paths"]),
+        "internal_selected_point_count": len(reduction["final_point_ids"]),
         "endpoint_pair_skeleton_path_class_ids": list(reduction.get("endpoint_pair_skeleton_path_class_ids", [])),
         "endpoint_pair_skeleton_row_rank": int(reduction.get("endpoint_pair_skeleton_row_rank", 0)),
         "selection_augmentation_path_class_ids": list(reduction.get("selection_augmentation_path_class_ids", [])),
@@ -2073,28 +2649,32 @@ def build_final_bs_strong_equivalence_report(
         "selected_rows_span_full_candidate_row_language": reduction[
             "selected_rows_span_full_candidate_row_language"
         ],
-        "target_unique_endpoint_pair_count": target_unique_endpoint_pair_count,
-        "selected_unique_endpoint_pair_count": selected_unique_endpoint_pair_count,
+        "target_unique_endpoint_pair_count": int(reduction["target_unique_endpoint_pair_count"]),
+        "selected_unique_endpoint_pair_count": len({tuple(segment["endpoint_pair"]) for segment in reduction["kept_paths"]}),
         "selected_unique_endpoint_pairs": list(reduction.get("selected_unique_endpoint_pairs", [])),
-        "expected_source_line_ids": expected_source_line_ids,
-        "selected_source_line_ids_match_intrinsic_line_families": source_line_family_match,
-        "published_unknown_count": len(unknown_ordering),
+        "internal_selected_final_path_ids": [segment["final_path_id"] for segment in reduction["kept_paths"]],
+        "internal_selected_source_line_ids": [segment["source_line_id"] for segment in reduction["kept_paths"]],
+        "publication_path_count": len(publication_shell["publication_paths"]),
+        "publication_point_count": len(publication_shell["publication_point_ids"]),
+        "publication_path_ids": [path["publication_path_id"] for path in publication_shell["publication_paths"]],
+        "publication_member_source_line_ids": [list(path["member_source_line_ids"]) for path in publication_shell["publication_paths"]],
+        "publication_unknown_count": len(unknown_ordering),
         "published_unknown_ordering": unknown_ordering,
         "published_has_auxiliary_unknowns": has_auxiliary_unknowns,
-        "published_bs_matrix_shape": list(published_bs_analysis["matrix_shape"]),
-        "published_bs_rank": int(published_bs_analysis["rank"]),
-        "published_bs_nullity": int(published_bs_analysis["nullity"]),
-        "selected_final_path_ids": [segment["final_path_id"] for segment in reduction["kept_paths"]],
-        "selected_final_source_line_ids": selected_source_line_ids,
-        "actual_path_pairs": list(sanity_check["actual_path_pairs"]),
-        "expected_path_pairs": list(sanity_check["expected_path_pairs"]),
-        "path_count_match": bool(sanity_check["path_count_match"]),
-        "path_pair_set_match": bool(sanity_check["path_pair_set_match"]),
-        "unique_path_pair_set_match": bool(sanity_check["unique_path_pair_set_match"]),
+        "internal_bs_matrix_shape": list(internal_bs_analysis["matrix_shape"]),
+        "internal_bs_rank": int(internal_bs_analysis["rank"]),
+        "internal_bs_nullity": int(internal_bs_analysis["nullity"]),
+        "publication_bs_matrix_shape": list(published_bs_analysis["matrix_shape"]),
+        "publication_bs_rank": int(published_bs_analysis["rank"]),
+        "publication_bs_nullity": int(published_bs_analysis["nullity"]),
+        "actual_path_pairs": list(publication_check["actual_path_pairs"]),
+        "expected_path_pairs": list(publication_check["expected_path_pairs"]),
+        "path_count_match": bool(publication_check["path_count_match"]),
+        "path_pair_set_match": bool(publication_check["path_pair_set_match"]),
         "row_language_full_span_pass": row_language_full_span_pass,
         "bilbao_equivalent_final_object_pass": bilbao_equivalent_final_object_pass,
-        "bs_strong_equivalence_pass": row_language_full_span_pass,
-        "bs_strong_equivalence_semantics": "deprecated_alias_row_language_full_span_only",
+        "bs_strong_equivalence_pass": bilbao_equivalent_final_object_pass,
+        "bs_strong_equivalence_semantics": "publication_object_semantics_only",
     }
 
 
@@ -2103,9 +2683,10 @@ def build_final_bs_strong_equivalence_markdown(report: dict[str, Any]) -> str:
         [
             "# Final BS Strong Equivalence Report",
             "",
-            f"- Selection algorithm: {report['selection_algorithm']}.",
-            f"- Candidate paths / path classes: `{report['candidate_path_count']}` / `{report['candidate_path_class_count']}`.",
-            f"- Selected final points / paths: `{report['selected_point_count']}` / `{report['selected_path_count']}`.",
+            f"- Internal selection algorithm: {report['internal_selection_algorithm']}.",
+            f"- Candidate paths / internal path classes: `{report['candidate_path_count']}` / `{report['internal_candidate_path_class_count']}`.",
+            f"- Internal honest points / paths: `{report['internal_selected_point_count']}` / `{report['internal_selected_path_count']}`.",
+            f"- Publication points / paths: `{report['publication_point_count']}` / `{report['publication_path_count']}`.",
             f"- Endpoint-pair skeleton path classes / rank: `{report['endpoint_pair_skeleton_path_class_ids']}` / `{report['endpoint_pair_skeleton_row_rank']}`.",
             f"- Full-span augmentation path classes: `{report['selection_augmentation_path_class_ids']}`.",
             f"- Target row rank: `{report['target_row_rank']}`.",
@@ -2116,17 +2697,15 @@ def build_final_bs_strong_equivalence_markdown(report: dict[str, Any]) -> str:
             f"- Expected path pairs: `{report['expected_path_pairs']}`.",
             f"- Path count match: `{report['path_count_match']}`.",
             f"- Path pair set match: `{report['path_pair_set_match']}`.",
-            f"- Unique path pair set match: `{report['unique_path_pair_set_match']}`.",
-            f"- Expected source line ids: `{report['expected_source_line_ids']}`.",
-            f"- Selected source line ids match intrinsic line families: `{report['selected_source_line_ids_match_intrinsic_line_families']}`.",
-            f"- Published unknown count: `{report['published_unknown_count']}`.",
+            f"- Published unknown count: `{report['publication_unknown_count']}`.",
             f"- Published object has auxiliary `S*_R*` unknowns: `{report['published_has_auxiliary_unknowns']}`.",
-            f"- Published BS shape/rank/nullity: `{report['published_bs_matrix_shape']}` / `{report['published_bs_rank']}` / `{report['published_bs_nullity']}`.",
-            f"- Selected final path ids: `{report['selected_final_path_ids']}`.",
-            f"- Selected source line ids: `{report['selected_final_source_line_ids']}`.",
+            f"- Internal BS shape/rank/nullity: `{report['internal_bs_matrix_shape']}` / `{report['internal_bs_rank']}` / `{report['internal_bs_nullity']}`.",
+            f"- Publication BS shape/rank/nullity: `{report['publication_bs_matrix_shape']}` / `{report['publication_bs_rank']}` / `{report['publication_bs_nullity']}`.",
+            f"- Internal selected final path ids: `{report['internal_selected_final_path_ids']}`.",
+            f"- Publication path ids: `{report['publication_path_ids']}`.",
             f"- Row-language full-span pass: `{report['row_language_full_span_pass']}`.",
             f"- Bilbao-equivalent final-object pass: `{report['bilbao_equivalent_final_object_pass']}`.",
-            f"- Backward-compatible strong-equivalence alias (`row_language_full_span_only`): `{report['bs_strong_equivalence_pass']}`.",
+            f"- Strong-equivalence pass (`publication_object_semantics_only`): `{report['bs_strong_equivalence_pass']}`.",
         ]
     )
 

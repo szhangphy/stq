@@ -3,11 +3,11 @@
   "candidate_translation_enabled": true,
   "published_translation_profile": "legacy",
   "published_translation_enabled": false,
-  "generator_count": 12,
+  "generator_count": 10,
   "raw_compatibility_zero_count": 4,
   "translated_compatibility_zero_count": 0,
   "improved_count": 0,
-  "worsened_count": 12,
+  "worsened_count": 10,
   "unchanged_count": 0,
   "legality_status": "removed",
   "legality_reason": "phase-aware point-row translation is retired on the published final reduced point/path shell because the translated seed does not dominate the raw seed mechanically on the regenerated compatibility object.",
@@ -24,7 +24,7 @@
         7,
         8,
         9,
-        18
+        16
       ]
     },
     {
@@ -34,14 +34,14 @@
       "raw_residual_norm": 8,
       "translated_residual_norm": 18,
       "raw_nonzero_rows": [
-        26,
-        27,
-        28
+        22,
+        23,
+        24
       ],
       "translated_nonzero_rows": [
         6,
         8,
-        18
+        16
       ]
     },
     {
@@ -56,7 +56,7 @@
         7,
         8,
         9,
-        18
+        16
       ]
     },
     {
@@ -66,15 +66,15 @@
       "raw_residual_norm": 4,
       "translated_residual_norm": 18,
       "raw_nonzero_rows": [
-        26,
-        27
+        22,
+        23
       ],
       "translated_nonzero_rows": [
         6,
         7,
         8,
         9,
-        18
+        16
       ]
     },
     {
@@ -84,14 +84,14 @@
       "raw_residual_norm": 4,
       "translated_residual_norm": 9,
       "raw_nonzero_rows": [
-        26,
-        27,
-        28
+        22,
+        23,
+        24
       ],
       "translated_nonzero_rows": [
         6,
         8,
-        18
+        16
       ]
     },
     {
@@ -101,15 +101,15 @@
       "raw_residual_norm": 2,
       "translated_residual_norm": 9,
       "raw_nonzero_rows": [
-        26,
-        27
+        22,
+        23
       ],
       "translated_nonzero_rows": [
         6,
         7,
         8,
         9,
-        18
+        16
       ]
     },
     {
@@ -124,7 +124,7 @@
         7,
         8,
         9,
-        18
+        16
       ]
     },
     {
@@ -139,37 +139,7 @@
         7,
         8,
         9,
-        18
-      ]
-    },
-    {
-      "family_letter": "d",
-      "raw_compatibility_zero": false,
-      "translated_compatibility_zero": false,
-      "raw_residual_norm": 1,
-      "translated_residual_norm": 3,
-      "raw_nonzero_rows": [
-        28
-      ],
-      "translated_nonzero_rows": [
-        6,
-        8,
-        18
-      ]
-    },
-    {
-      "family_letter": "c",
-      "raw_compatibility_zero": false,
-      "translated_compatibility_zero": false,
-      "raw_residual_norm": 1,
-      "translated_residual_norm": 3,
-      "raw_nonzero_rows": [
-        28
-      ],
-      "translated_nonzero_rows": [
-        6,
-        8,
-        18
+        16
       ]
     },
     {
@@ -179,13 +149,13 @@
       "raw_residual_norm": 2,
       "translated_residual_norm": 3,
       "raw_nonzero_rows": [
-        26,
-        27
+        22,
+        23
       ],
       "translated_nonzero_rows": [
         6,
         8,
-        18
+        16
       ]
     },
     {
@@ -195,14 +165,27 @@
       "raw_residual_norm": 2,
       "translated_residual_norm": 3,
       "raw_nonzero_rows": [
-        26,
-        27
+        22,
+        23
       ],
       "translated_nonzero_rows": [
         6,
         7,
-        18
+        16
       ]
+    }
+  ],
+  "probe_failure_count": 2,
+  "probe_failures": [
+    {
+      "family_letter": "d",
+      "generator_id": "d_trivial",
+      "error": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.5000000000000001+0.5000000000000001j), (0.4999999999999998-0.5j), (3.5735303605122226e-16-1.5959455978986625e-16j)])"
+    },
+    {
+      "family_letter": "c",
+      "generator_id": "c_trivial",
+      "error": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.5000000000000001-0.5000000000000001j), (0.49999999999999967+0.4999999999999999j), (3.8163916471489756e-16+2.220446049250313e-16j)])"
     }
   ]
 }

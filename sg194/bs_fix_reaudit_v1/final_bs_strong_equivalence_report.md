@@ -1,26 +1,25 @@
 # Final BS Strong Equivalence Report
 
-- Selection algorithm: canonical endpoint-pair skeleton first, then deterministic rank-closing augmentation classes until the full candidate row language is spanned.
-- Candidate paths / path classes: `62` / `9`.
-- Selected final points / paths: `6` / `8`.
+- Internal selection algorithm: canonical endpoint-pair skeleton first, then deterministic rank-closing augmentation classes until the full candidate row language is spanned.
+- Candidate paths / internal path classes: `62` / `9`.
+- Internal honest points / paths: `6` / `8`.
+- Publication points / paths: `6` / `7`.
 - Endpoint-pair skeleton path classes / rank: `['PCLASS01', 'PCLASS02', 'PCLASS03', 'PCLASS05', 'PCLASS06', 'PCLASS08', 'PCLASS09']` / `23`.
 - Full-span augmentation path classes: `['PCLASS04']`.
 - Target row rank: `24`.
 - Selected row rank: `24`.
 - Selected rows span full candidate row language: `True`.
 - Selected unique endpoint pairs / target unique endpoint pairs: `7` / `7`.
-- Actual path pairs: `[['P1', 'P2'], ['P1', 'P3'], ['P1', 'P5'], ['P1', 'P5'], ['P2', 'P4'], ['P2', 'P6'], ['P3', 'P4'], ['P5', 'P6']]`.
+- Actual path pairs: `[['P1', 'P2'], ['P1', 'P3'], ['P1', 'P5'], ['P2', 'P4'], ['P2', 'P6'], ['P3', 'P4'], ['P5', 'P6']]`.
 - Expected path pairs: `[['P1', 'P2'], ['P1', 'P3'], ['P1', 'P5'], ['P2', 'P4'], ['P2', 'P6'], ['P3', 'P4'], ['P5', 'P6']]`.
-- Path count match: `False`.
-- Path pair set match: `False`.
-- Unique path pair set match: `True`.
-- Expected source line ids: `['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7']`.
-- Selected source line ids match intrinsic line families: `False`.
+- Path count match: `True`.
+- Path pair set match: `True`.
 - Published unknown count: `34`.
 - Published object has auxiliary `S*_R*` unknowns: `False`.
-- Published BS shape/rank/nullity: `[33, 34]` / `24` / `10`.
-- Selected final path ids: `['FPATH01', 'FPATH02', 'FPATH03', 'FPATH04', 'FPATH05', 'FPATH06', 'FPATH07', 'FPATH08']`.
-- Selected source line ids: `['L1', 'L4', 'L3', 'L4', 'L7', 'L6', 'L2', 'L5']`.
+- Internal BS shape/rank/nullity: `[33, 34]` / `24` / `10`.
+- Publication BS shape/rank/nullity: `[29, 34]` / `24` / `10`.
+- Internal selected final path ids: `['FPATH01', 'FPATH02', 'FPATH03', 'FPATH04', 'FPATH05', 'FPATH06', 'FPATH07', 'FPATH08']`.
+- Publication path ids: `['PPATH01', 'PPATH02', 'PPATH03', 'PPATH04', 'PPATH05', 'PPATH06', 'PPATH07']`.
 - Row-language full-span pass: `True`.
-- Bilbao-equivalent final-object pass: `False`.
-- Backward-compatible strong-equivalence alias (`row_language_full_span_only`): `True`.
+- Bilbao-equivalent final-object pass: `True`.
+- Strong-equivalence pass (`publication_object_semantics_only`): `True`.

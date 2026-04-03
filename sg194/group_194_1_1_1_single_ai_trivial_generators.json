@@ -1,5 +1,5 @@
 {
-  "object_role": "published_final_point_path_shell_ai_seed",
+  "object_role": "publication_level_C_pub_ai_seed",
   "ai_status": "seed_only",
   "unknown_ordering": [
     "P1_R1",
@@ -148,7 +148,7 @@
     "disabled_reason": "Removed from the published AI seed until the L2-derived phase-aware translation is proven legal on the final reduced point/path shell.",
     "source_profile": "phase_aware_point_row_translation_v1"
   },
-  "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+  "character_field_used": "point=character, line=character, plane=character, default=character",
   "generators": [
     {
       "family_letter": "l",
@@ -1038,22 +1038,18 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         0
       ],
       "nonzero_residual_rows": [],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -1952,10 +1948,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         -2,
         2,
         -4,
@@ -1966,27 +1958,27 @@
       ],
       "nonzero_residual_rows": [
         {
-          "row_index": 26,
+          "row_index": 22,
           "residual": -2
         },
         {
-          "row_index": 27,
+          "row_index": 23,
           "residual": 2
         },
         {
-          "row_index": 28,
+          "row_index": 24,
           "residual": -4
         }
       ],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -2891,22 +2883,18 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         0
       ],
       "nonzero_residual_rows": [],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -3805,10 +3793,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         -2,
         -2,
         0,
@@ -3819,23 +3803,23 @@
       ],
       "nonzero_residual_rows": [
         {
-          "row_index": 26,
+          "row_index": 22,
           "residual": -2
         },
         {
-          "row_index": 27,
+          "row_index": 23,
           "residual": -2
         }
       ],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -4734,10 +4718,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         -1,
         1,
         -2,
@@ -4748,27 +4728,27 @@
       ],
       "nonzero_residual_rows": [
         {
-          "row_index": 26,
+          "row_index": 22,
           "residual": -1
         },
         {
-          "row_index": 27,
+          "row_index": 23,
           "residual": 1
         },
         {
-          "row_index": 28,
+          "row_index": 24,
           "residual": -2
         }
       ],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -5667,10 +5647,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         -1,
         -1,
         0,
@@ -5681,23 +5657,23 @@
       ],
       "nonzero_residual_rows": [
         {
-          "row_index": 26,
+          "row_index": 22,
           "residual": -1
         },
         {
-          "row_index": 27,
+          "row_index": 23,
           "residual": -1
         }
       ],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -6602,22 +6578,18 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         0
       ],
       "nonzero_residual_rows": [],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -7522,22 +7494,18 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         0
       ],
       "nonzero_residual_rows": [],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -7553,1856 +7521,6 @@
       "stabilizer_size": 6,
       "unitary_stabilizer_size": 6,
       "generator_id": "e_trivial"
-    },
-    {
-      "family_letter": "d",
-      "representative_coordinate": "1/3, 2/3, 3/4",
-      "multiplicity": 2,
-      "site_symmetry": "m[x] * m[y] * 3[z] * m[z] * -6[z] * 2[1-10] * m[110] * 2[120] * 2[210]",
-      "manifold_multiplicities": {
-        "P1": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0
-        ],
-        "P2": [
-          0,
-          1,
-          0
-        ],
-        "P3": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          1
-        ],
-        "P4": [
-          0,
-          1,
-          0
-        ],
-        "P5": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1
-        ],
-        "P6": [
-          0,
-          1
-        ],
-        "L1": [
-          0,
-          1,
-          0,
-          1,
-          0,
-          0
-        ],
-        "L2": [
-          0,
-          0,
-          1
-        ],
-        "L3": [
-          0,
-          0,
-          0,
-          2
-        ],
-        "L4": [
-          0,
-          1,
-          0,
-          1
-        ],
-        "L5": [
-          0,
-          1,
-          0,
-          1
-        ],
-        "L6": [
-          0,
-          0,
-          1,
-          1
-        ],
-        "L7": [
-          1
-        ],
-        "S1": [
-          0,
-          2
-        ],
-        "S2": [
-          0,
-          2
-        ],
-        "S3": [
-          1,
-          1
-        ],
-        "S4": [
-          1,
-          1
-        ]
-      },
-      "raw_manifold_multiplicities": {
-        "P1": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0
-        ],
-        "P2": [
-          0,
-          1,
-          0
-        ],
-        "P3": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          1
-        ],
-        "P4": [
-          0,
-          1,
-          0
-        ],
-        "P5": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1
-        ],
-        "P6": [
-          0,
-          1
-        ],
-        "L1": [
-          0,
-          1,
-          0,
-          1,
-          0,
-          0
-        ],
-        "L2": [
-          0,
-          0,
-          1
-        ],
-        "L3": [
-          0,
-          0,
-          0,
-          2
-        ],
-        "L4": [
-          0,
-          1,
-          0,
-          1
-        ],
-        "L5": [
-          0,
-          1,
-          0,
-          1
-        ],
-        "L6": [
-          0,
-          0,
-          1,
-          1
-        ],
-        "L7": [
-          1
-        ],
-        "S1": [
-          0,
-          2
-        ],
-        "S2": [
-          0,
-          2
-        ],
-        "S3": [
-          1,
-          1
-        ],
-        "S4": [
-          1,
-          1
-        ]
-      },
-      "manifold_band_characters": {
-        "P1": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P2": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P3": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P4": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": -0.0,
-            "imag": -1.732050807569
-          },
-          {
-            "real": 0.0,
-            "imag": 1.732050807569
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P5": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P6": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L1": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L2": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L3": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          }
-        ],
-        "L4": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L5": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L6": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          }
-        ],
-        "L7": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "S1": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          }
-        ],
-        "S2": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          }
-        ],
-        "S3": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "S4": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": -0.0
-          }
-        ]
-      },
-      "raw_unknown_vector": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        1
-      ],
-      "unknown_vector": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        1
-      ],
-      "compatibility_zero": false,
-      "compatibility_residual_norm": 1,
-      "compatibility_residual_vector": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        -1,
-        0,
-        0,
-        0,
-        0
-      ],
-      "nonzero_residual_rows": [
-        {
-          "row_index": 28,
-          "residual": -1
-        }
-      ],
-      "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
-      "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
-        "L1": "character",
-        "L2": "character",
-        "L3": "character",
-        "L4": "character",
-        "L5": "character",
-        "L6": "character",
-        "L7": "character",
-        "S1": "character",
-        "S2": "character",
-        "S3": "character",
-        "S4": "character"
-      },
-      "stabilizer_size": 12,
-      "unitary_stabilizer_size": 12,
-      "generator_id": "d_trivial"
-    },
-    {
-      "family_letter": "c",
-      "representative_coordinate": "1/3, 2/3, 1/4",
-      "multiplicity": 2,
-      "site_symmetry": "m[x] * m[y] * 3[z] * m[z] * -6[z] * 2[1-10] * m[110] * 2[120] * 2[210]",
-      "manifold_multiplicities": {
-        "P1": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0
-        ],
-        "P2": [
-          0,
-          1,
-          0
-        ],
-        "P3": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          1
-        ],
-        "P4": [
-          1,
-          0,
-          0
-        ],
-        "P5": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1
-        ],
-        "P6": [
-          0,
-          1
-        ],
-        "L1": [
-          0,
-          1,
-          0,
-          1,
-          0,
-          0
-        ],
-        "L2": [
-          0,
-          0,
-          1
-        ],
-        "L3": [
-          0,
-          0,
-          0,
-          2
-        ],
-        "L4": [
-          0,
-          1,
-          0,
-          1
-        ],
-        "L5": [
-          0,
-          1,
-          0,
-          1
-        ],
-        "L6": [
-          0,
-          0,
-          1,
-          1
-        ],
-        "L7": [
-          1
-        ],
-        "S1": [
-          0,
-          2
-        ],
-        "S2": [
-          0,
-          2
-        ],
-        "S3": [
-          1,
-          1
-        ],
-        "S4": [
-          1,
-          1
-        ]
-      },
-      "raw_manifold_multiplicities": {
-        "P1": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          0,
-          0,
-          0,
-          0
-        ],
-        "P2": [
-          0,
-          1,
-          0
-        ],
-        "P3": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          1
-        ],
-        "P4": [
-          1,
-          0,
-          0
-        ],
-        "P5": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          1
-        ],
-        "P6": [
-          0,
-          1
-        ],
-        "L1": [
-          0,
-          1,
-          0,
-          1,
-          0,
-          0
-        ],
-        "L2": [
-          0,
-          0,
-          1
-        ],
-        "L3": [
-          0,
-          0,
-          0,
-          2
-        ],
-        "L4": [
-          0,
-          1,
-          0,
-          1
-        ],
-        "L5": [
-          0,
-          1,
-          0,
-          1
-        ],
-        "L6": [
-          0,
-          0,
-          1,
-          1
-        ],
-        "L7": [
-          1
-        ],
-        "S1": [
-          0,
-          2
-        ],
-        "S2": [
-          0,
-          2
-        ],
-        "S3": [
-          1,
-          1
-        ],
-        "S4": [
-          1,
-          1
-        ]
-      },
-      "manifold_band_characters": {
-        "P1": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P2": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P3": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P4": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 1.732050807569
-          },
-          {
-            "real": -0.0,
-            "imag": -1.732050807569
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P5": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "P6": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L1": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L2": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": -1.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L3": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          }
-        ],
-        "L4": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L5": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "L6": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          }
-        ],
-        "L7": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "S1": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          }
-        ],
-        "S2": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 2.0,
-            "imag": 0.0
-          }
-        ],
-        "S3": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ],
-        "S4": [
-          {
-            "real": 2.0,
-            "imag": 0.0
-          },
-          {
-            "real": 0.0,
-            "imag": 0.0
-          }
-        ]
-      },
-      "raw_unknown_vector": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        1
-      ],
-      "unknown_vector": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1,
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        0,
-        1
-      ],
-      "compatibility_zero": false,
-      "compatibility_residual_norm": 1,
-      "compatibility_residual_vector": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        -1,
-        0,
-        0,
-        0,
-        0
-      ],
-      "nonzero_residual_rows": [
-        {
-          "row_index": 28,
-          "residual": -1
-        }
-      ],
-      "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
-      "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
-        "L1": "character",
-        "L2": "character",
-        "L3": "character",
-        "L4": "character",
-        "L5": "character",
-        "L6": "character",
-        "L7": "character",
-        "S1": "character",
-        "S2": "character",
-        "S3": "character",
-        "S4": "character"
-      },
-      "stabilizer_size": 12,
-      "unitary_stabilizer_size": 12,
-      "generator_id": "c_trivial"
     },
     {
       "family_letter": "b",
@@ -10286,10 +8404,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         -1,
         1,
         0,
@@ -10300,23 +8414,23 @@
       ],
       "nonzero_residual_rows": [
         {
-          "row_index": 26,
+          "row_index": 22,
           "residual": -1
         },
         {
-          "row_index": 27,
+          "row_index": 23,
           "residual": 1
         }
       ],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -11215,10 +9329,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
         -1,
         -1,
         0,
@@ -11229,23 +9339,23 @@
       ],
       "nonzero_residual_rows": [
         {
-          "row_index": 26,
+          "row_index": 22,
           "residual": -1
         },
         {
-          "row_index": 27,
+          "row_index": 23,
           "residual": -1
         }
       ],
       "point_row_translation_profile": "legacy",
-      "character_field_used": "point=linear_character, line=character, plane=character, default=linear_character",
+      "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
-        "P1": "linear_character",
-        "P2": "linear_character",
-        "P3": "linear_character",
-        "P4": "linear_character",
-        "P5": "linear_character",
-        "P6": "linear_character",
+        "P1": "character",
+        "P2": "character",
+        "P3": "character",
+        "P4": "character",
+        "P5": "character",
+        "P6": "character",
         "L1": "character",
         "L2": "character",
         "L3": "character",
@@ -11263,30 +9373,61 @@
       "generator_id": "a_trivial"
     }
   ],
-  "rank_trivial_family_span": 12,
-  "blocker_summary": "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, but only 11 of 45 induced local objects satisfy compatibility on the published full-span augmented 8-path shell. Classification counts across raw42 / 7-path skeleton / published 8-path shells: {'fails_on_raw42': 34, 'compatible_on_published8': 11}. 34 candidates already fail on the diagnostic raw42 shell before any 7-path or 8-path reduction is applied. The extra 8th path is not the dominant single-AI obstruction. No candidate fails first on the reduced 7-path skeleton before the 8th path is added. On the published shell the nonzero residual rows concentrate on path histogram {'FPATH07': 68}.",
+  "rank_trivial_family_span": 10,
+  "generator_failure_count": 2,
+  "generator_failures": [
+    {
+      "family_letter": "d",
+      "generator_id": "d_trivial",
+      "error": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.5000000000000001+0.5000000000000001j), (0.4999999999999998-0.5j), (3.5735303605122226e-16-1.5959455978986625e-16j)])"
+    },
+    {
+      "family_letter": "c",
+      "generator_id": "c_trivial",
+      "error": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.5000000000000001-0.5000000000000001j), (0.49999999999999967+0.4999999999999999j), (3.8163916471489756e-16+2.220446049250313e-16j)])"
+    }
+  ],
+  "blocker_summary": "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, but only 11 of 33 induced local objects satisfy compatibility on the publication-level shell. Classification counts across raw42 / internal honest shell / publication shell: {'fails_on_raw42': 22, 'compatible_on_publication_shell': 11, 'induction_failure_on_raw42': 12}. 22 candidates already fail on the diagnostic raw42 shell before any internal/publication reduction is applied. No candidate first fails on the internal full-span 8-path shell before publication reduction. No candidate first fails on the publication shell after passing the internal shell. On the publication shell the nonzero residual rows concentrate on path histogram {'PPATH06': 48}.",
   "local_library_wired_into_ai_builder": true,
   "ai_character_field_alignment_report": {
     "authoritative_compatibility_field": "character",
-    "current_ai_induction_field": "point=linear_character, line=character, plane=character, default=linear_character",
+    "current_ai_induction_field": "point=character, line=character, plane=character, default=character",
     "current_compatibility_zero_counts": {
       "raw42": 11,
-      "skeleton7": 11,
-      "published8": 11
+      "internal_shell": 11,
+      "publication_shell": 11
     },
     "current_published_fail_path_histogram": {
-      "FPATH07": 68
+      "PPATH06": 48
     }
+  },
+  "ai_full_character_alignment_report": {
+    "old_field_map": "point=linear_character, line=character, plane=character, default=linear_character",
+    "new_field_map": "point=character, line=character, plane=character, default=character",
+    "point_side_now_uses_character": true,
+    "line_side_now_uses_character": true,
+    "plane_side_now_uses_character": true,
+    "compatibility_zero_counts": {
+      "raw42": 11,
+      "internal_shell": 11,
+      "publication_shell": 11
+    },
+    "publication_fail_path_histogram": {
+      "PPATH06": 48
+    },
+    "dominant_publication_path": "PPATH06",
+    "fpath07_remains_dominant": false
   },
   "ai_obstruction_diagnosis_summary": {
     "classification_counts": {
-      "fails_on_raw42": 34,
-      "compatible_on_published8": 11
+      "fails_on_raw42": 22,
+      "compatible_on_publication_shell": 11,
+      "induction_failure_on_raw42": 12
     },
     "published_fail_path_histogram": {
-      "FPATH07": 68
+      "PPATH06": 48
     },
-    "obstruction_summary": "34 candidates already fail on the diagnostic raw42 shell before any 7-path or 8-path reduction is applied. The extra 8th path is not the dominant single-AI obstruction. No candidate fails first on the reduced 7-path skeleton before the 8th path is added. On the published shell the nonzero residual rows concentrate on path histogram {'FPATH07': 68}."
+    "obstruction_summary": "22 candidates already fail on the diagnostic raw42 shell before any internal/publication reduction is applied. No candidate first fails on the internal full-span 8-path shell before publication reduction. No candidate first fails on the publication shell after passing the internal shell. On the publication shell the nonzero residual rows concentrate on path histogram {'PPATH06': 48}."
   },
   "translation_legality_report": {
     "legality_status": "removed",
@@ -11301,11 +9442,11 @@
   "ai_library_integration_report": {
     "local_library_wired_into_ai_builder": true,
     "integration_status": "wired_but_blocked_on_published_shell",
-    "success_candidate_count": 45,
-    "failure_count": 0,
+    "success_candidate_count": 33,
+    "failure_count": 12,
     "compatibility_zero_candidate_count": 11
   },
   "ai_seed_delta_after_bs_fix_report": {
-    "residual_pattern_changed": false
+    "residual_pattern_changed": true
   }
 }

@@ -1,9 +1,9 @@
 {
   "ai_status": "seed_only",
-  "object_language": "published_final_point_path_shell_34_unknowns",
+  "object_language": "publication_level_C_pub_34_unknowns",
   "unknown_count": 34,
-  "generator_count": 12,
-  "rank_trivial_family_span": 12,
+  "generator_count": 10,
+  "rank_trivial_family_span": 10,
   "compatibility_zero_count": 4,
   "compatibility_zero_family_letters": [
     "l",
@@ -16,8 +16,6 @@
     "i",
     "h",
     "g",
-    "d",
-    "c",
     "b",
     "a"
   ],
@@ -26,8 +24,21 @@
   "library_integration_status": "wired_but_blocked_on_published_shell",
   "missing_prerequisites": [
     "published-shell induction beyond the trivial seed is not yet closed on the current reduced shell",
-    "validated non-abelian local irrep/corep libraries are wired into the builder, but most induced local objects still fail compatibility on the current published shell",
+    "validated non-abelian local irrep/corep libraries are wired into the builder, but most induced local objects still fail compatibility on the current publication shell",
     "AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis"
   ],
-  "honest_ai_lattice_ready": false
+  "honest_ai_lattice_ready": false,
+  "generator_failure_count": 2,
+  "generator_failures": [
+    {
+      "family_letter": "d",
+      "generator_id": "d_trivial",
+      "error": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.5000000000000001+0.5000000000000001j), (0.4999999999999998-0.5j), (3.5735303605122226e-16-1.5959455978986625e-16j)])"
+    },
+    {
+      "family_letter": "c",
+      "generator_id": "c_trivial",
+      "error": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.5000000000000001-0.5000000000000001j), (0.49999999999999967+0.4999999999999999j), (3.8163916471489756e-16+2.220446049250313e-16j)])"
+    }
+  ]
 }

@@ -1,0 +1,25 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "all_families_audited": true,
+  "complete_families": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o"
+  ],
+  "incomplete_families": [],
+  "ai_v2_complete_for_double_group": true,
+  "next_blocker": "No remaining family-level AI blocker inside the current 10.4.1.31 / groupType=2 scope. The next task is purely quotient interpretation."
+}

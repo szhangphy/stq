@@ -55,11 +55,19 @@ from .final_object_reduction import (
     build_final_path_candidate_equivalence_report,
     build_final_path_signature_markdown,
     build_final_path_signature_report,
+    build_internal_vs_publication_object_markdown,
+    build_internal_vs_publication_object_report,
     build_missing_row_language_witness_markdown,
     build_missing_row_language_witness_report,
     build_p1_p5_doubleclass_resolution_markdown,
     build_p1_p5_doubleclass_resolution_report,
+    build_publication_C_matrix,
+    build_publication_shell_candidate,
+    build_publication_shell_reduction_markdown,
+    build_publication_shell_reduction_report,
+    build_publication_shell_vs_bilbao_markdown,
     build_reduction_report_markdown,
+    compare_publication_shell_to_bilbao_expected,
     compare_reduction_to_expected_pairs,
     finalize_reduction_from_candidate_analysis,
     reduce_final_point_path_shell,
@@ -68,7 +76,7 @@ from . import runtime_group_ops as single_expanded
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_fix_automorphism_and_ai_basis_v1"
+PACKAGE_NAME = "review_package_publication_C_builder_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -115,6 +123,12 @@ FULL_SHELL_AUTOMORPHISM_MD = ROOT / "bs_fix_reaudit_v1" / "full_shell_automorphi
 FULL_SHELL_AUTOMORPHISM_JSON = ROOT / "bs_fix_reaudit_v1" / "full_shell_automorphism_search_report.json"
 FULL_POINT_SHELL_AUTOMORPHISM_MD = ROOT / "bs_fix_reaudit_v1" / "full_point_shell_automorphism_search_report.md"
 FULL_POINT_SHELL_AUTOMORPHISM_JSON = ROOT / "bs_fix_reaudit_v1" / "full_point_shell_automorphism_search_report.json"
+PUBLICATION_SHELL_REDUCTION_MD = ROOT / "bs_fix_reaudit_v1" / "publication_shell_reduction_report.md"
+PUBLICATION_SHELL_REDUCTION_JSON = ROOT / "bs_fix_reaudit_v1" / "publication_shell_reduction_report.json"
+PUBLICATION_SHELL_BILBAO_MD = ROOT / "bs_fix_reaudit_v1" / "publication_shell_vs_bilbao_check.md"
+PUBLICATION_SHELL_BILBAO_JSON = ROOT / "bs_fix_reaudit_v1" / "publication_shell_vs_bilbao_check.json"
+INTERNAL_VS_PUBLICATION_MD = ROOT / "bs_fix_reaudit_v1" / "internal_vs_publication_object_report.md"
+INTERNAL_VS_PUBLICATION_JSON = ROOT / "bs_fix_reaudit_v1" / "internal_vs_publication_object_report.json"
 POINT_ROW_TRANSLATION_MD = ROOT / "bs_fix_reaudit_v1" / "point_row_translation_legality_report.md"
 POINT_ROW_TRANSLATION_JSON = ROOT / "bs_fix_reaudit_v1" / "point_row_translation_legality_report.json"
 AI_SEED_AUDIT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_seed_audit_report.md"
@@ -125,6 +139,8 @@ AI_LIBRARY_INTEGRATION_MD = ROOT / "bs_fix_reaudit_v1" / "ai_library_integration
 AI_LIBRARY_INTEGRATION_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_library_integration_report.json"
 AI_CHARACTER_FIELD_ALIGNMENT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_character_field_alignment_report.md"
 AI_CHARACTER_FIELD_ALIGNMENT_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_character_field_alignment_report.json"
+AI_FULL_CHARACTER_ALIGNMENT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_full_character_alignment_report.md"
+AI_FULL_CHARACTER_ALIGNMENT_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_full_character_alignment_report.json"
 AI_HONEST_BLOCKER_MD = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.md"
 AI_HONEST_BLOCKER_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.json"
 AI_OBSTRUCTION_DIAG_MD = ROOT / "bs_fix_reaudit_v1" / "ai_obstruction_diagnosis_report.md"
@@ -139,10 +155,10 @@ AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND = (
     "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1"
 )
 AUTHORITATIVE_AI_CHARACTER_FIELD = {
-    "point": "linear_character",
+    "point": "character",
     "line": "character",
     "plane": "character",
-    "default": "linear_character",
+    "default": "character",
 }
 RETIRED_INTRINSIC_BUILDER_KIND = "retired_intrinsic_class_sum_compare_only_non_authoritative"
 RETIRED_EXTRINSIC_BUILDER_KIND = "retired_extrinsic_star_augmented_compare_only_non_authoritative"
@@ -2315,7 +2331,7 @@ def induce_candidate(
     global_matrix: list[list[int]],
     point_row_translation: dict[str, Any] | None = None,
     *,
-    character_field: str = "linear_character",
+    character_field: str = "character",
 ) -> dict[str, Any]:
     orbit = single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
     stabilizer = bridge.bridge_stabilizer_for_entry(entry, ctx)
@@ -2563,9 +2579,9 @@ def capture_final_path_lines(
         )
 
 
-def build_bilbao_equivalent_sanity_check(reduction: dict[str, Any]) -> dict[str, Any]:
-    return compare_reduction_to_expected_pairs(
-        reduction,
+def build_bilbao_equivalent_sanity_check(publication_shell: dict[str, Any]) -> dict[str, Any]:
+    return compare_publication_shell_to_bilbao_expected(
+        publication_shell,
         expected_point_ids=["P1", "P2", "P3", "P4", "P5", "P6"],
         expected_endpoint_pairs=[
             ["P1", "P2"],
@@ -2581,22 +2597,31 @@ def build_bilbao_equivalent_sanity_check(reduction: dict[str, Any]) -> dict[str,
 
 def write_reduction_reports(
     reduction: dict[str, Any],
-    sanity_check: dict[str, Any],
+    publication_shell: dict[str, Any],
+    publication_check: dict[str, Any],
     *,
-    published_line_full: dict[str, Any],
-    published_bs_analysis: dict[str, Any],
+    internal_line_full: dict[str, Any],
+    internal_bs_analysis: dict[str, Any],
+    publication_line_full: dict[str, Any],
+    publication_bs_analysis: dict[str, Any],
     diagnostic_with_planes: dict[str, Any],
     diagnostic_bs_analysis: dict[str, Any],
 ) -> dict[str, Any]:
     reduction_payload = {
         **reduction,
         "final_point_count": len(reduction["final_point_ids"]),
-        "final_path_count": len(reduction["published_path_ids"]),
-        "published_line_matrix_shape": [
-            len(published_line_full["global_matrix"]),
-            len(published_line_full["global_unknown_ordering"]),
+        "final_path_count": len(reduction["kept_paths"]),
+        "internal_line_matrix_shape": [
+            len(internal_line_full["global_matrix"]),
+            len(internal_line_full["global_unknown_ordering"]),
         ],
-        "published_bs_analysis": published_bs_analysis,
+        "internal_bs_analysis": internal_bs_analysis,
+        "publication_path_count": len(publication_shell["publication_paths"]),
+        "publication_line_matrix_shape": [
+            len(publication_line_full["global_matrix"]),
+            len(publication_line_full["global_unknown_ordering"]),
+        ],
+        "publication_bs_analysis": publication_bs_analysis,
         "diagnostic_with_planes_matrix_shape": [
             len(diagnostic_with_planes["global_matrix"]),
             len(diagnostic_with_planes["global_unknown_ordering"]),
@@ -2607,21 +2632,32 @@ def write_reduction_reports(
     path_equiv_report = build_final_path_candidate_equivalence_report(reduction)
     full_shell_report = build_full_shell_automorphism_search_report(reduction)
     p1_p5_resolution_report = build_p1_p5_doubleclass_resolution_report(reduction)
+    publication_reduction_report = build_publication_shell_reduction_report(reduction, publication_shell)
+    internal_vs_publication_report = build_internal_vs_publication_object_report(
+        reduction,
+        publication_shell,
+        internal_bs_analysis,
+        publication_bs_analysis,
+    )
     bs_strong_report = build_final_bs_strong_equivalence_report(
         reduction,
-        sanity_check,
-        published_line_full,
-        published_bs_analysis,
+        publication_shell,
+        publication_check,
+        publication_line_full,
+        publication_bs_analysis,
+        internal_bs_analysis,
     )
     reduction_payload["row_language_full_span_pass"] = bs_strong_report["row_language_full_span_pass"]
     reduction_payload["bilbao_equivalent_final_object_pass"] = bs_strong_report["bilbao_equivalent_final_object_pass"]
     reduction_payload["p1_p5_doubleclass_resolution_status"] = p1_p5_resolution_report.get("resolution_status")
     reduction_payload["p1_p5_global_automorphism_found"] = full_shell_report.get("global_solution_found")
+    reduction_payload["publication_object_kind"] = publication_shell["object_kind"]
+    reduction_payload["publication_path_count"] = len(publication_shell["publication_paths"])
     missing_row_witness_report = build_missing_row_language_witness_report(reduction)
     write_json(REDUCTION_REPORT_JSON, reduction_payload)
     write_text(REDUCTION_REPORT_MD, build_reduction_report_markdown(reduction_payload))
-    write_json(REDUCTION_CHECK_JSON, sanity_check)
-    write_text(REDUCTION_CHECK_MD, build_expected_check_markdown(sanity_check))
+    write_json(REDUCTION_CHECK_JSON, publication_check)
+    write_text(REDUCTION_CHECK_MD, build_expected_check_markdown(publication_check))
     write_json(FINAL_PATH_SIGNATURE_JSON, path_signature_report)
     write_text(FINAL_PATH_SIGNATURE_MD, build_final_path_signature_markdown(path_signature_report))
     write_json(FINAL_PATH_EQUIV_JSON, path_equiv_report)
@@ -2636,12 +2672,20 @@ def write_reduction_reports(
     write_text(FINAL_BS_STRONG_MD, build_final_bs_strong_equivalence_markdown(bs_strong_report))
     write_json(MISSING_ROW_WITNESS_JSON, missing_row_witness_report)
     write_text(MISSING_ROW_WITNESS_MD, build_missing_row_language_witness_markdown(missing_row_witness_report))
+    write_json(PUBLICATION_SHELL_REDUCTION_JSON, publication_reduction_report)
+    write_text(PUBLICATION_SHELL_REDUCTION_MD, build_publication_shell_reduction_markdown(publication_reduction_report))
+    write_json(PUBLICATION_SHELL_BILBAO_JSON, publication_check)
+    write_text(PUBLICATION_SHELL_BILBAO_MD, build_publication_shell_vs_bilbao_markdown(publication_check))
+    write_json(INTERNAL_VS_PUBLICATION_JSON, internal_vs_publication_report)
+    write_text(INTERNAL_VS_PUBLICATION_MD, build_internal_vs_publication_object_markdown(internal_vs_publication_report))
     return {
         "reduction_report": reduction_payload,
         "path_signature_report": path_signature_report,
         "path_equivalence_report": path_equiv_report,
         "full_shell_automorphism_search_report": full_shell_report,
         "p1_p5_doubleclass_resolution_report": p1_p5_resolution_report,
+        "publication_shell_reduction_report": publication_reduction_report,
+        "internal_vs_publication_object_report": internal_vs_publication_report,
         "bs_strong_equivalence_report": bs_strong_report,
         "missing_row_witness_report": missing_row_witness_report,
     }
@@ -2779,7 +2823,7 @@ def build_ai_seed_audit_report(
     compatibility_zero_count = sum(int(candidate["compatibility_zero"]) for candidate in ai_candidates)
     return {
         "ai_status": "seed_only",
-        "object_language": "published_final_point_path_shell_34_unknowns",
+        "object_language": "publication_level_C_pub_34_unknowns",
         "unknown_count": len(unknown_ordering),
         "generator_count": len(ai_candidates),
         "rank_trivial_family_span": int(ai_matrix.rank()) if ai_candidates else 0,
@@ -2799,7 +2843,7 @@ def build_ai_seed_audit_report(
         "library_integration_status": library_integration_status,
         "missing_prerequisites": [
             "published-shell induction beyond the trivial seed is not yet closed on the current reduced shell",
-            "validated non-abelian local irrep/corep libraries are wired into the builder, but most induced local objects still fail compatibility on the current published shell",
+            "validated non-abelian local irrep/corep libraries are wired into the builder, but most induced local objects still fail compatibility on the current publication shell",
             "AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis",
         ],
         "honest_ai_lattice_ready": False,
@@ -2925,8 +2969,8 @@ def build_ai_character_field_alignment_report(
     *,
     authoritative_compatibility_field: str,
     raw42_character_field: str,
-    skeleton7_character_field: str,
-    published8_character_field: str,
+    internal_character_field: str,
+    publication_character_field: str,
 ) -> dict[str, Any]:
     previous_report = load_json_from_head(AI_OBSTRUCTION_DIAG_JSON)
     previous_counts = (
@@ -2940,15 +2984,15 @@ def build_ai_character_field_alignment_report(
         else None
     )
     current_counts = dict(obstruction_report["compatibility_zero_counts"])
-    current_histogram = dict(obstruction_report["published_fail_path_histogram"])
+    current_histogram = dict(obstruction_report["publication_fail_path_histogram"])
     return {
         "authoritative_compatibility_field": authoritative_compatibility_field,
-        "previous_ai_induction_field": "linear_character",
-        "current_ai_induction_field": _summarize_induction_character_field(published8_character_field),
+        "previous_ai_induction_field": "point=linear_character, line=character, plane=character, default=linear_character",
+        "current_ai_induction_field": _summarize_induction_character_field(publication_character_field),
         "shell_character_fields": {
             "raw42": _summarize_induction_character_field(raw42_character_field),
-            "skeleton7": _summarize_induction_character_field(skeleton7_character_field),
-            "published8": _summarize_induction_character_field(published8_character_field),
+            "internal_shell": _summarize_induction_character_field(internal_character_field),
+            "publication_shell": _summarize_induction_character_field(publication_character_field),
         },
         "previous_obstruction_report_available": previous_report is not None,
         "previous_compatibility_zero_counts": previous_counts,
@@ -2987,6 +3031,48 @@ def build_ai_character_field_alignment_markdown(report: dict[str, Any]) -> str:
     )
 
 
+def build_ai_full_character_alignment_report(
+    obstruction_report: dict[str, Any],
+    *,
+    old_field_map: dict[str, str],
+    new_field_map: dict[str, str],
+) -> dict[str, Any]:
+    residual_histogram = dict(obstruction_report["publication_fail_path_histogram"])
+    dominant_path = None
+    if residual_histogram:
+        dominant_path = max(
+            sorted(residual_histogram),
+            key=lambda path_id: (residual_histogram[path_id], path_id),
+        )
+    return {
+        "old_field_map": _summarize_induction_character_field(old_field_map),
+        "new_field_map": _summarize_induction_character_field(new_field_map),
+        "point_side_now_uses_character": new_field_map.get("point") == "character",
+        "line_side_now_uses_character": new_field_map.get("line") == "character",
+        "plane_side_now_uses_character": new_field_map.get("plane") == "character",
+        "compatibility_zero_counts": dict(obstruction_report["compatibility_zero_counts"]),
+        "publication_fail_path_histogram": residual_histogram,
+        "dominant_publication_path": dominant_path,
+        "fpath07_remains_dominant": dominant_path == "FPATH07",
+    }
+
+
+def build_ai_full_character_alignment_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Full Character Alignment Report",
+            "",
+            f"- Old field map: `{report['old_field_map']}`.",
+            f"- New field map: `{report['new_field_map']}`.",
+            f"- Point/line/plane now use `character`: `{report['point_side_now_uses_character']}` / `{report['line_side_now_uses_character']}` / `{report['plane_side_now_uses_character']}`.",
+            f"- Compatibility-zero counts: `{report['compatibility_zero_counts']}`.",
+            f"- Publication residual path histogram: `{report['publication_fail_path_histogram']}`.",
+            f"- Dominant publication path: `{report['dominant_publication_path']}`.",
+            f"- `FPATH07` remains dominant: `{report['fpath07_remains_dominant']}`.",
+        ]
+    )
+
+
 def load_nonabelian_local_library_helper():
     path = ROOT / "debug_sg194_nonabelian_local_library.py"
     spec = importlib.util.spec_from_file_location("sg194_nonabelian_local_library_runtime", path)
@@ -3013,7 +3099,7 @@ def induce_family_objects(
     point_row_translation: dict[str, Any],
     family_objects: dict[str, list[dict[str, Any]]],
     *,
-    character_field: str = "linear_character",
+    character_field: str = "character",
 ) -> dict[str, Any]:
     candidates = []
     failures = []
@@ -3111,7 +3197,7 @@ def build_ai_library_integration_report(
     return {
         "mode": mode,
         "published_object_kind": published_object_kind,
-        "object_language": "published_final_point_path_shell_34_unknowns",
+        "object_language": "publication_level_C_pub_34_unknowns",
         "ai_induction_character_field": next(
             (
                 candidate.get("character_field_used")
@@ -3187,46 +3273,34 @@ def build_line_block_row_maps(
 def build_ai_obstruction_diagnosis_report(
     reduction: dict[str, Any],
     raw_line_blocks: Sequence[dict[str, Any]],
-    final_line_blocks: Sequence[dict[str, Any]],
+    internal_line_blocks: Sequence[dict[str, Any]],
     raw_with_planes: dict[str, Any],
-    skeleton_line_full: dict[str, Any],
-    published_line_full: dict[str, Any],
+    internal_line_full: dict[str, Any],
+    publication_line_full: dict[str, Any],
     raw_induction: dict[str, Any],
-    skeleton_induction: dict[str, Any],
-    published_induction: dict[str, Any],
+    internal_induction: dict[str, Any],
+    publication_induction: dict[str, Any],
+    *,
+    publication_shell: dict[str, Any],
 ) -> dict[str, Any]:
     raw_candidates = {item["generator_id"]: item for item in raw_induction["candidates"]}
-    skeleton_candidates = {item["generator_id"]: item for item in skeleton_induction["candidates"]}
-    published_candidates = {item["generator_id"]: item for item in published_induction["candidates"]}
+    internal_candidates = {item["generator_id"]: item for item in internal_induction["candidates"]}
+    publication_candidates = {item["generator_id"]: item for item in publication_induction["candidates"]}
     raw_failures = {item["generator_id"]: item for item in raw_induction["failures"]}
-    skeleton_failures = {item["generator_id"]: item for item in skeleton_induction["failures"]}
-    published_failures = {item["generator_id"]: item for item in published_induction["failures"]}
+    internal_failures = {item["generator_id"]: item for item in internal_induction["failures"]}
+    publication_failures = {item["generator_id"]: item for item in publication_induction["failures"]}
     _raw_row_ranges, raw_row_to_line = build_line_block_row_maps(raw_line_blocks)
-    skeleton_path_ids = {
-        kept["final_path_id"]
-        for kept in reduction["kept_paths"]
-        if kept["selection_stage"] == "endpoint_pair_skeleton"
-    }
-    skeleton_line_blocks = [block for block in final_line_blocks if block["line_id"] in skeleton_path_ids]
-    skeleton_row_ranges, skeleton_row_to_line = build_line_block_row_maps(skeleton_line_blocks)
-    published_row_ranges, published_row_to_line = build_line_block_row_maps(final_line_blocks)
-    augmentation_path_ids = sorted(
-        kept["final_path_id"]
-        for kept in reduction["kept_paths"]
-        if kept["selection_stage"] == "full_span_augmentation"
-    )
-    augmentation_row_indices = sorted(
-        row_index
-        for path_id in augmentation_path_ids
-        for row_index in published_row_ranges.get(path_id, [])
+    _internal_row_ranges, internal_row_to_line = build_line_block_row_maps(internal_line_blocks)
+    _publication_row_ranges, publication_row_to_line = build_line_block_row_maps(
+        publication_line_full["line_blocks"]
     )
     all_generator_ids = sorted(
         set(raw_candidates)
-        | set(skeleton_candidates)
-        | set(published_candidates)
+        | set(internal_candidates)
+        | set(publication_candidates)
         | set(raw_failures)
-        | set(skeleton_failures)
-        | set(published_failures)
+        | set(internal_failures)
+        | set(publication_failures)
     )
 
     def shell_state(
@@ -3268,118 +3342,128 @@ def build_ai_obstruction_diagnosis_report(
     generator_records = []
     classification_counts: Counter[str] = Counter()
     family_counts_by_classification: dict[str, Counter[str]] = {}
-    published_fail_path_counter: Counter[str] = Counter()
-    published_fail_row_counter: Counter[int] = Counter()
+    publication_fail_path_counter: Counter[str] = Counter()
+    publication_fail_row_counter: Counter[int] = Counter()
     for generator_id in all_generator_ids:
         raw_state = shell_state(generator_id, raw_candidates, raw_failures, raw_row_to_line)
-        skeleton_state = shell_state(generator_id, skeleton_candidates, skeleton_failures, skeleton_row_to_line)
-        published_state = shell_state(generator_id, published_candidates, published_failures, published_row_to_line)
-        if published_state["compatibility_zero"]:
-            classification = "compatible_on_published8"
+        internal_state = shell_state(generator_id, internal_candidates, internal_failures, internal_row_to_line)
+        publication_state = shell_state(
+            generator_id,
+            publication_candidates,
+            publication_failures,
+            publication_row_to_line,
+        )
+        if publication_state["compatibility_zero"]:
+            classification = "compatible_on_publication_shell"
         elif raw_state["status"] == "induction_failure":
             classification = "induction_failure_on_raw42"
-        elif skeleton_state["status"] == "induction_failure":
-            classification = "induction_failure_on_7path_skeleton"
-        elif published_state["status"] == "induction_failure":
-            classification = "induction_failure_on_published8"
+        elif internal_state["status"] == "induction_failure":
+            classification = "induction_failure_on_internal_shell"
+        elif publication_state["status"] == "induction_failure":
+            classification = "induction_failure_on_publication_shell"
         elif not raw_state["compatibility_zero"]:
             classification = "fails_on_raw42"
-        elif not skeleton_state["compatibility_zero"]:
-            classification = "fails_on_7path_skeleton"
-        elif set(item["row_index"] for item in published_state["nonzero_rows"]).issubset(set(augmentation_row_indices)):
-            classification = "published8_augmentation_rows_only"
+        elif not internal_state["compatibility_zero"]:
+            classification = "fails_on_internal_shell"
         else:
-            classification = "published8_nonaugmentation_rows_only"
+            classification = "fails_on_publication_shell"
         classification_counts[classification] += 1
-        family_id = published_state["family_id"] or skeleton_state["family_id"] or raw_state["family_id"] or "unknown"
+        family_id = publication_state["family_id"] or internal_state["family_id"] or raw_state["family_id"] or "unknown"
         family_counts_by_classification.setdefault(classification, Counter())[family_id] += 1
-        for path_id in published_state["nonzero_path_ids"]:
-            published_fail_path_counter[path_id] += 1
-        for item in published_state["nonzero_rows"]:
-            published_fail_row_counter[item["row_index"]] += 1
+        for path_id in publication_state["nonzero_path_ids"]:
+            publication_fail_path_counter[path_id] += 1
+        for item in publication_state["nonzero_rows"]:
+            publication_fail_row_counter[item["row_index"]] += 1
         generator_records.append(
             {
                 "generator_id": generator_id,
                 "family_id": family_id,
                 "local_object_label": (
-                    published_state["local_object_label"]
-                    or skeleton_state["local_object_label"]
+                    publication_state["local_object_label"]
+                    or internal_state["local_object_label"]
                     or raw_state["local_object_label"]
                 ),
                 "site_symmetry_type_key": (
-                    published_state["site_symmetry_type_key"]
-                    or skeleton_state["site_symmetry_type_key"]
+                    publication_state["site_symmetry_type_key"]
+                    or internal_state["site_symmetry_type_key"]
                     or raw_state["site_symmetry_type_key"]
                 ),
                 "classification": classification,
                 "raw42": raw_state,
-                "skeleton7": skeleton_state,
-                "published8": published_state,
+                "internal_shell": internal_state,
+                "publication_shell": publication_state,
             }
         )
     diagnosis_parts = []
     if classification_counts.get("fails_on_raw42", 0) > 0:
         diagnosis_parts.append(
-            f"{classification_counts['fails_on_raw42']} candidates already fail on the diagnostic raw42 shell before any 7-path or 8-path reduction is applied."
+            f"{classification_counts['fails_on_raw42']} candidates already fail on the diagnostic raw42 shell before any internal/publication reduction is applied."
         )
-    if classification_counts.get("published8_augmentation_rows_only", 0) == 0:
-        diagnosis_parts.append("The extra 8th path is not the dominant single-AI obstruction.")
+    if classification_counts.get("fails_on_internal_shell", 0) > 0:
+        diagnosis_parts.append("A subset of local-library candidates already fails on the internal full-span 8-path shell.")
     else:
-        diagnosis_parts.append("A subset of local-library candidates fails only after the 8th-path augmentation is imposed.")
-    if classification_counts.get("fails_on_7path_skeleton", 0) > 0:
-        diagnosis_parts.append("Some nonzero residual candidates first fail on the reduced 7-path skeleton.")
+        diagnosis_parts.append("No candidate first fails on the internal full-span 8-path shell before publication reduction.")
+    if classification_counts.get("fails_on_publication_shell", 0) > 0:
+        diagnosis_parts.append("A subset of nonzero residual candidates survives the internal shell but still fails on the publication shell.")
     else:
-        diagnosis_parts.append("No candidate fails first on the reduced 7-path skeleton before the 8th path is added.")
-    if published_fail_path_counter:
+        diagnosis_parts.append("No candidate first fails on the publication shell after passing the internal shell.")
+    if publication_fail_path_counter:
         diagnosis_parts.append(
-            f"On the published shell the nonzero residual rows concentrate on path histogram {dict(sorted(published_fail_path_counter.items()))}."
+            f"On the publication shell the nonzero residual rows concentrate on path histogram {dict(sorted(publication_fail_path_counter.items()))}."
         )
     diagnosis_summary = " ".join(diagnosis_parts)
     return {
         "mode": "single",
-        "published_object_kind": reduction["reduction_kind"],
+        "internal_object_kind": reduction["reduction_kind"],
+        "published_object_kind": publication_shell["object_kind"],
         "ai_induction_character_field": next(
             (
                 candidate.get("character_field_used")
-                for candidate in published_induction["candidates"]
+                for candidate in publication_induction["candidates"]
                 if candidate.get("character_field_used")
             ),
             None,
         ),
         "row_language_full_span_pass": bool(reduction.get("selected_rows_span_full_candidate_row_language")),
-        "bilbao_equivalent_final_object_pass": bool(reduction.get("bilbao_equivalent_final_object_pass")),
-        "selected_path_count": len(reduction["published_path_ids"]),
-        "unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
-        "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
-        "augmentation_path_ids": augmentation_path_ids,
-        "augmentation_row_indices": augmentation_row_indices,
+        "bilbao_equivalent_final_object_pass": bool(publication_shell.get("bilbao_equivalent_publication_pass", False)),
+        "internal_selected_path_count": len(reduction["kept_paths"]),
+        "publication_selected_path_count": len(publication_shell["publication_paths"]),
+        "internal_unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
+        "publication_unique_endpoint_pair_count": len({tuple(pair) for pair in publication_shell["publication_actual_path_pairs"]}),
+        "internal_actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
+        "publication_actual_path_pairs": list(publication_shell["publication_actual_path_pairs"]),
         "shell_matrix_shapes": {
             "raw42": [len(raw_with_planes["global_matrix"]), len(raw_with_planes["global_unknown_ordering"])],
-            "skeleton7": [len(skeleton_line_full["global_matrix"]), len(skeleton_line_full["global_unknown_ordering"])],
-            "published8": [len(published_line_full["global_matrix"]), len(published_line_full["global_unknown_ordering"])],
+            "internal_shell": [len(internal_line_full["global_matrix"]), len(internal_line_full["global_unknown_ordering"])],
+            "publication_shell": [len(publication_line_full["global_matrix"]), len(publication_line_full["global_unknown_ordering"])],
         },
         "candidate_counts": {
             "raw42_success": len(raw_induction["candidates"]),
             "raw42_failures": len(raw_induction["failures"]),
-            "skeleton7_success": len(skeleton_induction["candidates"]),
-            "skeleton7_failures": len(skeleton_induction["failures"]),
-            "published8_success": len(published_induction["candidates"]),
-            "published8_failures": len(published_induction["failures"]),
+            "internal_shell_success": len(internal_induction["candidates"]),
+            "internal_shell_failures": len(internal_induction["failures"]),
+            "publication_shell_success": len(publication_induction["candidates"]),
+            "publication_shell_failures": len(publication_induction["failures"]),
         },
         "compatibility_zero_counts": {
             "raw42": sum(int(item["compatibility_zero"]) for item in raw_induction["candidates"]),
-            "skeleton7": sum(int(item["compatibility_zero"]) for item in skeleton_induction["candidates"]),
-            "published8": sum(int(item["compatibility_zero"]) for item in published_induction["candidates"]),
+            "internal_shell": sum(int(item["compatibility_zero"]) for item in internal_induction["candidates"]),
+            "publication_shell": sum(int(item["compatibility_zero"]) for item in publication_induction["candidates"]),
         },
         "classification_counts": dict(classification_counts),
         "family_counts_by_classification": {
             classification: dict(counter)
             for classification, counter in sorted(family_counts_by_classification.items())
         },
-        "published_fail_path_histogram": dict(sorted(published_fail_path_counter.items())),
+        "publication_fail_path_histogram": dict(sorted(publication_fail_path_counter.items())),
+        "published_fail_path_histogram": dict(sorted(publication_fail_path_counter.items())),
+        "publication_fail_row_histogram": {
+            str(row_index): count
+            for row_index, count in sorted(publication_fail_row_counter.items())
+        },
         "published_fail_row_histogram": {
             str(row_index): count
-            for row_index, count in sorted(published_fail_row_counter.items())
+            for row_index, count in sorted(publication_fail_row_counter.items())
         },
         "generator_records": generator_records,
         "obstruction_summary": diagnosis_summary,
@@ -3394,16 +3478,15 @@ def build_ai_obstruction_diagnosis_markdown(report: dict[str, Any]) -> str:
             f"- Published object kind: `{report['published_object_kind']}`.",
             f"- AI induction character field: `{report['ai_induction_character_field']}`.",
             f"- Row-language full-span / Bilbao-equivalent final-object pass: `{report['row_language_full_span_pass']}` / `{report['bilbao_equivalent_final_object_pass']}`.",
-            f"- Selected path count / unique endpoint-pair count: `{report['selected_path_count']}` / `{report['unique_endpoint_pair_count']}`.",
-            f"- Actual path pairs: `{report['actual_path_pairs']}`.",
-            f"- Augmentation path ids / row indices: `{report['augmentation_path_ids']}` / `{report['augmentation_row_indices']}`.",
+            f"- Internal vs publication selected path counts: `{report['internal_selected_path_count']}` / `{report['publication_selected_path_count']}`.",
+            f"- Internal vs publication path pairs: `{report['internal_actual_path_pairs']}` / `{report['publication_actual_path_pairs']}`.",
             f"- Shell matrix shapes: `{report['shell_matrix_shapes']}`.",
             f"- Candidate counts: `{report['candidate_counts']}`.",
             f"- Compatibility-zero counts: `{report['compatibility_zero_counts']}`.",
             f"- Classification counts: `{report['classification_counts']}`.",
             f"- Family counts by classification: `{report['family_counts_by_classification']}`.",
-            f"- Published residual path histogram: `{report['published_fail_path_histogram']}`.",
-            f"- Published residual row histogram: `{report['published_fail_row_histogram']}`.",
+            f"- Publication residual path histogram: `{report['publication_fail_path_histogram']}`.",
+            f"- Publication residual row histogram: `{report['publication_fail_row_histogram']}`.",
             f"- Obstruction summary: {report['obstruction_summary']}",
         ]
     )
@@ -3426,8 +3509,8 @@ def build_ai_honest_blocker_report(
         blocker = (
             "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
             f"but only {integration_report['compatibility_zero_candidate_count']} of "
-            f"{integration_report['success_candidate_count']} induced local objects satisfy compatibility on the published full-span augmented 8-path shell. "
-            f"Classification counts across raw42 / 7-path skeleton / published 8-path shells: "
+            f"{integration_report['success_candidate_count']} induced local objects satisfy compatibility on the publication-level shell. "
+            f"Classification counts across raw42 / internal honest shell / publication shell: "
             f"{obstruction_report['classification_counts']}. "
             f"{obstruction_report['obstruction_summary']}"
         )
@@ -3447,14 +3530,14 @@ def build_ai_honest_blocker_report(
         blocker_stage = "published_shell_induction"
         blocker = (
             "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
-            f"but {integration_report['failure_count']} induced local objects still fail on the published reduced shell."
+            f"but {integration_report['failure_count']} induced local objects still fail on the publication-level shell."
         )
     else:
         blocker_stage = "published_shell_compatibility"
         blocker = (
             "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
             f"but only {integration_report['compatibility_zero_candidate_count']} of "
-            f"{integration_report['success_candidate_count']} induced local objects satisfy compatibility on the published reduced shell."
+            f"{integration_report['success_candidate_count']} induced local objects satisfy compatibility on the publication-level shell."
         )
     return {
         "status": "blocked",
@@ -3640,7 +3723,7 @@ def build_single_pilot(
     plane_blocks = [build_plane_block(plane, plane["corner_entries"], captures) for plane in grouped["planes"]]
     with_planes = build_with_planes_compatibility(raw_line_full, plane_blocks)
     diagnostic_bs_analysis = analyze_kernel(with_planes)
-    print("[pilot] single: automatic final-object reduction")
+    print("[pilot] single: internal honest-shell reduction")
     reduction = reduce_final_point_path_shell(kgeom)
     candidate_lines = annotate_final_path_lines(
         reduction["candidate_line_specs"],
@@ -3670,7 +3753,7 @@ def build_single_pilot(
         kgeom["plane_orbit_to_id"],
     )
     capture_final_path_lines(module, TARGET_GROUP, ssg_dict, ctx, "single", captures, final_lines)
-    final_line_blocks = [
+    internal_line_blocks = [
         build_line_block(
             line,
             captures,
@@ -3679,11 +3762,15 @@ def build_single_pilot(
         )
         for line in final_lines
     ]
-    final_line_full = build_global_compatibility(final_line_blocks, reduction["final_point_ids"])
-    bs_analysis = analyze_kernel(final_line_full)
+    internal_line_full = build_global_compatibility(internal_line_blocks, reduction["final_point_ids"])
+    internal_bs_analysis = analyze_kernel(internal_line_full)
+    print("[pilot] single: publication-level C builder")
+    publication_shell = build_publication_shell_candidate(reduction)
+    publication_line_full = build_publication_C_matrix(publication_shell)
+    publication_bs_analysis = analyze_kernel(publication_line_full)
     raw_point_row_translation = build_phase_aware_point_row_translation(
-        final_line_blocks,
-        bs_analysis["unknown_ordering"],
+        internal_line_blocks,
+        publication_bs_analysis["unknown_ordering"],
         phase_aware_profile=line_phase_profile,
     )
     point_row_translation = disable_point_row_translation(
@@ -3693,70 +3780,93 @@ def build_single_pilot(
             "translation is proven legal on the final reduced point/path shell."
         ),
     )
-    reduction["published_unknown_ordering"] = list(bs_analysis["unknown_ordering"])
-    reduction["published_path_ids"] = [block["line_id"] for block in final_line_blocks]
-    sanity_check = build_bilbao_equivalent_sanity_check(reduction)
-    kgeom["final_object_reduction"] = reduction
-    kgeom["final_published_lines"] = final_lines
+    reduction["internal_unknown_ordering"] = list(internal_bs_analysis["unknown_ordering"])
+    reduction["internal_path_ids"] = [block["line_id"] for block in internal_line_blocks]
+    publication_shell["publication_unknown_ordering"] = list(publication_bs_analysis["unknown_ordering"])
+    publication_shell["publication_path_ids"] = [block["line_id"] for block in publication_line_full["line_blocks"]]
+    publication_check = build_bilbao_equivalent_sanity_check(publication_shell)
+    publication_shell["bilbao_equivalent_publication_pass"] = publication_check["bilbao_equivalent_publication_pass"]
+    kgeom["internal_honest_shell_reduction"] = reduction
+    kgeom["internal_honest_lines"] = final_lines
+    kgeom["publication_shell"] = publication_shell
+    kgeom["publication_line_full"] = publication_line_full
 
     print("[pilot] single: translation legality probe")
     translation_probe_candidates = []
+    translation_probe_failures = []
     for entry in ctx["wyckoff_entries"]:
         local_char = trivial_local_character(entry, ctx)
-        candidate = induce_candidate(
-            entry,
-            local_char,
-            ctx,
-            captures,
-            bs_analysis["unknown_ordering"],
-            final_line_full["global_matrix"],
-            point_row_translation=raw_point_row_translation,
-            character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
-        )
-        candidate["generator_id"] = f"{entry['letter']}_trivial"
-        translation_probe_candidates.append(candidate)
+        try:
+            candidate = induce_candidate(
+                entry,
+                local_char,
+                ctx,
+                captures,
+                publication_bs_analysis["unknown_ordering"],
+                publication_line_full["global_matrix"],
+                point_row_translation=raw_point_row_translation,
+                character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+            )
+            candidate["generator_id"] = f"{entry['letter']}_trivial"
+            translation_probe_candidates.append(candidate)
+        except Exception as exc:
+            translation_probe_failures.append(
+                {
+                    "family_letter": entry["letter"],
+                    "generator_id": f"{entry['letter']}_trivial",
+                    "error": str(exc),
+                }
+            )
     point_row_translation_report = build_point_row_translation_legality_report(
-        final_line_full["global_matrix"],
+        publication_line_full["global_matrix"],
         translation_probe_candidates,
         raw_point_row_translation,
         point_row_translation,
     )
+    point_row_translation_report["probe_failure_count"] = len(translation_probe_failures)
+    point_row_translation_report["probe_failures"] = translation_probe_failures
 
     print("[pilot] single: atomic prototype")
     ai_candidates = []
+    ai_candidate_failures = []
     for entry in ctx["wyckoff_entries"]:
         local_char = trivial_local_character(entry, ctx)
-        candidate = induce_candidate(
-            entry,
-            local_char,
-            ctx,
-            captures,
-            bs_analysis["unknown_ordering"],
-            final_line_full["global_matrix"],
-            point_row_translation=point_row_translation,
-            character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
-        )
-        candidate["generator_id"] = f"{entry['letter']}_trivial"
-        ai_candidates.append(candidate)
+        try:
+            candidate = induce_candidate(
+                entry,
+                local_char,
+                ctx,
+                captures,
+                publication_bs_analysis["unknown_ordering"],
+                publication_line_full["global_matrix"],
+                point_row_translation=point_row_translation,
+                character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+            )
+            candidate["generator_id"] = f"{entry['letter']}_trivial"
+            ai_candidates.append(candidate)
+        except Exception as exc:
+            ai_candidate_failures.append(
+                {
+                    "family_letter": entry["letter"],
+                    "generator_id": f"{entry['letter']}_trivial",
+                    "error": str(exc),
+                }
+            )
     reduction_reports = write_reduction_reports(
         reduction,
-        sanity_check,
-        published_line_full=final_line_full,
-        published_bs_analysis=bs_analysis,
+        publication_shell,
+        publication_check,
+        internal_line_full=internal_line_full,
+        internal_bs_analysis=internal_bs_analysis,
+        publication_line_full=publication_line_full,
+        publication_bs_analysis=publication_bs_analysis,
         diagnostic_with_planes=with_planes,
         diagnostic_bs_analysis=diagnostic_bs_analysis,
     )
-    kgeom["sanity_check"] = sanity_check
+    kgeom["publication_check"] = publication_check
     kgeom["bs_strong_equivalence_report"] = reduction_reports["bs_strong_equivalence_report"]
     print("[pilot] single: local-library AI integration")
     local_library_payload = load_local_library_payload()
-    skeleton_path_ids = {
-        kept["final_path_id"]
-        for kept in reduction["kept_paths"]
-        if kept["selection_stage"] == "endpoint_pair_skeleton"
-    }
-    skeleton_line_blocks = [block for block in final_line_blocks if block["line_id"] in skeleton_path_ids]
-    skeleton_line_full = build_global_compatibility(skeleton_line_blocks, reduction["final_point_ids"])
     raw42_library_induction = induce_family_objects(
         ctx,
         captures,
@@ -3766,54 +3876,70 @@ def build_single_pilot(
         local_library_payload["family_single_local_irreps"],
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
-    skeleton_library_induction = induce_family_objects(
+    internal_library_induction = induce_family_objects(
         ctx,
         captures,
-        {"unknown_ordering": bs_analysis["unknown_ordering"]},
-        skeleton_line_full["global_matrix"],
+        internal_bs_analysis,
+        internal_line_full["global_matrix"],
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
-    single_library_induction = induce_family_objects(
+    publication_library_induction = induce_family_objects(
         ctx,
         captures,
-        bs_analysis,
-        final_line_full["global_matrix"],
+        publication_bs_analysis,
+        publication_line_full["global_matrix"],
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
     ai_library_integration_report = build_ai_library_integration_report(
         local_library_payload,
-        single_library_induction,
+        publication_library_induction,
         mode="single",
-        published_object_kind=reduction["reduction_kind"],
-        unknown_ordering=bs_analysis["unknown_ordering"],
+        published_object_kind=publication_shell["object_kind"],
+        unknown_ordering=publication_bs_analysis["unknown_ordering"],
         point_row_translation=point_row_translation,
     )
     ai_obstruction_diagnosis_report = build_ai_obstruction_diagnosis_report(
         reduction,
         raw_line_blocks,
-        final_line_blocks,
+        internal_line_blocks,
         with_planes,
-        skeleton_line_full,
-        final_line_full,
+        internal_line_full,
+        publication_line_full,
         raw42_library_induction,
-        skeleton_library_induction,
-        single_library_induction,
+        internal_library_induction,
+        publication_library_induction,
+        publication_shell=publication_shell,
     )
     ai_character_field_alignment_report = build_ai_character_field_alignment_report(
         ai_obstruction_diagnosis_report,
         authoritative_compatibility_field="character",
         raw42_character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
-        skeleton7_character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
-        published8_character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+        internal_character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+        publication_character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+    )
+    ai_full_character_alignment_report = build_ai_full_character_alignment_report(
+        ai_obstruction_diagnosis_report,
+        old_field_map={
+            "point": "linear_character",
+            "line": "character",
+            "plane": "character",
+            "default": "linear_character",
+        },
+        new_field_map=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
     write_json(AI_CHARACTER_FIELD_ALIGNMENT_JSON, ai_character_field_alignment_report)
     write_text(
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
         build_ai_character_field_alignment_markdown(ai_character_field_alignment_report),
+    )
+    write_json(AI_FULL_CHARACTER_ALIGNMENT_JSON, ai_full_character_alignment_report)
+    write_text(
+        AI_FULL_CHARACTER_ALIGNMENT_MD,
+        build_ai_full_character_alignment_markdown(ai_full_character_alignment_report),
     )
     ai_honest_blocker_report = build_ai_honest_blocker_report(
         ai_library_integration_report,
@@ -3822,9 +3948,11 @@ def build_single_pilot(
     ai_audit_report = build_ai_seed_audit_report(
         ai_candidates,
         point_row_translation,
-        unknown_ordering=bs_analysis["unknown_ordering"],
+        unknown_ordering=publication_bs_analysis["unknown_ordering"],
         library_integration_status=ai_library_integration_report["integration_status"],
     )
+    ai_audit_report["generator_failure_count"] = len(ai_candidate_failures)
+    ai_audit_report["generator_failures"] = ai_candidate_failures
     ai_seed_delta_report = build_ai_seed_delta_after_bs_fix_report(
         {
             "generators": ai_candidates,
@@ -3850,25 +3978,30 @@ def build_single_pilot(
         "objects": strip_internal_fields(grouped["points"] + grouped["lines"] + grouped["planes"]),
         "synthetic_boundary_points": synthetic_points,
         "connectivity": kgeom_payload,
-        "final_object_reduction": reduction,
-        "final_object_vs_bilbao_equivalent_check": sanity_check,
+        "internal_honest_shell": reduction,
+        "publication_shell": publication_shell,
+        "publication_shell_vs_bilbao_check": publication_check,
     })
     write_json(SINGLE_CONNECTIVITY_JSON, kgeom_payload)
     write_json(SINGLE_LITTLE_GROUPS_JSON, captures)
     write_json(
         SINGLE_LINE_COMPAT_JSON,
         {
-            "published_object_kind": reduction["reduction_kind"],
-            "path_set_kind": reduction["reduction_kind"],
-            "final_point_ids": reduction["final_point_ids"],
-            "final_path_ids": reduction["published_path_ids"],
-            "line_blocks": final_line_blocks,
-            "line_full": final_line_full,
+            "published_object_kind": publication_shell["object_kind"],
+            "path_set_kind": publication_shell["object_kind"],
+            "final_point_ids": publication_shell["publication_point_ids"],
+            "final_path_ids": publication_shell["publication_path_ids"],
+            "line_blocks": publication_line_full["line_blocks"],
+            "line_full": publication_line_full,
+            "publication_shell": publication_shell,
+            "publication_path_blocks": publication_line_full["publication_path_blocks"],
+            "diagnostic_internal_line_blocks": internal_line_blocks,
+            "diagnostic_internal_line_full": internal_line_full,
             "candidate_line_blocks": candidate_line_blocks,
             "diagnostic_raw_line_blocks": raw_line_blocks,
             "diagnostic_raw_line_full": raw_line_full,
-            "final_object_reduction": reduction,
-            "final_object_vs_bilbao_equivalent_check": sanity_check,
+            "internal_honest_shell": reduction,
+            "publication_shell_vs_bilbao_check": publication_check,
             "final_bs_strong_equivalence_report": reduction_reports["bs_strong_equivalence_report"],
         },
     )
@@ -3885,15 +4018,15 @@ def build_single_pilot(
     write_json(
         SINGLE_BS_JSON,
         {
-            **bs_analysis,
-            "object_role": "published_final_point_path_shell",
-            "final_object_kind": reduction["reduction_kind"],
-            "path_set_kind": reduction["reduction_kind"],
-            "final_point_ids": reduction["final_point_ids"],
-            "final_path_ids": reduction["published_path_ids"],
-            "final_selected_path_count": len(reduction["published_path_ids"]),
-            "final_unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
-            "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
+            **publication_bs_analysis,
+            "object_role": "published_publication_level_C_pub_kernel",
+            "final_object_kind": publication_shell["object_kind"],
+            "path_set_kind": publication_shell["object_kind"],
+            "final_point_ids": publication_shell["publication_point_ids"],
+            "final_path_ids": publication_shell["publication_path_ids"],
+            "final_selected_path_count": len(publication_shell["publication_path_ids"]),
+            "final_unique_endpoint_pair_count": len({tuple(pair) for pair in publication_shell["publication_actual_path_pairs"]}),
+            "actual_path_pairs": list(publication_shell["publication_actual_path_pairs"]),
             "bs_strong_equivalence_pass": reduction_reports["bs_strong_equivalence_report"]["bs_strong_equivalence_pass"],
             "row_language_full_span_pass": reduction_reports["bs_strong_equivalence_report"]["row_language_full_span_pass"],
             "bilbao_equivalent_final_object_pass": reduction_reports["bs_strong_equivalence_report"]["bilbao_equivalent_final_object_pass"],
@@ -3902,20 +4035,29 @@ def build_single_pilot(
                 "rank": diagnostic_bs_analysis["rank"],
                 "nullity": diagnostic_bs_analysis["nullity"],
             },
-            "final_object_vs_bilbao_equivalent_check": sanity_check,
+            "diagnostic_internal_honest_shell": {
+                "path_count": len(reduction["kept_paths"]),
+                "matrix_shape": internal_bs_analysis["matrix_shape"],
+                "rank": internal_bs_analysis["rank"],
+                "nullity": internal_bs_analysis["nullity"],
+                "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
+            },
+            "publication_shell_vs_bilbao_check": publication_check,
             "final_bs_strong_equivalence_report": reduction_reports["bs_strong_equivalence_report"],
         },
     )
     write_json(
         SINGLE_AI_JSON,
         {
-            "object_role": "published_final_point_path_shell_ai_seed",
+            "object_role": "publication_level_C_pub_ai_seed",
             "ai_status": ai_audit_report["ai_status"],
-            "unknown_ordering": bs_analysis["unknown_ordering"],
+            "unknown_ordering": publication_bs_analysis["unknown_ordering"],
             "point_row_translation": point_row_translation,
             "character_field_used": _summarize_induction_character_field(AUTHORITATIVE_AI_CHARACTER_FIELD),
             "generators": ai_candidates,
             "rank_trivial_family_span": ai_rank,
+            "generator_failure_count": len(ai_candidate_failures),
+            "generator_failures": ai_candidate_failures,
             "blocker_summary": ai_honest_blocker_report["blocker"],
             "local_library_wired_into_ai_builder": ai_library_integration_report["local_library_wired_into_ai_builder"],
             "ai_character_field_alignment_report": {
@@ -3924,9 +4066,10 @@ def build_single_pilot(
                 "current_compatibility_zero_counts": ai_character_field_alignment_report["current_compatibility_zero_counts"],
                 "current_published_fail_path_histogram": ai_character_field_alignment_report["current_published_fail_path_histogram"],
             },
+            "ai_full_character_alignment_report": ai_full_character_alignment_report,
             "ai_obstruction_diagnosis_summary": {
                 "classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
-                "published_fail_path_histogram": ai_obstruction_diagnosis_report["published_fail_path_histogram"],
+                "published_fail_path_histogram": ai_obstruction_diagnosis_report["publication_fail_path_histogram"],
                 "obstruction_summary": ai_obstruction_diagnosis_report["obstruction_summary"],
             },
             "translation_legality_report": {
@@ -3958,7 +4101,8 @@ def build_single_pilot(
         "group_type": 1,
         "geometry_status": "success",
         "compatibility_status": {
-            "line_blocks_built": len(final_line_blocks),
+            "internal_line_blocks_built": len(internal_line_blocks),
+            "publication_line_blocks_built": len(publication_line_full["line_blocks"]),
             "synthetic_boundary_points_added": len(synthetic_points),
             "point_line_relations": len(kgeom_payload["point_line"]),
             "unmatched_line_endpoints_before_augmentation": len(kgeom_payload["unmatched_line_endpoints"]),
@@ -3966,19 +4110,23 @@ def build_single_pilot(
             "status": "success",
             "authoritative_builder_kind": AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND,
             "raw_builder_phase_aware_profile": line_phase_profile,
-            "published_object_kind": reduction["reduction_kind"],
+            "internal_object_kind": reduction["reduction_kind"],
+            "published_object_kind": publication_shell["object_kind"],
             "diagnostic_raw_with_planes_retained": True,
+            "internal_and_publication_objects_explicitly_separated": True,
         },
         "BS_status": {
             "status": "success",
-            "matrix_shape": bs_analysis["matrix_shape"],
-            "rank": bs_analysis["rank"],
-            "nullity": bs_analysis["nullity"],
-            "smith_diagonal": bs_analysis["smith_diagonal"],
-            "published_object_kind": reduction["reduction_kind"],
-            "final_selected_path_count": len(reduction["published_path_ids"]),
-            "final_unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
-            "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
+            "matrix_shape": publication_bs_analysis["matrix_shape"],
+            "rank": publication_bs_analysis["rank"],
+            "nullity": publication_bs_analysis["nullity"],
+            "smith_diagonal": publication_bs_analysis["smith_diagonal"],
+            "internal_honest_shell_path_count": len(reduction["kept_paths"]),
+            "internal_honest_shell_rank": internal_bs_analysis["rank"],
+            "published_object_kind": publication_shell["object_kind"],
+            "final_selected_path_count": len(publication_shell["publication_path_ids"]),
+            "final_unique_endpoint_pair_count": len({tuple(pair) for pair in publication_shell["publication_actual_path_pairs"]}),
+            "actual_path_pairs": list(publication_shell["publication_actual_path_pairs"]),
             "diagnostic_raw_with_planes_matrix_shape": diagnostic_bs_analysis["matrix_shape"],
             "row_language_full_span_pass": reduction_reports["bs_strong_equivalence_report"]["row_language_full_span_pass"],
             "bilbao_equivalent_final_object_pass": reduction_reports["bs_strong_equivalence_report"]["bilbao_equivalent_final_object_pass"],
@@ -3986,9 +4134,10 @@ def build_single_pilot(
         "AI_status": {
             "status": ai_audit_report["ai_status"],
             "trivial_generators_count": len(ai_candidates),
+            "trivial_generator_failure_count": len(ai_candidate_failures),
             "rank_trivial_family_span": ai_rank,
             "compatibility_zero_count": ai_audit_report["compatibility_zero_count"],
-            "all_trivial_generators_compatibility_zero": all(candidate["compatibility_zero"] for candidate in ai_candidates),
+            "all_trivial_generators_compatibility_zero": bool(ai_candidates) and all(candidate["compatibility_zero"] for candidate in ai_candidates),
             "point_row_translation_legality": point_row_translation_report["legality_status"],
             "authoritative_ai_character_field": _summarize_induction_character_field(AUTHORITATIVE_AI_CHARACTER_FIELD),
             "residual_pattern_changed_vs_previous_branch": ai_seed_delta_report["residual_pattern_changed"],
@@ -3999,7 +4148,7 @@ def build_single_pilot(
             "library_integration_compatibility_zero_candidate_count": ai_library_integration_report["compatibility_zero_candidate_count"],
             "blocker_summary": ai_honest_blocker_report["blocker"],
             "obstruction_classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
-            "published_fail_path_histogram": ai_obstruction_diagnosis_report["published_fail_path_histogram"],
+            "published_fail_path_histogram": ai_obstruction_diagnosis_report["publication_fail_path_histogram"],
         },
         "completeness_status": {"status": "blocked", "blocker": completeness_blocker},
         "quotient_status": {"status": "blocked", "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."},
@@ -4013,7 +4162,7 @@ def build_single_pilot(
         "",
         "- Real-space geometry, k-space manifolds, little-group capture, raw line compatibility, plane augmentation, and the BS kernel construction all run on 194.1.1.1.",
         f"- The current pilot had to add `{len(synthetic_points)}` synthetic 0D boundary points because the raw k-geometry contains `{len(kgeom_payload['unmatched_line_endpoints'])}` line endpoints that are not emitted by `swyckoff_k.py` as separately listed special points.",
-        "- The final published single-group BS object is the honest full-span augmented 8-path reduced shell; the raw with-planes 42-shell remains diagnostic only.",
+        "- The internal honest full-span 8-path shell is retained for diagnostics only; the published BS object is the publication-level `C_pub` quotient built from publication path classes.",
         f"- Row-language full-span against the full candidate path language: `{reduction_reports['bs_strong_equivalence_report']['row_language_full_span_pass']}`.",
         f"- Bilbao-equivalent final-object pass: `{reduction_reports['bs_strong_equivalence_report']['bilbao_equivalent_final_object_pass']}`.",
         "",
@@ -4032,14 +4181,14 @@ def build_single_pilot(
         "",
         "## Status Summary",
         "",
-        f"- BS matrix shape/rank/nullity: `{bs_analysis['matrix_shape']}`, `{bs_analysis['rank']}`, `{bs_analysis['nullity']}`.",
-        f"- Final point/path shell sizes: `{len(reduction['final_point_ids'])}` points / `{len(reduction['published_path_ids'])}` paths.",
-        f"- Bilbao-style diagnostic check: point ids match = `{sanity_check['point_ids_match']}`, path count match = `{sanity_check['path_count_match']}`, exact path-pair match = `{sanity_check['path_pair_set_match']}`, unique path-pair match = `{sanity_check['unique_path_pair_set_match']}`.",
+        f"- Publication BS matrix shape/rank/nullity: `{publication_bs_analysis['matrix_shape']}`, `{publication_bs_analysis['rank']}`, `{publication_bs_analysis['nullity']}`.",
+        f"- Internal vs publication path counts: `{len(reduction['kept_paths'])}` / `{len(publication_shell['publication_path_ids'])}`.",
+        f"- Publication Bilbao-style check: point ids match = `{publication_check['point_ids_match']}`, path count match = `{publication_check['path_count_match']}`, exact path-pair match = `{publication_check['path_pair_set_match']}`.",
         f"- Trivial-family AI seed count/rank: `{len(ai_candidates)}` / `{ai_rank}`.",
         f"- Trivial-family compatibility-zero count: `{ai_audit_report['compatibility_zero_count']}` / `{len(ai_candidates)}`.",
         f"- Library-integrated single AI candidate count / failures / compatibility-zero candidates: `{ai_library_integration_report['success_candidate_count']}` / `{ai_library_integration_report['failure_count']}` / `{ai_library_integration_report['compatibility_zero_candidate_count']}`.",
         f"- AI obstruction classification counts: `{ai_obstruction_diagnosis_report['classification_counts']}`.",
-        f"- Published residual path histogram: `{ai_obstruction_diagnosis_report['published_fail_path_histogram']}`.",
+        f"- Publication residual path histogram: `{ai_obstruction_diagnosis_report['publication_fail_path_histogram']}`.",
         f"- point_row_translation legality: `{point_row_translation_report['legality_status']}`.",
         f"- AI residual pattern changed vs previous branch: `{ai_seed_delta_report['residual_pattern_changed']}`.",
         f"- AI completeness: blocked. Reason: {completeness_blocker}",
@@ -4051,11 +4200,14 @@ def build_single_pilot(
         "kgeom": kgeom,
         "captures": captures,
         "with_planes": with_planes,
-        "line_full": final_line_full,
-        "bs_analysis": bs_analysis,
+        "line_full": publication_line_full,
+        "bs_analysis": publication_bs_analysis,
+        "internal_line_full": internal_line_full,
+        "internal_bs_analysis": internal_bs_analysis,
+        "publication_shell": publication_shell,
         "diagnostic_bs_analysis": diagnostic_bs_analysis,
         "reduction": reduction,
-        "sanity_check": sanity_check,
+        "sanity_check": publication_check,
         "ai_candidates": ai_candidates,
         "point_row_translation": point_row_translation,
         "point_row_translation_report": point_row_translation_report,
@@ -4095,31 +4247,65 @@ def build_double_pilot(
     plane_blocks = [build_plane_block(plane, plane["corner_entries"], captures) for plane in single_kgeom["grouped"]["planes"]]
     with_planes = build_with_planes_compatibility(raw_line_full, plane_blocks)
     diagnostic_bs_analysis = analyze_kernel(with_planes)
-    print("[pilot] double: automatic final-object reduction")
-    reduction = single_kgeom["final_object_reduction"]
-    final_lines = [dict(line) for line in single_kgeom["final_published_lines"]]
-    capture_final_path_lines(module, TARGET_GROUP, ssg_dict, ctx, "double", captures, final_lines)
-    final_line_blocks = [
+    print("[pilot] double: internal honest-shell reduction")
+    reduction = reduce_final_point_path_shell(single_kgeom)
+    candidate_lines = annotate_final_path_lines(
+        reduction["candidate_line_specs"],
+        single_kgeom["runtime_ctx"],
+        single_kgeom["line_orbit_to_id"],
+        single_kgeom["plane_orbit_to_id"],
+    )
+    capture_final_path_lines(module, TARGET_GROUP, ssg_dict, ctx, "double", captures, candidate_lines)
+    candidate_line_blocks = [
         build_line_block(
             line,
             captures,
             phase_aware_profile=line_phase_profile,
             builder_variant="authoritative",
         )
-        for line in final_lines
+        for line in candidate_lines
     ]
-    final_line_full = build_global_compatibility(final_line_blocks, reduction["final_point_ids"])
-    bs_analysis = analyze_kernel(final_line_full)
+    reduction_analysis = analyze_candidate_path_selection(
+        reduction,
+        build_candidate_path_records(reduction, candidate_line_blocks),
+    )
+    reduction = finalize_reduction_from_candidate_analysis(reduction, reduction_analysis)
+    internal_lines = annotate_final_path_lines(
+        reduction["final_line_specs"],
+        single_kgeom["runtime_ctx"],
+        single_kgeom["line_orbit_to_id"],
+        single_kgeom["plane_orbit_to_id"],
+    )
+    capture_final_path_lines(module, TARGET_GROUP, ssg_dict, ctx, "double", captures, internal_lines)
+    internal_line_blocks = [
+        build_line_block(
+            line,
+            captures,
+            phase_aware_profile=line_phase_profile,
+            builder_variant="authoritative",
+        )
+        for line in internal_lines
+    ]
+    internal_line_full = build_global_compatibility(internal_line_blocks, reduction["final_point_ids"])
+    internal_bs_analysis = analyze_kernel(internal_line_full)
+    print("[pilot] double: publication-level C builder")
+    publication_shell = build_publication_shell_candidate(reduction)
+    publication_line_full = build_publication_C_matrix(publication_shell)
+    publication_bs_analysis = analyze_kernel(publication_line_full)
+    publication_check = build_bilbao_equivalent_sanity_check(publication_shell)
+    publication_shell["publication_unknown_ordering"] = list(publication_bs_analysis["unknown_ordering"])
+    publication_shell["publication_path_ids"] = [block["line_id"] for block in publication_line_full["line_blocks"]]
+    publication_shell["bilbao_equivalent_publication_pass"] = publication_check["bilbao_equivalent_publication_pass"]
     raw_point_row_translation = build_phase_aware_point_row_translation(
-        final_line_blocks,
-        bs_analysis["unknown_ordering"],
+        internal_line_blocks,
+        publication_bs_analysis["unknown_ordering"],
         phase_aware_profile=line_phase_profile,
     )
     point_row_translation = disable_point_row_translation(
         raw_point_row_translation,
         reason=(
             "Removed from the published double minimal witness until the L2-derived "
-            "phase-aware translation is proven legal on the reduced point/path shell."
+            "phase-aware translation is proven legal on the publication-level shell."
         ),
     )
 
@@ -4131,8 +4317,8 @@ def build_double_pilot(
         local_char,
         ctx,
         captures,
-        bs_analysis["unknown_ordering"],
-        final_line_full["global_matrix"],
+        publication_bs_analysis["unknown_ordering"],
+        publication_line_full["global_matrix"],
         point_row_translation=point_row_translation,
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
@@ -4154,31 +4340,39 @@ def build_double_pilot(
     write_json(
         DOUBLE_BS_JSON,
         {
-            **bs_analysis,
-            "object_role": "published_final_point_path_shell",
-            "final_object_kind": reduction["reduction_kind"],
-            "path_set_kind": reduction["reduction_kind"],
-            "final_point_ids": reduction["final_point_ids"],
-            "final_path_ids": reduction["published_path_ids"],
-            "final_selected_path_count": len(reduction["published_path_ids"]),
-            "final_unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
-            "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
-            "row_language_full_span_pass": single_kgeom["final_object_reduction"]["selected_rows_span_full_candidate_row_language"],
-            "bilbao_equivalent_final_object_pass": single_kgeom["sanity_check"]["bilbao_equivalent_final_object_pass"],
+            **publication_bs_analysis,
+            "object_role": "published_publication_level_C_pub_kernel",
+            "final_object_kind": publication_shell["object_kind"],
+            "path_set_kind": publication_shell["object_kind"],
+            "final_point_ids": publication_shell["publication_point_ids"],
+            "final_path_ids": publication_shell["publication_path_ids"],
+            "final_selected_path_count": len(publication_shell["publication_path_ids"]),
+            "final_unique_endpoint_pair_count": len({tuple(pair) for pair in publication_shell["publication_actual_path_pairs"]}),
+            "actual_path_pairs": list(publication_shell["publication_actual_path_pairs"]),
+            "row_language_full_span_pass": reduction["selected_rows_span_full_candidate_row_language"],
+            "bilbao_equivalent_final_object_pass": publication_check["bilbao_equivalent_publication_pass"],
             "diagnostic_raw_with_planes": {
                 "matrix_shape": diagnostic_bs_analysis["matrix_shape"],
                 "rank": diagnostic_bs_analysis["rank"],
                 "nullity": diagnostic_bs_analysis["nullity"],
             },
-            "bs_strong_equivalence_pass": single_kgeom["final_object_reduction"]["selected_rows_span_full_candidate_row_language"],
+            "diagnostic_internal_honest_shell": {
+                "path_count": len(reduction["kept_paths"]),
+                "matrix_shape": internal_bs_analysis["matrix_shape"],
+                "rank": internal_bs_analysis["rank"],
+                "nullity": internal_bs_analysis["nullity"],
+                "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
+            },
+            "publication_shell_vs_bilbao_check": publication_check,
+            "bs_strong_equivalence_pass": publication_check["bilbao_equivalent_publication_pass"],
         },
     )
     write_json(
         DOUBLE_MINIMAL_JSON,
         {
             **minimal,
-            "object_role": "published_final_point_path_shell_minimal_witness",
-            "unknown_ordering": bs_analysis["unknown_ordering"],
+            "object_role": "publication_level_C_pub_minimal_witness",
+            "unknown_ordering": publication_bs_analysis["unknown_ordering"],
             "point_row_translation": point_row_translation,
         },
     )
@@ -4197,16 +4391,17 @@ def build_double_pilot(
         "induction_status": "success",
         "kspace_backbone_status": {
             "status": "success",
-            "matrix_shape": bs_analysis["matrix_shape"],
-            "rank": bs_analysis["rank"],
-            "nullity": bs_analysis["nullity"],
-            "smith_diagonal": bs_analysis["smith_diagonal"],
+            "matrix_shape": publication_bs_analysis["matrix_shape"],
+            "rank": publication_bs_analysis["rank"],
+            "nullity": publication_bs_analysis["nullity"],
+            "smith_diagonal": publication_bs_analysis["smith_diagonal"],
             "authoritative_builder_kind": AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND,
             "raw_builder_phase_aware_profile": line_phase_profile,
-            "published_object_kind": reduction["reduction_kind"],
+            "internal_object_kind": reduction["reduction_kind"],
+            "published_object_kind": publication_shell["object_kind"],
             "diagnostic_raw_with_planes_matrix_shape": diagnostic_bs_analysis["matrix_shape"],
-            "row_language_full_span_pass": single_kgeom["bs_strong_equivalence_report"]["row_language_full_span_pass"],
-            "bilbao_equivalent_final_object_pass": single_kgeom["bs_strong_equivalence_report"]["bilbao_equivalent_final_object_pass"],
+            "row_language_full_span_pass": reduction["selected_rows_span_full_candidate_row_language"],
+            "bilbao_equivalent_final_object_pass": publication_check["bilbao_equivalent_publication_pass"],
         },
         "point_like_AI_status": {"status": "blocked", "blocker": blocker},
         "parametric_status": {"status": "blocked", "blocker": blocker},
@@ -4219,9 +4414,9 @@ def build_double_pilot(
         "",
         "- All special points, lines, and planes of 194.1.1.1 were captured successfully under `groupType=2`.",
         "- The same synthetic-boundary augmentation used by the single-group pilot also closes the double-group spatial connectivity layer.",
-        "- The raw double-group with-planes 42-shell is retained as a diagnostic object, while the published double BS object uses the automatically reduced point/path shell.",
-        f"- Row-language full-span pass on the published reduced shell: `{single_kgeom['bs_strong_equivalence_report']['row_language_full_span_pass']}`.",
-        f"- Bilbao-equivalent final-object pass inherited from the single reduction: `{single_kgeom['bs_strong_equivalence_report']['bilbao_equivalent_final_object_pass']}`.",
+        "- The raw double-group with-planes 42-shell is retained as a diagnostic object, while the published double BS object uses the publication-level `C_pub` quotient.",
+        f"- Row-language full-span pass on the internal honest shell: `{reduction['selected_rows_span_full_candidate_row_language']}`.",
+        f"- Publication Bilbao-equivalent final-object pass: `{publication_check['bilbao_equivalent_publication_pass']}`.",
         "",
         "## Minimal Prototype",
         "",
@@ -4231,15 +4426,18 @@ def build_double_pilot(
         "## Current Limit",
         "",
         f"- {blocker}",
-        f"- Final point/path shell sizes: `{len(reduction['final_point_ids'])}` points / `{len(reduction['published_path_ids'])}` paths.",
+        f"- Internal vs publication path counts: `{len(reduction['kept_paths'])}` / `{len(publication_shell['publication_path_ids'])}`.",
         "- Therefore the present run establishes a reusable double-group seed and a reusable double-group k-space backbone, but not yet a full point-like / parametric AI census or any final double quotient.",
     ]
     return {
         "summary": summary,
         "audit_text": "\n".join(lines),
         "with_planes": with_planes,
-        "line_full": final_line_full,
-        "bs_analysis": bs_analysis,
+        "line_full": publication_line_full,
+        "bs_analysis": publication_bs_analysis,
+        "internal_line_full": internal_line_full,
+        "internal_bs_analysis": internal_bs_analysis,
+        "publication_shell": publication_shell,
         "diagnostic_bs_analysis": diagnostic_bs_analysis,
         "reduction": reduction,
         "minimal": minimal,
@@ -4528,17 +4726,10 @@ def build_handoff(single: dict[str, Any], double: dict[str, Any], portability_su
 def build_current_status(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> dict[str, Any]:
     return {
         "target_group": TARGET_GROUP,
-        "benchmark_authoritative": False,
-        "object_scope": "raw_internal_source_layer_only",
-        "raw_current_object_language_kind": "raw_current_with_planes_42_unknown_shell",
-        "stage2_target_transition": (
-            "Stage 2 is responsible for lifting these raw/current objects either into the ordinary external target rows "
-            "or into the double benchmark-facing target object, depending on representation mode."
-        ),
-        "benchmark_relation": (
-            "This stage1 workflow only emits raw/current SG194 source objects. "
-            "Benchmark-facing internalization happens later in debug_workflow_portability_stage2_194.1.1.1.py."
-        ),
+        "object_scope": "internal_diagnostic_shell_plus_publication_level_C_pub",
+        "diagnostic_internal_shell_kind": single["summary"]["compatibility_status"]["internal_object_kind"],
+        "published_object_kind": single["summary"]["compatibility_status"]["published_object_kind"],
+        "publication_object_is_explicitly_separated": single["summary"]["compatibility_status"]["internal_and_publication_objects_explicitly_separated"],
         "single_status": single["summary"],
         "double_status": double["summary"],
         "key_matrices": {
@@ -4550,7 +4741,11 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
             "double_nullity": double["summary"]["kspace_backbone_status"]["nullity"],
         },
         "blocker": portability_summary["main_blocker"],
-        "next_step": "Extend the local site-symmetry irrep/corep library on 194.1.1.1 so the AI lattice can be completed honestly.",
+        "next_step": (
+            "The publication-level C_pub builder is now explicit. The next blocker is not library absence: "
+            "diagnose why most non-abelian local-library inductions still fail compatibility on the published shell "
+            "after full character alignment."
+        ),
     }
 
 
@@ -4584,7 +4779,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: finish published-shell AI induction/completion so that the already validated SG 194 local irrep/corep libraries become an honest AI lattice and, if successful, quotient extraction on 194.1.1.1.
+        The next unique task is: keep the publication-level C_pub fixed and diagnose why most local-library induced objects still fail compatibility on the published shell even after full character alignment on points/lines/planes.
         """
     ).strip() + "\n"
 
@@ -4608,8 +4803,10 @@ def build_package_readme() -> str:
             "- controlled-case audit for 194.1.1.1",
             "- single-group pilot for 194.1.1.1",
             "- double-group pilot for 194.1.1.1",
-            "- full-shell automorphism search for the P1-P5 double-class resolution",
-            "- honest 8-path BS freeze plus AI library integration / obstruction diagnosis / honest blocker reports",
+            "- internal honest-shell diagnostics kept separate from the publication-level C_pub builder",
+            "- full-shell automorphism diagnostics for the P1-P5 double-class resolution",
+            "- publication-shell reduction / Bilbao check / internal-vs-publication separation reports",
+            "- AI full-character alignment plus library integration / obstruction diagnosis / honest blocker reports",
             "- PDF technical report",
             "- handoff / current_status / next_step_prompt",
             "",
@@ -4625,10 +4822,14 @@ def build_package_readme() -> str:
             f"4. {PORTABILITY_SUMMARY_JSON.name}",
             f"5. {SINGLE_AUDIT_MD.name}",
             f"6. {DOUBLE_AUDIT_MD.name}",
-            f"7. {FULL_SHELL_AUTOMORPHISM_MD.relative_to(ROOT)}",
-            f"8. {AI_OBSTRUCTION_DIAG_MD.relative_to(ROOT)}",
-            f"9. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
-            f"10. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            f"7. {PUBLICATION_SHELL_REDUCTION_MD.relative_to(ROOT)}",
+            f"8. {PUBLICATION_SHELL_BILBAO_MD.relative_to(ROOT)}",
+            f"9. {INTERNAL_VS_PUBLICATION_MD.relative_to(ROOT)}",
+            f"10. {FULL_SHELL_AUTOMORPHISM_MD.relative_to(ROOT)}",
+            f"11. {AI_FULL_CHARACTER_ALIGNMENT_MD.relative_to(ROOT)}",
+            f"12. {AI_OBSTRUCTION_DIAG_MD.relative_to(ROOT)}",
+            f"13. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
+            f"14. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -4652,12 +4853,20 @@ def build_package() -> None:
         FULL_SHELL_AUTOMORPHISM_JSON,
         FULL_POINT_SHELL_AUTOMORPHISM_MD,
         FULL_POINT_SHELL_AUTOMORPHISM_JSON,
+        PUBLICATION_SHELL_REDUCTION_MD,
+        PUBLICATION_SHELL_REDUCTION_JSON,
+        PUBLICATION_SHELL_BILBAO_MD,
+        PUBLICATION_SHELL_BILBAO_JSON,
+        INTERNAL_VS_PUBLICATION_MD,
+        INTERNAL_VS_PUBLICATION_JSON,
         AI_OBSTRUCTION_DIAG_MD,
         AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
         AI_CHARACTER_FIELD_ALIGNMENT_JSON,
+        AI_FULL_CHARACTER_ALIGNMENT_MD,
+        AI_FULL_CHARACTER_ALIGNMENT_JSON,
         AI_HONEST_BLOCKER_MD,
         AI_HONEST_BLOCKER_JSON,
         Path(__file__),
@@ -4694,12 +4903,20 @@ def validate_outputs() -> None:
         FULL_SHELL_AUTOMORPHISM_JSON,
         FULL_POINT_SHELL_AUTOMORPHISM_MD,
         FULL_POINT_SHELL_AUTOMORPHISM_JSON,
+        PUBLICATION_SHELL_REDUCTION_MD,
+        PUBLICATION_SHELL_REDUCTION_JSON,
+        PUBLICATION_SHELL_BILBAO_MD,
+        PUBLICATION_SHELL_BILBAO_JSON,
+        INTERNAL_VS_PUBLICATION_MD,
+        INTERNAL_VS_PUBLICATION_JSON,
         AI_OBSTRUCTION_DIAG_MD,
         AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
         AI_CHARACTER_FIELD_ALIGNMENT_JSON,
+        AI_FULL_CHARACTER_ALIGNMENT_MD,
+        AI_FULL_CHARACTER_ALIGNMENT_JSON,
         AI_HONEST_BLOCKER_MD,
         AI_HONEST_BLOCKER_JSON,
         Path(__file__),
