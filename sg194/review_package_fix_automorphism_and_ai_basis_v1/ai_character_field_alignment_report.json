@@ -1,0 +1,33 @@
+{
+  "authoritative_compatibility_field": "character",
+  "previous_ai_induction_field": "linear_character",
+  "current_ai_induction_field": "point=linear_character, line=character, plane=character, default=linear_character",
+  "shell_character_fields": {
+    "raw42": "point=linear_character, line=character, plane=character, default=linear_character",
+    "skeleton7": "point=linear_character, line=character, plane=character, default=linear_character",
+    "published8": "point=linear_character, line=character, plane=character, default=linear_character"
+  },
+  "previous_obstruction_report_available": true,
+  "previous_compatibility_zero_counts": {
+    "raw42": 11,
+    "skeleton7": 11,
+    "published8": 11
+  },
+  "current_compatibility_zero_counts": {
+    "raw42": 11,
+    "skeleton7": 11,
+    "published8": 11
+  },
+  "previous_published_fail_path_histogram": {
+    "FPATH07": 68
+  },
+  "current_published_fail_path_histogram": {
+    "FPATH07": 68
+  },
+  "compatibility_zero_count_delta": {
+    "published8": 0,
+    "raw42": 0,
+    "skeleton7": 0
+  },
+  "published_fail_histogram_changed": false
+}

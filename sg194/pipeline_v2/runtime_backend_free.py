@@ -68,7 +68,7 @@ from . import runtime_group_ops as single_expanded
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_ai_obstruction_diagnosis_v1"
+PACKAGE_NAME = "review_package_fix_automorphism_and_ai_basis_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -113,6 +113,8 @@ P1_P5_RESOLUTION_MD = ROOT / "bs_fix_reaudit_v1" / "p1_p5_doubleclass_resolution
 P1_P5_RESOLUTION_JSON = ROOT / "bs_fix_reaudit_v1" / "p1_p5_doubleclass_resolution_report.json"
 FULL_SHELL_AUTOMORPHISM_MD = ROOT / "bs_fix_reaudit_v1" / "full_shell_automorphism_search_report.md"
 FULL_SHELL_AUTOMORPHISM_JSON = ROOT / "bs_fix_reaudit_v1" / "full_shell_automorphism_search_report.json"
+FULL_POINT_SHELL_AUTOMORPHISM_MD = ROOT / "bs_fix_reaudit_v1" / "full_point_shell_automorphism_search_report.md"
+FULL_POINT_SHELL_AUTOMORPHISM_JSON = ROOT / "bs_fix_reaudit_v1" / "full_point_shell_automorphism_search_report.json"
 POINT_ROW_TRANSLATION_MD = ROOT / "bs_fix_reaudit_v1" / "point_row_translation_legality_report.md"
 POINT_ROW_TRANSLATION_JSON = ROOT / "bs_fix_reaudit_v1" / "point_row_translation_legality_report.json"
 AI_SEED_AUDIT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_seed_audit_report.md"
@@ -121,6 +123,8 @@ AI_SEED_DELTA_MD = ROOT / "bs_fix_reaudit_v1" / "ai_seed_delta_after_bs_fix_repo
 AI_SEED_DELTA_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_seed_delta_after_bs_fix_report.json"
 AI_LIBRARY_INTEGRATION_MD = ROOT / "bs_fix_reaudit_v1" / "ai_library_integration_report.md"
 AI_LIBRARY_INTEGRATION_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_library_integration_report.json"
+AI_CHARACTER_FIELD_ALIGNMENT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_character_field_alignment_report.md"
+AI_CHARACTER_FIELD_ALIGNMENT_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_character_field_alignment_report.json"
 AI_HONEST_BLOCKER_MD = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.md"
 AI_HONEST_BLOCKER_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.json"
 AI_OBSTRUCTION_DIAG_MD = ROOT / "bs_fix_reaudit_v1" / "ai_obstruction_diagnosis_report.md"
@@ -134,6 +138,12 @@ AUTHORITATIVE_PHASE_AWARE_PROFILE = "phase_aware_l2_projective_v1"
 AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND = (
     "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1"
 )
+AUTHORITATIVE_AI_CHARACTER_FIELD = {
+    "point": "linear_character",
+    "line": "character",
+    "plane": "character",
+    "default": "linear_character",
+}
 RETIRED_INTRINSIC_BUILDER_KIND = "retired_intrinsic_class_sum_compare_only_non_authoritative"
 RETIRED_EXTRINSIC_BUILDER_KIND = "retired_extrinsic_star_augmented_compare_only_non_authoritative"
 
@@ -2261,6 +2271,41 @@ def trivial_local_character(entry: dict[str, Any], ctx: dict[str, Any]) -> dict[
     return {int(index): 1 + 0j for index in stabilizer["unitary_indices"]}
 
 
+def _resolve_induction_character_field(
+    character_field: str | dict[str, str],
+    manifold_id: str,
+    kgeom: dict[str, Any],
+) -> str:
+    if isinstance(character_field, str):
+        return character_field
+    point_ids = {
+        point["id"]
+        for point in (
+            kgeom["grouped"]["points"] + kgeom.get("synthetic_boundary_points", [])
+        )
+    }
+    line_ids = {line["id"] for line in kgeom["grouped"]["lines"]}
+    plane_ids = {plane["id"] for plane in kgeom["grouped"]["planes"]}
+    if manifold_id in point_ids:
+        return character_field.get("point", character_field.get("default", "linear_character"))
+    if manifold_id in line_ids:
+        return character_field.get("line", character_field.get("default", "linear_character"))
+    if manifold_id in plane_ids:
+        return character_field.get("plane", character_field.get("default", "linear_character"))
+    return character_field.get("default", "linear_character")
+
+
+def _summarize_induction_character_field(character_field: str | dict[str, str]) -> str:
+    if isinstance(character_field, str):
+        return character_field
+    ordered_keys = ["point", "line", "plane", "default"]
+    return ", ".join(
+        f"{key}={character_field[key]}"
+        for key in ordered_keys
+        if key in character_field
+    )
+
+
 def induce_candidate(
     entry: dict[str, Any],
     local_character: dict[int, complex],
@@ -2269,12 +2314,15 @@ def induce_candidate(
     unknown_ordering: list[str],
     global_matrix: list[list[int]],
     point_row_translation: dict[str, Any] | None = None,
+    *,
+    character_field: str = "linear_character",
 ) -> dict[str, Any]:
     orbit = single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
     stabilizer = bridge.bridge_stabilizer_for_entry(entry, ctx)
     stabilizer_unitary = set(stabilizer["unitary_indices"])
     manifold_multiplicities: dict[str, list[int]] = {}
     manifold_band_characters: dict[str, list[dict[str, float]]] = {}
+    manifold_character_fields: dict[str, str] = {}
     manifold_ids = [
         obj["id"]
         for obj in (
@@ -2286,6 +2334,12 @@ def induce_candidate(
     ]
     for manifold_id in manifold_ids:
         info = captures[manifold_id]
+        manifold_character_field = _resolve_induction_character_field(
+            character_field,
+            manifold_id,
+            ctx["kgeom"],
+        )
+        manifold_character_fields[manifold_id] = manifold_character_field
         band_character: list[complex] = []
         for op_index, rotation, translation in zip(info["unitary_raw_indices"], info["unitary_rotations"], info["unitary_translations"]):
             rot = np.array(rotation, dtype=float)
@@ -2306,17 +2360,31 @@ def induce_candidate(
                     continue
                 total += local_character[conj_index] * np.exp(-1j * float(np.dot(np.array(info["kconv"], dtype=float), delta)))
             band_character.append(total)
-        chars = np.array(info["linear_character"], dtype=complex)
+        chars = np.array(info[manifold_character_field], dtype=complex)
         band = np.array(band_character, dtype=complex)
-        gram = chars @ chars.conj().T / chars.shape[1]
-        rhs = chars.conj() @ band / chars.shape[1]
-        multiplicities = np.linalg.solve(gram, rhs)
-        rounded = [int(round(float(value.real))) for value in multiplicities]
+        context = f"{entry['letter']} on {manifold_id} [{manifold_character_field}]"
+        basis_matrix = sp.Matrix(chars.T.tolist())
+        restricted = sp.Matrix(list(band))
+        numeric_error = None
+        try:
+            rounded = solve_numeric_integer_decomposition(basis_matrix, restricted, context)
+        except ValueError as exc:
+            numeric_error = str(exc)
+            gram = chars @ chars.conj().T / chars.shape[1]
+            rhs = chars.conj() @ band / chars.shape[1]
+            multiplicities = np.linalg.solve(gram, rhs)
+            rounded = [int(round(float(value.real))) for value in multiplicities]
+            if not np.allclose(multiplicities, np.rint(multiplicities.real), atol=1e-8):
+                raise ValueError(
+                    f"{entry['letter']} on {manifold_id}: non-integral multiplicities "
+                    f"(numeric_solver={numeric_error})"
+                )
         recon = np.array(rounded, dtype=complex) @ chars
-        if not np.allclose(multiplicities, np.rint(multiplicities.real), atol=1e-8):
-            raise ValueError(f"{entry['letter']} on {manifold_id}: non-integral multiplicities")
         if not np.allclose(recon, band, atol=1e-8):
-            raise ValueError(f"{entry['letter']} on {manifold_id}: reconstruction failed")
+            raise ValueError(
+                f"{entry['letter']} on {manifold_id}: reconstruction failed "
+                f"(numeric_solver={numeric_error})"
+            )
         manifold_multiplicities[manifold_id] = rounded
         manifold_band_characters[manifold_id] = complex_list_to_json(band_character)
     raw_manifold_multiplicities = {manifold_id: list(values) for manifold_id, values in manifold_multiplicities.items()}
@@ -2352,6 +2420,8 @@ def induce_candidate(
             if point_row_translation and point_row_translation.get("enabled")
             else "legacy"
         ),
+        "character_field_used": _summarize_induction_character_field(character_field),
+        "manifold_character_fields": manifold_character_fields,
         "stabilizer_size": int(stabilizer["bridge_stabilizer_size"]),
         "unitary_stabilizer_size": int(stabilizer["bridge_unitary_count"]),
     }
@@ -2560,6 +2630,8 @@ def write_reduction_reports(
     write_text(P1_P5_RESOLUTION_MD, build_p1_p5_doubleclass_resolution_markdown(p1_p5_resolution_report))
     write_json(FULL_SHELL_AUTOMORPHISM_JSON, full_shell_report)
     write_text(FULL_SHELL_AUTOMORPHISM_MD, build_full_shell_automorphism_search_markdown(full_shell_report))
+    write_json(FULL_POINT_SHELL_AUTOMORPHISM_JSON, full_shell_report)
+    write_text(FULL_POINT_SHELL_AUTOMORPHISM_MD, build_full_shell_automorphism_search_markdown(full_shell_report))
     write_json(FINAL_BS_STRONG_JSON, bs_strong_report)
     write_text(FINAL_BS_STRONG_MD, build_final_bs_strong_equivalence_markdown(bs_strong_report))
     write_json(MISSING_ROW_WITNESS_JSON, missing_row_witness_report)
@@ -2848,6 +2920,73 @@ def build_ai_seed_delta_after_bs_fix_markdown(report: dict[str, Any]) -> str:
     )
 
 
+def build_ai_character_field_alignment_report(
+    obstruction_report: dict[str, Any],
+    *,
+    authoritative_compatibility_field: str,
+    raw42_character_field: str,
+    skeleton7_character_field: str,
+    published8_character_field: str,
+) -> dict[str, Any]:
+    previous_report = load_json_from_head(AI_OBSTRUCTION_DIAG_JSON)
+    previous_counts = (
+        dict(previous_report.get("compatibility_zero_counts", {}))
+        if previous_report
+        else None
+    )
+    previous_histogram = (
+        dict(previous_report.get("published_fail_path_histogram", {}))
+        if previous_report
+        else None
+    )
+    current_counts = dict(obstruction_report["compatibility_zero_counts"])
+    current_histogram = dict(obstruction_report["published_fail_path_histogram"])
+    return {
+        "authoritative_compatibility_field": authoritative_compatibility_field,
+        "previous_ai_induction_field": "linear_character",
+        "current_ai_induction_field": _summarize_induction_character_field(published8_character_field),
+        "shell_character_fields": {
+            "raw42": _summarize_induction_character_field(raw42_character_field),
+            "skeleton7": _summarize_induction_character_field(skeleton7_character_field),
+            "published8": _summarize_induction_character_field(published8_character_field),
+        },
+        "previous_obstruction_report_available": previous_report is not None,
+        "previous_compatibility_zero_counts": previous_counts,
+        "current_compatibility_zero_counts": current_counts,
+        "previous_published_fail_path_histogram": previous_histogram,
+        "current_published_fail_path_histogram": current_histogram,
+        "compatibility_zero_count_delta": (
+            None
+            if previous_counts is None
+            else {
+                shell: int(current_counts.get(shell, 0)) - int(previous_counts.get(shell, 0))
+                for shell in sorted(current_counts)
+            }
+        ),
+        "published_fail_histogram_changed": previous_histogram != current_histogram,
+    }
+
+
+def build_ai_character_field_alignment_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Character-Field Alignment Report",
+            "",
+            f"- Authoritative compatibility field: `{report['authoritative_compatibility_field']}`.",
+            f"- Previous AI induction field: `{report['previous_ai_induction_field']}`.",
+            f"- Current AI induction field: `{report['current_ai_induction_field']}`.",
+            f"- Shell character fields: `{report['shell_character_fields']}`.",
+            f"- Previous obstruction report available: `{report['previous_obstruction_report_available']}`.",
+            f"- Previous compatibility-zero counts: `{report['previous_compatibility_zero_counts']}`.",
+            f"- Current compatibility-zero counts: `{report['current_compatibility_zero_counts']}`.",
+            f"- Compatibility-zero count delta: `{report['compatibility_zero_count_delta']}`.",
+            f"- Previous published fail-path histogram: `{report['previous_published_fail_path_histogram']}`.",
+            f"- Current published fail-path histogram: `{report['current_published_fail_path_histogram']}`.",
+            f"- Published fail histogram changed: `{report['published_fail_histogram_changed']}`.",
+        ]
+    )
+
+
 def load_nonabelian_local_library_helper():
     path = ROOT / "debug_sg194_nonabelian_local_library.py"
     spec = importlib.util.spec_from_file_location("sg194_nonabelian_local_library_runtime", path)
@@ -2873,6 +3012,8 @@ def induce_family_objects(
     global_matrix: list[list[int]],
     point_row_translation: dict[str, Any],
     family_objects: dict[str, list[dict[str, Any]]],
+    *,
+    character_field: str = "linear_character",
 ) -> dict[str, Any]:
     candidates = []
     failures = []
@@ -2894,6 +3035,7 @@ def induce_family_objects(
                     bs_analysis["unknown_ordering"],
                     global_matrix,
                     point_row_translation=point_row_translation,
+                    character_field=character_field,
                 )
                 candidate["generator_id"] = generator_id
                 candidate["local_object_label"] = local_object["label"]
@@ -2970,6 +3112,14 @@ def build_ai_library_integration_report(
         "mode": mode,
         "published_object_kind": published_object_kind,
         "object_language": "published_final_point_path_shell_34_unknowns",
+        "ai_induction_character_field": next(
+            (
+                candidate.get("character_field_used")
+                for candidate in induction["candidates"]
+                if candidate.get("character_field_used")
+            ),
+            None,
+        ),
         "unknown_count": len(unknown_ordering),
         "local_library_source": "debug_sg194_nonabelian_local_library.build_inventory_and_libraries",
         "local_library_files": [
@@ -3005,6 +3155,7 @@ def build_ai_library_integration_markdown(report: dict[str, Any]) -> str:
             "",
             f"- Mode: `{report['mode']}`.",
             f"- Published object kind: `{report['published_object_kind']}`.",
+            f"- AI induction character field: `{report['ai_induction_character_field']}`.",
             f"- Local library wired into AI builder: `{report['local_library_wired_into_ai_builder']}`.",
             f"- Family count / local-object count: `{report['family_count']}` / `{report['local_object_count']}`.",
             f"- Success candidates / failures: `{report['success_candidate_count']}` / `{report['failure_count']}`.",
@@ -3187,6 +3338,14 @@ def build_ai_obstruction_diagnosis_report(
     return {
         "mode": "single",
         "published_object_kind": reduction["reduction_kind"],
+        "ai_induction_character_field": next(
+            (
+                candidate.get("character_field_used")
+                for candidate in published_induction["candidates"]
+                if candidate.get("character_field_used")
+            ),
+            None,
+        ),
         "row_language_full_span_pass": bool(reduction.get("selected_rows_span_full_candidate_row_language")),
         "bilbao_equivalent_final_object_pass": bool(reduction.get("bilbao_equivalent_final_object_pass")),
         "selected_path_count": len(reduction["published_path_ids"]),
@@ -3233,6 +3392,7 @@ def build_ai_obstruction_diagnosis_markdown(report: dict[str, Any]) -> str:
             "# AI Obstruction Diagnosis Report",
             "",
             f"- Published object kind: `{report['published_object_kind']}`.",
+            f"- AI induction character field: `{report['ai_induction_character_field']}`.",
             f"- Row-language full-span / Bilbao-equivalent final-object pass: `{report['row_language_full_span_pass']}` / `{report['bilbao_equivalent_final_object_pass']}`.",
             f"- Selected path count / unique endpoint-pair count: `{report['selected_path_count']}` / `{report['unique_endpoint_pair_count']}`.",
             f"- Actual path pairs: `{report['actual_path_pairs']}`.",
@@ -3551,6 +3711,7 @@ def build_single_pilot(
             bs_analysis["unknown_ordering"],
             final_line_full["global_matrix"],
             point_row_translation=raw_point_row_translation,
+            character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
         )
         candidate["generator_id"] = f"{entry['letter']}_trivial"
         translation_probe_candidates.append(candidate)
@@ -3573,6 +3734,7 @@ def build_single_pilot(
             bs_analysis["unknown_ordering"],
             final_line_full["global_matrix"],
             point_row_translation=point_row_translation,
+            character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
         )
         candidate["generator_id"] = f"{entry['letter']}_trivial"
         ai_candidates.append(candidate)
@@ -3602,6 +3764,7 @@ def build_single_pilot(
         with_planes["global_matrix"],
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
     skeleton_library_induction = induce_family_objects(
         ctx,
@@ -3610,6 +3773,7 @@ def build_single_pilot(
         skeleton_line_full["global_matrix"],
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
     single_library_induction = induce_family_objects(
         ctx,
@@ -3618,6 +3782,7 @@ def build_single_pilot(
         final_line_full["global_matrix"],
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
     ai_library_integration_report = build_ai_library_integration_report(
         local_library_payload,
@@ -3637,6 +3802,18 @@ def build_single_pilot(
         raw42_library_induction,
         skeleton_library_induction,
         single_library_induction,
+    )
+    ai_character_field_alignment_report = build_ai_character_field_alignment_report(
+        ai_obstruction_diagnosis_report,
+        authoritative_compatibility_field="character",
+        raw42_character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+        skeleton7_character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+        published8_character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+    )
+    write_json(AI_CHARACTER_FIELD_ALIGNMENT_JSON, ai_character_field_alignment_report)
+    write_text(
+        AI_CHARACTER_FIELD_ALIGNMENT_MD,
+        build_ai_character_field_alignment_markdown(ai_character_field_alignment_report),
     )
     ai_honest_blocker_report = build_ai_honest_blocker_report(
         ai_library_integration_report,
@@ -3736,10 +3913,17 @@ def build_single_pilot(
             "ai_status": ai_audit_report["ai_status"],
             "unknown_ordering": bs_analysis["unknown_ordering"],
             "point_row_translation": point_row_translation,
+            "character_field_used": _summarize_induction_character_field(AUTHORITATIVE_AI_CHARACTER_FIELD),
             "generators": ai_candidates,
             "rank_trivial_family_span": ai_rank,
             "blocker_summary": ai_honest_blocker_report["blocker"],
             "local_library_wired_into_ai_builder": ai_library_integration_report["local_library_wired_into_ai_builder"],
+            "ai_character_field_alignment_report": {
+                "authoritative_compatibility_field": ai_character_field_alignment_report["authoritative_compatibility_field"],
+                "current_ai_induction_field": ai_character_field_alignment_report["current_ai_induction_field"],
+                "current_compatibility_zero_counts": ai_character_field_alignment_report["current_compatibility_zero_counts"],
+                "current_published_fail_path_histogram": ai_character_field_alignment_report["current_published_fail_path_histogram"],
+            },
             "ai_obstruction_diagnosis_summary": {
                 "classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
                 "published_fail_path_histogram": ai_obstruction_diagnosis_report["published_fail_path_histogram"],
@@ -3806,6 +3990,7 @@ def build_single_pilot(
             "compatibility_zero_count": ai_audit_report["compatibility_zero_count"],
             "all_trivial_generators_compatibility_zero": all(candidate["compatibility_zero"] for candidate in ai_candidates),
             "point_row_translation_legality": point_row_translation_report["legality_status"],
+            "authoritative_ai_character_field": _summarize_induction_character_field(AUTHORITATIVE_AI_CHARACTER_FIELD),
             "residual_pattern_changed_vs_previous_branch": ai_seed_delta_report["residual_pattern_changed"],
             "local_library_wired_into_ai_builder": ai_library_integration_report["local_library_wired_into_ai_builder"],
             "library_integration_status": ai_library_integration_report["integration_status"],
@@ -3949,6 +4134,7 @@ def build_double_pilot(
         bs_analysis["unknown_ordering"],
         final_line_full["global_matrix"],
         point_row_translation=point_row_translation,
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
     minimal["generator_id"] = "l_double_trivial"
     minimal["bridge_reused"] = True
@@ -4464,10 +4650,14 @@ def build_package() -> None:
         DOUBLE_AUDIT_MD,
         FULL_SHELL_AUTOMORPHISM_MD,
         FULL_SHELL_AUTOMORPHISM_JSON,
+        FULL_POINT_SHELL_AUTOMORPHISM_MD,
+        FULL_POINT_SHELL_AUTOMORPHISM_JSON,
         AI_OBSTRUCTION_DIAG_MD,
         AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
+        AI_CHARACTER_FIELD_ALIGNMENT_MD,
+        AI_CHARACTER_FIELD_ALIGNMENT_JSON,
         AI_HONEST_BLOCKER_MD,
         AI_HONEST_BLOCKER_JSON,
         Path(__file__),
@@ -4502,10 +4692,14 @@ def validate_outputs() -> None:
         DOUBLE_AUDIT_MD,
         FULL_SHELL_AUTOMORPHISM_MD,
         FULL_SHELL_AUTOMORPHISM_JSON,
+        FULL_POINT_SHELL_AUTOMORPHISM_MD,
+        FULL_POINT_SHELL_AUTOMORPHISM_JSON,
         AI_OBSTRUCTION_DIAG_MD,
         AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
+        AI_CHARACTER_FIELD_ALIGNMENT_MD,
+        AI_CHARACTER_FIELD_ALIGNMENT_JSON,
         AI_HONEST_BLOCKER_MD,
         AI_HONEST_BLOCKER_JSON,
         Path(__file__),

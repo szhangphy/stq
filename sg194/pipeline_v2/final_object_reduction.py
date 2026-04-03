@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from fractions import Fraction
 from itertools import combinations, permutations, product
+from math import factorial
 from typing import Any, Iterable, Sequence
 
 import sympy as sp
@@ -1400,7 +1401,134 @@ def _point_unknown_ordering(
     return per_point
 
 
+def _record_point_rep_signature(
+    record: dict[str, Any],
+    point_id: str,
+) -> tuple[tuple[int, int], ...] | None:
+    for endpoint in record.get("endpoint_decomposition_signature", []):
+        if endpoint["endpoint_id"] != point_id:
+            continue
+        return tuple(
+            sorted(
+                (
+                    int(rep["rep_degree"]),
+                    int(rep["torsion"]),
+                )
+                for rep in endpoint["reps"]
+            )
+        )
+    return None
+
+
+def _point_shell_search_metadata(
+    reduction: dict[str, Any],
+    unknown_ordering: Sequence[str],
+) -> dict[str, dict[str, Any]]:
+    point_unknowns = _point_unknown_ordering(unknown_ordering)
+    metadata: dict[str, dict[str, Any]] = {}
+    rep_signatures: dict[str, set[tuple[tuple[int, int], ...]]] = {}
+    for payload in reduction.get("path_classes", []):
+        for record in payload.get("candidate_records", [])[:1]:
+            for endpoint in record.get("endpoint_decomposition_signature", []):
+                point_id = endpoint["endpoint_id"]
+                rep_signatures.setdefault(point_id, set()).add(
+                    tuple(
+                        sorted(
+                            (
+                                int(rep["rep_degree"]),
+                                int(rep["torsion"]),
+                            )
+                            for rep in endpoint["reps"]
+                        )
+                    )
+                )
+    path_incidence: dict[str, list[dict[str, Any]]] = {}
+    for kept in reduction.get("kept_paths", []):
+        for endpoint_id in kept.get("endpoint_ids", []):
+            other_endpoint = next(
+                point for point in kept["endpoint_ids"] if point != endpoint_id
+            )
+            path_incidence.setdefault(endpoint_id, []).append(
+                {
+                    "final_path_id": kept["final_path_id"],
+                    "path_class_id": kept["path_class_id"],
+                    "source_line_id": kept["source_line_id"],
+                    "other_endpoint_id": other_endpoint,
+                    "endpoint_pair": list(kept["endpoint_pair"]),
+                    "selection_stage": kept["selection_stage"],
+                }
+            )
+    for point in reduction.get("point_shell", []):
+        point_id = point["point_id"]
+        point_rep_signatures = rep_signatures.get(point_id, set())
+        if len(point_rep_signatures) > 1:
+            raise ValueError(
+                f"inconsistent point-shell rep signature for {point_id}: {sorted(point_rep_signatures)}"
+            )
+        rep_signature = next(iter(point_rep_signatures), tuple())
+        metadata[point_id] = {
+            "point_id": point_id,
+            "unknown_ordering": list(point_unknowns.get(point_id, [])),
+            "unknown_count": len(point_unknowns.get(point_id, [])),
+            "rep_signature": [[degree, torsion] for degree, torsion in rep_signature],
+            "coarse_search_signature": {
+                "unknown_count": len(point_unknowns.get(point_id, [])),
+                "rep_degree_torsion_multiset": [[degree, torsion] for degree, torsion in rep_signature],
+            },
+            "incident_final_path_ids": [entry["final_path_id"] for entry in path_incidence.get(point_id, [])],
+            "incident_source_line_ids": [entry["source_line_id"] for entry in path_incidence.get(point_id, [])],
+            "incident_endpoint_pairs": [entry["endpoint_pair"] for entry in path_incidence.get(point_id, [])],
+            "incident_path_classes": [entry["path_class_id"] for entry in path_incidence.get(point_id, [])],
+        }
+    return metadata
+
+
+def _point_search_equivalence_classes(
+    reduction: dict[str, Any],
+    unknown_ordering: Sequence[str],
+    *,
+    exclude_points: Sequence[str] = (),
+) -> list[dict[str, Any]]:
+    point_metadata = _point_shell_search_metadata(reduction, unknown_ordering)
+    excluded = set(exclude_points)
+    by_signature: dict[tuple[Any, ...], list[str]] = {}
+    for point_id, metadata in point_metadata.items():
+        if point_id in excluded:
+            continue
+        signature = (
+            int(metadata["coarse_search_signature"]["unknown_count"]),
+            tuple(
+                tuple(item)
+                for item in metadata["coarse_search_signature"]["rep_degree_torsion_multiset"]
+            ),
+        )
+        by_signature.setdefault(signature, []).append(point_id)
+    classes: list[dict[str, Any]] = []
+    for class_index, signature in enumerate(sorted(by_signature), start=1):
+        point_ids = sorted(by_signature[signature])
+        classes.append(
+            {
+                "point_class_id": f"POINTCLASS{class_index:02d}",
+                "point_ids": point_ids,
+                "signature": {
+                    "unknown_count": int(signature[0]),
+                    "rep_degree_torsion_multiset": [list(item) for item in signature[1]],
+                },
+                "search_enabled": len(point_ids) > 1,
+            }
+        )
+    return classes
+
+
+def _transport_endpoint_pair(
+    endpoint_pair: Sequence[str],
+    point_id_mapping: dict[str, str],
+) -> tuple[str, str]:
+    return tuple(sorted(point_id_mapping.get(point_id, point_id) for point_id in endpoint_pair))
+
+
 def _global_shell_automorphism_search(
+    reduction: dict[str, Any],
     reference_record: dict[str, Any],
     candidate_record: dict[str, Any],
     preserved_records: Sequence[dict[str, Any]],
@@ -1413,6 +1541,7 @@ def _global_shell_automorphism_search(
     if unknown_ordering != list(candidate_record["global_unknown_ordering"]):
         raise ValueError("reference/candidate records use different global unknown ordering")
     point_unknowns = _point_unknown_ordering(unknown_ordering)
+    point_metadata = _point_shell_search_metadata(reduction, unknown_ordering)
     reference_signature = _rref_signature(reference_record["global_matrix_rows"])
     local_solutions = list(local_relabel_search.get("local_solutions", []))
     if not local_solutions:
@@ -1423,6 +1552,9 @@ def _global_shell_automorphism_search(
             "local_solution_search_space": 0,
             "search_space_size": 0,
             "searched_candidate_count": 0,
+            "point_id_permutations_enabled": True,
+            "point_shell_equivalence_classes": _point_search_equivalence_classes(reduction, unknown_ordering),
+            "active_point_shell_equivalence_classes": [],
             "compensation_points": [],
             "point_permutation_sizes": {},
             "local_solution_searches": [],
@@ -1435,43 +1567,52 @@ def _global_shell_automorphism_search(
     searched_candidate_count = 0
     local_solution_searches: list[dict[str, Any]] = []
     global_solutions: list[dict[str, Any]] = []
+    all_equivalence_classes = _point_search_equivalence_classes(reduction, unknown_ordering)
     for local_solution_index, local_solution in enumerate(local_solutions, start=1):
         varying_endpoints = set(local_solution["endpoint_relabel"])
-        broken_path_ids = list(local_solution["broken_selected_path_ids"])
-        compensation_points = sorted(
-            {
-                point_id
-                for record in preserved_records
-                if record["final_path_id"] in broken_path_ids
-                for point_id in record["endpoint_ids"]
-                if point_id not in varying_endpoints
-            }
-        )
-        permutation_lists: dict[str, list[tuple[str, ...]]] = {}
+        broken_path_ids = list(local_solution.get("broken_selected_path_ids", []))
+        active_classes = [
+            point_class
+            for point_class in _point_search_equivalence_classes(
+                reduction,
+                unknown_ordering,
+                exclude_points=sorted(varying_endpoints),
+            )
+            if point_class["search_enabled"]
+        ]
         point_permutation_sizes: dict[str, int] = {}
         local_search_space = 1
-        oversized_point = None
-        for point_id in compensation_points:
-            unknowns = point_unknowns.get(point_id, [])
-            if len(unknowns) > 7:
-                oversized_point = point_id
+        oversized_class = None
+        for point_class in active_classes:
+            point_ids = list(point_class["point_ids"])
+            if any(len(point_unknowns.get(point_id, [])) > 7 for point_id in point_ids):
+                oversized_class = point_class["point_class_id"]
                 break
-            permutations_for_point = list(permutations(unknowns))
-            permutation_lists[point_id] = permutations_for_point
-            point_permutation_sizes[point_id] = len(permutations_for_point)
-            local_search_space *= max(1, len(permutations_for_point))
-        if oversized_point is not None:
+            class_search_space = factorial(len(point_ids))
+            for point_id in point_ids:
+                class_search_space *= factorial(len(point_unknowns.get(point_id, [])))
+                point_permutation_sizes[point_id] = factorial(len(point_unknowns.get(point_id, [])))
+            point_class["search_space_size"] = int(class_search_space)
+            local_search_space *= max(1, int(class_search_space))
+        if oversized_class is not None:
             local_solution_searches.append(
                 {
                     "local_solution_index": local_solution_index,
                     "search_enabled": False,
                     "reason": (
-                        f"point {oversized_point} has {len(point_unknowns.get(oversized_point, []))} unknowns; "
-                        "full-shell compensation permutation search disabled"
+                        f"point-shell class {oversized_class} contains a point with more than 7 unknowns; "
+                        "full point-shell automorphism search disabled"
                     ),
                     "broken_path_ids": broken_path_ids,
                     "varying_endpoints": sorted(varying_endpoints),
-                    "compensation_points": compensation_points,
+                    "compensation_points": sorted(
+                        {
+                            point_id
+                            for point_class in active_classes
+                            for point_id in point_class["point_ids"]
+                        }
+                    ),
+                    "active_point_shell_equivalence_classes": active_classes,
                     "point_permutation_sizes": point_permutation_sizes,
                     "search_space_size": None,
                     "searched_candidate_count": 0,
@@ -1487,11 +1628,19 @@ def _global_shell_automorphism_search(
                     "search_enabled": False,
                     "reason": (
                         f"cumulative search space would exceed cap {search_space_cap}; "
-                        f"next local branch requires {local_search_space} permutations"
+                        f"next local branch requires {local_search_space} permutations "
+                        "after enabling point-ID permutations inside the active point-shell classes"
                     ),
                     "broken_path_ids": broken_path_ids,
                     "varying_endpoints": sorted(varying_endpoints),
-                    "compensation_points": compensation_points,
+                    "compensation_points": sorted(
+                        {
+                            point_id
+                            for point_class in active_classes
+                            for point_id in point_class["point_ids"]
+                        }
+                    ),
+                    "active_point_shell_equivalence_classes": active_classes,
                     "point_permutation_sizes": point_permutation_sizes,
                     "search_space_size": local_search_space,
                     "searched_candidate_count": 0,
@@ -1501,24 +1650,50 @@ def _global_shell_automorphism_search(
             )
             continue
         total_search_space += local_search_space
-        point_choices = [
-            [(point_id, permuted_unknowns) for permuted_unknowns in permutation_lists[point_id]]
-            for point_id in compensation_points
-        ]
+        class_choice_lists = []
+        for point_class in active_classes:
+            point_ids = list(point_class["point_ids"])
+            class_choices = []
+            for permuted_point_ids in permutations(point_ids):
+                target_unknown_permutations = [
+                    list(permutations(point_unknowns[target_point_id]))
+                    for target_point_id in permuted_point_ids
+                ]
+                for permuted_unknown_lists in product(*target_unknown_permutations):
+                    point_id_mapping = {
+                        source_point_id: target_point_id
+                        for source_point_id, target_point_id in zip(point_ids, permuted_point_ids)
+                    }
+                    class_relabel = {}
+                    for source_point_id, permuted_unknowns in zip(point_ids, permuted_unknown_lists):
+                        class_relabel[source_point_id] = {
+                            source_unknown: target_unknown
+                            for source_unknown, target_unknown in zip(
+                                point_unknowns[source_point_id],
+                                permuted_unknowns,
+                            )
+                        }
+                    class_choices.append(
+                        {
+                            "point_class_id": point_class["point_class_id"],
+                            "point_id_mapping": point_id_mapping,
+                            "class_relabel": class_relabel,
+                            "permuted_point_ids": list(permuted_point_ids),
+                        }
+                    )
+            class_choice_lists.append(class_choices)
         branch_solutions: list[dict[str, Any]] = []
-        for compensation_choice in product(*point_choices) if point_choices else [()]:
+        for class_choices in product(*class_choice_lists) if class_choice_lists else [()]:
             searched_candidate_count += 1
             combined_relabel = {
                 endpoint_id: dict(mapping)
                 for endpoint_id, mapping in local_solution["endpoint_relabel"].items()
             }
             compensation_relabel: dict[str, dict[str, str]] = {}
-            for point_id, permuted_unknowns in compensation_choice:
-                source_unknowns = point_unknowns[point_id]
-                compensation_relabel[point_id] = {
-                    source_unknown: target_unknown
-                    for source_unknown, target_unknown in zip(source_unknowns, permuted_unknowns)
-                }
+            point_id_mapping: dict[str, str] = {}
+            for class_choice in class_choices:
+                point_id_mapping.update(class_choice["point_id_mapping"])
+                compensation_relabel.update(class_choice["class_relabel"])
             combined_relabel.update(compensation_relabel)
             column_map = _build_endpoint_column_map(unknown_ordering, combined_relabel)
             relabeled_candidate_signature = _rref_signature(
@@ -1532,13 +1707,14 @@ def _global_shell_automorphism_search(
                 relabeled_signature = _rref_signature(
                     _apply_column_permutation(record["global_matrix_rows"], column_map)
                 )
-                pair_key = tuple(record["endpoint_pair"])
+                pair_key = _transport_endpoint_pair(record["endpoint_pair"], point_id_mapping)
                 signature_allowed = relabeled_signature in allowed_pair_signatures.get(pair_key, set())
                 preserved_path_status.append(
                     {
                         "final_path_id": record["final_path_id"],
                         "path_class_id": record["path_class_id"],
-                        "endpoint_pair": list(pair_key),
+                        "original_endpoint_pair": list(record["endpoint_pair"]),
+                        "transported_endpoint_pair": list(pair_key),
                         "signature_allowed": signature_allowed,
                     }
                 )
@@ -1550,8 +1726,9 @@ def _global_shell_automorphism_search(
                 "endpoint_relabel": combined_relabel,
                 "local_endpoint_relabel": local_solution["endpoint_relabel"],
                 "compensation_point_relabel": compensation_relabel,
+                "point_id_mapping": point_id_mapping,
                 "broken_selected_path_ids_from_local_anchor": broken_path_ids,
-                "compensation_points": compensation_points,
+                "compensation_points": sorted(compensation_relabel),
                 "preserved_path_status": preserved_path_status,
                 "preserves_full_shell": True,
             }
@@ -1564,7 +1741,14 @@ def _global_shell_automorphism_search(
                 "reason": None,
                 "broken_path_ids": broken_path_ids,
                 "varying_endpoints": sorted(varying_endpoints),
-                "compensation_points": compensation_points,
+                "compensation_points": sorted(
+                    {
+                        point_id
+                        for point_class in active_classes
+                        for point_id in point_class["point_ids"]
+                    }
+                ),
+                "active_point_shell_equivalence_classes": active_classes,
                 "point_permutation_sizes": point_permutation_sizes,
                 "search_space_size": local_search_space,
                 "searched_candidate_count": local_search_space,
@@ -1586,6 +1770,14 @@ def _global_shell_automorphism_search(
     return {
         "searched": any(branch.get("search_enabled") for branch in local_solution_searches),
         "reason": None if local_solution_searches else "no local search branches available",
+        "point_id_permutations_enabled": True,
+        "point_shell_equivalence_classes": [
+            {
+                **point_class,
+                "point_metadata": [point_metadata[point_id] for point_id in point_class["point_ids"]],
+            }
+            for point_class in all_equivalence_classes
+        ],
         "local_solution_count": len(local_solutions),
         "local_solution_search_space": int(local_relabel_search.get("search_space_size") or 0),
         "search_space_size": total_search_space,
@@ -1623,6 +1815,7 @@ def build_full_shell_automorphism_search_report(reduction: dict[str, Any]) -> di
     ]
     local_relabel_search = _endpoint_relabel_search(reference_record, candidate_record, preserved_records)
     full_shell_search = _global_shell_automorphism_search(
+        reduction,
         reference_record,
         candidate_record,
         preserved_records,
@@ -1635,6 +1828,7 @@ def build_full_shell_automorphism_search_report(reduction: dict[str, Any]) -> di
         "reference_source_line_id": reference_payload["representative_source_line_id"],
         "candidate_path_class_id": candidate_payload["path_class_id"],
         "candidate_source_line_id": candidate_payload["representative_source_line_id"],
+        "point_id_permutations_enabled": bool(full_shell_search.get("point_id_permutations_enabled")),
         "search_variables_cover_points": sorted(
             {
                 point_id
@@ -1643,6 +1837,7 @@ def build_full_shell_automorphism_search_report(reduction: dict[str, Any]) -> di
             }
             | set(local_relabel_search.get("varying_rep_ids_by_endpoint", {}))
         ),
+        "point_shell_equivalence_classes": full_shell_search.get("point_shell_equivalence_classes", []),
         "local_relabel_search": local_relabel_search,
         "full_shell_search": full_shell_search,
         "global_solution_found": full_shell_search.get("global_solution_count", 0) > 0,
@@ -1667,6 +1862,7 @@ def build_full_shell_automorphism_search_markdown(report: dict[str, Any]) -> str
         f"- Endpoint pair under resolution: `{report['endpoint_pair']}`.",
         f"- Reference class/source: `{report['reference_path_class_id']}` / `{report['reference_source_line_id']}`.",
         f"- Candidate class/source: `{report['candidate_path_class_id']}` / `{report['candidate_source_line_id']}`.",
+        f"- Point-ID permutations enabled: `{report['point_id_permutations_enabled']}`.",
         f"- Local relabel search space / solution count: `{local_search.get('search_space_size')}` / `{local_search.get('local_solution_count')}`.",
         f"- Full-shell search variables cover points: `{report['search_variables_cover_points']}`.",
         f"- Full-shell compensation points: `{full_shell.get('compensation_points')}`.",
@@ -1676,9 +1872,22 @@ def build_full_shell_automorphism_search_markdown(report: dict[str, Any]) -> str
         f"- First global solution: `{full_shell.get('first_global_solution')}`.",
         f"- Global automorphism witness found: `{report['global_solution_found']}`.",
         "",
-        "## Branch Searches",
+        "## Point-Shell Equivalence Classes",
         "",
     ]
+    for point_class in report.get("point_shell_equivalence_classes", []):
+        lines.append(
+            "- "
+            + f"`{point_class['point_class_id']}`: points = `{point_class['point_ids']}`, "
+            + f"signature = `{point_class['signature']}`, search_enabled = `{point_class['search_enabled']}`."
+        )
+    lines.extend(
+        [
+            "",
+        "## Branch Searches",
+        "",
+        ]
+    )
     for branch in full_shell.get("local_solution_searches", []):
         lines.append(
             "- "
@@ -1688,6 +1897,14 @@ def build_full_shell_automorphism_search_markdown(report: dict[str, Any]) -> str
             + f"reason = `{branch['reason']}`"
         )
     return "\n".join(lines)
+
+
+def build_full_point_shell_automorphism_search_report(reduction: dict[str, Any]) -> dict[str, Any]:
+    return build_full_shell_automorphism_search_report(reduction)
+
+
+def build_full_point_shell_automorphism_search_markdown(report: dict[str, Any]) -> str:
+    return build_full_shell_automorphism_search_markdown(report)
 
 
 def build_p1_p5_doubleclass_resolution_report(reduction: dict[str, Any]) -> dict[str, Any]:
@@ -1748,6 +1965,7 @@ def build_p1_p5_doubleclass_resolution_report(reduction: dict[str, Any]) -> dict
         "reference_source_line_id": reference_payload["representative_source_line_id"],
         "candidate_path_class_id": candidate_payload["path_class_id"],
         "candidate_source_line_id": candidate_payload["representative_source_line_id"],
+        "point_id_permutations_enabled": bool(full_shell_report.get("point_id_permutations_enabled")),
         "line_group_signature_equal": (
             reference_payload["line_group_signature"] == candidate_payload["line_group_signature"]
         ),
@@ -1791,6 +2009,7 @@ def build_p1_p5_doubleclass_resolution_markdown(report: dict[str, Any]) -> str:
             "",
             f"- Reference class/source: `{report['reference_path_class_id']}` / `{report['reference_source_line_id']}`.",
             f"- Candidate class/source: `{report['candidate_path_class_id']}` / `{report['candidate_source_line_id']}`.",
+            f"- Point-ID permutations enabled in the full-shell search: `{report['point_id_permutations_enabled']}`.",
             f"- Line-group signatures equal: `{report['line_group_signature_equal']}`.",
             f"- Local row-space signatures equal: `{report['local_row_space_signature_equal']}`.",
             f"- Global row-space signatures equal: `{report['global_row_space_signature_equal']}`.",
