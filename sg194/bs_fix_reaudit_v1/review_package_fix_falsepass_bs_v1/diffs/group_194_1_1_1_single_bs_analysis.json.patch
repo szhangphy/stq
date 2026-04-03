@@ -1,0 +1,546 @@
+diff --git a/sg194/group_194_1_1_1_single_bs_analysis.json b/sg194/group_194_1_1_1_single_bs_analysis.json
+index 637e959..44eb0cb 100644
+--- a/sg194/group_194_1_1_1_single_bs_analysis.json
++++ b/sg194/group_194_1_1_1_single_bs_analysis.json
+@@ -36,11 +36,11 @@
+     "P6_R2"
+   ],
+   "matrix_shape": [
+-    29,
++    33,
+     34
+   ],
+-  "rank": 23,
+-  "nullity": 11,
++  "rank": 24,
++  "nullity": 10,
+   "smith_diagonal": [
+     1,
+     1,
+@@ -64,6 +64,7 @@
+     1,
+     1,
+     1,
++    1,
+     2
+   ],
+   "basis_vectors": [
+@@ -72,20 +73,18 @@
+       "vector": [
+         1,
+         -1,
+-        1,
+-        -1,
+-        0,
+         0,
+         0,
+-        0,
+-        -1,
+         1,
++        -1,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
++        -1,
++        1,
+         0,
+         0,
+         0,
+@@ -96,52 +95,54 @@
+         0,
+         0,
+         0,
++        1,
++        -1,
+         0,
+         0,
++        1,
++        -1,
+         0,
+         0,
+-        0,
+-        0,
+-        0,
+-        0
++        -1,
++        1
+       ]
+     },
+     {
+       "id": "basis_02",
+       "vector": [
++        1,
++        -1,
++        -1,
++        -1,
+         0,
++        -2,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
++        -2,
+         0,
+         0,
++        -1,
++        -1,
++        -1,
++        -1,
+         0,
+         0,
+         0,
+         0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        -1,
++        -2,
+         1,
+-        0,
+-        0,
+         -1,
+-        1,
++        -1,
++        -1,
++        0,
++        -2,
+         0,
+         0,
++        -2,
+         0
+       ]
+     },
+@@ -187,59 +188,52 @@
+     {
+       "id": "basis_04",
+       "vector": [
++        1,
++        0,
+         0,
+         -1,
++        0,
+         -1,
++        1,
+         0,
+         0,
+-        -1,
+-        -1,
+         0,
+         0,
+         0,
+         0,
+         0,
+-        -2,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+-        -1,
+-        -1,
+-        -2,
+         0,
+         0,
+         0,
+-        -2,
+         0,
++        1,
+         0,
+         0,
+-        -2,
++        -1,
++        0,
++        -1,
++        1,
+         0,
+         0,
+-        -2,
+         0
+       ]
+     },
+     {
+       "id": "basis_05",
+       "vector": [
+-        1,
+-        -1,
+         0,
+         0,
+-        1,
+-        -1,
+-        0,
+         0,
+         0,
+         0,
+         0,
+         0,
+-        -1,
+-        1,
+         0,
+         0,
+         0,
+@@ -248,47 +242,15 @@
+         0,
+         0,
+         0,
+-        0,
+-        0,
+-        1,
+         -1,
+-        0,
+-        0,
+-        1,
+         -1,
+-        0,
+-        0,
+         -1,
+-        1
+-      ]
+-    },
+-    {
+-      "id": "basis_06",
+-      "vector": [
+         -1,
+         1,
+-        -1,
+-        1,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        -1,
+         1,
++        2,
+         0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
+-        0,
++        -2,
+         0,
+         0,
+         0,
+@@ -302,19 +264,23 @@
+       ]
+     },
+     {
+-      "id": "basis_07",
++      "id": "basis_06",
+       "vector": [
+         -1,
+         0,
++        -1,
+         0,
+-        1,
+-        0,
+-        1,
+         -1,
+         0,
++        -1,
+         0,
++        1,
+         0,
++        1,
+         0,
++        -1,
++        -1,
++        1,
+         0,
+         0,
+         0,
+@@ -328,10 +294,6 @@
+         0,
+         0,
+         0,
+-        -1,
+-        -1,
+-        1,
+-        1,
+         0,
+         0,
+         0,
+@@ -341,12 +303,20 @@
+       ]
+     },
+     {
+-      "id": "basis_08",
++      "id": "basis_07",
+       "vector": [
++        1,
++        -1,
++        1,
++        -1,
+         0,
+         0,
+         0,
+         0,
++        -1,
++        1,
++        0,
++        0,
+         0,
+         0,
+         0,
+@@ -358,15 +328,7 @@
+         0,
+         0,
+         0,
+-        1,
+-        1,
+-        1,
+-        1,
+-        -1,
+-        -1,
+-        -2,
+         0,
+-        2,
+         0,
+         0,
+         0,
+@@ -380,7 +342,7 @@
+       ]
+     },
+     {
+-      "id": "basis_09",
++      "id": "basis_08",
+       "vector": [
+         0,
+         0,
+@@ -419,21 +381,18 @@
+       ]
+     },
+     {
+-      "id": "basis_10",
++      "id": "basis_09",
+       "vector": [
+         -1,
+-        0,
++        1,
+         -1,
++        1,
++        0,
+         0,
+-        -1,
+         0,
+-        -1,
+         0,
+-        1,
+         0,
+-        1,
+         0,
+-        -1,
+         -1,
+         1,
+         0,
+@@ -454,11 +413,14 @@
+         0,
+         0,
+         0,
++        0,
++        0,
++        0,
+         0
+       ]
+     },
+     {
+-      "id": "basis_11",
++      "id": "basis_10",
+       "vector": [
+         -1,
+         1,
+@@ -498,7 +460,7 @@
+     }
+   ],
+   "object_role": "published_final_point_path_shell",
+-  "path_set_kind": "automatic_reduced_final_point_path_shell",
++  "path_set_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
+   "final_point_ids": [
+     "P1",
+     "P2",
+@@ -514,8 +476,10 @@
+     "FPATH04",
+     "FPATH05",
+     "FPATH06",
+-    "FPATH07"
++    "FPATH07",
++    "FPATH08"
+   ],
++  "bs_strong_equivalence_pass": true,
+   "diagnostic_raw_with_planes": {
+     "matrix_shape": [
+       61,
+@@ -542,6 +506,40 @@
+       "P6"
+     ],
+     "actual_path_pairs": [
++      [
++        "P1",
++        "P2"
++      ],
++      [
++        "P1",
++        "P3"
++      ],
++      [
++        "P1",
++        "P5"
++      ],
++      [
++        "P1",
++        "P5"
++      ],
++      [
++        "P2",
++        "P4"
++      ],
++      [
++        "P2",
++        "P6"
++      ],
++      [
++        "P3",
++        "P4"
++      ],
++      [
++        "P5",
++        "P6"
++      ]
++    ],
++    "actual_unique_path_pairs": [
+       [
+         "P1",
+         "P2"
+@@ -603,18 +601,64 @@
+     ],
+     "point_ids_match": true,
+     "point_count_match": true,
+-    "path_pair_set_match": true,
+-    "path_count_match": true
++    "path_pair_set_match": false,
++    "unique_path_pair_set_match": true,
++    "path_count_match": false
+   },
+   "final_bs_strong_equivalence_report": {
+-    "selection_algorithm": "one canonical primitive segment for each intrinsic listed special-line family, chosen after collapsing orbit-equivalent candidate classes by little-group, restriction, and row-language signatures",
++    "selection_algorithm": "canonical endpoint-pair skeleton first, then deterministic rank-closing augmentation classes until the full candidate row language is spanned",
+     "candidate_path_count": 62,
+     "candidate_path_class_count": 9,
+-    "selected_path_count": 7,
++    "selected_path_count": 8,
+     "selected_point_count": 6,
++    "endpoint_pair_skeleton_path_class_ids": [
++      "PCLASS01",
++      "PCLASS02",
++      "PCLASS03",
++      "PCLASS05",
++      "PCLASS06",
++      "PCLASS08",
++      "PCLASS09"
++    ],
++    "endpoint_pair_skeleton_row_rank": 23,
++    "selection_augmentation_path_class_ids": [
++      "PCLASS04"
++    ],
+     "target_row_rank": 24,
+-    "selected_row_rank": 23,
+-    "selected_rows_span_full_candidate_row_language": false,
++    "selected_row_rank": 24,
++    "selected_rows_span_full_candidate_row_language": true,
++    "target_unique_endpoint_pair_count": 7,
++    "selected_unique_endpoint_pair_count": 7,
++    "selected_unique_endpoint_pairs": [
++      [
++        "P1",
++        "P2"
++      ],
++      [
++        "P1",
++        "P3"
++      ],
++      [
++        "P1",
++        "P5"
++      ],
++      [
++        "P2",
++        "P4"
++      ],
++      [
++        "P2",
++        "P6"
++      ],
++      [
++        "P3",
++        "P4"
++      ],
++      [
++        "P5",
++        "P6"
++      ]
++    ],
+     "expected_source_line_ids": [
+       "L1",
+       "L2",
+@@ -624,7 +668,7 @@
+       "L6",
+       "L7"
+     ],
+-    "selected_source_line_ids_match_intrinsic_line_families": true,
++    "selected_source_line_ids_match_intrinsic_line_families": false,
+     "published_unknown_count": 34,
+     "published_unknown_ordering": [
+       "P1_R1",
+@@ -664,11 +708,11 @@
+     ],
+     "published_has_auxiliary_unknowns": false,
+     "published_bs_matrix_shape": [
+-      29,
++      33,
+       34
+     ],
+-    "published_bs_rank": 23,
+-    "published_bs_nullity": 11,
++    "published_bs_rank": 24,
++    "published_bs_nullity": 10,
+     "selected_final_path_ids": [
+       "FPATH01",
+       "FPATH02",
+@@ -676,12 +720,14 @@
+       "FPATH04",
+       "FPATH05",
+       "FPATH06",
+-      "FPATH07"
++      "FPATH07",
++      "FPATH08"
+     ],
+     "selected_final_source_line_ids": [
+       "L1",
+       "L4",
+       "L3",
++      "L4",
+       "L7",
+       "L6",
+       "L2",

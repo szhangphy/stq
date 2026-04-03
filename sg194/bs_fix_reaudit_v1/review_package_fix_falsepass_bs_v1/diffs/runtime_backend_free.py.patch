@@ -1,0 +1,108 @@
+diff --git a/sg194/pipeline_v2/runtime_backend_free.py b/sg194/pipeline_v2/runtime_backend_free.py
+index b33049c..5506e00 100644
+--- a/sg194/pipeline_v2/runtime_backend_free.py
++++ b/sg194/pipeline_v2/runtime_backend_free.py
+@@ -52,6 +52,8 @@ from .final_object_reduction import (
+     build_final_path_candidate_equivalence_report,
+     build_final_path_signature_markdown,
+     build_final_path_signature_report,
++    build_missing_row_language_witness_markdown,
++    build_missing_row_language_witness_report,
+     build_reduction_report_markdown,
+     compare_reduction_to_expected_pairs,
+     finalize_reduction_from_candidate_analysis,
+@@ -100,6 +102,8 @@ FINAL_PATH_EQUIV_MD = ROOT / "bs_fix_reaudit_v1" / "final_path_candidate_equival
+ FINAL_PATH_EQUIV_JSON = ROOT / "bs_fix_reaudit_v1" / "final_path_candidate_equivalence_report.json"
+ FINAL_BS_STRONG_MD = ROOT / "bs_fix_reaudit_v1" / "final_bs_strong_equivalence_report.md"
+ FINAL_BS_STRONG_JSON = ROOT / "bs_fix_reaudit_v1" / "final_bs_strong_equivalence_report.json"
++MISSING_ROW_WITNESS_MD = ROOT / "bs_fix_reaudit_v1" / "missing_row_language_witness_report.md"
++MISSING_ROW_WITNESS_JSON = ROOT / "bs_fix_reaudit_v1" / "missing_row_language_witness_report.json"
+ POINT_ROW_TRANSLATION_MD = ROOT / "bs_fix_reaudit_v1" / "point_row_translation_legality_report.md"
+ POINT_ROW_TRANSLATION_JSON = ROOT / "bs_fix_reaudit_v1" / "point_row_translation_legality_report.json"
+ AI_SEED_AUDIT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_seed_audit_report.md"
+@@ -2519,6 +2523,7 @@ def write_reduction_reports(
+         published_line_full,
+         published_bs_analysis,
+     )
++    missing_row_witness_report = build_missing_row_language_witness_report(reduction)
+     write_json(REDUCTION_REPORT_JSON, reduction_payload)
+     write_text(REDUCTION_REPORT_MD, build_reduction_report_markdown(reduction_payload))
+     write_json(REDUCTION_CHECK_JSON, sanity_check)
+@@ -2529,11 +2534,14 @@ def write_reduction_reports(
+     write_text(FINAL_PATH_EQUIV_MD, build_final_path_candidate_equivalence_markdown(path_equiv_report))
+     write_json(FINAL_BS_STRONG_JSON, bs_strong_report)
+     write_text(FINAL_BS_STRONG_MD, build_final_bs_strong_equivalence_markdown(bs_strong_report))
++    write_json(MISSING_ROW_WITNESS_JSON, missing_row_witness_report)
++    write_text(MISSING_ROW_WITNESS_MD, build_missing_row_language_witness_markdown(missing_row_witness_report))
+     return {
+         "reduction_report": reduction_payload,
+         "path_signature_report": path_signature_report,
+         "path_equivalence_report": path_equiv_report,
+         "bs_strong_equivalence_report": bs_strong_report,
++        "missing_row_witness_report": missing_row_witness_report,
+     }
+ 
+ 
+@@ -2619,9 +2627,9 @@ def build_point_row_translation_legality_report(
+         "unchanged_count": unchanged_count,
+         "legality_status": legality_status,
+         "legality_reason": (
+-            "phase-aware point-row translation is not retained on the published final "
+-            "point/path shell because the translated seed does not dominate the raw seed "
+-            "mechanically on the regenerated 34-unknown compatibility object."
++            "phase-aware point-row translation is retired on the published final "
++            "reduced point/path shell because the translated seed does not dominate "
++            "the raw seed mechanically on the regenerated compatibility object."
+             if legality_status == "removed"
+             else "phase-aware point-row translation remains mechanically valid on the published final point/path shell."
+         ),
+@@ -2998,8 +3006,8 @@ def build_single_pilot(
+     write_json(
+         SINGLE_LINE_COMPAT_JSON,
+         {
+-            "published_object_kind": "automatic_reduced_final_point_path_shell",
+-            "path_set_kind": "automatic_reduced_final_point_path_shell",
++            "published_object_kind": reduction["reduction_kind"],
++            "path_set_kind": reduction["reduction_kind"],
+             "final_point_ids": reduction["final_point_ids"],
+             "final_path_ids": reduction["published_path_ids"],
+             "line_blocks": final_line_blocks,
+@@ -3027,9 +3035,10 @@ def build_single_pilot(
+         {
+             **bs_analysis,
+             "object_role": "published_final_point_path_shell",
+-            "path_set_kind": "automatic_reduced_final_point_path_shell",
++            "path_set_kind": reduction["reduction_kind"],
+             "final_point_ids": reduction["final_point_ids"],
+             "final_path_ids": reduction["published_path_ids"],
++            "bs_strong_equivalence_pass": reduction_reports["bs_strong_equivalence_report"]["bs_strong_equivalence_pass"],
+             "diagnostic_raw_with_planes": {
+                 "matrix_shape": diagnostic_bs_analysis["matrix_shape"],
+                 "rank": diagnostic_bs_analysis["rank"],
+@@ -3073,7 +3082,7 @@ def build_single_pilot(
+             "status": "success",
+             "authoritative_builder_kind": AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND,
+             "phase_aware_profile": line_phase_profile,
+-            "published_object_kind": "automatic_reduced_final_point_path_shell",
++            "published_object_kind": reduction["reduction_kind"],
+             "diagnostic_raw_with_planes_retained": True,
+         },
+         "BS_status": {
+@@ -3239,7 +3248,7 @@ def build_double_pilot(
+         {
+             **bs_analysis,
+             "object_role": "published_final_point_path_shell",
+-            "path_set_kind": "automatic_reduced_final_point_path_shell",
++            "path_set_kind": reduction["reduction_kind"],
+             "final_point_ids": reduction["final_point_ids"],
+             "final_path_ids": reduction["published_path_ids"],
+             "diagnostic_raw_with_planes": {
+@@ -3276,7 +3285,7 @@ def build_double_pilot(
+             "smith_diagonal": bs_analysis["smith_diagonal"],
+             "authoritative_builder_kind": AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND,
+             "phase_aware_profile": line_phase_profile,
+-            "published_object_kind": "automatic_reduced_final_point_path_shell",
++            "published_object_kind": reduction["reduction_kind"],
+             "diagnostic_raw_with_planes_matrix_shape": diagnostic_bs_analysis["matrix_shape"],
+         },
+         "point_like_AI_status": {"status": "blocked", "blocker": blocker},

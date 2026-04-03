@@ -1,0 +1,106 @@
+diff --git a/sg194/bs_fix_reaudit_v1/final_bs_strong_equivalence_report.json b/sg194/bs_fix_reaudit_v1/final_bs_strong_equivalence_report.json
+index 9cafb4f..0cc06bb 100644
+--- a/sg194/bs_fix_reaudit_v1/final_bs_strong_equivalence_report.json
++++ b/sg194/bs_fix_reaudit_v1/final_bs_strong_equivalence_report.json
+@@ -1,12 +1,57 @@
+ {
+-  "selection_algorithm": "one canonical primitive segment for each intrinsic listed special-line family, chosen after collapsing orbit-equivalent candidate classes by little-group, restriction, and row-language signatures",
++  "selection_algorithm": "canonical endpoint-pair skeleton first, then deterministic rank-closing augmentation classes until the full candidate row language is spanned",
+   "candidate_path_count": 62,
+   "candidate_path_class_count": 9,
+-  "selected_path_count": 7,
++  "selected_path_count": 8,
+   "selected_point_count": 6,
++  "endpoint_pair_skeleton_path_class_ids": [
++    "PCLASS01",
++    "PCLASS02",
++    "PCLASS03",
++    "PCLASS05",
++    "PCLASS06",
++    "PCLASS08",
++    "PCLASS09"
++  ],
++  "endpoint_pair_skeleton_row_rank": 23,
++  "selection_augmentation_path_class_ids": [
++    "PCLASS04"
++  ],
+   "target_row_rank": 24,
+-  "selected_row_rank": 23,
+-  "selected_rows_span_full_candidate_row_language": false,
++  "selected_row_rank": 24,
++  "selected_rows_span_full_candidate_row_language": true,
++  "target_unique_endpoint_pair_count": 7,
++  "selected_unique_endpoint_pair_count": 7,
++  "selected_unique_endpoint_pairs": [
++    [
++      "P1",
++      "P2"
++    ],
++    [
++      "P1",
++      "P3"
++    ],
++    [
++      "P1",
++      "P5"
++    ],
++    [
++      "P2",
++      "P4"
++    ],
++    [
++      "P2",
++      "P6"
++    ],
++    [
++      "P3",
++      "P4"
++    ],
++    [
++      "P5",
++      "P6"
++    ]
++  ],
+   "expected_source_line_ids": [
+     "L1",
+     "L2",
+@@ -16,7 +61,7 @@
+     "L6",
+     "L7"
+   ],
+-  "selected_source_line_ids_match_intrinsic_line_families": true,
++  "selected_source_line_ids_match_intrinsic_line_families": false,
+   "published_unknown_count": 34,
+   "published_unknown_ordering": [
+     "P1_R1",
+@@ -56,11 +101,11 @@
+   ],
+   "published_has_auxiliary_unknowns": false,
+   "published_bs_matrix_shape": [
+-    29,
++    33,
+     34
+   ],
+-  "published_bs_rank": 23,
+-  "published_bs_nullity": 11,
++  "published_bs_rank": 24,
++  "published_bs_nullity": 10,
+   "selected_final_path_ids": [
+     "FPATH01",
+     "FPATH02",
+@@ -68,12 +113,14 @@
+     "FPATH04",
+     "FPATH05",
+     "FPATH06",
+-    "FPATH07"
++    "FPATH07",
++    "FPATH08"
+   ],
+   "selected_final_source_line_ids": [
+     "L1",
+     "L4",
+     "L3",
++    "L4",
+     "L7",
+     "L6",
+     "L2",

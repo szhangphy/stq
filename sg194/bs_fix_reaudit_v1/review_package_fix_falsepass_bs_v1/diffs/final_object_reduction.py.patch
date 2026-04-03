@@ -1,0 +1,605 @@
+diff --git a/sg194/pipeline_v2/final_object_reduction.py b/sg194/pipeline_v2/final_object_reduction.py
+index 42ba5fa..a99afde 100644
+--- a/sg194/pipeline_v2/final_object_reduction.py
++++ b/sg194/pipeline_v2/final_object_reduction.py
+@@ -559,6 +559,15 @@ def build_candidate_path_records(
+     for segment in reduction["candidate_paths"]:
+         block = block_by_id[segment["candidate_id"]]
+         global_rows = _block_rows_on_point_shell(block, global_unknown_ordering)
++        global_row_records = [
++            {
++                "row_index_within_candidate_block": row_index,
++                "basis_id": equation["basis_id"],
++                "row_kind": equation.get("row_kind", "line_basis_decomposition"),
++                "matrix_row": list(row),
++            }
++            for row_index, (equation, row) in enumerate(zip(block["equations"], global_rows))
++        ]
+         local_signature = _row_space_signature(block["matrix_rows"])
+         global_signature = _row_space_signature(global_rows)
+         record = {
+@@ -574,6 +583,7 @@ def build_candidate_path_records(
+             "selection_rank": list(_selection_rank(segment)),
+             "global_unknown_ordering": list(global_unknown_ordering),
+             "global_matrix_rows": global_rows,
++            "global_matrix_row_records": global_row_records,
+         }
+         record["path_type_key"] = (
+             tuple(record["endpoint_pair"]),
+@@ -594,6 +604,42 @@ def _stack_rows(records: Sequence[dict[str, Any]]) -> list[list[int]]:
+     return rows
+ 
+ 
++def _rows_rank_after_append(
++    base_rows: Sequence[Sequence[int]],
++    extra_rows: Sequence[Sequence[int]],
++) -> tuple[int, int]:
++    before_rank = _row_rank(base_rows)
++    after_rank = _row_rank(list(base_rows) + list(extra_rows))
++    return before_rank, after_rank
++
++
++def _unique_endpoint_pair_keys(
++    records: Sequence[dict[str, Any]],
++) -> list[tuple[str, str]]:
++    seen: set[tuple[str, str]] = set()
++    ordered: list[tuple[str, str]] = []
++    for record in records:
++        pair = tuple(record["endpoint_pair"])
++        if pair in seen:
++            continue
++        seen.add(pair)
++        ordered.append(pair)
++    return ordered
++
++
++def _first_rank_gaining_row_record(
++    base_rows: Sequence[Sequence[int]],
++    row_records: Sequence[dict[str, Any]],
++) -> tuple[int | None, dict[str, Any] | None, int, int]:
++    running_rows = [list(row) for row in base_rows]
++    running_rank = _row_rank(running_rows)
++    for row_index, row_record in enumerate(row_records):
++        candidate_rank = _row_rank(running_rows + [list(row_record["matrix_row"])])
++        if candidate_rank > running_rank:
++            return row_index, row_record, running_rank, candidate_rank
++    return None, None, running_rank, running_rank
++
++
+ def _candidate_sort_key(
+     record: dict[str, Any],
+     point_order: dict[str, int],
+@@ -629,92 +675,138 @@ def analyze_candidate_path_selection(
+         )
+ 
+     class_records.sort(key=lambda item: item["class_sort_key"])
++    for class_index, class_record in enumerate(class_records, start=1):
++        path_class_id = f"PCLASS{class_index:02d}"
++        class_record["path_class_id"] = path_class_id
++        class_record["representative"]["path_class_id"] = path_class_id
++        class_record["representative"]["path_class_candidate_count"] = len(class_record["candidate_records"])
++
+     target_rank = _row_rank(_stack_rows([item["representative"] for item in class_records]))
+-    by_source_line: dict[str, list[dict[str, Any]]] = {}
++    by_pair: dict[tuple[str, str], list[dict[str, Any]]] = {}
+     for class_record in class_records:
+-        by_source_line.setdefault(class_record["representative"]["source_line_id"], []).append(class_record)
+-
+-    def source_line_class_key(class_record: dict[str, Any]) -> tuple[Any, ...]:
+-        representative = class_record["representative"]
+-        return (
+-            _interval_length(representative),
+-            0 if representative["source_kind"] == "listed_line" else 1,
+-            int(representative["branch_complexity"]),
+-            min(point_order[item] for item in representative["endpoint_ids"]),
+-            max(point_order[item] for item in representative["endpoint_ids"]),
+-            int(representative["branch_index"]),
+-            representative["source_id"],
+-            tuple(representative["coordinate_expressions"]),
+-        )
++        by_pair.setdefault(tuple(class_record["endpoint_pair"]), []).append(class_record)
++
++    endpoint_pair_skeleton = [
++        min(by_pair[pair_key], key=lambda item: item["class_sort_key"])
++        for pair_key in sorted(by_pair)
++    ]
++    endpoint_pair_skeleton.sort(key=lambda item: item["class_sort_key"])
++    endpoint_pair_skeleton_ids = [item["path_class_id"] for item in endpoint_pair_skeleton]
+ 
+-    selected_source_line_ids = list(reduction["listed_source_line_ids"])
+-    selected_classes: list[dict[str, Any]] = []
+-    selected_class_indices: set[int] = set()
+-    for source_line_id in selected_source_line_ids:
+-        options = by_source_line.get(source_line_id)
+-        if not options:
+-            raise RuntimeError(f"missing candidate path class for intrinsic line family {source_line_id}")
+-        chosen = min(options, key=source_line_class_key)
+-        selected_classes.append(chosen)
+-        selected_class_indices.add(class_records.index(chosen))
+-
+-    selected_representatives = [item["representative"] for item in selected_classes]
+-    selected_rows = _stack_rows(selected_representatives)
++    selected_classes = list(endpoint_pair_skeleton)
++    selected_rows = _stack_rows([item["representative"] for item in selected_classes])
+     selected_rank = _row_rank(selected_rows)
++    endpoint_pair_skeleton_rank = selected_rank
+ 
+-    redundant_classes: list[dict[str, Any]] = []
+-    for class_index, class_record in enumerate(class_records, start=1):
+-        path_class_id = f"PCLASS{class_index:02d}"
++    augmentation_classes: list[dict[str, Any]] = []
++    if selected_rank < target_rank:
++        for class_record in class_records:
++            if class_record["path_class_id"] in endpoint_pair_skeleton_ids:
++                continue
++            before_rank, after_rank = _rows_rank_after_append(
++                selected_rows,
++                class_record["representative"]["global_matrix_rows"],
++            )
++            if after_rank > before_rank:
++                selected_classes.append(class_record)
++                augmentation_classes.append(class_record)
++                selected_rows.extend(class_record["representative"]["global_matrix_rows"])
++                selected_rank = after_rank
++            if selected_rank == target_rank:
++                break
++
++    if selected_rank != target_rank:
++        raise RuntimeError(
++            "final point/path reduction failed to span the full candidate row language "
++            f"(selected_rank={selected_rank}, target_rank={target_rank})"
++        )
++
++    selected_class_ids = {item["path_class_id"] for item in selected_classes}
++    augmentation_class_ids = {item["path_class_id"] for item in augmentation_classes}
++    pair_selection_count: dict[tuple[str, str], int] = {}
++    for class_record in selected_classes:
++        pair_key = tuple(class_record["endpoint_pair"])
++        pair_selection_count[pair_key] = pair_selection_count.get(pair_key, 0) + 1
++
++    path_classes: list[dict[str, Any]] = []
++    for class_record in class_records:
++        path_class_id = class_record["path_class_id"]
+         representative = dict(class_record["representative"])
+-        representative["path_class_id"] = path_class_id
+-        representative["path_class_candidate_count"] = len(class_record["candidate_records"])
+         class_rows = representative["global_matrix_rows"]
+         contained = _row_rank(selected_rows + class_rows) == selected_rank
+-        payload = {
+-            "path_class_id": path_class_id,
+-            "endpoint_pair": list(class_record["endpoint_pair"]),
+-            "selected_as_final": class_index - 1 in selected_class_indices,
+-            "path_class_candidate_count": len(class_record["candidate_records"]),
+-            "candidate_ids": [item["candidate_id"] for item in class_record["candidate_records"]],
+-            "representative_candidate_id": representative["candidate_id"],
+-            "representative_source_line_id": representative["source_line_id"],
+-            "representative_source_kind": representative["source_kind"],
+-            "representative_source_id": representative["source_id"],
+-            "representative_branch_index": int(representative["branch_index"]),
+-            "line_group_signature": representative["line_group_signature"],
+-            "endpoint_decomposition_signature": representative["endpoint_decomposition_signature"],
+-            "local_row_space_signature": representative["local_row_space_signature"],
+-            "global_row_space_signature": representative["global_row_space_signature"],
+-            "phase_aware_profile_used": representative["phase_aware_profile_used"],
+-            "phase_aware_refinement_signature": representative["phase_aware_refinement_signature"],
+-            "row_space_contained_in_selected_span": contained,
+-            "candidate_records": class_record["candidate_records"],
+-        }
+-        if payload["selected_as_final"]:
+-            payload["selection_reason"] = (
+-                "Selected as the canonical primitive representative of its intrinsic "
+-                "special-line family: shortest boundary interval first, then listed-line "
+-                "priority, then branch simplicity."
++        selection_stage = (
++            "full_span_augmentation"
++            if path_class_id in augmentation_class_ids
++            else (
++                "endpoint_pair_skeleton"
++                if path_class_id in selected_class_ids
++                else "discarded"
++            )
++        )
++        pair_key = tuple(class_record["endpoint_pair"])
++        if selection_stage == "endpoint_pair_skeleton":
++            if pair_selection_count[pair_key] > 1:
++                selection_reason = (
++                    "Selected first as the canonical endpoint-pair skeleton representative, "
++                    "then retained in the published shell together with an additional "
++                    "same-endpoint path class because the skeleton alone did not span the "
++                    "full candidate row language."
++                )
++            else:
++                selection_reason = (
++                    "Selected as the canonical endpoint-pair skeleton representative: "
++                    "shortest primitive segment first, then listed-line priority, then "
++                    "branch simplicity."
++                )
++        elif selection_stage == "full_span_augmentation":
++            rank_before, rank_after = _rows_rank_after_append(
++                _stack_rows([item["representative"] for item in endpoint_pair_skeleton]),
++                class_rows,
++            )
++            selection_reason = (
++                "Added after the canonical endpoint-pair skeleton because it contributes "
++                f"independent row language not present in the skeleton span (rank {rank_before} -> {rank_after})."
+             )
+-            selected_classes[selected_source_line_ids.index(representative["source_line_id"])] = payload
+         else:
+-            payload["selection_reason"] = (
+-                "Discarded because another strong path class on the same intrinsic "
+-                "special-line family provides the canonical primitive segment used for "
+-                "the final published object."
++            selection_reason = (
++                "Discarded because the published full-span selection already contains its "
++                "row language after endpoint-pair skeleton selection and rank-closing augmentation."
+             )
+-            redundant_classes.append(payload)
++        path_classes.append(
++            {
++                "path_class_id": path_class_id,
++                "endpoint_pair": list(class_record["endpoint_pair"]),
++                "selected_as_final": path_class_id in selected_class_ids,
++                "path_class_candidate_count": len(class_record["candidate_records"]),
++                "candidate_ids": [item["candidate_id"] for item in class_record["candidate_records"]],
++                "representative_candidate_id": representative["candidate_id"],
++                "representative_source_line_id": representative["source_line_id"],
++                "representative_source_kind": representative["source_kind"],
++                "representative_source_id": representative["source_id"],
++                "representative_branch_index": int(representative["branch_index"]),
++                "line_group_signature": representative["line_group_signature"],
++                "endpoint_decomposition_signature": representative["endpoint_decomposition_signature"],
++                "local_row_space_signature": representative["local_row_space_signature"],
++                "global_row_space_signature": representative["global_row_space_signature"],
++                "phase_aware_profile_used": representative["phase_aware_profile_used"],
++                "phase_aware_refinement_signature": representative["phase_aware_refinement_signature"],
++                "selection_stage": selection_stage,
++                "selection_reason": selection_reason,
++                "row_space_contained_in_selected_span": contained,
++                "candidate_records": class_record["candidate_records"],
++            }
++        )
+ 
++    path_class_payload_by_id = {payload["path_class_id"]: payload for payload in path_classes}
+     ordered_selected = sorted(
+-        selected_classes,
++        [path_class_payload_by_id[class_record["path_class_id"]] for class_record in selected_classes],
+         key=lambda item: _final_path_sort_key(item["candidate_records"][0], point_order),
+     )
+     final_line_specs: list[dict[str, Any]] = []
+     kept_paths: list[dict[str, Any]] = []
+-    selected_class_map = {item["path_class_id"]: item for item in selected_classes}
+     running_rows: list[list[int]] = []
+     for index, class_payload in enumerate(ordered_selected, start=1):
+-        representative = dict(selected_class_map[class_payload["path_class_id"]]["candidate_records"][0])
++        representative = dict(class_payload["candidate_records"][0])
+         final_path_id = f"FPATH{index:02d}"
+         before_rank = _row_rank(running_rows)
+         running_rows.extend(representative["global_matrix_rows"])
+@@ -722,6 +814,7 @@ def analyze_candidate_path_selection(
+         representative["final_path_id"] = final_path_id
+         representative["selection_status"] = "kept_final_representative"
+         representative["selection_reason"] = class_payload["selection_reason"]
++        representative["selection_stage"] = class_payload["selection_stage"]
+         representative["rank_gain_within_final_order"] = after_rank - before_rank
+         representative["path_class_id"] = class_payload["path_class_id"]
+         kept_paths.append(representative)
+@@ -732,7 +825,7 @@ def analyze_candidate_path_selection(
+         item["candidate_records"][0]["candidate_id"]
+         for item in ordered_selected
+     }
+-    for class_payload in selected_classes + redundant_classes:
++    for class_payload in path_classes:
+         representative_id = class_payload["representative_candidate_id"]
+         for record in class_payload["candidate_records"]:
+             dropped = dict(record)
+@@ -760,13 +853,23 @@ def analyze_candidate_path_selection(
+     )
+     return {
+         "candidate_path_records": list(candidate_records),
+-        "path_classes": selected_classes + redundant_classes,
++        "path_classes": path_classes,
+         "selected_path_classes": ordered_selected,
+-        "redundant_path_classes": redundant_classes,
+-        "selected_source_line_ids": selected_source_line_ids,
++        "redundant_path_classes": [payload for payload in path_classes if not payload["selected_as_final"]],
++        "selection_policy": (
++            "canonical endpoint-pair skeleton first, then deterministic rank-closing "
++            "augmentation classes until the full candidate row language is spanned"
++        ),
++        "endpoint_pair_skeleton_path_class_ids": endpoint_pair_skeleton_ids,
++        "endpoint_pair_skeleton_row_rank": endpoint_pair_skeleton_rank,
++        "selection_augmentation_path_class_ids": [item["path_class_id"] for item in augmentation_classes],
++        "selected_source_line_ids": [item["representative"]["source_line_id"] for item in selected_classes],
+         "target_row_rank": target_rank,
+         "selected_row_rank": selected_rank,
+         "selected_rows_span_full_candidate_row_language": selected_rank == target_rank,
++        "target_unique_endpoint_pair_count": len(by_pair),
++        "selected_unique_endpoint_pairs": [list(pair) for pair in _unique_endpoint_pair_keys(kept_paths)],
++        "selected_unique_endpoint_pair_count": len(_unique_endpoint_pair_keys(kept_paths)),
+         "final_point_ids": final_point_ids,
+         "final_line_specs": final_line_specs,
+         "kept_paths": kept_paths,
+@@ -779,16 +882,23 @@ def finalize_reduction_from_candidate_analysis(
+     analysis: dict[str, Any],
+ ) -> dict[str, Any]:
+     reduction = dict(reduction)
+-    reduction["reduction_kind"] = "automatic_reduced_final_point_path_shell_v2"
++    reduction["reduction_kind"] = "automatic_reduced_final_point_path_shell_v3_fullspan_augmented"
+     reduction["path_class_count"] = len(analysis["path_classes"])
+     reduction["selected_path_class_count"] = len(analysis["selected_path_classes"])
+     reduction["candidate_path_records"] = analysis["candidate_path_records"]
+     reduction["path_classes"] = analysis["path_classes"]
++    reduction["selection_policy"] = analysis["selection_policy"]
++    reduction["endpoint_pair_skeleton_path_class_ids"] = analysis["endpoint_pair_skeleton_path_class_ids"]
++    reduction["endpoint_pair_skeleton_row_rank"] = analysis["endpoint_pair_skeleton_row_rank"]
++    reduction["selection_augmentation_path_class_ids"] = analysis["selection_augmentation_path_class_ids"]
+     reduction["target_row_rank"] = analysis["target_row_rank"]
+     reduction["selected_row_rank"] = analysis["selected_row_rank"]
+     reduction["selected_rows_span_full_candidate_row_language"] = analysis[
+         "selected_rows_span_full_candidate_row_language"
+     ]
++    reduction["target_unique_endpoint_pair_count"] = analysis["target_unique_endpoint_pair_count"]
++    reduction["selected_unique_endpoint_pairs"] = analysis["selected_unique_endpoint_pairs"]
++    reduction["selected_unique_endpoint_pair_count"] = analysis["selected_unique_endpoint_pair_count"]
+     reduction["final_point_ids"] = analysis["final_point_ids"]
+     reduction["kept_paths"] = analysis["kept_paths"]
+     reduction["discarded_paths"] = analysis["discarded_paths"]
+@@ -839,8 +949,11 @@ def build_reduction_report_markdown(reduction: dict[str, Any]) -> str:
+         f"- Raw grouped points / lines / planes: `{reduction['raw_counts']['grouped_point_count']}` / `{reduction['raw_counts']['grouped_line_count']}` / `{reduction['raw_counts']['grouped_plane_count']}`.",
+         f"- Candidate paths enumerated: `{reduction['raw_counts']['candidate_path_count']}`.",
+         f"- Candidate path classes after strong signature collapse: `{reduction['raw_counts']['path_class_count']}`.",
++        f"- Canonical endpoint-pair skeleton row rank: `{reduction['endpoint_pair_skeleton_row_rank']}`.",
++        f"- Full candidate row-language target rank: `{reduction['target_row_rank']}`.",
+         f"- Final kept paths: `{reduction['raw_counts']['kept_final_path_count']}`.",
+         f"- Discarded candidate rows / duplicates: `{reduction['raw_counts']['discarded_duplicate_path_count']}`.",
++        f"- Selection augmentation path classes: `{reduction['selection_augmentation_path_class_ids']}`.",
+         "",
+         "## Final Point Shell",
+         "",
+@@ -865,7 +978,7 @@ def build_reduction_report_markdown(reduction: dict[str, Any]) -> str:
+             "- "
+             + f"`{segment['final_path_id']}`: `{segment['endpoint_ids'][0]} -> {segment['endpoint_ids'][1]}` "
+             + f"from `{segment['source_line_id']}` branch `{segment['coordinate_expressions']}` "
+-            + f"(class `{segment['path_class_id']}`, rank gain `{segment['rank_gain_within_final_order']}`); "
++            + f"(class `{segment['path_class_id']}`, stage `{segment['selection_stage']}`, rank gain `{segment['rank_gain_within_final_order']}`); "
+             + f"reason: {segment['selection_reason']}"
+         )
+     if reduction["discarded_paths"]:
+@@ -888,15 +1001,18 @@ def compare_reduction_to_expected_pairs(
+ ) -> dict[str, Any]:
+     actual_point_ids = list(reduction["final_point_ids"])
+     actual_pairs = sorted(tuple(sorted(segment["endpoint_pair"])) for segment in reduction["kept_paths"])
++    actual_unique_pairs = sorted(set(actual_pairs))
+     expected_pairs_sorted = sorted(tuple(sorted(pair)) for pair in expected_endpoint_pairs)
+     return {
+         "actual_point_ids": actual_point_ids,
+         "expected_point_ids": list(expected_point_ids),
+         "actual_path_pairs": [list(pair) for pair in actual_pairs],
++        "actual_unique_path_pairs": [list(pair) for pair in actual_unique_pairs],
+         "expected_path_pairs": [list(pair) for pair in expected_pairs_sorted],
+         "point_ids_match": actual_point_ids == list(expected_point_ids),
+         "point_count_match": len(actual_point_ids) == len(expected_point_ids),
+         "path_pair_set_match": actual_pairs == expected_pairs_sorted,
++        "unique_path_pair_set_match": actual_unique_pairs == expected_pairs_sorted,
+         "path_count_match": len(actual_pairs) == len(expected_endpoint_pairs),
+     }
+ 
+@@ -909,11 +1025,13 @@ def build_expected_check_markdown(check: dict[str, Any]) -> str:
+         f"- Point id order match: `{check['point_ids_match']}`.",
+         f"- Path count match: `{check['path_count_match']}`.",
+         f"- Path pair set match: `{check['path_pair_set_match']}`.",
++        f"- Unique path pair set match: `{check['unique_path_pair_set_match']}`.",
+         "",
+         "## Actual",
+         "",
+         f"- Final point ids: `{check['actual_point_ids']}`.",
+         f"- Final path endpoint pairs: `{check['actual_path_pairs']}`.",
++        f"- Final unique endpoint-pair set: `{check['actual_unique_path_pairs']}`.",
+         "",
+         "## Expected",
+         "",
+@@ -949,6 +1067,7 @@ def build_final_path_signature_report(
+                 "phase_aware_refinement_signature": segment["phase_aware_refinement_signature"],
+                 "local_row_space_signature": segment["local_row_space_signature"],
+                 "global_row_space_signature": segment["global_row_space_signature"],
++                "selection_stage": segment["selection_stage"],
+                 "selection_reason": segment["selection_reason"],
+                 "rank_gain_within_final_order": int(segment["rank_gain_within_final_order"]),
+             }
+@@ -975,6 +1094,7 @@ def build_final_path_signature_markdown(report: dict[str, Any]) -> str:
+                 f"- Endpoint pair: `{path['endpoint_pair']}`.",
+                 f"- Line little-group signature: `{path['line_group_signature']}`.",
+                 f"- Phase-aware profile: `{path['phase_aware_profile_used']}`.",
++                f"- Selection stage: `{path['selection_stage']}`.",
+                 f"- Local row-space signature: rank `{path['local_row_space_signature']['row_rank']}` over `{path['local_row_space_signature']['row_count']}` rows; Smith diagonal `{path['local_row_space_signature']['smith_diagonal']}`.",
+                 f"- Global row-space signature: rank `{path['global_row_space_signature']['row_rank']}` over `{path['global_row_space_signature']['row_count']}` rows; Smith diagonal `{path['global_row_space_signature']['smith_diagonal']}`.",
+                 f"- Rank gain inside final order: `{path['rank_gain_within_final_order']}`.",
+@@ -1026,6 +1146,7 @@ def build_final_path_candidate_equivalence_report(
+                 "local_row_space_signature": class_payload["local_row_space_signature"],
+                 "global_row_space_signature": class_payload["global_row_space_signature"],
+                 "phase_aware_profile_used": class_payload["phase_aware_profile_used"],
++                "selection_stage": class_payload["selection_stage"],
+                 "row_space_contained_in_selected_span": class_payload["row_space_contained_in_selected_span"],
+             }
+         )
+@@ -1034,10 +1155,16 @@ def build_final_path_candidate_equivalence_report(
+         entry = by_pair[pair_key]
+         if len(entry["candidate_path_classes"]) == 1:
+             verdict = "All candidates collapse to one strong path class."
++        elif sum(int(item["selected_as_final"]) for item in entry["candidate_path_classes"]) > 1:
++            verdict = (
++                "Multiple strong path classes share this endpoint pair, and more than one "
++                "must be retained because the endpoint-pair skeleton alone does not span "
++                "the full candidate row language."
++            )
+         else:
+             verdict = (
+                 "Multiple strong path classes share this endpoint pair; only classes whose "
+-                "row language is needed in the canonical full-span subset are kept."
++                "row language is already contained in the published full-span shell are discarded."
+             )
+         entry["pair_verdict"] = verdict
+         report_pairs.append(entry)
+@@ -1075,6 +1202,7 @@ def build_final_path_candidate_equivalence_markdown(report: dict[str, Any]) -> s
+                 + f"(candidate `{path_class['representative_candidate_id']}`) selected = "
+                 + f"`{path_class['selected_as_final']}`; row-space rank "
+                 + f"`{path_class['global_row_space_signature']['row_rank']}`; "
++                + f"selection stage = `{path_class['selection_stage']}`; "
+                 + f"contained in selected span = `{path_class['row_space_contained_in_selected_span']}`; "
+                 + f"reason: {path_class['selection_reason']}"
+             )
+@@ -1092,27 +1220,37 @@ def build_final_bs_strong_equivalence_report(
+     selected_source_line_ids = [segment["source_line_id"] for segment in reduction["kept_paths"]]
+     expected_source_line_ids = list(reduction["listed_source_line_ids"])
+     source_line_family_match = sorted(selected_source_line_ids) == sorted(expected_source_line_ids)
++    selected_unique_endpoint_pair_count = len({tuple(segment["endpoint_pair"]) for segment in reduction["kept_paths"]})
++    target_unique_endpoint_pair_count = int(reduction["target_unique_endpoint_pair_count"])
+     pass_flag = (
+-        source_line_family_match
++        reduction["selected_rows_span_full_candidate_row_language"]
++        and reduction["selected_row_rank"] == reduction["target_row_rank"]
+         and len(reduction["final_point_ids"]) == 6
+-        and len(reduction["kept_paths"]) == 7
++        and selected_unique_endpoint_pair_count == target_unique_endpoint_pair_count
+         and not has_auxiliary_unknowns
+     )
+     return {
+         "selection_algorithm": (
+-            "one canonical primitive segment for each intrinsic listed special-line family, "
+-            "chosen after collapsing orbit-equivalent candidate classes by little-group, "
+-            "restriction, and row-language signatures"
++            reduction.get(
++                "selection_policy",
++                "canonical endpoint-pair skeleton plus deterministic full-span augmentation",
++            )
+         ),
+         "candidate_path_count": reduction["raw_counts"]["candidate_path_count"],
+         "candidate_path_class_count": reduction["path_class_count"],
+         "selected_path_count": len(reduction["kept_paths"]),
+         "selected_point_count": len(reduction["final_point_ids"]),
++        "endpoint_pair_skeleton_path_class_ids": list(reduction.get("endpoint_pair_skeleton_path_class_ids", [])),
++        "endpoint_pair_skeleton_row_rank": int(reduction.get("endpoint_pair_skeleton_row_rank", 0)),
++        "selection_augmentation_path_class_ids": list(reduction.get("selection_augmentation_path_class_ids", [])),
+         "target_row_rank": reduction["target_row_rank"],
+         "selected_row_rank": reduction["selected_row_rank"],
+         "selected_rows_span_full_candidate_row_language": reduction[
+             "selected_rows_span_full_candidate_row_language"
+         ],
++        "target_unique_endpoint_pair_count": target_unique_endpoint_pair_count,
++        "selected_unique_endpoint_pair_count": selected_unique_endpoint_pair_count,
++        "selected_unique_endpoint_pairs": list(reduction.get("selected_unique_endpoint_pairs", [])),
+         "expected_source_line_ids": expected_source_line_ids,
+         "selected_source_line_ids_match_intrinsic_line_families": source_line_family_match,
+         "published_unknown_count": len(unknown_ordering),
+@@ -1135,9 +1273,12 @@ def build_final_bs_strong_equivalence_markdown(report: dict[str, Any]) -> str:
+             f"- Selection algorithm: {report['selection_algorithm']}.",
+             f"- Candidate paths / path classes: `{report['candidate_path_count']}` / `{report['candidate_path_class_count']}`.",
+             f"- Selected final points / paths: `{report['selected_point_count']}` / `{report['selected_path_count']}`.",
++            f"- Endpoint-pair skeleton path classes / rank: `{report['endpoint_pair_skeleton_path_class_ids']}` / `{report['endpoint_pair_skeleton_row_rank']}`.",
++            f"- Full-span augmentation path classes: `{report['selection_augmentation_path_class_ids']}`.",
+             f"- Target row rank: `{report['target_row_rank']}`.",
+             f"- Selected row rank: `{report['selected_row_rank']}`.",
+             f"- Selected rows span full candidate row language: `{report['selected_rows_span_full_candidate_row_language']}`.",
++            f"- Selected unique endpoint pairs / target unique endpoint pairs: `{report['selected_unique_endpoint_pair_count']}` / `{report['target_unique_endpoint_pair_count']}`.",
+             f"- Expected source line ids: `{report['expected_source_line_ids']}`.",
+             f"- Selected source line ids match intrinsic line families: `{report['selected_source_line_ids_match_intrinsic_line_families']}`.",
+             f"- Published unknown count: `{report['published_unknown_count']}`.",
+@@ -1148,3 +1289,98 @@ def build_final_bs_strong_equivalence_markdown(report: dict[str, Any]) -> str:
+             f"- Strong equivalence pass: `{report['bs_strong_equivalence_pass']}`.",
+         ]
+     )
++
++
++def build_missing_row_language_witness_report(
++    reduction: dict[str, Any],
++) -> dict[str, Any]:
++    path_classes = {
++        payload["path_class_id"]: payload
++        for payload in reduction.get("path_classes", [])
++    }
++    pair_skeleton_ids = list(reduction.get("endpoint_pair_skeleton_path_class_ids", []))
++    augmentation_ids = list(reduction.get("selection_augmentation_path_class_ids", []))
++    pair_skeleton_records = [
++        path_classes[path_class_id]["candidate_records"][0]
++        for path_class_id in pair_skeleton_ids
++    ]
++    target_records = [
++        payload["candidate_records"][0]
++        for payload in reduction.get("path_classes", [])
++    ]
++    pair_skeleton_rows = _stack_rows(pair_skeleton_records)
++    target_rows = _stack_rows(target_records)
++    witness_entries = []
++    running_rows = list(pair_skeleton_rows)
++    for augmentation_order, path_class_id in enumerate(augmentation_ids, start=1):
++        payload = path_classes[path_class_id]
++        representative = payload["candidate_records"][0]
++        row_index, row_record, rank_before, rank_after = _first_rank_gaining_row_record(
++            running_rows,
++            representative.get("global_matrix_row_records", []),
++        )
++        witness_entries.append(
++            {
++                "augmentation_order": augmentation_order,
++                "path_class_id": path_class_id,
++                "source_line_id": payload["representative_source_line_id"],
++                "candidate_id": payload["representative_candidate_id"],
++                "endpoint_pair": list(payload["endpoint_pair"]),
++                "basis_id": None if row_record is None else row_record["basis_id"],
++                "row_kind": None if row_record is None else row_record["row_kind"],
++                "row_index_within_candidate_block": row_index,
++                "rank_before": rank_before,
++                "rank_after": rank_after,
++                "witness_row": None if row_record is None else list(row_record["matrix_row"]),
++                "witness_in_previous_span": row_record is None,
++            }
++        )
++        running_rows.extend(representative["global_matrix_rows"])
++    return {
++        "baseline_selection_kind": "canonical_endpoint_pair_skeleton",
++        "baseline_selected_path_class_ids": pair_skeleton_ids,
++        "baseline_selected_row_rank": int(reduction.get("endpoint_pair_skeleton_row_rank", 0)),
++        "published_selected_path_class_ids": [segment["path_class_id"] for segment in reduction.get("kept_paths", [])],
++        "published_selected_row_rank": int(reduction.get("selected_row_rank", 0)),
++        "target_row_rank": int(reduction.get("target_row_rank", 0)),
++        "missing_rank_before_augmentation": int(reduction.get("target_row_rank", 0)) - int(
++            reduction.get("endpoint_pair_skeleton_row_rank", 0)
++        ),
++        "augmentation_path_class_ids": augmentation_ids,
++        "augmentation_witnesses": witness_entries,
++        "baseline_rref_basis_rows": _rref_basis_rows(pair_skeleton_rows),
++        "published_rref_basis_rows": _rref_basis_rows(_stack_rows(reduction.get("kept_paths", []))),
++        "target_rref_basis_rows": _rref_basis_rows(target_rows),
++        "published_selection_resolves_gap": bool(reduction.get("selected_rows_span_full_candidate_row_language")),
++    }
++
++
++def build_missing_row_language_witness_markdown(report: dict[str, Any]) -> str:
++    lines = [
++        "# Missing Row-Language Witness Report",
++        "",
++        f"- Baseline selection kind: `{report['baseline_selection_kind']}`.",
++        f"- Baseline selected path classes: `{report['baseline_selected_path_class_ids']}`.",
++        f"- Baseline selected row rank: `{report['baseline_selected_row_rank']}`.",
++        f"- Target row rank: `{report['target_row_rank']}`.",
++        f"- Missing rank before augmentation: `{report['missing_rank_before_augmentation']}`.",
++        f"- Augmentation path classes: `{report['augmentation_path_class_ids']}`.",
++        f"- Published selection resolves the gap: `{report['published_selection_resolves_gap']}`.",
++        "",
++    ]
++    for witness in report["augmentation_witnesses"]:
++        lines.extend(
++            [
++                f"## {witness['path_class_id']}",
++                "",
++                f"- Source line id: `{witness['source_line_id']}`.",
++                f"- Endpoint pair: `{witness['endpoint_pair']}`.",
++                f"- Candidate id: `{witness['candidate_id']}`.",
++                f"- Witness basis id / row kind / row index: `{witness['basis_id']}` / `{witness['row_kind']}` / `{witness['row_index_within_candidate_block']}`.",
++                f"- Rank before / after adding the witness row: `{witness['rank_before']}` / `{witness['rank_after']}`.",
++                f"- Witness row already in previous span: `{witness['witness_in_previous_span']}`.",
++                f"- Witness row: `{witness['witness_row']}`.",
++                "",
++            ]
++        )
++    return "\n".join(lines)
