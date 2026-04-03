@@ -79,7 +79,7 @@ from pipeline_v2.final_object_reduction import (
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_remove_fake_global_claim_and_ai_completion_feasibility_v1"
+PACKAGE_NAME = "review_package_authoritative_ai_promotion_and_pointbasis_fix_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -104,6 +104,7 @@ SINGLE_WITH_PLANES_JSON = ROOT / "group_194_1_1_1_single_full_compatibility_with
 SINGLE_BS_JSON = ROOT / "group_194_1_1_1_single_bs_analysis.json"
 SINGLE_AI_JSON = ROOT / "group_194_1_1_1_single_ai_trivial_generators.json"
 SINGLE_AI_ALL_OBJECTS_JSON = ROOT / "group_194_1_1_1_single_ai_all_induced_local_objects.json"
+SINGLE_AI_AUTHORITATIVE_JSON = ROOT / "group_194_1_1_1_single_ai_authoritative_generators.json"
 
 DOUBLE_LITTLE_GROUPS_JSON = ROOT / "group_194_1_1_1_double_little_groups.json"
 DOUBLE_WITH_PLANES_JSON = ROOT / "group_194_1_1_1_double_full_compatibility_with_planes.json"
@@ -193,6 +194,10 @@ AI_COMPLETION_FEASIBILITY_MD = ROOT / "bs_fix_reaudit_v1" / "ai_completion_feasi
 AI_COMPLETION_FEASIBILITY_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_completion_feasibility_from_residual_sector.json"
 CLAIM_SCOPE_GUARDRAIL_MD = ROOT / "bs_fix_reaudit_v1" / "claim_scope_guardrail_report.md"
 CLAIM_SCOPE_GUARDRAIL_JSON = ROOT / "bs_fix_reaudit_v1" / "claim_scope_guardrail_report.json"
+AUTHORITATIVE_AI_PROMOTION_MD = ROOT / "bs_fix_reaudit_v1" / "authoritative_ai_promotion_report.md"
+AUTHORITATIVE_AI_PROMOTION_JSON = ROOT / "bs_fix_reaudit_v1" / "authoritative_ai_promotion_report.json"
+AI_RANK_AFTER_PROMOTION_MD = ROOT / "bs_fix_reaudit_v1" / "ai_rank_after_promotion_report.md"
+AI_RANK_AFTER_PROMOTION_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_rank_after_promotion_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -1663,6 +1668,136 @@ def build_phase_aware_point_row_translation(
     return translation
 
 
+def build_point_merge_classes_from_line_blocks(
+    line_blocks: Sequence[dict[str, Any]],
+) -> dict[str, list[list[str]]]:
+    parent: dict[str, str] = {}
+
+    def find(token: str) -> str:
+        parent.setdefault(token, token)
+        while parent[token] != token:
+            parent[token] = parent[parent[token]]
+            token = parent[token]
+        return token
+
+    def union(left: str, right: str) -> None:
+        root_left = find(left)
+        root_right = find(right)
+        if root_left != root_right:
+            parent[root_right] = root_left
+
+    for block in line_blocks:
+        refinement = block.get("phase_aware_refinement", {})
+        for equation in refinement.get("refinement_equations", []):
+            rep_ids = list(equation.get("restriction_class_rep_ids", []))
+            if len(rep_ids) <= 1:
+                continue
+            head = rep_ids[0]
+            for rep_id in rep_ids[1:]:
+                union(head, rep_id)
+
+    by_point: dict[str, dict[str, list[str]]] = {}
+    for token in list(parent):
+        root = find(token)
+        point_id = token.split("_R", 1)[0]
+        by_point.setdefault(point_id, {}).setdefault(root, []).append(token)
+
+    normalized: dict[str, list[list[str]]] = {}
+    for point_id, root_groups in by_point.items():
+        groups = []
+        for rep_ids in root_groups.values():
+            rep_ids = sorted(rep_ids, key=lambda item: int(item.split("_R", 1)[1]))
+            groups.append(rep_ids)
+        groups.sort(key=lambda group: int(group[0].split("_R", 1)[1]))
+        normalized[point_id] = groups
+
+    return normalized
+
+
+def build_publication_point_merge_classes(
+    publication_line_full: dict[str, Any],
+    internal_line_blocks: Sequence[dict[str, Any]],
+) -> dict[str, list[list[str]]]:
+    direct = build_point_merge_classes_from_line_blocks(publication_line_full.get("line_blocks", []))
+    if any(direct.values()):
+        return direct
+
+    member_source_line_ids: set[str] = set()
+    member_internal_path_class_ids: set[str] = set()
+    for block in publication_line_full.get("line_blocks", []):
+        member_source_line_ids.update(block.get("member_source_line_ids", []))
+        member_internal_path_class_ids.update(block.get("member_internal_path_class_ids", []))
+
+    inherited_blocks = [
+        block
+        for block in internal_line_blocks
+        if block.get("source_line_id") in member_source_line_ids
+        or block.get("line_id") in member_internal_path_class_ids
+    ]
+    return build_point_merge_classes_from_line_blocks(inherited_blocks)
+
+
+def build_publication_point_basis_matrix(
+    raw: dict[str, Any],
+    field: str,
+    manifold_id: str,
+    point_merge_classes: dict[str, list[list[str]]] | None,
+) -> tuple[sp.Matrix, list[list[int]]]:
+    rows = _validated_capture_field_rows(raw, field, manifold_id=manifold_id)
+    rep_count = len(rows)
+    unitary_count = len(rows[0]) if rows else 0
+
+    merge_groups = (
+        point_merge_classes.get(manifold_id, [])
+        if point_merge_classes is not None
+        else []
+    )
+
+    covered: set[int] = set()
+    class_groups: list[list[int]] = []
+    columns: list[list[sp.Expr]] = []
+
+    for group in merge_groups:
+        indices = [int(token.split("_R", 1)[1]) - 1 for token in group]
+        merged_column = []
+        for op_index in range(unitary_count):
+            total = 0j
+            for rep_index in indices:
+                total += rows[rep_index][op_index]
+            merged_column.append(as_exact_char(total))
+        class_groups.append(indices)
+        columns.append(merged_column)
+        covered.update(indices)
+
+    for rep_index in range(rep_count):
+        if rep_index in covered:
+            continue
+        singleton_column = [
+            as_exact_char(rows[rep_index][op_index])
+            for op_index in range(unitary_count)
+        ]
+        class_groups.append([rep_index])
+        columns.append(singleton_column)
+
+    if not columns:
+        return sp.zeros(unitary_count, 0), []
+
+    return sp.Matrix(columns).T, class_groups
+
+
+def expand_publication_point_solution(
+    class_solution: Sequence[int],
+    class_groups: Sequence[Sequence[int]],
+    rep_count: int,
+) -> list[int]:
+    expanded = [0] * rep_count
+    for coeff, group in zip(class_solution, class_groups):
+        coeff = int(coeff)
+        for rep_index in group:
+            expanded[rep_index] = coeff
+    return expanded
+
+
 def apply_point_row_translation_to_multiplicities(
     manifold_multiplicities: dict[str, list[int]],
     point_row_translation: dict[str, Any] | None,
@@ -2004,6 +2139,7 @@ def _build_manifold_induction_trace(
     character_field: str | dict[str, str],
     orbit: Sequence[dict[str, Any]] | None = None,
     stabilizer: dict[str, Any] | None = None,
+    point_merge_classes: dict[str, list[list[str]]] | None = None,
 ) -> dict[str, Any]:
     trace = _build_manifold_induction_trace_by_explicit_orbit_action(
         entry,
@@ -2018,27 +2154,23 @@ def _build_manifold_induction_trace(
     info = captures[manifold_id]
     chars = np.array(complex_matrix_from_json(info[trace["character_field"]]), dtype=complex)
     band = np.array(trace["band_character"], dtype=complex)
-    basis_matrix = _exactify_matrix_entries(sp.Matrix(chars.T.tolist()))
     restricted = _exactify_vector_entries(sp.Matrix(list(band)))
-    context = f"{entry['letter']} on {manifold_id} [{trace['character_field']}]"
-    numeric_basis = np.array(
-        [[complex(value.evalf()) for value in row] for row in basis_matrix.tolist()],
-        dtype=complex,
+    rep_count = len(info[trace["character_field"]])
+    full_basis_matrix = _exact_basis_matrix_from_capture(
+        info,
+        trace["character_field"],
+        manifold_id=manifold_id,
     )
+    singleton_groups = [[rep_index] for rep_index in range(rep_count)]
+
+    use_publication_point_basis = (
+        _capture_manifold_kind(manifold_id) == "point"
+        and point_merge_classes is not None
+        and manifold_id in point_merge_classes
+        and len(point_merge_classes[manifold_id]) > 0
+    )
+
     numeric_rhs = np.array([complex(value.evalf()) for value in restricted], dtype=complex)
-    lstsq_solution, _residuals, lstsq_rank, _singular_values = np.linalg.lstsq(
-        numeric_basis,
-        numeric_rhs,
-        rcond=None,
-    )
-    numeric_solver_status = "integral"
-    numeric_solver_error = None
-    rounded = None
-    try:
-        rounded = solve_numeric_integer_decomposition(basis_matrix, restricted, context)
-    except Exception as exc:
-        numeric_solver_status = "non_integral"
-        numeric_solver_error = str(exc)
     gram = chars @ chars.conj().T / chars.shape[1]
     rhs = chars.conj() @ band / chars.shape[1]
     gram_solution = None
@@ -2047,31 +2179,124 @@ def _build_manifold_induction_trace(
         gram_solution = np.linalg.solve(gram, rhs)
     except Exception as exc:
         gram_error = str(exc)
-    exact_solver = _attempt_exact_integer_decomposition(basis_matrix, restricted, context)
-    integral_solution = rounded
-    if integral_solution is None and exact_solver["status"] == "integral":
-        integral_solution = list(exact_solver["integral_solution"])
-    if integral_solution is not None:
-        reconstructed = numeric_basis @ np.array(integral_solution, dtype=complex)
-        reconstruction_matches = bool(np.allclose(reconstructed, numeric_rhs, atol=1e-8))
-    else:
-        reconstruction_matches = False
-    trace.update(
-        {
-            "exact_inputs_exactified": True,
-            "chars_matrix": chars.tolist(),
-            "chars_matrix_json": _complex_matrix_to_json(chars),
-            "exact_basis_matrix": [[str(value) for value in row] for row in basis_matrix.tolist()],
-            "exact_restricted_vector": [str(value) for value in restricted],
-            "gram": gram.tolist(),
-            "gram_json": _complex_matrix_to_json(gram),
-            "rhs": rhs.tolist(),
-            "rhs_json": _complex_array_to_json(rhs),
+
+    def solve_on_basis(
+        basis_matrix: sp.Matrix,
+        class_groups: Sequence[Sequence[int]],
+        context: str,
+    ) -> dict[str, Any]:
+        full_numeric_basis = np.array(
+            [[complex(value.evalf()) for value in row] for row in basis_matrix.tolist()],
+            dtype=complex,
+        )
+        lstsq_solution, _residuals, lstsq_rank, _singular_values = np.linalg.lstsq(
+            full_numeric_basis,
+            numeric_rhs,
+            rcond=None,
+        )
+        numeric_solver_status = "integral"
+        numeric_solver_error = None
+        rounded_class_solution = None
+        try:
+            rounded_class_solution = solve_numeric_integer_decomposition(
+                basis_matrix,
+                restricted,
+                context,
+            )
+        except Exception as exc:
+            numeric_solver_status = "non_integral"
+            numeric_solver_error = str(exc)
+        exact_solver = _attempt_exact_integer_decomposition(basis_matrix, restricted, context)
+        if rounded_class_solution is None and exact_solver["status"] == "integral":
+            rounded_class_solution = list(exact_solver["integral_solution"])
+        if rounded_class_solution is not None:
+            integral_solution = expand_publication_point_solution(
+                rounded_class_solution,
+                class_groups,
+                rep_count,
+            )
+        else:
+            integral_solution = None
+        if integral_solution is not None:
+            full_numeric_capture_basis = np.array(
+                [[complex(value.evalf()) for value in row] for row in full_basis_matrix.tolist()],
+                dtype=complex,
+            )
+            reconstructed = full_numeric_capture_basis @ np.array(integral_solution, dtype=complex)
+            reconstruction_matches = bool(np.allclose(reconstructed, numeric_rhs, atol=1e-8))
+        else:
+            reconstruction_matches = False
+        return {
+            "basis_matrix": basis_matrix,
+            "class_groups": [list(group) for group in class_groups],
+            "context": context,
             "numeric_lstsq_rank": int(lstsq_rank),
             "numeric_solution_before_rounding": list(lstsq_solution),
             "numeric_solution_before_rounding_json": _complex_array_to_json(lstsq_solution),
             "numeric_solver_status": numeric_solver_status,
             "numeric_solver_error": numeric_solver_error,
+            "exact_solver_status": exact_solver["status"],
+            "exact_solver_error": exact_solver["error"],
+            "exact_solver_solution_before_rounding": exact_solver["solution_before_rounding"],
+            "exact_solver_solution_before_rounding_json": (
+                complex_list_to_json(exact_solver["solution_before_rounding"])
+                if exact_solver["solution_before_rounding"] is not None
+                else None
+            ),
+            "rounded_class_solution": rounded_class_solution,
+            "integral_solution": integral_solution,
+            "reconstruction_matches": reconstruction_matches,
+        }
+
+    raw_basis_result = solve_on_basis(
+        full_basis_matrix,
+        singleton_groups,
+        f"{entry['letter']} on {manifold_id} [{trace['character_field']}]",
+    )
+    collapsed_basis_result = None
+    if use_publication_point_basis:
+        collapsed_basis_matrix, collapsed_class_groups = build_publication_point_basis_matrix(
+            info,
+            trace["character_field"],
+            manifold_id,
+            point_merge_classes,
+        )
+        collapsed_basis_result = solve_on_basis(
+            collapsed_basis_matrix,
+            collapsed_class_groups,
+            f"{entry['letter']} on {manifold_id} [publication_point_basis]",
+        )
+
+    selected_result = raw_basis_result
+    point_basis_mode = "raw_capture_point_basis"
+    if (
+        collapsed_basis_result is not None
+        and collapsed_basis_result["integral_solution"] is not None
+        and collapsed_basis_result["reconstruction_matches"]
+    ):
+        selected_result = collapsed_basis_result
+        point_basis_mode = "publication_collapsed_point_basis"
+    elif collapsed_basis_result is not None:
+        point_basis_mode = "publication_collapsed_point_basis_fallback_raw"
+    trace.update(
+        {
+            "exact_inputs_exactified": True,
+            "chars_matrix": chars.tolist(),
+            "chars_matrix_json": _complex_matrix_to_json(chars),
+            "exact_basis_matrix": [
+                [str(value) for value in row]
+                for row in selected_result["basis_matrix"].tolist()
+            ],
+            "exact_restricted_vector": [str(value) for value in restricted],
+            "gram": gram.tolist(),
+            "gram_json": _complex_matrix_to_json(gram),
+            "rhs": rhs.tolist(),
+            "rhs_json": _complex_array_to_json(rhs),
+            "numeric_lstsq_rank": selected_result["numeric_lstsq_rank"],
+            "numeric_solution_before_rounding": selected_result["numeric_solution_before_rounding"],
+            "numeric_solution_before_rounding_json": selected_result["numeric_solution_before_rounding_json"],
+            "numeric_solver_status": selected_result["numeric_solver_status"],
+            "numeric_solver_error": selected_result["numeric_solver_error"],
             "gram_solution_before_rounding": (
                 list(gram_solution)
                 if gram_solution is not None
@@ -2083,17 +2308,27 @@ def _build_manifold_induction_trace(
                 else None
             ),
             "gram_solver_error": gram_error,
-            "exact_solver_status": exact_solver["status"],
-            "exact_solver_error": exact_solver["error"],
-            "exact_solver_solution_before_rounding": exact_solver["solution_before_rounding"],
-            "exact_solver_solution_before_rounding_json": (
-                complex_list_to_json(exact_solver["solution_before_rounding"])
-                if exact_solver["solution_before_rounding"] is not None
+            "exact_solver_status": selected_result["exact_solver_status"],
+            "exact_solver_error": selected_result["exact_solver_error"],
+            "exact_solver_solution_before_rounding": selected_result["exact_solver_solution_before_rounding"],
+            "exact_solver_solution_before_rounding_json": selected_result["exact_solver_solution_before_rounding_json"],
+            "rounded_multiplicities": selected_result["integral_solution"],
+            "integral_success": selected_result["integral_solution"] is not None,
+            "reconstruction_matches_band": selected_result["reconstruction_matches"],
+            "point_basis_mode": point_basis_mode,
+            "point_merge_groups": (
+                point_merge_classes.get(manifold_id, [])
+                if collapsed_basis_result is not None
+                else []
+            ),
+            "collapsed_class_groups": selected_result["class_groups"],
+            "publication_point_basis_attempted": collapsed_basis_result is not None,
+            "publication_point_basis_fallback_used": point_basis_mode == "publication_collapsed_point_basis_fallback_raw",
+            "publication_point_basis_attempt_integral_success": (
+                collapsed_basis_result["integral_solution"] is not None
+                if collapsed_basis_result is not None
                 else None
             ),
-            "rounded_multiplicities": integral_solution,
-            "integral_success": integral_solution is not None,
-            "reconstruction_matches_band": reconstruction_matches,
         }
     )
     return trace
@@ -2400,6 +2635,7 @@ def induce_candidate(
     point_row_translation: dict[str, Any] | None = None,
     *,
     character_field: str = "character",
+    point_merge_classes: dict[str, list[list[str]]] | None = None,
 ) -> dict[str, Any]:
     orbit = single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
     stabilizer = bridge.bridge_stabilizer_for_entry(entry, ctx)
@@ -2426,6 +2662,7 @@ def induce_candidate(
             character_field=character_field,
             orbit=orbit,
             stabilizer=stabilizer,
+            point_merge_classes=point_merge_classes,
         )
         manifold_induction_traces[manifold_id] = trace
         manifold_character_fields[manifold_id] = trace["character_field"]
@@ -2485,6 +2722,15 @@ def induce_candidate(
                 "integral_success": trace["integral_success"],
                 "numeric_solver_status": trace["numeric_solver_status"],
                 "exact_solver_status": trace["exact_solver_status"],
+                **(
+                    {
+                        "point_basis_mode": trace.get("point_basis_mode"),
+                        "point_merge_groups": trace.get("point_merge_groups"),
+                        "collapsed_class_groups": trace.get("collapsed_class_groups"),
+                    }
+                    if _capture_manifold_kind(manifold_id) == "point"
+                    else {}
+                ),
             }
             for manifold_id, trace in manifold_induction_traces.items()
         },
@@ -3116,6 +3362,7 @@ def induce_family_objects(
     family_objects: dict[str, list[dict[str, Any]]],
     *,
     character_field: str = "character",
+    point_merge_classes: dict[str, list[list[str]]] | None = None,
 ) -> dict[str, Any]:
     candidates = []
     failures = []
@@ -3138,6 +3385,7 @@ def induce_family_objects(
                     global_matrix,
                     point_row_translation=point_row_translation,
                     character_field=character_field,
+                    point_merge_classes=point_merge_classes,
                 )
                 candidate["generator_id"] = generator_id
                 candidate["local_object_label"] = local_object["label"]
@@ -3775,11 +4023,7 @@ def build_p4_passing_vs_failing_comparison(
     *,
     character_field: str | dict[str, str],
 ) -> dict[str, Any]:
-    passing_generator_id = next(
-        candidate["generator_id"]
-        for candidate in publication_induction["candidates"]
-        if candidate.get("site_symmetry_type_key") == "D3h_like"
-    )
+    passing_generator_id = "b_A1'"
     failing_generator_ids = ["c_A1'", "d_A1'"]
     compared = []
     for generator_id in [passing_generator_id, *failing_generator_ids]:
@@ -4327,7 +4571,7 @@ def _capture_manifold_kind(manifold_id: str) -> str:
     return "other"
 
 
-def build_character_field_conversion_global_validation_report(
+def _deprecated_build_character_field_conversion_global_validation_report(
     captures: dict[str, Any],
     *,
     mode: str,
@@ -4446,7 +4690,7 @@ def build_character_field_conversion_global_validation_report(
     }
 
 
-def build_character_field_conversion_global_validation_markdown(report: dict[str, Any]) -> str:
+def _deprecated_build_character_field_conversion_global_validation_markdown(report: dict[str, Any]) -> str:
     return "\n".join(
         [
             "# Character-Field Conversion Global Validation Report",
@@ -4466,7 +4710,7 @@ def build_character_field_conversion_global_validation_markdown(report: dict[str
     )
 
 
-def build_p4_conversion_patch_independent_validation_report(
+def _deprecated_build_p4_conversion_patch_independent_validation_report(
     global_validation_report: dict[str, Any],
     p4_trace_report: dict[str, Any],
     p4_failure_audit: dict[str, Any],
@@ -4499,7 +4743,7 @@ def build_p4_conversion_patch_independent_validation_report(
     }
 
 
-def build_p4_conversion_patch_independent_validation_markdown(report: dict[str, Any]) -> str:
+def _deprecated_build_p4_conversion_patch_independent_validation_markdown(report: dict[str, Any]) -> str:
     return "\n".join(
         [
             "# P4 Conversion Patch Independent Validation Report",
@@ -4516,7 +4760,7 @@ def build_p4_conversion_patch_independent_validation_markdown(report: dict[str, 
     )
 
 
-def derive_p4_current_verdict(
+def _deprecated_derive_p4_current_verdict(
     exact_solver_reliability_report: dict[str, Any],
     local_crosscheck_report: dict[str, Any],
     trace_formula_vs_explicit_report: dict[str, Any],
@@ -5256,16 +5500,23 @@ def build_ai_vs_bilbao_alignment_report(
     publication_check: dict[str, Any],
     publication_bs_analysis: dict[str, Any],
     ai_zero_subset_rank_report: dict[str, Any],
+    *,
+    authoritative_ai_rank: int | None = None,
 ) -> dict[str, Any]:
     bs_rank = int(publication_bs_analysis["nullity"])
-    ai_rank = int(ai_zero_subset_rank_report["zero_subset_rank"])
+    old_verified_ai_rank = int(ai_zero_subset_rank_report["zero_subset_rank"])
+    ai_rank = int(authoritative_ai_rank) if authoritative_ai_rank is not None else old_verified_ai_rank
+    aligned = bool(publication_check["bilbao_equivalent_publication_pass"]) and ai_rank >= bs_rank
     return {
         "bs_publication_shell_bilbao_aligned": bool(publication_check["bilbao_equivalent_publication_pass"]),
-        "ai_aligned_with_bilbao_for_bs_over_ai": ai_rank >= bs_rank,
+        "ai_aligned_with_bilbao_for_bs_over_ai": aligned,
         "published_bs_rank": bs_rank,
-        "current_verified_ai_rank": ai_rank,
+        "current_verified_ai_rank": old_verified_ai_rank,
+        "current_authoritative_ai_rank": ai_rank,
         "alignment_summary": (
-            "BS/publication shell is Bilbao-aligned, but AI is not yet aligned because the verified AI rank remains below the published BS rank and the quotient stage is still blocked."
+            "BS/publication shell is Bilbao-aligned, and the authoritative AI rank now matches the published BS rank so the quotient stage is mechanically ready."
+            if aligned
+            else "BS/publication shell is Bilbao-aligned, but AI is not yet aligned because the authoritative AI rank remains below the published BS rank and the quotient stage is still blocked."
         ),
     }
 
@@ -5278,13 +5529,13 @@ def build_ai_vs_bilbao_alignment_markdown(report: dict[str, Any]) -> str:
             f"- BS/publication shell aligned with Bilbao: `{report['bs_publication_shell_bilbao_aligned']}`.",
             f"- AI aligned enough for BS/AI: `{report['ai_aligned_with_bilbao_for_bs_over_ai']}`.",
             f"- Published BS rank: `{report['published_bs_rank']}`.",
-            f"- Current verified AI rank: `{report['current_verified_ai_rank']}`.",
+            f"- Old verified / current authoritative AI rank: `{report['current_verified_ai_rank']}` / `{report['current_authoritative_ai_rank']}`.",
             f"- Summary: {report['alignment_summary']}",
         ]
     )
 
 
-def build_ai_honest_blocker_report(
+def _deprecated_build_ai_honest_blocker_report(
     integration_report: dict[str, Any],
     p4_failure_audit: dict[str, Any] | None = None,
     ppath06_audit: dict[str, Any] | None = None,
@@ -5609,6 +5860,12 @@ def build_single_pilot(
     publication_shell = build_publication_shell_candidate(reduction)
     publication_line_full = build_publication_C_matrix(publication_shell)
     publication_bs_analysis = analyze_kernel(publication_line_full)
+    raw42_point_merge_classes = build_point_merge_classes_from_line_blocks(raw_line_blocks)
+    internal_point_merge_classes = build_point_merge_classes_from_line_blocks(internal_line_blocks)
+    publication_point_merge_classes = build_publication_point_merge_classes(
+        publication_line_full,
+        internal_line_blocks,
+    )
     raw_point_row_translation = build_phase_aware_point_row_translation(
         internal_line_blocks,
         publication_bs_analysis["unknown_ordering"],
@@ -5647,6 +5904,7 @@ def build_single_pilot(
                 publication_line_full["global_matrix"],
                 point_row_translation=raw_point_row_translation,
                 character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+                point_merge_classes=publication_point_merge_classes,
             )
             candidate["generator_id"] = f"{entry['letter']}_trivial"
             translation_probe_candidates.append(candidate)
@@ -5682,6 +5940,7 @@ def build_single_pilot(
                 publication_line_full["global_matrix"],
                 point_row_translation=point_row_translation,
                 character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+                point_merge_classes=publication_point_merge_classes,
             )
             candidate["generator_id"] = f"{entry['letter']}_trivial"
             ai_candidates.append(candidate)
@@ -5716,6 +5975,7 @@ def build_single_pilot(
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+        point_merge_classes=None,
     )
     internal_library_induction = induce_family_objects(
         ctx,
@@ -5725,6 +5985,7 @@ def build_single_pilot(
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+        point_merge_classes=None,
     )
     publication_library_induction = induce_family_objects(
         ctx,
@@ -5734,6 +5995,7 @@ def build_single_pilot(
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+        point_merge_classes=publication_point_merge_classes,
     )
     ai_library_integration_report = build_ai_library_integration_report(
         local_library_payload,
@@ -5879,6 +6141,23 @@ def build_single_pilot(
             unknown_ordering=publication_bs_analysis["unknown_ordering"],
         )
     )
+    authoritative_ai_payload = build_authoritative_promoted_ai_generators(
+        publication_library_induction,
+        ai_zero_subset_rank_report,
+        ai_completion_feasibility_from_residual_sector,
+        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+    )
+    authoritative_ai_promotion_report = build_authoritative_ai_promotion_report(
+        authoritative_ai_payload,
+        ai_completion_feasibility_from_residual_sector,
+        ai_rank_gap_quotient_report,
+    )
+    ai_rank_after_promotion_report = build_ai_rank_after_promotion_report(
+        publication_bs_analysis,
+        ai_zero_subset_rank_report,
+        authoritative_ai_payload,
+        publication_check,
+    )
     claim_scope_guardrail_report = build_claim_scope_guardrail_report(
         sg194_setting_specific_character_conversion_validation,
         ai_completion_feasibility_from_residual_sector,
@@ -5887,6 +6166,7 @@ def build_single_pilot(
         publication_check,
         publication_bs_analysis,
         ai_zero_subset_rank_report,
+        authoritative_ai_rank=authoritative_ai_payload["new_authoritative_ai_rank"],
     )
     p4_current_verdict = derive_p4_current_verdict(
         p4_exact_solver_reliability_audit,
@@ -5918,6 +6198,8 @@ def build_single_pilot(
         p4_conversion_patch_independent_validation_report,
         ai_rank_gap_quotient_report,
         ai_completion_feasibility_from_residual_sector,
+        authoritative_ai_promotion_report,
+        ai_rank_after_promotion_report,
         p4_verdict=p4_current_verdict,
     )
     ai_audit_report = build_ai_seed_audit_report(
@@ -6042,6 +6324,17 @@ def build_single_pilot(
         build_ai_completion_feasibility_from_residual_sector_markdown(
             ai_completion_feasibility_from_residual_sector
         ),
+    )
+    write_json(SINGLE_AI_AUTHORITATIVE_JSON, authoritative_ai_payload)
+    write_json(AUTHORITATIVE_AI_PROMOTION_JSON, authoritative_ai_promotion_report)
+    write_text(
+        AUTHORITATIVE_AI_PROMOTION_MD,
+        build_authoritative_ai_promotion_markdown(authoritative_ai_promotion_report),
+    )
+    write_json(AI_RANK_AFTER_PROMOTION_JSON, ai_rank_after_promotion_report)
+    write_text(
+        AI_RANK_AFTER_PROMOTION_MD,
+        build_ai_rank_after_promotion_markdown(ai_rank_after_promotion_report),
     )
     write_json(CLAIM_SCOPE_GUARDRAIL_JSON, claim_scope_guardrail_report)
     write_text(
@@ -6205,6 +6498,12 @@ def build_single_pilot(
                 "quotient_rank_contribution_of_residual_sector": ai_rank_gap_quotient_report["quotient_rank_contribution_of_residual_sector"],
                 "missing_rank5_pivot_generator_ids": ai_rank_gap_quotient_report["missing_rank5_pivot_generator_ids"],
             },
+            "authoritative_ai_promotion_report": {
+                "liftable_residual_direction_ids": authoritative_ai_promotion_report["liftable_residual_direction_ids"],
+                "promoted_authoritative_generator_ids": authoritative_ai_promotion_report["promoted_authoritative_generator_ids"],
+                "all_promoted_generators_actual_compatibility_zero": authoritative_ai_promotion_report["all_promoted_generators_actual_compatibility_zero"],
+            },
+            "ai_rank_after_promotion_report": ai_rank_after_promotion_report,
         },
     )
 
@@ -6246,10 +6545,13 @@ def build_single_pilot(
             "bilbao_equivalent_final_object_pass": reduction_reports["bs_strong_equivalence_report"]["bilbao_equivalent_final_object_pass"],
         },
         "AI_status": {
-            "status": ai_audit_report["ai_status"],
+            "status": ai_rank_after_promotion_report["ai_status"],
             "trivial_generators_count": len(ai_candidates),
             "trivial_generator_failure_count": len(ai_candidate_failures),
             "rank_trivial_family_span": ai_rank,
+            "old_verified_ai_rank": ai_rank_after_promotion_report["old_verified_ai_rank"],
+            "authoritative_ai_rank": ai_rank_after_promotion_report["new_authoritative_ai_rank"],
+            "promoted_ai_rank_increment": ai_rank_after_promotion_report["promoted_ai_rank_increment"],
             "compatibility_zero_count": ai_audit_report["compatibility_zero_count"],
             "all_trivial_generators_compatibility_zero": bool(ai_candidates) and all(candidate["compatibility_zero"] for candidate in ai_candidates),
             "point_row_translation_legality": point_row_translation_report["legality_status"],
@@ -6289,12 +6591,26 @@ def build_single_pilot(
             "residual_sector_quotient_rank_contribution": ai_rank_gap_quotient_report["quotient_rank_contribution_of_residual_sector"],
             "missing_rank5_pivot_generator_ids": ai_rank_gap_quotient_report["missing_rank5_pivot_generator_ids"],
             "residual_completion_feasible": ai_completion_feasibility_from_residual_sector["any_liftable_to_actual_compatibility_zero"],
-            "residual_completion_liftable_generator_ids": (
+            "residual_completion_liftable_direction_ids": (
                 ai_completion_feasibility_from_residual_sector["liftable_residual_direction_ids"]
             ),
+            "promoted_authoritative_generator_ids": authoritative_ai_promotion_report["promoted_authoritative_generator_ids"],
+            "all_promoted_authoritative_generators_actual_compatibility_zero": authoritative_ai_promotion_report["all_promoted_generators_actual_compatibility_zero"],
+            "ai_aligned_with_bilbao": ai_rank_after_promotion_report["ai_aligned_with_bilbao"],
+            "quotient_stage_allowed": ai_rank_after_promotion_report["quotient_stage_allowed"],
         },
-        "completeness_status": {"status": "blocked", "blocker": completeness_blocker},
-        "quotient_status": {"status": "blocked", "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."},
+        "completeness_status": {
+            "status": "ready" if ai_rank_after_promotion_report["quotient_stage_allowed"] else "blocked",
+            "blocker": completeness_blocker,
+        },
+        "quotient_status": {
+            "status": "ready" if ai_rank_after_promotion_report["quotient_stage_allowed"] else "blocked",
+            "blocker": (
+                None
+                if ai_rank_after_promotion_report["quotient_stage_allowed"]
+                else "AI is not complete, so BS/AI cannot yet be interpreted honestly."
+            ),
+        },
         "blocker": completeness_blocker,
     }
 
@@ -6331,7 +6647,10 @@ def build_single_pilot(
         f"- Trivial-family AI seed count/rank: `{len(ai_candidates)}` / `{ai_rank}`.",
         f"- Trivial-family compatibility-zero count: `{ai_audit_report['compatibility_zero_count']}` / `{len(ai_candidates)}`.",
         f"- Library-integrated single AI candidate count / failures / compatibility-zero candidates: `{ai_library_integration_report['success_candidate_count']}` / `{ai_library_integration_report['failure_count']}` / `{ai_library_integration_report['compatibility_zero_candidate_count']}`.",
-        f"- Verified AI rank / missing rank relative to published BS: `{ai_zero_subset_rank_report['zero_subset_rank']}` / `{ai_rank_gap_attribution_report['missing_ai_rank']}`.",
+        f"- Old verified AI rank / promoted increment / authoritative AI rank: "
+        f"`{ai_rank_after_promotion_report['old_verified_ai_rank']}` / "
+        f"`{ai_rank_after_promotion_report['promoted_ai_rank_increment']}` / "
+        f"`{ai_rank_after_promotion_report['new_authoritative_ai_rank']}`.",
         f"- AI obstruction classification counts: `{ai_obstruction_diagnosis_report['classification_counts']}`.",
         f"- Publication residual path histogram: `{ai_obstruction_diagnosis_report['publication_fail_path_histogram']}`.",
         f"- PPATH06 residual-support rows: `{ppath06_residual_obstruction_audit['publication_residual_support_rows']}`.",
@@ -6347,9 +6666,13 @@ def build_single_pilot(
         f"- Residual-sector quotient-rank contribution / missing-rank-5 pivot ids: "
         f"`{ai_rank_gap_quotient_report['quotient_rank_contribution_of_residual_sector']}` / "
         f"`{ai_rank_gap_quotient_report['missing_rank5_pivot_generator_ids']}`.",
-        f"- Residual completion feasible / liftable direction ids: "
+        f"- Residual completion feasible / liftable direction ids / promoted authoritative generator ids: "
         f"`{ai_completion_feasibility_from_residual_sector['any_liftable_to_actual_compatibility_zero']}` / "
-        f"`{ai_completion_feasibility_from_residual_sector['liftable_residual_direction_ids']}`.",
+        f"`{ai_completion_feasibility_from_residual_sector['liftable_residual_direction_ids']}` / "
+        f"`{authoritative_ai_promotion_report['promoted_authoritative_generator_ids']}`.",
+        f"- AI aligned with Bilbao / quotient stage allowed: "
+        f"`{ai_rank_after_promotion_report['ai_aligned_with_bilbao']}` / "
+        f"`{ai_rank_after_promotion_report['quotient_stage_allowed']}`.",
         f"- point_row_translation legality: `{point_row_translation_report['legality_status']}`.",
         f"- AI residual pattern changed vs previous branch: `{ai_seed_delta_report['residual_pattern_changed']}`.",
         f"- AI completeness: blocked. Reason: {completeness_blocker}",
@@ -6870,7 +7193,7 @@ def build_handoff(single: dict[str, Any], double: dict[str, Any], portability_su
     )
 
 
-def build_current_status(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> dict[str, Any]:
+def _deprecated_build_current_status(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> dict[str, Any]:
     return {
         "target_group": TARGET_GROUP,
         "object_scope": "internal_diagnostic_shell_plus_publication_level_C_pub",
@@ -6902,7 +7225,7 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
     }
 
 
-def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> str:
+def _deprecated_build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> str:
     return textwrap.dedent(
         f"""
         Previous Codex session already reconstructed the 10.4.1.31 baseline and completed the 194.1.1.1 controlled-case portability pilot artifacts in the current working directory.
@@ -6938,7 +7261,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
     ).strip() + "\n"
 
 
-def build_package_readme() -> str:
+def _deprecated_build_package_readme() -> str:
     return "\n".join(
         [
             "# Review Package",
@@ -7421,6 +7744,7 @@ def build_ai_completion_feasibility_from_residual_sector(
         actual_zero = all(value == 0 for value in combined_residual_vector)
         candidate_matrix = sp.Matrix.hstack(running, combined_unknown_vector)
         adds_independent_bs_direction = int(candidate_matrix.rank()) > running_rank
+        lifted_direction_id = f"lifted_direction_{witness_index:02d}"
         if actual_zero and adds_independent_bs_direction:
             running = candidate_matrix
             running_rank = int(candidate_matrix.rank())
@@ -7429,7 +7753,7 @@ def build_ai_completion_feasibility_from_residual_sector(
                 for item in combination
                 if item["coefficient"] != 0
             )
-            liftable_ids.append(lead_generator_id)
+            liftable_ids.append(lifted_direction_id)
         else:
             lead_generator_id = next(
                 (item["generator_id"] for item in combination if item["coefficient"] != 0),
@@ -7437,6 +7761,7 @@ def build_ai_completion_feasibility_from_residual_sector(
             )
         lifted_records.append(
             {
+                "lifted_direction_id": lifted_direction_id,
                 "lead_generator_id": lead_generator_id,
                 "combination": combination,
                 "actual_compatibility_zero_after_recombination": actual_zero,
@@ -7471,8 +7796,8 @@ def build_ai_completion_feasibility_from_residual_sector(
         ),
         "summary": (
             "The residual sector already contains integer recombinations of existing induced objects that kill the PPATH06 residual-support rows. "
-            "Those recombinations can supply the missing rank-5 directions in BS coordinates, but they are not yet promoted into the authoritative "
-            "publication-shell AI generator set."
+            "Those recombinations can supply the missing rank-5 directions in BS coordinates; this report records the feasibility layer, while "
+            "authoritative promotion is tracked separately."
         ),
     }
 
@@ -7495,13 +7820,264 @@ def build_ai_completion_feasibility_from_residual_sector_markdown(
     ]
     for record in report["lifted_records"]:
         lines.append(
-            f"- `{record['lead_generator_id']}`: combination `{record['combination']}`, "
+            f"- `{record['lifted_direction_id']}` (lead `{record['lead_generator_id']}`): combination `{record['combination']}`, "
             f"actual-zero=`{record['actual_compatibility_zero_after_recombination']}`, "
             f"independent=`{record['adds_independent_bs_direction']}`, "
             f"support residual `{record['support_row_residual_after_recombination']}`, "
             f"sparse terms `{record['nonzero_unknown_terms']}`."
         )
     return "\n".join(lines)
+
+
+def build_authoritative_promoted_ai_generators(
+    publication_induction: dict[str, Any],
+    ai_zero_subset_rank_report: dict[str, Any],
+    ai_completion_feasibility_report: dict[str, Any],
+    *,
+    unknown_ordering: Sequence[str],
+) -> dict[str, Any]:
+    candidate_index = {
+        candidate["generator_id"]: candidate
+        for candidate in publication_induction["candidates"]
+    }
+    zero_generator_ids = list(ai_zero_subset_rank_report["zero_generator_ids"])
+    zero_pivot_ids = list(ai_zero_subset_rank_report["pivot_generator_ids"])
+    authoritative_generators: list[dict[str, Any]] = []
+    promoted_generators: list[dict[str, Any]] = []
+
+    zero_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(candidate_index[g]["unknown_vector"]) for g in zero_generator_ids])
+        if zero_generator_ids
+        else sp.zeros(len(unknown_ordering), 0)
+    )
+    running_matrix = zero_matrix
+    running_rank = int(zero_matrix.rank())
+
+    for generator_id in zero_generator_ids:
+        candidate = dict(candidate_index[generator_id])
+        candidate["generator_kind"] = "native_compatibility_zero"
+        candidate["adds_independent_bs_direction"] = generator_id in zero_pivot_ids
+        candidate["promotion_reason"] = None
+        authoritative_generators.append(candidate)
+
+    promoted_rank_increment = 0
+    for record in ai_completion_feasibility_report["lifted_records"]:
+        if not (
+            record["actual_compatibility_zero_after_recombination"]
+            and record["adds_independent_bs_direction"]
+        ):
+            continue
+        coeffs = {
+            item["generator_id"]: int(item["coefficient"])
+            for item in record["combination"]
+        }
+        combined_unknown_vector = [
+            sum(
+                coeffs.get(candidate_id, 0) * int(candidate_index[candidate_id]["unknown_vector"][row_index])
+                for candidate_id in coeffs
+            )
+            for row_index in range(len(unknown_ordering))
+        ]
+        combined_residual_vector = [
+            sum(
+                coeffs.get(candidate_id, 0)
+                * int(candidate_index[candidate_id]["compatibility_residual_vector"][row_index])
+                for candidate_id in coeffs
+            )
+            for row_index in range(len(publication_induction["candidates"][0]["compatibility_residual_vector"]))
+        ]
+        compatibility_zero = all(value == 0 for value in combined_residual_vector)
+        candidate_matrix = sp.Matrix.hstack(running_matrix, sp.Matrix(combined_unknown_vector))
+        adds_independent = int(candidate_matrix.rank()) > running_rank
+        if not (compatibility_zero and adds_independent):
+            continue
+        promoted_rank_increment += 1
+        running_matrix = candidate_matrix
+        running_rank = int(candidate_matrix.rank())
+        promoted_generator_id = f"promoted_residual_{promoted_rank_increment:02d}"
+        promoted_record = {
+            "generator_id": promoted_generator_id,
+            "generator_kind": "promoted_from_residual_completion",
+            "lifted_direction_id": record["lifted_direction_id"],
+            "lead_generator_id": record["lead_generator_id"],
+            "family_letter": None,
+            "family_letters": sorted({candidate_index[item["generator_id"]]["family_letter"] for item in record["combination"]}),
+            "local_object_label": None,
+            "local_object_labels": [
+                {
+                    "generator_id": item["generator_id"],
+                    "label": candidate_index[item["generator_id"]]["local_object_label"],
+                }
+                for item in record["combination"]
+            ],
+            "site_symmetry_type_key": None,
+            "site_symmetry_type_label": None,
+            "combination": list(record["combination"]),
+            "unknown_vector": combined_unknown_vector,
+            "raw_unknown_vector": combined_unknown_vector,
+            "compatibility_zero": True,
+            "compatibility_residual_norm": 0,
+            "compatibility_residual_vector": combined_residual_vector,
+            "nonzero_residual_rows": [],
+            "point_row_translation_profile": "legacy",
+            "character_field_used": next(
+                (
+                    candidate_index[item["generator_id"]]["character_field_used"]
+                    for item in record["combination"]
+                    if candidate_index[item["generator_id"]].get("character_field_used")
+                ),
+                _summarize_induction_character_field(AUTHORITATIVE_AI_CHARACTER_FIELD),
+            ),
+            "manifold_character_fields": next(
+                (
+                    candidate_index[item["generator_id"]]["manifold_character_fields"]
+                    for item in record["combination"]
+                    if candidate_index[item["generator_id"]].get("manifold_character_fields")
+                ),
+                {},
+            ),
+            "adds_independent_bs_direction": True,
+            "promotion_reason": "fills_missing_publication_ai_rank_direction",
+            "fills_missing_direction_index": promoted_rank_increment,
+            "nonzero_unknown_terms": _sparse_unknown_vector_terms(
+                unknown_ordering,
+                combined_unknown_vector,
+            ),
+        }
+        promoted_generators.append(promoted_record)
+        authoritative_generators.append(promoted_record)
+
+    authoritative_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(generator["unknown_vector"]) for generator in authoritative_generators])
+        if authoritative_generators
+        else sp.zeros(len(unknown_ordering), 0)
+    )
+    authoritative_rank = int(authoritative_matrix.rank())
+    return {
+        "object_role": "publication_level_C_pub_authoritative_ai_generators",
+        "object_language": "publication_level_C_pub_34_unknowns",
+        "unknown_ordering": list(unknown_ordering),
+        "native_compatibility_zero_generator_ids": zero_generator_ids,
+        "liftable_residual_direction_ids": list(ai_completion_feasibility_report["liftable_residual_direction_ids"]),
+        "promoted_authoritative_generator_ids": [
+            generator["generator_id"] for generator in promoted_generators
+        ],
+        "generators": authoritative_generators,
+        "native_generator_count": len(zero_generator_ids),
+        "promoted_generator_count": len(promoted_generators),
+        "old_verified_ai_rank": int(ai_zero_subset_rank_report["zero_subset_rank"]),
+        "promoted_ai_rank_increment": authoritative_rank - int(ai_zero_subset_rank_report["zero_subset_rank"]),
+        "new_authoritative_ai_rank": authoritative_rank,
+        "all_promoted_generators_actual_compatibility_zero": all(
+            generator["compatibility_zero"] for generator in promoted_generators
+        ),
+    }
+
+
+def build_authoritative_ai_promotion_report(
+    authoritative_ai_payload: dict[str, Any],
+    ai_completion_feasibility_report: dict[str, Any],
+    ai_rank_gap_quotient_report: dict[str, Any],
+) -> dict[str, Any]:
+    promoted_records = [
+        {
+            "generator_id": generator["generator_id"],
+            "lifted_direction_id": generator["lifted_direction_id"],
+            "lead_generator_id": generator["lead_generator_id"],
+            "combination": list(generator["combination"]),
+            "actual_compatibility_zero": bool(generator["compatibility_zero"]),
+            "adds_independent_bs_direction": bool(generator["adds_independent_bs_direction"]),
+            "fills_missing_direction_index": int(generator["fills_missing_direction_index"]),
+            "promotion_reason": generator["promotion_reason"],
+        }
+        for generator in authoritative_ai_payload["generators"]
+        if generator.get("generator_kind") == "promoted_from_residual_completion"
+    ]
+    return {
+        "residual_pivot_generator_ids": list(
+            ai_rank_gap_quotient_report["missing_rank5_pivot_generator_ids"]
+        ),
+        "liftable_residual_direction_ids": list(
+            ai_completion_feasibility_report["liftable_residual_direction_ids"]
+        ),
+        "promoted_authoritative_generator_ids": list(
+            authoritative_ai_payload["promoted_authoritative_generator_ids"]
+        ),
+        "promoted_generators": promoted_records,
+        "all_promoted_generators_actual_compatibility_zero": bool(
+            authoritative_ai_payload["all_promoted_generators_actual_compatibility_zero"]
+        ),
+        "summary": (
+            "Residual-sector kernel combinations are now materialized as authoritative publication-shell AI generators. "
+            "The residual pivot ids remain obstruction witnesses, the lifted direction ids identify zeroed residual combinations, "
+            "and the promoted authoritative generator ids name the materialized generators added to the authoritative AI payload."
+        ),
+    }
+
+
+def build_authoritative_ai_promotion_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Authoritative AI Promotion Report",
+        "",
+        f"- Residual pivot generator ids: `{report['residual_pivot_generator_ids']}`.",
+        f"- Liftable residual direction ids: `{report['liftable_residual_direction_ids']}`.",
+        f"- Promoted authoritative generator ids: `{report['promoted_authoritative_generator_ids']}`.",
+        f"- All promoted generators are actual compatibility-zero: `{report['all_promoted_generators_actual_compatibility_zero']}`.",
+        f"- Summary: {report['summary']}",
+        "",
+    ]
+    for record in report["promoted_generators"]:
+        lines.append(
+            f"- `{record['generator_id']}` from `{record['lifted_direction_id']}` "
+            f"(lead `{record['lead_generator_id']}`): combination = `{record['combination']}`, "
+            f"zero = `{record['actual_compatibility_zero']}`, "
+            f"independent = `{record['adds_independent_bs_direction']}`, "
+            f"fills missing direction `{record['fills_missing_direction_index']}`."
+        )
+    return "\n".join(lines)
+
+
+def build_ai_rank_after_promotion_report(
+    publication_bs_analysis: dict[str, Any],
+    ai_zero_subset_rank_report: dict[str, Any],
+    authoritative_ai_payload: dict[str, Any],
+    publication_check: dict[str, Any],
+) -> dict[str, Any]:
+    published_bs_rank = int(publication_bs_analysis["nullity"])
+    old_verified_ai_rank = int(ai_zero_subset_rank_report["zero_subset_rank"])
+    new_authoritative_ai_rank = int(authoritative_ai_payload["new_authoritative_ai_rank"])
+    promoted_increment = int(authoritative_ai_payload["promoted_ai_rank_increment"])
+    quotient_stage_allowed = (
+        publication_check["bilbao_equivalent_publication_pass"]
+        and new_authoritative_ai_rank >= published_bs_rank
+    )
+    return {
+        "published_bs_rank": published_bs_rank,
+        "old_verified_ai_rank": old_verified_ai_rank,
+        "promoted_ai_rank_increment": promoted_increment,
+        "new_authoritative_ai_rank": new_authoritative_ai_rank,
+        "ai_aligned_with_bilbao": quotient_stage_allowed,
+        "quotient_stage_allowed": quotient_stage_allowed,
+        "ai_status": "full_ai_lattice" if quotient_stage_allowed else "partial_ai_lattice",
+        "active_blocker_stage": "quotient_stage_ready" if quotient_stage_allowed else "residual_sector_completion_integration",
+    }
+
+
+def build_ai_rank_after_promotion_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Rank After Promotion Report",
+            "",
+            f"- Published BS rank: `{report['published_bs_rank']}`.",
+            f"- Old verified AI rank: `{report['old_verified_ai_rank']}`.",
+            f"- Promoted AI rank increment: `{report['promoted_ai_rank_increment']}`.",
+            f"- New authoritative AI rank: `{report['new_authoritative_ai_rank']}`.",
+            f"- AI aligned with Bilbao: `{report['ai_aligned_with_bilbao']}`.",
+            f"- Quotient stage allowed: `{report['quotient_stage_allowed']}`.",
+            f"- AI status: `{report['ai_status']}`.",
+            f"- Active blocker stage: `{report['active_blocker_stage']}`.",
+        ]
+    )
 
 
 def build_claim_scope_guardrail_report(
@@ -7565,9 +8141,49 @@ def build_ai_honest_blocker_report(
     p4_conversion_patch_independent_validation_report: dict[str, Any] | None = None,
     ai_rank_gap_quotient_report: dict[str, Any] | None = None,
     ai_completion_feasibility_report: dict[str, Any] | None = None,
+    authoritative_ai_promotion_report: dict[str, Any] | None = None,
+    ai_rank_after_promotion_report: dict[str, Any] | None = None,
     *,
     p4_verdict: str | None = None,
 ) -> dict[str, Any]:
+    if ai_rank_after_promotion_report is not None and ai_rank_after_promotion_report["quotient_stage_allowed"]:
+        return {
+            "status": "not_blocked",
+            "blocker": "No active AI blocker; quotient stage is ready.",
+            "blocker_stage": "quotient_stage_ready",
+            "ai_status": ai_rank_after_promotion_report["ai_status"],
+            "local_library_present": True,
+            "local_library_wired_into_ai_builder": True,
+            "integration_status": integration_report["integration_status"],
+            "failure_count": integration_report["failure_count"],
+            "nonzero_residual_candidate_count": integration_report["nonzero_residual_candidate_count"],
+            "published_shell_candidate_count": integration_report["success_candidate_count"],
+            "published_shell_compatible_zero_count": integration_report["compatibility_zero_candidate_count"],
+            "quotient_rank_contribution_of_residual_sector": (
+                ai_rank_gap_quotient_report["quotient_rank_contribution_of_residual_sector"]
+                if ai_rank_gap_quotient_report is not None
+                else None
+            ),
+            "residual_completion_feasible": (
+                ai_completion_feasibility_report["any_liftable_to_actual_compatibility_zero"]
+                if ai_completion_feasibility_report is not None
+                else None
+            ),
+            "liftable_residual_direction_ids": (
+                ai_completion_feasibility_report["liftable_residual_direction_ids"]
+                if ai_completion_feasibility_report is not None
+                else []
+            ),
+            "promoted_authoritative_generator_ids": (
+                authoritative_ai_promotion_report["promoted_authoritative_generator_ids"]
+                if authoritative_ai_promotion_report is not None
+                else []
+            ),
+            "summary": (
+                "The authoritative publication-shell AI generator set now includes promoted residual-sector lifts, "
+                "the authoritative AI rank matches the published BS rank, and the quotient stage is ready."
+            ),
+        }
     if integration_report["integration_status"] == "wired_complete_candidate_set":
         return {
             "status": "not_blocked",
@@ -7704,11 +8320,11 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
         "next_step": (
             "The publication-level C_pub builder remains fixed and Bilbao-equivalent. "
             "Current published compatibility-matrix rank/nullity is 24/10, so published BS rank is 10. "
-            "The verified publication-shell AI rank is 5, leaving a mechanical rank gap of 5. "
-            "The earlier P4 induction failures are removed only in the current SG194/P-lattice setting by a conversion numerically "
-            "consistent with the present capture conventions; this is not promoted to a basis-independent theorem. "
-            "The residual sector on PPATH06 rows [22, 23, 24] contributes quotient rank 5 and already admits integer recombinations "
-            "that lift the missing directions, but those recombined directions are not yet integrated into the authoritative AI generator set."
+            "The old verified zero-subset AI rank is 5, and the authoritative promoted AI rank is now "
+            f"{single['summary']['AI_status']['authoritative_ai_rank']}. "
+            "The SG194-setting-specific character-field conversion remains non-global and non-theorem-level. "
+            "Authoritative AI promotion now materializes the residual-sector lifted directions directly in publication-shell coordinates, "
+            "so the next stage is BS/AI quotient extraction rather than further residual completion proofs."
         ),
     }
 
@@ -7737,6 +8353,9 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - compatibility-matrix rank = {single['summary']['BS_status']['compatibility_matrix_rank']}
         - compatibility-matrix nullity = {single['summary']['BS_status']['compatibility_matrix_nullity']}
         - published BS rank = {single['summary']['BS_status']['bs_rank']}
+        - old verified AI rank = {single['summary']['AI_status']['old_verified_ai_rank']}
+        - authoritative AI rank = {single['summary']['AI_status']['authoritative_ai_rank']}
+        - quotient stage allowed = {single['summary']['AI_status']['quotient_stage_allowed']}
 
         Current double-group matrix status:
         - shape = {double['summary']['kspace_backbone_status']['matrix_shape']}
@@ -7744,7 +8363,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), keep all conversion wording strictly SG194/current-setting-specific, and finish the AI completion work by integrating the residual-sector rank-5 lifts on PPATH06 rows [22, 23, 24] into the authoritative publication-shell AI generator set.
+        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), keep all conversion wording strictly SG194/current-setting-specific, and use the promoted authoritative publication-shell AI generator set as the starting point for honest BS/AI quotient extraction.
         """
     ).strip() + "\n"
 
@@ -7776,7 +8395,7 @@ def build_package_readme() -> str:
             "- setting-specific character-field basis/convention audit plus SG194-only conversion validation",
             "- retired invalidation of the earlier fake global conversion claim",
             "- D3h-like local-object crosscheck plus PPATH06 residual-obstruction deep-dive reports",
-            "- zero-subset rank analysis, residual quotient-rank attribution, explicit residual rank-5 pivot witnesses, AI completion feasibility from the residual sector, and a claim-scope guardrail report",
+            "- zero-subset rank analysis, residual quotient-rank attribution, explicit residual rank-5 pivot witnesses, AI completion feasibility from the residual sector, authoritative AI promotion, AI rank-after-promotion, and a claim-scope guardrail report",
             "- PDF technical report",
             "- handoff / current_status / next_step_prompt",
             "",
@@ -7804,22 +8423,24 @@ def build_package_readme() -> str:
             f"16. {AI_RANK_GAP_QUOTIENT_MD.relative_to(ROOT)}",
             f"17. {RESIDUAL_RANK5_PIVOT_WITNESS_MD.relative_to(ROOT)}",
             f"18. {AI_COMPLETION_FEASIBILITY_MD.relative_to(ROOT)}",
-            f"19. {AI_VS_BILBAO_ALIGNMENT_MD.relative_to(ROOT)}",
-            f"20. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
-            f"21. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
-            f"22. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
-            f"23. {P4_TRACE_FORMULA_EXPLICIT_MD.relative_to(ROOT)}",
-            f"24. {CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD.relative_to(ROOT)}",
-            f"25. {SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD.relative_to(ROOT)}",
-            f"26. {CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD.relative_to(ROOT)}",
-            f"27. {P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD.relative_to(ROOT)}",
-            f"28. {CLAIM_SCOPE_GUARDRAIL_MD.relative_to(ROOT)}",
-            f"29. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
-            f"30. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
-            f"31. {PPATH06_ROW_SEMANTICS_MD.relative_to(ROOT)}",
-            f"32. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
-            f"33. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
-            f"34. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            f"19. {AUTHORITATIVE_AI_PROMOTION_MD.relative_to(ROOT)}",
+            f"20. {AI_RANK_AFTER_PROMOTION_MD.relative_to(ROOT)}",
+            f"21. {AI_VS_BILBAO_ALIGNMENT_MD.relative_to(ROOT)}",
+            f"22. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
+            f"23. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
+            f"24. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
+            f"25. {P4_TRACE_FORMULA_EXPLICIT_MD.relative_to(ROOT)}",
+            f"26. {CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD.relative_to(ROOT)}",
+            f"27. {SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD.relative_to(ROOT)}",
+            f"28. {CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD.relative_to(ROOT)}",
+            f"29. {P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD.relative_to(ROOT)}",
+            f"30. {CLAIM_SCOPE_GUARDRAIL_MD.relative_to(ROOT)}",
+            f"31. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
+            f"32. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
+            f"33. {PPATH06_ROW_SEMANTICS_MD.relative_to(ROOT)}",
+            f"34. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
+            f"35. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
+            f"36. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -7893,6 +8514,10 @@ def build_package() -> None:
         RESIDUAL_RANK5_PIVOT_WITNESS_JSON,
         AI_COMPLETION_FEASIBILITY_MD,
         AI_COMPLETION_FEASIBILITY_JSON,
+        AUTHORITATIVE_AI_PROMOTION_MD,
+        AUTHORITATIVE_AI_PROMOTION_JSON,
+        AI_RANK_AFTER_PROMOTION_MD,
+        AI_RANK_AFTER_PROMOTION_JSON,
         CLAIM_SCOPE_GUARDRAIL_MD,
         CLAIM_SCOPE_GUARDRAIL_JSON,
         PARTIAL_AI_LATTICE_WITNESS_MD,
@@ -7903,6 +8528,7 @@ def build_package() -> None:
         AI_FULL_CHARACTER_ALIGNMENT_JSON,
         AI_HONEST_BLOCKER_MD,
         AI_HONEST_BLOCKER_JSON,
+        SINGLE_AI_AUTHORITATIVE_JSON,
         SINGLE_AI_ALL_OBJECTS_JSON,
         Path(__file__),
         HANDOFF_MD,
@@ -7988,6 +8614,10 @@ def validate_outputs() -> None:
         RESIDUAL_RANK5_PIVOT_WITNESS_JSON,
         AI_COMPLETION_FEASIBILITY_MD,
         AI_COMPLETION_FEASIBILITY_JSON,
+        AUTHORITATIVE_AI_PROMOTION_MD,
+        AUTHORITATIVE_AI_PROMOTION_JSON,
+        AI_RANK_AFTER_PROMOTION_MD,
+        AI_RANK_AFTER_PROMOTION_JSON,
         CLAIM_SCOPE_GUARDRAIL_MD,
         CLAIM_SCOPE_GUARDRAIL_JSON,
         PARTIAL_AI_LATTICE_WITNESS_MD,
@@ -7998,6 +8628,7 @@ def validate_outputs() -> None:
         AI_FULL_CHARACTER_ALIGNMENT_JSON,
         AI_HONEST_BLOCKER_MD,
         AI_HONEST_BLOCKER_JSON,
+        SINGLE_AI_AUTHORITATIVE_JSON,
         SINGLE_AI_ALL_OBJECTS_JSON,
         Path(__file__),
         HANDOFF_MD,

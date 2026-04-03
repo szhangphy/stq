@@ -1,0 +1,353 @@
+{
+  "missing_rank": 5,
+  "support_rows": [
+    22,
+    23,
+    24
+  ],
+  "residual_pivot_generator_ids": [
+    "a_A1u",
+    "b_A1''",
+    "c_A1'",
+    "d_A1'",
+    "g_Ag"
+  ],
+  "residual_signature_pivot_generator_ids": [
+    "a_A1g",
+    "b_A1'",
+    "b_E'"
+  ],
+  "witness_records": [
+    {
+      "lead_generator_id": "a_A1u",
+      "family_letter": "a",
+      "local_object_label": "A1u",
+      "combination": [
+        {
+          "generator_id": "a_A1g",
+          "coefficient": "-1"
+        },
+        {
+          "generator_id": "a_A1u",
+          "coefficient": "1"
+        }
+      ],
+      "lead_generator_sparse_unknown_terms": [
+        {
+          "unknown": "P1_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 1
+        }
+      ],
+      "lead_generator_residual_support_vector": [
+        -1,
+        -1,
+        0
+      ]
+    },
+    {
+      "lead_generator_id": "b_A1''",
+      "family_letter": "b",
+      "local_object_label": "A1''",
+      "combination": [
+        {
+          "generator_id": "b_A1'",
+          "coefficient": "1"
+        },
+        {
+          "generator_id": "b_A1''",
+          "coefficient": "1"
+        }
+      ],
+      "lead_generator_sparse_unknown_terms": [
+        {
+          "unknown": "P1_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 1
+        }
+      ],
+      "lead_generator_residual_support_vector": [
+        1,
+        -1,
+        0
+      ]
+    },
+    {
+      "lead_generator_id": "c_A1'",
+      "family_letter": "c",
+      "local_object_label": "A1'",
+      "combination": [
+        {
+          "generator_id": "b_E'",
+          "coefficient": "-1/2"
+        },
+        {
+          "generator_id": "c_A1'",
+          "coefficient": "1"
+        }
+      ],
+      "lead_generator_sparse_unknown_terms": [
+        {
+          "unknown": "P1_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 1
+        }
+      ],
+      "lead_generator_residual_support_vector": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "lead_generator_id": "d_A1'",
+      "family_letter": "d",
+      "local_object_label": "A1'",
+      "combination": [
+        {
+          "generator_id": "b_E'",
+          "coefficient": "-1/2"
+        },
+        {
+          "generator_id": "d_A1'",
+          "coefficient": "1"
+        }
+      ],
+      "lead_generator_sparse_unknown_terms": [
+        {
+          "unknown": "P1_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 1
+        }
+      ],
+      "lead_generator_residual_support_vector": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "lead_generator_id": "g_Ag",
+      "family_letter": "g",
+      "local_object_label": "Ag",
+      "combination": [
+        {
+          "generator_id": "a_A1g",
+          "coefficient": "-1"
+        },
+        {
+          "generator_id": "g_Ag",
+          "coefficient": "1"
+        }
+      ],
+      "lead_generator_sparse_unknown_terms": [
+        {
+          "unknown": "P1_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R10",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R12",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 2
+        }
+      ],
+      "lead_generator_residual_support_vector": [
+        -1,
+        -1,
+        0
+      ]
+    }
+  ],
+  "justification": "The residual sector contributes the entire missing rank-5 once the three independent PPATH06 support-row residual directions are quotiented out. Each witness below is a kernel vector of that residual-signature map and therefore represents a latent AI direction blocked only by the PPATH06 residual mechanism."
+}

@@ -1,0 +1,17 @@
+{
+  "validation_scope": "SG194_current_setting_only",
+  "mode": "single",
+  "comparison_count": 2148,
+  "exact_match_count": 2148,
+  "mismatch_count": 0,
+  "setting_specific_numerical_consistency_pass": true,
+  "tau_field_comparison_count": 508,
+  "tau_field_mismatch_count": 0,
+  "first_mismatch": null,
+  "first_tau_field_mismatch": null,
+  "current_success_depends_on_sg194_being_p_lattice_under_present_basis_conventions": true,
+  "basis_independent_global_theorem": false,
+  "formula_promoted_as_general_theorem": false,
+  "current_verdict": "For SG194 in the current P-lattice setting, the linear->character conversion is numerically consistent with the present capture conventions. This is not promoted to a basis-independent global theorem.",
+  "summary": "The current validation is deliberately scoped to SG194/current-setting only. It records numerical consistency against the present capture tables, but it does not claim that `character == linear_character / exp(-i k\u00b7tauC(op))` is a general theorem."
+}
