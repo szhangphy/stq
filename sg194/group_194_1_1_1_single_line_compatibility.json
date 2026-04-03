@@ -23741,15 +23741,19 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -1.0,
                   "imag": -0.0
                 },
                 {
                   "real": -1.0,
                   "imag": 0.0
+                },
+                {
+                  "real": -1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
@@ -23758,10 +23762,6 @@
                 {
                   "real": 0.0,
                   "imag": -0.0
-                },
-                {
-                  "real": -0.0,
-                  "imag": 0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -23781,7 +23781,7 @@
                 },
                 {
                   "real": -1.0,
-                  "imag": 0.0
+                  "imag": -0.0
                 },
                 {
                   "real": -1.0,
@@ -23792,7 +23792,7 @@
                   "imag": -0.0
                 },
                 {
-                  "real": -0.0,
+                  "real": 0.0,
                   "imag": -0.0
                 },
                 {
@@ -28991,15 +28991,19 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -1.0,
                   "imag": -0.0
                 },
                 {
                   "real": -1.0,
                   "imag": 0.0
+                },
+                {
+                  "real": -1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
@@ -29008,10 +29012,6 @@
                 {
                   "real": 0.0,
                   "imag": -0.0
-                },
-                {
-                  "real": -0.0,
-                  "imag": 0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -29031,7 +29031,7 @@
                 },
                 {
                   "real": -1.0,
-                  "imag": 0.0
+                  "imag": -0.0
                 },
                 {
                   "real": -1.0,
@@ -29042,7 +29042,7 @@
                   "imag": -0.0
                 },
                 {
-                  "real": -0.0,
+                  "real": 0.0,
                   "imag": -0.0
                 },
                 {
@@ -29630,15 +29630,19 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -1.0,
                   "imag": -0.0
                 },
                 {
                   "real": -1.0,
                   "imag": 0.0
+                },
+                {
+                  "real": -1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
@@ -29647,10 +29651,6 @@
                 {
                   "real": 0.0,
                   "imag": -0.0
-                },
-                {
-                  "real": -0.0,
-                  "imag": 0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -29670,7 +29670,7 @@
                 },
                 {
                   "real": -1.0,
-                  "imag": 0.0
+                  "imag": -0.0
                 },
                 {
                   "real": -1.0,
@@ -29681,7 +29681,7 @@
                   "imag": -0.0
                 },
                 {
-                  "real": -0.0,
+                  "real": 0.0,
                   "imag": -0.0
                 },
                 {
@@ -30269,15 +30269,19 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -1.0,
                   "imag": -0.0
                 },
                 {
                   "real": -1.0,
                   "imag": 0.0
+                },
+                {
+                  "real": -1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
@@ -30286,10 +30290,6 @@
                 {
                   "real": 0.0,
                   "imag": -0.0
-                },
-                {
-                  "real": -0.0,
-                  "imag": 0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -30305,7 +30305,7 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
+                  "imag": -0.0
                 },
                 {
                   "real": -1.0,
@@ -30313,19 +30313,19 @@
                 },
                 {
                   "real": -1.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
                   "imag": 0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
                   "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -30338,27 +30338,27 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -0.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -0.0,
                   "imag": -0.0
                 },
                 {
-                  "real": -0.0,
-                  "imag": 0.0
+                  "real": 2.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 2.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -30908,15 +30908,19 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -1.0,
                   "imag": -0.0
                 },
                 {
                   "real": -1.0,
                   "imag": 0.0
+                },
+                {
+                  "real": -1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
@@ -30925,10 +30929,6 @@
                 {
                   "real": 0.0,
                   "imag": -0.0
-                },
-                {
-                  "real": -0.0,
-                  "imag": 0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -30944,7 +30944,7 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
+                  "imag": -0.0
                 },
                 {
                   "real": -1.0,
@@ -30952,19 +30952,19 @@
                 },
                 {
                   "real": -1.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
                   "imag": 0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
-                },
-                {
-                  "real": 0.0,
-                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
                   "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -30977,27 +30977,27 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -0.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -0.0,
                   "imag": -0.0
                 },
                 {
-                  "real": -0.0,
-                  "imag": 0.0
+                  "real": 2.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 2.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -52036,15 +52036,19 @@
               "restricted_vector": [
                 {
                   "real": 2.0,
-                  "imag": 0.0
-                },
-                {
-                  "real": -1.0,
                   "imag": -0.0
                 },
                 {
                   "real": -1.0,
                   "imag": 0.0
+                },
+                {
+                  "real": -1.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": -0.0,
+                  "imag": -0.0
                 },
                 {
                   "real": -0.0,
@@ -52053,10 +52057,6 @@
                 {
                   "real": 0.0,
                   "imag": -0.0
-                },
-                {
-                  "real": -0.0,
-                  "imag": 0.0
                 }
               ],
               "extra_fingerprint": null,
@@ -52076,7 +52076,7 @@
                 },
                 {
                   "real": -1.0,
-                  "imag": 0.0
+                  "imag": -0.0
                 },
                 {
                   "real": -1.0,
@@ -52087,7 +52087,7 @@
                   "imag": -0.0
                 },
                 {
-                  "real": -0.0,
+                  "real": 0.0,
                   "imag": -0.0
                 },
                 {

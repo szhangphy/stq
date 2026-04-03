@@ -1,0 +1,944 @@
+{
+  "mode": "single",
+  "formula": "predicted_character = linear_character / exp(-i k\u00b7tauC(op))",
+  "phase_source_field": "tauC",
+  "runtime_patch_translation_field": "unitary_translations",
+  "manifold_count": 92,
+  "manifold_counts_by_kind": {
+    "line": 77,
+    "point": 11,
+    "plane": 4
+  },
+  "comparison_count": 2148,
+  "exact_match_count": 2148,
+  "mismatch_count": 0,
+  "all_manifolds_pass": true,
+  "first_mismatch": null,
+  "tau_field_comparison_count": 508,
+  "tau_field_mismatch_count": 0,
+  "tau_field_match_global_pass": true,
+  "first_tau_field_mismatch": null,
+  "manifold_records": [
+    {
+      "manifold_id": "CANDIDATE_PATH_001",
+      "manifold_kind": "line",
+      "rep_count": 6,
+      "unitary_op_count": 12,
+      "comparison_count": 72,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_002",
+      "manifold_kind": "line",
+      "rep_count": 6,
+      "unitary_op_count": 12,
+      "comparison_count": 72,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_003",
+      "manifold_kind": "line",
+      "rep_count": 3,
+      "unitary_op_count": 6,
+      "comparison_count": 18,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_004",
+      "manifold_kind": "line",
+      "rep_count": 3,
+      "unitary_op_count": 6,
+      "comparison_count": 18,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_005",
+      "manifold_kind": "line",
+      "rep_count": 3,
+      "unitary_op_count": 6,
+      "comparison_count": 18,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_006",
+      "manifold_kind": "line",
+      "rep_count": 3,
+      "unitary_op_count": 6,
+      "comparison_count": 18,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_007",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_008",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_009",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_010",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_011",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_012",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_013",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_014",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_015",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_016",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_017",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_018",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_019",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_020",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_021",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_022",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_023",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_024",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_025",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_026",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_027",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_028",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_029",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_030",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_031",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_032",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_033",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_034",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_035",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_036",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_037",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_038",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_039",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_040",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_041",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_042",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_043",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_044",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_045",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_046",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_047",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_048",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_049",
+      "manifold_kind": "line",
+      "rep_count": 6,
+      "unitary_op_count": 12,
+      "comparison_count": 72,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_050",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_051",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_052",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_053",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_054",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_055",
+      "manifold_kind": "line",
+      "rep_count": 6,
+      "unitary_op_count": 12,
+      "comparison_count": 72,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_056",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_057",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_058",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_059",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_060",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_061",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "CANDIDATE_PATH_062",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "FPATH01",
+      "manifold_kind": "line",
+      "rep_count": 6,
+      "unitary_op_count": 12,
+      "comparison_count": 72,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "FPATH02",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "FPATH03",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "FPATH04",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "FPATH05",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "FPATH06",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "FPATH07",
+      "manifold_kind": "line",
+      "rep_count": 3,
+      "unitary_op_count": 6,
+      "comparison_count": 18,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "FPATH08",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "L1",
+      "manifold_kind": "line",
+      "rep_count": 6,
+      "unitary_op_count": 12,
+      "comparison_count": 72,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "L2",
+      "manifold_kind": "line",
+      "rep_count": 3,
+      "unitary_op_count": 6,
+      "comparison_count": 18,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "L3",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "L4",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "L5",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "L6",
+      "manifold_kind": "line",
+      "rep_count": 4,
+      "unitary_op_count": 4,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "L7",
+      "manifold_kind": "line",
+      "rep_count": 1,
+      "unitary_op_count": 4,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P1",
+      "manifold_kind": "point",
+      "rep_count": 12,
+      "unitary_op_count": 24,
+      "comparison_count": 288,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P2",
+      "manifold_kind": "point",
+      "rep_count": 3,
+      "unitary_op_count": 24,
+      "comparison_count": 72,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P3",
+      "manifold_kind": "point",
+      "rep_count": 6,
+      "unitary_op_count": 12,
+      "comparison_count": 72,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P4",
+      "manifold_kind": "point",
+      "rep_count": 3,
+      "unitary_op_count": 12,
+      "comparison_count": 36,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P4__1d3_1d3_1d2",
+      "manifold_kind": "point",
+      "rep_count": 3,
+      "unitary_op_count": 12,
+      "comparison_count": 36,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P5",
+      "manifold_kind": "point",
+      "rep_count": 8,
+      "unitary_op_count": 8,
+      "comparison_count": 64,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P5__0_1d2_0",
+      "manifold_kind": "point",
+      "rep_count": 8,
+      "unitary_op_count": 8,
+      "comparison_count": 64,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P5__1d2_1d2_0",
+      "manifold_kind": "point",
+      "rep_count": 8,
+      "unitary_op_count": 8,
+      "comparison_count": 64,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P6",
+      "manifold_kind": "point",
+      "rep_count": 2,
+      "unitary_op_count": 8,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P6__0_1d2_1d2",
+      "manifold_kind": "point",
+      "rep_count": 2,
+      "unitary_op_count": 8,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "P6__1d2_1d2_1d2",
+      "manifold_kind": "point",
+      "rep_count": 2,
+      "unitary_op_count": 8,
+      "comparison_count": 16,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "S1",
+      "manifold_kind": "plane",
+      "rep_count": 2,
+      "unitary_op_count": 2,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "S2",
+      "manifold_kind": "plane",
+      "rep_count": 2,
+      "unitary_op_count": 2,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "S3",
+      "manifold_kind": "plane",
+      "rep_count": 2,
+      "unitary_op_count": 2,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    },
+    {
+      "manifold_id": "S4",
+      "manifold_kind": "plane",
+      "rep_count": 2,
+      "unitary_op_count": 2,
+      "comparison_count": 4,
+      "mismatch_count": 0,
+      "tau_field_mismatch_count": 0,
+      "first_mismatch": null
+    }
+  ],
+  "summary": "The character-field conversion formula is validated directly against the capture tables rather than through the induction-trace builders. For every audited single-branch manifold, the stored `character` matches `linear_character / exp(-i k\u00b7tauC(op))`, and the capture-table `tauC` field matches the runtime `unitary_translations` field used by the patch."
+}

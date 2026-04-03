@@ -12466,7 +12466,7 @@
   "rank_trivial_family_span": 12,
   "generator_failure_count": 0,
   "generator_failures": [],
-  "blocker_summary": "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, but only 11 of 45 induced local objects satisfy compatibility on the publication-level shell. Classification counts across raw42 / internal honest shell / publication shell: {'fails_on_raw42': 34, 'compatible_on_publication_shell': 11}. 34 candidates already fail on the diagnostic raw42 shell before any internal/publication reduction is applied. No candidate first fails on the internal full-span 8-path shell before publication reduction. No candidate first fails on the publication shell after passing the internal shell. On the publication shell the nonzero residual rows concentrate on path histogram {'PPATH06': 68}. The earlier P4 induction failures are cleared by the manifold character-field conversion patch. Current P4 verdict: proved_bug. Nonzero residuals on the publication shell are concentrated on PPATH06 rows [22, 23, 24].",
+  "blocker_summary": "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, but only 11 of 45 induced local objects satisfy compatibility on the publication-level shell. Classification counts across raw42 / internal honest shell / publication shell: {'fails_on_raw42': 34, 'compatible_on_publication_shell': 11}. 34 candidates already fail on the diagnostic raw42 shell before any internal/publication reduction is applied. No candidate first fails on the internal full-span 8-path shell before publication reduction. No candidate first fails on the publication shell after passing the internal shell. On the publication shell the nonzero residual rows concentrate on path histogram {'PPATH06': 68}. The earlier P4 induction failures are cleared by the manifold character-field conversion patch. Independent validation status: P4 bug independently validated and repaired at the manifold_character_field_conversion stage. Current P4 verdict: proved_bug. Nonzero residuals on the publication shell are concentrated on PPATH06 rows [22, 23, 24]. The residual sector contributes quotient rank 5 after quotienting the three PPATH06 support-row obstruction directions, matching the current missing AI rank 5.",
   "local_library_wired_into_ai_builder": true,
   "ai_character_field_alignment_report": {
     "authoritative_compatibility_field": "character",
@@ -12612,6 +12612,17 @@
     "failure_family_ids": []
   },
   "p4_current_verdict": "proved_bug",
+  "p4_conversion_patch_independent_validation_report": {
+    "independently_validated_globally": true,
+    "shared_patch_self_validation_risk_removed": true,
+    "all_manifold_formula_pass": true,
+    "tau_field_match_global_pass": true,
+    "p4_linear_trace_differing_ops_count_total": 0,
+    "p4_converted_trace_differing_ops_count_total": 0,
+    "p4_induction_failure_count": 0,
+    "current_verdict": "P4 bug independently validated and repaired at the manifold_character_field_conversion stage",
+    "summary": "The P4 conversion patch is no longer justified only by two trace builders sharing the same post-processing code. It is independently checked against the capture tables across all single-branch manifolds and then cross-checked against the pre-conversion linear trace and post-conversion selected-character trace on the audited P4 objects."
+  },
   "ppath06_residual_obstruction_audit": {
     "publication_path_id": "PPATH06",
     "row_indices": [
@@ -12629,7 +12640,7 @@
     ]
   },
   "ai_seed_delta_after_bs_fix_report": {
-    "residual_pattern_changed": true
+    "residual_pattern_changed": false
   },
   "partial_ai_lattice_witness_report": {
     "zero_subset_rank": 5,
@@ -12641,9 +12652,14 @@
       "f_A1"
     ]
   },
-  "p4_trace_formula_vs_explicit_orbit_report": {
-    "first_failure_mismatch": null,
-    "bug_localized_to_stage": "manifold_character_field_conversion: convert the assembled linear band trace to the selected character field by dividing by exp(-i k\u00b7tauC(op)) on each unitary operation",
-    "resolved_by_character_field_conversion": true
+  "ai_rank_gap_quotient_report": {
+    "quotient_rank_contribution_of_residual_sector": 5,
+    "missing_rank5_pivot_generator_ids": [
+      "a_A1u",
+      "b_A1''",
+      "c_A1'",
+      "d_A1'",
+      "g_Ag"
+    ]
   }
 }

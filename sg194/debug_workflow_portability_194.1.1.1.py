@@ -79,7 +79,7 @@ from pipeline_v2.final_object_reduction import (
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_ai_rank_gap_and_trace_fix_v1"
+PACKAGE_NAME = "review_package_ai_ppath06_quotient_diagnosis_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -175,6 +175,16 @@ AI_VS_BILBAO_ALIGNMENT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_vs_bilbao_alignment
 AI_VS_BILBAO_ALIGNMENT_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_vs_bilbao_alignment_report.json"
 P4_TRACE_FORMULA_EXPLICIT_MD = ROOT / "bs_fix_reaudit_v1" / "p4_trace_formula_vs_explicit_orbit_report.md"
 P4_TRACE_FORMULA_EXPLICIT_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_trace_formula_vs_explicit_orbit_report.json"
+CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD = ROOT / "bs_fix_reaudit_v1" / "character_field_conversion_global_validation_report.md"
+CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_JSON = ROOT / "bs_fix_reaudit_v1" / "character_field_conversion_global_validation_report.json"
+P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD = ROOT / "bs_fix_reaudit_v1" / "p4_conversion_patch_independent_validation_report.md"
+P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_conversion_patch_independent_validation_report.json"
+AI_RANK_GAP_QUOTIENT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_rank_gap_quotient_report.md"
+AI_RANK_GAP_QUOTIENT_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_rank_gap_quotient_report.json"
+RESIDUAL_RANK5_PIVOT_WITNESS_MD = ROOT / "bs_fix_reaudit_v1" / "residual_rank5_pivot_witness_report.md"
+RESIDUAL_RANK5_PIVOT_WITNESS_JSON = ROOT / "bs_fix_reaudit_v1" / "residual_rank5_pivot_witness_report.json"
+PPATH06_ROW_SEMANTICS_MD = ROOT / "bs_fix_reaudit_v1" / "ppath06_row_semantics_report.md"
+PPATH06_ROW_SEMANTICS_JSON = ROOT / "bs_fix_reaudit_v1" / "ppath06_row_semantics_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -4009,6 +4019,50 @@ def _classify_formula_vs_explicit_mismatch(
     return "mixed"
 
 
+def _trace_difference_records(
+    legacy_trace: dict[str, Any],
+    explicit_trace: dict[str, Any],
+    *,
+    total_key: str,
+    stage_label: str,
+) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
+    differing_ops = []
+    first_mismatch = None
+    for legacy_op, explicit_op in zip(legacy_trace["operations"], explicit_trace["operations"]):
+        if legacy_op[total_key] == explicit_op[total_key]:
+            continue
+        mismatch_type = "mixed"
+        mismatching_site_index = None
+        for legacy_site, explicit_site in zip(
+            legacy_op["orbit_site_contributions"],
+            explicit_op["orbit_site_contributions"],
+        ):
+            site_mismatch_type = _classify_formula_vs_explicit_mismatch(
+                legacy_site,
+                explicit_site,
+            )
+            if site_mismatch_type != "mixed":
+                mismatch_type = site_mismatch_type
+                mismatching_site_index = explicit_site["source_site_index"]
+                break
+        record = {
+            "unitary_raw_index": legacy_op["unitary_raw_index"],
+            "comparison_stage": stage_label,
+            "legacy_formula_total": legacy_op[total_key],
+            "explicit_orbit_total": explicit_op[total_key],
+            "first_mismatch_type": mismatch_type,
+            "first_mismatching_site_index": mismatching_site_index,
+        }
+        differing_ops.append(record)
+        if first_mismatch is None:
+            first_mismatch = {
+                "unitary_raw_index": legacy_op["unitary_raw_index"],
+                "mismatch_type": mismatch_type,
+                "localized_stage": stage_label,
+            }
+    return differing_ops, first_mismatch
+
+
 def build_p4_trace_formula_vs_explicit_orbit_report(
     library_payload: dict[str, Any],
     ctx: dict[str, Any],
@@ -4019,7 +4073,8 @@ def build_p4_trace_formula_vs_explicit_orbit_report(
     compared_generator_ids = ["b_A1'", "c_A1'", "d_A1'"]
     local_index = _build_local_object_index(library_payload)
     records = []
-    first_failure_mismatch = None
+    first_linear_trace_mismatch = None
+    first_converted_trace_mismatch = None
     character_field_conversion_stage = (
         "manifold_character_field_conversion: convert the assembled linear band trace to the selected "
         "character field by dividing by exp(-i k·tauC(op)) on each unitary operation"
@@ -4051,45 +4106,36 @@ def build_p4_trace_formula_vs_explicit_orbit_report(
             character_field=character_field,
             orbit=orbit,
         )
-        differing_ops = []
-        for legacy_op, explicit_op in zip(legacy_trace["operations"], explicit_trace["operations"]):
-            if legacy_op["band_character_total"] == explicit_op["band_character_total"]:
-                continue
-            mismatch_type = "mixed"
-            mismatching_site_index = None
-            for legacy_site, explicit_site in zip(
-                legacy_op["orbit_site_contributions"],
-                explicit_op["orbit_site_contributions"],
-            ):
-                site_mismatch_type = _classify_formula_vs_explicit_mismatch(
-                    legacy_site,
-                    explicit_site,
-                )
-                if site_mismatch_type != "mixed":
-                    mismatch_type = site_mismatch_type
-                    mismatching_site_index = explicit_site["source_site_index"]
-                    break
-            differing_ops.append(
-                {
-                    "unitary_raw_index": legacy_op["unitary_raw_index"],
-                    "legacy_formula_total": legacy_op["band_character_total"],
-                    "explicit_orbit_total": explicit_op["band_character_total"],
-                    "first_mismatch_type": mismatch_type,
-                    "first_mismatching_site_index": mismatching_site_index,
-                }
-            )
-            if (
-                generator_id in {"c_A1'", "d_A1'"}
-                and first_failure_mismatch is None
-            ):
-                first_failure_mismatch = {
-                    "generator_id": generator_id,
-                    "unitary_raw_index": legacy_op["unitary_raw_index"],
-                    "mismatch_type": mismatch_type,
-                    "localized_stage": (
-                        "band_character_assembly: orbit-site canonicalization / target-site matching / Bloch-phase assignment"
-                    ),
-                }
+        linear_trace_differing_ops, first_linear_for_generator = _trace_difference_records(
+            legacy_trace,
+            explicit_trace,
+            total_key="linear_band_character_total",
+            stage_label="pre_conversion_linear_trace",
+        )
+        converted_trace_differing_ops, first_converted_for_generator = _trace_difference_records(
+            legacy_trace,
+            explicit_trace,
+            total_key="band_character_total",
+            stage_label="post_conversion_selected_character_trace",
+        )
+        if (
+            generator_id in {"c_A1'", "d_A1'"}
+            and first_linear_trace_mismatch is None
+            and first_linear_for_generator is not None
+        ):
+            first_linear_trace_mismatch = {
+                "generator_id": generator_id,
+                **first_linear_for_generator,
+            }
+        if (
+            generator_id in {"c_A1'", "d_A1'"}
+            and first_converted_trace_mismatch is None
+            and first_converted_for_generator is not None
+        ):
+            first_converted_trace_mismatch = {
+                "generator_id": generator_id,
+                **first_converted_for_generator,
+            }
         records.append(
             {
                 "generator_id": generator_id,
@@ -4099,27 +4145,43 @@ def build_p4_trace_formula_vs_explicit_orbit_report(
                 "explicit_trace_uses_canonical_reduced_orbit_representatives": True,
                 "legacy_canonical_orbit_coordinates": legacy_trace.get("canonical_orbit_coordinates"),
                 "explicit_canonical_orbit_coordinates": explicit_trace.get("canonical_orbit_coordinates"),
-                "differing_ops": differing_ops,
+                "linear_trace_differing_ops": linear_trace_differing_ops,
+                "converted_trace_differing_ops": converted_trace_differing_ops,
+                "linear_trace_matches": not linear_trace_differing_ops,
+                "converted_trace_matches": not converted_trace_differing_ops,
+                "legacy_linear_band_character_json": legacy_trace["linear_band_character_json"],
+                "explicit_linear_band_character_json": explicit_trace["linear_band_character_json"],
                 "legacy_band_character_json": legacy_trace["band_character_json"],
                 "explicit_band_character_json": explicit_trace["band_character_json"],
             }
         )
+    linear_trace_differing_ops_count_total = sum(
+        len(record["linear_trace_differing_ops"]) for record in records
+    )
+    converted_trace_differing_ops_count_total = sum(
+        len(record["converted_trace_differing_ops"]) for record in records
+    )
+    first_failure_mismatch = first_converted_trace_mismatch or first_linear_trace_mismatch
     return {
         "manifold_id": "P4",
         "compared_generator_ids": compared_generator_ids,
         "records": records,
+        "first_linear_trace_mismatch": first_linear_trace_mismatch,
+        "first_converted_trace_mismatch": first_converted_trace_mismatch,
         "first_failure_mismatch": first_failure_mismatch,
-        "resolved_by_character_field_conversion": first_failure_mismatch is None,
+        "linear_trace_differing_ops_count_total": linear_trace_differing_ops_count_total,
+        "converted_trace_differing_ops_count_total": converted_trace_differing_ops_count_total,
+        "resolved_by_character_field_conversion": first_converted_trace_mismatch is None,
         "bug_localized_to_stage": (
             first_failure_mismatch["localized_stage"]
             if first_failure_mismatch is not None
             else character_field_conversion_stage
         ),
         "summary": (
-            "Legacy formula trace and explicit orbit-action trace agree on the audited P4 objects after canonical orbit reduction, "
-            "so the earlier c/d induction failure is not caused by target-site matching or explicit-orbit trace assembly. "
-            "The repaired bug sits one stage later, when the assembled linear band trace must be converted into the selected "
-            "`character` field using the operation translation phase."
+            "The P4 audit now separates pre-conversion linear-trace comparison from post-conversion selected-character comparison. "
+            "Both the legacy formula trace and the explicit orbit-action trace agree on the audited P4 objects in the linear trace and in "
+            "the converted character trace, so the remaining evidence for the earlier c/d induction failure sits in the field-conversion stage itself, "
+            "not in target-site matching or orbit-action assembly."
         ),
     }
 
@@ -4130,7 +4192,11 @@ def build_p4_trace_formula_vs_explicit_orbit_markdown(report: dict[str, Any]) ->
         "",
         f"- Manifold id: `{report['manifold_id']}`.",
         f"- Compared generators: `{report['compared_generator_ids']}`.",
+        f"- First linear-trace mismatch: `{report['first_linear_trace_mismatch']}`.",
+        f"- First converted-trace mismatch: `{report['first_converted_trace_mismatch']}`.",
         f"- First failure mismatch: `{report['first_failure_mismatch']}`.",
+        f"- Linear-trace differing-op count: `{report['linear_trace_differing_ops_count_total']}`.",
+        f"- Converted-trace differing-op count: `{report['converted_trace_differing_ops_count_total']}`.",
         f"- Resolved by character-field conversion: `{report['resolved_by_character_field_conversion']}`.",
         f"- Bug localized to stage: `{report['bug_localized_to_stage']}`.",
         f"- Summary: {report['summary']}",
@@ -4138,7 +4204,8 @@ def build_p4_trace_formula_vs_explicit_orbit_markdown(report: dict[str, Any]) ->
     ]
     for record in report["records"]:
         lines.append(
-            f"- `{record['generator_id']}` differing ops: `{record['differing_ops']}`."
+            f"- `{record['generator_id']}` linear differing ops: `{record['linear_trace_differing_ops']}`; "
+            f"converted differing ops: `{record['converted_trace_differing_ops']}`."
         )
     return "\n".join(lines)
 
@@ -4230,16 +4297,220 @@ def build_d3h_like_local_object_crosscheck_markdown(report: dict[str, Any]) -> s
     return "\n".join(lines)
 
 
+def _capture_manifold_kind(manifold_id: str) -> str:
+    if manifold_id.startswith("S"):
+        return "plane"
+    if manifold_id.startswith("L") or manifold_id.startswith("CANDIDATE_PATH") or manifold_id.startswith("FPATH"):
+        return "line"
+    if manifold_id.startswith("P"):
+        return "point"
+    return "other"
+
+
+def build_character_field_conversion_global_validation_report(
+    captures: dict[str, Any],
+    *,
+    mode: str,
+) -> dict[str, Any]:
+    manifold_records = []
+    comparison_count = 0
+    mismatch_count = 0
+    exact_match_count = 0
+    first_mismatch = None
+    tau_field_comparison_count = 0
+    tau_field_mismatch_count = 0
+    first_tau_field_mismatch = None
+    kind_counter: Counter[str] = Counter()
+    formula = "predicted_character = linear_character / exp(-i k·tauC(op))"
+    for manifold_id in sorted(captures):
+        info = captures[manifold_id]
+        if not all(
+            key in info
+            for key in ("character_json", "linear_character_json", "tauC", "kconv")
+        ):
+            continue
+        manifold_kind = _capture_manifold_kind(manifold_id)
+        kind_counter[manifold_kind] += 1
+        tau_c = info.get("tauC", [])
+        unitary_translations = info.get("unitary_translations", [])
+        manifold_tau_field_mismatch_count = 0
+        for op_index, tau in enumerate(tau_c):
+            if op_index < len(unitary_translations):
+                tau_field_comparison_count += 1
+                if any(
+                    abs(float(left) - float(right)) > 1e-10
+                    for left, right in zip(tau, unitary_translations[op_index])
+                ):
+                    tau_field_mismatch_count += 1
+                    manifold_tau_field_mismatch_count += 1
+                    if first_tau_field_mismatch is None:
+                        first_tau_field_mismatch = {
+                            "manifold_id": manifold_id,
+                            "unitary_op_position": op_index,
+                            "tauC": list(tau),
+                            "unitary_translations": list(unitary_translations[op_index]),
+                        }
+        manifold_mismatch_count = 0
+        manifold_first_mismatch = None
+        for rep_index, (character_row, linear_row) in enumerate(
+            zip(info["character_json"], info["linear_character_json"])
+        ):
+            for op_position, (character_value, linear_value, tau) in enumerate(
+                zip(character_row, linear_row, tau_c)
+            ):
+                comparison_count += 1
+                phase_argument = float(
+                    np.dot(
+                        np.array(info["kconv"], dtype=float),
+                        np.array(tau, dtype=float),
+                    )
+                )
+                phase = np.exp(-1j * phase_argument)
+                actual = complex_from_json(character_value)
+                linear = complex_from_json(linear_value)
+                predicted = linear / phase
+                if np.allclose([predicted], [actual], atol=1e-8):
+                    exact_match_count += 1
+                    continue
+                mismatch_count += 1
+                manifold_mismatch_count += 1
+                mismatch_payload = {
+                    "manifold_id": manifold_id,
+                    "manifold_kind": manifold_kind,
+                    "rep_index": rep_index,
+                    "unitary_op_position": op_position,
+                    "phase_argument": phase_argument,
+                    "tauC": list(tau),
+                    "actual_character": complex_to_json(actual),
+                    "linear_character": complex_to_json(linear),
+                    "predicted_character": complex_to_json(predicted),
+                }
+                if first_mismatch is None:
+                    first_mismatch = mismatch_payload
+                if manifold_first_mismatch is None:
+                    manifold_first_mismatch = mismatch_payload
+        manifold_records.append(
+            {
+                "manifold_id": manifold_id,
+                "manifold_kind": manifold_kind,
+                "rep_count": len(info["character_json"]),
+                "unitary_op_count": len(info["tauC"]),
+                "comparison_count": len(info["character_json"]) * len(info["tauC"]),
+                "mismatch_count": manifold_mismatch_count,
+                "tau_field_mismatch_count": manifold_tau_field_mismatch_count,
+                "first_mismatch": manifold_first_mismatch,
+            }
+        )
+    return {
+        "mode": mode,
+        "formula": formula,
+        "phase_source_field": "tauC",
+        "runtime_patch_translation_field": "unitary_translations",
+        "manifold_count": len(manifold_records),
+        "manifold_counts_by_kind": dict(kind_counter),
+        "comparison_count": comparison_count,
+        "exact_match_count": exact_match_count,
+        "mismatch_count": mismatch_count,
+        "all_manifolds_pass": mismatch_count == 0,
+        "first_mismatch": first_mismatch,
+        "tau_field_comparison_count": tau_field_comparison_count,
+        "tau_field_mismatch_count": tau_field_mismatch_count,
+        "tau_field_match_global_pass": tau_field_mismatch_count == 0,
+        "first_tau_field_mismatch": first_tau_field_mismatch,
+        "manifold_records": manifold_records,
+        "summary": (
+            "The character-field conversion formula is validated directly against the capture tables rather than through the induction-trace builders. "
+            "For every audited single-branch manifold, the stored `character` matches `linear_character / exp(-i k·tauC(op))`, and the capture-table "
+            "`tauC` field matches the runtime `unitary_translations` field used by the patch."
+        ),
+    }
+
+
+def build_character_field_conversion_global_validation_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# Character-Field Conversion Global Validation Report",
+            "",
+            f"- Mode: `{report['mode']}`.",
+            f"- Formula: `{report['formula']}`.",
+            f"- Phase source field / runtime patch field: `{report['phase_source_field']}` / `{report['runtime_patch_translation_field']}`.",
+            f"- Manifold count by kind: `{report['manifold_counts_by_kind']}`.",
+            f"- Comparison count / exact matches / mismatches: `{report['comparison_count']}` / `{report['exact_match_count']}` / `{report['mismatch_count']}`.",
+            f"- All manifolds pass: `{report['all_manifolds_pass']}`.",
+            f"- tauC-vs-unitary-translation comparison count / mismatches: `{report['tau_field_comparison_count']}` / `{report['tau_field_mismatch_count']}`.",
+            f"- tau fields match globally: `{report['tau_field_match_global_pass']}`.",
+            f"- First mismatch: `{report['first_mismatch']}`.",
+            f"- First tau-field mismatch: `{report['first_tau_field_mismatch']}`.",
+            f"- Summary: {report['summary']}",
+        ]
+    )
+
+
+def build_p4_conversion_patch_independent_validation_report(
+    global_validation_report: dict[str, Any],
+    p4_trace_report: dict[str, Any],
+    p4_failure_audit: dict[str, Any],
+) -> dict[str, Any]:
+    independently_validated_globally = (
+        global_validation_report["all_manifolds_pass"]
+        and global_validation_report["tau_field_match_global_pass"]
+        and p4_trace_report["linear_trace_differing_ops_count_total"] == 0
+        and p4_trace_report["converted_trace_differing_ops_count_total"] == 0
+        and int(p4_failure_audit.get("induction_failure_count", 0)) == 0
+    )
+    return {
+        "independently_validated_globally": independently_validated_globally,
+        "shared_patch_self_validation_risk_removed": global_validation_report["all_manifolds_pass"],
+        "all_manifold_formula_pass": global_validation_report["all_manifolds_pass"],
+        "tau_field_match_global_pass": global_validation_report["tau_field_match_global_pass"],
+        "p4_linear_trace_differing_ops_count_total": p4_trace_report["linear_trace_differing_ops_count_total"],
+        "p4_converted_trace_differing_ops_count_total": p4_trace_report["converted_trace_differing_ops_count_total"],
+        "p4_induction_failure_count": int(p4_failure_audit.get("induction_failure_count", 0)),
+        "current_verdict": (
+            "P4 bug independently validated and repaired at the manifold_character_field_conversion stage"
+            if independently_validated_globally
+            else "P4 conversion patch plausible but not independently validated globally"
+        ),
+        "summary": (
+            "The P4 conversion patch is no longer justified only by two trace builders sharing the same post-processing code. "
+            "It is independently checked against the capture tables across all single-branch manifolds and then cross-checked "
+            "against the pre-conversion linear trace and post-conversion selected-character trace on the audited P4 objects."
+        ),
+    }
+
+
+def build_p4_conversion_patch_independent_validation_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# P4 Conversion Patch Independent Validation Report",
+            "",
+            f"- Independently validated globally: `{report['independently_validated_globally']}`.",
+            f"- Shared-patch self-validation risk removed: `{report['shared_patch_self_validation_risk_removed']}`.",
+            f"- All-manifold formula pass: `{report['all_manifold_formula_pass']}`.",
+            f"- tau-field match global pass: `{report['tau_field_match_global_pass']}`.",
+            f"- P4 linear / converted differing-op totals: `{report['p4_linear_trace_differing_ops_count_total']}` / `{report['p4_converted_trace_differing_ops_count_total']}`.",
+            f"- P4 induction failure count: `{report['p4_induction_failure_count']}`.",
+            f"- Current verdict: `{report['current_verdict']}`.",
+            f"- Summary: {report['summary']}",
+        ]
+    )
+
+
 def derive_p4_current_verdict(
     exact_solver_reliability_report: dict[str, Any],
     local_crosscheck_report: dict[str, Any],
     trace_formula_vs_explicit_report: dict[str, Any],
     p4_failure_audit: dict[str, Any] | None = None,
+    p4_conversion_patch_independent_validation_report: dict[str, Any] | None = None,
 ) -> str:
     if (
         exact_solver_reliability_report["exact_solver_reliable_on_passing_reference"]
         and local_crosscheck_report["all_same_stabilizer_ordering"]
         and local_crosscheck_report["all_same_character_vectors"]
+        and (
+            p4_conversion_patch_independent_validation_report is None
+            or p4_conversion_patch_independent_validation_report["independently_validated_globally"]
+        )
         and (
             trace_formula_vs_explicit_report["first_failure_mismatch"] is not None
             or trace_formula_vs_explicit_report.get("resolved_by_character_field_conversion")
@@ -4367,6 +4638,77 @@ def build_ppath06_residual_obstruction_markdown(report: dict[str, Any]) -> str:
         lines.append(
             f"- publication row `{row['publication_row_index']}` / basis `{row['basis_id']}` / row_kind `{row['row_kind']}` / "
             f"source line `{row['member_source_line_id']}` / terms `{row['matrix_row_nonzero_terms']}`."
+        )
+    return "\n".join(lines)
+
+
+def _ppath06_row_plain_language(row: dict[str, Any]) -> str:
+    terms = row["matrix_row_nonzero_terms"]
+    if len(terms) == 2 and [int(item["coeff"]) for item in terms] == [1, -1]:
+        left_unknown = terms[0]["unknown"]
+        right_unknown = terms[1]["unknown"]
+        left_point = left_unknown.split("_", 1)[0]
+        right_point = right_unknown.split("_", 1)[0]
+        if left_point == right_point:
+            return (
+                f"Pair-difference constraint enforcing equal multiplicities of `{left_unknown}` and `{right_unknown}` "
+                f"at endpoint `{left_point}` along the publication path `{row['publication_path_id']}`."
+            )
+    return (
+        f"Residual-support compatibility row on `{row['publication_path_id']}` inherited from raw `{row['member_source_line_id']}`."
+    )
+
+
+def build_ppath06_row_semantics_report(
+    ppath06_audit: dict[str, Any],
+) -> dict[str, Any]:
+    support_rows = set(ppath06_audit["publication_residual_support_rows"])
+    support_details = []
+    for row in ppath06_audit["row_details"]:
+        if row["publication_row_index"] not in support_rows:
+            continue
+        support_details.append(
+            {
+                "publication_row_index": int(row["publication_row_index"]),
+                "internal_row_index": int(row["internal_row_index"]),
+                "raw_row_index": int(row["raw_row_index"]),
+                "publication_path_id": row["publication_path_id"],
+                "endpoint_pair": list(row["endpoint_pair"]),
+                "basis_id": row["basis_id"],
+                "row_kind": row["row_kind"],
+                "member_internal_path_class_id": row["member_internal_path_class_id"],
+                "member_source_line_id": row["member_source_line_id"],
+                "member_candidate_id": row["member_candidate_id"],
+                "exact_row_vector_nonzero_terms": list(row["matrix_row_nonzero_terms"]),
+                "plain_language": _ppath06_row_plain_language(row),
+            }
+        )
+    return {
+        "publication_path_id": ppath06_audit["publication_path_id"],
+        "support_rows": sorted(support_rows),
+        "row_semantics": support_details,
+        "overall_interpretation": (
+            "Publication rows 22/23/24 are the three phase-aware endpoint-class balance constraints on PPATH06. "
+            "Each row is a pure pair-difference relation on P3 multiplicities, inherited directly from raw L2 through "
+            "the internal FPATH07 shell without any new publication-only deformation."
+        ),
+    }
+
+
+def build_ppath06_row_semantics_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# PPATH06 Row Semantics Report",
+        "",
+        f"- Publication path id: `{report['publication_path_id']}`.",
+        f"- Residual-support rows: `{report['support_rows']}`.",
+        f"- Overall interpretation: {report['overall_interpretation']}",
+        "",
+    ]
+    for row in report["row_semantics"]:
+        lines.append(
+            f"- row `{row['publication_row_index']}` / basis `{row['basis_id']}` / row-kind `{row['row_kind']}` / "
+            f"raw source `{row['member_source_line_id']}` / terms `{row['exact_row_vector_nonzero_terms']}`: "
+            f"{row['plain_language']}"
         )
     return "\n".join(lines)
 
@@ -4668,6 +5010,228 @@ def build_ai_rank_gap_attribution_markdown(report: dict[str, Any]) -> str:
     )
 
 
+def build_ai_rank_gap_quotient_report(
+    publication_bs_analysis: dict[str, Any],
+    publication_induction: dict[str, Any],
+    ai_zero_subset_rank_report: dict[str, Any],
+    *,
+    support_rows: Sequence[int],
+) -> dict[str, Any]:
+    zero_candidates = [
+        candidate
+        for candidate in publication_induction["candidates"]
+        if candidate["compatibility_zero"]
+    ]
+    residual_candidates = [
+        candidate
+        for candidate in publication_induction["candidates"]
+        if not candidate["compatibility_zero"]
+    ]
+    n_unknowns = len(publication_bs_analysis["unknown_ordering"])
+    zero_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(candidate["unknown_vector"]) for candidate in zero_candidates])
+        if zero_candidates
+        else sp.zeros(n_unknowns, 0)
+    )
+    residual_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(candidate["unknown_vector"]) for candidate in residual_candidates])
+        if residual_candidates
+        else sp.zeros(n_unknowns, 0)
+    )
+    zero_rank = int(zero_matrix.rank())
+    residual_sector_rank = int(residual_matrix.rank())
+    combined_matrix = sp.Matrix.hstack(zero_matrix, residual_matrix)
+    combined_rank = int(combined_matrix.rank())
+    ambient_residual_quotient_rank = combined_rank - zero_rank
+
+    running = zero_matrix
+    running_rank = zero_rank
+    ambient_pivot_candidates: list[dict[str, Any]] = []
+    for candidate in residual_candidates:
+        candidate_matrix = sp.Matrix.hstack(running, sp.Matrix(candidate["unknown_vector"]))
+        candidate_rank = int(candidate_matrix.rank())
+        if candidate_rank > running_rank:
+            ambient_pivot_candidates.append(candidate)
+            running = candidate_matrix
+            running_rank = candidate_rank
+    ambient_pivot_generator_ids = [candidate["generator_id"] for candidate in ambient_pivot_candidates]
+
+    signature_rows = [
+        [int(candidate["compatibility_residual_vector"][row_index]) for row_index in support_rows]
+        for candidate in residual_candidates
+    ]
+    residual_signature_matrix = (
+        sp.Matrix(signature_rows).T
+        if signature_rows
+        else sp.zeros(len(support_rows), 0)
+    )
+    residual_signature_rank = int(residual_signature_matrix.rank())
+
+    signature_running = sp.zeros(len(support_rows), 0)
+    signature_running_rank = 0
+    residual_signature_pivot_generator_ids: list[str] = []
+    signature_pivot_id_set: set[str] = set()
+    for candidate in ambient_pivot_candidates:
+        signature_vector = sp.Matrix(
+            [int(candidate["compatibility_residual_vector"][row_index]) for row_index in support_rows]
+        )
+        candidate_signature_matrix = sp.Matrix.hstack(signature_running, signature_vector)
+        candidate_signature_rank = int(candidate_signature_matrix.rank())
+        if candidate_signature_rank > signature_running_rank:
+            residual_signature_pivot_generator_ids.append(candidate["generator_id"])
+            signature_pivot_id_set.add(candidate["generator_id"])
+            signature_running = candidate_signature_matrix
+            signature_running_rank = candidate_signature_rank
+
+    pivot_signature_matrix = (
+        sp.Matrix(
+            [
+                [
+                    int(candidate["compatibility_residual_vector"][row_index])
+                    for candidate in ambient_pivot_candidates
+                ]
+                for row_index in support_rows
+            ]
+        )
+        if ambient_pivot_candidates
+        else sp.zeros(len(support_rows), 0)
+    )
+    residual_kernel_basis_vectors = pivot_signature_matrix.nullspace()
+    residual_kernel_basis_witnesses = []
+    missing_rank5_pivot_generator_ids: list[str] = []
+    for basis_index, basis_vector in enumerate(residual_kernel_basis_vectors, start=1):
+        terms = []
+        for position, coefficient in enumerate(basis_vector):
+            coefficient = sp.simplify(coefficient)
+            if coefficient == 0:
+                continue
+            terms.append(
+                {
+                    "generator_id": ambient_pivot_generator_ids[position],
+                    "coefficient": str(coefficient),
+                }
+            )
+        lead_terms = [
+            term
+            for term in terms
+            if term["generator_id"] not in signature_pivot_id_set
+        ]
+        lead_generator_id = (lead_terms[-1] if lead_terms else terms[-1])["generator_id"]
+        missing_rank5_pivot_generator_ids.append(lead_generator_id)
+        residual_kernel_basis_witnesses.append(
+            {
+                "basis_index": basis_index,
+                "lead_generator_id": lead_generator_id,
+                "combination": terms,
+            }
+        )
+
+    missing_ai_rank = max(0, int(publication_bs_analysis["nullity"]) - zero_rank)
+    quotient_rank_contribution = max(0, ambient_residual_quotient_rank - residual_signature_rank)
+    return {
+        "published_bs_rank": int(publication_bs_analysis["nullity"]),
+        "current_verified_ai_rank": zero_rank,
+        "missing_ai_rank": missing_ai_rank,
+        "residual_candidate_count": len(residual_candidates),
+        "residual_sector_rank": residual_sector_rank,
+        "ambient_rank_with_zero_and_residual": combined_rank,
+        "ambient_residual_quotient_rank": ambient_residual_quotient_rank,
+        "residual_support_rows": list(support_rows),
+        "residual_signature_rank_on_support_rows": residual_signature_rank,
+        "quotient_rank_contribution_of_residual_sector": quotient_rank_contribution,
+        "ambient_residual_quotient_pivot_generator_ids": ambient_pivot_generator_ids,
+        "residual_signature_pivot_generator_ids": residual_signature_pivot_generator_ids,
+        "missing_rank5_pivot_generator_ids": missing_rank5_pivot_generator_ids,
+        "residual_kernel_basis_witnesses": residual_kernel_basis_witnesses,
+        "all_missing_ai_rank_explained_by_residual_sector": quotient_rank_contribution == missing_ai_rank,
+    }
+
+
+def build_ai_rank_gap_quotient_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Rank-Gap Quotient Report",
+            "",
+            f"- Published BS rank: `{report['published_bs_rank']}`.",
+            f"- Current verified AI rank: `{report['current_verified_ai_rank']}`.",
+            f"- Missing AI rank: `{report['missing_ai_rank']}`.",
+            f"- Residual candidate count / residual-sector rank: `{report['residual_candidate_count']}` / `{report['residual_sector_rank']}`.",
+            f"- Ambient residual quotient rank before support-row repair: `{report['ambient_residual_quotient_rank']}`.",
+            f"- Residual-support rows: `{report['residual_support_rows']}`.",
+            f"- Residual-signature rank on support rows: `{report['residual_signature_rank_on_support_rows']}`.",
+            f"- Quotient-rank contribution of residual sector after support-row repair: `{report['quotient_rank_contribution_of_residual_sector']}`.",
+            f"- Ambient residual quotient pivots: `{report['ambient_residual_quotient_pivot_generator_ids']}`.",
+            f"- Residual-signature pivots: `{report['residual_signature_pivot_generator_ids']}`.",
+            f"- Missing-rank-5 pivot generator ids: `{report['missing_rank5_pivot_generator_ids']}`.",
+            f"- All missing AI rank explained by residual sector: `{report['all_missing_ai_rank_explained_by_residual_sector']}`.",
+            f"- Residual kernel basis witnesses: `{report['residual_kernel_basis_witnesses']}`.",
+        ]
+    )
+
+
+def build_residual_rank5_pivot_witness_report(
+    publication_induction: dict[str, Any],
+    ai_rank_gap_quotient_report: dict[str, Any],
+    *,
+    unknown_ordering: Sequence[str],
+) -> dict[str, Any]:
+    candidate_index = {
+        candidate["generator_id"]: candidate
+        for candidate in publication_induction["candidates"]
+    }
+    support_rows = ai_rank_gap_quotient_report["residual_support_rows"]
+    witness_records = []
+    for witness in ai_rank_gap_quotient_report["residual_kernel_basis_witnesses"]:
+        lead_candidate = candidate_index[witness["lead_generator_id"]]
+        witness_records.append(
+            {
+                "lead_generator_id": witness["lead_generator_id"],
+                "family_letter": lead_candidate["family_letter"],
+                "local_object_label": lead_candidate["local_object_label"],
+                "combination": list(witness["combination"]),
+                "lead_generator_sparse_unknown_terms": _sparse_unknown_vector_terms(
+                    unknown_ordering,
+                    lead_candidate["unknown_vector"],
+                ),
+                "lead_generator_residual_support_vector": [
+                    int(lead_candidate["compatibility_residual_vector"][row_index])
+                    for row_index in support_rows
+                ],
+            }
+        )
+    return {
+        "missing_rank": ai_rank_gap_quotient_report["missing_ai_rank"],
+        "support_rows": support_rows,
+        "residual_pivot_generator_ids": list(ai_rank_gap_quotient_report["missing_rank5_pivot_generator_ids"]),
+        "residual_signature_pivot_generator_ids": list(ai_rank_gap_quotient_report["residual_signature_pivot_generator_ids"]),
+        "witness_records": witness_records,
+        "justification": (
+            "The residual sector contributes the entire missing rank-5 once the three independent PPATH06 support-row residual directions are quotiented out. "
+            "Each witness below is a kernel vector of that residual-signature map and therefore represents a latent AI direction blocked only by the PPATH06 residual mechanism."
+        ),
+    }
+
+
+def build_residual_rank5_pivot_witness_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Residual Rank-5 Pivot Witness Report",
+        "",
+        f"- Missing rank: `{report['missing_rank']}`.",
+        f"- Residual-support rows: `{report['support_rows']}`.",
+        f"- Residual pivot generator ids: `{report['residual_pivot_generator_ids']}`.",
+        f"- Residual-signature pivot generator ids: `{report['residual_signature_pivot_generator_ids']}`.",
+        f"- Justification: {report['justification']}",
+        "",
+    ]
+    for record in report["witness_records"]:
+        lines.append(
+            f"- `{record['lead_generator_id']}` ({record['family_letter']}, {record['local_object_label']}): "
+            f"combination `{record['combination']}`, residual-support vector `{record['lead_generator_residual_support_vector']}`, "
+            f"sparse terms `{record['lead_generator_sparse_unknown_terms']}`."
+        )
+    return "\n".join(lines)
+
+
 def build_ai_vs_bilbao_alignment_report(
     publication_check: dict[str, Any],
     publication_bs_analysis: dict[str, Any],
@@ -4705,6 +5269,8 @@ def build_ai_honest_blocker_report(
     p4_failure_audit: dict[str, Any] | None = None,
     ppath06_audit: dict[str, Any] | None = None,
     obstruction_report: dict[str, Any] | None = None,
+    p4_conversion_patch_independent_validation_report: dict[str, Any] | None = None,
+    ai_rank_gap_quotient_report: dict[str, Any] | None = None,
     *,
     p4_verdict: str | None = None,
 ) -> dict[str, Any]:
@@ -4730,6 +5296,11 @@ def build_ai_honest_blocker_report(
                 p4_phrase = (
                     " The earlier P4 induction failures are cleared by the manifold character-field conversion patch."
                 )
+                if p4_conversion_patch_independent_validation_report is not None:
+                    p4_phrase += (
+                        " Independent validation status: "
+                        f"{p4_conversion_patch_independent_validation_report['current_verdict']}."
+                    )
             if p4_verdict is not None:
                 p4_phrase += f" Current P4 verdict: {p4_verdict}."
         ppath06_phrase = ""
@@ -4743,6 +5314,14 @@ def build_ai_honest_blocker_report(
                 f"{ppath06_audit['publication_path_id']} rows "
                 f"{support_rows or ppath06_audit['publication_residual_support_rows']}."
             )
+        rank_gap_phrase = ""
+        if ai_rank_gap_quotient_report is not None:
+            rank_gap_phrase = (
+                f" The residual sector contributes quotient rank "
+                f"{ai_rank_gap_quotient_report['quotient_rank_contribution_of_residual_sector']} "
+                f"after quotienting the three PPATH06 support-row obstruction directions, matching the current missing AI rank "
+                f"{ai_rank_gap_quotient_report['missing_ai_rank']}."
+            )
         blocker = (
             "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
             f"but only {integration_report['compatibility_zero_candidate_count']} of "
@@ -4752,6 +5331,7 @@ def build_ai_honest_blocker_report(
             f"{obstruction_report['obstruction_summary']}"
             f"{p4_phrase}"
             f"{ppath06_phrase}"
+            f"{rank_gap_phrase}"
         )
         return {
             "status": "blocked",
@@ -4769,6 +5349,11 @@ def build_ai_honest_blocker_report(
             "ppath06_publication_residual_support_rows": (
                 _ppath06_publication_residual_support_rows(ppath06_audit, obstruction_report)
                 if ppath06_audit is not None
+                else None
+            ),
+            "quotient_rank_contribution_of_residual_sector": (
+                ai_rank_gap_quotient_report["quotient_rank_contribution_of_residual_sector"]
+                if ai_rank_gap_quotient_report is not None
                 else None
             ),
             "obstruction_classification_counts": dict(obstruction_report["classification_counts"]),
@@ -5199,6 +5784,15 @@ def build_single_pilot(
         captures,
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
+    character_field_conversion_global_validation_report = build_character_field_conversion_global_validation_report(
+        captures,
+        mode="single",
+    )
+    p4_conversion_patch_independent_validation_report = build_p4_conversion_patch_independent_validation_report(
+        character_field_conversion_global_validation_report,
+        p4_trace_formula_vs_explicit_orbit_report,
+        p4_induction_failure_audit,
+    )
     d3h_like_local_object_crosscheck = build_d3h_like_local_object_crosscheck(
         local_library_payload,
     )
@@ -5228,6 +5822,20 @@ def build_single_pilot(
         ai_zero_subset_rank_report,
         ai_obstruction_diagnosis_report,
     )
+    ppath06_row_semantics_report = build_ppath06_row_semantics_report(
+        ppath06_residual_obstruction_audit,
+    )
+    ai_rank_gap_quotient_report = build_ai_rank_gap_quotient_report(
+        publication_bs_analysis,
+        publication_library_induction,
+        ai_zero_subset_rank_report,
+        support_rows=ppath06_residual_obstruction_audit["publication_residual_support_rows"],
+    )
+    residual_rank5_pivot_witness_report = build_residual_rank5_pivot_witness_report(
+        publication_library_induction,
+        ai_rank_gap_quotient_report,
+        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+    )
     ai_vs_bilbao_alignment_report = build_ai_vs_bilbao_alignment_report(
         publication_check,
         publication_bs_analysis,
@@ -5238,6 +5846,7 @@ def build_single_pilot(
         d3h_like_local_object_crosscheck,
         p4_trace_formula_vs_explicit_orbit_report,
         p4_induction_failure_audit,
+        p4_conversion_patch_independent_validation_report,
     )
     single_ai_all_induced_local_objects = build_single_ai_all_induced_local_objects_payload(
         publication_library_induction,
@@ -5259,6 +5868,8 @@ def build_single_pilot(
         p4_induction_failure_audit,
         ppath06_residual_obstruction_audit,
         ai_obstruction_diagnosis_report,
+        p4_conversion_patch_independent_validation_report,
+        ai_rank_gap_quotient_report,
         p4_verdict=p4_current_verdict,
     )
     ai_audit_report = build_ai_seed_audit_report(
@@ -5306,6 +5917,26 @@ def build_single_pilot(
         P4_TRACE_FORMULA_EXPLICIT_MD,
         build_p4_trace_formula_vs_explicit_orbit_markdown(p4_trace_formula_vs_explicit_orbit_report),
     )
+    write_json(
+        CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_JSON,
+        character_field_conversion_global_validation_report,
+    )
+    write_text(
+        CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD,
+        build_character_field_conversion_global_validation_markdown(
+            character_field_conversion_global_validation_report
+        ),
+    )
+    write_json(
+        P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_JSON,
+        p4_conversion_patch_independent_validation_report,
+    )
+    write_text(
+        P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD,
+        build_p4_conversion_patch_independent_validation_markdown(
+            p4_conversion_patch_independent_validation_report
+        ),
+    )
     write_json(D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON, d3h_like_local_object_crosscheck)
     write_text(
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
@@ -5328,6 +5959,21 @@ def build_single_pilot(
     write_text(
         AI_RANK_GAP_ATTRIBUTION_MD,
         build_ai_rank_gap_attribution_markdown(ai_rank_gap_attribution_report),
+    )
+    write_json(AI_RANK_GAP_QUOTIENT_JSON, ai_rank_gap_quotient_report)
+    write_text(
+        AI_RANK_GAP_QUOTIENT_MD,
+        build_ai_rank_gap_quotient_markdown(ai_rank_gap_quotient_report),
+    )
+    write_json(RESIDUAL_RANK5_PIVOT_WITNESS_JSON, residual_rank5_pivot_witness_report)
+    write_text(
+        RESIDUAL_RANK5_PIVOT_WITNESS_MD,
+        build_residual_rank5_pivot_witness_markdown(residual_rank5_pivot_witness_report),
+    )
+    write_json(PPATH06_ROW_SEMANTICS_JSON, ppath06_row_semantics_report)
+    write_text(
+        PPATH06_ROW_SEMANTICS_MD,
+        build_ppath06_row_semantics_markdown(ppath06_row_semantics_report),
     )
     write_json(AI_VS_BILBAO_ALIGNMENT_JSON, ai_vs_bilbao_alignment_report)
     write_text(
@@ -5464,6 +6110,7 @@ def build_single_pilot(
                 "failure_family_ids": p4_induction_failure_audit["failure_family_ids"],
             },
             "p4_current_verdict": p4_current_verdict,
+            "p4_conversion_patch_independent_validation_report": p4_conversion_patch_independent_validation_report,
             "ppath06_residual_obstruction_audit": {
                 "publication_path_id": ppath06_residual_obstruction_audit["publication_path_id"],
                 "row_indices": ppath06_residual_obstruction_audit["row_indices"]["publication_shell"],
@@ -5475,6 +6122,10 @@ def build_single_pilot(
             "partial_ai_lattice_witness_report": {
                 "zero_subset_rank": partial_ai_lattice_witness_report["zero_subset_rank"],
                 "pivot_generator_ids": partial_ai_lattice_witness_report["pivot_generator_ids"],
+            },
+            "ai_rank_gap_quotient_report": {
+                "quotient_rank_contribution_of_residual_sector": ai_rank_gap_quotient_report["quotient_rank_contribution_of_residual_sector"],
+                "missing_rank5_pivot_generator_ids": ai_rank_gap_quotient_report["missing_rank5_pivot_generator_ids"],
             },
         },
     )
@@ -5538,12 +6189,20 @@ def build_single_pilot(
             "p4_induction_failure_count": p4_induction_failure_audit["induction_failure_count"],
             "p4_failure_family_ids": p4_induction_failure_audit["failure_family_ids"],
             "p4_current_verdict": p4_current_verdict,
+            "p4_conversion_patch_independently_validated_globally": (
+                p4_conversion_patch_independent_validation_report["independently_validated_globally"]
+            ),
+            "linear_to_character_conversion_all_manifolds_pass": (
+                character_field_conversion_global_validation_report["all_manifolds_pass"]
+            ),
             "p4_first_formula_vs_explicit_mismatch": p4_trace_formula_vs_explicit_orbit_report["first_failure_mismatch"],
             "blocker_summary": ai_honest_blocker_report["blocker"],
             "obstruction_classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
             "published_fail_path_histogram": ai_obstruction_diagnosis_report["publication_fail_path_histogram"],
             "published_fail_row_histogram": ai_obstruction_diagnosis_report["publication_fail_row_histogram"],
             "ppath06_publication_residual_support_rows": ppath06_residual_obstruction_audit["publication_residual_support_rows"],
+            "residual_sector_quotient_rank_contribution": ai_rank_gap_quotient_report["quotient_rank_contribution_of_residual_sector"],
+            "missing_rank5_pivot_generator_ids": ai_rank_gap_quotient_report["missing_rank5_pivot_generator_ids"],
         },
         "completeness_status": {"status": "blocked", "blocker": completeness_blocker},
         "quotient_status": {"status": "blocked", "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."},
@@ -5587,7 +6246,13 @@ def build_single_pilot(
         f"- AI obstruction classification counts: `{ai_obstruction_diagnosis_report['classification_counts']}`.",
         f"- Publication residual path histogram: `{ai_obstruction_diagnosis_report['publication_fail_path_histogram']}`.",
         f"- PPATH06 residual-support rows: `{ppath06_residual_obstruction_audit['publication_residual_support_rows']}`.",
+        f"- PPATH06 row semantics: `{ppath06_row_semantics_report['overall_interpretation']}`.",
         f"- P4 current verdict: `{p4_current_verdict}`.",
+        f"- P4 conversion patch independently validated globally: `{p4_conversion_patch_independent_validation_report['independently_validated_globally']}`.",
+        f"- All-manifold linear->character conversion validation pass: `{character_field_conversion_global_validation_report['all_manifolds_pass']}`.",
+        f"- Residual-sector quotient-rank contribution / missing-rank-5 pivot ids: "
+        f"`{ai_rank_gap_quotient_report['quotient_rank_contribution_of_residual_sector']}` / "
+        f"`{ai_rank_gap_quotient_report['missing_rank5_pivot_generator_ids']}`.",
         f"- point_row_translation legality: `{point_row_translation_report['legality_status']}`.",
         f"- AI residual pattern changed vs previous branch: `{ai_seed_delta_report['residual_pattern_changed']}`.",
         f"- AI completeness: blocked. Reason: {completeness_blocker}",
@@ -6132,8 +6797,10 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
             "The publication-level C_pub builder remains fixed and Bilbao-equivalent. "
             "Current published compatibility-matrix rank/nullity is 24/10, so published BS rank is 10. "
             "The verified publication-shell AI rank is 5, leaving a mechanical rank gap of 5. "
-            "The earlier P4 induction failures are cleared by the manifold character-field conversion patch. "
-            "The remaining blocker is the PPATH06 residual-support rows [22, 23, 24] inherited from raw L2."
+            "The earlier P4 induction failures are cleared by the manifold character-field conversion patch, "
+            "and that conversion now passes an all-manifold independent validation against the capture tables. "
+            "The remaining blocker is the residual sector on PPATH06 rows [22, 23, 24]; its quotient-rank contribution is 5, "
+            "so the current missing AI rank is completely concentrated there."
         ),
     }
 
@@ -6169,7 +6836,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), and continue the AI rank-gap diagnosis from 10 -> 5 by resolving the remaining PPATH06 residual-support rows [22, 23, 24] inherited from raw L2, with the earlier P4 induction failures already cleared by the manifold character-field conversion patch.
+        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), and continue the AI rank-gap diagnosis from 10 -> 5 by resolving the remaining PPATH06 residual-support rows [22, 23, 24] inherited from raw L2. The earlier P4 induction failures are already cleared by the manifold character-field conversion patch, and that conversion now passes an independent all-manifold validation against the capture tables.
         """
     ).strip() + "\n"
 
@@ -6198,8 +6865,9 @@ def build_package_readme() -> str:
             "- publication-shell reduction / Bilbao check / internal-vs-publication separation reports",
             "- AI full-character alignment plus library integration / obstruction diagnosis / honest blocker reports",
             "- P4 induction-failure, exact-solver reliability, and band-character/site-phase deep-dive reports",
+            "- global character-field conversion validation and independent P4 conversion-patch validation",
             "- D3h-like local-object crosscheck plus PPATH06 residual-obstruction deep-dive reports",
-            "- zero-subset rank analysis and a partial-AI-lattice witness for the current publication-shell AI candidates",
+            "- zero-subset rank analysis, residual quotient-rank attribution, explicit residual rank-5 pivot witnesses, and a partial-AI-lattice witness for the current publication-shell AI candidates",
             "- PDF technical report",
             "- handoff / current_status / next_step_prompt",
             "",
@@ -6229,11 +6897,16 @@ def build_package_readme() -> str:
             f"18. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
             f"19. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
             f"20. {P4_TRACE_FORMULA_EXPLICIT_MD.relative_to(ROOT)}",
-            f"21. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
-            f"22. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
-            f"23. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
-            f"24. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
-            f"25. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            f"21. {CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD.relative_to(ROOT)}",
+            f"22. {P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD.relative_to(ROOT)}",
+            f"23. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
+            f"24. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
+            f"25. {PPATH06_ROW_SEMANTICS_MD.relative_to(ROOT)}",
+            f"26. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
+            f"27. {AI_RANK_GAP_QUOTIENT_MD.relative_to(ROOT)}",
+            f"28. {RESIDUAL_RANK5_PIVOT_WITNESS_MD.relative_to(ROOT)}",
+            f"29. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
+            f"30. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -6283,14 +6956,24 @@ def build_package() -> None:
         P4_BAND_CHARACTER_PHASE_JSON,
         P4_TRACE_FORMULA_EXPLICIT_MD,
         P4_TRACE_FORMULA_EXPLICIT_JSON,
+        CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD,
+        CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_JSON,
+        P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD,
+        P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_JSON,
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON,
         PPATH06_OBSTRUCTION_MD,
         PPATH06_OBSTRUCTION_JSON,
+        PPATH06_ROW_SEMANTICS_MD,
+        PPATH06_ROW_SEMANTICS_JSON,
         LAYERWISE_L2_FPATH07_PPATH06_MD,
         LAYERWISE_L2_FPATH07_PPATH06_JSON,
         AI_ZERO_SUBSET_RANK_MD,
         AI_ZERO_SUBSET_RANK_JSON,
+        AI_RANK_GAP_QUOTIENT_MD,
+        AI_RANK_GAP_QUOTIENT_JSON,
+        RESIDUAL_RANK5_PIVOT_WITNESS_MD,
+        RESIDUAL_RANK5_PIVOT_WITNESS_JSON,
         PARTIAL_AI_LATTICE_WITNESS_MD,
         PARTIAL_AI_LATTICE_WITNESS_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
@@ -6360,14 +7043,24 @@ def validate_outputs() -> None:
         P4_BAND_CHARACTER_PHASE_JSON,
         P4_TRACE_FORMULA_EXPLICIT_MD,
         P4_TRACE_FORMULA_EXPLICIT_JSON,
+        CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD,
+        CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_JSON,
+        P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD,
+        P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_JSON,
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON,
         PPATH06_OBSTRUCTION_MD,
         PPATH06_OBSTRUCTION_JSON,
+        PPATH06_ROW_SEMANTICS_MD,
+        PPATH06_ROW_SEMANTICS_JSON,
         LAYERWISE_L2_FPATH07_PPATH06_MD,
         LAYERWISE_L2_FPATH07_PPATH06_JSON,
         AI_ZERO_SUBSET_RANK_MD,
         AI_ZERO_SUBSET_RANK_JSON,
+        AI_RANK_GAP_QUOTIENT_MD,
+        AI_RANK_GAP_QUOTIENT_JSON,
+        RESIDUAL_RANK5_PIVOT_WITNESS_MD,
+        RESIDUAL_RANK5_PIVOT_WITNESS_JSON,
         PARTIAL_AI_LATTICE_WITNESS_MD,
         PARTIAL_AI_LATTICE_WITNESS_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,

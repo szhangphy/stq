@@ -5,9 +5,9 @@
   "current_ai_status": "partial_ai_lattice",
   "previous_ai_status": "partial_ai_lattice",
   "current_generator_count": 12,
-  "previous_generator_count": 10,
+  "previous_generator_count": 12,
   "current_rank_trivial_family_span": 12,
-  "previous_rank_trivial_family_span": 10,
+  "previous_rank_trivial_family_span": 12,
   "current_compatibility_zero_count": 4,
   "previous_compatibility_zero_count": 4,
   "current_compatibility_zero_family_letters": [
@@ -37,15 +37,14 @@
     "i",
     "h",
     "g",
+    "d",
+    "c",
     "b",
     "a"
   ],
   "added_zero_families": [],
   "removed_zero_families": [],
-  "added_nonzero_residual_families": [
-    "c",
-    "d"
-  ],
+  "added_nonzero_residual_families": [],
   "removed_nonzero_residual_families": [],
-  "residual_pattern_changed": true
+  "residual_pattern_changed": false
 }

@@ -1,0 +1,1633 @@
+{
+  "endpoint_pair": [
+    "P1",
+    "P5"
+  ],
+  "reference_path_class_id": "PCLASS03",
+  "reference_source_line_id": "L3",
+  "candidate_path_class_id": "PCLASS04",
+  "candidate_source_line_id": "L4",
+  "point_id_permutations_enabled": true,
+  "search_variables_cover_points": [
+    "P1",
+    "P5"
+  ],
+  "point_shell_equivalence_classes": [
+    {
+      "point_class_id": "POINTCLASS01",
+      "point_ids": [
+        "P6"
+      ],
+      "signature": {
+        "unknown_count": 2,
+        "rep_degree_torsion_multiset": [
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      "search_enabled": false,
+      "point_metadata": [
+        {
+          "point_id": "P6",
+          "unknown_ordering": [
+            "P6_R1",
+            "P6_R2"
+          ],
+          "unknown_count": 2,
+          "rep_signature": [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "coarse_search_signature": {
+            "unknown_count": 2,
+            "rep_degree_torsion_multiset": [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          },
+          "incident_final_path_ids": [
+            "FPATH06",
+            "FPATH08"
+          ],
+          "incident_source_line_ids": [
+            "L6",
+            "L5"
+          ],
+          "incident_endpoint_pairs": [
+            [
+              "P2",
+              "P6"
+            ],
+            [
+              "P5",
+              "P6"
+            ]
+          ],
+          "incident_path_classes": [
+            "PCLASS06",
+            "PCLASS09"
+          ]
+        }
+      ]
+    },
+    {
+      "point_class_id": "POINTCLASS02",
+      "point_ids": [
+        "P4"
+      ],
+      "signature": {
+        "unknown_count": 3,
+        "rep_degree_torsion_multiset": [
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      "search_enabled": false,
+      "point_metadata": [
+        {
+          "point_id": "P4",
+          "unknown_ordering": [
+            "P4_R1",
+            "P4_R2",
+            "P4_R3"
+          ],
+          "unknown_count": 3,
+          "rep_signature": [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "coarse_search_signature": {
+            "unknown_count": 3,
+            "rep_degree_torsion_multiset": [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          },
+          "incident_final_path_ids": [
+            "FPATH05",
+            "FPATH07"
+          ],
+          "incident_source_line_ids": [
+            "L7",
+            "L2"
+          ],
+          "incident_endpoint_pairs": [
+            [
+              "P2",
+              "P4"
+            ],
+            [
+              "P3",
+              "P4"
+            ]
+          ],
+          "incident_path_classes": [
+            "PCLASS05",
+            "PCLASS08"
+          ]
+        }
+      ]
+    },
+    {
+      "point_class_id": "POINTCLASS03",
+      "point_ids": [
+        "P2"
+      ],
+      "signature": {
+        "unknown_count": 3,
+        "rep_degree_torsion_multiset": [
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ]
+      },
+      "search_enabled": false,
+      "point_metadata": [
+        {
+          "point_id": "P2",
+          "unknown_ordering": [
+            "P2_R1",
+            "P2_R2",
+            "P2_R3"
+          ],
+          "unknown_count": 3,
+          "rep_signature": [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          "coarse_search_signature": {
+            "unknown_count": 3,
+            "rep_degree_torsion_multiset": [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ]
+          },
+          "incident_final_path_ids": [
+            "FPATH01",
+            "FPATH05",
+            "FPATH06"
+          ],
+          "incident_source_line_ids": [
+            "L1",
+            "L7",
+            "L6"
+          ],
+          "incident_endpoint_pairs": [
+            [
+              "P1",
+              "P2"
+            ],
+            [
+              "P2",
+              "P4"
+            ],
+            [
+              "P2",
+              "P6"
+            ]
+          ],
+          "incident_path_classes": [
+            "PCLASS01",
+            "PCLASS05",
+            "PCLASS06"
+          ]
+        }
+      ]
+    },
+    {
+      "point_class_id": "POINTCLASS04",
+      "point_ids": [
+        "P3"
+      ],
+      "signature": {
+        "unknown_count": 6,
+        "rep_degree_torsion_multiset": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      "search_enabled": false,
+      "point_metadata": [
+        {
+          "point_id": "P3",
+          "unknown_ordering": [
+            "P3_R1",
+            "P3_R2",
+            "P3_R3",
+            "P3_R4",
+            "P3_R5",
+            "P3_R6"
+          ],
+          "unknown_count": 6,
+          "rep_signature": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "coarse_search_signature": {
+            "unknown_count": 6,
+            "rep_degree_torsion_multiset": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          },
+          "incident_final_path_ids": [
+            "FPATH02",
+            "FPATH07"
+          ],
+          "incident_source_line_ids": [
+            "L4",
+            "L2"
+          ],
+          "incident_endpoint_pairs": [
+            [
+              "P1",
+              "P3"
+            ],
+            [
+              "P3",
+              "P4"
+            ]
+          ],
+          "incident_path_classes": [
+            "PCLASS02",
+            "PCLASS08"
+          ]
+        }
+      ]
+    },
+    {
+      "point_class_id": "POINTCLASS05",
+      "point_ids": [
+        "P5"
+      ],
+      "signature": {
+        "unknown_count": 8,
+        "rep_degree_torsion_multiset": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      },
+      "search_enabled": false,
+      "point_metadata": [
+        {
+          "point_id": "P5",
+          "unknown_ordering": [
+            "P5_R1",
+            "P5_R2",
+            "P5_R3",
+            "P5_R4",
+            "P5_R5",
+            "P5_R6",
+            "P5_R7",
+            "P5_R8"
+          ],
+          "unknown_count": 8,
+          "rep_signature": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "coarse_search_signature": {
+            "unknown_count": 8,
+            "rep_degree_torsion_multiset": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          },
+          "incident_final_path_ids": [
+            "FPATH03",
+            "FPATH04",
+            "FPATH08"
+          ],
+          "incident_source_line_ids": [
+            "L3",
+            "L4",
+            "L5"
+          ],
+          "incident_endpoint_pairs": [
+            [
+              "P1",
+              "P5"
+            ],
+            [
+              "P1",
+              "P5"
+            ],
+            [
+              "P5",
+              "P6"
+            ]
+          ],
+          "incident_path_classes": [
+            "PCLASS03",
+            "PCLASS04",
+            "PCLASS09"
+          ]
+        }
+      ]
+    },
+    {
+      "point_class_id": "POINTCLASS06",
+      "point_ids": [
+        "P1"
+      ],
+      "signature": {
+        "unknown_count": 12,
+        "rep_degree_torsion_multiset": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            0
+          ]
+        ]
+      },
+      "search_enabled": false,
+      "point_metadata": [
+        {
+          "point_id": "P1",
+          "unknown_ordering": [
+            "P1_R1",
+            "P1_R2",
+            "P1_R3",
+            "P1_R4",
+            "P1_R5",
+            "P1_R6",
+            "P1_R7",
+            "P1_R8",
+            "P1_R9",
+            "P1_R10",
+            "P1_R11",
+            "P1_R12"
+          ],
+          "unknown_count": 12,
+          "rep_signature": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "coarse_search_signature": {
+            "unknown_count": 12,
+            "rep_degree_torsion_multiset": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          },
+          "incident_final_path_ids": [
+            "FPATH01",
+            "FPATH02",
+            "FPATH03",
+            "FPATH04"
+          ],
+          "incident_source_line_ids": [
+            "L1",
+            "L4",
+            "L3",
+            "L4"
+          ],
+          "incident_endpoint_pairs": [
+            [
+              "P1",
+              "P2"
+            ],
+            [
+              "P1",
+              "P3"
+            ],
+            [
+              "P1",
+              "P5"
+            ],
+            [
+              "P1",
+              "P5"
+            ]
+          ],
+          "incident_path_classes": [
+            "PCLASS01",
+            "PCLASS02",
+            "PCLASS03",
+            "PCLASS04"
+          ]
+        }
+      ]
+    }
+  ],
+  "local_relabel_search": {
+    "searched": true,
+    "reason": null,
+    "varying_rep_ids_by_endpoint": {
+      "P1": [
+        "P1_R1",
+        "P1_R2",
+        "P1_R3",
+        "P1_R4"
+      ],
+      "P5": [
+        "P5_R1",
+        "P5_R2",
+        "P5_R3",
+        "P5_R4"
+      ]
+    },
+    "search_space_size": 576,
+    "local_solution_count": 1,
+    "shell_preserving_solution_count": 0,
+    "local_solutions": [
+      {
+        "endpoint_relabel": {
+          "P1": {
+            "P1_R1": "P1_R3",
+            "P1_R2": "P1_R4",
+            "P1_R3": "P1_R1",
+            "P1_R4": "P1_R2"
+          },
+          "P5": {
+            "P5_R1": "P5_R3",
+            "P5_R2": "P5_R4",
+            "P5_R3": "P5_R1",
+            "P5_R4": "P5_R2"
+          }
+        },
+        "broken_selected_path_ids": [
+          "FPATH01",
+          "FPATH02",
+          "FPATH03",
+          "FPATH08"
+        ],
+        "preserves_other_selected_shell": false
+      }
+    ],
+    "shell_preserving_solutions": []
+  },
+  "full_shell_search": {
+    "searched": true,
+    "reason": null,
+    "point_id_permutations_enabled": true,
+    "point_shell_equivalence_classes": [
+      {
+        "point_class_id": "POINTCLASS01",
+        "point_ids": [
+          "P6"
+        ],
+        "signature": {
+          "unknown_count": 2,
+          "rep_degree_torsion_multiset": [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        "search_enabled": false,
+        "point_metadata": [
+          {
+            "point_id": "P6",
+            "unknown_ordering": [
+              "P6_R1",
+              "P6_R2"
+            ],
+            "unknown_count": 2,
+            "rep_signature": [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "coarse_search_signature": {
+              "unknown_count": 2,
+              "rep_degree_torsion_multiset": [
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            },
+            "incident_final_path_ids": [
+              "FPATH06",
+              "FPATH08"
+            ],
+            "incident_source_line_ids": [
+              "L6",
+              "L5"
+            ],
+            "incident_endpoint_pairs": [
+              [
+                "P2",
+                "P6"
+              ],
+              [
+                "P5",
+                "P6"
+              ]
+            ],
+            "incident_path_classes": [
+              "PCLASS06",
+              "PCLASS09"
+            ]
+          }
+        ]
+      },
+      {
+        "point_class_id": "POINTCLASS02",
+        "point_ids": [
+          "P4"
+        ],
+        "signature": {
+          "unknown_count": 3,
+          "rep_degree_torsion_multiset": [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        "search_enabled": false,
+        "point_metadata": [
+          {
+            "point_id": "P4",
+            "unknown_ordering": [
+              "P4_R1",
+              "P4_R2",
+              "P4_R3"
+            ],
+            "unknown_count": 3,
+            "rep_signature": [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "coarse_search_signature": {
+              "unknown_count": 3,
+              "rep_degree_torsion_multiset": [
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            },
+            "incident_final_path_ids": [
+              "FPATH05",
+              "FPATH07"
+            ],
+            "incident_source_line_ids": [
+              "L7",
+              "L2"
+            ],
+            "incident_endpoint_pairs": [
+              [
+                "P2",
+                "P4"
+              ],
+              [
+                "P3",
+                "P4"
+              ]
+            ],
+            "incident_path_classes": [
+              "PCLASS05",
+              "PCLASS08"
+            ]
+          }
+        ]
+      },
+      {
+        "point_class_id": "POINTCLASS03",
+        "point_ids": [
+          "P2"
+        ],
+        "signature": {
+          "unknown_count": 3,
+          "rep_degree_torsion_multiset": [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        },
+        "search_enabled": false,
+        "point_metadata": [
+          {
+            "point_id": "P2",
+            "unknown_ordering": [
+              "P2_R1",
+              "P2_R2",
+              "P2_R3"
+            ],
+            "unknown_count": 3,
+            "rep_signature": [
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ],
+            "coarse_search_signature": {
+              "unknown_count": 3,
+              "rep_degree_torsion_multiset": [
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  4,
+                  0
+                ]
+              ]
+            },
+            "incident_final_path_ids": [
+              "FPATH01",
+              "FPATH05",
+              "FPATH06"
+            ],
+            "incident_source_line_ids": [
+              "L1",
+              "L7",
+              "L6"
+            ],
+            "incident_endpoint_pairs": [
+              [
+                "P1",
+                "P2"
+              ],
+              [
+                "P2",
+                "P4"
+              ],
+              [
+                "P2",
+                "P6"
+              ]
+            ],
+            "incident_path_classes": [
+              "PCLASS01",
+              "PCLASS05",
+              "PCLASS06"
+            ]
+          }
+        ]
+      },
+      {
+        "point_class_id": "POINTCLASS04",
+        "point_ids": [
+          "P3"
+        ],
+        "signature": {
+          "unknown_count": 6,
+          "rep_degree_torsion_multiset": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        "search_enabled": false,
+        "point_metadata": [
+          {
+            "point_id": "P3",
+            "unknown_ordering": [
+              "P3_R1",
+              "P3_R2",
+              "P3_R3",
+              "P3_R4",
+              "P3_R5",
+              "P3_R6"
+            ],
+            "unknown_count": 6,
+            "rep_signature": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "coarse_search_signature": {
+              "unknown_count": 6,
+              "rep_degree_torsion_multiset": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            },
+            "incident_final_path_ids": [
+              "FPATH02",
+              "FPATH07"
+            ],
+            "incident_source_line_ids": [
+              "L4",
+              "L2"
+            ],
+            "incident_endpoint_pairs": [
+              [
+                "P1",
+                "P3"
+              ],
+              [
+                "P3",
+                "P4"
+              ]
+            ],
+            "incident_path_classes": [
+              "PCLASS02",
+              "PCLASS08"
+            ]
+          }
+        ]
+      },
+      {
+        "point_class_id": "POINTCLASS05",
+        "point_ids": [
+          "P5"
+        ],
+        "signature": {
+          "unknown_count": 8,
+          "rep_degree_torsion_multiset": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        "search_enabled": false,
+        "point_metadata": [
+          {
+            "point_id": "P5",
+            "unknown_ordering": [
+              "P5_R1",
+              "P5_R2",
+              "P5_R3",
+              "P5_R4",
+              "P5_R5",
+              "P5_R6",
+              "P5_R7",
+              "P5_R8"
+            ],
+            "unknown_count": 8,
+            "rep_signature": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "coarse_search_signature": {
+              "unknown_count": 8,
+              "rep_degree_torsion_multiset": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ]
+              ]
+            },
+            "incident_final_path_ids": [
+              "FPATH03",
+              "FPATH04",
+              "FPATH08"
+            ],
+            "incident_source_line_ids": [
+              "L3",
+              "L4",
+              "L5"
+            ],
+            "incident_endpoint_pairs": [
+              [
+                "P1",
+                "P5"
+              ],
+              [
+                "P1",
+                "P5"
+              ],
+              [
+                "P5",
+                "P6"
+              ]
+            ],
+            "incident_path_classes": [
+              "PCLASS03",
+              "PCLASS04",
+              "PCLASS09"
+            ]
+          }
+        ]
+      },
+      {
+        "point_class_id": "POINTCLASS06",
+        "point_ids": [
+          "P1"
+        ],
+        "signature": {
+          "unknown_count": 12,
+          "rep_degree_torsion_multiset": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        "search_enabled": false,
+        "point_metadata": [
+          {
+            "point_id": "P1",
+            "unknown_ordering": [
+              "P1_R1",
+              "P1_R2",
+              "P1_R3",
+              "P1_R4",
+              "P1_R5",
+              "P1_R6",
+              "P1_R7",
+              "P1_R8",
+              "P1_R9",
+              "P1_R10",
+              "P1_R11",
+              "P1_R12"
+            ],
+            "unknown_count": 12,
+            "rep_signature": [
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "coarse_search_signature": {
+              "unknown_count": 12,
+              "rep_degree_torsion_multiset": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ]
+              ]
+            },
+            "incident_final_path_ids": [
+              "FPATH01",
+              "FPATH02",
+              "FPATH03",
+              "FPATH04"
+            ],
+            "incident_source_line_ids": [
+              "L1",
+              "L4",
+              "L3",
+              "L4"
+            ],
+            "incident_endpoint_pairs": [
+              [
+                "P1",
+                "P2"
+              ],
+              [
+                "P1",
+                "P3"
+              ],
+              [
+                "P1",
+                "P5"
+              ],
+              [
+                "P1",
+                "P5"
+              ]
+            ],
+            "incident_path_classes": [
+              "PCLASS01",
+              "PCLASS02",
+              "PCLASS03",
+              "PCLASS04"
+            ]
+          }
+        ]
+      }
+    ],
+    "local_solution_count": 1,
+    "local_solution_search_space": 576,
+    "search_space_size": 1,
+    "searched_candidate_count": 1,
+    "compensation_points": [],
+    "point_permutation_sizes": {},
+    "local_solution_searches": [
+      {
+        "local_solution_index": 1,
+        "search_enabled": true,
+        "reason": null,
+        "broken_path_ids": [
+          "FPATH01",
+          "FPATH02",
+          "FPATH03",
+          "FPATH08"
+        ],
+        "varying_endpoints": [
+          "P1",
+          "P5"
+        ],
+        "compensation_points": [],
+        "active_point_shell_equivalence_classes": [],
+        "point_permutation_sizes": {},
+        "search_space_size": 1,
+        "searched_candidate_count": 1,
+        "global_solution_count": 0,
+        "first_global_solution": null
+      }
+    ],
+    "global_solution_count": 0,
+    "first_global_solution": null,
+    "all_global_solutions": []
+  },
+  "global_solution_found": false
+}
