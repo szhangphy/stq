@@ -1,0 +1,1508 @@
+{
+  "manifold_id": "P4",
+  "reference_generator_id": "b_A1'",
+  "compared_generator_ids": [
+    "b_A1'",
+    "c_A1'",
+    "d_A1'"
+  ],
+  "records": [
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "local_character": {
+        "0": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "1": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "2": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "9": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "10": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "11": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "15": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "16": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "17": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "18": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "19": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "20": {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      },
+      "manifold_id": "P4",
+      "character_field": "character",
+      "entry_letter": "b",
+      "representative_coordinate": "0, 0, 1/4",
+      "stabilizer_unitary_indices": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "operations": [
+        {
+          "unitary_raw_index": 0,
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 0,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 0,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 1,
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 1,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 1,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 2,
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 2,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 2,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 6,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 7,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 8,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 15,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 15,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 15,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "contribution": {
+                "real": -1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 16,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 16,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 16,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "contribution": {
+                "real": -1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 17,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 17,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                0.0,
+                0.0,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 17,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "contribution": {
+                "real": -1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 21,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 22,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 23,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        }
+      ]
+    },
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "local_character": {
+        "0": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "1": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "2": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "9": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "10": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "11": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "15": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "16": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "17": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "18": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "19": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "20": {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      },
+      "manifold_id": "P4",
+      "character_field": "character",
+      "entry_letter": "c",
+      "representative_coordinate": "1/3, 2/3, 1/4",
+      "stabilizer_unitary_indices": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "operations": [
+        {
+          "unitary_raw_index": 0,
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 0,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 0,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 1,
+          "band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 1,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 1,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 2,
+          "band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 2,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 2,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 6,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 7,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 8,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 15,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 15,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 15,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "contribution": {
+                "real": -1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 16,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 1.732050807569
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 16,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 16,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 5.235987755982988,
+              "bloch_phase": {
+                "real": 0.5,
+                "imag": 0.866025403784
+              },
+              "contribution": {
+                "real": 0.5,
+                "imag": 0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 17,
+          "band_character_total": {
+            "real": -0.0,
+            "imag": -1.732050807569
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.25
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 17,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 17,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 1.0471975511965974,
+              "bloch_phase": {
+                "real": 0.5,
+                "imag": -0.866025403784
+              },
+              "contribution": {
+                "real": 0.5,
+                "imag": -0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 21,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 22,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 23,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        }
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "local_character": {
+        "0": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "1": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "2": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "9": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "10": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "11": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "15": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "16": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "17": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "18": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "19": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "20": {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      },
+      "manifold_id": "P4",
+      "character_field": "character",
+      "entry_letter": "d",
+      "representative_coordinate": "1/3, 2/3, 3/4",
+      "stabilizer_unitary_indices": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "operations": [
+        {
+          "unitary_raw_index": 0,
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 0,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                1.25
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 0,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 1,
+          "band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 1,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                1.25
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 1,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 2,
+          "band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 2,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                1.25
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 2,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 6,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 7,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 8,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 15,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 15,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "contribution": {
+                "real": -1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                1.25
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 15,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -6.283185307179586,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "contribution": {
+                "real": 1.0,
+                "imag": -0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 16,
+          "band_character_total": {
+            "real": -0.0,
+            "imag": -1.732050807569
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 16,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -11.519173063162574,
+              "bloch_phase": {
+                "real": 0.5,
+                "imag": -0.866025403784
+              },
+              "contribution": {
+                "real": 0.5,
+                "imag": -0.866025403784
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                1.25
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 16,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 2.094395102393195,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 17,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 1.732050807569
+          },
+          "orbit_site_contributions": [
+            {
+              "orbit_site_coordinate": [
+                0.3333333333333333,
+                0.6666666666666666,
+                0.75
+              ],
+              "source_operation_index": 0,
+              "conjugated_stabilizer_op_index": 17,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -7.330382858376184,
+              "bloch_phase": {
+                "real": 0.5,
+                "imag": 0.866025403784
+              },
+              "contribution": {
+                "real": 0.5,
+                "imag": 0.866025403784
+              }
+            },
+            {
+              "orbit_site_coordinate": [
+                -0.3333333333333333,
+                -0.6666666666666666,
+                1.25
+              ],
+              "source_operation_index": 3,
+              "conjugated_stabilizer_op_index": 17,
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -2.0943951023931957,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 21,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 22,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        },
+        {
+          "unitary_raw_index": 23,
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": []
+        }
+      ]
+    }
+  ],
+  "mismatch_by_generator": [
+    {
+      "generator_id": "c_A1'",
+      "differs_from_reference_b_A1_prime_on_unitary_ops": [
+        1,
+        2,
+        16,
+        17
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "differs_from_reference_b_A1_prime_on_unitary_ops": [
+        1,
+        2,
+        16,
+        17
+      ]
+    }
+  ],
+  "decomposition_summary": "Across b/c/d the P4 little-group basis is shared, but the per-site orbit-phase contributions produce different summed band characters. This proves the P4 divergence enters at band-character assembly, not at the P4 chars matrix."
+}

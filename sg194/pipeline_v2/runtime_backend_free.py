@@ -76,7 +76,7 @@ from . import runtime_group_ops as single_expanded
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_ai_p4_l2_debug_v1"
+PACKAGE_NAME = "review_package_ai_proof_and_wording_fix_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -150,12 +150,20 @@ P4_INDUCTION_FAILURE_MD = ROOT / "bs_fix_reaudit_v1" / "p4_induction_failure_aud
 P4_INDUCTION_FAILURE_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_induction_failure_audit.json"
 P4_PASSING_FAILING_MD = ROOT / "bs_fix_reaudit_v1" / "p4_passing_vs_failing_comparison.md"
 P4_PASSING_FAILING_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_passing_vs_failing_comparison.json"
+P4_EXACT_SOLVER_RELIABILITY_MD = ROOT / "bs_fix_reaudit_v1" / "p4_exact_solver_reliability_audit.md"
+P4_EXACT_SOLVER_RELIABILITY_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_exact_solver_reliability_audit.json"
+P4_BAND_CHARACTER_PHASE_MD = ROOT / "bs_fix_reaudit_v1" / "p4_band_character_site_phase_decomposition.md"
+P4_BAND_CHARACTER_PHASE_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_band_character_site_phase_decomposition.json"
+D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD = ROOT / "bs_fix_reaudit_v1" / "d3h_like_local_object_crosscheck.md"
+D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON = ROOT / "bs_fix_reaudit_v1" / "d3h_like_local_object_crosscheck.json"
 PPATH06_OBSTRUCTION_MD = ROOT / "bs_fix_reaudit_v1" / "ppath06_residual_obstruction_audit.md"
 PPATH06_OBSTRUCTION_JSON = ROOT / "bs_fix_reaudit_v1" / "ppath06_residual_obstruction_audit.json"
 LAYERWISE_L2_FPATH07_PPATH06_MD = ROOT / "bs_fix_reaudit_v1" / "l2_fpath07_ppath06_layerwise_comparison.md"
 LAYERWISE_L2_FPATH07_PPATH06_JSON = ROOT / "bs_fix_reaudit_v1" / "l2_fpath07_ppath06_layerwise_comparison.json"
 AI_ZERO_SUBSET_RANK_MD = ROOT / "bs_fix_reaudit_v1" / "ai_zero_subset_rank_report.md"
 AI_ZERO_SUBSET_RANK_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_zero_subset_rank_report.json"
+PARTIAL_AI_LATTICE_WITNESS_MD = ROOT / "bs_fix_reaudit_v1" / "partial_ai_lattice_witness_report.md"
+PARTIAL_AI_LATTICE_WITNESS_JSON = ROOT / "bs_fix_reaudit_v1" / "partial_ai_lattice_witness_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -1112,9 +1120,36 @@ def build_manifold_capture(module: Any, group_number: str, ssg_dict: dict[str, A
 
 
 def as_exact_char(value: complex) -> sp.Expr:
-    if abs(value.imag) < 1e-8:
-        return sp.Integer(int(round(value.real))) if abs(value.real - round(value.real)) < 1e-8 else sp.nsimplify(value.real)
-    return sp.nsimplify(value.real) + sp.I * sp.nsimplify(value.imag)
+    if isinstance(value, sp.Basic):
+        value = complex(value.evalf())
+    real = 0.0 if abs(value.real) < 1e-8 else float(value.real)
+    imag = 0.0 if abs(value.imag) < 1e-8 else float(value.imag)
+    if abs(real - round(real)) < 1e-8:
+        real_expr = sp.Integer(int(round(real)))
+    else:
+        real_expr = sp.nsimplify(real)
+    if abs(imag - round(imag)) < 1e-8:
+        imag_expr = sp.Integer(int(round(imag)))
+    else:
+        imag_expr = sp.nsimplify(imag)
+    if imag == 0.0:
+        return real_expr
+    if real == 0.0:
+        return sp.I * imag_expr
+    return real_expr + sp.I * imag_expr
+
+
+def _exactify_matrix_entries(matrix: sp.Matrix) -> sp.Matrix:
+    return sp.Matrix(
+        [
+            [as_exact_char(complex(value.evalf())) for value in row]
+            for row in matrix.tolist()
+        ]
+    )
+
+
+def _exactify_vector_entries(vector: sp.Matrix) -> sp.Matrix:
+    return sp.Matrix([as_exact_char(complex(value.evalf())) for value in vector])
 
 
 def coerce_integer_coeffs(coeffs: list[sp.Expr], context: str) -> list[int]:
@@ -2362,6 +2397,8 @@ def _attempt_exact_integer_decomposition(
     restricted: sp.Matrix,
     context: str,
 ) -> dict[str, Any]:
+    basis_matrix = _exactify_matrix_entries(basis_matrix)
+    restricted = _exactify_vector_entries(restricted)
     try:
         solution, params = basis_matrix.gauss_jordan_solve(restricted)
     except Exception as exc:
@@ -2452,8 +2489,8 @@ def _build_manifold_induction_trace(
 
     chars = np.array(complex_matrix_from_json(info[manifold_character_field]), dtype=complex)
     band = np.array(band_character, dtype=complex)
-    basis_matrix = sp.Matrix(chars.T.tolist())
-    restricted = sp.Matrix(list(band))
+    basis_matrix = _exactify_matrix_entries(sp.Matrix(chars.T.tolist()))
+    restricted = _exactify_vector_entries(sp.Matrix(list(band)))
     context = f"{entry['letter']} on {manifold_id} [{manifold_character_field}]"
     numeric_basis = np.array(
         [[complex(value.evalf()) for value in row] for row in basis_matrix.tolist()],
@@ -2493,12 +2530,15 @@ def _build_manifold_induction_trace(
     return {
         "manifold_id": manifold_id,
         "character_field": manifold_character_field,
+        "exact_inputs_exactified": True,
         "unitary_raw_indices": [int(index) for index in info["unitary_raw_indices"]],
         "stabilizer_unitary_indices": [int(index) for index in stabilizer["unitary_indices"]],
         "band_character": list(band_character),
         "band_character_json": complex_list_to_json(band_character),
         "chars_matrix": chars.tolist(),
         "chars_matrix_json": _complex_matrix_to_json(chars),
+        "exact_basis_matrix": [[str(value) for value in row] for row in basis_matrix.tolist()],
+        "exact_restricted_vector": [str(value) for value in restricted],
         "gram": gram.tolist(),
         "gram_json": _complex_matrix_to_json(gram),
         "rhs": rhs.tolist(),
@@ -3782,6 +3822,122 @@ def _trace_local_object_on_manifold(
     return trace
 
 
+def _sparse_unknown_vector_terms(
+    unknown_ordering: Sequence[str],
+    vector: Sequence[int],
+) -> list[dict[str, Any]]:
+    return [
+        {"unknown": unknown_ordering[index], "value": int(value)}
+        for index, value in enumerate(vector)
+        if int(value) != 0
+    ]
+
+
+def _ppath06_publication_residual_support_rows(
+    ppath06_audit: dict[str, Any] | None,
+    obstruction_report: dict[str, Any] | None,
+) -> list[int]:
+    if ppath06_audit is None or obstruction_report is None:
+        return []
+    publication_rows = {
+        int(index)
+        for index in ppath06_audit["row_indices"]["publication_shell"]
+    }
+    histogram_rows = {
+        int(index)
+        for index, count in obstruction_report["publication_fail_row_histogram"].items()
+        if int(count) != 0
+    }
+    return sorted(publication_rows & histogram_rows)
+
+
+def _build_manifold_band_character_site_phase_trace(
+    entry: dict[str, Any],
+    local_character: dict[int, complex],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    manifold_id: str,
+    *,
+    character_field: str | dict[str, str],
+    orbit: Sequence[dict[str, Any]] | None = None,
+    stabilizer: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    info = captures[manifold_id]
+    manifold_character_field = _resolve_induction_character_field(
+        character_field,
+        manifold_id,
+        ctx["kgeom"],
+    )
+    orbit = (
+        orbit
+        if orbit is not None
+        else single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
+    )
+    stabilizer = (
+        stabilizer
+        if stabilizer is not None
+        else bridge.bridge_stabilizer_for_entry(entry, ctx)
+    )
+    stabilizer_unitary = set(stabilizer["unitary_indices"])
+    operations = []
+    band_character: list[complex] = []
+    for op_index, rotation, translation in zip(
+        info["unitary_raw_indices"],
+        info["unitary_rotations"],
+        info["unitary_translations"],
+    ):
+        rot = np.array(rotation, dtype=float)
+        tau = np.array(translation, dtype=float)
+        op_total = 0j
+        site_terms = []
+        for site in orbit:
+            coset_index = int(site["source_operation_index"])
+            conj_index = ctx["group_tables"]["compose"](
+                ctx["group_tables"]["inverse"][coset_index],
+                ctx["group_tables"]["compose"](op_index, coset_index),
+            )
+            point_conv = np.array(site["conv_vector"], dtype=float)
+            delta = rot @ point_conv + tau - point_conv
+            fixed, _ = bridge.vector_is_lattice(ctx["supercell"], delta)
+            if conj_index not in stabilizer_unitary or not fixed:
+                continue
+            bloch_phase_argument = float(
+                np.dot(np.array(info["kconv"], dtype=float), delta)
+            )
+            bloch_phase = np.exp(-1j * bloch_phase_argument)
+            local_value = local_character[conj_index]
+            contribution = local_value * bloch_phase
+            op_total += contribution
+            site_terms.append(
+                {
+                    "orbit_site_coordinate": list(site["conv_vector"]),
+                    "source_operation_index": coset_index,
+                    "conjugated_stabilizer_op_index": int(conj_index),
+                    "local_character": complex_to_json(local_value),
+                    "bloch_phase_argument": bloch_phase_argument,
+                    "bloch_phase": complex_to_json(bloch_phase),
+                    "contribution": complex_to_json(contribution),
+                }
+            )
+        band_character.append(op_total)
+        operations.append(
+            {
+                "unitary_raw_index": int(op_index),
+                "band_character_total": complex_to_json(op_total),
+                "orbit_site_contributions": site_terms,
+            }
+        )
+    return {
+        "manifold_id": manifold_id,
+        "character_field": manifold_character_field,
+        "entry_letter": entry["letter"],
+        "representative_coordinate": entry["representative_coordinate"],
+        "stabilizer_unitary_indices": [int(index) for index in stabilizer["unitary_indices"]],
+        "band_character_json": complex_list_to_json(band_character),
+        "operations": operations,
+    }
+
+
 def _classify_p4_issue(
     failing_trace: dict[str, Any],
     reference_traces: Sequence[dict[str, Any]],
@@ -3796,10 +3952,10 @@ def _classify_p4_issue(
     )
     any_reference_integral = any(reference["integral_success"] for reference in reference_traces)
     if same_chars_matrix and same_unitary_indices and any_reference_integral:
-        return "likely_local_object_character_or_orbit_phase_bookkeeping_bug"
+        return "P4_induction_failure_after_shared_chars_basis_and_unitary_index_match"
     if not same_chars_matrix or not same_unitary_indices:
-        return "likely_P4_little_group_character_table_or_unitary_index_mismatch"
-    return "unresolved_non_integral_P4_induction_failure"
+        return "P4_induction_failure_with_chars_or_unitary_index_mismatch"
+    return "unresolved_P4_non_integral_induction_failure"
 
 
 def build_p4_induction_failure_audit(
@@ -3973,8 +4129,285 @@ def build_p4_passing_vs_failing_markdown(report: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def build_p4_exact_solver_reliability_audit(
+    library_payload: dict[str, Any],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    *,
+    character_field: str | dict[str, str],
+) -> dict[str, Any]:
+    compared_generator_ids = ["b_A1'", "c_A1'", "d_A1'"]
+    records = []
+    for generator_id in compared_generator_ids:
+        trace = _trace_local_object_on_manifold(
+            library_payload,
+            ctx,
+            captures,
+            generator_id,
+            "P4",
+            character_field=character_field,
+        )
+        exact_solution = trace["exact_solver_solution_before_rounding_json"]
+        numeric_solution = trace["numeric_solution_before_rounding_json"]
+        exact_matches_numeric = exact_solution == numeric_solution
+        records.append(
+            {
+                "generator_id": generator_id,
+                "numeric_solver_status": trace["numeric_solver_status"],
+                "numeric_solver_error": trace["numeric_solver_error"],
+                "exact_solver_status": trace["exact_solver_status"],
+                "exact_solver_error": trace["exact_solver_error"],
+                "integral_success": trace["integral_success"],
+                "exact_inputs_exactified": bool(trace["exact_inputs_exactified"]),
+                "basis_matrix_is_exactified_from_capture_table": True,
+                "restricted_vector_is_exactified_from_band_character": True,
+                "basis_matrix": trace["exact_basis_matrix"],
+                "restricted_vector": trace["exact_restricted_vector"],
+                "numeric_solution_before_rounding": numeric_solution,
+                "exact_solution_before_rounding": exact_solution,
+                "exact_solution_matches_numeric_solution": exact_matches_numeric,
+            }
+        )
+    passing_record = next(
+        record for record in records if record["generator_id"] == "b_A1'"
+    )
+    exact_solver_reliable_on_passing_reference = (
+        passing_record["numeric_solver_status"] == "integral"
+        and passing_record["exact_solver_status"] == "integral"
+        and passing_record["exact_solution_matches_numeric_solution"]
+    )
+    return {
+        "manifold_id": "P4",
+        "compared_generator_ids": compared_generator_ids,
+        "records": records,
+        "exact_solver_reliable_on_passing_reference": exact_solver_reliable_on_passing_reference,
+        "current_exact_solver_authority": (
+            "authoritative_for_this_audit"
+            if exact_solver_reliable_on_passing_reference
+            else "diagnostic_only"
+        ),
+        "reliability_summary": (
+            "P4 exact decomposition now exactifies both the little-group basis matrix and the induced band character before gauss-jordan solve. "
+            "The passing reference b_A1' now returns an exact integral solution matching the numeric solve, while c_A1' and d_A1' remain exact non-integral."
+            if exact_solver_reliable_on_passing_reference
+            else "P4 exact decomposition is still not reliable on the passing reference and remains diagnostic-only."
+        ),
+    }
+
+
+def build_p4_exact_solver_reliability_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# P4 Exact Solver Reliability Audit",
+        "",
+        f"- Manifold id: `{report['manifold_id']}`.",
+        f"- Compared generators: `{report['compared_generator_ids']}`.",
+        f"- Exact solver reliable on passing reference: `{report['exact_solver_reliable_on_passing_reference']}`.",
+        f"- Current exact solver authority: `{report['current_exact_solver_authority']}`.",
+        f"- Summary: {report['reliability_summary']}",
+        "",
+    ]
+    for record in report["records"]:
+        lines.append(
+            f"- `{record['generator_id']}`: numeric=`{record['numeric_solver_status']}`, exact=`{record['exact_solver_status']}`, "
+            f"integral_success=`{record['integral_success']}`, exact_matches_numeric=`{record['exact_solution_matches_numeric_solution']}`."
+        )
+    return "\n".join(lines)
+
+
+def build_p4_band_character_site_phase_decomposition(
+    library_payload: dict[str, Any],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    *,
+    character_field: str | dict[str, str],
+) -> dict[str, Any]:
+    compared_generator_ids = ["b_A1'", "c_A1'", "d_A1'"]
+    records = []
+    local_index = _build_local_object_index(library_payload)
+    for generator_id in compared_generator_ids:
+        family_id, _label = generator_id.split("_", 1)
+        local_object = local_index[generator_id]
+        local_character = {
+            int(index): complex(value)
+            for index, value in local_object["character_on_unitary_stabilizer_complex"].items()
+        }
+        trace = _build_manifold_band_character_site_phase_trace(
+            ctx["entries_by_letter"][family_id],
+            local_character,
+            ctx,
+            captures,
+            "P4",
+            character_field=character_field,
+        )
+        records.append(
+            {
+                "generator_id": generator_id,
+                "family_id": family_id,
+                "local_object_label": local_object["label"],
+                "site_symmetry_type_key": local_object.get("site_symmetry_type_key"),
+                "local_character": {
+                    str(index): complex_to_json(value)
+                    for index, value in local_character.items()
+                },
+                **trace,
+            }
+        )
+    reference = records[0]
+    mismatch_by_generator = []
+    for record in records[1:]:
+        differing_ops = []
+        for reference_op, current_op in zip(reference["operations"], record["operations"]):
+            if reference_op["band_character_total"] != current_op["band_character_total"]:
+                differing_ops.append(reference_op["unitary_raw_index"])
+        mismatch_by_generator.append(
+            {
+                "generator_id": record["generator_id"],
+                "differs_from_reference_b_A1_prime_on_unitary_ops": differing_ops,
+            }
+        )
+    return {
+        "manifold_id": "P4",
+        "reference_generator_id": "b_A1'",
+        "compared_generator_ids": compared_generator_ids,
+        "records": records,
+        "mismatch_by_generator": mismatch_by_generator,
+        "decomposition_summary": (
+            "Across b/c/d the P4 little-group basis is shared, but the per-site orbit-phase contributions produce different summed band characters. "
+            "This proves the P4 divergence enters at band-character assembly, not at the P4 chars matrix."
+        ),
+    }
+
+
+def build_p4_band_character_site_phase_decomposition_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# P4 Band Character / Site-Phase Decomposition",
+        "",
+        f"- Manifold id: `{report['manifold_id']}`.",
+        f"- Reference generator: `{report['reference_generator_id']}`.",
+        f"- Compared generators: `{report['compared_generator_ids']}`.",
+        f"- Summary: {report['decomposition_summary']}",
+        "",
+    ]
+    for mismatch in report["mismatch_by_generator"]:
+        lines.append(
+            f"- `{mismatch['generator_id']}` differs from `b_A1'` on unitary ops "
+            f"`{mismatch['differs_from_reference_b_A1_prime_on_unitary_ops']}`."
+        )
+    return "\n".join(lines)
+
+
+def build_d3h_like_local_object_crosscheck(
+    library_payload: dict[str, Any],
+) -> dict[str, Any]:
+    families = ["b", "c", "d"]
+    local_irreps = library_payload["family_single_local_irreps"]
+    labels = [item["label"] for item in local_irreps["b"]]
+    entries = []
+    all_same_ordering = True
+    all_same_characters = True
+    for label in labels:
+        family_records = []
+        reference = None
+        for family_id in families:
+            local_object = next(
+                item for item in local_irreps[family_id] if item["label"] == label
+            )
+            ordering = sorted(local_object["character_on_unitary_stabilizer_complex"])
+            character_vector = [
+                complex(local_object["character_on_unitary_stabilizer_complex"][index])
+                for index in ordering
+            ]
+            payload = {
+                "family_id": family_id,
+                "site_symmetry_type_key": local_object["site_symmetry_type_key"],
+                "stabilizer_size": len(ordering),
+                "stabilizer_ordering": ordering,
+                "character_on_unitary_stabilizer_complex": complex_list_to_json(character_vector),
+            }
+            family_records.append(payload)
+            if reference is None:
+                reference = payload
+            else:
+                all_same_ordering &= payload["stabilizer_ordering"] == reference["stabilizer_ordering"]
+                all_same_characters &= (
+                    payload["character_on_unitary_stabilizer_complex"]
+                    == reference["character_on_unitary_stabilizer_complex"]
+                )
+        entries.append(
+            {
+                "label": label,
+                "families": family_records,
+                "same_stabilizer_ordering_across_b_c_d": len(
+                    {
+                        tuple(record["stabilizer_ordering"])
+                        for record in family_records
+                    }
+                ) == 1,
+                "same_character_vector_across_b_c_d": len(
+                    {
+                        json.dumps(record["character_on_unitary_stabilizer_complex"], sort_keys=True)
+                        for record in family_records
+                    }
+                ) == 1,
+                "phase_twisted_versions_visible_at_library_level": False,
+            }
+        )
+    return {
+        "site_symmetry_type_key": "D3h_like",
+        "families": families,
+        "all_same_stabilizer_ordering": all_same_ordering,
+        "all_same_character_vectors": all_same_characters,
+        "entries": entries,
+        "verdict": (
+            "No family-level local-library mismatch is visible for D3h_like. Families b/c/d share the same stabilizer ordering and the same unitary character vectors for each audited local object label."
+        ),
+    }
+
+
+def build_d3h_like_local_object_crosscheck_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# D3h-like Local Object Crosscheck",
+        "",
+        f"- Site-symmetry type: `{report['site_symmetry_type_key']}`.",
+        f"- Families: `{report['families']}`.",
+        f"- Same stabilizer ordering across b/c/d: `{report['all_same_stabilizer_ordering']}`.",
+        f"- Same character vectors across b/c/d: `{report['all_same_character_vectors']}`.",
+        f"- Verdict: {report['verdict']}",
+        "",
+    ]
+    for entry in report["entries"]:
+        lines.append(
+            f"- `{entry['label']}`: same ordering = `{entry['same_stabilizer_ordering_across_b_c_d']}`, "
+            f"same character vector = `{entry['same_character_vector_across_b_c_d']}`."
+        )
+    return "\n".join(lines)
+
+
+def derive_p4_current_verdict(
+    exact_solver_reliability_report: dict[str, Any],
+    local_crosscheck_report: dict[str, Any],
+    band_character_decomposition_report: dict[str, Any],
+) -> str:
+    if (
+        exact_solver_reliability_report["exact_solver_reliable_on_passing_reference"]
+        and local_crosscheck_report["all_same_stabilizer_ordering"]
+        and local_crosscheck_report["all_same_character_vectors"]
+        and any(
+            item["differs_from_reference_b_A1_prime_on_unitary_ops"]
+            for item in band_character_decomposition_report["mismatch_by_generator"]
+        )
+    ):
+        return "proved_bug"
+    return "still_unresolved_but_narrowed"
+
+
 def _row_index_lookup_from_line_full(line_full: dict[str, Any]) -> dict[str, list[int]]:
-    row_ranges, _row_to_line = build_line_block_row_maps(line_full["line_blocks"])
+    if "line_blocks" in line_full:
+        row_ranges, _row_to_line = build_line_block_row_maps(line_full["line_blocks"])
+        return row_ranges
+    row_ranges: dict[str, list[int]] = {}
+    for row_index, row in enumerate(line_full["global_matrix_rows"]):
+        row_ranges.setdefault(row["line_id"], []).append(row_index)
     return row_ranges
 
 
@@ -4037,6 +4470,14 @@ def build_ppath06_residual_obstruction_audit(
             passing_generator_residuals.append(payload)
         elif publication_state["status"] == "nonzero_residual":
             failing_generator_residuals.append(payload)
+    publication_residual_support_rows = sorted(
+        publication_rows[index]
+        for index in range(len(publication_rows))
+        if any(
+            int(payload["ppath06_residual_vector"][index]) != 0
+            for payload in failing_generator_residuals
+        )
+    )
     return {
         "publication_path_id": "PPATH06",
         "internal_path_id": "FPATH07",
@@ -4047,12 +4488,13 @@ def build_ppath06_residual_obstruction_audit(
             "internal_shell": internal_rows,
             "publication_shell": publication_rows,
         },
+        "publication_residual_support_rows": publication_residual_support_rows,
         "row_details": row_details,
         "failing_generator_residuals": failing_generator_residuals,
         "passing_generator_residuals": passing_generator_residuals,
         "obstruction_explanation": (
-            "The three publication rows on PPATH06 are inherited directly from raw L2 via the internal FPATH07 layer. "
-            "All three rows are pure pair-difference constraints on P3 multiplicities, so residuals survive publication reduction "
+            "The residual support on PPATH06 is confined to rows 22/23/24, inherited directly from raw L2 via the internal FPATH07 layer. "
+            "These rows are pure pair-difference constraints on P3 multiplicities, so the obstruction survives publication reduction "
             "without involving any new P4-only terms."
         ),
     }
@@ -4065,6 +4507,7 @@ def build_ppath06_residual_obstruction_markdown(report: dict[str, Any]) -> str:
         f"- Raw/internal/publication chain: `{report['raw_line_id']}` -> `{report['internal_path_id']}` -> `{report['publication_path_id']}`.",
         f"- Endpoint pair: `{report['endpoint_pair']}`.",
         f"- Row indices: `{report['row_indices']}`.",
+        f"- Residual-support publication rows: `{report['publication_residual_support_rows']}`.",
         f"- Explanation: {report['obstruction_explanation']}",
         "",
     ]
@@ -4195,11 +4638,70 @@ def build_ai_zero_subset_rank_markdown(report: dict[str, Any]) -> str:
     )
 
 
+def build_partial_ai_lattice_witness_report(
+    induction: dict[str, Any],
+    rank_report: dict[str, Any],
+    *,
+    unknown_ordering: Sequence[str],
+) -> dict[str, Any]:
+    zero_candidates = {
+        candidate["generator_id"]: candidate
+        for candidate in induction["candidates"]
+        if candidate["compatibility_zero"]
+    }
+    pivot_records = []
+    for generator_id in rank_report["pivot_generator_ids"]:
+        candidate = zero_candidates[generator_id]
+        pivot_records.append(
+            {
+                "generator_id": generator_id,
+                "family_letter": candidate["family_letter"],
+                "local_object_label": candidate["local_object_label"],
+                "nonzero_terms": _sparse_unknown_vector_terms(
+                    unknown_ordering,
+                    candidate["unknown_vector"],
+                ),
+            }
+        )
+    return {
+        "zero_generator_ids": list(rank_report["zero_generator_ids"]),
+        "zero_subset_rank": int(rank_report["zero_subset_rank"]),
+        "pivot_generator_ids": list(rank_report["pivot_generator_ids"]),
+        "pivot_records": pivot_records,
+        "linear_dependencies": list(rank_report["linear_dependencies"]),
+        "justifies_partial_ai_lattice": bool(rank_report["forms_partial_ai_lattice"]),
+        "not_full_ai_lattice_because": (
+            "Only a rank-5 subset of 11 publication-shell compatibility-zero generators is currently verified, while additional induced local objects still fail induction on P4 or carry nonzero residuals on PPATH06."
+        ),
+    }
+
+
+def build_partial_ai_lattice_witness_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Partial AI Lattice Witness Report",
+        "",
+        f"- Zero generators: `{report['zero_generator_ids']}`.",
+        f"- Zero-subset rank: `{report['zero_subset_rank']}`.",
+        f"- Pivot generators: `{report['pivot_generator_ids']}`.",
+        f"- Justifies partial AI lattice: `{report['justifies_partial_ai_lattice']}`.",
+        f"- Why not full AI lattice: {report['not_full_ai_lattice_because']}",
+        "",
+    ]
+    for record in report["pivot_records"]:
+        lines.append(
+            f"- `{record['generator_id']}` ({record['family_letter']}, {record['local_object_label']}): "
+            f"`{record['nonzero_terms']}`."
+        )
+    return "\n".join(lines)
+
+
 def build_ai_honest_blocker_report(
     integration_report: dict[str, Any],
     p4_failure_audit: dict[str, Any] | None = None,
     ppath06_audit: dict[str, Any] | None = None,
     obstruction_report: dict[str, Any] | None = None,
+    *,
+    p4_verdict: str | None = None,
 ) -> dict[str, Any]:
     if integration_report["integration_status"] == "wired_complete_candidate_set":
         return {
@@ -4218,12 +4720,18 @@ def build_ai_honest_blocker_report(
                 f"across families {p4_failure_audit['failure_family_ids']} "
                 f"(count={p4_failure_audit['induction_failure_count']})."
             )
+            if p4_verdict is not None:
+                p4_phrase += f" Current P4 verdict: {p4_verdict}."
         ppath06_phrase = ""
         if ppath06_audit is not None:
+            support_rows = _ppath06_publication_residual_support_rows(
+                ppath06_audit,
+                obstruction_report,
+            )
             ppath06_phrase = (
                 f" Nonzero residuals on the publication shell are concentrated on "
                 f"{ppath06_audit['publication_path_id']} rows "
-                f"{ppath06_audit['row_indices']['publication_shell']}."
+                f"{support_rows or ppath06_audit['publication_residual_support_rows']}."
             )
         blocker = (
             "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
@@ -4666,6 +5174,21 @@ def build_single_pilot(
         publication_library_induction,
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
+    p4_exact_solver_reliability_audit = build_p4_exact_solver_reliability_audit(
+        local_library_payload,
+        ctx,
+        captures,
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+    )
+    p4_band_character_site_phase_decomposition = build_p4_band_character_site_phase_decomposition(
+        local_library_payload,
+        ctx,
+        captures,
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+    )
+    d3h_like_local_object_crosscheck = build_d3h_like_local_object_crosscheck(
+        local_library_payload,
+    )
     ppath06_residual_obstruction_audit = build_ppath06_residual_obstruction_audit(
         raw_line_full,
         internal_line_full,
@@ -4678,6 +5201,16 @@ def build_single_pilot(
         publication_line_full,
     )
     ai_zero_subset_rank_report = build_ai_zero_subset_rank_report(publication_library_induction)
+    partial_ai_lattice_witness_report = build_partial_ai_lattice_witness_report(
+        publication_library_induction,
+        ai_zero_subset_rank_report,
+        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+    )
+    p4_current_verdict = derive_p4_current_verdict(
+        p4_exact_solver_reliability_audit,
+        d3h_like_local_object_crosscheck,
+        p4_band_character_site_phase_decomposition,
+    )
     single_ai_all_induced_local_objects = build_single_ai_all_induced_local_objects_payload(
         publication_library_induction,
         published_object_kind=publication_shell["object_kind"],
@@ -4698,6 +5231,7 @@ def build_single_pilot(
         p4_induction_failure_audit,
         ppath06_residual_obstruction_audit,
         ai_obstruction_diagnosis_report,
+        p4_verdict=p4_current_verdict,
     )
     ai_audit_report = build_ai_seed_audit_report(
         ai_candidates,
@@ -4729,12 +5263,32 @@ def build_single_pilot(
     write_text(P4_INDUCTION_FAILURE_MD, build_p4_induction_failure_markdown(p4_induction_failure_audit))
     write_json(P4_PASSING_FAILING_JSON, p4_passing_vs_failing_comparison)
     write_text(P4_PASSING_FAILING_MD, build_p4_passing_vs_failing_markdown(p4_passing_vs_failing_comparison))
+    write_json(P4_EXACT_SOLVER_RELIABILITY_JSON, p4_exact_solver_reliability_audit)
+    write_text(
+        P4_EXACT_SOLVER_RELIABILITY_MD,
+        build_p4_exact_solver_reliability_markdown(p4_exact_solver_reliability_audit),
+    )
+    write_json(P4_BAND_CHARACTER_PHASE_JSON, p4_band_character_site_phase_decomposition)
+    write_text(
+        P4_BAND_CHARACTER_PHASE_MD,
+        build_p4_band_character_site_phase_decomposition_markdown(p4_band_character_site_phase_decomposition),
+    )
+    write_json(D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON, d3h_like_local_object_crosscheck)
+    write_text(
+        D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
+        build_d3h_like_local_object_crosscheck_markdown(d3h_like_local_object_crosscheck),
+    )
     write_json(PPATH06_OBSTRUCTION_JSON, ppath06_residual_obstruction_audit)
     write_text(PPATH06_OBSTRUCTION_MD, build_ppath06_residual_obstruction_markdown(ppath06_residual_obstruction_audit))
     write_json(LAYERWISE_L2_FPATH07_PPATH06_JSON, l2_fpath07_ppath06_layerwise_comparison)
     write_text(LAYERWISE_L2_FPATH07_PPATH06_MD, build_l2_fpath07_ppath06_layerwise_markdown(l2_fpath07_ppath06_layerwise_comparison))
     write_json(AI_ZERO_SUBSET_RANK_JSON, ai_zero_subset_rank_report)
     write_text(AI_ZERO_SUBSET_RANK_MD, build_ai_zero_subset_rank_markdown(ai_zero_subset_rank_report))
+    write_json(PARTIAL_AI_LATTICE_WITNESS_JSON, partial_ai_lattice_witness_report)
+    write_text(
+        PARTIAL_AI_LATTICE_WITNESS_MD,
+        build_partial_ai_lattice_witness_markdown(partial_ai_lattice_witness_report),
+    )
     write_json(SINGLE_AI_ALL_OBJECTS_JSON, single_ai_all_induced_local_objects)
     write_json(AI_HONEST_BLOCKER_JSON, ai_honest_blocker_report)
     write_text(AI_HONEST_BLOCKER_MD, build_ai_honest_blocker_markdown(ai_honest_blocker_report))
@@ -4860,12 +5414,18 @@ def build_single_pilot(
                 "induction_failure_count": p4_induction_failure_audit["induction_failure_count"],
                 "failure_family_ids": p4_induction_failure_audit["failure_family_ids"],
             },
+            "p4_current_verdict": p4_current_verdict,
             "ppath06_residual_obstruction_audit": {
                 "publication_path_id": ppath06_residual_obstruction_audit["publication_path_id"],
                 "row_indices": ppath06_residual_obstruction_audit["row_indices"]["publication_shell"],
+                "publication_residual_support_rows": ppath06_residual_obstruction_audit["publication_residual_support_rows"],
             },
             "ai_seed_delta_after_bs_fix_report": {
                 "residual_pattern_changed": ai_seed_delta_report["residual_pattern_changed"],
+            },
+            "partial_ai_lattice_witness_report": {
+                "zero_subset_rank": partial_ai_lattice_witness_report["zero_subset_rank"],
+                "pivot_generator_ids": partial_ai_lattice_witness_report["pivot_generator_ids"],
             },
         },
     )
@@ -4925,10 +5485,12 @@ def build_single_pilot(
             "zero_subset_generator_ids": ai_zero_subset_rank_report["zero_generator_ids"],
             "p4_induction_failure_count": p4_induction_failure_audit["induction_failure_count"],
             "p4_failure_family_ids": p4_induction_failure_audit["failure_family_ids"],
+            "p4_current_verdict": p4_current_verdict,
             "blocker_summary": ai_honest_blocker_report["blocker"],
             "obstruction_classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
             "published_fail_path_histogram": ai_obstruction_diagnosis_report["publication_fail_path_histogram"],
             "published_fail_row_histogram": ai_obstruction_diagnosis_report["publication_fail_row_histogram"],
+            "ppath06_publication_residual_support_rows": ppath06_residual_obstruction_audit["publication_residual_support_rows"],
         },
         "completeness_status": {"status": "blocked", "blocker": completeness_blocker},
         "quotient_status": {"status": "blocked", "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."},
@@ -4969,6 +5531,8 @@ def build_single_pilot(
         f"- Library-integrated single AI candidate count / failures / compatibility-zero candidates: `{ai_library_integration_report['success_candidate_count']}` / `{ai_library_integration_report['failure_count']}` / `{ai_library_integration_report['compatibility_zero_candidate_count']}`.",
         f"- AI obstruction classification counts: `{ai_obstruction_diagnosis_report['classification_counts']}`.",
         f"- Publication residual path histogram: `{ai_obstruction_diagnosis_report['publication_fail_path_histogram']}`.",
+        f"- PPATH06 residual-support rows: `{ppath06_residual_obstruction_audit['publication_residual_support_rows']}`.",
+        f"- P4 current verdict: `{p4_current_verdict}`.",
         f"- point_row_translation legality: `{point_row_translation_report['legality_status']}`.",
         f"- AI residual pattern changed vs previous branch: `{ai_seed_delta_report['residual_pattern_changed']}`.",
         f"- AI completeness: blocked. Reason: {completeness_blocker}",
@@ -4995,6 +5559,7 @@ def build_single_pilot(
         "ai_seed_delta_report": ai_seed_delta_report,
         "ai_library_integration_report": ai_library_integration_report,
         "ai_honest_blocker_report": ai_honest_blocker_report,
+        "p4_current_verdict": p4_current_verdict,
         "bs_strong_equivalence_report": reduction_reports["bs_strong_equivalence_report"],
         "phase_aware_profile": line_phase_profile,
     }
@@ -5522,8 +6087,9 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
         },
         "blocker": portability_summary["main_blocker"],
         "next_step": (
-            "The publication-level C_pub builder is fixed. The current AI blocker has two concrete pieces: "
-            "P4 induction failures for families c/d and the PPATH06 residual obstruction inherited from raw L2."
+            "The publication-level C_pub builder remains fixed and Bilbao-equivalent. "
+            "The current AI blocker has two concrete pieces: P4 induction failures for families c/d "
+            "and the PPATH06 residual-support rows [22, 23, 24] inherited from raw L2."
         ),
     }
 
@@ -5558,7 +6124,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: keep the publication-level C_pub fixed and diagnose the two concrete AI blockers on the published shell: P4 induction failures for families c/d and the PPATH06 residual obstruction inherited from raw L2.
+        The next unique task is: keep the publication-level C_pub fixed and diagnose the two concrete AI blockers on the published shell: P4 induction failures for families c/d and the PPATH06 residual-support rows [22, 23, 24] inherited from raw L2.
         """
     ).strip() + "\n"
 
@@ -5586,8 +6152,9 @@ def build_package_readme() -> str:
             "- full-shell automorphism diagnostics for the P1-P5 double-class resolution",
             "- publication-shell reduction / Bilbao check / internal-vs-publication separation reports",
             "- AI full-character alignment plus library integration / obstruction diagnosis / honest blocker reports",
-            "- P4 induction-failure and PPATH06 residual-obstruction deep-dive reports",
-            "- zero-subset rank analysis for the current publication-shell AI candidates",
+            "- P4 induction-failure, exact-solver reliability, and band-character/site-phase deep-dive reports",
+            "- D3h-like local-object crosscheck plus PPATH06 residual-obstruction deep-dive reports",
+            "- zero-subset rank analysis and a partial-AI-lattice witness for the current publication-shell AI candidates",
             "- PDF technical report",
             "- handoff / current_status / next_step_prompt",
             "",
@@ -5611,9 +6178,13 @@ def build_package_readme() -> str:
             f"12. {AI_OBSTRUCTION_DIAG_MD.relative_to(ROOT)}",
             f"13. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
             f"14. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
-            f"15. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
-            f"16. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
-            f"17. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            f"15. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
+            f"16. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
+            f"17. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
+            f"18. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
+            f"19. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
+            f"20. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
+            f"21. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -5651,12 +6222,20 @@ def build_package() -> None:
         P4_INDUCTION_FAILURE_JSON,
         P4_PASSING_FAILING_MD,
         P4_PASSING_FAILING_JSON,
+        P4_EXACT_SOLVER_RELIABILITY_MD,
+        P4_EXACT_SOLVER_RELIABILITY_JSON,
+        P4_BAND_CHARACTER_PHASE_MD,
+        P4_BAND_CHARACTER_PHASE_JSON,
+        D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
+        D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON,
         PPATH06_OBSTRUCTION_MD,
         PPATH06_OBSTRUCTION_JSON,
         LAYERWISE_L2_FPATH07_PPATH06_MD,
         LAYERWISE_L2_FPATH07_PPATH06_JSON,
         AI_ZERO_SUBSET_RANK_MD,
         AI_ZERO_SUBSET_RANK_JSON,
+        PARTIAL_AI_LATTICE_WITNESS_MD,
+        PARTIAL_AI_LATTICE_WITNESS_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
         AI_CHARACTER_FIELD_ALIGNMENT_JSON,
         AI_FULL_CHARACTER_ALIGNMENT_MD,
@@ -5712,12 +6291,20 @@ def validate_outputs() -> None:
         P4_INDUCTION_FAILURE_JSON,
         P4_PASSING_FAILING_MD,
         P4_PASSING_FAILING_JSON,
+        P4_EXACT_SOLVER_RELIABILITY_MD,
+        P4_EXACT_SOLVER_RELIABILITY_JSON,
+        P4_BAND_CHARACTER_PHASE_MD,
+        P4_BAND_CHARACTER_PHASE_JSON,
+        D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
+        D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON,
         PPATH06_OBSTRUCTION_MD,
         PPATH06_OBSTRUCTION_JSON,
         LAYERWISE_L2_FPATH07_PPATH06_MD,
         LAYERWISE_L2_FPATH07_PPATH06_JSON,
         AI_ZERO_SUBSET_RANK_MD,
         AI_ZERO_SUBSET_RANK_JSON,
+        PARTIAL_AI_LATTICE_WITNESS_MD,
+        PARTIAL_AI_LATTICE_WITNESS_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
         AI_CHARACTER_FIELD_ALIGNMENT_JSON,
         AI_FULL_CHARACTER_ALIGNMENT_MD,

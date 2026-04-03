@@ -1,0 +1,213 @@
+{
+  "internal_honest_shell_path_count": 8,
+  "internal_honest_shell_path_pairs": [
+    [
+      "P1",
+      "P2"
+    ],
+    [
+      "P1",
+      "P3"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P2",
+      "P4"
+    ],
+    [
+      "P2",
+      "P6"
+    ],
+    [
+      "P3",
+      "P4"
+    ],
+    [
+      "P5",
+      "P6"
+    ]
+  ],
+  "publication_point_count": 6,
+  "publication_path_class_count": 8,
+  "publication_selected_path_count": 7,
+  "publication_actual_path_pairs": [
+    [
+      "P1",
+      "P2"
+    ],
+    [
+      "P1",
+      "P3"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P2",
+      "P4"
+    ],
+    [
+      "P2",
+      "P6"
+    ],
+    [
+      "P3",
+      "P4"
+    ],
+    [
+      "P5",
+      "P6"
+    ]
+  ],
+  "publication_unknown_count": 34,
+  "raw_line_count": 7,
+  "candidate_path_count": 62,
+  "publication_path_classes": [
+    {
+      "publication_path_class_id": "PUBCLASS01",
+      "endpoint_pair": [
+        "P1",
+        "P2"
+      ],
+      "selected_as_publication": true,
+      "member_internal_path_class_ids": [
+        "PCLASS01"
+      ],
+      "member_source_line_ids": [
+        "L1"
+      ],
+      "aggregate_row_rank": 6,
+      "selected_basis_row_rank": 6,
+      "selection_reason": "Retained as the publication-level representative for this endpoint pair because its aggregated canonical row language adds independent compatibility rows within the pair (rank 0 -> 6)."
+    },
+    {
+      "publication_path_class_id": "PUBCLASS02",
+      "endpoint_pair": [
+        "P1",
+        "P3"
+      ],
+      "selected_as_publication": true,
+      "member_internal_path_class_ids": [
+        "PCLASS02"
+      ],
+      "member_source_line_ids": [
+        "L4"
+      ],
+      "aggregate_row_rank": 4,
+      "selected_basis_row_rank": 4,
+      "selection_reason": "Retained as the publication-level representative for this endpoint pair because its aggregated canonical row language adds independent compatibility rows within the pair (rank 0 -> 4)."
+    },
+    {
+      "publication_path_class_id": "PUBCLASS03",
+      "endpoint_pair": [
+        "P1",
+        "P5"
+      ],
+      "selected_as_publication": true,
+      "member_internal_path_class_ids": [
+        "PCLASS03",
+        "PCLASS04"
+      ],
+      "member_source_line_ids": [
+        "L3",
+        "L4"
+      ],
+      "aggregate_row_rank": 6,
+      "selected_basis_row_rank": 6,
+      "selection_reason": "Retained as the publication-level representative for this endpoint pair because its aggregated canonical row language adds independent compatibility rows within the pair (rank 0 -> 6)."
+    },
+    {
+      "publication_path_class_id": "PUBCLASS04",
+      "endpoint_pair": [
+        "P2",
+        "P4"
+      ],
+      "selected_as_publication": true,
+      "member_internal_path_class_ids": [
+        "PCLASS05"
+      ],
+      "member_source_line_ids": [
+        "L7"
+      ],
+      "aggregate_row_rank": 1,
+      "selected_basis_row_rank": 1,
+      "selection_reason": "Retained as the publication-level representative for this endpoint pair because its aggregated canonical row language adds independent compatibility rows within the pair (rank 0 -> 1)."
+    },
+    {
+      "publication_path_class_id": "PUBCLASS05",
+      "endpoint_pair": [
+        "P2",
+        "P6"
+      ],
+      "selected_as_publication": true,
+      "member_internal_path_class_ids": [
+        "PCLASS06"
+      ],
+      "member_source_line_ids": [
+        "L6"
+      ],
+      "aggregate_row_rank": 2,
+      "selected_basis_row_rank": 2,
+      "selection_reason": "Retained as the publication-level representative for this endpoint pair because its aggregated canonical row language adds independent compatibility rows within the pair (rank 0 -> 2)."
+    },
+    {
+      "publication_path_class_id": "PUBCLASS06",
+      "endpoint_pair": [
+        "P2",
+        "P6"
+      ],
+      "selected_as_publication": false,
+      "member_internal_path_class_ids": [
+        "PCLASS07"
+      ],
+      "member_source_line_ids": [
+        "L7"
+      ],
+      "aggregate_row_rank": 1,
+      "selected_basis_row_rank": 1,
+      "selection_reason": "Discarded at the publication level because its aggregated canonical row language is already contained in an earlier selected publication path class for the same endpoint pair."
+    },
+    {
+      "publication_path_class_id": "PUBCLASS07",
+      "endpoint_pair": [
+        "P3",
+        "P4"
+      ],
+      "selected_as_publication": true,
+      "member_internal_path_class_ids": [
+        "PCLASS08"
+      ],
+      "member_source_line_ids": [
+        "L2"
+      ],
+      "aggregate_row_rank": 6,
+      "selected_basis_row_rank": 6,
+      "selection_reason": "Retained as the publication-level representative for this endpoint pair because its aggregated canonical row language adds independent compatibility rows within the pair (rank 0 -> 6)."
+    },
+    {
+      "publication_path_class_id": "PUBCLASS08",
+      "endpoint_pair": [
+        "P5",
+        "P6"
+      ],
+      "selected_as_publication": true,
+      "member_internal_path_class_ids": [
+        "PCLASS09"
+      ],
+      "member_source_line_ids": [
+        "L5"
+      ],
+      "aggregate_row_rank": 4,
+      "selected_basis_row_rank": 4,
+      "selection_reason": "Retained as the publication-level representative for this endpoint pair because its aggregated canonical row language adds independent compatibility rows within the pair (rank 0 -> 4)."
+    }
+  ]
+}

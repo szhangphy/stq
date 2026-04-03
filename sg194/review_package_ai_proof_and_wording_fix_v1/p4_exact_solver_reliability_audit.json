@@ -1,0 +1,361 @@
+{
+  "manifold_id": "P4",
+  "compared_generator_ids": [
+    "b_A1'",
+    "c_A1'",
+    "d_A1'"
+  ],
+  "records": [
+    {
+      "generator_id": "b_A1'",
+      "numeric_solver_status": "integral",
+      "numeric_solver_error": null,
+      "exact_solver_status": "integral",
+      "exact_solver_error": null,
+      "integral_success": true,
+      "exact_inputs_exactified": true,
+      "basis_matrix_is_exactified_from_capture_table": true,
+      "restricted_vector_is_exactified_from_band_character": true,
+      "basis_matrix": [
+        [
+          "2",
+          "2",
+          "2"
+        ],
+        [
+          "-1",
+          "-1",
+          "2"
+        ],
+        [
+          "-1",
+          "-1",
+          "2"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-sqrt(3)",
+          "sqrt(3)",
+          "0"
+        ],
+        [
+          "sqrt(3)",
+          "-sqrt(3)",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "restricted_vector": [
+        "2",
+        "2",
+        "2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "exact_solution_before_rounding": [
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "exact_solution_matches_numeric_solution": true
+    },
+    {
+      "generator_id": "c_A1'",
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in c on P4 [character]: [(0.4999999999999999-0.5000000000000001j), (0.4999999999999999+0.4999999999999997j), (5.551115123125783e-17-5.551115123125783e-17j)]",
+      "exact_solver_status": "non_integral",
+      "exact_solver_error": "non-integral decomposition in c on P4 [character]: [1/2 - I/2, 1/2 + I/2, 0]",
+      "integral_success": false,
+      "exact_inputs_exactified": true,
+      "basis_matrix_is_exactified_from_capture_table": true,
+      "restricted_vector_is_exactified_from_band_character": true,
+      "basis_matrix": [
+        [
+          "2",
+          "2",
+          "2"
+        ],
+        [
+          "-1",
+          "-1",
+          "2"
+        ],
+        [
+          "-1",
+          "-1",
+          "2"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-sqrt(3)",
+          "sqrt(3)",
+          "0"
+        ],
+        [
+          "sqrt(3)",
+          "-sqrt(3)",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "restricted_vector": [
+        "2",
+        "-1",
+        "-1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "sqrt(3)*I",
+        "-sqrt(3)*I",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        }
+      ],
+      "exact_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "exact_solution_matches_numeric_solution": true
+    },
+    {
+      "generator_id": "d_A1'",
+      "numeric_solver_status": "non_integral",
+      "numeric_solver_error": "non-integral numeric decomposition in d on P4 [character]: [(0.4999999999999999+0.5000000000000001j), (0.4999999999999999-0.4999999999999997j), (5.551115123125783e-17+5.551115123125783e-17j)]",
+      "exact_solver_status": "non_integral",
+      "exact_solver_error": "non-integral decomposition in d on P4 [character]: [1/2 + I/2, 1/2 - I/2, 0]",
+      "integral_success": false,
+      "exact_inputs_exactified": true,
+      "basis_matrix_is_exactified_from_capture_table": true,
+      "restricted_vector_is_exactified_from_band_character": true,
+      "basis_matrix": [
+        [
+          "2",
+          "2",
+          "2"
+        ],
+        [
+          "-1",
+          "-1",
+          "2"
+        ],
+        [
+          "-1",
+          "-1",
+          "2"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-sqrt(3)",
+          "sqrt(3)",
+          "0"
+        ],
+        [
+          "sqrt(3)",
+          "-sqrt(3)",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "restricted_vector": [
+        "2",
+        "-1",
+        "-1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "-sqrt(3)*I",
+        "sqrt(3)*I",
+        "0",
+        "0",
+        "0"
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "exact_solution_before_rounding": [
+        {
+          "real": 0.5,
+          "imag": 0.5
+        },
+        {
+          "real": 0.5,
+          "imag": -0.5
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "exact_solution_matches_numeric_solution": true
+    }
+  ],
+  "exact_solver_reliable_on_passing_reference": true,
+  "current_exact_solver_authority": "authoritative_for_this_audit",
+  "reliability_summary": "P4 exact decomposition now exactifies both the little-group basis matrix and the induced band character before gauss-jordan solve. The passing reference b_A1' now returns an exact integral solution matching the numeric solve, while c_A1' and d_A1' remain exact non-integral."
+}

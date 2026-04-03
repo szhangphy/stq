@@ -180,12 +180,12 @@
     {
       "family_letter": "d",
       "generator_id": "d_trivial",
-      "error": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.5000000000000001+0.5000000000000001j), (0.4999999999999998-0.5j), (3.5735303605122226e-16-1.5959455978986625e-16j)])"
+      "error": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.4999999999999999+0.5000000000000001j), (0.4999999999999999-0.4999999999999997j), (5.551115123125783e-17+5.551115123125783e-17j)])"
     },
     {
       "family_letter": "c",
       "generator_id": "c_trivial",
-      "error": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.5000000000000001-0.5000000000000001j), (0.49999999999999967+0.4999999999999999j), (3.8163916471489756e-16+2.220446049250313e-16j)])"
+      "error": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.4999999999999999-0.5000000000000001j), (0.4999999999999999+0.4999999999999997j), (5.551115123125783e-17-5.551115123125783e-17j)])"
     }
   ]
 }

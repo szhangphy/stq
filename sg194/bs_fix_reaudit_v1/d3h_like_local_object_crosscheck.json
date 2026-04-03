@@ -1,0 +1,1303 @@
+{
+  "site_symmetry_type_key": "D3h_like",
+  "families": [
+    "b",
+    "c",
+    "d"
+  ],
+  "all_same_stabilizer_ordering": true,
+  "all_same_character_vectors": true,
+  "entries": [
+    {
+      "label": "A1'",
+      "families": [
+        {
+          "family_id": "b",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "c",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "d",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            }
+          ]
+        }
+      ],
+      "same_stabilizer_ordering_across_b_c_d": true,
+      "same_character_vector_across_b_c_d": true,
+      "phase_twisted_versions_visible_at_library_level": false
+    },
+    {
+      "label": "A1''",
+      "families": [
+        {
+          "family_id": "b",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "c",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "d",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          ]
+        }
+      ],
+      "same_stabilizer_ordering_across_b_c_d": true,
+      "same_character_vector_across_b_c_d": true,
+      "phase_twisted_versions_visible_at_library_level": false
+    },
+    {
+      "label": "A2'",
+      "families": [
+        {
+          "family_id": "b",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "c",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "d",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            }
+          ]
+        }
+      ],
+      "same_stabilizer_ordering_across_b_c_d": true,
+      "same_character_vector_across_b_c_d": true,
+      "phase_twisted_versions_visible_at_library_level": false
+    },
+    {
+      "label": "A2''",
+      "families": [
+        {
+          "family_id": "b",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "c",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "d",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            }
+          ]
+        }
+      ],
+      "same_stabilizer_ordering_across_b_c_d": true,
+      "same_character_vector_across_b_c_d": true,
+      "phase_twisted_versions_visible_at_library_level": false
+    },
+    {
+      "label": "E'",
+      "families": [
+        {
+          "family_id": "b",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "c",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "d",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        }
+      ],
+      "same_stabilizer_ordering_across_b_c_d": true,
+      "same_character_vector_across_b_c_d": true,
+      "phase_twisted_versions_visible_at_library_level": false
+    },
+    {
+      "label": "E''",
+      "families": [
+        {
+          "family_id": "b",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -2.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "c",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -2.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        },
+        {
+          "family_id": "d",
+          "site_symmetry_type_key": "D3h_like",
+          "stabilizer_size": 12,
+          "stabilizer_ordering": [
+            0,
+            1,
+            2,
+            9,
+            10,
+            11,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "character_on_unitary_stabilizer_complex": [
+            {
+              "real": 2.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": -1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": -2.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 1.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        }
+      ],
+      "same_stabilizer_ordering_across_b_c_d": true,
+      "same_character_vector_across_b_c_d": true,
+      "phase_twisted_versions_visible_at_library_level": false
+    }
+  ],
+  "verdict": "No family-level local-library mismatch is visible for D3h_like. Families b/c/d share the same stabilizer ordering and the same unitary character vectors for each audited local object label."
+}

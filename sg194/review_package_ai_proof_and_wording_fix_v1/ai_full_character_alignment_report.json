@@ -1,0 +1,17 @@
+{
+  "old_field_map": "point=linear_character, line=character, plane=character, default=linear_character",
+  "new_field_map": "point=character, line=character, plane=character, default=character",
+  "point_side_now_uses_character": true,
+  "line_side_now_uses_character": true,
+  "plane_side_now_uses_character": true,
+  "compatibility_zero_counts": {
+    "raw42": 11,
+    "internal_shell": 11,
+    "publication_shell": 11
+  },
+  "publication_fail_path_histogram": {
+    "PPATH06": 48
+  },
+  "dominant_publication_path": "PPATH06",
+  "fpath07_remains_dominant": false
+}

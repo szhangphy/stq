@@ -912,6 +912,110 @@
   },
   "stabilizer_size": 1,
   "unitary_stabilizer_size": 1,
+  "induction_trace_summary": {
+    "P1": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "P2": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "P3": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "P4": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "P5": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "P6": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "L1": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "L2": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "L3": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "L4": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "L5": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "L6": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "L7": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "S1": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "S2": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "S3": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    },
+    "S4": {
+      "character_field": "character",
+      "integral_success": true,
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral"
+    }
+  },
   "generator_id": "l_double_trivial",
   "bridge_reused": true,
   "projective_note": "The real-space prototype uses the trivial stabilizer of family l, so the first portable double-group witness does not yet require a nontrivial local projective-character solver.",

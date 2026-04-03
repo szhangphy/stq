@@ -1,0 +1,399 @@
+{
+  "zero_generator_ids": [
+    "a_Eg",
+    "a_Eu",
+    "e_A1",
+    "e_A2",
+    "e_E",
+    "f_A1",
+    "f_A2",
+    "f_E",
+    "j_A'",
+    "j_A''",
+    "l_A"
+  ],
+  "zero_subset_rank": 5,
+  "pivot_generator_ids": [
+    "a_Eg",
+    "a_Eu",
+    "e_A1",
+    "e_A2",
+    "f_A1"
+  ],
+  "pivot_records": [
+    {
+      "generator_id": "a_Eg",
+      "family_letter": "a",
+      "local_object_label": "Eg",
+      "nonzero_terms": [
+        {
+          "unknown": "P1_R10",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R12",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "a_Eu",
+      "family_letter": "a",
+      "local_object_label": "Eu",
+      "nonzero_terms": [
+        {
+          "unknown": "P1_R9",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R11",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "e_A1",
+      "family_letter": "e",
+      "local_object_label": "A1",
+      "nonzero_terms": [
+        {
+          "unknown": "P1_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "value": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "e_A2",
+      "family_letter": "e",
+      "local_object_label": "A2",
+      "nonzero_terms": [
+        {
+          "unknown": "P1_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "value": 2
+        },
+        {
+          "unknown": "P3_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "value": 2
+        },
+        {
+          "unknown": "P5_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "f_A1",
+      "family_letter": "f",
+      "local_object_label": "A1",
+      "nonzero_terms": [
+        {
+          "unknown": "P1_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": 2
+        },
+        {
+          "unknown": "P3_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 2
+        }
+      ]
+    }
+  ],
+  "linear_dependencies": [
+    {
+      "generator_id": "e_E",
+      "depends_on": {
+        "a_Eg": "1",
+        "a_Eu": "1"
+      },
+      "non_unique": false
+    },
+    {
+      "generator_id": "f_A2",
+      "depends_on": {
+        "e_A1": "-1",
+        "e_A2": "1",
+        "f_A1": "1"
+      },
+      "non_unique": false
+    },
+    {
+      "generator_id": "f_E",
+      "depends_on": {
+        "a_Eg": "1",
+        "a_Eu": "1",
+        "e_A1": "1",
+        "f_A1": "-1"
+      },
+      "non_unique": false
+    },
+    {
+      "generator_id": "j_A'",
+      "depends_on": {
+        "a_Eg": "1",
+        "a_Eu": "1",
+        "e_A1": "1"
+      },
+      "non_unique": false
+    },
+    {
+      "generator_id": "j_A''",
+      "depends_on": {
+        "a_Eg": "1",
+        "a_Eu": "1",
+        "e_A2": "1"
+      },
+      "non_unique": false
+    },
+    {
+      "generator_id": "l_A",
+      "depends_on": {
+        "a_Eg": "2",
+        "a_Eu": "2",
+        "e_A1": "1",
+        "e_A2": "1"
+      },
+      "non_unique": false
+    }
+  ],
+  "justifies_partial_ai_lattice": true,
+  "not_full_ai_lattice_because": "Only a rank-5 subset of 11 publication-shell compatibility-zero generators is currently verified, while additional induced local objects still fail induction on P4 or carry nonzero residuals on PPATH06."
+}
