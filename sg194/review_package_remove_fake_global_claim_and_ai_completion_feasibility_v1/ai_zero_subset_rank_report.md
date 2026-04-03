@@ -1,0 +1,8 @@
+# AI Zero-Subset Rank Report
+
+- Zero generator ids: `['a_Eg', 'a_Eu', 'e_A1', 'e_A2', 'e_E', 'f_A1', 'f_A2', 'f_E', "j_A'", "j_A''", 'l_A']`.
+- Zero-subset rank: `5`.
+- Pivot generators: `['a_Eg', 'a_Eu', 'e_A1', 'e_A2', 'f_A1']`.
+- Forms partial AI lattice: `True`.
+- AI status: `partial_ai_lattice`.
+- Linear dependencies: `[{'generator_id': 'e_E', 'depends_on': {'a_Eg': '1', 'a_Eu': '1'}, 'non_unique': False}, {'generator_id': 'f_A2', 'depends_on': {'e_A1': '-1', 'e_A2': '1', 'f_A1': '1'}, 'non_unique': False}, {'generator_id': 'f_E', 'depends_on': {'a_Eg': '1', 'a_Eu': '1', 'e_A1': '1', 'f_A1': '-1'}, 'non_unique': False}, {'generator_id': "j_A'", 'depends_on': {'a_Eg': '1', 'a_Eu': '1', 'e_A1': '1'}, 'non_unique': False}, {'generator_id': "j_A''", 'depends_on': {'a_Eg': '1', 'a_Eu': '1', 'e_A2': '1'}, 'non_unique': False}, {'generator_id': 'l_A', 'depends_on': {'a_Eg': '2', 'a_Eu': '2', 'e_A1': '1', 'e_A2': '1'}, 'non_unique': False}]`.

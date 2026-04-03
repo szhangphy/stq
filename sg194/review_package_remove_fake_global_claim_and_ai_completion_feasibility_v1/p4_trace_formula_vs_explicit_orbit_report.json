@@ -1,0 +1,690 @@
+{
+  "manifold_id": "P4",
+  "compared_generator_ids": [
+    "b_A1'",
+    "c_A1'",
+    "d_A1'"
+  ],
+  "records": [
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "legacy_formula_uses_raw_orbit_representatives": true,
+      "explicit_trace_uses_canonical_reduced_orbit_representatives": true,
+      "legacy_canonical_orbit_coordinates": null,
+      "explicit_canonical_orbit_coordinates": [
+        [
+          "0",
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "0",
+          "3/4"
+        ]
+      ],
+      "linear_trace_differing_ops": [],
+      "converted_trace_differing_ops": [],
+      "linear_trace_matches": true,
+      "converted_trace_matches": true,
+      "legacy_linear_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_linear_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "legacy_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ]
+    },
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "legacy_formula_uses_raw_orbit_representatives": true,
+      "explicit_trace_uses_canonical_reduced_orbit_representatives": true,
+      "legacy_canonical_orbit_coordinates": null,
+      "explicit_canonical_orbit_coordinates": [
+        [
+          "1/3",
+          "2/3",
+          "1/4"
+        ],
+        [
+          "2/3",
+          "1/3",
+          "3/4"
+        ]
+      ],
+      "linear_trace_differing_ops": [],
+      "converted_trace_differing_ops": [],
+      "linear_trace_matches": true,
+      "converted_trace_matches": true,
+      "legacy_linear_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_linear_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "legacy_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "legacy_formula_uses_raw_orbit_representatives": true,
+      "explicit_trace_uses_canonical_reduced_orbit_representatives": true,
+      "legacy_canonical_orbit_coordinates": null,
+      "explicit_canonical_orbit_coordinates": [
+        [
+          "1/3",
+          "2/3",
+          "3/4"
+        ],
+        [
+          "2/3",
+          "1/3",
+          "1/4"
+        ]
+      ],
+      "linear_trace_differing_ops": [],
+      "converted_trace_differing_ops": [],
+      "linear_trace_matches": true,
+      "converted_trace_matches": true,
+      "legacy_linear_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_linear_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": -1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 1.732050807569
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "legacy_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ]
+    }
+  ],
+  "first_linear_trace_mismatch": null,
+  "first_converted_trace_mismatch": null,
+  "first_failure_mismatch": null,
+  "linear_trace_differing_ops_count_total": 0,
+  "converted_trace_differing_ops_count_total": 0,
+  "resolved_by_character_field_conversion": true,
+  "bug_localized_to_stage": "manifold_character_field_conversion: convert the assembled linear band trace to the selected character field by dividing by exp(-i k\u00b7tauC(op)) on each unitary operation",
+  "summary": "The P4 audit now separates pre-conversion linear-trace comparison from post-conversion selected-character comparison. Both the legacy formula trace and the explicit orbit-action trace agree on the audited P4 objects in the linear trace and in the converted character trace, so the remaining evidence for the earlier c/d induction failure sits in the field-conversion stage itself, not in target-site matching or orbit-action assembly."
+}

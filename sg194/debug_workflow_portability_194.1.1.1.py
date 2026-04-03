@@ -79,7 +79,7 @@ from pipeline_v2.final_object_reduction import (
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_ai_ppath06_quotient_diagnosis_v1"
+PACKAGE_NAME = "review_package_remove_fake_global_claim_and_ai_completion_feasibility_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -185,6 +185,14 @@ RESIDUAL_RANK5_PIVOT_WITNESS_MD = ROOT / "bs_fix_reaudit_v1" / "residual_rank5_p
 RESIDUAL_RANK5_PIVOT_WITNESS_JSON = ROOT / "bs_fix_reaudit_v1" / "residual_rank5_pivot_witness_report.json"
 PPATH06_ROW_SEMANTICS_MD = ROOT / "bs_fix_reaudit_v1" / "ppath06_row_semantics_report.md"
 PPATH06_ROW_SEMANTICS_JSON = ROOT / "bs_fix_reaudit_v1" / "ppath06_row_semantics_report.json"
+CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD = ROOT / "bs_fix_reaudit_v1" / "character_field_basis_convention_audit.md"
+CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_JSON = ROOT / "bs_fix_reaudit_v1" / "character_field_basis_convention_audit.json"
+SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD = ROOT / "bs_fix_reaudit_v1" / "sg194_setting_specific_character_conversion_validation.md"
+SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_JSON = ROOT / "bs_fix_reaudit_v1" / "sg194_setting_specific_character_conversion_validation.json"
+AI_COMPLETION_FEASIBILITY_MD = ROOT / "bs_fix_reaudit_v1" / "ai_completion_feasibility_from_residual_sector.md"
+AI_COMPLETION_FEASIBILITY_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_completion_feasibility_from_residual_sector.json"
+CLAIM_SCOPE_GUARDRAIL_MD = ROOT / "bs_fix_reaudit_v1" / "claim_scope_guardrail_report.md"
+CLAIM_SCOPE_GUARDRAIL_JSON = ROOT / "bs_fix_reaudit_v1" / "claim_scope_guardrail_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -2183,6 +2191,12 @@ def _build_manifold_induction_trace_legacy_formula(
                     "linear_contribution": complex_to_json(contribution),
                 }
             )
+        # WARNING:
+        # This conversion is treated only as SG194/current-setting-specific.
+        # The user-provided k coordinates live in the expanded-cell primitive
+        # reciprocal basis, while tauC/unitary_translations come from the
+        # capture-layer conventional/pre-supercell basis. The current numerical
+        # success on SG194 must not be promoted to a basis-independent theorem.
         operation_phase_argument = float(np.dot(kconv, tau))
         operation_phase = np.exp(-1j * operation_phase_argument)
         if manifold_character_field == "character":
@@ -2328,6 +2342,12 @@ def _build_manifold_induction_trace_by_explicit_orbit_action(
                     "linear_contribution": complex_to_json(contribution),
                 }
             )
+        # WARNING:
+        # This conversion is treated only as SG194/current-setting-specific.
+        # The user-provided k coordinates live in the expanded-cell primitive
+        # reciprocal basis, while tauC/unitary_translations come from the
+        # capture-layer conventional/pre-supercell basis. The current numerical
+        # success on SG194 must not be promoted to a basis-independent theorem.
         operation_phase_argument = float(np.dot(kconv, tau))
         operation_phase = np.exp(-1j * operation_phase_argument)
         if manifold_character_field == "character":
@@ -4411,7 +4431,7 @@ def build_character_field_conversion_global_validation_report(
         "comparison_count": comparison_count,
         "exact_match_count": exact_match_count,
         "mismatch_count": mismatch_count,
-        "all_manifolds_pass": mismatch_count == 0,
+        "setting_specific_numerical_consistency_pass_legacy": mismatch_count == 0,
         "first_mismatch": first_mismatch,
         "tau_field_comparison_count": tau_field_comparison_count,
         "tau_field_mismatch_count": tau_field_mismatch_count,
@@ -4436,7 +4456,7 @@ def build_character_field_conversion_global_validation_markdown(report: dict[str
             f"- Phase source field / runtime patch field: `{report['phase_source_field']}` / `{report['runtime_patch_translation_field']}`.",
             f"- Manifold count by kind: `{report['manifold_counts_by_kind']}`.",
             f"- Comparison count / exact matches / mismatches: `{report['comparison_count']}` / `{report['exact_match_count']}` / `{report['mismatch_count']}`.",
-            f"- All manifolds pass: `{report['all_manifolds_pass']}`.",
+            f"- Setting-specific numerical consistency pass (legacy): `{report['setting_specific_numerical_consistency_pass_legacy']}`.",
             f"- tauC-vs-unitary-translation comparison count / mismatches: `{report['tau_field_comparison_count']}` / `{report['tau_field_mismatch_count']}`.",
             f"- tau fields match globally: `{report['tau_field_match_global_pass']}`.",
             f"- First mismatch: `{report['first_mismatch']}`.",
@@ -4451,25 +4471,25 @@ def build_p4_conversion_patch_independent_validation_report(
     p4_trace_report: dict[str, Any],
     p4_failure_audit: dict[str, Any],
 ) -> dict[str, Any]:
-    independently_validated_globally = (
-        global_validation_report["all_manifolds_pass"]
+    setting_specific_consistency_pass = (
+        global_validation_report["setting_specific_numerical_consistency_pass_legacy"]
         and global_validation_report["tau_field_match_global_pass"]
         and p4_trace_report["linear_trace_differing_ops_count_total"] == 0
         and p4_trace_report["converted_trace_differing_ops_count_total"] == 0
         and int(p4_failure_audit.get("induction_failure_count", 0)) == 0
     )
     return {
-        "independently_validated_globally": independently_validated_globally,
-        "shared_patch_self_validation_risk_removed": global_validation_report["all_manifolds_pass"],
-        "all_manifold_formula_pass": global_validation_report["all_manifolds_pass"],
+        "setting_specific_consistency_pass_legacy": setting_specific_consistency_pass,
+        "shared_patch_self_validation_risk_removed": global_validation_report["setting_specific_numerical_consistency_pass_legacy"],
+        "all_manifold_formula_pass_legacy": global_validation_report["setting_specific_numerical_consistency_pass_legacy"],
         "tau_field_match_global_pass": global_validation_report["tau_field_match_global_pass"],
         "p4_linear_trace_differing_ops_count_total": p4_trace_report["linear_trace_differing_ops_count_total"],
         "p4_converted_trace_differing_ops_count_total": p4_trace_report["converted_trace_differing_ops_count_total"],
         "p4_induction_failure_count": int(p4_failure_audit.get("induction_failure_count", 0)),
         "current_verdict": (
-            "P4 bug independently validated and repaired at the manifold_character_field_conversion stage"
-            if independently_validated_globally
-            else "P4 conversion patch plausible but not independently validated globally"
+            "Legacy wording retired: SG194/current-setting consistency only"
+            if setting_specific_consistency_pass
+            else "Legacy wording retired: not yet numerically consistent even in the current setting"
         ),
         "summary": (
             "The P4 conversion patch is no longer justified only by two trace builders sharing the same post-processing code. "
@@ -4484,7 +4504,7 @@ def build_p4_conversion_patch_independent_validation_markdown(report: dict[str, 
         [
             "# P4 Conversion Patch Independent Validation Report",
             "",
-            f"- Independently validated globally: `{report['independently_validated_globally']}`.",
+            f"- Setting-specific consistency pass (legacy): `{report['setting_specific_consistency_pass_legacy']}`.",
             f"- Shared-patch self-validation risk removed: `{report['shared_patch_self_validation_risk_removed']}`.",
             f"- All-manifold formula pass: `{report['all_manifold_formula_pass']}`.",
             f"- tau-field match global pass: `{report['tau_field_match_global_pass']}`.",
@@ -4509,7 +4529,7 @@ def derive_p4_current_verdict(
         and local_crosscheck_report["all_same_character_vectors"]
         and (
             p4_conversion_patch_independent_validation_report is None
-            or p4_conversion_patch_independent_validation_report["independently_validated_globally"]
+            or p4_conversion_patch_independent_validation_report["setting_specific_consistency_pass_legacy"]
         )
         and (
             trace_formula_vs_explicit_report["first_failure_mismatch"] is not None
@@ -5784,14 +5804,29 @@ def build_single_pilot(
         captures,
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
-    character_field_conversion_global_validation_report = build_character_field_conversion_global_validation_report(
+    character_field_basis_convention_audit = build_character_field_basis_convention_audit(
         captures,
         mode="single",
     )
-    p4_conversion_patch_independent_validation_report = build_p4_conversion_patch_independent_validation_report(
-        character_field_conversion_global_validation_report,
-        p4_trace_formula_vs_explicit_orbit_report,
-        p4_induction_failure_audit,
+    sg194_setting_specific_character_conversion_validation = (
+        build_sg194_setting_specific_character_conversion_validation(
+            captures,
+            character_field_basis_convention_audit,
+            mode="single",
+        )
+    )
+    character_field_conversion_global_validation_report = (
+        build_character_field_conversion_global_validation_report(
+            captures,
+            mode="single",
+        )
+    )
+    p4_conversion_patch_independent_validation_report = (
+        build_p4_conversion_patch_independent_validation_report(
+            sg194_setting_specific_character_conversion_validation,
+            p4_trace_formula_vs_explicit_orbit_report,
+            p4_induction_failure_audit,
+        )
     )
     d3h_like_local_object_crosscheck = build_d3h_like_local_object_crosscheck(
         local_library_payload,
@@ -5836,6 +5871,18 @@ def build_single_pilot(
         ai_rank_gap_quotient_report,
         unknown_ordering=publication_bs_analysis["unknown_ordering"],
     )
+    ai_completion_feasibility_from_residual_sector = (
+        build_ai_completion_feasibility_from_residual_sector(
+            publication_library_induction,
+            ai_zero_subset_rank_report,
+            ai_rank_gap_quotient_report,
+            unknown_ordering=publication_bs_analysis["unknown_ordering"],
+        )
+    )
+    claim_scope_guardrail_report = build_claim_scope_guardrail_report(
+        sg194_setting_specific_character_conversion_validation,
+        ai_completion_feasibility_from_residual_sector,
+    )
     ai_vs_bilbao_alignment_report = build_ai_vs_bilbao_alignment_report(
         publication_check,
         publication_bs_analysis,
@@ -5870,6 +5917,7 @@ def build_single_pilot(
         ai_obstruction_diagnosis_report,
         p4_conversion_patch_independent_validation_report,
         ai_rank_gap_quotient_report,
+        ai_completion_feasibility_from_residual_sector,
         p4_verdict=p4_current_verdict,
     )
     ai_audit_report = build_ai_seed_audit_report(
@@ -5916,6 +5964,21 @@ def build_single_pilot(
     write_text(
         P4_TRACE_FORMULA_EXPLICIT_MD,
         build_p4_trace_formula_vs_explicit_orbit_markdown(p4_trace_formula_vs_explicit_orbit_report),
+    )
+    write_json(CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_JSON, character_field_basis_convention_audit)
+    write_text(
+        CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD,
+        build_character_field_basis_convention_audit_markdown(character_field_basis_convention_audit),
+    )
+    write_json(
+        SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_JSON,
+        sg194_setting_specific_character_conversion_validation,
+    )
+    write_text(
+        SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD,
+        build_sg194_setting_specific_character_conversion_validation_markdown(
+            sg194_setting_specific_character_conversion_validation
+        ),
     )
     write_json(
         CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_JSON,
@@ -5969,6 +6032,21 @@ def build_single_pilot(
     write_text(
         RESIDUAL_RANK5_PIVOT_WITNESS_MD,
         build_residual_rank5_pivot_witness_markdown(residual_rank5_pivot_witness_report),
+    )
+    write_json(
+        AI_COMPLETION_FEASIBILITY_JSON,
+        ai_completion_feasibility_from_residual_sector,
+    )
+    write_text(
+        AI_COMPLETION_FEASIBILITY_MD,
+        build_ai_completion_feasibility_from_residual_sector_markdown(
+            ai_completion_feasibility_from_residual_sector
+        ),
+    )
+    write_json(CLAIM_SCOPE_GUARDRAIL_JSON, claim_scope_guardrail_report)
+    write_text(
+        CLAIM_SCOPE_GUARDRAIL_MD,
+        build_claim_scope_guardrail_markdown(claim_scope_guardrail_report),
     )
     write_json(PPATH06_ROW_SEMANTICS_JSON, ppath06_row_semantics_report)
     write_text(
@@ -6189,11 +6267,18 @@ def build_single_pilot(
             "p4_induction_failure_count": p4_induction_failure_audit["induction_failure_count"],
             "p4_failure_family_ids": p4_induction_failure_audit["failure_family_ids"],
             "p4_current_verdict": p4_current_verdict,
-            "p4_conversion_patch_independently_validated_globally": (
-                p4_conversion_patch_independent_validation_report["independently_validated_globally"]
+            "p4_theorem_status": p4_conversion_patch_independent_validation_report["basis_independent_global_theorem_status"],
+            "p4_setting_specific_validation_scope": (
+                p4_conversion_patch_independent_validation_report["validation_scope"]
             ),
-            "linear_to_character_conversion_all_manifolds_pass": (
-                character_field_conversion_global_validation_report["all_manifolds_pass"]
+            "p4_setting_specific_numerical_consistency_pass": (
+                p4_conversion_patch_independent_validation_report["setting_specific_numerical_consistency_pass"]
+            ),
+            "sg194_setting_specific_linear_to_character_consistency_pass": (
+                sg194_setting_specific_character_conversion_validation["setting_specific_numerical_consistency_pass"]
+            ),
+            "character_conversion_general_theorem_promoted": (
+                sg194_setting_specific_character_conversion_validation["formula_promoted_as_general_theorem"]
             ),
             "p4_first_formula_vs_explicit_mismatch": p4_trace_formula_vs_explicit_orbit_report["first_failure_mismatch"],
             "blocker_summary": ai_honest_blocker_report["blocker"],
@@ -6203,6 +6288,10 @@ def build_single_pilot(
             "ppath06_publication_residual_support_rows": ppath06_residual_obstruction_audit["publication_residual_support_rows"],
             "residual_sector_quotient_rank_contribution": ai_rank_gap_quotient_report["quotient_rank_contribution_of_residual_sector"],
             "missing_rank5_pivot_generator_ids": ai_rank_gap_quotient_report["missing_rank5_pivot_generator_ids"],
+            "residual_completion_feasible": ai_completion_feasibility_from_residual_sector["any_liftable_to_actual_compatibility_zero"],
+            "residual_completion_liftable_generator_ids": (
+                ai_completion_feasibility_from_residual_sector["liftable_residual_direction_ids"]
+            ),
         },
         "completeness_status": {"status": "blocked", "blocker": completeness_blocker},
         "quotient_status": {"status": "blocked", "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."},
@@ -6248,11 +6337,19 @@ def build_single_pilot(
         f"- PPATH06 residual-support rows: `{ppath06_residual_obstruction_audit['publication_residual_support_rows']}`.",
         f"- PPATH06 row semantics: `{ppath06_row_semantics_report['overall_interpretation']}`.",
         f"- P4 current verdict: `{p4_current_verdict}`.",
-        f"- P4 conversion patch independently validated globally: `{p4_conversion_patch_independent_validation_report['independently_validated_globally']}`.",
-        f"- All-manifold linear->character conversion validation pass: `{character_field_conversion_global_validation_report['all_manifolds_pass']}`.",
+        f"- P4 theorem status: `{p4_conversion_patch_independent_validation_report['basis_independent_global_theorem_status']}`.",
+        f"- P4 setting-specific conversion validation scope / pass: "
+        f"`{p4_conversion_patch_independent_validation_report['validation_scope']}` / "
+        f"`{p4_conversion_patch_independent_validation_report['setting_specific_numerical_consistency_pass']}`.",
+        f"- SG194-setting-specific linear->character consistency pass / theorem promoted: "
+        f"`{sg194_setting_specific_character_conversion_validation['setting_specific_numerical_consistency_pass']}` / "
+        f"`{sg194_setting_specific_character_conversion_validation['formula_promoted_as_general_theorem']}`.",
         f"- Residual-sector quotient-rank contribution / missing-rank-5 pivot ids: "
         f"`{ai_rank_gap_quotient_report['quotient_rank_contribution_of_residual_sector']}` / "
         f"`{ai_rank_gap_quotient_report['missing_rank5_pivot_generator_ids']}`.",
+        f"- Residual completion feasible / liftable direction ids: "
+        f"`{ai_completion_feasibility_from_residual_sector['any_liftable_to_actual_compatibility_zero']}` / "
+        f"`{ai_completion_feasibility_from_residual_sector['liftable_residual_direction_ids']}`.",
         f"- point_row_translation legality: `{point_row_translation_report['legality_status']}`.",
         f"- AI residual pattern changed vs previous branch: `{ai_seed_delta_report['residual_pattern_changed']}`.",
         f"- AI completeness: blocked. Reason: {completeness_blocker}",
@@ -6798,7 +6895,7 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
             "Current published compatibility-matrix rank/nullity is 24/10, so published BS rank is 10. "
             "The verified publication-shell AI rank is 5, leaving a mechanical rank gap of 5. "
             "The earlier P4 induction failures are cleared by the manifold character-field conversion patch, "
-            "and that conversion now passes an all-manifold independent validation against the capture tables. "
+            "and that conversion is only treated as SG194/current-setting-specific numerical consistency under the present capture conventions. "
             "The remaining blocker is the residual sector on PPATH06 rows [22, 23, 24]; its quotient-rank contribution is 5, "
             "so the current missing AI rank is completely concentrated there."
         ),
@@ -6836,7 +6933,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), and continue the AI rank-gap diagnosis from 10 -> 5 by resolving the remaining PPATH06 residual-support rows [22, 23, 24] inherited from raw L2. The earlier P4 induction failures are already cleared by the manifold character-field conversion patch, and that conversion now passes an independent all-manifold validation against the capture tables.
+        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), and continue the AI rank-gap diagnosis from 10 -> 5 by resolving the remaining PPATH06 residual-support rows [22, 23, 24] inherited from raw L2. The earlier P4 induction failures are already cleared only in the current SG194/P-lattice setting by a conversion numerically consistent with the present capture conventions; this is not promoted to a basis-independent theorem.
         """
     ).strip() + "\n"
 
@@ -6865,7 +6962,7 @@ def build_package_readme() -> str:
             "- publication-shell reduction / Bilbao check / internal-vs-publication separation reports",
             "- AI full-character alignment plus library integration / obstruction diagnosis / honest blocker reports",
             "- P4 induction-failure, exact-solver reliability, and band-character/site-phase deep-dive reports",
-            "- global character-field conversion validation and independent P4 conversion-patch validation",
+            "- setting-specific character-field conversion auditing plus SG194-only P4 conversion-patch validation",
             "- D3h-like local-object crosscheck plus PPATH06 residual-obstruction deep-dive reports",
             "- zero-subset rank analysis, residual quotient-rank attribution, explicit residual rank-5 pivot witnesses, and a partial-AI-lattice witness for the current publication-shell AI candidates",
             "- PDF technical report",
@@ -6916,6 +7013,822 @@ def build_package_readme() -> str:
     )
 
 
+def _setting_specific_character_conversion_match_records(
+    captures: dict[str, Any],
+    *,
+    mode: str,
+) -> dict[str, Any]:
+    manifold_records = []
+    comparison_count = 0
+    mismatch_count = 0
+    exact_match_count = 0
+    first_mismatch = None
+    tau_field_comparison_count = 0
+    tau_field_mismatch_count = 0
+    first_tau_field_mismatch = None
+    kind_counter: Counter[str] = Counter()
+    for manifold_id in sorted(captures):
+        info = captures[manifold_id]
+        if not all(
+            key in info
+            for key in ("character_json", "linear_character_json", "tauC", "kconv")
+        ):
+            continue
+        manifold_kind = _capture_manifold_kind(manifold_id)
+        kind_counter[manifold_kind] += 1
+        tau_c = info.get("tauC", [])
+        unitary_translations = info.get("unitary_translations", [])
+        manifold_tau_field_mismatch_count = 0
+        for op_index, tau in enumerate(tau_c):
+            if op_index < len(unitary_translations):
+                tau_field_comparison_count += 1
+                if any(
+                    abs(float(left) - float(right)) > 1e-10
+                    for left, right in zip(tau, unitary_translations[op_index])
+                ):
+                    tau_field_mismatch_count += 1
+                    manifold_tau_field_mismatch_count += 1
+                    if first_tau_field_mismatch is None:
+                        first_tau_field_mismatch = {
+                            "manifold_id": manifold_id,
+                            "unitary_op_position": op_index,
+                            "tauC": list(tau),
+                            "unitary_translations": list(unitary_translations[op_index]),
+                        }
+        manifold_mismatch_count = 0
+        manifold_first_mismatch = None
+        for rep_index, (character_row, linear_row) in enumerate(
+            zip(info["character_json"], info["linear_character_json"])
+        ):
+            for op_position, (character_value, linear_value, tau) in enumerate(
+                zip(character_row, linear_row, tau_c)
+            ):
+                comparison_count += 1
+                phase_argument = float(
+                    np.dot(
+                        np.array(info["kconv"], dtype=float),
+                        np.array(tau, dtype=float),
+                    )
+                )
+                phase = np.exp(-1j * phase_argument)
+                actual = complex_from_json(character_value)
+                linear = complex_from_json(linear_value)
+                predicted = linear / phase
+                if np.allclose([predicted], [actual], atol=1e-8):
+                    exact_match_count += 1
+                    continue
+                mismatch_count += 1
+                manifold_mismatch_count += 1
+                mismatch_payload = {
+                    "manifold_id": manifold_id,
+                    "manifold_kind": manifold_kind,
+                    "rep_index": rep_index,
+                    "unitary_op_position": op_position,
+                    "actual_character": complex_to_json(actual),
+                    "linear_character": complex_to_json(linear),
+                    "predicted_character_from_current_setting_formula": complex_to_json(predicted),
+                    "tauC": list(tau),
+                    "kconv": list(info["kconv"]),
+                }
+                if manifold_first_mismatch is None:
+                    manifold_first_mismatch = mismatch_payload
+                if first_mismatch is None:
+                    first_mismatch = mismatch_payload
+        manifold_records.append(
+            {
+                "manifold_id": manifold_id,
+                "manifold_kind": manifold_kind,
+                "rep_count": len(info["character_json"]),
+                "unitary_op_count": len(tau_c),
+                "comparison_count": len(info["character_json"]) * len(tau_c),
+                "match_count": (
+                    len(info["character_json"]) * len(tau_c) - manifold_mismatch_count
+                ),
+                "mismatch_count": manifold_mismatch_count,
+                "tau_field_comparison_count": min(
+                    len(tau_c),
+                    len(unitary_translations),
+                ),
+                "tau_field_mismatch_count": manifold_tau_field_mismatch_count,
+                "first_mismatch": manifold_first_mismatch,
+            }
+        )
+    return {
+        "mode": mode,
+        "capture_manifold_count": len(manifold_records),
+        "manifold_counts_by_kind": dict(kind_counter),
+        "comparison_count": comparison_count,
+        "exact_match_count": exact_match_count,
+        "mismatch_count": mismatch_count,
+        "first_mismatch": first_mismatch,
+        "tau_field_comparison_count": tau_field_comparison_count,
+        "tau_field_mismatch_count": tau_field_mismatch_count,
+        "first_tau_field_mismatch": first_tau_field_mismatch,
+        "manifold_records": manifold_records,
+    }
+
+
+def build_character_field_basis_convention_audit(
+    captures: dict[str, Any],
+    *,
+    mode: str,
+) -> dict[str, Any]:
+    records = _setting_specific_character_conversion_match_records(captures, mode=mode)
+    return {
+        "validation_scope": "SG194_current_setting_only",
+        "mode": mode,
+        "capture_manifold_count": records["capture_manifold_count"],
+        "k_coordinate_input_basis": (
+            "user-provided k coordinates (including SSGReps command-line k and swyckoff_k.py k labels) "
+            "are interpreted in the expanded-cell primitive reciprocal basis used by the current SG194 run"
+        ),
+        "kconv_basis_role": (
+            "kconv is the runtime reciprocal-space vector assembled for the current SG194 setting from those k coordinates"
+        ),
+        "tauC_basis": (
+            "tauC(op) is stored in the capture-layer conventional/pre-supercell direct-space basis"
+        ),
+        "general_reciprocal_direct_dual_pairing_guaranteed": False,
+        "why_np_dot_kconv_tau_is_not_a_general_theorem": (
+            "Because kconv and tauC are not established here as a universally dual reciprocal/direct basis pair across arbitrary settings. "
+            "The current numerical agreement is therefore setting-specific, not a basis-independent proof."
+        ),
+        "current_success_depends_on_sg194_being_p_lattice_under_present_basis_conventions": True,
+        "formula_promoted_as_general_theorem": False,
+        "summary": (
+            "This audit records the basis-convention boundary of the current SG194 repair. The conversion used in the P4 fix is "
+            "treated only as SG194/current-setting-specific because the present run pairs expanded-cell primitive reciprocal k coordinates "
+            "with capture-layer tauC data stored in the pre-supercell conventional basis."
+        ),
+    }
+
+
+def build_character_field_basis_convention_audit_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# Character-Field Basis Convention Audit",
+            "",
+            f"- Validation scope: `{report['validation_scope']}`.",
+            f"- Capture manifold count: `{report['capture_manifold_count']}`.",
+            f"- k-coordinate input basis: {report['k_coordinate_input_basis']}.",
+            f"- Runtime `kconv` basis role: {report['kconv_basis_role']}.",
+            f"- Capture `tauC` basis: {report['tauC_basis']}.",
+            f"- General reciprocal/direct dual pairing guaranteed: `{report['general_reciprocal_direct_dual_pairing_guaranteed']}`.",
+            f"- Current success depends on SG194 being P-lattice under present basis conventions: "
+            f"`{report['current_success_depends_on_sg194_being_p_lattice_under_present_basis_conventions']}`.",
+            f"- Formula promoted as a general theorem: `{report['formula_promoted_as_general_theorem']}`.",
+            f"- Why `np.dot(kconv, tauC)` is not a general theorem: {report['why_np_dot_kconv_tau_is_not_a_general_theorem']}",
+            f"- Summary: {report['summary']}",
+        ]
+    )
+
+
+def build_sg194_setting_specific_character_conversion_validation(
+    captures: dict[str, Any],
+    basis_audit_report: dict[str, Any],
+    *,
+    mode: str,
+) -> dict[str, Any]:
+    records = _setting_specific_character_conversion_match_records(captures, mode=mode)
+    return {
+        "validation_scope": "SG194_current_setting_only",
+        "mode": mode,
+        "comparison_count": records["comparison_count"],
+        "exact_match_count": records["exact_match_count"],
+        "mismatch_count": records["mismatch_count"],
+        "setting_specific_numerical_consistency_pass": records["mismatch_count"] == 0,
+        "tau_field_comparison_count": records["tau_field_comparison_count"],
+        "tau_field_mismatch_count": records["tau_field_mismatch_count"],
+        "first_mismatch": records["first_mismatch"],
+        "first_tau_field_mismatch": records["first_tau_field_mismatch"],
+        "current_success_depends_on_sg194_being_p_lattice_under_present_basis_conventions": (
+            basis_audit_report["current_success_depends_on_sg194_being_p_lattice_under_present_basis_conventions"]
+        ),
+        "basis_independent_global_theorem": False,
+        "formula_promoted_as_general_theorem": False,
+        "current_verdict": (
+            "For SG194 in the current P-lattice setting, the linear->character conversion is numerically consistent with the present "
+            "capture conventions. This is not promoted to a basis-independent global theorem."
+        ),
+        "summary": (
+            "The current validation is deliberately scoped to SG194/current-setting only. It records numerical consistency against the "
+            "present capture tables, but it does not claim that `character == linear_character / exp(-i k·tauC(op))` is a general theorem."
+        ),
+    }
+
+
+def build_sg194_setting_specific_character_conversion_validation_markdown(
+    report: dict[str, Any],
+) -> str:
+    return "\n".join(
+        [
+            "# SG194 Setting-Specific Character Conversion Validation",
+            "",
+            f"- Validation scope: `{report['validation_scope']}`.",
+            f"- Comparison count / exact matches / mismatches: `{report['comparison_count']}` / `{report['exact_match_count']}` / `{report['mismatch_count']}`.",
+            f"- Setting-specific numerical consistency pass: `{report['setting_specific_numerical_consistency_pass']}`.",
+            f"- tau-field comparison count / mismatches: `{report['tau_field_comparison_count']}` / `{report['tau_field_mismatch_count']}`.",
+            f"- Current success depends on SG194 being P-lattice under present basis conventions: "
+            f"`{report['current_success_depends_on_sg194_being_p_lattice_under_present_basis_conventions']}`.",
+            f"- Formula promoted as a general theorem: `{report['formula_promoted_as_general_theorem']}`.",
+            f"- Current verdict: {report['current_verdict']}",
+            f"- Summary: {report['summary']}",
+        ]
+    )
+
+
+def build_character_field_conversion_global_validation_report(
+    captures: dict[str, Any],
+    *,
+    mode: str,
+) -> dict[str, Any]:
+    basis_audit = build_character_field_basis_convention_audit(captures, mode=mode)
+    setting_specific = build_sg194_setting_specific_character_conversion_validation(
+        captures,
+        basis_audit,
+        mode=mode,
+    )
+    return {
+        "retired_invalidated": True,
+        "legacy_report_name": "character_field_conversion_global_validation_report",
+        "validation_scope": "retired_invalidated_overclaim",
+        "basis_independent_global_theorem": False,
+        "formula_promoted_as_general_theorem": False,
+        "setting_specific_numerical_consistency_pass": setting_specific["setting_specific_numerical_consistency_pass"],
+        "replacement_reports": [
+            CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_JSON.name,
+            SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_JSON.name,
+        ],
+        "summary": (
+            "This legacy file is retained only to retire the earlier overclaim. The SG194 numerical success is kept, but the former "
+            "'global/all-manifold validation' wording is invalidated and replaced by setting-specific audits."
+        ),
+    }
+
+
+def build_character_field_conversion_global_validation_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# Retired Global Character-Field Conversion Claim",
+            "",
+            f"- Retired / invalidated: `{report['retired_invalidated']}`.",
+            f"- Validation scope: `{report['validation_scope']}`.",
+            f"- Formula promoted as a general theorem: `{report['formula_promoted_as_general_theorem']}`.",
+            f"- Setting-specific numerical consistency pass retained: `{report['setting_specific_numerical_consistency_pass']}`.",
+            f"- Replacement reports: `{report['replacement_reports']}`.",
+            f"- Summary: {report['summary']}",
+        ]
+    )
+
+
+def build_p4_conversion_patch_independent_validation_report(
+    setting_specific_validation_report: dict[str, Any],
+    p4_trace_report: dict[str, Any],
+    p4_failure_audit: dict[str, Any],
+) -> dict[str, Any]:
+    setting_specific_numerical_consistency_pass = (
+        setting_specific_validation_report["setting_specific_numerical_consistency_pass"]
+        and p4_trace_report["linear_trace_differing_ops_count_total"] == 0
+        and p4_trace_report["converted_trace_differing_ops_count_total"] == 0
+        and int(p4_failure_audit.get("induction_failure_count", 0)) == 0
+    )
+    return {
+        "validation_scope": "SG194_current_setting_only",
+        "basis_independent_global_theorem": False,
+        "basis_independent_global_theorem_status": "not_global_not_basis_independent",
+        "shared_patch_self_validation_risk_removed": True,
+        "setting_specific_numerical_consistency_pass": setting_specific_numerical_consistency_pass,
+        "p4_linear_trace_differing_ops_count_total": p4_trace_report["linear_trace_differing_ops_count_total"],
+        "p4_converted_trace_differing_ops_count_total": p4_trace_report["converted_trace_differing_ops_count_total"],
+        "p4_induction_failure_count": int(p4_failure_audit.get("induction_failure_count", 0)),
+        "current_verdict": (
+            "For SG194 in the current P-lattice setting, the earlier P4 mismatch is removed by a conversion numerically consistent "
+            "with the present capture conventions. This is not promoted to a basis-independent global theorem."
+        ),
+        "summary": (
+            "The P4 repair is now justified only within the current SG194 setting. Legacy and explicit-orbit traces agree before and "
+            "after conversion on the audited P4 objects, but the claim scope is explicitly limited to the present capture conventions."
+        ),
+    }
+
+
+def build_p4_conversion_patch_independent_validation_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# P4 Conversion Patch Setting-Specific Validation",
+            "",
+            f"- Validation scope: `{report['validation_scope']}`.",
+            f"- Basis-independent global theorem status: `{report['basis_independent_global_theorem_status']}`.",
+            f"- Setting-specific numerical consistency pass: `{report['setting_specific_numerical_consistency_pass']}`.",
+            f"- P4 linear / converted differing-op totals: `{report['p4_linear_trace_differing_ops_count_total']}` / `{report['p4_converted_trace_differing_ops_count_total']}`.",
+            f"- P4 induction failure count: `{report['p4_induction_failure_count']}`.",
+            f"- Current verdict: {report['current_verdict']}",
+            f"- Summary: {report['summary']}",
+        ]
+    )
+
+
+def derive_p4_current_verdict(
+    exact_solver_reliability_report: dict[str, Any],
+    local_crosscheck_report: dict[str, Any],
+    trace_formula_vs_explicit_report: dict[str, Any],
+    p4_failure_audit: dict[str, Any] | None = None,
+    p4_conversion_patch_independent_validation_report: dict[str, Any] | None = None,
+) -> str:
+    if (
+        exact_solver_reliability_report["exact_solver_reliable_on_passing_reference"]
+        and local_crosscheck_report["all_same_stabilizer_ordering"]
+        and local_crosscheck_report["all_same_character_vectors"]
+        and (
+            p4_conversion_patch_independent_validation_report is None
+            or p4_conversion_patch_independent_validation_report["setting_specific_numerical_consistency_pass"]
+        )
+        and (
+            trace_formula_vs_explicit_report["first_failure_mismatch"] is not None
+            or trace_formula_vs_explicit_report.get("resolved_by_character_field_conversion")
+            or (
+                p4_failure_audit is not None
+                and int(p4_failure_audit.get("induction_failure_count", 0)) == 0
+            )
+        )
+    ):
+        return "setting_specific_fix_confirmed"
+    return "still_unresolved_but_narrowed"
+
+
+def build_ai_completion_feasibility_from_residual_sector(
+    publication_induction: dict[str, Any],
+    ai_zero_subset_rank_report: dict[str, Any],
+    ai_rank_gap_quotient_report: dict[str, Any],
+    *,
+    unknown_ordering: Sequence[str],
+) -> dict[str, Any]:
+    candidate_index = {
+        candidate["generator_id"]: candidate
+        for candidate in publication_induction["candidates"]
+    }
+    zero_pivot_ids = list(ai_zero_subset_rank_report["pivot_generator_ids"])
+    zero_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(candidate_index[g]["unknown_vector"]) for g in zero_pivot_ids])
+        if zero_pivot_ids
+        else sp.zeros(len(unknown_ordering), 0)
+    )
+    support_rows = list(ai_rank_gap_quotient_report["residual_support_rows"])
+    ambient_ids = list(ai_rank_gap_quotient_report["ambient_residual_quotient_pivot_generator_ids"])
+    support_matrix = sp.Matrix(
+        [
+            [int(candidate_index[g]["compatibility_residual_vector"][row_index]) for g in ambient_ids]
+            for row_index in support_rows
+        ]
+    )
+    kernel_basis = support_matrix.nullspace()
+    lifted_records = []
+    running = zero_matrix
+    running_rank = int(zero_matrix.rank())
+    liftable_ids: list[str] = []
+    for witness_index, basis_vector in enumerate(kernel_basis, start=1):
+        denominator = sp.ilcm(*[sp.denom(value) for value in basis_vector]) if basis_vector else 1
+        coeffs = [int(sp.expand(value * denominator)) for value in basis_vector]
+        for value in coeffs:
+            if value != 0:
+                if value < 0:
+                    coeffs = [-entry for entry in coeffs]
+                break
+        combination = [
+            {
+                "generator_id": ambient_ids[position],
+                "coefficient": coeff,
+            }
+            for position, coeff in enumerate(coeffs)
+            if coeff != 0
+        ]
+        combined_unknown_vector = sp.Matrix(
+            [
+                sum(
+                    coeffs[position] * int(candidate_index[ambient_ids[position]]["unknown_vector"][row_index])
+                    for position in range(len(ambient_ids))
+                )
+                for row_index in range(len(unknown_ordering))
+            ]
+        )
+        combined_residual_vector = [
+            sum(
+                coeffs[position] * int(candidate_index[ambient_ids[position]]["compatibility_residual_vector"][row_index])
+                for position in range(len(ambient_ids))
+            )
+            for row_index in range(len(publication_induction["candidates"][0]["compatibility_residual_vector"]))
+        ]
+        actual_zero = all(value == 0 for value in combined_residual_vector)
+        candidate_matrix = sp.Matrix.hstack(running, combined_unknown_vector)
+        adds_independent_bs_direction = int(candidate_matrix.rank()) > running_rank
+        if actual_zero and adds_independent_bs_direction:
+            running = candidate_matrix
+            running_rank = int(candidate_matrix.rank())
+            lead_generator_id = next(
+                item["generator_id"]
+                for item in combination
+                if item["coefficient"] != 0
+            )
+            liftable_ids.append(lead_generator_id)
+        else:
+            lead_generator_id = next(
+                (item["generator_id"] for item in combination if item["coefficient"] != 0),
+                f"kernel_witness_{witness_index}",
+            )
+        lifted_records.append(
+            {
+                "lead_generator_id": lead_generator_id,
+                "combination": combination,
+                "actual_compatibility_zero_after_recombination": actual_zero,
+                "adds_independent_bs_direction": adds_independent_bs_direction,
+                "support_row_residual_after_recombination": [
+                    combined_residual_vector[row_index] for row_index in support_rows
+                ],
+                "nonzero_unknown_terms": _sparse_unknown_vector_terms(
+                    unknown_ordering,
+                    [int(value) for value in combined_unknown_vector],
+                ),
+            }
+        )
+    unique_liftable_ids = list(dict.fromkeys(liftable_ids))
+    lifted_rank = running_rank
+    return {
+        "published_bs_rank": int(ai_rank_gap_quotient_report["published_bs_rank"]),
+        "current_verified_ai_rank": int(ai_rank_gap_quotient_report["current_verified_ai_rank"]),
+        "missing_ai_rank": int(ai_rank_gap_quotient_report["missing_ai_rank"]),
+        "support_rows": support_rows,
+        "ambient_residual_quotient_pivot_generator_ids": ambient_ids,
+        "zero_pivot_generator_ids": zero_pivot_ids,
+        "lifted_records": lifted_records,
+        "any_liftable_to_actual_compatibility_zero": any(
+            record["actual_compatibility_zero_after_recombination"] and record["adds_independent_bs_direction"]
+            for record in lifted_records
+        ),
+        "liftable_residual_direction_ids": unique_liftable_ids,
+        "lifted_rank_if_promoted": lifted_rank,
+        "would_complete_published_ai_rank_if_promoted": (
+            lifted_rank >= int(ai_rank_gap_quotient_report["published_bs_rank"])
+        ),
+        "summary": (
+            "The residual sector already contains integer recombinations of existing induced objects that kill the PPATH06 residual-support rows. "
+            "Those recombinations can supply the missing rank-5 directions in BS coordinates, but they are not yet promoted into the authoritative "
+            "publication-shell AI generator set."
+        ),
+    }
+
+
+def build_ai_completion_feasibility_from_residual_sector_markdown(
+    report: dict[str, Any],
+) -> str:
+    lines = [
+        "# AI Completion Feasibility From Residual Sector",
+        "",
+        f"- Published BS rank / current verified AI rank / missing rank: `{report['published_bs_rank']}` / "
+        f"`{report['current_verified_ai_rank']}` / `{report['missing_ai_rank']}`.",
+        f"- Support rows: `{report['support_rows']}`.",
+        f"- Any liftable residual direction: `{report['any_liftable_to_actual_compatibility_zero']}`.",
+        f"- Liftable residual direction ids: `{report['liftable_residual_direction_ids']}`.",
+        f"- Lifted rank if promoted: `{report['lifted_rank_if_promoted']}`.",
+        f"- Would complete published AI rank if promoted: `{report['would_complete_published_ai_rank_if_promoted']}`.",
+        f"- Summary: {report['summary']}",
+        "",
+    ]
+    for record in report["lifted_records"]:
+        lines.append(
+            f"- `{record['lead_generator_id']}`: combination `{record['combination']}`, "
+            f"actual-zero=`{record['actual_compatibility_zero_after_recombination']}`, "
+            f"independent=`{record['adds_independent_bs_direction']}`, "
+            f"support residual `{record['support_row_residual_after_recombination']}`, "
+            f"sparse terms `{record['nonzero_unknown_terms']}`."
+        )
+    return "\n".join(lines)
+
+
+def build_claim_scope_guardrail_report(
+    setting_specific_validation_report: dict[str, Any],
+    ai_completion_feasibility_report: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "allowed_claims": [
+            "BS/publication shell is Bilbao-equivalent",
+            "current AI verified rank is 5",
+            "missing rank is 5",
+            "residual sector explains the current missing rank",
+            "the SG194/P-lattice/current-setting conversion patch works numerically in the present setting",
+            "residual-sector recombinations can lift the missing directions, but they are not yet wired as authoritative AI generators",
+        ],
+        "forbidden_claims": [
+            "global conversion theorem proved",
+            "all-manifold validation proved the formula in general",
+            "basis-independent statement established",
+            "AI is aligned with Bilbao",
+            "BS/AI quotient now ready",
+        ],
+        "setting_specific_validation_scope": setting_specific_validation_report["validation_scope"],
+        "all_fake_global_claims_removed": True,
+        "current_conversion_result_labeled_setting_specific_only": True,
+        "formula_promoted_as_general_theorem": setting_specific_validation_report["formula_promoted_as_general_theorem"],
+        "current_success_depends_on_p_lattice_under_present_basis_conventions": setting_specific_validation_report[
+            "current_success_depends_on_sg194_being_p_lattice_under_present_basis_conventions"
+        ],
+        "residual_completion_feasible": ai_completion_feasibility_report["any_liftable_to_actual_compatibility_zero"],
+    }
+
+
+def build_claim_scope_guardrail_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Claim Scope Guardrail Report",
+        "",
+        f"- Setting-specific validation scope: `{report['setting_specific_validation_scope']}`.",
+        f"- All fake global claims removed: `{report['all_fake_global_claims_removed']}`.",
+        f"- Current conversion result labeled SG194-setting-specific only: `{report['current_conversion_result_labeled_setting_specific_only']}`.",
+        f"- Formula promoted as a general theorem: `{report['formula_promoted_as_general_theorem']}`.",
+        f"- Current success depends on SG194 being P-lattice under the present basis conventions: `{report['current_success_depends_on_p_lattice_under_present_basis_conventions']}`.",
+        f"- Residual completion feasible: `{report['residual_completion_feasible']}`.",
+        "",
+        "## Allowed Claims",
+        "",
+    ]
+    for claim in report["allowed_claims"]:
+        lines.append(f"- {claim}")
+    lines.extend(["", "## Forbidden Claims", ""])
+    for claim in report["forbidden_claims"]:
+        lines.append(f"- {claim}")
+    return "\n".join(lines)
+
+
+def build_ai_honest_blocker_report(
+    integration_report: dict[str, Any],
+    p4_failure_audit: dict[str, Any] | None = None,
+    ppath06_audit: dict[str, Any] | None = None,
+    obstruction_report: dict[str, Any] | None = None,
+    p4_conversion_patch_independent_validation_report: dict[str, Any] | None = None,
+    ai_rank_gap_quotient_report: dict[str, Any] | None = None,
+    ai_completion_feasibility_report: dict[str, Any] | None = None,
+    *,
+    p4_verdict: str | None = None,
+) -> dict[str, Any]:
+    if integration_report["integration_status"] == "wired_complete_candidate_set":
+        return {
+            "status": "not_blocked",
+            "blocker": None,
+            "blocker_stage": None,
+            "local_library_present": True,
+            "local_library_wired_into_ai_builder": True,
+        }
+    if obstruction_report is not None:
+        blocker_stage = "residual_sector_completion_integration"
+        p4_phrase = ""
+        if p4_failure_audit is not None:
+            if int(p4_failure_audit.get("induction_failure_count", 0)) > 0:
+                p4_phrase = (
+                    f" The remaining induction failures are concentrated on manifold P4 "
+                    f"across families {p4_failure_audit['failure_family_ids']} "
+                    f"(count={p4_failure_audit['induction_failure_count']})."
+                )
+            else:
+                p4_phrase = (
+                    " The earlier P4 induction failures are removed in the current SG194/P-lattice setting by a conversion numerically "
+                    "consistent with the present capture conventions."
+                )
+                if p4_conversion_patch_independent_validation_report is not None:
+                    p4_phrase += (
+                        " Claim scope: "
+                        f"{p4_conversion_patch_independent_validation_report['current_verdict']}."
+                    )
+            if p4_verdict is not None:
+                p4_phrase += f" Current P4 verdict: {p4_verdict}."
+        ppath06_phrase = ""
+        if ppath06_audit is not None:
+            support_rows = _ppath06_publication_residual_support_rows(
+                ppath06_audit,
+                obstruction_report,
+            )
+            ppath06_phrase = (
+                f" Nonzero residuals on the publication shell are concentrated on "
+                f"{ppath06_audit['publication_path_id']} rows "
+                f"{support_rows or ppath06_audit['publication_residual_support_rows']}."
+            )
+        rank_gap_phrase = ""
+        if ai_rank_gap_quotient_report is not None:
+            rank_gap_phrase = (
+                f" The residual sector contributes quotient rank "
+                f"{ai_rank_gap_quotient_report['quotient_rank_contribution_of_residual_sector']} "
+                f"after quotienting the three PPATH06 support-row obstruction directions, matching the current missing AI rank "
+                f"{ai_rank_gap_quotient_report['missing_ai_rank']}."
+            )
+        completion_phrase = ""
+        if ai_completion_feasibility_report is not None:
+            completion_phrase = (
+                f" Integer recombinations of the residual sector already lift the missing rank-"
+                f"{ai_completion_feasibility_report['missing_ai_rank']} directions to actual compatibility-zero vectors, "
+                "but those recombined directions are not yet promoted into the authoritative publication-shell AI generator set."
+            )
+        blocker = (
+            "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
+            f"but only {integration_report['compatibility_zero_candidate_count']} of "
+            f"{integration_report['success_candidate_count']} induced local objects are currently explicit compatibility-zero generators on the publication-level shell. "
+            f"Classification counts across raw42 / internal honest shell / publication shell: "
+            f"{obstruction_report['classification_counts']}. "
+            f"{obstruction_report['obstruction_summary']}"
+            f"{p4_phrase}"
+            f"{ppath06_phrase}"
+            f"{rank_gap_phrase}"
+            f"{completion_phrase}"
+        )
+        return {
+            "status": "blocked",
+            "blocker_stage": blocker_stage,
+            "blocker": blocker,
+            "ai_status": "partial_ai_lattice" if integration_report["compatibility_zero_candidate_count"] > 0 else "seed_only",
+            "local_library_present": True,
+            "local_library_wired_into_ai_builder": True,
+            "integration_status": integration_report["integration_status"],
+            "failure_count": integration_report["failure_count"],
+            "nonzero_residual_candidate_count": integration_report["nonzero_residual_candidate_count"],
+            "failure_family_ids": list(integration_report["failure_family_ids"]),
+            "published_shell_candidate_count": integration_report["success_candidate_count"],
+            "published_shell_compatible_zero_count": integration_report["compatibility_zero_candidate_count"],
+            "ppath06_publication_residual_support_rows": (
+                _ppath06_publication_residual_support_rows(ppath06_audit, obstruction_report)
+                if ppath06_audit is not None
+                else None
+            ),
+            "quotient_rank_contribution_of_residual_sector": (
+                ai_rank_gap_quotient_report["quotient_rank_contribution_of_residual_sector"]
+                if ai_rank_gap_quotient_report is not None
+                else None
+            ),
+            "residual_completion_feasible": (
+                ai_completion_feasibility_report["any_liftable_to_actual_compatibility_zero"]
+                if ai_completion_feasibility_report is not None
+                else None
+            ),
+            "liftable_residual_direction_ids": (
+                ai_completion_feasibility_report["liftable_residual_direction_ids"]
+                if ai_completion_feasibility_report is not None
+                else []
+            ),
+            "obstruction_classification_counts": dict(obstruction_report["classification_counts"]),
+        }
+    return {
+        "status": "blocked",
+        "blocker_stage": "integration_missing",
+        "blocker": "AI builder is not yet wired to the validated non-abelian local library on the published shell.",
+        "ai_status": "seed_only",
+        "local_library_present": True,
+        "local_library_wired_into_ai_builder": False,
+    }
+
+
+def build_current_status(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "target_group": TARGET_GROUP,
+        "object_scope": "internal_diagnostic_shell_plus_publication_level_C_pub",
+        "diagnostic_internal_shell_kind": single["summary"]["compatibility_status"]["internal_object_kind"],
+        "published_object_kind": single["summary"]["compatibility_status"]["published_object_kind"],
+        "publication_object_is_explicitly_separated": single["summary"]["compatibility_status"]["internal_and_publication_objects_explicitly_separated"],
+        "single_status": single["summary"],
+        "double_status": double["summary"],
+        "key_matrices": {
+            "single_compatibility_matrix_shape": single["summary"]["BS_status"]["compatibility_matrix_shape"],
+            "single_compatibility_matrix_rank": single["summary"]["BS_status"]["compatibility_matrix_rank"],
+            "single_compatibility_matrix_nullity": single["summary"]["BS_status"]["compatibility_matrix_nullity"],
+            "single_bs_rank": single["summary"]["BS_status"]["bs_rank"],
+            "double_matrix_shape": double["summary"]["kspace_backbone_status"]["matrix_shape"],
+            "double_compatibility_matrix_rank": double["summary"]["kspace_backbone_status"]["rank"],
+            "double_compatibility_matrix_nullity": double["summary"]["kspace_backbone_status"]["nullity"],
+            "double_bs_rank": double["summary"]["kspace_backbone_status"]["nullity"],
+        },
+        "blocker": portability_summary["main_blocker"],
+        "next_step": (
+            "The publication-level C_pub builder remains fixed and Bilbao-equivalent. "
+            "Current published compatibility-matrix rank/nullity is 24/10, so published BS rank is 10. "
+            "The verified publication-shell AI rank is 5, leaving a mechanical rank gap of 5. "
+            "The earlier P4 induction failures are removed only in the current SG194/P-lattice setting by a conversion numerically "
+            "consistent with the present capture conventions; this is not promoted to a basis-independent theorem. "
+            "The residual sector on PPATH06 rows [22, 23, 24] contributes quotient rank 5 and already admits integer recombinations "
+            "that lift the missing directions, but those recombined directions are not yet integrated into the authoritative AI generator set."
+        ),
+    }
+
+
+def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> str:
+    return textwrap.dedent(
+        f"""
+        Previous Codex session already reconstructed the 10.4.1.31 baseline and completed the 194.1.1.1 controlled-case portability pilot artifacts in the current working directory.
+
+        Read these files first:
+        1. {REPORT_TEX.name}
+        2. {CONTROLLED_AUDIT_MD.name}
+        3. {PORTABILITY_AUDIT_MD.name}
+        4. {SINGLE_AUDIT_MD.name}
+        5. {DOUBLE_AUDIT_MD.name}
+        6. {CURRENT_STATUS_JSON.name}
+
+        Current verified facts:
+        - controlled_case_valid = {portability_summary['controlled_case_valid']}
+        - single_group_portable = {portability_summary['single_group_portable']}
+        - double_group_portable_seed = {portability_summary['double_group_portable_seed']}
+        - main_blocker = {portability_summary['main_blocker']}
+
+        Current single-group published compatibility status:
+        - compatibility-matrix shape = {single['summary']['BS_status']['compatibility_matrix_shape']}
+        - compatibility-matrix rank = {single['summary']['BS_status']['compatibility_matrix_rank']}
+        - compatibility-matrix nullity = {single['summary']['BS_status']['compatibility_matrix_nullity']}
+        - published BS rank = {single['summary']['BS_status']['bs_rank']}
+
+        Current double-group matrix status:
+        - shape = {double['summary']['kspace_backbone_status']['matrix_shape']}
+        - rank = {double['summary']['kspace_backbone_status']['rank']}
+        - nullity = {double['summary']['kspace_backbone_status']['nullity']}
+
+        Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
+        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), keep all conversion wording strictly SG194/current-setting-specific, and finish the AI completion work by integrating the residual-sector rank-5 lifts on PPATH06 rows [22, 23, 24] into the authoritative publication-shell AI generator set.
+        """
+    ).strip() + "\n"
+
+
+def build_package_readme() -> str:
+    return "\n".join(
+        [
+            "# Review Package",
+            "",
+            "## Task Scope",
+            f"- Reference group: `{REFERENCE_GROUP}`",
+            f"- Fixed target group: `{TARGET_GROUP}`",
+            "- Goal: workflow portability pilot",
+            "",
+            "## Known Premises",
+            "- 10.4.1.31 single-group is already closed.",
+            "- 10.4.1.31 double-group is already closed through quotient extraction.",
+            "- This package tests how much of that workflow ports to 194.1.1.1.",
+            "",
+            "## New Material In This Package",
+            "- controlled-case audit for 194.1.1.1",
+            "- single-group pilot for 194.1.1.1",
+            "- double-group pilot for 194.1.1.1",
+            "- internal honest-shell diagnostics kept separate from the publication-level C_pub builder",
+            "- full-shell automorphism diagnostics for the P1-P5 double-class resolution",
+            "- publication-shell reduction / Bilbao check / internal-vs-publication separation reports",
+            "- AI full-character alignment plus library integration / obstruction diagnosis / honest blocker reports",
+            "- P4 induction-failure, exact-solver reliability, and band-character/site-phase deep-dive reports",
+            "- setting-specific character-field basis/convention audit plus SG194-only conversion validation",
+            "- retired invalidation of the earlier fake global conversion claim",
+            "- D3h-like local-object crosscheck plus PPATH06 residual-obstruction deep-dive reports",
+            "- zero-subset rank analysis, residual quotient-rank attribution, explicit residual rank-5 pivot witnesses, AI completion feasibility from the residual sector, and a claim-scope guardrail report",
+            "- PDF technical report",
+            "- handoff / current_status / next_step_prompt",
+            "",
+            "## Possible Interpretations",
+            "- single-group workflow may already look reusable",
+            "- double-group workflow may already show a reusable seed",
+            "- or the package may expose a sharper portability blocker",
+            "",
+            "## Suggested Review Order",
+            f"1. {REPORT_PDF.name}",
+            f"2. {CONTROLLED_AUDIT_MD.name}",
+            f"3. {PORTABILITY_AUDIT_MD.name}",
+            f"4. {PORTABILITY_SUMMARY_JSON.name}",
+            f"5. {SINGLE_AUDIT_MD.name}",
+            f"6. {DOUBLE_AUDIT_MD.name}",
+            f"7. {PUBLICATION_SHELL_REDUCTION_MD.relative_to(ROOT)}",
+            f"8. {PUBLICATION_SHELL_BILBAO_MD.relative_to(ROOT)}",
+            f"9. {INTERNAL_VS_PUBLICATION_MD.relative_to(ROOT)}",
+            f"10. {FULL_SHELL_AUTOMORPHISM_MD.relative_to(ROOT)}",
+            f"11. {AI_FULL_CHARACTER_ALIGNMENT_MD.relative_to(ROOT)}",
+            f"12. {AI_OBSTRUCTION_DIAG_MD.relative_to(ROOT)}",
+            f"13. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
+            f"14. {BS_RANK_NAMING_FIX_MD.relative_to(ROOT)}",
+            f"15. {AI_RANK_GAP_ATTRIBUTION_MD.relative_to(ROOT)}",
+            f"16. {AI_RANK_GAP_QUOTIENT_MD.relative_to(ROOT)}",
+            f"17. {RESIDUAL_RANK5_PIVOT_WITNESS_MD.relative_to(ROOT)}",
+            f"18. {AI_COMPLETION_FEASIBILITY_MD.relative_to(ROOT)}",
+            f"19. {AI_VS_BILBAO_ALIGNMENT_MD.relative_to(ROOT)}",
+            f"20. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
+            f"21. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
+            f"22. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
+            f"23. {P4_TRACE_FORMULA_EXPLICIT_MD.relative_to(ROOT)}",
+            f"24. {CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD.relative_to(ROOT)}",
+            f"25. {SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD.relative_to(ROOT)}",
+            f"26. {CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD.relative_to(ROOT)}",
+            f"27. {P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD.relative_to(ROOT)}",
+            f"28. {CLAIM_SCOPE_GUARDRAIL_MD.relative_to(ROOT)}",
+            f"29. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
+            f"30. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
+            f"31. {PPATH06_ROW_SEMANTICS_MD.relative_to(ROOT)}",
+            f"32. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
+            f"33. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
+            f"34. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            "",
+            "## PDF Report",
+            f"- report file: `{REPORT_PDF.name}`",
+            f"- report source: `{REPORT_TEX.name}`",
+            "- recommended order: PDF first, then the JSON summaries and the audit markdown files",
+        ]
+    )
+
+
 def build_package() -> None:
     reset_dir(PACKAGE_DIR)
     new_files = [
@@ -6956,6 +7869,10 @@ def build_package() -> None:
         P4_BAND_CHARACTER_PHASE_JSON,
         P4_TRACE_FORMULA_EXPLICIT_MD,
         P4_TRACE_FORMULA_EXPLICIT_JSON,
+        CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD,
+        CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_JSON,
+        SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD,
+        SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_JSON,
         CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD,
         CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_JSON,
         P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD,
@@ -6974,6 +7891,10 @@ def build_package() -> None:
         AI_RANK_GAP_QUOTIENT_JSON,
         RESIDUAL_RANK5_PIVOT_WITNESS_MD,
         RESIDUAL_RANK5_PIVOT_WITNESS_JSON,
+        AI_COMPLETION_FEASIBILITY_MD,
+        AI_COMPLETION_FEASIBILITY_JSON,
+        CLAIM_SCOPE_GUARDRAIL_MD,
+        CLAIM_SCOPE_GUARDRAIL_JSON,
         PARTIAL_AI_LATTICE_WITNESS_MD,
         PARTIAL_AI_LATTICE_WITNESS_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,
@@ -7043,6 +7964,10 @@ def validate_outputs() -> None:
         P4_BAND_CHARACTER_PHASE_JSON,
         P4_TRACE_FORMULA_EXPLICIT_MD,
         P4_TRACE_FORMULA_EXPLICIT_JSON,
+        CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD,
+        CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_JSON,
+        SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD,
+        SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_JSON,
         CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD,
         CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_JSON,
         P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD,
@@ -7061,6 +7986,10 @@ def validate_outputs() -> None:
         AI_RANK_GAP_QUOTIENT_JSON,
         RESIDUAL_RANK5_PIVOT_WITNESS_MD,
         RESIDUAL_RANK5_PIVOT_WITNESS_JSON,
+        AI_COMPLETION_FEASIBILITY_MD,
+        AI_COMPLETION_FEASIBILITY_JSON,
+        CLAIM_SCOPE_GUARDRAIL_MD,
+        CLAIM_SCOPE_GUARDRAIL_JSON,
         PARTIAL_AI_LATTICE_WITNESS_MD,
         PARTIAL_AI_LATTICE_WITNESS_JSON,
         AI_CHARACTER_FIELD_ALIGNMENT_MD,

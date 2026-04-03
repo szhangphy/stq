@@ -1,0 +1,7 @@
+{
+  "bs_publication_shell_bilbao_aligned": true,
+  "ai_aligned_with_bilbao_for_bs_over_ai": false,
+  "published_bs_rank": 10,
+  "current_verified_ai_rank": 5,
+  "alignment_summary": "BS/publication shell is Bilbao-aligned, but AI is not yet aligned because the verified AI rank remains below the published BS rank and the quotient stage is still blocked."
+}

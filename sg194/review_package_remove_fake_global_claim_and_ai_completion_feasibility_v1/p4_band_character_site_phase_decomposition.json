@@ -1,0 +1,4121 @@
+{
+  "manifold_id": "P4",
+  "reference_generator_id": "b_A1'",
+  "compared_generator_ids": [
+    "b_A1'",
+    "c_A1'",
+    "d_A1'"
+  ],
+  "selected_character_field": "point=character, line=character, plane=character, default=character",
+  "resolved_by_character_field_conversion": true,
+  "character_field_conversion_stage": "manifold_character_field_conversion: convert the assembled linear band trace to the selected character field by dividing by exp(-i k\u00b7tauC(op)) on each unitary operation",
+  "records": [
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "local_character": {
+        "0": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "1": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "2": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "9": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "10": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "11": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "15": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "16": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "17": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "18": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "19": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "20": {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      },
+      "manifold_id": "P4",
+      "character_field": "character",
+      "entry_letter": "b",
+      "representative_coordinate": "0, 0, 1/4",
+      "stabilizer_unitary_indices": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "operations": [
+        {
+          "unitary_raw_index": 0,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 0,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 0,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 1,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 1,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 1,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 2,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 2,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 2,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 6,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 6,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 6,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 7,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 7,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 7,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 8,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 8,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 8,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 15,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 15,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 1.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 15,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "field_contribution": {
+                "real": -0.0,
+                "imag": -1.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 16,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 16,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 1.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 16,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "field_contribution": {
+                "real": -0.0,
+                "imag": -1.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 17,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 17,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 1.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 17,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "field_contribution": {
+                "real": -0.0,
+                "imag": -1.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 21,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 21,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 21,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 22,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 22,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 22,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 23,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 23,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "0",
+                "0",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "0",
+                "0",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 23,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        }
+      ],
+      "canonical_orbit_coordinates": [
+        [
+          "0",
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "0",
+          "3/4"
+        ]
+      ]
+    },
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "local_character": {
+        "0": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "1": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "2": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "9": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "10": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "11": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "15": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "16": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "17": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "18": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "19": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "20": {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      },
+      "manifold_id": "P4",
+      "character_field": "character",
+      "entry_letter": "c",
+      "representative_coordinate": "1/3, 2/3, 1/4",
+      "stabilizer_unitary_indices": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "operations": [
+        {
+          "unitary_raw_index": 0,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 0,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 0,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 1,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 1,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 1,
+              "lattice_vector_magnetic": [
+                -1,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 2,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 2,
+              "lattice_vector_magnetic": [
+                0,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 2,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 6,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 6,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 6,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 7,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 7,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 7,
+              "lattice_vector_magnetic": [
+                0,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 8,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 8,
+              "lattice_vector_magnetic": [
+                -1,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 8,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 15,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 15,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 1.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 15,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "field_contribution": {
+                "real": -0.0,
+                "imag": -1.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 16,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 1.732050807569
+          },
+          "band_character_total": {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 16,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.866025403784,
+                "imag": -0.5
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 16,
+              "lattice_vector_magnetic": [
+                -1,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -7.330382858376184,
+              "bloch_phase": {
+                "real": 0.5,
+                "imag": 0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.866025403784,
+                "imag": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 17,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": -0.0,
+            "imag": -1.732050807569
+          },
+          "band_character_total": {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 17,
+              "lattice_vector_magnetic": [
+                0,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "field_contribution": {
+                "real": 0.866025403784,
+                "imag": -0.5
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 17,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -11.519173063162574,
+              "bloch_phase": {
+                "real": 0.5,
+                "imag": -0.866025403784
+              },
+              "field_contribution": {
+                "real": 0.866025403784,
+                "imag": 0.5
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 21,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 21,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 21,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 22,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 22,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 22,
+              "lattice_vector_magnetic": [
+                0,
+                -1,
+                1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                -1.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 23,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 23,
+              "lattice_vector_magnetic": [
+                -1,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 23,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        }
+      ],
+      "canonical_orbit_coordinates": [
+        [
+          "1/3",
+          "2/3",
+          "1/4"
+        ],
+        [
+          "2/3",
+          "1/3",
+          "3/4"
+        ]
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "local_character": {
+        "0": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "1": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "2": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "9": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "10": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "11": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "15": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "16": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "17": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "18": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "19": {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        "20": {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      },
+      "manifold_id": "P4",
+      "character_field": "character",
+      "entry_letter": "d",
+      "representative_coordinate": "1/3, 2/3, 3/4",
+      "stabilizer_unitary_indices": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "operations": [
+        {
+          "unitary_raw_index": 0,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 0,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 0,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 1.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 1,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 1,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 1,
+              "lattice_vector_magnetic": [
+                -1,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 2,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 2,
+              "lattice_vector_magnetic": [
+                0,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 2,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 6,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 6,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 6,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 7,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 7,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 7,
+              "lattice_vector_magnetic": [
+                0,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 8,
+          "operation_translation_phase_argument": 0.0,
+          "operation_translation_phase": {
+            "real": 1.0,
+            "imag": -0.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 8,
+              "lattice_vector_magnetic": [
+                -1,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 8,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 15,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 15,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -3.141592653589793,
+              "bloch_phase": {
+                "real": -1.0,
+                "imag": 0.0
+              },
+              "field_contribution": {
+                "real": -0.0,
+                "imag": -1.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 15,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": 0.0,
+              "bloch_phase": {
+                "real": 1.0,
+                "imag": -0.0
+              },
+              "field_contribution": {
+                "real": 0.0,
+                "imag": 1.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 16,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": -0.0,
+            "imag": -1.732050807569
+          },
+          "band_character_total": {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 16,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -11.519173063162574,
+              "bloch_phase": {
+                "real": 0.5,
+                "imag": -0.866025403784
+              },
+              "field_contribution": {
+                "real": 0.866025403784,
+                "imag": 0.5
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 16,
+              "lattice_vector_magnetic": [
+                -1,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -4.1887902047863905,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": -0.866025403784
+              },
+              "field_contribution": {
+                "real": 0.866025403784,
+                "imag": -0.5
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 17,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 1.732050807569
+          },
+          "band_character_total": {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 17,
+              "lattice_vector_magnetic": [
+                0,
+                -1,
+                -1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                -1.0,
+                -1.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -7.330382858376184,
+              "bloch_phase": {
+                "real": 0.5,
+                "imag": 0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.866025403784,
+                "imag": 0.5
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": true,
+              "conjugated_stabilizer_op_index": 17,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": {
+                "real": 1.0,
+                "imag": 0.0
+              },
+              "bloch_phase_argument": -8.377580409572781,
+              "bloch_phase": {
+                "real": -0.5,
+                "imag": 0.866025403784
+              },
+              "field_contribution": {
+                "real": -0.866025403784,
+                "imag": -0.5
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 21,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 21,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                1
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 21,
+              "lattice_vector_magnetic": [
+                0,
+                0,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 22,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 22,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 22,
+              "lattice_vector_magnetic": [
+                0,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                0.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        },
+        {
+          "unitary_raw_index": 23,
+          "operation_translation_phase_argument": 1.5707963267948966,
+          "operation_translation_phase": {
+            "real": 0.0,
+            "imag": -1.0
+          },
+          "linear_band_character_total": {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          "band_character_total": {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          "orbit_site_contributions": [
+            {
+              "source_site_index": 0,
+              "source_operation_index": 0,
+              "source_raw_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "matched_target_site_index": 1,
+              "matched_target_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 23,
+              "lattice_vector_magnetic": [
+                -1,
+                0,
+                1
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                0.0,
+                1.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            },
+            {
+              "source_site_index": 1,
+              "source_operation_index": 3,
+              "source_raw_conventional_coordinate": [
+                "-1/3",
+                "-2/3",
+                "5/4"
+              ],
+              "source_canonical_conventional_coordinate": [
+                "2/3",
+                "1/3",
+                "1/4"
+              ],
+              "matched_target_site_index": 0,
+              "matched_target_conventional_coordinate": [
+                "1/3",
+                "2/3",
+                "3/4"
+              ],
+              "counted_in_trace": false,
+              "conjugated_stabilizer_op_index": 23,
+              "lattice_vector_magnetic": [
+                -1,
+                -1,
+                0
+              ],
+              "lattice_vector_conventional": [
+                -1.0,
+                -1.0,
+                0.0
+              ],
+              "local_character": null,
+              "bloch_phase_argument": null,
+              "bloch_phase": null,
+              "field_contribution": {
+                "real": -0.0,
+                "imag": 0.0
+              }
+            }
+          ]
+        }
+      ],
+      "canonical_orbit_coordinates": [
+        [
+          "1/3",
+          "2/3",
+          "3/4"
+        ],
+        [
+          "2/3",
+          "1/3",
+          "1/4"
+        ]
+      ]
+    }
+  ],
+  "mismatch_by_generator": [
+    {
+      "generator_id": "c_A1'",
+      "differs_from_reference_b_A1_prime_on_unitary_ops": [
+        1,
+        2,
+        16,
+        17
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "differs_from_reference_b_A1_prime_on_unitary_ops": [
+        1,
+        2,
+        16,
+        17
+      ]
+    }
+  ],
+  "decomposition_summary": "Across b/c/d the P4 little-group basis is shared, and the per-site orbit-phase contributions assemble the same linear-trace semantics for all audited objects. The earlier c/d induction failures were cleared when that assembled linear band trace was converted into the selected `character` field using the per-operation translation phase."
+}
