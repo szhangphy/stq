@@ -1,0 +1,19 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 1,
+  "rank(BS_with_planes)": 8,
+  "rank(AI_complete_single)": 8,
+  "smith_diagonal_in_bs_coordinates": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2
+  ],
+  "quotient_group": "Z2 x Z2",
+  "indicator_rank_finite_part": 2,
+  "indicator_generators_count": 2
+}

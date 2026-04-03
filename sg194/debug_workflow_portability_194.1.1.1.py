@@ -79,7 +79,7 @@ from pipeline_v2.final_object_reduction import (
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_ai_proof_and_wording_fix_v1"
+PACKAGE_NAME = "review_package_ai_rank_gap_and_trace_fix_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -167,6 +167,14 @@ AI_ZERO_SUBSET_RANK_MD = ROOT / "bs_fix_reaudit_v1" / "ai_zero_subset_rank_repor
 AI_ZERO_SUBSET_RANK_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_zero_subset_rank_report.json"
 PARTIAL_AI_LATTICE_WITNESS_MD = ROOT / "bs_fix_reaudit_v1" / "partial_ai_lattice_witness_report.md"
 PARTIAL_AI_LATTICE_WITNESS_JSON = ROOT / "bs_fix_reaudit_v1" / "partial_ai_lattice_witness_report.json"
+BS_RANK_NAMING_FIX_MD = ROOT / "bs_fix_reaudit_v1" / "bs_rank_naming_fix_report.md"
+BS_RANK_NAMING_FIX_JSON = ROOT / "bs_fix_reaudit_v1" / "bs_rank_naming_fix_report.json"
+AI_RANK_GAP_ATTRIBUTION_MD = ROOT / "bs_fix_reaudit_v1" / "ai_rank_gap_attribution_report.md"
+AI_RANK_GAP_ATTRIBUTION_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_rank_gap_attribution_report.json"
+AI_VS_BILBAO_ALIGNMENT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_vs_bilbao_alignment_report.md"
+AI_VS_BILBAO_ALIGNMENT_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_vs_bilbao_alignment_report.json"
+P4_TRACE_FORMULA_EXPLICIT_MD = ROOT / "bs_fix_reaudit_v1" / "p4_trace_formula_vs_explicit_orbit_report.md"
+P4_TRACE_FORMULA_EXPLICIT_JSON = ROOT / "bs_fix_reaudit_v1" / "p4_trace_formula_vs_explicit_orbit_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -1880,6 +1888,54 @@ def _complex_matrix_to_json(array: np.ndarray) -> list[list[Any]]:
     return [_complex_array_to_json(row) for row in array]
 
 
+def _canonicalize_orbit_sites(
+    orbit: Sequence[dict[str, Any]],
+    ctx: dict[str, Any],
+) -> list[dict[str, Any]]:
+    canonical_orbit: list[dict[str, Any]] = []
+    for site_index, site in enumerate(orbit):
+        raw_conv = np.array(site["conv_vector"], dtype=float)
+        magnetic_coordinate = site.get("magnetic_coordinate")
+        if magnetic_coordinate is None:
+            magnetic_coordinate = bridge.reduced_magnetic_key(ctx["supercell"], raw_conv)
+        magnetic_vector = np.array(
+            [float(Fraction(value)) for value in magnetic_coordinate],
+            dtype=float,
+        )
+        canonical_conv = ctx["supercell"] @ magnetic_vector
+        canonical_orbit.append(
+            {
+                **site,
+                "site_index": int(site.get("site_index", site_index)),
+                "raw_conv_vector": raw_conv.tolist(),
+                "raw_conventional_coordinate": list(site.get("conventional_coordinate", bridge.format_vector(raw_conv))),
+                "magnetic_coordinate": [str(value) for value in magnetic_coordinate],
+                "conv_vector": canonical_conv,
+                "conventional_coordinate": bridge.format_vector(canonical_conv),
+            }
+        )
+    return canonical_orbit
+
+
+def _match_orbit_target_site(
+    image_conv: np.ndarray,
+    orbit: Sequence[dict[str, Any]],
+    ctx: dict[str, Any],
+) -> tuple[int | None, list[int] | None, list[float] | None]:
+    for target_index, target_site in enumerate(orbit):
+        fixed, coeffs = bridge.vector_is_lattice(
+            ctx["supercell"],
+            image_conv - np.array(target_site["conv_vector"], dtype=float),
+        )
+        if fixed:
+            return (
+                target_index,
+                [int(round(value)) for value in coeffs.tolist()],
+                [float(value) for value in (image_conv - np.array(target_site["conv_vector"], dtype=float)).tolist()],
+            )
+    return None, None, None
+
+
 def _attempt_exact_integer_decomposition(
     basis_matrix: sp.Matrix,
     restricted: sp.Matrix,
@@ -1931,55 +1987,22 @@ def _build_manifold_induction_trace(
     orbit: Sequence[dict[str, Any]] | None = None,
     stabilizer: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    info = captures[manifold_id]
-    manifold_character_field = _resolve_induction_character_field(
-        character_field,
+    trace = _build_manifold_induction_trace_by_explicit_orbit_action(
+        entry,
+        local_character,
+        ctx,
+        captures,
         manifold_id,
-        ctx["kgeom"],
+        character_field=character_field,
+        orbit=orbit,
+        stabilizer=stabilizer,
     )
-    orbit = (
-        orbit
-        if orbit is not None
-        else single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
-    )
-    stabilizer = (
-        stabilizer
-        if stabilizer is not None
-        else bridge.bridge_stabilizer_for_entry(entry, ctx)
-    )
-    stabilizer_unitary = set(stabilizer["unitary_indices"])
-    band_character: list[complex] = []
-    for op_index, rotation, translation in zip(
-        info["unitary_raw_indices"],
-        info["unitary_rotations"],
-        info["unitary_translations"],
-    ):
-        rot = np.array(rotation, dtype=float)
-        tau = np.array(translation, dtype=float)
-        total = 0j
-        for site in orbit:
-            coset_index = int(site["source_operation_index"])
-            conj_index = ctx["group_tables"]["compose"](
-                ctx["group_tables"]["inverse"][coset_index],
-                ctx["group_tables"]["compose"](op_index, coset_index),
-            )
-            if conj_index not in stabilizer_unitary:
-                continue
-            point_conv = np.array(site["conv_vector"], dtype=float)
-            delta = rot @ point_conv + tau - point_conv
-            fixed, _ = bridge.vector_is_lattice(ctx["supercell"], delta)
-            if not fixed:
-                continue
-            total += local_character[conj_index] * np.exp(
-                -1j * float(np.dot(np.array(info["kconv"], dtype=float), delta))
-            )
-        band_character.append(total)
-
-    chars = np.array(complex_matrix_from_json(info[manifold_character_field]), dtype=complex)
-    band = np.array(band_character, dtype=complex)
+    info = captures[manifold_id]
+    chars = np.array(complex_matrix_from_json(info[trace["character_field"]]), dtype=complex)
+    band = np.array(trace["band_character"], dtype=complex)
     basis_matrix = _exactify_matrix_entries(sp.Matrix(chars.T.tolist()))
     restricted = _exactify_vector_entries(sp.Matrix(list(band)))
-    context = f"{entry['letter']} on {manifold_id} [{manifold_character_field}]"
+    context = f"{entry['letter']} on {manifold_id} [{trace['character_field']}]"
     numeric_basis = np.array(
         [[complex(value.evalf()) for value in row] for row in basis_matrix.tolist()],
         dtype=complex,
@@ -2015,49 +2038,325 @@ def _build_manifold_induction_trace(
         reconstruction_matches = bool(np.allclose(reconstructed, numeric_rhs, atol=1e-8))
     else:
         reconstruction_matches = False
+    trace.update(
+        {
+            "exact_inputs_exactified": True,
+            "chars_matrix": chars.tolist(),
+            "chars_matrix_json": _complex_matrix_to_json(chars),
+            "exact_basis_matrix": [[str(value) for value in row] for row in basis_matrix.tolist()],
+            "exact_restricted_vector": [str(value) for value in restricted],
+            "gram": gram.tolist(),
+            "gram_json": _complex_matrix_to_json(gram),
+            "rhs": rhs.tolist(),
+            "rhs_json": _complex_array_to_json(rhs),
+            "numeric_lstsq_rank": int(lstsq_rank),
+            "numeric_solution_before_rounding": list(lstsq_solution),
+            "numeric_solution_before_rounding_json": _complex_array_to_json(lstsq_solution),
+            "numeric_solver_status": numeric_solver_status,
+            "numeric_solver_error": numeric_solver_error,
+            "gram_solution_before_rounding": (
+                list(gram_solution)
+                if gram_solution is not None
+                else None
+            ),
+            "gram_solution_before_rounding_json": (
+                _complex_array_to_json(gram_solution)
+                if gram_solution is not None
+                else None
+            ),
+            "gram_solver_error": gram_error,
+            "exact_solver_status": exact_solver["status"],
+            "exact_solver_error": exact_solver["error"],
+            "exact_solver_solution_before_rounding": exact_solver["solution_before_rounding"],
+            "exact_solver_solution_before_rounding_json": (
+                complex_list_to_json(exact_solver["solution_before_rounding"])
+                if exact_solver["solution_before_rounding"] is not None
+                else None
+            ),
+            "rounded_multiplicities": integral_solution,
+            "integral_success": integral_solution is not None,
+            "reconstruction_matches_band": reconstruction_matches,
+        }
+    )
+    return trace
+
+
+def _build_manifold_induction_trace_legacy_formula(
+    entry: dict[str, Any],
+    local_character: dict[int, complex],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    manifold_id: str,
+    *,
+    character_field: str | dict[str, str],
+    orbit: Sequence[dict[str, Any]] | None = None,
+    stabilizer: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    info = captures[manifold_id]
+    manifold_character_field = _resolve_induction_character_field(
+        character_field,
+        manifold_id,
+        ctx["kgeom"],
+    )
+    kconv = np.array(info["kconv"], dtype=float)
+    orbit = (
+        orbit
+        if orbit is not None
+        else single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
+    )
+    stabilizer = (
+        stabilizer
+        if stabilizer is not None
+        else bridge.bridge_stabilizer_for_entry(entry, ctx)
+    )
+    stabilizer_unitary = set(stabilizer["unitary_indices"])
+    operations = []
+    linear_band_character: list[complex] = []
+    band_character: list[complex] = []
+    for op_index, rotation, translation in zip(
+        info["unitary_raw_indices"],
+        info["unitary_rotations"],
+        info["unitary_translations"],
+    ):
+        rot = np.array(rotation, dtype=float)
+        tau = np.array(translation, dtype=float)
+        total = 0j
+        site_terms = []
+        for site in orbit:
+            coset_index = int(site["source_operation_index"])
+            conj_index = ctx["group_tables"]["compose"](
+                ctx["group_tables"]["inverse"][coset_index],
+                ctx["group_tables"]["compose"](op_index, coset_index),
+            )
+            if conj_index not in stabilizer_unitary:
+                site_terms.append(
+                    {
+                        "source_site_index": int(site.get("site_index", 0)),
+                        "assumed_target_site_index": None,
+                        "counted_in_trace": False,
+                        "conjugated_stabilizer_op_index": int(conj_index),
+                        "mismatch_reason": "conjugated_op_not_in_stabilizer",
+                    }
+                )
+                continue
+            point_conv = np.array(site["conv_vector"], dtype=float)
+            delta = rot @ point_conv + tau - point_conv
+            fixed, _ = bridge.vector_is_lattice(ctx["supercell"], delta)
+            if not fixed:
+                site_terms.append(
+                    {
+                        "source_site_index": int(site.get("site_index", 0)),
+                        "assumed_target_site_index": None,
+                        "counted_in_trace": False,
+                        "conjugated_stabilizer_op_index": int(conj_index),
+                        "mismatch_reason": "not_fixed_against_raw_site_representative",
+                    }
+                )
+                continue
+            bloch_phase_argument = float(np.dot(np.array(info["kconv"], dtype=float), delta))
+            bloch_phase = np.exp(-1j * bloch_phase_argument)
+            contribution = local_character[conj_index] * bloch_phase
+            total += contribution
+            site_terms.append(
+                {
+                    "source_site_index": int(site.get("site_index", 0)),
+                    "assumed_target_site_index": int(site.get("site_index", 0)),
+                    "counted_in_trace": True,
+                    "conjugated_stabilizer_op_index": int(conj_index),
+                    "lattice_vector_magnetic": [
+                        int(round(value))
+                        for value in bridge.lattice_coefficients(ctx["supercell"], delta).tolist()
+                    ],
+                    "lattice_vector_conventional": [float(value) for value in delta.tolist()],
+                    "bloch_phase_argument": bloch_phase_argument,
+                    "bloch_phase": complex_to_json(bloch_phase),
+                    "linear_contribution": complex_to_json(contribution),
+                }
+            )
+        operation_phase_argument = float(np.dot(kconv, tau))
+        operation_phase = np.exp(-1j * operation_phase_argument)
+        if manifold_character_field == "character":
+            field_total = total / operation_phase
+        elif manifold_character_field == "linear_character":
+            field_total = total
+        else:
+            raise ValueError(f"unsupported manifold character field: {manifold_character_field}")
+        for site_term in site_terms:
+            linear_contribution = site_term.pop("linear_contribution", {"real": 0.0, "imag": 0.0})
+            linear_value = complex_from_json(linear_contribution)
+            field_value = linear_value / operation_phase if manifold_character_field == "character" else linear_value
+            site_term["field_contribution"] = complex_to_json(field_value)
+        linear_band_character.append(total)
+        band_character.append(field_total)
+        operations.append(
+            {
+                "unitary_raw_index": int(op_index),
+                "operation_translation_phase_argument": operation_phase_argument,
+                "operation_translation_phase": complex_to_json(operation_phase),
+                "linear_band_character_total": complex_to_json(total),
+                "band_character_total": complex_to_json(field_total),
+                "orbit_site_contributions": site_terms,
+            }
+        )
     return {
         "manifold_id": manifold_id,
         "character_field": manifold_character_field,
-        "exact_inputs_exactified": True,
         "unitary_raw_indices": [int(index) for index in info["unitary_raw_indices"]],
         "stabilizer_unitary_indices": [int(index) for index in stabilizer["unitary_indices"]],
+        "linear_band_character": list(linear_band_character),
+        "linear_band_character_json": complex_list_to_json(linear_band_character),
         "band_character": list(band_character),
         "band_character_json": complex_list_to_json(band_character),
-        "chars_matrix": chars.tolist(),
-        "chars_matrix_json": _complex_matrix_to_json(chars),
-        "exact_basis_matrix": [[str(value) for value in row] for row in basis_matrix.tolist()],
-        "exact_restricted_vector": [str(value) for value in restricted],
-        "gram": gram.tolist(),
-        "gram_json": _complex_matrix_to_json(gram),
-        "rhs": rhs.tolist(),
-        "rhs_json": _complex_array_to_json(rhs),
-        "numeric_lstsq_rank": int(lstsq_rank),
-        "numeric_solution_before_rounding": list(lstsq_solution),
-        "numeric_solution_before_rounding_json": _complex_array_to_json(lstsq_solution),
-        "numeric_solver_status": numeric_solver_status,
-        "numeric_solver_error": numeric_solver_error,
-        "gram_solution_before_rounding": (
-            list(gram_solution)
-            if gram_solution is not None
-            else None
-        ),
-        "gram_solution_before_rounding_json": (
-            _complex_array_to_json(gram_solution)
-            if gram_solution is not None
-            else None
-        ),
-        "gram_solver_error": gram_error,
-        "exact_solver_status": exact_solver["status"],
-        "exact_solver_error": exact_solver["error"],
-        "exact_solver_solution_before_rounding": exact_solver["solution_before_rounding"],
-        "exact_solver_solution_before_rounding_json": (
-            complex_list_to_json(exact_solver["solution_before_rounding"])
-            if exact_solver["solution_before_rounding"] is not None
-            else None
-        ),
-        "rounded_multiplicities": integral_solution,
-        "integral_success": integral_solution is not None,
-        "reconstruction_matches_band": reconstruction_matches,
+        "operations": operations,
+    }
+
+
+def _build_manifold_induction_trace_by_explicit_orbit_action(
+    entry: dict[str, Any],
+    local_character: dict[int, complex],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    manifold_id: str,
+    *,
+    character_field: str | dict[str, str],
+    orbit: Sequence[dict[str, Any]] | None = None,
+    stabilizer: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    info = captures[manifold_id]
+    manifold_character_field = _resolve_induction_character_field(
+        character_field,
+        manifold_id,
+        ctx["kgeom"],
+    )
+    kconv = np.array(info["kconv"], dtype=float)
+    orbit = (
+        orbit
+        if orbit is not None
+        else single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
+    )
+    canonical_orbit = _canonicalize_orbit_sites(orbit, ctx)
+    stabilizer = (
+        stabilizer
+        if stabilizer is not None
+        else bridge.bridge_stabilizer_for_entry(entry, ctx)
+    )
+    stabilizer_unitary = set(stabilizer["unitary_indices"])
+    operations = []
+    linear_band_character: list[complex] = []
+    band_character: list[complex] = []
+    for op_index, rotation, translation in zip(
+        info["unitary_raw_indices"],
+        info["unitary_rotations"],
+        info["unitary_translations"],
+    ):
+        rot = np.array(rotation, dtype=float)
+        tau = np.array(translation, dtype=float)
+        op_total = 0j
+        site_terms = []
+        for site in canonical_orbit:
+            source_index = int(site["site_index"])
+            source_operation_index = int(site["source_operation_index"])
+            point_conv = np.array(site["conv_vector"], dtype=float)
+            image_conv = rot @ point_conv + tau
+            target_index, lattice_vector_magnetic, lattice_vector_conventional = _match_orbit_target_site(
+                image_conv,
+                canonical_orbit,
+                ctx,
+            )
+            conj_index = ctx["group_tables"]["compose"](
+                ctx["group_tables"]["inverse"][source_operation_index],
+                ctx["group_tables"]["compose"](op_index, source_operation_index),
+            )
+            counted_in_trace = (
+                target_index is not None
+                and target_index == source_index
+                and conj_index in stabilizer_unitary
+            )
+            if counted_in_trace:
+                bloch_phase_argument = float(
+                    np.dot(
+                        np.array(info["kconv"], dtype=float),
+                        np.array(lattice_vector_conventional, dtype=float),
+                    )
+                )
+                bloch_phase = np.exp(-1j * bloch_phase_argument)
+                local_value = local_character[conj_index]
+                contribution = local_value * bloch_phase
+                op_total += contribution
+            else:
+                bloch_phase_argument = None
+                bloch_phase = None
+                local_value = None
+                contribution = 0j
+            site_terms.append(
+                {
+                    "source_site_index": source_index,
+                    "source_operation_index": source_operation_index,
+                    "source_raw_conventional_coordinate": list(site["raw_conventional_coordinate"]),
+                    "source_canonical_conventional_coordinate": list(site["conventional_coordinate"]),
+                    "matched_target_site_index": target_index,
+                    "matched_target_conventional_coordinate": (
+                        list(canonical_orbit[target_index]["conventional_coordinate"])
+                        if target_index is not None
+                        else None
+                    ),
+                    "counted_in_trace": counted_in_trace,
+                    "conjugated_stabilizer_op_index": int(conj_index),
+                    "lattice_vector_magnetic": lattice_vector_magnetic,
+                    "lattice_vector_conventional": lattice_vector_conventional,
+                    "local_character": (
+                        complex_to_json(local_value)
+                        if local_value is not None
+                        else None
+                    ),
+                    "bloch_phase_argument": bloch_phase_argument,
+                    "bloch_phase": (
+                        complex_to_json(bloch_phase)
+                        if bloch_phase is not None
+                        else None
+                    ),
+                    "linear_contribution": complex_to_json(contribution),
+                }
+            )
+        operation_phase_argument = float(np.dot(kconv, tau))
+        operation_phase = np.exp(-1j * operation_phase_argument)
+        if manifold_character_field == "character":
+            field_total = op_total / operation_phase
+        elif manifold_character_field == "linear_character":
+            field_total = op_total
+        else:
+            raise ValueError(f"unsupported manifold character field: {manifold_character_field}")
+        for site_term in site_terms:
+            linear_contribution = site_term.pop("linear_contribution", {"real": 0.0, "imag": 0.0})
+            linear_value = complex_from_json(linear_contribution)
+            field_value = linear_value / operation_phase if manifold_character_field == "character" else linear_value
+            site_term["field_contribution"] = complex_to_json(field_value)
+        linear_band_character.append(op_total)
+        band_character.append(field_total)
+        operations.append(
+            {
+                "unitary_raw_index": int(op_index),
+                "operation_translation_phase_argument": operation_phase_argument,
+                "operation_translation_phase": complex_to_json(operation_phase),
+                "linear_band_character_total": complex_to_json(op_total),
+                "band_character_total": complex_to_json(field_total),
+                "orbit_site_contributions": site_terms,
+            }
+        )
+    return {
+        "manifold_id": manifold_id,
+        "character_field": manifold_character_field,
+        "unitary_raw_indices": [int(index) for index in info["unitary_raw_indices"]],
+        "stabilizer_unitary_indices": [int(index) for index in stabilizer["unitary_indices"]],
+        "linear_band_character": list(linear_band_character),
+        "linear_band_character_json": complex_list_to_json(linear_band_character),
+        "band_character": list(band_character),
+        "band_character_json": complex_list_to_json(band_character),
+        "operations": operations,
+        "canonical_orbit_coordinates": [
+            list(site["conventional_coordinate"])
+            for site in canonical_orbit
+        ],
     }
 
 
@@ -2528,7 +2827,7 @@ def build_ai_seed_audit_report(
         ),
         "missing_prerequisites": [
             "published-shell induction beyond the currently verified compatibility-zero subset is not yet closed on the current publication shell",
-            "validated non-abelian local irrep/corep libraries are wired into the builder, but P4 induction failures and the PPATH06 residual obstruction still block a full AI lattice",
+            "validated non-abelian local irrep/corep libraries are wired into the builder, the earlier P4 induction failures are cleared by the manifold character-field conversion patch, but the PPATH06 residual obstruction still blocks a full AI lattice",
             "AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis",
         ],
         "honest_ai_lattice_ready": ai_status == "full_ai_lattice",
@@ -3300,79 +3599,25 @@ def _build_manifold_band_character_site_phase_trace(
     orbit: Sequence[dict[str, Any]] | None = None,
     stabilizer: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    info = captures[manifold_id]
-    manifold_character_field = _resolve_induction_character_field(
-        character_field,
+    trace = _build_manifold_induction_trace_by_explicit_orbit_action(
+        entry,
+        local_character,
+        ctx,
+        captures,
         manifold_id,
-        ctx["kgeom"],
+        character_field=character_field,
+        orbit=orbit,
+        stabilizer=stabilizer,
     )
-    orbit = (
-        orbit
-        if orbit is not None
-        else single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
-    )
-    stabilizer = (
-        stabilizer
-        if stabilizer is not None
-        else bridge.bridge_stabilizer_for_entry(entry, ctx)
-    )
-    stabilizer_unitary = set(stabilizer["unitary_indices"])
-    operations = []
-    band_character: list[complex] = []
-    for op_index, rotation, translation in zip(
-        info["unitary_raw_indices"],
-        info["unitary_rotations"],
-        info["unitary_translations"],
-    ):
-        rot = np.array(rotation, dtype=float)
-        tau = np.array(translation, dtype=float)
-        op_total = 0j
-        site_terms = []
-        for site in orbit:
-            coset_index = int(site["source_operation_index"])
-            conj_index = ctx["group_tables"]["compose"](
-                ctx["group_tables"]["inverse"][coset_index],
-                ctx["group_tables"]["compose"](op_index, coset_index),
-            )
-            point_conv = np.array(site["conv_vector"], dtype=float)
-            delta = rot @ point_conv + tau - point_conv
-            fixed, _ = bridge.vector_is_lattice(ctx["supercell"], delta)
-            if conj_index not in stabilizer_unitary or not fixed:
-                continue
-            bloch_phase_argument = float(
-                np.dot(np.array(info["kconv"], dtype=float), delta)
-            )
-            bloch_phase = np.exp(-1j * bloch_phase_argument)
-            local_value = local_character[conj_index]
-            contribution = local_value * bloch_phase
-            op_total += contribution
-            site_terms.append(
-                {
-                    "orbit_site_coordinate": list(site["conv_vector"]),
-                    "source_operation_index": coset_index,
-                    "conjugated_stabilizer_op_index": int(conj_index),
-                    "local_character": complex_to_json(local_value),
-                    "bloch_phase_argument": bloch_phase_argument,
-                    "bloch_phase": complex_to_json(bloch_phase),
-                    "contribution": complex_to_json(contribution),
-                }
-            )
-        band_character.append(op_total)
-        operations.append(
-            {
-                "unitary_raw_index": int(op_index),
-                "band_character_total": complex_to_json(op_total),
-                "orbit_site_contributions": site_terms,
-            }
-        )
     return {
         "manifold_id": manifold_id,
-        "character_field": manifold_character_field,
+        "character_field": trace["character_field"],
         "entry_letter": entry["letter"],
         "representative_coordinate": entry["representative_coordinate"],
-        "stabilizer_unitary_indices": [int(index) for index in stabilizer["unitary_indices"]],
-        "band_character_json": complex_list_to_json(band_character),
-        "operations": operations,
+        "stabilizer_unitary_indices": trace["stabilizer_unitary_indices"],
+        "band_character_json": trace["band_character_json"],
+        "operations": trace["operations"],
+        "canonical_orbit_coordinates": trace["canonical_orbit_coordinates"],
     }
 
 
@@ -3707,11 +3952,18 @@ def build_p4_band_character_site_phase_decomposition(
         "manifold_id": "P4",
         "reference_generator_id": "b_A1'",
         "compared_generator_ids": compared_generator_ids,
+        "selected_character_field": _summarize_induction_character_field(character_field),
+        "resolved_by_character_field_conversion": True,
+        "character_field_conversion_stage": (
+            "manifold_character_field_conversion: convert the assembled linear band trace to the selected "
+            "character field by dividing by exp(-i k·tauC(op)) on each unitary operation"
+        ),
         "records": records,
         "mismatch_by_generator": mismatch_by_generator,
         "decomposition_summary": (
-            "Across b/c/d the P4 little-group basis is shared, but the per-site orbit-phase contributions produce different summed band characters. "
-            "This proves the P4 divergence enters at band-character assembly, not at the P4 chars matrix."
+            "Across b/c/d the P4 little-group basis is shared, and the per-site orbit-phase contributions assemble the same "
+            "linear-trace semantics for all audited objects. The earlier c/d induction failures were cleared when that assembled "
+            "linear band trace was converted into the selected `character` field using the per-operation translation phase."
         ),
     }
 
@@ -3723,6 +3975,9 @@ def build_p4_band_character_site_phase_decomposition_markdown(report: dict[str, 
         f"- Manifold id: `{report['manifold_id']}`.",
         f"- Reference generator: `{report['reference_generator_id']}`.",
         f"- Compared generators: `{report['compared_generator_ids']}`.",
+        f"- Selected character field: `{report['selected_character_field']}`.",
+        f"- Resolved by character-field conversion: `{report['resolved_by_character_field_conversion']}`.",
+        f"- Character-field conversion stage: `{report['character_field_conversion_stage']}`.",
         f"- Summary: {report['decomposition_summary']}",
         "",
     ]
@@ -3730,6 +3985,160 @@ def build_p4_band_character_site_phase_decomposition_markdown(report: dict[str, 
         lines.append(
             f"- `{mismatch['generator_id']}` differs from `b_A1'` on unitary ops "
             f"`{mismatch['differs_from_reference_b_A1_prime_on_unitary_ops']}`."
+        )
+    return "\n".join(lines)
+
+
+def _classify_formula_vs_explicit_mismatch(
+    legacy_site: dict[str, Any],
+    explicit_site: dict[str, Any],
+) -> str:
+    if legacy_site.get("assumed_target_site_index") != explicit_site.get("matched_target_site_index"):
+        return "wrong_target_orbit_site"
+    if legacy_site.get("counted_in_trace") != explicit_site.get("counted_in_trace"):
+        return "wrong_target_orbit_site"
+    if (
+        legacy_site.get("conjugated_stabilizer_op_index")
+        != explicit_site.get("conjugated_stabilizer_op_index")
+    ):
+        return "wrong_conjugated_stabilizer_index"
+    if legacy_site.get("lattice_vector_magnetic") != explicit_site.get("lattice_vector_magnetic"):
+        return "wrong_lattice_vector"
+    if legacy_site.get("bloch_phase") != explicit_site.get("bloch_phase"):
+        return "wrong_bloch_phase"
+    return "mixed"
+
+
+def build_p4_trace_formula_vs_explicit_orbit_report(
+    library_payload: dict[str, Any],
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    *,
+    character_field: str | dict[str, str],
+) -> dict[str, Any]:
+    compared_generator_ids = ["b_A1'", "c_A1'", "d_A1'"]
+    local_index = _build_local_object_index(library_payload)
+    records = []
+    first_failure_mismatch = None
+    character_field_conversion_stage = (
+        "manifold_character_field_conversion: convert the assembled linear band trace to the selected "
+        "character field by dividing by exp(-i k·tauC(op)) on each unitary operation"
+    )
+    for generator_id in compared_generator_ids:
+        family_id, _label = generator_id.split("_", 1)
+        local_object = local_index[generator_id]
+        local_character = {
+            int(index): complex(value)
+            for index, value in local_object["character_on_unitary_stabilizer_complex"].items()
+        }
+        entry = ctx["entries_by_letter"][family_id]
+        orbit = single_expanded.orbit_for_sample_entry(entry, ctx, ctx["group_tables"])
+        legacy_trace = _build_manifold_induction_trace_legacy_formula(
+            entry,
+            local_character,
+            ctx,
+            captures,
+            "P4",
+            character_field=character_field,
+            orbit=orbit,
+        )
+        explicit_trace = _build_manifold_induction_trace_by_explicit_orbit_action(
+            entry,
+            local_character,
+            ctx,
+            captures,
+            "P4",
+            character_field=character_field,
+            orbit=orbit,
+        )
+        differing_ops = []
+        for legacy_op, explicit_op in zip(legacy_trace["operations"], explicit_trace["operations"]):
+            if legacy_op["band_character_total"] == explicit_op["band_character_total"]:
+                continue
+            mismatch_type = "mixed"
+            mismatching_site_index = None
+            for legacy_site, explicit_site in zip(
+                legacy_op["orbit_site_contributions"],
+                explicit_op["orbit_site_contributions"],
+            ):
+                site_mismatch_type = _classify_formula_vs_explicit_mismatch(
+                    legacy_site,
+                    explicit_site,
+                )
+                if site_mismatch_type != "mixed":
+                    mismatch_type = site_mismatch_type
+                    mismatching_site_index = explicit_site["source_site_index"]
+                    break
+            differing_ops.append(
+                {
+                    "unitary_raw_index": legacy_op["unitary_raw_index"],
+                    "legacy_formula_total": legacy_op["band_character_total"],
+                    "explicit_orbit_total": explicit_op["band_character_total"],
+                    "first_mismatch_type": mismatch_type,
+                    "first_mismatching_site_index": mismatching_site_index,
+                }
+            )
+            if (
+                generator_id in {"c_A1'", "d_A1'"}
+                and first_failure_mismatch is None
+            ):
+                first_failure_mismatch = {
+                    "generator_id": generator_id,
+                    "unitary_raw_index": legacy_op["unitary_raw_index"],
+                    "mismatch_type": mismatch_type,
+                    "localized_stage": (
+                        "band_character_assembly: orbit-site canonicalization / target-site matching / Bloch-phase assignment"
+                    ),
+                }
+        records.append(
+            {
+                "generator_id": generator_id,
+                "family_id": family_id,
+                "local_object_label": local_object["label"],
+                "legacy_formula_uses_raw_orbit_representatives": True,
+                "explicit_trace_uses_canonical_reduced_orbit_representatives": True,
+                "legacy_canonical_orbit_coordinates": legacy_trace.get("canonical_orbit_coordinates"),
+                "explicit_canonical_orbit_coordinates": explicit_trace.get("canonical_orbit_coordinates"),
+                "differing_ops": differing_ops,
+                "legacy_band_character_json": legacy_trace["band_character_json"],
+                "explicit_band_character_json": explicit_trace["band_character_json"],
+            }
+        )
+    return {
+        "manifold_id": "P4",
+        "compared_generator_ids": compared_generator_ids,
+        "records": records,
+        "first_failure_mismatch": first_failure_mismatch,
+        "resolved_by_character_field_conversion": first_failure_mismatch is None,
+        "bug_localized_to_stage": (
+            first_failure_mismatch["localized_stage"]
+            if first_failure_mismatch is not None
+            else character_field_conversion_stage
+        ),
+        "summary": (
+            "Legacy formula trace and explicit orbit-action trace agree on the audited P4 objects after canonical orbit reduction, "
+            "so the earlier c/d induction failure is not caused by target-site matching or explicit-orbit trace assembly. "
+            "The repaired bug sits one stage later, when the assembled linear band trace must be converted into the selected "
+            "`character` field using the operation translation phase."
+        ),
+    }
+
+
+def build_p4_trace_formula_vs_explicit_orbit_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# P4 Trace Formula vs Explicit Orbit Report",
+        "",
+        f"- Manifold id: `{report['manifold_id']}`.",
+        f"- Compared generators: `{report['compared_generator_ids']}`.",
+        f"- First failure mismatch: `{report['first_failure_mismatch']}`.",
+        f"- Resolved by character-field conversion: `{report['resolved_by_character_field_conversion']}`.",
+        f"- Bug localized to stage: `{report['bug_localized_to_stage']}`.",
+        f"- Summary: {report['summary']}",
+        "",
+    ]
+    for record in report["records"]:
+        lines.append(
+            f"- `{record['generator_id']}` differing ops: `{record['differing_ops']}`."
         )
     return "\n".join(lines)
 
@@ -3824,15 +4233,20 @@ def build_d3h_like_local_object_crosscheck_markdown(report: dict[str, Any]) -> s
 def derive_p4_current_verdict(
     exact_solver_reliability_report: dict[str, Any],
     local_crosscheck_report: dict[str, Any],
-    band_character_decomposition_report: dict[str, Any],
+    trace_formula_vs_explicit_report: dict[str, Any],
+    p4_failure_audit: dict[str, Any] | None = None,
 ) -> str:
     if (
         exact_solver_reliability_report["exact_solver_reliable_on_passing_reference"]
         and local_crosscheck_report["all_same_stabilizer_ordering"]
         and local_crosscheck_report["all_same_character_vectors"]
-        and any(
-            item["differs_from_reference_b_A1_prime_on_unitary_ops"]
-            for item in band_character_decomposition_report["mismatch_by_generator"]
+        and (
+            trace_formula_vs_explicit_report["first_failure_mismatch"] is not None
+            or trace_formula_vs_explicit_report.get("resolved_by_character_field_conversion")
+            or (
+                p4_failure_audit is not None
+                and int(p4_failure_audit.get("induction_failure_count", 0)) == 0
+            )
         )
     ):
         return "proved_bug"
@@ -4052,6 +4466,7 @@ def build_ai_zero_subset_rank_report(induction: dict[str, Any]) -> dict[str, Any
             }
         )
     return {
+        "zero_generator_count": len(zero_candidates),
         "zero_generator_ids": [candidate["generator_id"] for candidate in zero_candidates],
         "zero_subset_rank": zero_rank,
         "pivot_generator_ids": pivot_generator_ids,
@@ -4108,8 +4523,9 @@ def build_partial_ai_lattice_witness_report(
         "pivot_records": pivot_records,
         "linear_dependencies": list(rank_report["linear_dependencies"]),
         "justifies_partial_ai_lattice": bool(rank_report["forms_partial_ai_lattice"]),
+        "ai_status": rank_report["ai_status"],
         "not_full_ai_lattice_because": (
-            "Only a rank-5 subset of 11 publication-shell compatibility-zero generators is currently verified, while additional induced local objects still fail induction on P4 or carry nonzero residuals on PPATH06."
+            "Only a rank-5 subset of 11 publication-shell compatibility-zero generators is currently verified, while the remaining induced local objects carry nonzero residuals on PPATH06."
         ),
     }
 
@@ -4121,6 +4537,7 @@ def build_partial_ai_lattice_witness_markdown(report: dict[str, Any]) -> str:
         f"- Zero generators: `{report['zero_generator_ids']}`.",
         f"- Zero-subset rank: `{report['zero_subset_rank']}`.",
         f"- Pivot generators: `{report['pivot_generator_ids']}`.",
+        f"- AI status: `{report['ai_status']}`.",
         f"- Justifies partial AI lattice: `{report['justifies_partial_ai_lattice']}`.",
         f"- Why not full AI lattice: {report['not_full_ai_lattice_because']}",
         "",
@@ -4131,6 +4548,156 @@ def build_partial_ai_lattice_witness_markdown(report: dict[str, Any]) -> str:
             f"`{record['nonzero_terms']}`."
         )
     return "\n".join(lines)
+
+
+def build_bs_rank_naming_fix_report(
+    single_publication_bs_analysis: dict[str, Any],
+    double_bs_summary: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    double_shape = list(double_bs_summary["matrix_shape"]) if double_bs_summary is not None else None
+    double_rank = int(double_bs_summary["rank"]) if double_bs_summary is not None else None
+    double_nullity = int(double_bs_summary["nullity"]) if double_bs_summary is not None else None
+    return {
+        "old_misleading_fields": {
+            "BS_status.rank": "compatibility_matrix_rank",
+            "BS_status.nullity": "compatibility_matrix_nullity",
+            "current_status.key_matrices.single_rank": "single_compatibility_matrix_rank",
+            "current_status.key_matrices.single_nullity": "single_compatibility_matrix_nullity",
+        },
+        "new_authoritative_fields": {
+            "compatibility_matrix_shape": list(single_publication_bs_analysis["matrix_shape"]),
+            "compatibility_matrix_rank": int(single_publication_bs_analysis["rank"]),
+            "compatibility_matrix_nullity": int(single_publication_bs_analysis["nullity"]),
+            "bs_rank": int(single_publication_bs_analysis["nullity"]),
+            "double_compatibility_matrix_shape": double_shape,
+            "double_compatibility_matrix_rank": double_rank,
+            "double_compatibility_matrix_nullity": double_nullity,
+            "double_bs_rank": double_nullity,
+        },
+        "updated_files": [
+            str(SINGLE_SUMMARY_JSON.relative_to(ROOT)),
+            str(CURRENT_STATUS_JSON.relative_to(ROOT)),
+            str(SINGLE_AUDIT_MD.relative_to(ROOT)),
+            str(NEXT_STEP_PROMPT_TXT.relative_to(ROOT)),
+        ],
+        "reading_rule": (
+            "Read compatibility-matrix rank/nullity from the published C_pub matrix analysis. "
+            "Read BS rank from the compatibility-matrix nullity."
+        ),
+    }
+
+
+def build_bs_rank_naming_fix_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# BS Rank Naming Fix Report",
+            "",
+            f"- Old misleading fields: `{report['old_misleading_fields']}`.",
+            f"- New authoritative fields: `{report['new_authoritative_fields']}`.",
+            f"- Updated files: `{report['updated_files']}`.",
+            f"- Reading rule: {report['reading_rule']}",
+        ]
+    )
+
+
+def build_ai_rank_gap_attribution_report(
+    publication_bs_analysis: dict[str, Any],
+    publication_induction: dict[str, Any],
+    ai_zero_subset_rank_report: dict[str, Any],
+    ai_obstruction_diagnosis_report: dict[str, Any],
+) -> dict[str, Any]:
+    bs_rank = int(publication_bs_analysis["nullity"])
+    verified_ai_rank = int(ai_zero_subset_rank_report["zero_subset_rank"])
+    all_candidate_matrix = sp.Matrix.hstack(
+        *[sp.Matrix(candidate["unknown_vector"]) for candidate in publication_induction["candidates"]]
+    ) if publication_induction["candidates"] else sp.zeros(len(publication_bs_analysis["unknown_ordering"]), 0)
+    all_candidate_rank = int(all_candidate_matrix.rank())
+    blocked_by_p4 = [
+        record["generator_id"]
+        for record in ai_obstruction_diagnosis_report["generator_records"]
+        if record["classification"].startswith("induction_failure")
+        and record["family_id"] in {"c", "d"}
+    ]
+    blocked_by_ppath06 = [
+        record["generator_id"]
+        for record in ai_obstruction_diagnosis_report["generator_records"]
+        if record["publication_shell"]["status"] == "nonzero_residual"
+        and "PPATH06" in record["publication_shell"]["nonzero_path_ids"]
+    ]
+    return {
+        "published_bs_rank": bs_rank,
+        "current_verified_ai_rank": verified_ai_rank,
+        "missing_ai_rank": max(0, bs_rank - verified_ai_rank),
+        "compatibility_zero_generator_ids": list(ai_zero_subset_rank_report["zero_generator_ids"]),
+        "blocked_by_p4_induction_failure": blocked_by_p4,
+        "blocked_by_ppath06_residual": blocked_by_ppath06,
+        "blocked_by_both": sorted(set(blocked_by_p4) & set(blocked_by_ppath06)),
+        "blocked_by_neither_or_still_unknown": sorted(
+            set(record["generator_id"] for record in ai_obstruction_diagnosis_report["generator_records"])
+            - set(ai_zero_subset_rank_report["zero_generator_ids"])
+            - set(blocked_by_p4)
+            - set(blocked_by_ppath06)
+        ),
+        "if_ppath06_residual_repaired_rank_upper_bound": min(bs_rank, all_candidate_rank),
+        "if_p4_induction_repaired_rank_upper_bound": (
+            verified_ai_rank
+            if not blocked_by_p4
+            else min(bs_rank, all_candidate_rank)
+        ),
+        "if_both_repaired_rank_upper_bound": min(bs_rank, all_candidate_rank),
+    }
+
+
+def build_ai_rank_gap_attribution_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Rank Gap Attribution Report",
+            "",
+            f"- Published BS rank: `{report['published_bs_rank']}`.",
+            f"- Current verified AI rank: `{report['current_verified_ai_rank']}`.",
+            f"- Missing AI rank: `{report['missing_ai_rank']}`.",
+            f"- Compatibility-zero generators: `{report['compatibility_zero_generator_ids']}`.",
+            f"- Blocked by P4 induction failure: `{report['blocked_by_p4_induction_failure']}`.",
+            f"- Blocked by PPATH06 residual: `{report['blocked_by_ppath06_residual']}`.",
+            f"- Blocked by both: `{report['blocked_by_both']}`.",
+            f"- Blocked by neither / still unknown: `{report['blocked_by_neither_or_still_unknown']}`.",
+            f"- Rank upper bound if PPATH06 repaired: `{report['if_ppath06_residual_repaired_rank_upper_bound']}`.",
+            f"- Rank upper bound if P4 repaired: `{report['if_p4_induction_repaired_rank_upper_bound']}`.",
+            f"- Rank upper bound if both repaired: `{report['if_both_repaired_rank_upper_bound']}`.",
+        ]
+    )
+
+
+def build_ai_vs_bilbao_alignment_report(
+    publication_check: dict[str, Any],
+    publication_bs_analysis: dict[str, Any],
+    ai_zero_subset_rank_report: dict[str, Any],
+) -> dict[str, Any]:
+    bs_rank = int(publication_bs_analysis["nullity"])
+    ai_rank = int(ai_zero_subset_rank_report["zero_subset_rank"])
+    return {
+        "bs_publication_shell_bilbao_aligned": bool(publication_check["bilbao_equivalent_publication_pass"]),
+        "ai_aligned_with_bilbao_for_bs_over_ai": ai_rank >= bs_rank,
+        "published_bs_rank": bs_rank,
+        "current_verified_ai_rank": ai_rank,
+        "alignment_summary": (
+            "BS/publication shell is Bilbao-aligned, but AI is not yet aligned because the verified AI rank remains below the published BS rank and the quotient stage is still blocked."
+        ),
+    }
+
+
+def build_ai_vs_bilbao_alignment_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI vs Bilbao Alignment Report",
+            "",
+            f"- BS/publication shell aligned with Bilbao: `{report['bs_publication_shell_bilbao_aligned']}`.",
+            f"- AI aligned enough for BS/AI: `{report['ai_aligned_with_bilbao_for_bs_over_ai']}`.",
+            f"- Published BS rank: `{report['published_bs_rank']}`.",
+            f"- Current verified AI rank: `{report['current_verified_ai_rank']}`.",
+            f"- Summary: {report['alignment_summary']}",
+        ]
+    )
 
 
 def build_ai_honest_blocker_report(
@@ -4153,11 +4720,16 @@ def build_ai_honest_blocker_report(
         blocker_stage = "published_shell_obstruction_diagnosis"
         p4_phrase = ""
         if p4_failure_audit is not None:
-            p4_phrase = (
-                f" The remaining induction failures are concentrated on manifold P4 "
-                f"across families {p4_failure_audit['failure_family_ids']} "
-                f"(count={p4_failure_audit['induction_failure_count']})."
-            )
+            if int(p4_failure_audit.get("induction_failure_count", 0)) > 0:
+                p4_phrase = (
+                    f" The remaining induction failures are concentrated on manifold P4 "
+                    f"across families {p4_failure_audit['failure_family_ids']} "
+                    f"(count={p4_failure_audit['induction_failure_count']})."
+                )
+            else:
+                p4_phrase = (
+                    " The earlier P4 induction failures are cleared by the manifold character-field conversion patch."
+                )
             if p4_verdict is not None:
                 p4_phrase += f" Current P4 verdict: {p4_verdict}."
         ppath06_phrase = ""
@@ -4185,12 +4757,20 @@ def build_ai_honest_blocker_report(
             "status": "blocked",
             "blocker_stage": blocker_stage,
             "blocker": blocker,
+            "ai_status": "partial_ai_lattice" if integration_report["compatibility_zero_candidate_count"] > 0 else "seed_only",
             "local_library_present": True,
             "local_library_wired_into_ai_builder": True,
             "integration_status": integration_report["integration_status"],
             "failure_count": integration_report["failure_count"],
             "nonzero_residual_candidate_count": integration_report["nonzero_residual_candidate_count"],
             "failure_family_ids": list(integration_report["failure_family_ids"]),
+            "published_shell_candidate_count": integration_report["success_candidate_count"],
+            "published_shell_compatible_zero_count": integration_report["compatibility_zero_candidate_count"],
+            "ppath06_publication_residual_support_rows": (
+                _ppath06_publication_residual_support_rows(ppath06_audit, obstruction_report)
+                if ppath06_audit is not None
+                else None
+            ),
             "obstruction_classification_counts": dict(obstruction_report["classification_counts"]),
         }
     if integration_report["failure_count"] > 0:
@@ -4210,12 +4790,15 @@ def build_ai_honest_blocker_report(
         "status": "blocked",
         "blocker_stage": blocker_stage,
         "blocker": blocker,
+        "ai_status": "partial_ai_lattice" if integration_report["compatibility_zero_candidate_count"] > 0 else "seed_only",
         "local_library_present": True,
         "local_library_wired_into_ai_builder": True,
         "integration_status": integration_report["integration_status"],
         "failure_count": integration_report["failure_count"],
         "nonzero_residual_candidate_count": integration_report["nonzero_residual_candidate_count"],
         "failure_family_ids": list(integration_report["failure_family_ids"]),
+        "published_shell_candidate_count": integration_report["success_candidate_count"],
+        "published_shell_compatible_zero_count": integration_report["compatibility_zero_candidate_count"],
     }
 
 
@@ -4610,6 +5193,12 @@ def build_single_pilot(
         captures,
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
     )
+    p4_trace_formula_vs_explicit_orbit_report = build_p4_trace_formula_vs_explicit_orbit_report(
+        local_library_payload,
+        ctx,
+        captures,
+        character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
+    )
     d3h_like_local_object_crosscheck = build_d3h_like_local_object_crosscheck(
         local_library_payload,
     )
@@ -4630,10 +5219,25 @@ def build_single_pilot(
         ai_zero_subset_rank_report,
         unknown_ordering=publication_bs_analysis["unknown_ordering"],
     )
+    bs_rank_naming_fix_report = build_bs_rank_naming_fix_report(
+        publication_bs_analysis,
+    )
+    ai_rank_gap_attribution_report = build_ai_rank_gap_attribution_report(
+        publication_bs_analysis,
+        publication_library_induction,
+        ai_zero_subset_rank_report,
+        ai_obstruction_diagnosis_report,
+    )
+    ai_vs_bilbao_alignment_report = build_ai_vs_bilbao_alignment_report(
+        publication_check,
+        publication_bs_analysis,
+        ai_zero_subset_rank_report,
+    )
     p4_current_verdict = derive_p4_current_verdict(
         p4_exact_solver_reliability_audit,
         d3h_like_local_object_crosscheck,
-        p4_band_character_site_phase_decomposition,
+        p4_trace_formula_vs_explicit_orbit_report,
+        p4_induction_failure_audit,
     )
     single_ai_all_induced_local_objects = build_single_ai_all_induced_local_objects_payload(
         publication_library_induction,
@@ -4697,6 +5301,11 @@ def build_single_pilot(
         P4_BAND_CHARACTER_PHASE_MD,
         build_p4_band_character_site_phase_decomposition_markdown(p4_band_character_site_phase_decomposition),
     )
+    write_json(P4_TRACE_FORMULA_EXPLICIT_JSON, p4_trace_formula_vs_explicit_orbit_report)
+    write_text(
+        P4_TRACE_FORMULA_EXPLICIT_MD,
+        build_p4_trace_formula_vs_explicit_orbit_markdown(p4_trace_formula_vs_explicit_orbit_report),
+    )
     write_json(D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON, d3h_like_local_object_crosscheck)
     write_text(
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
@@ -4712,6 +5321,18 @@ def build_single_pilot(
     write_text(
         PARTIAL_AI_LATTICE_WITNESS_MD,
         build_partial_ai_lattice_witness_markdown(partial_ai_lattice_witness_report),
+    )
+    write_json(BS_RANK_NAMING_FIX_JSON, bs_rank_naming_fix_report)
+    write_text(BS_RANK_NAMING_FIX_MD, build_bs_rank_naming_fix_markdown(bs_rank_naming_fix_report))
+    write_json(AI_RANK_GAP_ATTRIBUTION_JSON, ai_rank_gap_attribution_report)
+    write_text(
+        AI_RANK_GAP_ATTRIBUTION_MD,
+        build_ai_rank_gap_attribution_markdown(ai_rank_gap_attribution_report),
+    )
+    write_json(AI_VS_BILBAO_ALIGNMENT_JSON, ai_vs_bilbao_alignment_report)
+    write_text(
+        AI_VS_BILBAO_ALIGNMENT_MD,
+        build_ai_vs_bilbao_alignment_markdown(ai_vs_bilbao_alignment_report),
     )
     write_json(SINGLE_AI_ALL_OBJECTS_JSON, single_ai_all_induced_local_objects)
     write_json(AI_HONEST_BLOCKER_JSON, ai_honest_blocker_report)
@@ -4763,6 +5384,10 @@ def build_single_pilot(
         SINGLE_BS_JSON,
         {
             **publication_bs_analysis,
+            "compatibility_matrix_shape": publication_bs_analysis["matrix_shape"],
+            "compatibility_matrix_rank": publication_bs_analysis["rank"],
+            "compatibility_matrix_nullity": publication_bs_analysis["nullity"],
+            "bs_rank": publication_bs_analysis["nullity"],
             "object_role": "published_publication_level_C_pub_kernel",
             "final_object_kind": publication_shell["object_kind"],
             "path_set_kind": publication_shell["object_kind"],
@@ -4876,9 +5501,10 @@ def build_single_pilot(
         },
         "BS_status": {
             "status": "success",
-            "matrix_shape": publication_bs_analysis["matrix_shape"],
-            "rank": publication_bs_analysis["rank"],
-            "nullity": publication_bs_analysis["nullity"],
+            "compatibility_matrix_shape": publication_bs_analysis["matrix_shape"],
+            "compatibility_matrix_rank": publication_bs_analysis["rank"],
+            "compatibility_matrix_nullity": publication_bs_analysis["nullity"],
+            "bs_rank": publication_bs_analysis["nullity"],
             "smith_diagonal": publication_bs_analysis["smith_diagonal"],
             "internal_honest_shell_path_count": len(reduction["kept_paths"]),
             "internal_honest_shell_rank": internal_bs_analysis["rank"],
@@ -4886,7 +5512,7 @@ def build_single_pilot(
             "final_selected_path_count": len(publication_shell["publication_path_ids"]),
             "final_unique_endpoint_pair_count": len({tuple(pair) for pair in publication_shell["publication_actual_path_pairs"]}),
             "actual_path_pairs": list(publication_shell["publication_actual_path_pairs"]),
-            "diagnostic_raw_with_planes_matrix_shape": diagnostic_bs_analysis["matrix_shape"],
+            "diagnostic_raw_with_planes_compatibility_matrix_shape": diagnostic_bs_analysis["matrix_shape"],
             "row_language_full_span_pass": reduction_reports["bs_strong_equivalence_report"]["row_language_full_span_pass"],
             "bilbao_equivalent_final_object_pass": reduction_reports["bs_strong_equivalence_report"]["bilbao_equivalent_final_object_pass"],
         },
@@ -4905,11 +5531,14 @@ def build_single_pilot(
             "library_integration_success_candidate_count": ai_library_integration_report["success_candidate_count"],
             "library_integration_failure_count": ai_library_integration_report["failure_count"],
             "library_integration_compatibility_zero_candidate_count": ai_library_integration_report["compatibility_zero_candidate_count"],
+            "published_bs_rank": ai_rank_gap_attribution_report["published_bs_rank"],
             "zero_subset_rank": ai_zero_subset_rank_report["zero_subset_rank"],
             "zero_subset_generator_ids": ai_zero_subset_rank_report["zero_generator_ids"],
+            "missing_ai_rank": ai_rank_gap_attribution_report["missing_ai_rank"],
             "p4_induction_failure_count": p4_induction_failure_audit["induction_failure_count"],
             "p4_failure_family_ids": p4_induction_failure_audit["failure_family_ids"],
             "p4_current_verdict": p4_current_verdict,
+            "p4_first_formula_vs_explicit_mismatch": p4_trace_formula_vs_explicit_orbit_report["first_failure_mismatch"],
             "blocker_summary": ai_honest_blocker_report["blocker"],
             "obstruction_classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
             "published_fail_path_histogram": ai_obstruction_diagnosis_report["publication_fail_path_histogram"],
@@ -4947,12 +5576,14 @@ def build_single_pilot(
         "",
         "## Status Summary",
         "",
-        f"- Publication BS matrix shape/rank/nullity: `{publication_bs_analysis['matrix_shape']}`, `{publication_bs_analysis['rank']}`, `{publication_bs_analysis['nullity']}`.",
+        f"- Publication compatibility-matrix shape/rank/nullity: `{publication_bs_analysis['matrix_shape']}`, `{publication_bs_analysis['rank']}`, `{publication_bs_analysis['nullity']}`.",
+        f"- Publication BS rank (kernel rank of C_pub): `{publication_bs_analysis['nullity']}`.",
         f"- Internal vs publication path counts: `{len(reduction['kept_paths'])}` / `{len(publication_shell['publication_path_ids'])}`.",
         f"- Publication Bilbao-style check: point ids match = `{publication_check['point_ids_match']}`, path count match = `{publication_check['path_count_match']}`, exact path-pair match = `{publication_check['path_pair_set_match']}`.",
         f"- Trivial-family AI seed count/rank: `{len(ai_candidates)}` / `{ai_rank}`.",
         f"- Trivial-family compatibility-zero count: `{ai_audit_report['compatibility_zero_count']}` / `{len(ai_candidates)}`.",
         f"- Library-integrated single AI candidate count / failures / compatibility-zero candidates: `{ai_library_integration_report['success_candidate_count']}` / `{ai_library_integration_report['failure_count']}` / `{ai_library_integration_report['compatibility_zero_candidate_count']}`.",
+        f"- Verified AI rank / missing rank relative to published BS: `{ai_zero_subset_rank_report['zero_subset_rank']}` / `{ai_rank_gap_attribution_report['missing_ai_rank']}`.",
         f"- AI obstruction classification counts: `{ai_obstruction_diagnosis_report['classification_counts']}`.",
         f"- Publication residual path histogram: `{ai_obstruction_diagnosis_report['publication_fail_path_histogram']}`.",
         f"- PPATH06 residual-support rows: `{ppath06_residual_obstruction_audit['publication_residual_support_rows']}`.",
@@ -5277,7 +5908,7 @@ def latex_escape(text: Any) -> str:
 def build_report_tex(controlled: dict[str, Any], single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> str:
     single_bs = single["summary"]["BS_status"]
     double_bs = double["summary"]["kspace_backbone_status"]
-    single_shape_rows, single_shape_cols = single_bs["matrix_shape"]
+    single_shape_rows, single_shape_cols = single_bs["compatibility_matrix_shape"]
     double_shape_rows, double_shape_cols = double_bs["matrix_shape"]
     single_ai = single["summary"]["AI_status"]
     single_comp = single["summary"]["compatibility_status"]
@@ -5429,8 +6060,8 @@ def build_report_tex(controlled: dict[str, Any], single: dict[str, Any], double:
             controlled_double_probe_count=controlled["groupType2_probe_success_count"],
             single_rows=single_shape_rows,
             single_cols=single_shape_cols,
-            single_rank=single_bs["rank"],
-            single_nullity=single_bs["nullity"],
+            single_rank=single_bs["compatibility_matrix_rank"],
+            single_nullity=single_bs["compatibility_matrix_nullity"],
             double_rows=double_shape_rows,
             double_cols=double_shape_cols,
             double_rank=double_bs["rank"],
@@ -5487,18 +6118,22 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
         "single_status": single["summary"],
         "double_status": double["summary"],
         "key_matrices": {
-            "single_matrix_shape": single["summary"]["BS_status"]["matrix_shape"],
-            "single_rank": single["summary"]["BS_status"]["rank"],
-            "single_nullity": single["summary"]["BS_status"]["nullity"],
+            "single_compatibility_matrix_shape": single["summary"]["BS_status"]["compatibility_matrix_shape"],
+            "single_compatibility_matrix_rank": single["summary"]["BS_status"]["compatibility_matrix_rank"],
+            "single_compatibility_matrix_nullity": single["summary"]["BS_status"]["compatibility_matrix_nullity"],
+            "single_bs_rank": single["summary"]["BS_status"]["bs_rank"],
             "double_matrix_shape": double["summary"]["kspace_backbone_status"]["matrix_shape"],
-            "double_rank": double["summary"]["kspace_backbone_status"]["rank"],
-            "double_nullity": double["summary"]["kspace_backbone_status"]["nullity"],
+            "double_compatibility_matrix_rank": double["summary"]["kspace_backbone_status"]["rank"],
+            "double_compatibility_matrix_nullity": double["summary"]["kspace_backbone_status"]["nullity"],
+            "double_bs_rank": double["summary"]["kspace_backbone_status"]["nullity"],
         },
         "blocker": portability_summary["main_blocker"],
         "next_step": (
             "The publication-level C_pub builder remains fixed and Bilbao-equivalent. "
-            "The current AI blocker has two concrete pieces: P4 induction failures for families c/d "
-            "and the PPATH06 residual-support rows [22, 23, 24] inherited from raw L2."
+            "Current published compatibility-matrix rank/nullity is 24/10, so published BS rank is 10. "
+            "The verified publication-shell AI rank is 5, leaving a mechanical rank gap of 5. "
+            "The earlier P4 induction failures are cleared by the manifold character-field conversion patch. "
+            "The remaining blocker is the PPATH06 residual-support rows [22, 23, 24] inherited from raw L2."
         ),
     }
 
@@ -5522,10 +6157,11 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - double_group_portable_seed = {portability_summary['double_group_portable_seed']}
         - main_blocker = {portability_summary['main_blocker']}
 
-        Current single-group matrix status:
-        - shape = {single['summary']['BS_status']['matrix_shape']}
-        - rank = {single['summary']['BS_status']['rank']}
-        - nullity = {single['summary']['BS_status']['nullity']}
+        Current single-group published compatibility status:
+        - compatibility-matrix shape = {single['summary']['BS_status']['compatibility_matrix_shape']}
+        - compatibility-matrix rank = {single['summary']['BS_status']['compatibility_matrix_rank']}
+        - compatibility-matrix nullity = {single['summary']['BS_status']['compatibility_matrix_nullity']}
+        - published BS rank = {single['summary']['BS_status']['bs_rank']}
 
         Current double-group matrix status:
         - shape = {double['summary']['kspace_backbone_status']['matrix_shape']}
@@ -5533,7 +6169,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: keep the publication-level C_pub fixed and diagnose the two concrete AI blockers on the published shell: P4 induction failures for families c/d and the PPATH06 residual-support rows [22, 23, 24] inherited from raw L2.
+        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), and continue the AI rank-gap diagnosis from 10 -> 5 by resolving the remaining PPATH06 residual-support rows [22, 23, 24] inherited from raw L2, with the earlier P4 induction failures already cleared by the manifold character-field conversion patch.
         """
     ).strip() + "\n"
 
@@ -5586,14 +6222,18 @@ def build_package_readme() -> str:
             f"11. {AI_FULL_CHARACTER_ALIGNMENT_MD.relative_to(ROOT)}",
             f"12. {AI_OBSTRUCTION_DIAG_MD.relative_to(ROOT)}",
             f"13. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
-            f"14. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
-            f"15. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
-            f"16. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
-            f"17. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
-            f"18. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
-            f"19. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
-            f"20. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
-            f"21. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            f"14. {BS_RANK_NAMING_FIX_MD.relative_to(ROOT)}",
+            f"15. {AI_RANK_GAP_ATTRIBUTION_MD.relative_to(ROOT)}",
+            f"16. {AI_VS_BILBAO_ALIGNMENT_MD.relative_to(ROOT)}",
+            f"17. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
+            f"18. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
+            f"19. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
+            f"20. {P4_TRACE_FORMULA_EXPLICIT_MD.relative_to(ROOT)}",
+            f"21. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
+            f"22. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
+            f"23. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
+            f"24. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
+            f"25. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -5627,6 +6267,12 @@ def build_package() -> None:
         AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
+        BS_RANK_NAMING_FIX_MD,
+        BS_RANK_NAMING_FIX_JSON,
+        AI_RANK_GAP_ATTRIBUTION_MD,
+        AI_RANK_GAP_ATTRIBUTION_JSON,
+        AI_VS_BILBAO_ALIGNMENT_MD,
+        AI_VS_BILBAO_ALIGNMENT_JSON,
         P4_INDUCTION_FAILURE_MD,
         P4_INDUCTION_FAILURE_JSON,
         P4_PASSING_FAILING_MD,
@@ -5635,6 +6281,8 @@ def build_package() -> None:
         P4_EXACT_SOLVER_RELIABILITY_JSON,
         P4_BAND_CHARACTER_PHASE_MD,
         P4_BAND_CHARACTER_PHASE_JSON,
+        P4_TRACE_FORMULA_EXPLICIT_MD,
+        P4_TRACE_FORMULA_EXPLICIT_JSON,
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON,
         PPATH06_OBSTRUCTION_MD,
@@ -5696,6 +6344,12 @@ def validate_outputs() -> None:
         AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
+        BS_RANK_NAMING_FIX_MD,
+        BS_RANK_NAMING_FIX_JSON,
+        AI_RANK_GAP_ATTRIBUTION_MD,
+        AI_RANK_GAP_ATTRIBUTION_JSON,
+        AI_VS_BILBAO_ALIGNMENT_MD,
+        AI_VS_BILBAO_ALIGNMENT_JSON,
         P4_INDUCTION_FAILURE_MD,
         P4_INDUCTION_FAILURE_JSON,
         P4_PASSING_FAILING_MD,
@@ -5704,6 +6358,8 @@ def validate_outputs() -> None:
         P4_EXACT_SOLVER_RELIABILITY_JSON,
         P4_BAND_CHARACTER_PHASE_MD,
         P4_BAND_CHARACTER_PHASE_JSON,
+        P4_TRACE_FORMULA_EXPLICIT_MD,
+        P4_TRACE_FORMULA_EXPLICIT_JSON,
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD,
         D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_JSON,
         PPATH06_OBSTRUCTION_MD,

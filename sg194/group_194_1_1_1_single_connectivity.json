@@ -406,7 +406,43 @@
             "0"
           ],
           "point_id": "P1",
-          "capture_id": "P1"
+          "capture_id": "P1",
+          "incident_lines": [
+            "L1",
+            "L3",
+            "L4"
+          ],
+          "incident_planes": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S1",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S2",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S3",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
         },
         {
           "boundary_condition": "w = 1/2",
@@ -416,7 +452,73 @@
             "1/2"
           ],
           "point_id": "P2",
-          "capture_id": "P2"
+          "capture_id": "P2",
+          "incident_lines": [
+            "L1",
+            "L6",
+            "L7"
+          ],
+          "incident_planes": [
+            "S1",
+            "S3",
+            "S4"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S1",
+              "plane_coordinates": [
+                "0",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S3",
+              "plane_coordinates": [
+                "0",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S4",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
+        }
+      ],
+      "containing_planes": [
+        {
+          "plane_id": "S1",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        {
+          "plane_id": "S3",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
         }
       ]
     },
@@ -561,7 +663,23 @@
             "0"
           ],
           "point_id": "P3",
-          "capture_id": "P3"
+          "capture_id": "P3",
+          "incident_lines": [
+            "L2"
+          ],
+          "incident_planes": [
+            "S2"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S2",
+              "plane_coordinates": [
+                "1/3",
+                "1/3"
+              ],
+              "incidence_role": "interior_or_boundary_noncorner"
+            }
+          ]
         },
         {
           "boundary_condition": "w = 1/2",
@@ -571,9 +689,26 @@
             "1/2"
           ],
           "point_id": "P4",
-          "capture_id": "P4__1d3_1d3_1d2"
+          "capture_id": "P4__1d3_1d3_1d2",
+          "incident_lines": [
+            "L2"
+          ],
+          "incident_planes": [
+            "S4"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S4",
+              "plane_coordinates": [
+                "1/3",
+                "1/3"
+              ],
+              "incidence_role": "interior_or_boundary_noncorner"
+            }
+          ]
         }
-      ]
+      ],
+      "containing_planes": []
     },
     {
       "label": "i",
@@ -701,7 +836,43 @@
             "0"
           ],
           "point_id": "P1",
-          "capture_id": "P1"
+          "capture_id": "P1",
+          "incident_lines": [
+            "L1",
+            "L3",
+            "L4"
+          ],
+          "incident_planes": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S1",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S2",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S3",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
         },
         {
           "boundary_condition": "v = 1/2",
@@ -711,7 +882,62 @@
             "0"
           ],
           "point_id": "P5",
-          "capture_id": "P5__0_1d2_0"
+          "capture_id": "P5__0_1d2_0",
+          "incident_lines": [
+            "L3"
+          ],
+          "incident_planes": [
+            "S1",
+            "S2"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S1",
+              "plane_coordinates": [
+                "1/2",
+                "0"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S2",
+              "plane_coordinates": [
+                "0",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
+        }
+      ],
+      "containing_planes": [
+        {
+          "plane_id": "S1",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        },
+        {
+          "plane_id": "S2",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
         }
       ]
     },
@@ -843,7 +1069,43 @@
             "0"
           ],
           "point_id": "P1",
-          "capture_id": "P1"
+          "capture_id": "P1",
+          "incident_lines": [
+            "L1",
+            "L3",
+            "L4"
+          ],
+          "incident_planes": [
+            "S1",
+            "S2",
+            "S3"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S1",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S2",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S3",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
         },
         {
           "boundary_condition": "v = 1/2",
@@ -853,7 +1115,54 @@
             "0"
           ],
           "point_id": "P5",
-          "capture_id": "P5"
+          "capture_id": "P5",
+          "incident_lines": [
+            "L4",
+            "L5"
+          ],
+          "incident_planes": [
+            "S2"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S2",
+              "plane_coordinates": [
+                "1/2",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
+        }
+      ],
+      "containing_planes": [
+        {
+          "plane_id": "S2",
+          "incidence_role": "interior",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "-2"
+            ]
+          }
+        },
+        {
+          "plane_id": "S3",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
         }
       ]
     },
@@ -983,7 +1292,24 @@
             "0"
           ],
           "point_id": "P5",
-          "capture_id": "P5"
+          "capture_id": "P5",
+          "incident_lines": [
+            "L4",
+            "L5"
+          ],
+          "incident_planes": [
+            "S2"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S2",
+              "plane_coordinates": [
+                "1/2",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
         },
         {
           "boundary_condition": "w = 1/2",
@@ -993,9 +1319,27 @@
             "1/2"
           ],
           "point_id": "P6",
-          "capture_id": "P6"
+          "capture_id": "P6",
+          "incident_lines": [
+            "L5",
+            "L7"
+          ],
+          "incident_planes": [
+            "S4"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S4",
+              "plane_coordinates": [
+                "1/2",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
         }
-      ]
+      ],
+      "containing_planes": []
     },
     {
       "label": "l",
@@ -1123,7 +1467,43 @@
             "1/2"
           ],
           "point_id": "P2",
-          "capture_id": "P2"
+          "capture_id": "P2",
+          "incident_lines": [
+            "L1",
+            "L6",
+            "L7"
+          ],
+          "incident_planes": [
+            "S1",
+            "S3",
+            "S4"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S1",
+              "plane_coordinates": [
+                "0",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S3",
+              "plane_coordinates": [
+                "0",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S4",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
         },
         {
           "boundary_condition": "v = 1/2",
@@ -1133,7 +1513,62 @@
             "1/2"
           ],
           "point_id": "P6",
-          "capture_id": "P6__0_1d2_1d2"
+          "capture_id": "P6__0_1d2_1d2",
+          "incident_lines": [
+            "L6"
+          ],
+          "incident_planes": [
+            "S1",
+            "S4"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S1",
+              "plane_coordinates": [
+                "1/2",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S4",
+              "plane_coordinates": [
+                "0",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
+        }
+      ],
+      "containing_planes": [
+        {
+          "plane_id": "S1",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "1/2"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        },
+        {
+          "plane_id": "S4",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
         }
       ]
     },
@@ -1265,7 +1700,43 @@
             "1/2"
           ],
           "point_id": "P2",
-          "capture_id": "P2"
+          "capture_id": "P2",
+          "incident_lines": [
+            "L1",
+            "L6",
+            "L7"
+          ],
+          "incident_planes": [
+            "S1",
+            "S3",
+            "S4"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S1",
+              "plane_coordinates": [
+                "0",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S3",
+              "plane_coordinates": [
+                "0",
+                "1/2"
+              ],
+              "incidence_role": "corner"
+            },
+            {
+              "plane_id": "S4",
+              "plane_coordinates": [
+                "0",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
         },
         {
           "boundary_condition": "v = 1/2",
@@ -1275,7 +1746,54 @@
             "1/2"
           ],
           "point_id": "P6",
-          "capture_id": "P6"
+          "capture_id": "P6",
+          "incident_lines": [
+            "L5",
+            "L7"
+          ],
+          "incident_planes": [
+            "S4"
+          ],
+          "plane_incidences": [
+            {
+              "plane_id": "S4",
+              "plane_coordinates": [
+                "1/2",
+                "0"
+              ],
+              "incidence_role": "corner"
+            }
+          ]
+        }
+      ],
+      "containing_planes": [
+        {
+          "plane_id": "S3",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "1/2"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        },
+        {
+          "plane_id": "S4",
+          "incidence_role": "interior",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "-2"
+            ]
+          }
         }
       ]
     },
@@ -1672,7 +2190,55 @@
           },
           "line_id": "L6"
         }
-      ]
+      ],
+      "contained_special_lines": [
+        {
+          "plane_id": "S1",
+          "line_id": "L1",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        {
+          "plane_id": "S1",
+          "line_id": "L3",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        },
+        {
+          "plane_id": "S1",
+          "line_id": "L6",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "1/2"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        }
+      ],
+      "interior_special_lines": []
     },
     {
       "label": "o",
@@ -2104,6 +2670,55 @@
           },
           "line_id": null
         }
+      ],
+      "contained_special_lines": [
+        {
+          "plane_id": "S2",
+          "line_id": "L3",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        {
+          "plane_id": "S2",
+          "line_id": "L4",
+          "incidence_role": "interior",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "-2"
+            ]
+          }
+        }
+      ],
+      "interior_special_lines": [
+        {
+          "plane_id": "S2",
+          "line_id": "L4",
+          "incidence_role": "interior",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "-2"
+            ]
+          }
+        }
       ]
     },
     {
@@ -2501,7 +3116,55 @@
           },
           "line_id": "L7"
         }
-      ]
+      ],
+      "contained_special_lines": [
+        {
+          "plane_id": "S3",
+          "line_id": "L1",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        {
+          "plane_id": "S3",
+          "line_id": "L4",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        },
+        {
+          "plane_id": "S3",
+          "line_id": "L7",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "1/2"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        }
+      ],
+      "interior_special_lines": []
     },
     {
       "label": "q",
@@ -2933,6 +3596,55 @@
           },
           "line_id": null
         }
+      ],
+      "contained_special_lines": [
+        {
+          "plane_id": "S4",
+          "line_id": "L6",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
+        },
+        {
+          "plane_id": "S4",
+          "line_id": "L7",
+          "incidence_role": "interior",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "-2"
+            ]
+          }
+        }
+      ],
+      "interior_special_lines": [
+        {
+          "plane_id": "S4",
+          "line_id": "L7",
+          "incidence_role": "interior",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "-2"
+            ]
+          }
+        }
       ]
     }
   ],
@@ -3257,6 +3969,158 @@
       "plane_id": "S4",
       "boundary_condition": "v = 0",
       "derived_line": "(u, 0, 1/2)"
+    }
+  ],
+  "special_line_plane_incidences": [
+    {
+      "plane_id": "S1",
+      "line_id": "L1",
+      "incidence_role": "boundary",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "0"
+        ],
+        "direction_coords": [
+          "0",
+          "1"
+        ]
+      }
+    },
+    {
+      "plane_id": "S1",
+      "line_id": "L3",
+      "incidence_role": "boundary",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "0"
+        ],
+        "direction_coords": [
+          "1",
+          "0"
+        ]
+      }
+    },
+    {
+      "plane_id": "S1",
+      "line_id": "L6",
+      "incidence_role": "boundary",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "1/2"
+        ],
+        "direction_coords": [
+          "1",
+          "0"
+        ]
+      }
+    },
+    {
+      "plane_id": "S2",
+      "line_id": "L3",
+      "incidence_role": "boundary",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "0"
+        ],
+        "direction_coords": [
+          "0",
+          "1"
+        ]
+      }
+    },
+    {
+      "plane_id": "S2",
+      "line_id": "L4",
+      "incidence_role": "interior",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "0"
+        ],
+        "direction_coords": [
+          "1",
+          "-2"
+        ]
+      }
+    },
+    {
+      "plane_id": "S3",
+      "line_id": "L1",
+      "incidence_role": "boundary",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "0"
+        ],
+        "direction_coords": [
+          "0",
+          "1"
+        ]
+      }
+    },
+    {
+      "plane_id": "S3",
+      "line_id": "L4",
+      "incidence_role": "boundary",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "0"
+        ],
+        "direction_coords": [
+          "1",
+          "0"
+        ]
+      }
+    },
+    {
+      "plane_id": "S3",
+      "line_id": "L7",
+      "incidence_role": "boundary",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "1/2"
+        ],
+        "direction_coords": [
+          "1",
+          "0"
+        ]
+      }
+    },
+    {
+      "plane_id": "S4",
+      "line_id": "L6",
+      "incidence_role": "boundary",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "0"
+        ],
+        "direction_coords": [
+          "0",
+          "1"
+        ]
+      }
+    },
+    {
+      "plane_id": "S4",
+      "line_id": "L7",
+      "incidence_role": "interior",
+      "plane_coordinates": {
+        "anchor_coords": [
+          "0",
+          "0"
+        ],
+        "direction_coords": [
+          "1",
+          "-2"
+        ]
+      }
     }
   ],
   "unmatched_plane_boundaries": [

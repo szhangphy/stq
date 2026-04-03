@@ -324,7 +324,15 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
+        "imag": 0.0
+      },
+      {
+        "real": -0.0,
+        "imag": 0.0
+      },
+      {
+        "real": -0.0,
         "imag": 0.0
       },
       {
@@ -340,7 +348,15 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
+        "imag": 0.0
+      },
+      {
+        "real": -0.0,
+        "imag": 0.0
+      },
+      {
+        "real": -0.0,
         "imag": 0.0
       },
       {
@@ -356,7 +372,15 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
+        "imag": 0.0
+      },
+      {
+        "real": -0.0,
+        "imag": 0.0
+      },
+      {
+        "real": -0.0,
         "imag": 0.0
       },
       {
@@ -372,39 +396,15 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
-        "imag": 0.0
-      },
-      {
-        "real": 0.0,
-        "imag": 0.0
-      },
-      {
-        "real": 0.0,
-        "imag": 0.0
-      },
-      {
-        "real": 0.0,
-        "imag": 0.0
-      },
-      {
-        "real": 0.0,
-        "imag": 0.0
-      },
-      {
-        "real": 0.0,
-        "imag": 0.0
-      },
-      {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       }
     ],
@@ -484,27 +484,27 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       }
     ],
@@ -548,7 +548,7 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
@@ -556,7 +556,7 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
@@ -564,7 +564,7 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
@@ -572,7 +572,7 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       }
     ],
@@ -712,11 +712,11 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
@@ -734,11 +734,11 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       }
     ],
@@ -768,7 +768,7 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       }
     ],
@@ -778,7 +778,7 @@
         "imag": 0.0
       },
       {
-        "real": 0.0,
+        "real": -0.0,
         "imag": 0.0
       }
     ]
@@ -1164,7 +1164,7 @@
         "action": "scale_opposite_endpoint_multiplicity"
       }
     ],
-    "disabled_reason": "Removed from the published double minimal witness until the L2-derived phase-aware translation is proven legal on the reduced point/path shell.",
+    "disabled_reason": "Removed from the published double minimal witness until the L2-derived phase-aware translation is proven legal on the publication-level shell.",
     "source_profile": "phase_aware_point_row_translation_v1"
   }
 }

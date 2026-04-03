@@ -52,6 +52,25 @@
       "line_id": "L1",
       "basis_id": "L1_R1",
       "row_index_within_source": 0,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L1_R1",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         1,
@@ -102,6 +121,25 @@
       "line_id": "L1",
       "basis_id": "L1_R2",
       "row_index_within_source": 1,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L1_R2",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         1,
         0,
@@ -152,6 +190,25 @@
       "line_id": "L1",
       "basis_id": "L1_R3",
       "row_index_within_source": 2,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L1_R3",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -202,6 +259,25 @@
       "line_id": "L1",
       "basis_id": "L1_R4",
       "row_index_within_source": 3,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L1_R4",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -252,6 +328,25 @@
       "line_id": "L1",
       "basis_id": "L1_R5",
       "row_index_within_source": 4,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L1_R5",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -302,6 +397,25 @@
       "line_id": "L1",
       "basis_id": "L1_R6",
       "row_index_within_source": 5,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L1_R6",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -352,6 +466,25 @@
       "line_id": "L2",
       "basis_id": "L2_R1",
       "row_index_within_source": 0,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L2_R1",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -402,6 +535,25 @@
       "line_id": "L2",
       "basis_id": "L2_R2",
       "row_index_within_source": 1,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L2_R2",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -452,6 +604,25 @@
       "line_id": "L2",
       "basis_id": "L2_R3",
       "row_index_within_source": 2,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L2_R3",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -502,6 +673,43 @@
       "line_id": "L2",
       "basis_id": "L2_phase_aware_class_01",
       "row_index_within_source": 3,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L2_phase_aware_class_01",
+        "phase_aware_refinement": true,
+        "restriction_class_rep_ids": [
+          "P3_R1",
+          "P3_R4"
+        ],
+        "selected_endpoint_id": "P3",
+        "builder_variant": "coarse",
+        "row_kind": "phase_aware_endpoint_class",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [
+          "P3_R1",
+          "P3_R4"
+        ],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "phase_aware_refinement": true,
+      "restriction_class_rep_ids": [
+        "P3_R1",
+        "P3_R4"
+      ],
+      "selected_endpoint_id": "P3",
+      "row_kind": "phase_aware_endpoint_class",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [
+        "P3_R1",
+        "P3_R4"
+      ],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -552,6 +760,43 @@
       "line_id": "L2",
       "basis_id": "L2_phase_aware_class_02",
       "row_index_within_source": 4,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L2_phase_aware_class_02",
+        "phase_aware_refinement": true,
+        "restriction_class_rep_ids": [
+          "P3_R2",
+          "P3_R3"
+        ],
+        "selected_endpoint_id": "P3",
+        "builder_variant": "coarse",
+        "row_kind": "phase_aware_endpoint_class",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [
+          "P3_R2",
+          "P3_R3"
+        ],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "phase_aware_refinement": true,
+      "restriction_class_rep_ids": [
+        "P3_R2",
+        "P3_R3"
+      ],
+      "selected_endpoint_id": "P3",
+      "row_kind": "phase_aware_endpoint_class",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [
+        "P3_R2",
+        "P3_R3"
+      ],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -602,6 +847,43 @@
       "line_id": "L2",
       "basis_id": "L2_phase_aware_class_03",
       "row_index_within_source": 5,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L2_phase_aware_class_03",
+        "phase_aware_refinement": true,
+        "restriction_class_rep_ids": [
+          "P3_R5",
+          "P3_R6"
+        ],
+        "selected_endpoint_id": "P3",
+        "builder_variant": "coarse",
+        "row_kind": "phase_aware_endpoint_class",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [
+          "P3_R5",
+          "P3_R6"
+        ],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "phase_aware_refinement": true,
+      "restriction_class_rep_ids": [
+        "P3_R5",
+        "P3_R6"
+      ],
+      "selected_endpoint_id": "P3",
+      "row_kind": "phase_aware_endpoint_class",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [
+        "P3_R5",
+        "P3_R6"
+      ],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -652,6 +934,25 @@
       "line_id": "L3",
       "basis_id": "L3_R1",
       "row_index_within_source": 0,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L3_R1",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -702,6 +1003,25 @@
       "line_id": "L3",
       "basis_id": "L3_R2",
       "row_index_within_source": 1,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L3_R2",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -752,6 +1072,25 @@
       "line_id": "L3",
       "basis_id": "L3_R3",
       "row_index_within_source": 2,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L3_R3",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         1,
@@ -802,6 +1141,25 @@
       "line_id": "L3",
       "basis_id": "L3_R4",
       "row_index_within_source": 3,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L3_R4",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         1,
         0,
@@ -852,6 +1210,25 @@
       "line_id": "L4",
       "basis_id": "L4_R1",
       "row_index_within_source": 0,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L4_R1",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         1,
@@ -902,6 +1279,25 @@
       "line_id": "L4",
       "basis_id": "L4_R2",
       "row_index_within_source": 1,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L4_R2",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         1,
         0,
@@ -952,6 +1348,25 @@
       "line_id": "L4",
       "basis_id": "L4_R3",
       "row_index_within_source": 2,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L4_R3",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1002,6 +1417,25 @@
       "line_id": "L4",
       "basis_id": "L4_R4",
       "row_index_within_source": 3,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L4_R4",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1052,6 +1486,25 @@
       "line_id": "L5",
       "basis_id": "L5_R1",
       "row_index_within_source": 0,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L5_R1",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1102,6 +1555,25 @@
       "line_id": "L5",
       "basis_id": "L5_R2",
       "row_index_within_source": 1,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L5_R2",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1152,6 +1624,25 @@
       "line_id": "L5",
       "basis_id": "L5_R3",
       "row_index_within_source": 2,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L5_R3",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1202,6 +1693,25 @@
       "line_id": "L5",
       "basis_id": "L5_R4",
       "row_index_within_source": 3,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L5_R4",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1252,6 +1762,25 @@
       "line_id": "L6",
       "basis_id": "L6_R1",
       "row_index_within_source": 0,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L6_R1",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1302,6 +1831,25 @@
       "line_id": "L6",
       "basis_id": "L6_R2",
       "row_index_within_source": 1,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L6_R2",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1352,6 +1900,25 @@
       "line_id": "L6",
       "basis_id": "L6_R3",
       "row_index_within_source": 2,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L6_R3",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1402,6 +1969,25 @@
       "line_id": "L6",
       "basis_id": "L6_R4",
       "row_index_within_source": 3,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L6_R4",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1452,6 +2038,25 @@
       "line_id": "L7",
       "basis_id": "L7_R1",
       "row_index_within_source": 0,
+      "builder_variant": "coarse",
+      "equation_metadata": {
+        "basis_id": "L7_R1",
+        "builder_variant": "coarse",
+        "row_kind": "line_basis_decomposition",
+        "uses_extrinsic_data": false,
+        "endpoint_support": {},
+        "class_members": [],
+        "intrinsic_fingerprint_by_rep": {},
+        "extrinsic_fingerprint_by_rep": {},
+        "coarse_signature_by_rep": {}
+      },
+      "row_kind": "line_basis_decomposition",
+      "uses_extrinsic_data": false,
+      "endpoint_support": {},
+      "class_members": [],
+      "intrinsic_fingerprint_by_rep": {},
+      "extrinsic_fingerprint_by_rep": {},
+      "coarse_signature_by_rep": {},
       "matrix_row": [
         0,
         0,
@@ -1503,6 +2108,10 @@
       "point_id": "P1",
       "basis_id": "S1_R1",
       "row_index_within_source": 0,
+      "equation_metadata": {
+        "point_id": "P1",
+        "basis_id": "S1_R1"
+      },
       "matrix_row": [
         0,
         1,
@@ -1554,6 +2163,10 @@
       "point_id": "P1",
       "basis_id": "S1_R2",
       "row_index_within_source": 1,
+      "equation_metadata": {
+        "point_id": "P1",
+        "basis_id": "S1_R2"
+      },
       "matrix_row": [
         1,
         0,
@@ -1605,6 +2218,10 @@
       "point_id": "P2",
       "basis_id": "S1_R1",
       "row_index_within_source": 2,
+      "equation_metadata": {
+        "point_id": "P2",
+        "basis_id": "S1_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -1656,6 +2273,10 @@
       "point_id": "P2",
       "basis_id": "S1_R2",
       "row_index_within_source": 3,
+      "equation_metadata": {
+        "point_id": "P2",
+        "basis_id": "S1_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -1707,6 +2328,10 @@
       "point_id": "P5",
       "basis_id": "S1_R1",
       "row_index_within_source": 4,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S1_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -1758,6 +2383,10 @@
       "point_id": "P5",
       "basis_id": "S1_R2",
       "row_index_within_source": 5,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S1_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -1809,6 +2438,10 @@
       "point_id": "P6",
       "basis_id": "S1_R1",
       "row_index_within_source": 6,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S1_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -1860,6 +2493,10 @@
       "point_id": "P6",
       "basis_id": "S1_R2",
       "row_index_within_source": 7,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S1_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -1911,6 +2548,10 @@
       "point_id": "P1",
       "basis_id": "S2_R1",
       "row_index_within_source": 0,
+      "equation_metadata": {
+        "point_id": "P1",
+        "basis_id": "S2_R1"
+      },
       "matrix_row": [
         0,
         1,
@@ -1962,6 +2603,10 @@
       "point_id": "P1",
       "basis_id": "S2_R2",
       "row_index_within_source": 1,
+      "equation_metadata": {
+        "point_id": "P1",
+        "basis_id": "S2_R2"
+      },
       "matrix_row": [
         1,
         0,
@@ -2013,6 +2658,10 @@
       "point_id": "P5",
       "basis_id": "S2_R1",
       "row_index_within_source": 2,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S2_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2064,6 +2713,10 @@
       "point_id": "P5",
       "basis_id": "S2_R2",
       "row_index_within_source": 3,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S2_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -2115,6 +2768,10 @@
       "point_id": "P5",
       "basis_id": "S2_R1",
       "row_index_within_source": 4,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S2_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2166,6 +2823,10 @@
       "point_id": "P5",
       "basis_id": "S2_R2",
       "row_index_within_source": 5,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S2_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -2217,6 +2878,10 @@
       "point_id": "P5",
       "basis_id": "S2_R1",
       "row_index_within_source": 6,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S2_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2268,6 +2933,10 @@
       "point_id": "P5",
       "basis_id": "S2_R2",
       "row_index_within_source": 7,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S2_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -2319,6 +2988,10 @@
       "point_id": "P1",
       "basis_id": "S3_R1",
       "row_index_within_source": 0,
+      "equation_metadata": {
+        "point_id": "P1",
+        "basis_id": "S3_R1"
+      },
       "matrix_row": [
         1,
         0,
@@ -2370,6 +3043,10 @@
       "point_id": "P1",
       "basis_id": "S3_R2",
       "row_index_within_source": 1,
+      "equation_metadata": {
+        "point_id": "P1",
+        "basis_id": "S3_R2"
+      },
       "matrix_row": [
         0,
         1,
@@ -2421,6 +3098,10 @@
       "point_id": "P2",
       "basis_id": "S3_R1",
       "row_index_within_source": 2,
+      "equation_metadata": {
+        "point_id": "P2",
+        "basis_id": "S3_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2472,6 +3153,10 @@
       "point_id": "P2",
       "basis_id": "S3_R2",
       "row_index_within_source": 3,
+      "equation_metadata": {
+        "point_id": "P2",
+        "basis_id": "S3_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -2523,6 +3208,10 @@
       "point_id": "P5",
       "basis_id": "S3_R1",
       "row_index_within_source": 4,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S3_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2574,6 +3263,10 @@
       "point_id": "P5",
       "basis_id": "S3_R2",
       "row_index_within_source": 5,
+      "equation_metadata": {
+        "point_id": "P5",
+        "basis_id": "S3_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -2625,6 +3318,10 @@
       "point_id": "P6",
       "basis_id": "S3_R1",
       "row_index_within_source": 6,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S3_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2676,6 +3373,10 @@
       "point_id": "P6",
       "basis_id": "S3_R2",
       "row_index_within_source": 7,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S3_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -2727,6 +3428,10 @@
       "point_id": "P2",
       "basis_id": "S4_R1",
       "row_index_within_source": 0,
+      "equation_metadata": {
+        "point_id": "P2",
+        "basis_id": "S4_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2778,6 +3483,10 @@
       "point_id": "P2",
       "basis_id": "S4_R2",
       "row_index_within_source": 1,
+      "equation_metadata": {
+        "point_id": "P2",
+        "basis_id": "S4_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -2829,6 +3538,10 @@
       "point_id": "P6",
       "basis_id": "S4_R1",
       "row_index_within_source": 2,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S4_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2880,6 +3593,10 @@
       "point_id": "P6",
       "basis_id": "S4_R2",
       "row_index_within_source": 3,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S4_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -2931,6 +3648,10 @@
       "point_id": "P6",
       "basis_id": "S4_R1",
       "row_index_within_source": 4,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S4_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -2982,6 +3703,10 @@
       "point_id": "P6",
       "basis_id": "S4_R2",
       "row_index_within_source": 5,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S4_R2"
+      },
       "matrix_row": [
         0,
         0,
@@ -3033,6 +3758,10 @@
       "point_id": "P6",
       "basis_id": "S4_R1",
       "row_index_within_source": 6,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S4_R1"
+      },
       "matrix_row": [
         0,
         0,
@@ -3084,6 +3813,10 @@
       "point_id": "P6",
       "basis_id": "S4_R2",
       "row_index_within_source": 7,
+      "equation_metadata": {
+        "point_id": "P6",
+        "basis_id": "S4_R2"
+      },
       "matrix_row": [
         0,
         0,

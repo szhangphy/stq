@@ -2,8 +2,8 @@
   "ai_status": "partial_ai_lattice",
   "object_language": "publication_level_C_pub_34_unknowns",
   "unknown_count": 34,
-  "generator_count": 10,
-  "rank_trivial_family_span": 10,
+  "generator_count": 12,
+  "rank_trivial_family_span": 12,
   "compatibility_zero_count": 4,
   "compatibility_zero_family_letters": [
     "l",
@@ -16,6 +16,8 @@
     "i",
     "h",
     "g",
+    "d",
+    "c",
     "b",
     "a"
   ],
@@ -38,21 +40,10 @@
   ],
   "missing_prerequisites": [
     "published-shell induction beyond the currently verified compatibility-zero subset is not yet closed on the current publication shell",
-    "validated non-abelian local irrep/corep libraries are wired into the builder, but P4 induction failures and the PPATH06 residual obstruction still block a full AI lattice",
+    "validated non-abelian local irrep/corep libraries are wired into the builder, the earlier P4 induction failures are cleared by the manifold character-field conversion patch, but the PPATH06 residual obstruction still blocks a full AI lattice",
     "AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis"
   ],
   "honest_ai_lattice_ready": false,
-  "generator_failure_count": 2,
-  "generator_failures": [
-    {
-      "family_letter": "d",
-      "generator_id": "d_trivial",
-      "error": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.4999999999999999+0.5000000000000001j), (0.4999999999999999-0.4999999999999997j), (5.551115123125783e-17+5.551115123125783e-17j)])"
-    },
-    {
-      "family_letter": "c",
-      "generator_id": "c_trivial",
-      "error": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.4999999999999999-0.5000000000000001j), (0.4999999999999999+0.4999999999999997j), (5.551115123125783e-17-5.551115123125783e-17j)])"
-    }
-  ]
+  "generator_failure_count": 0,
+  "generator_failures": []
 }

@@ -3,11 +3,11 @@
   "candidate_translation_enabled": true,
   "published_translation_profile": "legacy",
   "published_translation_enabled": false,
-  "generator_count": 10,
+  "generator_count": 12,
   "raw_compatibility_zero_count": 4,
   "translated_compatibility_zero_count": 0,
   "improved_count": 0,
-  "worsened_count": 10,
+  "worsened_count": 12,
   "unchanged_count": 0,
   "legality_status": "removed",
   "legality_reason": "phase-aware point-row translation is retired on the published final reduced point/path shell because the translated seed does not dominate the raw seed mechanically on the regenerated compatibility object.",
@@ -143,6 +143,36 @@
       ]
     },
     {
+      "family_letter": "d",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 1,
+      "translated_residual_norm": 3,
+      "raw_nonzero_rows": [
+        24
+      ],
+      "translated_nonzero_rows": [
+        6,
+        8,
+        16
+      ]
+    },
+    {
+      "family_letter": "c",
+      "raw_compatibility_zero": false,
+      "translated_compatibility_zero": false,
+      "raw_residual_norm": 1,
+      "translated_residual_norm": 3,
+      "raw_nonzero_rows": [
+        24
+      ],
+      "translated_nonzero_rows": [
+        6,
+        8,
+        16
+      ]
+    },
+    {
       "family_letter": "b",
       "raw_compatibility_zero": false,
       "translated_compatibility_zero": false,
@@ -175,17 +205,6 @@
       ]
     }
   ],
-  "probe_failure_count": 2,
-  "probe_failures": [
-    {
-      "family_letter": "d",
-      "generator_id": "d_trivial",
-      "error": "d on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in d on P4 [character]: [(0.4999999999999999+0.5000000000000001j), (0.4999999999999999-0.4999999999999997j), (5.551115123125783e-17+5.551115123125783e-17j)])"
-    },
-    {
-      "family_letter": "c",
-      "generator_id": "c_trivial",
-      "error": "c on P4: non-integral multiplicities (numeric_solver=non-integral numeric decomposition in c on P4 [character]: [(0.4999999999999999-0.5000000000000001j), (0.4999999999999999+0.4999999999999997j), (5.551115123125783e-17-5.551115123125783e-17j)])"
-    }
-  ]
+  "probe_failure_count": 0,
+  "probe_failures": []
 }

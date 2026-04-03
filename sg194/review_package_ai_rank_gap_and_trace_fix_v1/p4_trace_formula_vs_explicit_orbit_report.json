@@ -1,0 +1,377 @@
+{
+  "manifold_id": "P4",
+  "compared_generator_ids": [
+    "b_A1'",
+    "c_A1'",
+    "d_A1'"
+  ],
+  "records": [
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "legacy_formula_uses_raw_orbit_representatives": true,
+      "explicit_trace_uses_canonical_reduced_orbit_representatives": true,
+      "legacy_canonical_orbit_coordinates": null,
+      "explicit_canonical_orbit_coordinates": [
+        [
+          "0",
+          "0",
+          "1/4"
+        ],
+        [
+          "0",
+          "0",
+          "3/4"
+        ]
+      ],
+      "differing_ops": [],
+      "legacy_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ]
+    },
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "legacy_formula_uses_raw_orbit_representatives": true,
+      "explicit_trace_uses_canonical_reduced_orbit_representatives": true,
+      "legacy_canonical_orbit_coordinates": null,
+      "explicit_canonical_orbit_coordinates": [
+        [
+          "1/3",
+          "2/3",
+          "1/4"
+        ],
+        [
+          "2/3",
+          "1/3",
+          "3/4"
+        ]
+      ],
+      "differing_ops": [],
+      "legacy_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "legacy_formula_uses_raw_orbit_representatives": true,
+      "explicit_trace_uses_canonical_reduced_orbit_representatives": true,
+      "legacy_canonical_orbit_coordinates": null,
+      "explicit_canonical_orbit_coordinates": [
+        [
+          "1/3",
+          "2/3",
+          "3/4"
+        ],
+        [
+          "2/3",
+          "1/3",
+          "1/4"
+        ]
+      ],
+      "differing_ops": [],
+      "legacy_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": -0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "explicit_band_character_json": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ]
+    }
+  ],
+  "first_failure_mismatch": null,
+  "resolved_by_character_field_conversion": true,
+  "bug_localized_to_stage": "manifold_character_field_conversion: convert the assembled linear band trace to the selected character field by dividing by exp(-i k\u00b7tauC(op)) on each unitary operation",
+  "summary": "Legacy formula trace and explicit orbit-action trace agree on the audited P4 objects after canonical orbit reduction, so the earlier c/d induction failure is not caused by target-site matching or explicit-orbit trace assembly. The repaired bug sits one stage later, when the assembled linear band trace must be converted into the selected `character` field using the operation translation phase."
+}
