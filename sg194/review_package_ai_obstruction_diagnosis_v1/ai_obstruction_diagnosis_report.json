@@ -1,0 +1,3136 @@
+{
+  "mode": "single",
+  "published_object_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
+  "row_language_full_span_pass": true,
+  "bilbao_equivalent_final_object_pass": false,
+  "selected_path_count": 8,
+  "unique_endpoint_pair_count": 7,
+  "actual_path_pairs": [
+    [
+      "P1",
+      "P2"
+    ],
+    [
+      "P1",
+      "P3"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P2",
+      "P4"
+    ],
+    [
+      "P2",
+      "P6"
+    ],
+    [
+      "P3",
+      "P4"
+    ],
+    [
+      "P5",
+      "P6"
+    ]
+  ],
+  "augmentation_path_ids": [
+    "FPATH04"
+  ],
+  "augmentation_row_indices": [
+    14,
+    15,
+    16,
+    17
+  ],
+  "shell_matrix_shapes": {
+    "raw42": [
+      61,
+      42
+    ],
+    "skeleton7": [
+      29,
+      34
+    ],
+    "published8": [
+      33,
+      34
+    ]
+  },
+  "candidate_counts": {
+    "raw42_success": 45,
+    "raw42_failures": 0,
+    "skeleton7_success": 45,
+    "skeleton7_failures": 0,
+    "published8_success": 45,
+    "published8_failures": 0
+  },
+  "compatibility_zero_counts": {
+    "raw42": 11,
+    "skeleton7": 11,
+    "published8": 11
+  },
+  "classification_counts": {
+    "fails_on_raw42": 34,
+    "compatible_on_published8": 11
+  },
+  "family_counts_by_classification": {
+    "compatible_on_published8": {
+      "a": 2,
+      "e": 3,
+      "f": 3,
+      "j": 2,
+      "l": 1
+    },
+    "fails_on_raw42": {
+      "a": 4,
+      "b": 6,
+      "c": 6,
+      "d": 6,
+      "g": 4,
+      "h": 4,
+      "i": 2,
+      "k": 2
+    }
+  },
+  "published_fail_path_histogram": {
+    "FPATH07": 68
+  },
+  "published_fail_row_histogram": {
+    "26": 24,
+    "27": 24,
+    "28": 20
+  },
+  "generator_records": [
+    {
+      "generator_id": "a_A1g",
+      "family_id": "a",
+      "local_object_label": "A1g",
+      "site_symmetry_type_key": "D3d_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A1g",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A1g",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A1g",
+        "site_symmetry_type_key": "D3d_like"
+      }
+    },
+    {
+      "generator_id": "a_A1u",
+      "family_id": "a",
+      "local_object_label": "A1u",
+      "site_symmetry_type_key": "D3d_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A1u",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A1u",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A1u",
+        "site_symmetry_type_key": "D3d_like"
+      }
+    },
+    {
+      "generator_id": "a_A2g",
+      "family_id": "a",
+      "local_object_label": "A2g",
+      "site_symmetry_type_key": "D3d_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A2g",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A2g",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A2g",
+        "site_symmetry_type_key": "D3d_like"
+      }
+    },
+    {
+      "generator_id": "a_A2u",
+      "family_id": "a",
+      "local_object_label": "A2u",
+      "site_symmetry_type_key": "D3d_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A2u",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A2u",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "A2u",
+        "site_symmetry_type_key": "D3d_like"
+      }
+    },
+    {
+      "generator_id": "a_Eg",
+      "family_id": "a",
+      "local_object_label": "Eg",
+      "site_symmetry_type_key": "D3d_like",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "Eg",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "Eg",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "Eg",
+        "site_symmetry_type_key": "D3d_like"
+      }
+    },
+    {
+      "generator_id": "a_Eu",
+      "family_id": "a",
+      "local_object_label": "Eu",
+      "site_symmetry_type_key": "D3d_like",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "Eu",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "Eu",
+        "site_symmetry_type_key": "D3d_like"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "a",
+        "local_object_label": "Eu",
+        "site_symmetry_type_key": "D3d_like"
+      }
+    },
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "b_A1''",
+      "family_id": "b",
+      "local_object_label": "A1''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "b_A2'",
+      "family_id": "b",
+      "local_object_label": "A2'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "b_A2''",
+      "family_id": "b",
+      "local_object_label": "A2''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "b_E'",
+      "family_id": "b",
+      "local_object_label": "E'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "b_E''",
+      "family_id": "b",
+      "local_object_label": "E''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "b",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "c_A1''",
+      "family_id": "c",
+      "local_object_label": "A1''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "c_A2'",
+      "family_id": "c",
+      "local_object_label": "A2'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "c_A2''",
+      "family_id": "c",
+      "local_object_label": "A2''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "c_E'",
+      "family_id": "c",
+      "local_object_label": "E'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          },
+          {
+            "row_index": 11,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          },
+          {
+            "row_index": 24,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          },
+          {
+            "row_index": 28,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "c_E''",
+      "family_id": "c",
+      "local_object_label": "E''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          },
+          {
+            "row_index": 11,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          },
+          {
+            "row_index": 24,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          },
+          {
+            "row_index": 28,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "c",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A1'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "d_A1''",
+      "family_id": "d",
+      "local_object_label": "A1''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A1''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "d_A2'",
+      "family_id": "d",
+      "local_object_label": "A2'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A2'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "d_A2''",
+      "family_id": "d",
+      "local_object_label": "A2''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 11,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 24,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 1,
+        "nonzero_rows": [
+          {
+            "row_index": 28,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "A2''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "d_E'",
+      "family_id": "d",
+      "local_object_label": "E'",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          },
+          {
+            "row_index": 11,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          },
+          {
+            "row_index": 24,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          },
+          {
+            "row_index": 28,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "E'",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "d_E''",
+      "family_id": "d",
+      "local_object_label": "E''",
+      "site_symmetry_type_key": "D3h_like",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          },
+          {
+            "row_index": 11,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          },
+          {
+            "row_index": 24,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 3,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          },
+          {
+            "row_index": 28,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "d",
+        "local_object_label": "E''",
+        "site_symmetry_type_key": "D3h_like"
+      }
+    },
+    {
+      "generator_id": "e_A1",
+      "family_id": "e",
+      "local_object_label": "A1",
+      "site_symmetry_type_key": "C3v",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C3v"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C3v"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C3v"
+      }
+    },
+    {
+      "generator_id": "e_A2",
+      "family_id": "e",
+      "local_object_label": "A2",
+      "site_symmetry_type_key": "C3v",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C3v"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C3v"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C3v"
+      }
+    },
+    {
+      "generator_id": "e_E",
+      "family_id": "e",
+      "local_object_label": "E",
+      "site_symmetry_type_key": "C3v",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "E",
+        "site_symmetry_type_key": "C3v"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "E",
+        "site_symmetry_type_key": "C3v"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "e",
+        "local_object_label": "E",
+        "site_symmetry_type_key": "C3v"
+      }
+    },
+    {
+      "generator_id": "f_A1",
+      "family_id": "f",
+      "local_object_label": "A1",
+      "site_symmetry_type_key": "C3v",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C3v"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C3v"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C3v"
+      }
+    },
+    {
+      "generator_id": "f_A2",
+      "family_id": "f",
+      "local_object_label": "A2",
+      "site_symmetry_type_key": "C3v",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C3v"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C3v"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C3v"
+      }
+    },
+    {
+      "generator_id": "f_E",
+      "family_id": "f",
+      "local_object_label": "E",
+      "site_symmetry_type_key": "C3v",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "E",
+        "site_symmetry_type_key": "C3v"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "E",
+        "site_symmetry_type_key": "C3v"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "f",
+        "local_object_label": "E",
+        "site_symmetry_type_key": "C3v"
+      }
+    },
+    {
+      "generator_id": "g_Ag",
+      "family_id": "g",
+      "local_object_label": "Ag",
+      "site_symmetry_type_key": "C2h",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Ag",
+        "site_symmetry_type_key": "C2h"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Ag",
+        "site_symmetry_type_key": "C2h"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Ag",
+        "site_symmetry_type_key": "C2h"
+      }
+    },
+    {
+      "generator_id": "g_Au",
+      "family_id": "g",
+      "local_object_label": "Au",
+      "site_symmetry_type_key": "C2h",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Au",
+        "site_symmetry_type_key": "C2h"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Au",
+        "site_symmetry_type_key": "C2h"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Au",
+        "site_symmetry_type_key": "C2h"
+      }
+    },
+    {
+      "generator_id": "g_Bg",
+      "family_id": "g",
+      "local_object_label": "Bg",
+      "site_symmetry_type_key": "C2h",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Bg",
+        "site_symmetry_type_key": "C2h"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Bg",
+        "site_symmetry_type_key": "C2h"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Bg",
+        "site_symmetry_type_key": "C2h"
+      }
+    },
+    {
+      "generator_id": "g_Bu",
+      "family_id": "g",
+      "local_object_label": "Bu",
+      "site_symmetry_type_key": "C2h",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Bu",
+        "site_symmetry_type_key": "C2h"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Bu",
+        "site_symmetry_type_key": "C2h"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 2,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "g",
+        "local_object_label": "Bu",
+        "site_symmetry_type_key": "C2h"
+      }
+    },
+    {
+      "generator_id": "h_A1",
+      "family_id": "h",
+      "local_object_label": "A1",
+      "site_symmetry_type_key": "C2v",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          },
+          {
+            "row_index": 11,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C2v"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          },
+          {
+            "row_index": 24,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C2v"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          },
+          {
+            "row_index": 28,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "A1",
+        "site_symmetry_type_key": "C2v"
+      }
+    },
+    {
+      "generator_id": "h_A2",
+      "family_id": "h",
+      "local_object_label": "A2",
+      "site_symmetry_type_key": "C2v",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          },
+          {
+            "row_index": 11,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C2v"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          },
+          {
+            "row_index": 24,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C2v"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          },
+          {
+            "row_index": 28,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "A2",
+        "site_symmetry_type_key": "C2v"
+      }
+    },
+    {
+      "generator_id": "h_B1",
+      "family_id": "h",
+      "local_object_label": "B1",
+      "site_symmetry_type_key": "C2v",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -1
+          },
+          {
+            "row_index": 10,
+            "residual": 1
+          },
+          {
+            "row_index": 11,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "B1",
+        "site_symmetry_type_key": "C2v"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -1
+          },
+          {
+            "row_index": 23,
+            "residual": 1
+          },
+          {
+            "row_index": 24,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "B1",
+        "site_symmetry_type_key": "C2v"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -1
+          },
+          {
+            "row_index": 27,
+            "residual": 1
+          },
+          {
+            "row_index": 28,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "B1",
+        "site_symmetry_type_key": "C2v"
+      }
+    },
+    {
+      "generator_id": "h_B2",
+      "family_id": "h",
+      "local_object_label": "B2",
+      "site_symmetry_type_key": "C2v",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 1
+          },
+          {
+            "row_index": 10,
+            "residual": -1
+          },
+          {
+            "row_index": 11,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "B2",
+        "site_symmetry_type_key": "C2v"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 1
+          },
+          {
+            "row_index": 23,
+            "residual": -1
+          },
+          {
+            "row_index": 24,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "B2",
+        "site_symmetry_type_key": "C2v"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 1
+          },
+          {
+            "row_index": 27,
+            "residual": -1
+          },
+          {
+            "row_index": 28,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "h",
+        "local_object_label": "B2",
+        "site_symmetry_type_key": "C2v"
+      }
+    },
+    {
+      "generator_id": "i_A",
+      "family_id": "i",
+      "local_object_label": "A",
+      "site_symmetry_type_key": "C2",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -2
+          },
+          {
+            "row_index": 10,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "i",
+        "local_object_label": "A",
+        "site_symmetry_type_key": "C2"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -2
+          },
+          {
+            "row_index": 23,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "i",
+        "local_object_label": "A",
+        "site_symmetry_type_key": "C2"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -2
+          },
+          {
+            "row_index": 27,
+            "residual": -2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "i",
+        "local_object_label": "A",
+        "site_symmetry_type_key": "C2"
+      }
+    },
+    {
+      "generator_id": "i_B",
+      "family_id": "i",
+      "local_object_label": "B",
+      "site_symmetry_type_key": "C2",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 2
+          },
+          {
+            "row_index": 10,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "i",
+        "local_object_label": "B",
+        "site_symmetry_type_key": "C2"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 2
+          },
+          {
+            "row_index": 23,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "i",
+        "local_object_label": "B",
+        "site_symmetry_type_key": "C2"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 4,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 2
+          },
+          {
+            "row_index": 27,
+            "residual": 2
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "i",
+        "local_object_label": "B",
+        "site_symmetry_type_key": "C2"
+      }
+    },
+    {
+      "generator_id": "j_A'",
+      "family_id": "j",
+      "local_object_label": "A'",
+      "site_symmetry_type_key": "Cs",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "j",
+        "local_object_label": "A'",
+        "site_symmetry_type_key": "Cs"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "j",
+        "local_object_label": "A'",
+        "site_symmetry_type_key": "Cs"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "j",
+        "local_object_label": "A'",
+        "site_symmetry_type_key": "Cs"
+      }
+    },
+    {
+      "generator_id": "j_A''",
+      "family_id": "j",
+      "local_object_label": "A''",
+      "site_symmetry_type_key": "Cs",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "j",
+        "local_object_label": "A''",
+        "site_symmetry_type_key": "Cs"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "j",
+        "local_object_label": "A''",
+        "site_symmetry_type_key": "Cs"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "j",
+        "local_object_label": "A''",
+        "site_symmetry_type_key": "Cs"
+      }
+    },
+    {
+      "generator_id": "k_A'",
+      "family_id": "k",
+      "local_object_label": "A'",
+      "site_symmetry_type_key": "Cs",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 8,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": -2
+          },
+          {
+            "row_index": 10,
+            "residual": 2
+          },
+          {
+            "row_index": 11,
+            "residual": -4
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "k",
+        "local_object_label": "A'",
+        "site_symmetry_type_key": "Cs"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 8,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": -2
+          },
+          {
+            "row_index": 23,
+            "residual": 2
+          },
+          {
+            "row_index": 24,
+            "residual": -4
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "k",
+        "local_object_label": "A'",
+        "site_symmetry_type_key": "Cs"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 8,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": -2
+          },
+          {
+            "row_index": 27,
+            "residual": 2
+          },
+          {
+            "row_index": 28,
+            "residual": -4
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "k",
+        "local_object_label": "A'",
+        "site_symmetry_type_key": "Cs"
+      }
+    },
+    {
+      "generator_id": "k_A''",
+      "family_id": "k",
+      "local_object_label": "A''",
+      "site_symmetry_type_key": "Cs",
+      "classification": "fails_on_raw42",
+      "raw42": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 8,
+        "nonzero_rows": [
+          {
+            "row_index": 9,
+            "residual": 2
+          },
+          {
+            "row_index": 10,
+            "residual": -2
+          },
+          {
+            "row_index": 11,
+            "residual": 4
+          }
+        ],
+        "nonzero_path_ids": [
+          "L2",
+          "L2",
+          "L2"
+        ],
+        "error": null,
+        "family_id": "k",
+        "local_object_label": "A''",
+        "site_symmetry_type_key": "Cs"
+      },
+      "skeleton7": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 8,
+        "nonzero_rows": [
+          {
+            "row_index": 22,
+            "residual": 2
+          },
+          {
+            "row_index": 23,
+            "residual": -2
+          },
+          {
+            "row_index": 24,
+            "residual": 4
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "k",
+        "local_object_label": "A''",
+        "site_symmetry_type_key": "Cs"
+      },
+      "published8": {
+        "status": "nonzero_residual",
+        "compatibility_zero": false,
+        "compatibility_residual_norm": 8,
+        "nonzero_rows": [
+          {
+            "row_index": 26,
+            "residual": 2
+          },
+          {
+            "row_index": 27,
+            "residual": -2
+          },
+          {
+            "row_index": 28,
+            "residual": 4
+          }
+        ],
+        "nonzero_path_ids": [
+          "FPATH07",
+          "FPATH07",
+          "FPATH07"
+        ],
+        "error": null,
+        "family_id": "k",
+        "local_object_label": "A''",
+        "site_symmetry_type_key": "Cs"
+      }
+    },
+    {
+      "generator_id": "l_A",
+      "family_id": "l",
+      "local_object_label": "A",
+      "site_symmetry_type_key": "C1",
+      "classification": "compatible_on_published8",
+      "raw42": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "l",
+        "local_object_label": "A",
+        "site_symmetry_type_key": "C1"
+      },
+      "skeleton7": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "l",
+        "local_object_label": "A",
+        "site_symmetry_type_key": "C1"
+      },
+      "published8": {
+        "status": "compatible",
+        "compatibility_zero": true,
+        "compatibility_residual_norm": 0,
+        "nonzero_rows": [],
+        "nonzero_path_ids": [],
+        "error": null,
+        "family_id": "l",
+        "local_object_label": "A",
+        "site_symmetry_type_key": "C1"
+      }
+    }
+  ],
+  "obstruction_summary": "34 candidates already fail on the diagnostic raw42 shell before any 7-path or 8-path reduction is applied. The extra 8th path is not the dominant single-AI obstruction. No candidate fails first on the reduced 7-path skeleton before the 8th path is added. On the published shell the nonzero residual rows concentrate on path histogram {'FPATH07': 68}."
+}

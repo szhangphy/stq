@@ -8,6 +8,7 @@ longer import or call the older SG194-special debug backends.
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import contextlib
 import importlib.util
 import io
@@ -67,7 +68,7 @@ from . import runtime_group_ops as single_expanded
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_workflow_portability_194.1.1.1"
+PACKAGE_NAME = "review_package_ai_obstruction_diagnosis_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -122,6 +123,8 @@ AI_LIBRARY_INTEGRATION_MD = ROOT / "bs_fix_reaudit_v1" / "ai_library_integration
 AI_LIBRARY_INTEGRATION_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_library_integration_report.json"
 AI_HONEST_BLOCKER_MD = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.md"
 AI_HONEST_BLOCKER_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.json"
+AI_OBSTRUCTION_DIAG_MD = ROOT / "bs_fix_reaudit_v1" / "ai_obstruction_diagnosis_report.md"
+AI_OBSTRUCTION_DIAG_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_obstruction_diagnosis_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -2724,7 +2727,7 @@ def build_ai_seed_audit_report(
         "library_integration_status": library_integration_status,
         "missing_prerequisites": [
             "published-shell induction beyond the trivial seed is not yet closed on the current reduced shell",
-            "AI builder integration with the validated non-abelian local irrep/corep libraries is incomplete or still blocked on the published shell",
+            "validated non-abelian local irrep/corep libraries are wired into the builder, but most induced local objects still fail compatibility on the current published shell",
             "AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis",
         ],
         "honest_ai_lattice_ready": False,
@@ -3015,8 +3018,240 @@ def build_ai_library_integration_markdown(report: dict[str, Any]) -> str:
     )
 
 
+def build_line_block_row_maps(
+    line_blocks: Sequence[dict[str, Any]],
+) -> tuple[dict[str, list[int]], dict[int, str]]:
+    row_ranges: dict[str, list[int]] = {}
+    row_to_line: dict[int, str] = {}
+    start = 0
+    for block in line_blocks:
+        rows = list(range(start, start + len(block["equations"])))
+        row_ranges[block["line_id"]] = rows
+        for row_index in rows:
+            row_to_line[row_index] = block["line_id"]
+        start += len(block["equations"])
+    return row_ranges, row_to_line
+
+
+def build_ai_obstruction_diagnosis_report(
+    reduction: dict[str, Any],
+    raw_line_blocks: Sequence[dict[str, Any]],
+    final_line_blocks: Sequence[dict[str, Any]],
+    raw_with_planes: dict[str, Any],
+    skeleton_line_full: dict[str, Any],
+    published_line_full: dict[str, Any],
+    raw_induction: dict[str, Any],
+    skeleton_induction: dict[str, Any],
+    published_induction: dict[str, Any],
+) -> dict[str, Any]:
+    raw_candidates = {item["generator_id"]: item for item in raw_induction["candidates"]}
+    skeleton_candidates = {item["generator_id"]: item for item in skeleton_induction["candidates"]}
+    published_candidates = {item["generator_id"]: item for item in published_induction["candidates"]}
+    raw_failures = {item["generator_id"]: item for item in raw_induction["failures"]}
+    skeleton_failures = {item["generator_id"]: item for item in skeleton_induction["failures"]}
+    published_failures = {item["generator_id"]: item for item in published_induction["failures"]}
+    _raw_row_ranges, raw_row_to_line = build_line_block_row_maps(raw_line_blocks)
+    skeleton_path_ids = {
+        kept["final_path_id"]
+        for kept in reduction["kept_paths"]
+        if kept["selection_stage"] == "endpoint_pair_skeleton"
+    }
+    skeleton_line_blocks = [block for block in final_line_blocks if block["line_id"] in skeleton_path_ids]
+    skeleton_row_ranges, skeleton_row_to_line = build_line_block_row_maps(skeleton_line_blocks)
+    published_row_ranges, published_row_to_line = build_line_block_row_maps(final_line_blocks)
+    augmentation_path_ids = sorted(
+        kept["final_path_id"]
+        for kept in reduction["kept_paths"]
+        if kept["selection_stage"] == "full_span_augmentation"
+    )
+    augmentation_row_indices = sorted(
+        row_index
+        for path_id in augmentation_path_ids
+        for row_index in published_row_ranges.get(path_id, [])
+    )
+    all_generator_ids = sorted(
+        set(raw_candidates)
+        | set(skeleton_candidates)
+        | set(published_candidates)
+        | set(raw_failures)
+        | set(skeleton_failures)
+        | set(published_failures)
+    )
+
+    def shell_state(
+        generator_id: str,
+        candidates: dict[str, dict[str, Any]],
+        failures: dict[str, dict[str, Any]],
+        row_to_line: dict[int, str],
+    ) -> dict[str, Any]:
+        if generator_id in failures:
+            failure = failures[generator_id]
+            return {
+                "status": "induction_failure",
+                "compatibility_zero": False,
+                "compatibility_residual_norm": None,
+                "nonzero_rows": [],
+                "nonzero_path_ids": [],
+                "error": failure["error"],
+                "family_id": failure.get("family_id"),
+                "local_object_label": failure.get("local_object_label"),
+                "site_symmetry_type_key": failure.get("site_symmetry_type_key"),
+            }
+        candidate = candidates[generator_id]
+        nonzero_rows = [
+            {"row_index": int(item["row_index"]), "residual": int(item["residual"])}
+            for item in candidate.get("nonzero_residual_rows", [])
+        ]
+        return {
+            "status": "compatible" if candidate["compatibility_zero"] else "nonzero_residual",
+            "compatibility_zero": bool(candidate["compatibility_zero"]),
+            "compatibility_residual_norm": int(candidate.get("compatibility_residual_norm", 0)),
+            "nonzero_rows": nonzero_rows,
+            "nonzero_path_ids": [row_to_line.get(item["row_index"], "unmapped_row") for item in nonzero_rows],
+            "error": None,
+            "family_id": candidate.get("family_letter"),
+            "local_object_label": candidate.get("local_object_label"),
+            "site_symmetry_type_key": candidate.get("site_symmetry_type_key"),
+        }
+
+    generator_records = []
+    classification_counts: Counter[str] = Counter()
+    family_counts_by_classification: dict[str, Counter[str]] = {}
+    published_fail_path_counter: Counter[str] = Counter()
+    published_fail_row_counter: Counter[int] = Counter()
+    for generator_id in all_generator_ids:
+        raw_state = shell_state(generator_id, raw_candidates, raw_failures, raw_row_to_line)
+        skeleton_state = shell_state(generator_id, skeleton_candidates, skeleton_failures, skeleton_row_to_line)
+        published_state = shell_state(generator_id, published_candidates, published_failures, published_row_to_line)
+        if published_state["compatibility_zero"]:
+            classification = "compatible_on_published8"
+        elif raw_state["status"] == "induction_failure":
+            classification = "induction_failure_on_raw42"
+        elif skeleton_state["status"] == "induction_failure":
+            classification = "induction_failure_on_7path_skeleton"
+        elif published_state["status"] == "induction_failure":
+            classification = "induction_failure_on_published8"
+        elif not raw_state["compatibility_zero"]:
+            classification = "fails_on_raw42"
+        elif not skeleton_state["compatibility_zero"]:
+            classification = "fails_on_7path_skeleton"
+        elif set(item["row_index"] for item in published_state["nonzero_rows"]).issubset(set(augmentation_row_indices)):
+            classification = "published8_augmentation_rows_only"
+        else:
+            classification = "published8_nonaugmentation_rows_only"
+        classification_counts[classification] += 1
+        family_id = published_state["family_id"] or skeleton_state["family_id"] or raw_state["family_id"] or "unknown"
+        family_counts_by_classification.setdefault(classification, Counter())[family_id] += 1
+        for path_id in published_state["nonzero_path_ids"]:
+            published_fail_path_counter[path_id] += 1
+        for item in published_state["nonzero_rows"]:
+            published_fail_row_counter[item["row_index"]] += 1
+        generator_records.append(
+            {
+                "generator_id": generator_id,
+                "family_id": family_id,
+                "local_object_label": (
+                    published_state["local_object_label"]
+                    or skeleton_state["local_object_label"]
+                    or raw_state["local_object_label"]
+                ),
+                "site_symmetry_type_key": (
+                    published_state["site_symmetry_type_key"]
+                    or skeleton_state["site_symmetry_type_key"]
+                    or raw_state["site_symmetry_type_key"]
+                ),
+                "classification": classification,
+                "raw42": raw_state,
+                "skeleton7": skeleton_state,
+                "published8": published_state,
+            }
+        )
+    diagnosis_parts = []
+    if classification_counts.get("fails_on_raw42", 0) > 0:
+        diagnosis_parts.append(
+            f"{classification_counts['fails_on_raw42']} candidates already fail on the diagnostic raw42 shell before any 7-path or 8-path reduction is applied."
+        )
+    if classification_counts.get("published8_augmentation_rows_only", 0) == 0:
+        diagnosis_parts.append("The extra 8th path is not the dominant single-AI obstruction.")
+    else:
+        diagnosis_parts.append("A subset of local-library candidates fails only after the 8th-path augmentation is imposed.")
+    if classification_counts.get("fails_on_7path_skeleton", 0) > 0:
+        diagnosis_parts.append("Some nonzero residual candidates first fail on the reduced 7-path skeleton.")
+    else:
+        diagnosis_parts.append("No candidate fails first on the reduced 7-path skeleton before the 8th path is added.")
+    if published_fail_path_counter:
+        diagnosis_parts.append(
+            f"On the published shell the nonzero residual rows concentrate on path histogram {dict(sorted(published_fail_path_counter.items()))}."
+        )
+    diagnosis_summary = " ".join(diagnosis_parts)
+    return {
+        "mode": "single",
+        "published_object_kind": reduction["reduction_kind"],
+        "row_language_full_span_pass": bool(reduction.get("selected_rows_span_full_candidate_row_language")),
+        "bilbao_equivalent_final_object_pass": bool(reduction.get("bilbao_equivalent_final_object_pass")),
+        "selected_path_count": len(reduction["published_path_ids"]),
+        "unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
+        "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
+        "augmentation_path_ids": augmentation_path_ids,
+        "augmentation_row_indices": augmentation_row_indices,
+        "shell_matrix_shapes": {
+            "raw42": [len(raw_with_planes["global_matrix"]), len(raw_with_planes["global_unknown_ordering"])],
+            "skeleton7": [len(skeleton_line_full["global_matrix"]), len(skeleton_line_full["global_unknown_ordering"])],
+            "published8": [len(published_line_full["global_matrix"]), len(published_line_full["global_unknown_ordering"])],
+        },
+        "candidate_counts": {
+            "raw42_success": len(raw_induction["candidates"]),
+            "raw42_failures": len(raw_induction["failures"]),
+            "skeleton7_success": len(skeleton_induction["candidates"]),
+            "skeleton7_failures": len(skeleton_induction["failures"]),
+            "published8_success": len(published_induction["candidates"]),
+            "published8_failures": len(published_induction["failures"]),
+        },
+        "compatibility_zero_counts": {
+            "raw42": sum(int(item["compatibility_zero"]) for item in raw_induction["candidates"]),
+            "skeleton7": sum(int(item["compatibility_zero"]) for item in skeleton_induction["candidates"]),
+            "published8": sum(int(item["compatibility_zero"]) for item in published_induction["candidates"]),
+        },
+        "classification_counts": dict(classification_counts),
+        "family_counts_by_classification": {
+            classification: dict(counter)
+            for classification, counter in sorted(family_counts_by_classification.items())
+        },
+        "published_fail_path_histogram": dict(sorted(published_fail_path_counter.items())),
+        "published_fail_row_histogram": {
+            str(row_index): count
+            for row_index, count in sorted(published_fail_row_counter.items())
+        },
+        "generator_records": generator_records,
+        "obstruction_summary": diagnosis_summary,
+    }
+
+
+def build_ai_obstruction_diagnosis_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Obstruction Diagnosis Report",
+            "",
+            f"- Published object kind: `{report['published_object_kind']}`.",
+            f"- Row-language full-span / Bilbao-equivalent final-object pass: `{report['row_language_full_span_pass']}` / `{report['bilbao_equivalent_final_object_pass']}`.",
+            f"- Selected path count / unique endpoint-pair count: `{report['selected_path_count']}` / `{report['unique_endpoint_pair_count']}`.",
+            f"- Actual path pairs: `{report['actual_path_pairs']}`.",
+            f"- Augmentation path ids / row indices: `{report['augmentation_path_ids']}` / `{report['augmentation_row_indices']}`.",
+            f"- Shell matrix shapes: `{report['shell_matrix_shapes']}`.",
+            f"- Candidate counts: `{report['candidate_counts']}`.",
+            f"- Compatibility-zero counts: `{report['compatibility_zero_counts']}`.",
+            f"- Classification counts: `{report['classification_counts']}`.",
+            f"- Family counts by classification: `{report['family_counts_by_classification']}`.",
+            f"- Published residual path histogram: `{report['published_fail_path_histogram']}`.",
+            f"- Published residual row histogram: `{report['published_fail_row_histogram']}`.",
+            f"- Obstruction summary: {report['obstruction_summary']}",
+        ]
+    )
+
+
 def build_ai_honest_blocker_report(
     integration_report: dict[str, Any],
+    obstruction_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if integration_report["integration_status"] == "wired_complete_candidate_set":
         return {
@@ -3025,6 +3260,28 @@ def build_ai_honest_blocker_report(
             "blocker_stage": None,
             "local_library_present": True,
             "local_library_wired_into_ai_builder": True,
+        }
+    if obstruction_report is not None:
+        blocker_stage = "published_shell_obstruction_diagnosis"
+        blocker = (
+            "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
+            f"but only {integration_report['compatibility_zero_candidate_count']} of "
+            f"{integration_report['success_candidate_count']} induced local objects satisfy compatibility on the published full-span augmented 8-path shell. "
+            f"Classification counts across raw42 / 7-path skeleton / published 8-path shells: "
+            f"{obstruction_report['classification_counts']}. "
+            f"{obstruction_report['obstruction_summary']}"
+        )
+        return {
+            "status": "blocked",
+            "blocker_stage": blocker_stage,
+            "blocker": blocker,
+            "local_library_present": True,
+            "local_library_wired_into_ai_builder": True,
+            "integration_status": integration_report["integration_status"],
+            "failure_count": integration_report["failure_count"],
+            "nonzero_residual_candidate_count": integration_report["nonzero_residual_candidate_count"],
+            "failure_family_ids": list(integration_report["failure_family_ids"]),
+            "obstruction_classification_counts": dict(obstruction_report["classification_counts"]),
         }
     if integration_report["failure_count"] > 0:
         blocker_stage = "published_shell_induction"
@@ -3331,6 +3588,29 @@ def build_single_pilot(
     kgeom["bs_strong_equivalence_report"] = reduction_reports["bs_strong_equivalence_report"]
     print("[pilot] single: local-library AI integration")
     local_library_payload = load_local_library_payload()
+    skeleton_path_ids = {
+        kept["final_path_id"]
+        for kept in reduction["kept_paths"]
+        if kept["selection_stage"] == "endpoint_pair_skeleton"
+    }
+    skeleton_line_blocks = [block for block in final_line_blocks if block["line_id"] in skeleton_path_ids]
+    skeleton_line_full = build_global_compatibility(skeleton_line_blocks, reduction["final_point_ids"])
+    raw42_library_induction = induce_family_objects(
+        ctx,
+        captures,
+        {"unknown_ordering": with_planes["global_unknown_ordering"]},
+        with_planes["global_matrix"],
+        point_row_translation,
+        local_library_payload["family_single_local_irreps"],
+    )
+    skeleton_library_induction = induce_family_objects(
+        ctx,
+        captures,
+        {"unknown_ordering": bs_analysis["unknown_ordering"]},
+        skeleton_line_full["global_matrix"],
+        point_row_translation,
+        local_library_payload["family_single_local_irreps"],
+    )
     single_library_induction = induce_family_objects(
         ctx,
         captures,
@@ -3347,7 +3627,21 @@ def build_single_pilot(
         unknown_ordering=bs_analysis["unknown_ordering"],
         point_row_translation=point_row_translation,
     )
-    ai_honest_blocker_report = build_ai_honest_blocker_report(ai_library_integration_report)
+    ai_obstruction_diagnosis_report = build_ai_obstruction_diagnosis_report(
+        reduction,
+        raw_line_blocks,
+        final_line_blocks,
+        with_planes,
+        skeleton_line_full,
+        final_line_full,
+        raw42_library_induction,
+        skeleton_library_induction,
+        single_library_induction,
+    )
+    ai_honest_blocker_report = build_ai_honest_blocker_report(
+        ai_library_integration_report,
+        ai_obstruction_diagnosis_report,
+    )
     ai_audit_report = build_ai_seed_audit_report(
         ai_candidates,
         point_row_translation,
@@ -3369,6 +3663,8 @@ def build_single_pilot(
     write_text(AI_SEED_DELTA_MD, build_ai_seed_delta_after_bs_fix_markdown(ai_seed_delta_report))
     write_json(AI_LIBRARY_INTEGRATION_JSON, ai_library_integration_report)
     write_text(AI_LIBRARY_INTEGRATION_MD, build_ai_library_integration_markdown(ai_library_integration_report))
+    write_json(AI_OBSTRUCTION_DIAG_JSON, ai_obstruction_diagnosis_report)
+    write_text(AI_OBSTRUCTION_DIAG_MD, build_ai_obstruction_diagnosis_markdown(ai_obstruction_diagnosis_report))
     write_json(AI_HONEST_BLOCKER_JSON, ai_honest_blocker_report)
     write_text(AI_HONEST_BLOCKER_MD, build_ai_honest_blocker_markdown(ai_honest_blocker_report))
 
@@ -3414,9 +3710,13 @@ def build_single_pilot(
         {
             **bs_analysis,
             "object_role": "published_final_point_path_shell",
+            "final_object_kind": reduction["reduction_kind"],
             "path_set_kind": reduction["reduction_kind"],
             "final_point_ids": reduction["final_point_ids"],
             "final_path_ids": reduction["published_path_ids"],
+            "final_selected_path_count": len(reduction["published_path_ids"]),
+            "final_unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
+            "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
             "bs_strong_equivalence_pass": reduction_reports["bs_strong_equivalence_report"]["bs_strong_equivalence_pass"],
             "row_language_full_span_pass": reduction_reports["bs_strong_equivalence_report"]["row_language_full_span_pass"],
             "bilbao_equivalent_final_object_pass": reduction_reports["bs_strong_equivalence_report"]["bilbao_equivalent_final_object_pass"],
@@ -3433,10 +3733,18 @@ def build_single_pilot(
         SINGLE_AI_JSON,
         {
             "object_role": "published_final_point_path_shell_ai_seed",
+            "ai_status": ai_audit_report["ai_status"],
             "unknown_ordering": bs_analysis["unknown_ordering"],
             "point_row_translation": point_row_translation,
             "generators": ai_candidates,
             "rank_trivial_family_span": ai_rank,
+            "blocker_summary": ai_honest_blocker_report["blocker"],
+            "local_library_wired_into_ai_builder": ai_library_integration_report["local_library_wired_into_ai_builder"],
+            "ai_obstruction_diagnosis_summary": {
+                "classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
+                "published_fail_path_histogram": ai_obstruction_diagnosis_report["published_fail_path_histogram"],
+                "obstruction_summary": ai_obstruction_diagnosis_report["obstruction_summary"],
+            },
             "translation_legality_report": {
                 "legality_status": point_row_translation_report["legality_status"],
                 "published_translation_enabled": point_row_translation_report["published_translation_enabled"],
@@ -3483,6 +3791,10 @@ def build_single_pilot(
             "rank": bs_analysis["rank"],
             "nullity": bs_analysis["nullity"],
             "smith_diagonal": bs_analysis["smith_diagonal"],
+            "published_object_kind": reduction["reduction_kind"],
+            "final_selected_path_count": len(reduction["published_path_ids"]),
+            "final_unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
+            "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
             "diagnostic_raw_with_planes_matrix_shape": diagnostic_bs_analysis["matrix_shape"],
             "row_language_full_span_pass": reduction_reports["bs_strong_equivalence_report"]["row_language_full_span_pass"],
             "bilbao_equivalent_final_object_pass": reduction_reports["bs_strong_equivalence_report"]["bilbao_equivalent_final_object_pass"],
@@ -3500,6 +3812,9 @@ def build_single_pilot(
             "library_integration_success_candidate_count": ai_library_integration_report["success_candidate_count"],
             "library_integration_failure_count": ai_library_integration_report["failure_count"],
             "library_integration_compatibility_zero_candidate_count": ai_library_integration_report["compatibility_zero_candidate_count"],
+            "blocker_summary": ai_honest_blocker_report["blocker"],
+            "obstruction_classification_counts": ai_obstruction_diagnosis_report["classification_counts"],
+            "published_fail_path_histogram": ai_obstruction_diagnosis_report["published_fail_path_histogram"],
         },
         "completeness_status": {"status": "blocked", "blocker": completeness_blocker},
         "quotient_status": {"status": "blocked", "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."},
@@ -3513,7 +3828,7 @@ def build_single_pilot(
         "",
         "- Real-space geometry, k-space manifolds, little-group capture, raw line compatibility, plane augmentation, and the BS kernel construction all run on 194.1.1.1.",
         f"- The current pilot had to add `{len(synthetic_points)}` synthetic 0D boundary points because the raw k-geometry contains `{len(kgeom_payload['unmatched_line_endpoints'])}` line endpoints that are not emitted by `swyckoff_k.py` as separately listed special points.",
-        "- The final published single-group BS object is the automatically reduced point/path shell; the raw with-planes 42-shell remains diagnostic only.",
+        "- The final published single-group BS object is the honest full-span augmented 8-path reduced shell; the raw with-planes 42-shell remains diagnostic only.",
         f"- Row-language full-span against the full candidate path language: `{reduction_reports['bs_strong_equivalence_report']['row_language_full_span_pass']}`.",
         f"- Bilbao-equivalent final-object pass: `{reduction_reports['bs_strong_equivalence_report']['bilbao_equivalent_final_object_pass']}`.",
         "",
@@ -3528,7 +3843,7 @@ def build_single_pilot(
         "",
         "- The line-compatibility layer from 10.4.1.31 assumed every special line endpoint landed on a separately listed 0D point. That assumption fails on 194.1.1.1.",
         "- The portability pilot therefore augments the boundary-point set with explicit synthetic 0D endpoints before assembling the global compatibility matrix.",
-        "- The non-abelian SG 194 local-irrep library now loads and is wired into the single-branch AI builder, but published-shell induction/completeness remains blocked beyond the trivial seed.",
+        f"- {ai_honest_blocker_report['blocker']}",
         "",
         "## Status Summary",
         "",
@@ -3538,6 +3853,8 @@ def build_single_pilot(
         f"- Trivial-family AI seed count/rank: `{len(ai_candidates)}` / `{ai_rank}`.",
         f"- Trivial-family compatibility-zero count: `{ai_audit_report['compatibility_zero_count']}` / `{len(ai_candidates)}`.",
         f"- Library-integrated single AI candidate count / failures / compatibility-zero candidates: `{ai_library_integration_report['success_candidate_count']}` / `{ai_library_integration_report['failure_count']}` / `{ai_library_integration_report['compatibility_zero_candidate_count']}`.",
+        f"- AI obstruction classification counts: `{ai_obstruction_diagnosis_report['classification_counts']}`.",
+        f"- Published residual path histogram: `{ai_obstruction_diagnosis_report['published_fail_path_histogram']}`.",
         f"- point_row_translation legality: `{point_row_translation_report['legality_status']}`.",
         f"- AI residual pattern changed vs previous branch: `{ai_seed_delta_report['residual_pattern_changed']}`.",
         f"- AI completeness: blocked. Reason: {completeness_blocker}",
@@ -3653,9 +3970,13 @@ def build_double_pilot(
         {
             **bs_analysis,
             "object_role": "published_final_point_path_shell",
+            "final_object_kind": reduction["reduction_kind"],
             "path_set_kind": reduction["reduction_kind"],
             "final_point_ids": reduction["final_point_ids"],
             "final_path_ids": reduction["published_path_ids"],
+            "final_selected_path_count": len(reduction["published_path_ids"]),
+            "final_unique_endpoint_pair_count": len({tuple(kept["endpoint_pair"]) for kept in reduction["kept_paths"]}),
+            "actual_path_pairs": [list(kept["endpoint_pair"]) for kept in reduction["kept_paths"]],
             "row_language_full_span_pass": single_kgeom["final_object_reduction"]["selected_rows_span_full_candidate_row_language"],
             "bilbao_equivalent_final_object_pass": single_kgeom["sanity_check"]["bilbao_equivalent_final_object_pass"],
             "diagnostic_raw_with_planes": {
@@ -3795,6 +4116,24 @@ def build_portability_audit_text(controlled: dict[str, Any], single: dict[str, A
             f"- double_group_portable_seed = `{portability_summary['double_group_portable_seed']}`",
         ]
     )
+
+
+def latex_escape(text: Any) -> str:
+    escaped = str(text)
+    for source, target in [
+        ("\\", r"\textbackslash{}"),
+        ("&", r"\&"),
+        ("%", r"\%"),
+        ("$", r"\$"),
+        ("#", r"\#"),
+        ("_", r"\_"),
+        ("{", r"\{"),
+        ("}", r"\}"),
+        ("~", r"\textasciitilde{}"),
+        ("^", r"\textasciicircum{}"),
+    ]:
+        escaped = escaped.replace(source, target)
+    return escaped
 
 
 def build_report_tex(controlled: dict[str, Any], single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> str:
@@ -3964,8 +4303,8 @@ def build_report_tex(controlled: dict[str, Any], single: dict[str, Any], double:
             controlled_case_valid=controlled_case_valid,
             single_portable=single_portable,
             double_seed=double_seed,
-            main_blocker=portability_summary["main_blocker"],
-            next_blocker=portability_summary["next_blocker"],
+            main_blocker=latex_escape(portability_summary["main_blocker"]),
+            next_blocker=latex_escape(portability_summary["next_blocker"]),
         )
     ).strip() + "\n"
 
@@ -4084,7 +4423,7 @@ def build_package_readme() -> str:
             "- single-group pilot for 194.1.1.1",
             "- double-group pilot for 194.1.1.1",
             "- full-shell automorphism search for the P1-P5 double-class resolution",
-            "- AI library integration / honest blocker reports",
+            "- honest 8-path BS freeze plus AI library integration / obstruction diagnosis / honest blocker reports",
             "- PDF technical report",
             "- handoff / current_status / next_step_prompt",
             "",
@@ -4101,8 +4440,9 @@ def build_package_readme() -> str:
             f"5. {SINGLE_AUDIT_MD.name}",
             f"6. {DOUBLE_AUDIT_MD.name}",
             f"7. {FULL_SHELL_AUTOMORPHISM_MD.relative_to(ROOT)}",
-            f"8. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
-            f"9. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            f"8. {AI_OBSTRUCTION_DIAG_MD.relative_to(ROOT)}",
+            f"9. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
+            f"10. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -4124,6 +4464,8 @@ def build_package() -> None:
         DOUBLE_AUDIT_MD,
         FULL_SHELL_AUTOMORPHISM_MD,
         FULL_SHELL_AUTOMORPHISM_JSON,
+        AI_OBSTRUCTION_DIAG_MD,
+        AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
         AI_HONEST_BLOCKER_MD,
@@ -4160,6 +4502,8 @@ def validate_outputs() -> None:
         DOUBLE_AUDIT_MD,
         FULL_SHELL_AUTOMORPHISM_MD,
         FULL_SHELL_AUTOMORPHISM_JSON,
+        AI_OBSTRUCTION_DIAG_MD,
+        AI_OBSTRUCTION_DIAG_JSON,
         AI_LIBRARY_INTEGRATION_MD,
         AI_LIBRARY_INTEGRATION_JSON,
         AI_HONEST_BLOCKER_MD,

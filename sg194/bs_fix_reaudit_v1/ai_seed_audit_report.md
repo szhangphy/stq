@@ -13,5 +13,5 @@
 - Honest AI lattice ready: `False`.
 - Missing prerequisites:
   - published-shell induction beyond the trivial seed is not yet closed on the current reduced shell
-  - AI builder integration with the validated non-abelian local irrep/corep libraries is incomplete or still blocked on the published shell
+  - validated non-abelian local irrep/corep libraries are wired into the builder, but most induced local objects still fail compatibility on the current published shell
   - AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis

@@ -460,6 +460,7 @@
     }
   ],
   "object_role": "published_final_point_path_shell",
+  "final_object_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
   "path_set_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
   "final_point_ids": [
     "P1",
@@ -478,6 +479,42 @@
     "FPATH06",
     "FPATH07",
     "FPATH08"
+  ],
+  "final_selected_path_count": 8,
+  "final_unique_endpoint_pair_count": 7,
+  "actual_path_pairs": [
+    [
+      "P1",
+      "P2"
+    ],
+    [
+      "P1",
+      "P3"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P2",
+      "P4"
+    ],
+    [
+      "P2",
+      "P6"
+    ],
+    [
+      "P3",
+      "P4"
+    ],
+    [
+      "P5",
+      "P6"
+    ]
   ],
   "bs_strong_equivalence_pass": true,
   "row_language_full_span_pass": true,

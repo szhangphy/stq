@@ -1,0 +1,117 @@
+{
+  "endpoint_pair": [
+    "P1",
+    "P5"
+  ],
+  "reference_path_class_id": "PCLASS03",
+  "reference_source_line_id": "L3",
+  "candidate_path_class_id": "PCLASS04",
+  "candidate_source_line_id": "L4",
+  "search_variables_cover_points": [
+    "P1",
+    "P2",
+    "P3",
+    "P5",
+    "P6"
+  ],
+  "local_relabel_search": {
+    "searched": true,
+    "reason": null,
+    "varying_rep_ids_by_endpoint": {
+      "P1": [
+        "P1_R1",
+        "P1_R2",
+        "P1_R3",
+        "P1_R4"
+      ],
+      "P5": [
+        "P5_R1",
+        "P5_R2",
+        "P5_R3",
+        "P5_R4"
+      ]
+    },
+    "search_space_size": 576,
+    "local_solution_count": 1,
+    "shell_preserving_solution_count": 0,
+    "local_solutions": [
+      {
+        "endpoint_relabel": {
+          "P1": {
+            "P1_R1": "P1_R3",
+            "P1_R2": "P1_R4",
+            "P1_R3": "P1_R1",
+            "P1_R4": "P1_R2"
+          },
+          "P5": {
+            "P5_R1": "P5_R3",
+            "P5_R2": "P5_R4",
+            "P5_R3": "P5_R1",
+            "P5_R4": "P5_R2"
+          }
+        },
+        "broken_selected_path_ids": [
+          "FPATH01",
+          "FPATH02",
+          "FPATH03",
+          "FPATH08"
+        ],
+        "preserves_other_selected_shell": false
+      }
+    ],
+    "shell_preserving_solutions": []
+  },
+  "full_shell_search": {
+    "searched": true,
+    "reason": null,
+    "local_solution_count": 1,
+    "local_solution_search_space": 576,
+    "search_space_size": 8640,
+    "searched_candidate_count": 8640,
+    "compensation_points": [
+      "P2",
+      "P3",
+      "P6"
+    ],
+    "point_permutation_sizes": {
+      "P2": 6,
+      "P3": 720,
+      "P6": 2
+    },
+    "local_solution_searches": [
+      {
+        "local_solution_index": 1,
+        "search_enabled": true,
+        "reason": null,
+        "broken_path_ids": [
+          "FPATH01",
+          "FPATH02",
+          "FPATH03",
+          "FPATH08"
+        ],
+        "varying_endpoints": [
+          "P1",
+          "P5"
+        ],
+        "compensation_points": [
+          "P2",
+          "P3",
+          "P6"
+        ],
+        "point_permutation_sizes": {
+          "P2": 6,
+          "P3": 720,
+          "P6": 2
+        },
+        "search_space_size": 8640,
+        "searched_candidate_count": 8640,
+        "global_solution_count": 0,
+        "first_global_solution": null
+      }
+    ],
+    "global_solution_count": 0,
+    "first_global_solution": null,
+    "all_global_solutions": []
+  },
+  "global_solution_found": false
+}

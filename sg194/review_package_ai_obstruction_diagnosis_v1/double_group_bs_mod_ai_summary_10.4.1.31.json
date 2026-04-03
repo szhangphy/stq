@@ -1,0 +1,18 @@
+{
+  "group_number": "10.4.1.31",
+  "group_type": 2,
+  "ai_double_complete": true,
+  "bs_mod_ai_extracted": true,
+  "quotient_group": "Z^2 x Z2 x Z2 x Z2 x Z2",
+  "free_part_present": true,
+  "free_rank": 2,
+  "finite_part": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "scope_statement": "This result applies only to group 10.4.1.31 at groupType=2, within the current with-planes double-group formalism, the current BS basis, and the current 31-dimensional unknown ordering.",
+  "not_yet_general_statement": "This is not a whole-database result, not a reusable universal double-group builder proof, and not a statement about other groups.",
+  "interpretation_note": "Because the quotient contains a free part, the current BS_double/AI_double is not a purely finite indicator group. The honest algebraic result is the full mixed quotient reported here."
+}
