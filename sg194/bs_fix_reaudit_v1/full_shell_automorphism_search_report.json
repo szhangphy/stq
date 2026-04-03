@@ -7,10 +7,13 @@
   "reference_source_line_id": "L3",
   "candidate_path_class_id": "PCLASS04",
   "candidate_source_line_id": "L4",
-  "line_group_signature_equal": true,
-  "local_row_space_signature_equal": false,
-  "global_row_space_signature_equal": false,
-  "endpoint_decomposition_signature_equal": false,
+  "search_variables_cover_points": [
+    "P1",
+    "P2",
+    "P3",
+    "P5",
+    "P6"
+  ],
   "local_relabel_search": {
     "searched": true,
     "reason": null,
@@ -58,7 +61,7 @@
     ],
     "shell_preserving_solutions": []
   },
-  "full_shell_automorphism_search": {
+  "full_shell_search": {
     "searched": true,
     "reason": null,
     "local_solution_count": 1,
@@ -110,40 +113,5 @@
     "first_global_solution": null,
     "all_global_solutions": []
   },
-  "first_local_solution": {
-    "endpoint_relabel": {
-      "P1": {
-        "P1_R1": "P1_R3",
-        "P1_R2": "P1_R4",
-        "P1_R3": "P1_R1",
-        "P1_R4": "P1_R2"
-      },
-      "P5": {
-        "P5_R1": "P5_R3",
-        "P5_R2": "P5_R4",
-        "P5_R3": "P5_R1",
-        "P5_R4": "P5_R2"
-      }
-    },
-    "broken_selected_path_ids": [
-      "FPATH01",
-      "FPATH02",
-      "FPATH03",
-      "FPATH08"
-    ],
-    "preserves_other_selected_shell": false
-  },
-  "first_shell_preserving_solution": null,
-  "first_global_shell_solution": null,
-  "selected_shell_preservation_checked_against_path_ids": [
-    "FPATH01",
-    "FPATH02",
-    "FPATH03",
-    "FPATH05",
-    "FPATH06",
-    "FPATH07",
-    "FPATH08"
-  ],
-  "resolution_status": "both_retained_honest_8_path",
-  "resolution_reason": "A local P1/P5 endpoint relabel can map the augmentation class into the skeleton class, but no full-shell automorphism witness extends that relabel across the rest of the selected shell. The class split is therefore not globally collapsible on the published shell."
+  "global_solution_found": false
 }

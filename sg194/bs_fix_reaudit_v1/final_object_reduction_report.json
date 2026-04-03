@@ -211328,5 +211328,6 @@
   },
   "row_language_full_span_pass": true,
   "bilbao_equivalent_final_object_pass": false,
-  "p1_p5_doubleclass_resolution_status": "both_retained_honest_8_path"
+  "p1_p5_doubleclass_resolution_status": "both_retained_honest_8_path",
+  "p1_p5_global_automorphism_found": false
 }

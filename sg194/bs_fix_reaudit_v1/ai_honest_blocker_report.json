@@ -1,0 +1,11 @@
+{
+  "status": "blocked",
+  "blocker_stage": "published_shell_compatibility",
+  "blocker": "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, but only 11 of 45 induced local objects satisfy compatibility on the published reduced shell.",
+  "local_library_present": true,
+  "local_library_wired_into_ai_builder": true,
+  "integration_status": "wired_but_blocked_on_published_shell",
+  "failure_count": 0,
+  "nonzero_residual_candidate_count": 34,
+  "failure_family_ids": []
+}

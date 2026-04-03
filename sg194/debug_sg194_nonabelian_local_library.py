@@ -855,8 +855,9 @@ def serializable_projective_irreps(record: dict[str, Any], irreps: list[dict[str
     }
 
 
-def build_inventory_and_libraries() -> dict[str, Any]:
-    port = load_stage1_module()
+def build_inventory_and_libraries(port=None) -> dict[str, Any]:
+    if port is None:
+        port = load_stage1_module()
     module = port.load_ssgreps_module()
     ssg_dict = port.load_ssg_dict(TARGET_GROUP)
 

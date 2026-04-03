@@ -9,8 +9,9 @@
 - Compatibility-zero family letters: `['l', 'j', 'f', 'e']`.
 - Nonzero-residual family letters: `['k', 'i', 'h', 'g', 'd', 'c', 'b', 'a']`.
 - Point-row translation profile/enabled: `legacy` / `False`.
+- Library integration status: `wired_but_blocked_on_published_shell`.
 - Honest AI lattice ready: `False`.
 - Missing prerequisites:
-  - complete nontrivial local irrep/corep library for SG 194 site symmetries
-  - honest AI induction semantics on the published final point/path shell
+  - published-shell induction beyond the trivial seed is not yet closed on the current reduced shell
+  - AI builder integration with the validated non-abelian local irrep/corep libraries is incomplete or still blocked on the published shell
   - AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis

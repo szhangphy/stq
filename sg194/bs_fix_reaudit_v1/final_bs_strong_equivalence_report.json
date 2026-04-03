@@ -196,5 +196,5 @@
   "row_language_full_span_pass": true,
   "bilbao_equivalent_final_object_pass": false,
   "bs_strong_equivalence_pass": true,
-  "bs_strong_equivalence_semantics": "row_language_full_span_only"
+  "bs_strong_equivalence_semantics": "deprecated_alias_row_language_full_span_only"
 }

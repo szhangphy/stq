@@ -48,6 +48,8 @@ from .final_object_reduction import (
     build_expected_check_markdown,
     build_final_bs_strong_equivalence_markdown,
     build_final_bs_strong_equivalence_report,
+    build_full_shell_automorphism_search_markdown,
+    build_full_shell_automorphism_search_report,
     build_final_path_candidate_equivalence_markdown,
     build_final_path_candidate_equivalence_report,
     build_final_path_signature_markdown,
@@ -108,12 +110,18 @@ MISSING_ROW_WITNESS_MD = ROOT / "bs_fix_reaudit_v1" / "missing_row_language_witn
 MISSING_ROW_WITNESS_JSON = ROOT / "bs_fix_reaudit_v1" / "missing_row_language_witness_report.json"
 P1_P5_RESOLUTION_MD = ROOT / "bs_fix_reaudit_v1" / "p1_p5_doubleclass_resolution_report.md"
 P1_P5_RESOLUTION_JSON = ROOT / "bs_fix_reaudit_v1" / "p1_p5_doubleclass_resolution_report.json"
+FULL_SHELL_AUTOMORPHISM_MD = ROOT / "bs_fix_reaudit_v1" / "full_shell_automorphism_search_report.md"
+FULL_SHELL_AUTOMORPHISM_JSON = ROOT / "bs_fix_reaudit_v1" / "full_shell_automorphism_search_report.json"
 POINT_ROW_TRANSLATION_MD = ROOT / "bs_fix_reaudit_v1" / "point_row_translation_legality_report.md"
 POINT_ROW_TRANSLATION_JSON = ROOT / "bs_fix_reaudit_v1" / "point_row_translation_legality_report.json"
 AI_SEED_AUDIT_MD = ROOT / "bs_fix_reaudit_v1" / "ai_seed_audit_report.md"
 AI_SEED_AUDIT_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_seed_audit_report.json"
 AI_SEED_DELTA_MD = ROOT / "bs_fix_reaudit_v1" / "ai_seed_delta_after_bs_fix_report.md"
 AI_SEED_DELTA_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_seed_delta_after_bs_fix_report.json"
+AI_LIBRARY_INTEGRATION_MD = ROOT / "bs_fix_reaudit_v1" / "ai_library_integration_report.md"
+AI_LIBRARY_INTEGRATION_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_library_integration_report.json"
+AI_HONEST_BLOCKER_MD = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.md"
+AI_HONEST_BLOCKER_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_honest_blocker_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -2524,6 +2532,7 @@ def write_reduction_reports(
     }
     path_signature_report = build_final_path_signature_report(reduction)
     path_equiv_report = build_final_path_candidate_equivalence_report(reduction)
+    full_shell_report = build_full_shell_automorphism_search_report(reduction)
     p1_p5_resolution_report = build_p1_p5_doubleclass_resolution_report(reduction)
     bs_strong_report = build_final_bs_strong_equivalence_report(
         reduction,
@@ -2534,6 +2543,7 @@ def write_reduction_reports(
     reduction_payload["row_language_full_span_pass"] = bs_strong_report["row_language_full_span_pass"]
     reduction_payload["bilbao_equivalent_final_object_pass"] = bs_strong_report["bilbao_equivalent_final_object_pass"]
     reduction_payload["p1_p5_doubleclass_resolution_status"] = p1_p5_resolution_report.get("resolution_status")
+    reduction_payload["p1_p5_global_automorphism_found"] = full_shell_report.get("global_solution_found")
     missing_row_witness_report = build_missing_row_language_witness_report(reduction)
     write_json(REDUCTION_REPORT_JSON, reduction_payload)
     write_text(REDUCTION_REPORT_MD, build_reduction_report_markdown(reduction_payload))
@@ -2545,6 +2555,8 @@ def write_reduction_reports(
     write_text(FINAL_PATH_EQUIV_MD, build_final_path_candidate_equivalence_markdown(path_equiv_report))
     write_json(P1_P5_RESOLUTION_JSON, p1_p5_resolution_report)
     write_text(P1_P5_RESOLUTION_MD, build_p1_p5_doubleclass_resolution_markdown(p1_p5_resolution_report))
+    write_json(FULL_SHELL_AUTOMORPHISM_JSON, full_shell_report)
+    write_text(FULL_SHELL_AUTOMORPHISM_MD, build_full_shell_automorphism_search_markdown(full_shell_report))
     write_json(FINAL_BS_STRONG_JSON, bs_strong_report)
     write_text(FINAL_BS_STRONG_MD, build_final_bs_strong_equivalence_markdown(bs_strong_report))
     write_json(MISSING_ROW_WITNESS_JSON, missing_row_witness_report)
@@ -2553,6 +2565,7 @@ def write_reduction_reports(
         "reduction_report": reduction_payload,
         "path_signature_report": path_signature_report,
         "path_equivalence_report": path_equiv_report,
+        "full_shell_automorphism_search_report": full_shell_report,
         "p1_p5_doubleclass_resolution_report": p1_p5_resolution_report,
         "bs_strong_equivalence_report": bs_strong_report,
         "missing_row_witness_report": missing_row_witness_report,
@@ -2681,6 +2694,7 @@ def build_ai_seed_audit_report(
     point_row_translation: dict[str, Any],
     *,
     unknown_ordering: Sequence[str],
+    library_integration_status: str = "not_attempted",
 ) -> dict[str, Any]:
     ai_matrix = (
         sp.Matrix.hstack(*[sp.Matrix(candidate["unknown_vector"]) for candidate in ai_candidates])
@@ -2707,9 +2721,10 @@ def build_ai_seed_audit_report(
         ],
         "point_row_translation_profile": point_row_translation.get("profile"),
         "point_row_translation_enabled": bool(point_row_translation.get("enabled")),
+        "library_integration_status": library_integration_status,
         "missing_prerequisites": [
-            "complete nontrivial local irrep/corep library for SG 194 site symmetries",
-            "honest AI induction semantics on the published final point/path shell",
+            "published-shell induction beyond the trivial seed is not yet closed on the current reduced shell",
+            "AI builder integration with the validated non-abelian local irrep/corep libraries is incomplete or still blocked on the published shell",
             "AI-in-BS coordinate matrix and quotient SNF built from a complete AI basis",
         ],
         "honest_ai_lattice_ready": False,
@@ -2730,6 +2745,7 @@ def build_ai_seed_audit_markdown(report: dict[str, Any]) -> str:
             f"- Compatibility-zero family letters: `{report['compatibility_zero_family_letters']}`.",
             f"- Nonzero-residual family letters: `{report['nonzero_residual_family_letters']}`.",
             f"- Point-row translation profile/enabled: `{report['point_row_translation_profile']}` / `{report['point_row_translation_enabled']}`.",
+            f"- Library integration status: `{report['library_integration_status']}`.",
             f"- Honest AI lattice ready: `{report['honest_ai_lattice_ready']}`.",
             "- Missing prerequisites:",
             *[f"  - {item}" for item in report["missing_prerequisites"]],
@@ -2825,6 +2841,229 @@ def build_ai_seed_delta_after_bs_fix_markdown(report: dict[str, Any]) -> str:
             f"- Added/removed zero families: `{report['added_zero_families']}` / `{report['removed_zero_families']}`.",
             f"- Added/removed nonzero residual families: `{report['added_nonzero_residual_families']}` / `{report['removed_nonzero_residual_families']}`.",
             f"- Residual pattern changed: `{report['residual_pattern_changed']}`.",
+        ]
+    )
+
+
+def load_nonabelian_local_library_helper():
+    path = ROOT / "debug_sg194_nonabelian_local_library.py"
+    spec = importlib.util.spec_from_file_location("sg194_nonabelian_local_library_runtime", path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"unable to import {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_local_library_payload() -> dict[str, Any]:
+    helper = load_nonabelian_local_library_helper()
+    port = sys.modules.get(__name__)
+    if port is not None:
+        return helper.build_inventory_and_libraries(port=port)
+    return helper.build_inventory_and_libraries()
+
+
+def induce_family_objects(
+    ctx: dict[str, Any],
+    captures: dict[str, Any],
+    bs_analysis: dict[str, Any],
+    global_matrix: list[list[int]],
+    point_row_translation: dict[str, Any],
+    family_objects: dict[str, list[dict[str, Any]]],
+) -> dict[str, Any]:
+    candidates = []
+    failures = []
+    seen_vectors: dict[tuple[int, ...], list[str]] = {}
+    family_success_map: dict[str, list[str]] = {}
+    for family in sorted(family_objects):
+        for local_object in family_objects[family]:
+            generator_id = f"{family}_{local_object['label']}"
+            local_character = {
+                int(index): complex(value)
+                for index, value in local_object["character_on_unitary_stabilizer_complex"].items()
+            }
+            try:
+                candidate = induce_candidate(
+                    ctx["entries_by_letter"][family],
+                    local_character,
+                    ctx,
+                    captures,
+                    bs_analysis["unknown_ordering"],
+                    global_matrix,
+                    point_row_translation=point_row_translation,
+                )
+                candidate["generator_id"] = generator_id
+                candidate["local_object_label"] = local_object["label"]
+                candidate["local_object_dimension"] = int(local_object["dimension"])
+                candidate["local_object_origin"] = local_object.get("origin", "local_library")
+                candidate["site_symmetry_type_key"] = local_object.get("site_symmetry_type_key")
+                candidate["site_symmetry_type_label"] = local_object.get("site_symmetry_type_label")
+                candidates.append(candidate)
+                family_success_map.setdefault(family, []).append(generator_id)
+                seen_vectors.setdefault(tuple(int(value) for value in candidate["unknown_vector"]), []).append(generator_id)
+            except Exception as exc:
+                failures.append(
+                    {
+                        "generator_id": generator_id,
+                        "family_id": family,
+                        "local_object_label": local_object["label"],
+                        "site_symmetry_type_key": local_object.get("site_symmetry_type_key"),
+                        "site_symmetry_type_label": local_object.get("site_symmetry_type_label"),
+                        "error": str(exc),
+                    }
+                )
+    duplicate_classes = [
+        {
+            "generator_ids": ids,
+            "vector_in_unknown_ordering": list(vector),
+            "class_size": len(ids),
+        }
+        for vector, ids in sorted(seen_vectors.items(), key=lambda item: item[1])
+    ]
+    return {
+        "candidates": candidates,
+        "failures": failures,
+        "duplicate_classes": duplicate_classes,
+        "family_success_map": family_success_map,
+    }
+
+
+def build_ai_library_integration_report(
+    library_payload: dict[str, Any],
+    induction: dict[str, Any],
+    *,
+    mode: str,
+    published_object_kind: str,
+    unknown_ordering: Sequence[str],
+    point_row_translation: dict[str, Any],
+) -> dict[str, Any]:
+    if mode != "single":
+        raise ValueError(f"unsupported AI library integration mode: {mode}")
+    family_objects = library_payload["family_single_local_irreps"]
+    all_families = sorted(family_objects)
+    all_objects = [obj for family in all_families for obj in family_objects[family]]
+    compatibility_zero_candidates = [
+        candidate["generator_id"]
+        for candidate in induction["candidates"]
+        if candidate["compatibility_zero"]
+    ]
+    residual_candidates = [
+        {
+            "generator_id": candidate["generator_id"],
+            "family_id": candidate["family_letter"],
+            "local_object_label": candidate.get("local_object_label"),
+            "compatibility_residual_norm": int(candidate.get("compatibility_residual_norm", 0)),
+            "nonzero_residual_rows": list(candidate.get("nonzero_residual_rows", [])),
+        }
+        for candidate in induction["candidates"]
+        if not candidate["compatibility_zero"]
+    ]
+    integration_status = (
+        "wired_complete_candidate_set"
+        if not induction["failures"] and not residual_candidates
+        else "wired_but_blocked_on_published_shell"
+    )
+    return {
+        "mode": mode,
+        "published_object_kind": published_object_kind,
+        "object_language": "published_final_point_path_shell_34_unknowns",
+        "unknown_count": len(unknown_ordering),
+        "local_library_source": "debug_sg194_nonabelian_local_library.build_inventory_and_libraries",
+        "local_library_files": [
+            str(ROOT / "debug_sg194_nonabelian_local_library.py"),
+            str(ROOT / "sg194_single_local_irrep_library.json"),
+            str(ROOT / "sg194_double_local_corep_library.json"),
+        ],
+        "local_library_wired_into_ai_builder": True,
+        "family_count": len(all_families),
+        "local_object_count": len(all_objects),
+        "family_local_object_counts": {family: len(family_objects[family]) for family in all_families},
+        "site_symmetry_type_keys": sorted({obj["site_symmetry_type_key"] for obj in all_objects}),
+        "success_candidate_count": len(induction["candidates"]),
+        "failure_count": len(induction["failures"]),
+        "compatibility_zero_candidate_count": len(compatibility_zero_candidates),
+        "nonzero_residual_candidate_count": len(residual_candidates),
+        "distinct_unknown_vector_count": len(induction["duplicate_classes"]),
+        "family_success_counts": {family: len(induction["family_success_map"].get(family, [])) for family in all_families},
+        "failure_family_ids": sorted({item["family_id"] for item in induction["failures"]}),
+        "compatibility_zero_generator_ids": compatibility_zero_candidates,
+        "nonzero_residual_candidates": residual_candidates,
+        "failures": induction["failures"],
+        "point_row_translation_profile": point_row_translation.get("profile"),
+        "point_row_translation_enabled": bool(point_row_translation.get("enabled")),
+        "integration_status": integration_status,
+    }
+
+
+def build_ai_library_integration_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Library Integration Report",
+            "",
+            f"- Mode: `{report['mode']}`.",
+            f"- Published object kind: `{report['published_object_kind']}`.",
+            f"- Local library wired into AI builder: `{report['local_library_wired_into_ai_builder']}`.",
+            f"- Family count / local-object count: `{report['family_count']}` / `{report['local_object_count']}`.",
+            f"- Success candidates / failures: `{report['success_candidate_count']}` / `{report['failure_count']}`.",
+            f"- Compatibility-zero / nonzero-residual success candidates: `{report['compatibility_zero_candidate_count']}` / `{report['nonzero_residual_candidate_count']}`.",
+            f"- Distinct unknown vectors: `{report['distinct_unknown_vector_count']}`.",
+            f"- Site-symmetry type keys: `{report['site_symmetry_type_keys']}`.",
+            f"- Point-row translation profile/enabled: `{report['point_row_translation_profile']}` / `{report['point_row_translation_enabled']}`.",
+            f"- Integration status: `{report['integration_status']}`.",
+            f"- Failure family ids: `{report['failure_family_ids']}`.",
+        ]
+    )
+
+
+def build_ai_honest_blocker_report(
+    integration_report: dict[str, Any],
+) -> dict[str, Any]:
+    if integration_report["integration_status"] == "wired_complete_candidate_set":
+        return {
+            "status": "not_blocked",
+            "blocker": None,
+            "blocker_stage": None,
+            "local_library_present": True,
+            "local_library_wired_into_ai_builder": True,
+        }
+    if integration_report["failure_count"] > 0:
+        blocker_stage = "published_shell_induction"
+        blocker = (
+            "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
+            f"but {integration_report['failure_count']} induced local objects still fail on the published reduced shell."
+        )
+    else:
+        blocker_stage = "published_shell_compatibility"
+        blocker = (
+            "Non-abelian local irrep/corep libraries exist and validate, and they are now wired into the AI builder, "
+            f"but only {integration_report['compatibility_zero_candidate_count']} of "
+            f"{integration_report['success_candidate_count']} induced local objects satisfy compatibility on the published reduced shell."
+        )
+    return {
+        "status": "blocked",
+        "blocker_stage": blocker_stage,
+        "blocker": blocker,
+        "local_library_present": True,
+        "local_library_wired_into_ai_builder": True,
+        "integration_status": integration_report["integration_status"],
+        "failure_count": integration_report["failure_count"],
+        "nonzero_residual_candidate_count": integration_report["nonzero_residual_candidate_count"],
+        "failure_family_ids": list(integration_report["failure_family_ids"]),
+    }
+
+
+def build_ai_honest_blocker_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            "# AI Honest Blocker Report",
+            "",
+            f"- Status: `{report['status']}`.",
+            f"- Blocker stage: `{report['blocker_stage']}`.",
+            f"- Local library present / wired: `{report['local_library_present']}` / `{report['local_library_wired_into_ai_builder']}`.",
+            f"- Failure count: `{report.get('failure_count')}`.",
+            f"- Nonzero-residual candidate count: `{report.get('nonzero_residual_candidate_count')}`.",
+            f"- Failure family ids: `{report.get('failure_family_ids')}`.",
+            f"- Blocker: {report['blocker']}",
         ]
     )
 
@@ -3090,10 +3329,30 @@ def build_single_pilot(
     )
     kgeom["sanity_check"] = sanity_check
     kgeom["bs_strong_equivalence_report"] = reduction_reports["bs_strong_equivalence_report"]
+    print("[pilot] single: local-library AI integration")
+    local_library_payload = load_local_library_payload()
+    single_library_induction = induce_family_objects(
+        ctx,
+        captures,
+        bs_analysis,
+        final_line_full["global_matrix"],
+        point_row_translation,
+        local_library_payload["family_single_local_irreps"],
+    )
+    ai_library_integration_report = build_ai_library_integration_report(
+        local_library_payload,
+        single_library_induction,
+        mode="single",
+        published_object_kind=reduction["reduction_kind"],
+        unknown_ordering=bs_analysis["unknown_ordering"],
+        point_row_translation=point_row_translation,
+    )
+    ai_honest_blocker_report = build_ai_honest_blocker_report(ai_library_integration_report)
     ai_audit_report = build_ai_seed_audit_report(
         ai_candidates,
         point_row_translation,
         unknown_ordering=bs_analysis["unknown_ordering"],
+        library_integration_status=ai_library_integration_report["integration_status"],
     )
     ai_seed_delta_report = build_ai_seed_delta_after_bs_fix_report(
         {
@@ -3108,6 +3367,10 @@ def build_single_pilot(
     write_text(AI_SEED_AUDIT_MD, build_ai_seed_audit_markdown(ai_audit_report))
     write_json(AI_SEED_DELTA_JSON, ai_seed_delta_report)
     write_text(AI_SEED_DELTA_MD, build_ai_seed_delta_after_bs_fix_markdown(ai_seed_delta_report))
+    write_json(AI_LIBRARY_INTEGRATION_JSON, ai_library_integration_report)
+    write_text(AI_LIBRARY_INTEGRATION_MD, build_ai_library_integration_markdown(ai_library_integration_report))
+    write_json(AI_HONEST_BLOCKER_JSON, ai_honest_blocker_report)
+    write_text(AI_HONEST_BLOCKER_MD, build_ai_honest_blocker_markdown(ai_honest_blocker_report))
 
     write_json(SINGLE_KMANIFOLDS_JSON, {
         "group_number": TARGET_GROUP,
@@ -3184,13 +3447,20 @@ def build_single_pilot(
                 "compatibility_zero_count": ai_audit_report["compatibility_zero_count"],
                 "honest_ai_lattice_ready": ai_audit_report["honest_ai_lattice_ready"],
             },
+            "ai_library_integration_report": {
+                "local_library_wired_into_ai_builder": ai_library_integration_report["local_library_wired_into_ai_builder"],
+                "integration_status": ai_library_integration_report["integration_status"],
+                "success_candidate_count": ai_library_integration_report["success_candidate_count"],
+                "failure_count": ai_library_integration_report["failure_count"],
+                "compatibility_zero_candidate_count": ai_library_integration_report["compatibility_zero_candidate_count"],
+            },
             "ai_seed_delta_after_bs_fix_report": {
                 "residual_pattern_changed": ai_seed_delta_report["residual_pattern_changed"],
             },
         },
     )
 
-    completeness_blocker = "Generic local-irrep library beyond the trivial rep is not implemented for the non-abelian SG 194 site symmetries, so AI completeness cannot be certified honestly."
+    completeness_blocker = ai_honest_blocker_report["blocker"]
     summary = {
         "target_group": TARGET_GROUP,
         "group_type": 1,
@@ -3225,6 +3495,11 @@ def build_single_pilot(
             "all_trivial_generators_compatibility_zero": all(candidate["compatibility_zero"] for candidate in ai_candidates),
             "point_row_translation_legality": point_row_translation_report["legality_status"],
             "residual_pattern_changed_vs_previous_branch": ai_seed_delta_report["residual_pattern_changed"],
+            "local_library_wired_into_ai_builder": ai_library_integration_report["local_library_wired_into_ai_builder"],
+            "library_integration_status": ai_library_integration_report["integration_status"],
+            "library_integration_success_candidate_count": ai_library_integration_report["success_candidate_count"],
+            "library_integration_failure_count": ai_library_integration_report["failure_count"],
+            "library_integration_compatibility_zero_candidate_count": ai_library_integration_report["compatibility_zero_candidate_count"],
         },
         "completeness_status": {"status": "blocked", "blocker": completeness_blocker},
         "quotient_status": {"status": "blocked", "blocker": "AI is not complete, so BS/AI cannot yet be interpreted honestly."},
@@ -3253,7 +3528,7 @@ def build_single_pilot(
         "",
         "- The line-compatibility layer from 10.4.1.31 assumed every special line endpoint landed on a separately listed 0D point. That assumption fails on 194.1.1.1.",
         "- The portability pilot therefore augments the boundary-point set with explicit synthetic 0D endpoints before assembling the global compatibility matrix.",
-        "- The AI side is only partial: the current pilot induces the trivial local representation on every real-space family, but it does not yet enumerate the full local-irrep library for the non-abelian SG 194 site symmetries.",
+        "- The non-abelian SG 194 local-irrep library now loads and is wired into the single-branch AI builder, but published-shell induction/completeness remains blocked beyond the trivial seed.",
         "",
         "## Status Summary",
         "",
@@ -3262,6 +3537,7 @@ def build_single_pilot(
         f"- Bilbao-style diagnostic check: point ids match = `{sanity_check['point_ids_match']}`, path count match = `{sanity_check['path_count_match']}`, exact path-pair match = `{sanity_check['path_pair_set_match']}`, unique path-pair match = `{sanity_check['unique_path_pair_set_match']}`.",
         f"- Trivial-family AI seed count/rank: `{len(ai_candidates)}` / `{ai_rank}`.",
         f"- Trivial-family compatibility-zero count: `{ai_audit_report['compatibility_zero_count']}` / `{len(ai_candidates)}`.",
+        f"- Library-integrated single AI candidate count / failures / compatibility-zero candidates: `{ai_library_integration_report['success_candidate_count']}` / `{ai_library_integration_report['failure_count']}` / `{ai_library_integration_report['compatibility_zero_candidate_count']}`.",
         f"- point_row_translation legality: `{point_row_translation_report['legality_status']}`.",
         f"- AI residual pattern changed vs previous branch: `{ai_seed_delta_report['residual_pattern_changed']}`.",
         f"- AI completeness: blocked. Reason: {completeness_blocker}",
@@ -3283,6 +3559,8 @@ def build_single_pilot(
         "point_row_translation_report": point_row_translation_report,
         "ai_seed_audit_report": ai_audit_report,
         "ai_seed_delta_report": ai_seed_delta_report,
+        "ai_library_integration_report": ai_library_integration_report,
+        "ai_honest_blocker_report": ai_honest_blocker_report,
         "bs_strong_equivalence_report": reduction_reports["bs_strong_equivalence_report"],
         "phase_aware_profile": line_phase_profile,
     }
@@ -3398,7 +3676,11 @@ def build_double_pilot(
         },
     )
 
-    blocker = "A generic projective local-corep builder for the nontrivial SG 194 site symmetries is still missing, so point-like / parametric double AI families cannot yet be enumerated beyond the trivial-stabilizer witness."
+    blocker = (
+        "Non-abelian SG 194 projective local-corep libraries already exist and validate, "
+        "but the published-shell double AI induction path is not yet wired beyond the "
+        "current trivial-stabilizer witness."
+    )
     summary = {
         "target_group": TARGET_GROUP,
         "group_type": 2,
@@ -3499,7 +3781,7 @@ def build_portability_audit_text(controlled: dict[str, Any], single: dict[str, A
             "## Modules Still Group-Specific",
             "",
             "- Boundary-manifold closure: 194.1.1.1 requires synthetic 0D boundary points that were unnecessary on 10.4.1.31.",
-            "- Local real-space irrep / corep libraries for SG 194 site symmetries.",
+            "- Published-shell integration of the validated SG 194 local irrep / corep libraries.",
             "- Honest AI completeness and quotient extraction on the new target.",
             "",
             "## Current Weakest Link",
@@ -3648,7 +3930,7 @@ def build_report_tex(controlled: dict[str, Any], single: dict[str, Any], double:
         The first reusable real-space witness is the minimal prototype on family \texttt{{l}} with trivial stabilizer. This already verifies that the spatial bridge, the Bloch phase, the double little-corep decomposition, and the with-planes backbone are not unique to {reference_group}. However, the current run does not yet enumerate point-like or parametric double local coreps for the nontrivial SG 194 site symmetries, so it does not reach a full double AI completeness audit or any final double quotient.
 
         \section{{Comparison with the Closed {reference_group} Baseline}}
-        The following modules port directly from {reference_group}: standardized real-space geometry, standardized k-space geometry, character-based little-group capture, compatibility assembly by subgroup matching, integer-kernel BS extraction, and the phase-corrected atomic induction bridge. The following modules do not yet port without additional target-specific work: completeness-level local irrep/corep enumeration for the SG 194 site symmetries, and automatic closure of omitted boundary endpoints without the current synthetic-point augmentation. Therefore the true reusable boundary of the workflow is already beyond one-group scripting for the spatial backbone, but still short of a group-agnostic AI library.
+        The following modules port directly from {reference_group}: standardized real-space geometry, standardized k-space geometry, character-based little-group capture, compatibility assembly by subgroup matching, integer-kernel BS extraction, and the phase-corrected atomic induction bridge. The following modules do not yet port without additional target-specific work: published-shell integration/completion for the validated SG 194 local irrep/corep libraries, and automatic closure of omitted boundary endpoints without the current synthetic-point augmentation. Therefore the true reusable boundary of the workflow is already beyond one-group scripting for the spatial backbone, but still short of an honest portable AI completion layer.
 
         \section{{Conclusion and Remaining Blockers}}
         Controlled-case verdict: {controlled_case_valid}. Single-group portability verdict: {single_portable}. Double-group seed verdict: {double_seed}. The main blocker is:
@@ -3707,7 +3989,7 @@ def build_handoff(single: dict[str, Any], double: dict[str, Any], portability_su
             f"- Single-group status: `{single['summary']['AI_status']['status']}` with BS `{single['summary']['BS_status']['status']}`.",
             f"- Double-group status: minimal prototype `{double['summary']['minimal_realspace_prototype_status']}`, backbone `{double['summary']['kspace_backbone_status']['status']}`.",
             f"- Main blocker: {portability_summary['main_blocker']}",
-            "- Next unique target: generalize the local real-space irrep/corep library so that AI completeness and quotient extraction become honest on 194.1.1.1.",
+            "- Next unique target: finish published-shell AI induction/completion so the validated local irrep/corep libraries become an honest AI lattice and quotient on 194.1.1.1.",
             "- Files to read first:",
             f"  - {CONTROLLED_AUDIT_MD.name}",
             f"  - {PORTABILITY_AUDIT_MD.name}",
@@ -3777,7 +4059,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: implement a generic local real-space irrep/corep builder for the SG 194 site symmetries so that the current partial AI prototypes on 194.1.1.1 can be upgraded to an honest AI completeness audit and, if successful, quotient extraction.
+        The next unique task is: finish published-shell AI induction/completion so that the already validated SG 194 local irrep/corep libraries become an honest AI lattice and, if successful, quotient extraction on 194.1.1.1.
         """
     ).strip() + "\n"
 
@@ -3801,6 +4083,8 @@ def build_package_readme() -> str:
             "- controlled-case audit for 194.1.1.1",
             "- single-group pilot for 194.1.1.1",
             "- double-group pilot for 194.1.1.1",
+            "- full-shell automorphism search for the P1-P5 double-class resolution",
+            "- AI library integration / honest blocker reports",
             "- PDF technical report",
             "- handoff / current_status / next_step_prompt",
             "",
@@ -3816,6 +4100,9 @@ def build_package_readme() -> str:
             f"4. {PORTABILITY_SUMMARY_JSON.name}",
             f"5. {SINGLE_AUDIT_MD.name}",
             f"6. {DOUBLE_AUDIT_MD.name}",
+            f"7. {FULL_SHELL_AUTOMORPHISM_MD.relative_to(ROOT)}",
+            f"8. {AI_LIBRARY_INTEGRATION_MD.relative_to(ROOT)}",
+            f"9. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -3835,6 +4122,12 @@ def build_package() -> None:
         SINGLE_AUDIT_MD,
         DOUBLE_SUMMARY_JSON,
         DOUBLE_AUDIT_MD,
+        FULL_SHELL_AUTOMORPHISM_MD,
+        FULL_SHELL_AUTOMORPHISM_JSON,
+        AI_LIBRARY_INTEGRATION_MD,
+        AI_LIBRARY_INTEGRATION_JSON,
+        AI_HONEST_BLOCKER_MD,
+        AI_HONEST_BLOCKER_JSON,
         Path(__file__),
         HANDOFF_MD,
         CURRENT_STATUS_JSON,
@@ -3865,6 +4158,12 @@ def validate_outputs() -> None:
         SINGLE_AUDIT_MD,
         DOUBLE_SUMMARY_JSON,
         DOUBLE_AUDIT_MD,
+        FULL_SHELL_AUTOMORPHISM_MD,
+        FULL_SHELL_AUTOMORPHISM_JSON,
+        AI_LIBRARY_INTEGRATION_MD,
+        AI_LIBRARY_INTEGRATION_JSON,
+        AI_HONEST_BLOCKER_MD,
+        AI_HONEST_BLOCKER_JSON,
         Path(__file__),
         HANDOFF_MD,
         CURRENT_STATUS_JSON,

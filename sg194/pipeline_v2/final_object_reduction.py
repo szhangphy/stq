@@ -1380,6 +1380,316 @@ def _endpoint_relabel_search(
     }
 
 
+def _selected_pair_signature_sets(
+    reduction: dict[str, Any],
+) -> dict[tuple[str, str], set[tuple[tuple[str, ...], ...]]]:
+    by_pair: dict[tuple[str, str], set[tuple[tuple[str, ...], ...]]] = {}
+    for record in reduction.get("kept_paths", []):
+        pair_key = tuple(record["endpoint_pair"])
+        by_pair.setdefault(pair_key, set()).add(_rref_signature(record["global_matrix_rows"]))
+    return by_pair
+
+
+def _point_unknown_ordering(
+    unknown_ordering: Sequence[str],
+) -> dict[str, list[str]]:
+    per_point: dict[str, list[str]] = {}
+    for unknown in unknown_ordering:
+        point_id = unknown.split("_", 1)[0]
+        per_point.setdefault(point_id, []).append(unknown)
+    return per_point
+
+
+def _global_shell_automorphism_search(
+    reference_record: dict[str, Any],
+    candidate_record: dict[str, Any],
+    preserved_records: Sequence[dict[str, Any]],
+    local_relabel_search: dict[str, Any],
+    *,
+    allowed_pair_signatures: dict[tuple[str, str], set[tuple[tuple[str, ...], ...]]],
+    search_space_cap: int = 200000,
+) -> dict[str, Any]:
+    unknown_ordering = list(reference_record["global_unknown_ordering"])
+    if unknown_ordering != list(candidate_record["global_unknown_ordering"]):
+        raise ValueError("reference/candidate records use different global unknown ordering")
+    point_unknowns = _point_unknown_ordering(unknown_ordering)
+    reference_signature = _rref_signature(reference_record["global_matrix_rows"])
+    local_solutions = list(local_relabel_search.get("local_solutions", []))
+    if not local_solutions:
+        return {
+            "searched": False,
+            "reason": "no local P1/P5 relabel witness exists to anchor the global shell search",
+            "local_solution_count": 0,
+            "local_solution_search_space": 0,
+            "search_space_size": 0,
+            "searched_candidate_count": 0,
+            "compensation_points": [],
+            "point_permutation_sizes": {},
+            "local_solution_searches": [],
+            "global_solution_count": 0,
+            "first_global_solution": None,
+            "all_global_solutions": [],
+        }
+
+    total_search_space = 0
+    searched_candidate_count = 0
+    local_solution_searches: list[dict[str, Any]] = []
+    global_solutions: list[dict[str, Any]] = []
+    for local_solution_index, local_solution in enumerate(local_solutions, start=1):
+        varying_endpoints = set(local_solution["endpoint_relabel"])
+        broken_path_ids = list(local_solution["broken_selected_path_ids"])
+        compensation_points = sorted(
+            {
+                point_id
+                for record in preserved_records
+                if record["final_path_id"] in broken_path_ids
+                for point_id in record["endpoint_ids"]
+                if point_id not in varying_endpoints
+            }
+        )
+        permutation_lists: dict[str, list[tuple[str, ...]]] = {}
+        point_permutation_sizes: dict[str, int] = {}
+        local_search_space = 1
+        oversized_point = None
+        for point_id in compensation_points:
+            unknowns = point_unknowns.get(point_id, [])
+            if len(unknowns) > 7:
+                oversized_point = point_id
+                break
+            permutations_for_point = list(permutations(unknowns))
+            permutation_lists[point_id] = permutations_for_point
+            point_permutation_sizes[point_id] = len(permutations_for_point)
+            local_search_space *= max(1, len(permutations_for_point))
+        if oversized_point is not None:
+            local_solution_searches.append(
+                {
+                    "local_solution_index": local_solution_index,
+                    "search_enabled": False,
+                    "reason": (
+                        f"point {oversized_point} has {len(point_unknowns.get(oversized_point, []))} unknowns; "
+                        "full-shell compensation permutation search disabled"
+                    ),
+                    "broken_path_ids": broken_path_ids,
+                    "varying_endpoints": sorted(varying_endpoints),
+                    "compensation_points": compensation_points,
+                    "point_permutation_sizes": point_permutation_sizes,
+                    "search_space_size": None,
+                    "searched_candidate_count": 0,
+                    "global_solution_count": 0,
+                    "first_global_solution": None,
+                }
+            )
+            continue
+        if total_search_space + local_search_space > search_space_cap:
+            local_solution_searches.append(
+                {
+                    "local_solution_index": local_solution_index,
+                    "search_enabled": False,
+                    "reason": (
+                        f"cumulative search space would exceed cap {search_space_cap}; "
+                        f"next local branch requires {local_search_space} permutations"
+                    ),
+                    "broken_path_ids": broken_path_ids,
+                    "varying_endpoints": sorted(varying_endpoints),
+                    "compensation_points": compensation_points,
+                    "point_permutation_sizes": point_permutation_sizes,
+                    "search_space_size": local_search_space,
+                    "searched_candidate_count": 0,
+                    "global_solution_count": 0,
+                    "first_global_solution": None,
+                }
+            )
+            continue
+        total_search_space += local_search_space
+        point_choices = [
+            [(point_id, permuted_unknowns) for permuted_unknowns in permutation_lists[point_id]]
+            for point_id in compensation_points
+        ]
+        branch_solutions: list[dict[str, Any]] = []
+        for compensation_choice in product(*point_choices) if point_choices else [()]:
+            searched_candidate_count += 1
+            combined_relabel = {
+                endpoint_id: dict(mapping)
+                for endpoint_id, mapping in local_solution["endpoint_relabel"].items()
+            }
+            compensation_relabel: dict[str, dict[str, str]] = {}
+            for point_id, permuted_unknowns in compensation_choice:
+                source_unknowns = point_unknowns[point_id]
+                compensation_relabel[point_id] = {
+                    source_unknown: target_unknown
+                    for source_unknown, target_unknown in zip(source_unknowns, permuted_unknowns)
+                }
+            combined_relabel.update(compensation_relabel)
+            column_map = _build_endpoint_column_map(unknown_ordering, combined_relabel)
+            relabeled_candidate_signature = _rref_signature(
+                _apply_column_permutation(candidate_record["global_matrix_rows"], column_map)
+            )
+            if relabeled_candidate_signature != reference_signature:
+                continue
+            preserved_path_status = []
+            preserves_full_shell = True
+            for record in preserved_records:
+                relabeled_signature = _rref_signature(
+                    _apply_column_permutation(record["global_matrix_rows"], column_map)
+                )
+                pair_key = tuple(record["endpoint_pair"])
+                signature_allowed = relabeled_signature in allowed_pair_signatures.get(pair_key, set())
+                preserved_path_status.append(
+                    {
+                        "final_path_id": record["final_path_id"],
+                        "path_class_id": record["path_class_id"],
+                        "endpoint_pair": list(pair_key),
+                        "signature_allowed": signature_allowed,
+                    }
+                )
+                if not signature_allowed:
+                    preserves_full_shell = False
+            if not preserves_full_shell:
+                continue
+            solution = {
+                "endpoint_relabel": combined_relabel,
+                "local_endpoint_relabel": local_solution["endpoint_relabel"],
+                "compensation_point_relabel": compensation_relabel,
+                "broken_selected_path_ids_from_local_anchor": broken_path_ids,
+                "compensation_points": compensation_points,
+                "preserved_path_status": preserved_path_status,
+                "preserves_full_shell": True,
+            }
+            branch_solutions.append(solution)
+            global_solutions.append(solution)
+        local_solution_searches.append(
+            {
+                "local_solution_index": local_solution_index,
+                "search_enabled": True,
+                "reason": None,
+                "broken_path_ids": broken_path_ids,
+                "varying_endpoints": sorted(varying_endpoints),
+                "compensation_points": compensation_points,
+                "point_permutation_sizes": point_permutation_sizes,
+                "search_space_size": local_search_space,
+                "searched_candidate_count": local_search_space,
+                "global_solution_count": len(branch_solutions),
+                "first_global_solution": branch_solutions[0] if branch_solutions else None,
+            }
+        )
+    compensation_points_union = sorted(
+        {
+            point_id
+            for branch in local_solution_searches
+            for point_id in branch.get("compensation_points", [])
+        }
+    )
+    point_permutation_sizes_union: dict[str, int] = {}
+    for branch in local_solution_searches:
+        for point_id, size in branch.get("point_permutation_sizes", {}).items():
+            point_permutation_sizes_union[point_id] = int(size)
+    return {
+        "searched": any(branch.get("search_enabled") for branch in local_solution_searches),
+        "reason": None if local_solution_searches else "no local search branches available",
+        "local_solution_count": len(local_solutions),
+        "local_solution_search_space": int(local_relabel_search.get("search_space_size") or 0),
+        "search_space_size": total_search_space,
+        "searched_candidate_count": searched_candidate_count,
+        "compensation_points": compensation_points_union,
+        "point_permutation_sizes": point_permutation_sizes_union,
+        "local_solution_searches": local_solution_searches,
+        "global_solution_count": len(global_solutions),
+        "first_global_solution": global_solutions[0] if global_solutions else None,
+        "all_global_solutions": global_solutions,
+    }
+
+
+def build_full_shell_automorphism_search_report(reduction: dict[str, Any]) -> dict[str, Any]:
+    selected_classes = [
+        payload
+        for payload in reduction.get("path_classes", [])
+        if payload["selected_as_final"] and payload["endpoint_pair"] == ["P1", "P5"]
+    ]
+    selected_classes.sort(key=lambda payload: (payload["selection_stage"], payload["path_class_id"]))
+    if len(selected_classes) != 2:
+        return {
+            "endpoint_pair": ["P1", "P5"],
+            "status": "not_applicable",
+            "reason": f"expected exactly two selected P1-P5 path classes, found {len(selected_classes)}",
+        }
+
+    reference_payload, candidate_payload = selected_classes
+    reference_record = reference_payload["candidate_records"][0]
+    candidate_record = candidate_payload["candidate_records"][0]
+    preserved_records = [
+        kept
+        for kept in reduction.get("kept_paths", [])
+        if kept["path_class_id"] != candidate_payload["path_class_id"]
+    ]
+    local_relabel_search = _endpoint_relabel_search(reference_record, candidate_record, preserved_records)
+    full_shell_search = _global_shell_automorphism_search(
+        reference_record,
+        candidate_record,
+        preserved_records,
+        local_relabel_search,
+        allowed_pair_signatures=_selected_pair_signature_sets(reduction),
+    )
+    return {
+        "endpoint_pair": ["P1", "P5"],
+        "reference_path_class_id": reference_payload["path_class_id"],
+        "reference_source_line_id": reference_payload["representative_source_line_id"],
+        "candidate_path_class_id": candidate_payload["path_class_id"],
+        "candidate_source_line_id": candidate_payload["representative_source_line_id"],
+        "search_variables_cover_points": sorted(
+            {
+                point_id
+                for point_id in full_shell_search.get("compensation_points", [])
+                if point_id is not None
+            }
+            | set(local_relabel_search.get("varying_rep_ids_by_endpoint", {}))
+        ),
+        "local_relabel_search": local_relabel_search,
+        "full_shell_search": full_shell_search,
+        "global_solution_found": full_shell_search.get("global_solution_count", 0) > 0,
+    }
+
+
+def build_full_shell_automorphism_search_markdown(report: dict[str, Any]) -> str:
+    if report.get("status") == "not_applicable":
+        return "\n".join(
+            [
+                "# Full-Shell Automorphism Search Report",
+                "",
+                f"- Status: `{report['status']}`.",
+                f"- Reason: {report['reason']}",
+            ]
+        )
+    full_shell = report["full_shell_search"]
+    local_search = report["local_relabel_search"]
+    lines = [
+        "# Full-Shell Automorphism Search Report",
+        "",
+        f"- Endpoint pair under resolution: `{report['endpoint_pair']}`.",
+        f"- Reference class/source: `{report['reference_path_class_id']}` / `{report['reference_source_line_id']}`.",
+        f"- Candidate class/source: `{report['candidate_path_class_id']}` / `{report['candidate_source_line_id']}`.",
+        f"- Local relabel search space / solution count: `{local_search.get('search_space_size')}` / `{local_search.get('local_solution_count')}`.",
+        f"- Full-shell search variables cover points: `{report['search_variables_cover_points']}`.",
+        f"- Full-shell compensation points: `{full_shell.get('compensation_points')}`.",
+        f"- Point permutation sizes: `{full_shell.get('point_permutation_sizes')}`.",
+        f"- Full-shell search space size: `{full_shell.get('search_space_size')}`.",
+        f"- Global solution count: `{full_shell.get('global_solution_count')}`.",
+        f"- First global solution: `{full_shell.get('first_global_solution')}`.",
+        f"- Global automorphism witness found: `{report['global_solution_found']}`.",
+        "",
+        "## Branch Searches",
+        "",
+    ]
+    for branch in full_shell.get("local_solution_searches", []):
+        lines.append(
+            "- "
+            + f"local branch `{branch['local_solution_index']}`: enabled = `{branch['search_enabled']}`, "
+            + f"broken paths = `{branch['broken_path_ids']}`, compensation points = `{branch['compensation_points']}`, "
+            + f"search space = `{branch['search_space_size']}`, global solutions = `{branch['global_solution_count']}`, "
+            + f"reason = `{branch['reason']}`"
+        )
+    return "\n".join(lines)
+
+
 def build_p1_p5_doubleclass_resolution_report(reduction: dict[str, Any]) -> dict[str, Any]:
     selected_classes = [
         payload
@@ -1403,25 +1713,29 @@ def build_p1_p5_doubleclass_resolution_report(reduction: dict[str, Any]) -> dict
         if kept["path_class_id"] != candidate_payload["path_class_id"]
     ]
     relabel_search = _endpoint_relabel_search(reference_record, candidate_record, preserved_records)
+    full_shell_report = build_full_shell_automorphism_search_report(reduction)
     local_solution = relabel_search["local_solutions"][0] if relabel_search["local_solutions"] else None
     shell_preserving_solution = (
         relabel_search["shell_preserving_solutions"][0]
         if relabel_search["shell_preserving_solutions"]
         else None
     )
-    if relabel_search["shell_preserving_solution_count"] > 0:
-        resolution_status = "collapsed_to_single_class"
+    global_solution_count = int(full_shell_report.get("full_shell_search", {}).get("global_solution_count", 0))
+    if global_solution_count > 0:
+        resolution_status = "globally_automorphism_equivalent"
         resolution_reason = (
-            "A point-shell relabel exists that maps the augmentation class into the skeleton "
-            "class without changing the rest of the selected shell."
+            "A full-shell automorphism witness exists: the augmentation class can be mapped "
+            "into the skeleton class while the entire selected shell stays inside the allowed "
+            "endpoint-pair row-language classes."
         )
     else:
         resolution_status = "both_retained_honest_8_path"
         if relabel_search["local_solution_count"] > 0:
             resolution_reason = (
                 "A local P1/P5 endpoint relabel can map the augmentation class into the skeleton "
-                "class, but every such relabel breaks the row language of other selected paths. "
-                "The class split is therefore not globally collapsible on the published shell."
+                "class, but no full-shell automorphism witness extends that relabel across the "
+                "rest of the selected shell. The class split is therefore not globally collapsible "
+                "on the published shell."
             )
         else:
             resolution_reason = (
@@ -1448,8 +1762,10 @@ def build_p1_p5_doubleclass_resolution_report(reduction: dict[str, Any]) -> dict
             == candidate_payload["endpoint_decomposition_signature"]
         ),
         "local_relabel_search": relabel_search,
+        "full_shell_automorphism_search": full_shell_report.get("full_shell_search"),
         "first_local_solution": local_solution,
         "first_shell_preserving_solution": shell_preserving_solution,
+        "first_global_shell_solution": full_shell_report.get("full_shell_search", {}).get("first_global_solution"),
         "selected_shell_preservation_checked_against_path_ids": [
             record["final_path_id"] for record in preserved_records
         ],
@@ -1483,8 +1799,10 @@ def build_p1_p5_doubleclass_resolution_markdown(report: dict[str, Any]) -> str:
             f"- Varying rep ids by endpoint: `{local_search['varying_rep_ids_by_endpoint']}`.",
             f"- Local solution count: `{local_search['local_solution_count']}`.",
             f"- Shell-preserving solution count: `{local_search['shell_preserving_solution_count']}`.",
+            f"- Full-shell automorphism search summary: `{report.get('full_shell_automorphism_search')}`.",
             f"- First local solution: `{report['first_local_solution']}`.",
             f"- First shell-preserving solution: `{report['first_shell_preserving_solution']}`.",
+            f"- First global shell solution: `{report.get('first_global_shell_solution')}`.",
             f"- Selected-shell preservation was checked against: `{report['selected_shell_preservation_checked_against_path_ids']}`.",
             f"- Resolution status: `{report['resolution_status']}`.",
             f"- Resolution reason: {report['resolution_reason']}",
@@ -1557,7 +1875,7 @@ def build_final_bs_strong_equivalence_report(
         "row_language_full_span_pass": row_language_full_span_pass,
         "bilbao_equivalent_final_object_pass": bilbao_equivalent_final_object_pass,
         "bs_strong_equivalence_pass": row_language_full_span_pass,
-        "bs_strong_equivalence_semantics": "row_language_full_span_only",
+        "bs_strong_equivalence_semantics": "deprecated_alias_row_language_full_span_only",
     }
 
 
