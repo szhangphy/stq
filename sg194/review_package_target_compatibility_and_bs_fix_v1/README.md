@@ -1,0 +1,25 @@
+# Review Package
+
+- Scope: only `194.1.1.1`.
+- Solver path: generic symmetry-ops main solver only; truth files remain compare/check only.
+- Main fix in this round:
+  - target row language is no longer a selector sliced from current/full-shell unknown ordering
+  - target compatibility is now built directly on the same-shell published target language
+  - target quotient no longer inherits `dBS/dAI/classification` from the full/current-shell diagnostic quotient
+- Current solver state:
+  - target row language: available
+  - target compatibility: available
+  - target quotient builder: reached and blocked
+  - ordinary / monodromy target line blocks: `16 / 14`
+  - target unknown count: `34`
+  - current blocker: `generic_target_row_language_nonzero_residual_candidates`
+  - current interpretation: all 45 induced candidates remain nonzero on target compatibility rows, so the target quotient stays blocked and the result remains `diagnostic_only / not_final`
+- Files included:
+  - `current_status_194.1.1.1.json`
+  - `handoff_194.1.1.1.md`
+  - `next_step_prompt_194.1.1.1.txt`
+  - `group_engine_control_case_report_194_1_1_1.json`
+  - `group_engine_control_case_report_194_1_1_1.md`
+  - `generic_builders.py`
+  - `bs_ai.py`
+  - `alignment.py`
