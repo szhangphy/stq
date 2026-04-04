@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import Any
 
-from .benchmark_oracle_registry import benchmark_oracle_available
 from .generic_builders import generic_result_objects
 from .group_target_registry import get_group_target_spec
 from .models import GroupSpec
@@ -119,6 +118,8 @@ def _target_semantics_verified(item: dict[str, Any]) -> bool:
         return False
     if item.get("same_shell_semantics") != "published_target_object":
         return False
+    if item.get("quotient_semantics") != "same_shell_published_target_quotient":
+        return False
     if item.get("verification_status") != "semantic_pass":
         return False
     return True
@@ -129,27 +130,21 @@ def _infer_result_mode(
     spec: GroupSpec,
 ) -> tuple[str, bool, str]:
     target_spec = get_group_target_spec(spec.group_id)
+    if not _is_generic_spec(spec):
+        explicit_mode = item.get("final_result_mode")
+        explicit_status = item.get("status")
+        if explicit_mode is not None and explicit_status is not None:
+            return str(explicit_mode), bool(item.get("classification_is_published_final")), str(explicit_status)
     is_target = item.get("row_language_level") == "target"
     availability = item.get("availability")
     classification = item.get("classification")
-    benchmark_available = benchmark_oracle_available(spec.group_id)
     generic_ready = bool(item.get("generic_builder_ready", False))
     generic_published_ok = bool(item.get("generic_published_classification_ready", False))
     semantic_ok = _target_semantics_verified(item)
 
     if (
         is_target
-        and benchmark_available
-        and availability == "available"
-        and classification is not None
-    ):
-        return target_spec.expected_final_mode_when_benchmark_available, True, "success"
-
-    if (
-        is_target
-        and (not benchmark_available)
         and target_spec.generic_builders_expected
-        and target_spec.allow_generic_final_without_benchmark
         and target_spec.require_same_shell_target_builder_for_generic_final
         and generic_ready
         and generic_published_ok
@@ -159,17 +154,18 @@ def _infer_result_mode(
     ):
         return "generic_final", True, "success"
 
-    return target_spec.no_oracle_default_mode, False, "not_final"
+    return target_spec.default_nonfinal_mode, False, "not_final"
 
 
 def _annotate_result_mode(
     records: list[dict[str, Any]],
     spec: GroupSpec,
 ) -> list[dict[str, Any]]:
-    benchmark_available = benchmark_oracle_available(spec.group_id)
+    target_spec = get_group_target_spec(spec.group_id)
     for item in records:
         mode, is_final, status = _infer_result_mode(item, spec)
-        item["benchmark_oracle_available"] = benchmark_available
+        item["truth_compare_available"] = target_spec.truth_compare_available
+        item["benchmark_oracle_available"] = target_spec.truth_compare_available
         item["final_result_mode"] = mode
         item["classification_is_published_final"] = is_final
         item["status"] = status

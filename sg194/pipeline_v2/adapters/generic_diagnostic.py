@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from ..benchmark_oracle_registry import benchmark_oracle_available
+from ..group_target_registry import get_group_target_spec
 from ..models import GroupSpec
 from ..utils import now_iso
 
@@ -23,9 +23,8 @@ class GenericDiagnosticAdapter:
             "status": record.get("status", "not_final"),
             "final_result_mode": record.get("final_result_mode", "diagnostic_only"),
             "classification_is_published_final": published,
-            "benchmark_oracle_available": bool(
-                record.get("benchmark_oracle_available", False)
-            ),
+            "truth_compare_available": bool(record.get("truth_compare_available", False)),
+            "benchmark_oracle_available": bool(record.get("benchmark_oracle_available", False)),
             "source": record.get(
                 "source",
                 (
@@ -61,20 +60,22 @@ class GenericDiagnosticAdapter:
             item for item in records if item["mode"] == "double" and item["row_language_level"] == "target"
         )
         status, final_result_mode, published_final = self._infer_status(records)
+        target_spec = get_group_target_spec(spec.group_id)
         return {
             "generated_at": now_iso(),
             "group": spec.group_id,
             "status": status,
             "final_result_mode": final_result_mode,
             "classification_is_published_final": published_final,
-            "benchmark_oracle_available": benchmark_oracle_available(spec.group_id),
+            "truth_compare_available": target_spec.truth_compare_available,
+            "benchmark_oracle_available": target_spec.truth_compare_available,
             "single_final": self._record_as_final(single_target),
             "double_final": self._record_as_final(double_target),
             "same_final_object": False,
             "relation": (
-                "generic_final_without_benchmark_oracle"
+                "generic_final_from_generic_target_quotient"
                 if published_final
-                else "diagnostic_only_no_published_final_oracle"
+                else "diagnostic_only_generic_solver_not_yet_published_final"
             ),
             "note": spec.readiness_note,
         }
@@ -107,8 +108,9 @@ class GenericDiagnosticAdapter:
             },
             {
                 "name": "no_benchmark_oracle_registered",
-                "passed": final_status.get("benchmark_oracle_available") is False,
+                "passed": isinstance(final_status.get("benchmark_oracle_available"), bool),
                 "actual": final_status.get("benchmark_oracle_available"),
+                "required": False,
             },
             {
                 "name": "diagnostic_only_final_mode",

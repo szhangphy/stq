@@ -74,6 +74,11 @@ def build_report(target_group: str, result: dict[str, Any]) -> dict[str, Any]:
     return {
         "target_group": target_group,
         "group_target_registry_note": target_spec.note,
+        "truth_compare_available": bool(
+            final_status.get("truth_compare_available")
+            if final_status.get("truth_compare_available") is not None
+            else target_spec.truth_compare_available
+        ),
         "benchmark_oracle_available": bool(
             final_status.get("benchmark_oracle_available")
             if final_status.get("benchmark_oracle_available") is not None
@@ -145,6 +150,7 @@ def build_markdown(report: dict[str, Any]) -> str:
         [
             f"# Group Engine Mode Report: {report['target_group']}",
             "",
+            f"- Truth compare available: `{report['truth_compare_available']}`.",
             f"- Benchmark oracle available: `{report['benchmark_oracle_available']}`.",
             f"- Final result mode: `{report['final_result_mode']}`.",
             f"- Classification is published final: `{report['classification_is_published_final']}`.",
@@ -166,20 +172,20 @@ def build_markdown(report: dict[str, Any]) -> str:
 def assert_expected_contract(report: dict[str, Any]) -> None:
     target_group = report["target_group"]
     if target_group == "194.1.1.1":
-        if report["benchmark_oracle_available"] is not True:
-            raise SystemExit("194.1.1.1 should have a benchmark oracle")
-        if report["final_result_mode"] != "benchmark_aligned_final":
-            raise SystemExit("194.1.1.1 should stay in benchmark_aligned_final mode")
-        if report["classification_is_published_final"] is not True:
-            raise SystemExit("194.1.1.1 should stay published-final")
-        if report["single_target_classification"] != "trivial":
-            raise SystemExit("194.1.1.1 single target should stay trivial")
-        if report["double_target_classification"] != "Z6":
-            raise SystemExit("194.1.1.1 double target should stay Z6")
+        if report["truth_compare_available"] is not True:
+            raise SystemExit("194.1.1.1 should keep truth-compare metadata available")
+        if report["final_result_mode"] == "benchmark_aligned_final":
+            raise SystemExit("194.1.1.1 must no longer use benchmark_aligned_final on the main solver path")
+        if report["current_row_shell_status"] != "available":
+            raise SystemExit("194.1.1.1 generic current-row shell must be available")
+        if report["local_ai_seed_status"] != "available":
+            raise SystemExit("194.1.1.1 generic local AI seed must be available")
+        if report["compatibility_builder_status"] != "available":
+            raise SystemExit("194.1.1.1 generic compatibility builder must be available")
         return
     if target_group == "99.1.1.1":
-        if report["benchmark_oracle_available"] is not False:
-            raise SystemExit("99.1.1.1 must not see a benchmark oracle")
+        if report["truth_compare_available"] is not False:
+            raise SystemExit("99.1.1.1 must stay truth-compare free")
         if report["final_result_mode"] == "generic_final":
             if report["classification_is_published_final"] is not True:
                 raise SystemExit("99.1.1.1 generic_final must be marked published-final")

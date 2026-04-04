@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import Any
 
-from .benchmark_oracle_registry import benchmark_oracle_available
 from .coordinates import coordinate_usage_audit
 from .models import GroupSpec
 from .utils import now_iso
@@ -82,20 +81,12 @@ def build_consistency_checks(
             for item in records
             if item.get("row_language_level") == "target"
         ]
-        oracle_available = benchmark_oracle_available(spec.group_id)
 
         def _target_mode_ok(item: dict[str, Any]) -> bool:
             mode = item.get("final_result_mode")
             published = item.get("classification_is_published_final")
             status = item.get("status")
             classification = item.get("classification")
-            if oracle_available:
-                return (
-                    mode == "benchmark_aligned_final"
-                    and published is True
-                    and status == "success"
-                    and classification is not None
-                )
             if mode == "generic_final":
                 return (
                     published is True
@@ -103,6 +94,7 @@ def build_consistency_checks(
                     and classification is not None
                     and item.get("verification_status") == "semantic_pass"
                     and item.get("same_shell_semantics") == "published_target_object"
+                    and item.get("quotient_semantics") == "same_shell_published_target_quotient"
                     and item.get("dBS") == item.get("dAI")
                 )
             if mode == "diagnostic_only":
@@ -135,15 +127,10 @@ def build_consistency_checks(
                     "actual": alignment.get("compatibility_builder"),
                 },
                 {
-                    "name": "generic_result_mode_matches_oracle_policy",
+                    "name": "generic_result_mode_matches_solver_semantics",
                     "passed": all(_target_mode_ok(item) for item in target_records),
                     "actual": {
-                        "benchmark_oracle_available": oracle_available,
-                        "allowed_final_modes": (
-                            ["benchmark_aligned_final"]
-                            if oracle_available
-                            else ["diagnostic_only", "generic_final"]
-                        ),
+                        "allowed_final_modes": ["diagnostic_only", "generic_final"],
                         "target_records": [
                             {
                                 "object_id": item.get("object_id"),

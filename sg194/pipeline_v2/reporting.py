@@ -25,6 +25,7 @@ def write_pipeline_outputs(
     ai_summary: dict[str, Any],
     quotient_summary: dict[str, Any],
     final_status: dict[str, Any],
+    truth_compare: dict[str, Any],
     checks: dict[str, Any],
 ) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -35,6 +36,7 @@ def write_pipeline_outputs(
         "ai": output_dir / "ai_results.json",
         "quotient": output_dir / "quotient_results.json",
         "final_status": output_dir / "final_status_summary.json",
+        "truth_compare": output_dir / "truth_compare_summary.json",
         "checks": output_dir / "consistency_checks.json",
     }
     write_json(files["geometry"], geometry)
@@ -43,6 +45,7 @@ def write_pipeline_outputs(
     write_json(files["ai"], ai_summary)
     write_json(files["quotient"], quotient_summary)
     write_json(files["final_status"], final_status)
+    write_json(files["truth_compare"], truth_compare)
     write_json(files["checks"], checks)
 
     md_files = {
@@ -52,6 +55,7 @@ def write_pipeline_outputs(
         "ai": output_dir / "ai_results.md",
         "quotient": output_dir / "quotient_results.md",
         "final_status": output_dir / "final_status_summary.md",
+        "truth_compare": output_dir / "truth_compare_summary.md",
         "checks": output_dir / "consistency_checks.md",
     }
     write_text(
@@ -165,6 +169,25 @@ def write_pipeline_outputs(
                             *(["relation: `" + final_status["relation"] + "`"] if "relation" in final_status else []),
                             *(["status: `" + final_status["status"] + "`"] if "status" in final_status else []),
                             *(["note: `" + final_status["note"] + "`"] if "note" in final_status else []),
+                        ]
+                    )
+                ),
+            ]
+        ),
+    )
+    write_text(
+        md_files["truth_compare"],
+        "\n".join(
+            [
+                "# Truth Compare Summary",
+                "",
+                *(
+                    _md_list(
+                        [
+                            f"truth compare available: `{truth_compare.get('truth_compare_available')}`",
+                            f"matches truth: `{truth_compare.get('matches_truth')}`",
+                            f"single compare: `{truth_compare.get('single')}`",
+                            f"double compare: `{truth_compare.get('double')}`",
                         ]
                     )
                 ),

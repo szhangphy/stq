@@ -600,6 +600,226 @@ def _point_row_indices(unknown_ordering: list[str], point_ids: list[str]) -> lis
     return [index for index, unknown in enumerate(unknown_ordering) if unknown.startswith(prefixes)]
 
 
+def _project_vector_by_indices(vector: list[int], indices: list[int]) -> list[int]:
+    return [int(vector[index]) for index in indices]
+
+
+def _build_generic_target_row_language(
+    *,
+    group_id: str,
+    mode: str,
+    target_point_ids: list[str],
+    current_unknown_ordering: list[str],
+    compatibility: dict[str, Any],
+    point_row_translation: dict[str, Any] | None,
+) -> dict[str, Any]:
+    projection_indices = _point_row_indices(current_unknown_ordering, target_point_ids)
+    projection_matrix = []
+    for row_index in projection_indices:
+        row = [0] * len(current_unknown_ordering)
+        row[row_index] = 1
+        projection_matrix.append(row)
+    availability = "available" if projection_indices else "blocked"
+    blocker_stage = None if projection_indices else "generic_target_row_language_missing_point_rows"
+    blocker = None if projection_indices else "generic target row language could not find any native point-shell rows"
+    return {
+        "group": group_id,
+        "mode": mode,
+        "row_language_kind": GENERIC_TARGET_ROW_LANGUAGE,
+        "object_kind": "generic_target_row_language_projection",
+        "availability": availability,
+        "current_unknown_count": len(current_unknown_ordering),
+        "target_unknown_count": len(projection_indices),
+        "target_unknown_ordering": [current_unknown_ordering[index] for index in projection_indices],
+        "projection_indices": projection_indices,
+        "target_projection_matrix_shape": [len(projection_matrix), len(current_unknown_ordering)],
+        "target_projection_matrix": projection_matrix,
+        "point_row_translation_profile": (
+            point_row_translation.get("profile")
+            if point_row_translation and point_row_translation.get("enabled")
+            else None
+        ),
+        "compatibility_matrix_shape": list(compatibility.get("matrix_shape", [])),
+        "object_semantics": "generic_target_row_language_projection_from_native_point_rows",
+        "blocker_stage": blocker_stage,
+        "blocker": blocker,
+        "evidence": {
+            "target_point_ids": list(target_point_ids),
+            "projection_row_count": len(projection_indices),
+        },
+    }
+
+
+def _build_generic_target_quotient(
+    *,
+    target_row_language: dict[str, Any],
+    bs_analysis_current: dict[str, Any],
+    compatibility: dict[str, Any],
+    induced: dict[str, Any],
+) -> dict[str, Any]:
+    port = stage1_backend()
+    if target_row_language.get("availability") != "available":
+        return {
+            "availability": "blocked",
+            "blocker_stage": target_row_language.get("blocker_stage"),
+            "blocker": target_row_language.get("blocker"),
+            "object_semantics": "generic_target_row_language_quotient_candidate_blocked",
+            "reported_dbs_semantics": None,
+            "reported_dai_semantics": "unresolved_target_row_language_blocked",
+            "classification_derivation_basis": None,
+            "same_shell_rank_check": None,
+            "verification_status": "target_row_language_blocked",
+            "same_shell_semantics": "target_row_language_blocked",
+            "quotient_semantics": "blocked_before_target_row_language_quotient",
+        }
+
+    unknown_ordering = list(bs_analysis_current["unknown_ordering"])
+    projection_indices = list(target_row_language["projection_indices"])
+    basis_vectors = [item["vector"] for item in bs_analysis_current["basis_vectors"]]
+    full_bs_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(vector) for vector in basis_vectors])
+        if basis_vectors
+        else sp.zeros(len(unknown_ordering), 0)
+    )
+    target_bs_matrix = (
+        sp.Matrix.hstack(
+            *[sp.Matrix(_project_vector_by_indices(vector, projection_indices)) for vector in basis_vectors]
+        )
+        if basis_vectors
+        else sp.zeros(len(projection_indices), 0)
+    )
+    full_bs_rank = int(full_bs_matrix.cols)
+    target_bs_rank = int(target_bs_matrix.rank())
+    if target_bs_rank != full_bs_rank:
+        return {
+            "availability": "blocked",
+            "blocker_stage": "generic_target_row_language_rank_loss",
+            "blocker": (
+                "generic target row language projection changed the BS rank and cannot yet define "
+                "an honest published target quotient"
+            ),
+            "object_semantics": "generic_target_row_language_quotient_candidate_blocked",
+            "reported_dbs_semantics": None,
+            "reported_dai_semantics": "unresolved_target_row_language_rank_loss",
+            "classification_derivation_basis": None,
+            "same_shell_rank_check": None,
+            "verification_status": "semantic_fail_target_row_language_rank_loss",
+            "same_shell_semantics": "target_row_language_rank_loss",
+            "quotient_semantics": "blocked_target_row_language_rank_loss",
+            "evidence": {
+                "full_rank": full_bs_rank,
+                "target_rank": target_bs_rank,
+                "target_unknown_count": len(projection_indices),
+            },
+        }
+
+    coords = []
+    compatible_candidates = []
+    compatible_target_vectors = []
+    rejected_candidates = []
+    embedding_failures = []
+    compatibility_rows = list(compatibility.get("global_matrix_rows", []))
+    for candidate in induced["candidates"]:
+        if not candidate.get("compatibility_zero", False):
+            rejected_candidates.append(_candidate_residual_payload(candidate, compatibility_rows))
+            continue
+        target_vector = _project_vector_by_indices(candidate["unknown_vector"], projection_indices)
+        try:
+            coords.append(_solve_ai_in_bs_coordinates(target_bs_matrix, target_vector))
+            compatible_candidates.append(candidate)
+            compatible_target_vectors.append(target_vector)
+        except Exception as exc:  # pragma: no cover - diagnostic path
+            embedding_failures.append(
+                {
+                    "generator_id": candidate.get("generator_id"),
+                    "family_letter": candidate.get("family_letter"),
+                    "reason": f"target_row_language_embedding_failed: {exc}",
+                }
+            )
+
+    ai_in_bs = sp.Matrix(coords).T if coords else sp.zeros(target_bs_rank, 0)
+    smith_data = port.swyckoff_k.smith_normal_form(
+        [[int(value) for value in row] for row in ai_in_bs.tolist()]
+    )
+    smith_matrix = sp.Matrix(smith_data[0]) if ai_in_bs.cols else sp.zeros(target_bs_rank, 0)
+    smith_diag = _smith_diagonal(smith_matrix)
+    ai_image_rank_in_bs = len(smith_diag)
+    target_ai_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(vector) for vector in compatible_target_vectors])
+        if compatible_target_vectors
+        else sp.zeros(len(projection_indices), 0)
+    )
+    target_ai_rank = int(target_ai_matrix.rank())
+    free_rank = int(target_bs_rank - ai_image_rank_in_bs)
+    finite_part = [value for value in smith_diag if value > 1]
+    classification = _quotient_group_string(free_rank, finite_part)
+    availability = (
+        "available"
+        if not (induced["failure_count"] or rejected_candidates or embedding_failures)
+        else "blocked"
+    )
+    blocker_stage = None
+    blocker = None
+    if induced["failure_count"]:
+        blocker_stage = "generic_target_row_language_induction_failure"
+        blocker = "generic target quotient induction failed for one or more local-library generators"
+    elif rejected_candidates:
+        blocker_stage = "generic_target_row_language_nonzero_residual_candidates"
+        blocker = "one or more local-library generators are not compatibility-zero before target-row projection"
+    elif embedding_failures:
+        blocker_stage = "generic_target_row_language_embedding_failure"
+        blocker = "target-row-language AI-in-BS embedding failed for at least one compatibility-zero candidate"
+    verification_status = (
+        "semantic_pass"
+        if availability == "available" and target_bs_rank == target_ai_rank
+        else "semantic_fail_dbs_dai_gap"
+        if availability == "available"
+        else "target_row_language_quotient_blocked"
+    )
+    return {
+        "availability": availability,
+        "blocker_stage": blocker_stage,
+        "blocker": blocker,
+        "dBS": target_bs_rank if availability == "available" else None,
+        "dAI": target_ai_rank if availability == "available" else None,
+        "ai_image_rank_in_bs": ai_image_rank_in_bs if availability == "available" else None,
+        "dbs_dai_gap": (
+            int(target_bs_rank - target_ai_rank) if availability == "available" else None
+        ),
+        "dbs_minus_ai_image_rank": (
+            int(target_bs_rank - ai_image_rank_in_bs) if availability == "available" else None
+        ),
+        "free_rank": free_rank if availability == "available" else None,
+        "finite_part": finite_part if availability == "available" else [],
+        "classification": classification if availability == "available" else None,
+        "smith_diagonal_nonzero": smith_diag,
+        "reported_dbs_semantics": "target_row_language_bs_rank",
+        "reported_dai_semantics": "target_row_language_ai_rank",
+        "classification_derivation_basis": "smith_rank_of_ai_image_in_bs_on_target_row_language",
+        "same_shell_rank_check": {
+            "dBS": target_bs_rank if availability == "available" else None,
+            "dAI": target_ai_rank if availability == "available" else None,
+            "ai_image_rank_in_bs": ai_image_rank_in_bs if availability == "available" else None,
+        },
+        "ai_candidate_count": induced["candidate_count"],
+        "ai_candidate_count_used": len(compatible_candidates),
+        "ai_failure_count": induced["failure_count"],
+        "ai_incompatible_count": len(rejected_candidates),
+        "ai_embedding_failure_count": len(embedding_failures),
+        "ai_incompatible_candidates": rejected_candidates,
+        "ai_embedding_failures": embedding_failures,
+        "ai_in_bs_matrix_shape": [int(ai_in_bs.rows), int(ai_in_bs.cols)],
+        "object_semantics": "generic_target_row_language_quotient_candidate",
+        "same_shell_semantics": "published_target_candidate_not_yet_verified",
+        "quotient_semantics": "same_shell_published_target_quotient_candidate",
+        "verification_status": verification_status,
+        "target_unknown_count": len(projection_indices),
+        "target_unknown_ordering": list(target_row_language["target_unknown_ordering"]),
+        "target_projection_matrix_shape": list(target_row_language["target_projection_matrix_shape"]),
+        "target_row_language_evidence": dict(target_row_language.get("evidence", {})),
+    }
+
+
 def _build_quotient_from_candidates(
     point_ids: list[str],
     unknown_ordering: list[str],
@@ -903,12 +1123,51 @@ def _same_shell_published_target_ready(
     same_shell_candidate: dict[str, Any],
     projected_point_shell_attempt: dict[str, Any],
 ) -> tuple[bool, str, dict[str, Any]]:
+    if same_shell_candidate.get("availability") != "available":
+        evidence = {
+            "same_shell_candidate_semantics": same_shell_candidate.get("object_semantics"),
+            "same_shell_candidate_verification_status": same_shell_candidate.get("verification_status"),
+            "projected_point_shell_status": projected_point_shell_attempt.get("status"),
+            "projected_point_shell_blocker_stage": projected_point_shell_attempt.get("blocker_stage"),
+        }
+        return False, "same_shell_candidate_not_available", evidence
+    if same_shell_candidate.get("object_semantics") != "generic_target_row_language_quotient_candidate":
+        evidence = {
+            "same_shell_candidate_semantics": same_shell_candidate.get("object_semantics"),
+            "projected_point_shell_status": projected_point_shell_attempt.get("status"),
+            "projected_point_shell_blocker_stage": projected_point_shell_attempt.get("blocker_stage"),
+        }
+        return False, "same_shell_candidate_is_still_diagnostic_not_published_target", evidence
+    d_bs = same_shell_candidate.get("dBS")
+    d_ai = same_shell_candidate.get("dAI")
+    if d_bs is None or d_ai is None:
+        evidence = {
+            "dBS": d_bs,
+            "dAI": d_ai,
+            "same_shell_candidate_verification_status": same_shell_candidate.get("verification_status"),
+        }
+        return False, "same_shell_candidate_missing_target_ranks", evidence
+    if d_bs != d_ai:
+        evidence = {
+            "dBS": d_bs,
+            "dAI": d_ai,
+            "ai_image_rank_in_bs": same_shell_candidate.get("ai_image_rank_in_bs"),
+            "projected_point_shell_status": projected_point_shell_attempt.get("status"),
+        }
+        return False, "same_shell_candidate_dbs_dai_gap", evidence
+    if same_shell_candidate.get("classification") is None:
+        evidence = {
+            "dBS": d_bs,
+            "dAI": d_ai,
+            "classification": same_shell_candidate.get("classification"),
+        }
+        return False, "same_shell_candidate_missing_classification", evidence
     evidence = {
         "same_shell_candidate_semantics": same_shell_candidate.get("object_semantics"),
         "projected_point_shell_status": projected_point_shell_attempt.get("status"),
         "projected_point_shell_blocker_stage": projected_point_shell_attempt.get("blocker_stage"),
     }
-    return False, "same_shell_candidate_is_still_diagnostic_not_published_target", evidence
+    return True, "same_shell_target_semantics_verified", evidence
 
 
 def _attempt_projected_point_shell_quotient(
@@ -965,6 +1224,8 @@ def _build_generic_same_shell_target_object(
     *,
     group_id: str,
     mode: str,
+    target_row_language: dict[str, Any],
+    target_quotient: dict[str, Any],
     compatibility: dict[str, Any],
     bs_analysis: dict[str, Any],
     induced: dict[str, Any],
@@ -977,13 +1238,15 @@ def _build_generic_same_shell_target_object(
         induced,
     )
     semantic_pass, promotion_reason, semantic_evidence = _same_shell_published_target_ready(
-        same_shell_candidate=full_current_shell_quotient,
+        same_shell_candidate=target_quotient,
         projected_point_shell_attempt=projected_point_shell_attempt,
     )
 
     if not semantic_pass:
         blocker_evidence = {
             **semantic_evidence,
+            "target_row_language": target_row_language,
+            "target_quotient": target_quotient,
             "full_current_shell_quotient": full_current_shell_quotient,
             "projected_point_shell_attempt": projected_point_shell_attempt,
         }
@@ -997,39 +1260,47 @@ def _build_generic_same_shell_target_object(
             "exact_alignment_status": "generic_same_shell_target_semantics_fail",
             "generic_builder_ready": True,
             "generic_published_classification_ready": False,
-            "target_alignment_builder_status": "blocked",
-            "direct_quotient_status": "generic_same_shell_target_semantics_fail",
-            "local_ai_embedding_status": (
-                "same_shell_full_current_row_embedding_success"
-                if full_current_shell_quotient.get("availability") == "available"
-                else "same_shell_full_current_row_embedding_blocked"
+            "target_alignment_builder_status": (
+                "available" if target_quotient.get("availability") == "available" else "blocked"
             ),
-            "dBS": None,
-            "dAI": None,
-            "ai_image_rank_in_bs": full_current_shell_quotient.get("ai_image_rank_in_bs"),
-            "dbs_dai_gap": None,
-            "dbs_minus_ai_image_rank": full_current_shell_quotient.get("dbs_minus_ai_image_rank"),
-            "free_rank": None,
-            "finite_part": [],
-            "classification": None,
-            "smith_diagonal_nonzero": list(full_current_shell_quotient.get("smith_diagonal_nonzero", [])),
+            "direct_quotient_status": (
+                "generic_same_shell_target_semantics_fail"
+                if target_quotient.get("availability") == "available"
+                else target_quotient.get("blocker_stage", "generic_same_shell_target_semantics_fail")
+            ),
+            "local_ai_embedding_status": (
+                "generic_target_row_language_embedding_success"
+                if target_quotient.get("availability") == "available"
+                else "generic_target_row_language_embedding_blocked"
+            ),
+            "dBS": target_quotient.get("dBS"),
+            "dAI": target_quotient.get("dAI"),
+            "ai_image_rank_in_bs": target_quotient.get("ai_image_rank_in_bs"),
+            "dbs_dai_gap": target_quotient.get("dbs_dai_gap"),
+            "dbs_minus_ai_image_rank": target_quotient.get("dbs_minus_ai_image_rank"),
+            "free_rank": target_quotient.get("free_rank"),
+            "finite_part": list(target_quotient.get("finite_part", [])),
+            "classification": target_quotient.get("classification"),
+            "smith_diagonal_nonzero": list(target_quotient.get("smith_diagonal_nonzero", [])),
             "object_semantics": "generic_same_shell_target_object_blocked_before_published_semantics",
-            "reported_dbs_semantics": None,
-            "reported_dai_semantics": "unresolved_do_not_promote_to_target",
-            "classification_derivation_basis": None,
+            "reported_dbs_semantics": target_quotient.get("reported_dbs_semantics"),
+            "reported_dai_semantics": target_quotient.get("reported_dai_semantics"),
+            "classification_derivation_basis": target_quotient.get("classification_derivation_basis"),
             "same_shell_semantics": "not_yet_published_target_object",
             "quotient_semantics": "blocked_before_published_target_semantics",
             "promotion_reason": promotion_reason,
-            "same_shell_rank_check": None,
+            "same_shell_rank_check": target_quotient.get("same_shell_rank_check"),
             "verification_status": "semantic_fail",
             "source": "generic_symmetry_ops_same_shell_target_builder",
             "blocker_stage": "generic_same_shell_target_semantics_fail",
             "blocker": "same-shell quotient is still a diagnostic object and cannot yet be promoted to a published target object",
             "blocker_evidence": blocker_evidence,
+            "target_row_language": target_row_language,
+            "target_quotient": target_quotient,
             "full_current_shell_quotient": full_current_shell_quotient,
             "projected_point_shell_attempt": projected_point_shell_attempt,
             "evidence": blocker_evidence,
-            "quotient": full_current_shell_quotient,
+            "quotient": target_quotient,
         }
 
     return {
@@ -1044,36 +1315,40 @@ def _build_generic_same_shell_target_object(
         "generic_published_classification_ready": True,
         "target_alignment_builder_status": "available",
         "direct_quotient_status": "generic_same_shell_direct_quotient_success",
-        "local_ai_embedding_status": "same_shell_full_current_row_embedding_success",
-        "dBS": full_current_shell_quotient.get("dBS"),
-        "dAI": full_current_shell_quotient.get("dAI"),
-        "ai_image_rank_in_bs": full_current_shell_quotient.get("ai_image_rank_in_bs"),
-        "dbs_dai_gap": full_current_shell_quotient.get("dbs_dai_gap"),
-        "dbs_minus_ai_image_rank": full_current_shell_quotient.get("dbs_minus_ai_image_rank"),
-        "free_rank": full_current_shell_quotient.get("free_rank"),
-        "finite_part": list(full_current_shell_quotient.get("finite_part", [])),
-        "classification": full_current_shell_quotient.get("classification"),
-        "smith_diagonal_nonzero": list(full_current_shell_quotient.get("smith_diagonal_nonzero", [])),
+        "local_ai_embedding_status": "generic_target_row_language_embedding_success",
+        "dBS": target_quotient.get("dBS"),
+        "dAI": target_quotient.get("dAI"),
+        "ai_image_rank_in_bs": target_quotient.get("ai_image_rank_in_bs"),
+        "dbs_dai_gap": target_quotient.get("dbs_dai_gap"),
+        "dbs_minus_ai_image_rank": target_quotient.get("dbs_minus_ai_image_rank"),
+        "free_rank": target_quotient.get("free_rank"),
+        "finite_part": list(target_quotient.get("finite_part", [])),
+        "classification": target_quotient.get("classification"),
+        "smith_diagonal_nonzero": list(target_quotient.get("smith_diagonal_nonzero", [])),
         "object_semantics": "published_target_object",
-        "reported_dbs_semantics": full_current_shell_quotient.get("reported_dbs_semantics"),
-        "reported_dai_semantics": full_current_shell_quotient.get("reported_dai_semantics"),
-        "classification_derivation_basis": full_current_shell_quotient.get("classification_derivation_basis"),
+        "reported_dbs_semantics": target_quotient.get("reported_dbs_semantics"),
+        "reported_dai_semantics": target_quotient.get("reported_dai_semantics"),
+        "classification_derivation_basis": target_quotient.get("classification_derivation_basis"),
         "same_shell_semantics": "published_target_object",
         "quotient_semantics": "same_shell_published_target_quotient",
         "promotion_reason": promotion_reason,
-        "same_shell_rank_check": full_current_shell_quotient.get("same_shell_rank_check"),
+        "same_shell_rank_check": target_quotient.get("same_shell_rank_check"),
         "verification_status": "semantic_pass",
         "source": "generic_symmetry_ops_same_shell_target_builder",
         "blocker_stage": None,
         "blocker": None,
+        "target_row_language": target_row_language,
+        "target_quotient": target_quotient,
         "full_current_shell_quotient": full_current_shell_quotient,
         "projected_point_shell_attempt": projected_point_shell_attempt,
         "evidence": {
-            "same_shell_rank_check": full_current_shell_quotient.get("same_shell_rank_check"),
+            "same_shell_rank_check": target_quotient.get("same_shell_rank_check"),
+            "target_row_language": target_row_language,
+            "target_quotient": target_quotient,
             "full_current_shell_quotient": full_current_shell_quotient,
             "projected_point_shell_attempt": projected_point_shell_attempt,
         },
-        "quotient": full_current_shell_quotient,
+        "quotient": target_quotient,
     }
 
 
@@ -1087,6 +1362,7 @@ def _generic_progress_payload(
     local_library: dict[str, Any] | None = None,
     induced: dict[str, Any] | None = None,
     quotient: dict[str, Any] | None = None,
+    target_row_language: dict[str, Any] | None = None,
     same_shell_target: dict[str, Any] | None = None,
     blocker_stage: str | None = None,
     blocker: str | None = None,
@@ -1125,6 +1401,7 @@ def _generic_progress_payload(
         "local_ai_family_count": family_count,
         "ai_candidate_count": candidate_count,
         "ai_failure_count": failure_count,
+        "target_row_language": target_row_language,
         "same_shell_target": same_shell_target,
         "blocker_stage": blocker_stage,
         "blocker": blocker,
@@ -1259,9 +1536,25 @@ def generic_mode_progress(group_id: str, mode: str, builder_variant: str = "auth
         compatibility,
         induced,
     )
+    target_row_language = _build_generic_target_row_language(
+        group_id=group_id,
+        mode=mode,
+        target_point_ids=shared["target_point_ids"],
+        current_unknown_ordering=bs_analysis["unknown_ordering"],
+        compatibility=compatibility,
+        point_row_translation=point_row_translation,
+    )
+    target_quotient = _build_generic_target_quotient(
+        target_row_language=target_row_language,
+        bs_analysis_current=bs_analysis,
+        compatibility=compatibility,
+        induced=induced,
+    )
     same_shell_target = _build_generic_same_shell_target_object(
         group_id=group_id,
         mode=mode,
+        target_row_language=target_row_language,
+        target_quotient=target_quotient,
         compatibility=compatibility,
         bs_analysis=bs_analysis,
         induced=induced,
@@ -1284,6 +1577,7 @@ def generic_mode_progress(group_id: str, mode: str, builder_variant: str = "auth
             local_library=local_library,
             induced=induced,
             quotient=same_shell_target.get("quotient"),
+            target_row_language=target_row_language,
             same_shell_target=same_shell_target,
             blocker_stage=None,
             blocker=None,
@@ -1304,6 +1598,7 @@ def generic_mode_progress(group_id: str, mode: str, builder_variant: str = "auth
         local_library=local_library,
         induced=induced,
         quotient=same_shell_target.get("quotient"),
+        target_row_language=target_row_language,
         same_shell_target=same_shell_target,
         blocker_stage=same_shell_target.get("blocker_stage"),
         blocker=same_shell_target.get("blocker"),
@@ -1437,6 +1732,7 @@ def generic_alignment_summary(group_id: str) -> dict[str, Any]:
 
     def target_payload(progress: dict[str, Any]) -> dict[str, Any]:
         target = progress.get("same_shell_target") or {}
+        target_row_language = progress.get("target_row_language") or target.get("target_row_language") or {}
         quotient = target.get("quotient") or progress.get("quotient") or {}
         projected = target.get("projected_point_shell_attempt") or (target.get("evidence") or {}).get("projected_point_shell_attempt", {})
         return {
@@ -1444,6 +1740,9 @@ def generic_alignment_summary(group_id: str) -> dict[str, Any]:
             "exact_alignment_status": target.get("exact_alignment_status", progress.get("blocker_stage")),
             "object_kind": target.get("object_kind", GENERIC_TARGET_OBJECT_KIND),
             "availability": target.get("availability", "blocked"),
+            "target_row_language_availability": target_row_language.get("availability"),
+            "target_unknown_count": target_row_language.get("target_unknown_count"),
+            "target_projection_matrix_shape": target_row_language.get("target_projection_matrix_shape"),
             "compatibility_matrix_shape": progress.get("compatibility_matrix_shape"),
             "current_row_compatibility_status": progress.get("compatibility_builder_status"),
             "target_alignment_builder_status": target.get(
@@ -1484,6 +1783,8 @@ def generic_alignment_summary(group_id: str) -> dict[str, Any]:
             "promotion_reason": target.get("promotion_reason"),
             "same_shell_rank_check": target.get("same_shell_rank_check"),
             "verification_status": target.get("verification_status"),
+            "target_row_language": target.get("target_row_language", target_row_language),
+            "target_quotient": target.get("target_quotient"),
             "full_current_shell_quotient": target.get("full_current_shell_quotient"),
             "projected_point_shell_attempt": target.get("projected_point_shell_attempt"),
             "diagnostic_projected_point_shell_status": projected.get("status"),
@@ -1654,6 +1955,8 @@ def generic_result_objects(group_id: str, builder_variant: str = "authoritative"
                 "quotient_semantics": target.get("quotient_semantics"),
                 "promotion_reason": target.get("promotion_reason"),
                 "same_shell_rank_check": target.get("same_shell_rank_check"),
+                "target_row_language": target.get("target_row_language", progress.get("target_row_language")),
+                "target_quotient": target.get("target_quotient"),
                 "full_current_shell_quotient": target.get("full_current_shell_quotient"),
                 "projected_point_shell_attempt": target.get("projected_point_shell_attempt"),
                 "ai_incompatible_candidates": quotient.get("ai_incompatible_candidates", []),

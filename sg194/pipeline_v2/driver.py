@@ -14,6 +14,7 @@ from .models import PipelineRunConfig
 from .quotient import build_quotient_summary
 from .reporting import finalize_output_package, write_pipeline_outputs
 from .specs import get_group_spec, list_group_specs
+from .truth_compare import build_truth_compare_report
 
 
 def default_output_dir(repo_root: Path, spec_key: str, mode: str, row_language: str) -> Path:
@@ -33,6 +34,7 @@ def run_pipeline(config: PipelineRunConfig, repo_root: Path) -> dict[str, Any]:
     ai_summary = build_ai_summary(selected_records, spec)
     quotient_summary = build_quotient_summary(selected_records, spec)
     final_status = adapter.build_final_status(spec, artifacts, records)
+    truth_compare = build_truth_compare_report(repo_root, spec.group_id, records)
     checks = build_consistency_checks(
         spec,
         artifacts,
@@ -53,6 +55,7 @@ def run_pipeline(config: PipelineRunConfig, repo_root: Path) -> dict[str, Any]:
         ai_summary,
         quotient_summary,
         final_status,
+        truth_compare,
         checks,
     )
     package_tarball = None
@@ -72,6 +75,7 @@ def run_pipeline(config: PipelineRunConfig, repo_root: Path) -> dict[str, Any]:
         "ai_summary": ai_summary,
         "quotient_summary": quotient_summary,
         "final_status": final_status,
+        "truth_compare": truth_compare,
         "checks": checks,
         "manifest": manifest,
         "package_tarball": package_tarball,

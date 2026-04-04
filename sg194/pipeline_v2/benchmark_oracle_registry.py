@@ -13,6 +13,7 @@ class BenchmarkOracleSpec:
     benchmark_verdict_file: str | None
     source_kind: str
     expected_classification: str | None = None
+    truth_compare_only: bool = True
 
 
 GROUP_BENCHMARK_ORACLE_REGISTRY: dict[str, BenchmarkOracleSpec] = {
@@ -31,6 +32,10 @@ def get_benchmark_oracle_spec(target_group: str) -> BenchmarkOracleSpec | None:
 
 
 def benchmark_oracle_available(target_group: str) -> bool:
+    return get_benchmark_oracle_spec(target_group) is not None
+
+
+def truth_compare_available(target_group: str) -> bool:
     return get_benchmark_oracle_spec(target_group) is not None
 
 
@@ -76,6 +81,7 @@ def load_group_benchmark_oracle(
     return {
         "target_group": target_group,
         "source_kind": spec.source_kind,
+        "truth_compare_only": spec.truth_compare_only,
         "registry_status": "registered",
         "benchmark_status_file": spec.benchmark_status_file,
         "benchmark_verdict_file": spec.benchmark_verdict_file,
@@ -89,4 +95,48 @@ def load_group_benchmark_oracle(
         "expected_classification": expected_classification,
         "expected_dAI": int(compute["dAI"]),
         "expected_dBS": int(compute["dBS"]),
+    }
+
+
+def load_group_truth_reference(
+    repo_root: Path,
+    target_group: str,
+) -> dict[str, Any] | None:
+    spec = get_benchmark_oracle_spec(target_group)
+    if spec is None:
+        return None
+
+    status_payload = None
+    verdict_payload = None
+    if spec.benchmark_status_file is not None:
+        status_payload = json.loads((repo_root / spec.benchmark_status_file).read_text())
+    if spec.benchmark_verdict_file is not None:
+        verdict_payload = json.loads((repo_root / spec.benchmark_verdict_file).read_text())
+
+    published_source = (
+        ((status_payload or {}).get("source_workflow_alignment") or {}).get("published_source_result")
+        or {}
+    )
+    single_truth = published_source.get("single_target_result") or {}
+    double_truth = (
+        published_source.get("double_internalized_result")
+        or ((status_payload or {}).get("benchmark_result") or {})
+        or ((verdict_payload or {}).get("benchmark_result") or {})
+    )
+    return {
+        "target_group": target_group,
+        "truth_compare_only": spec.truth_compare_only,
+        "source_kind": spec.source_kind,
+        "status_file": spec.benchmark_status_file,
+        "verdict_file": spec.benchmark_verdict_file,
+        "single_truth": {
+            "dBS": single_truth.get("dBS"),
+            "dAI": single_truth.get("dAI"),
+            "classification": single_truth.get("classification"),
+        },
+        "double_truth": {
+            "dBS": double_truth.get("dBS"),
+            "dAI": double_truth.get("dAI"),
+            "classification": double_truth.get("classification") or double_truth.get("indicator_group"),
+        },
     }
