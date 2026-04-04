@@ -1,0 +1,626 @@
+{
+  "library_called": true,
+  "mode": "single",
+  "published_object_kind": "publication_level_point_path_shell_v1",
+  "object_language": "publication_level_C_pub_34_unknowns",
+  "ai_induction_character_field": "point=character, line=character, plane=character, default=character",
+  "unknown_count": 34,
+  "local_library_source": "debug_sg194_nonabelian_local_library.build_inventory_and_libraries",
+  "local_library_files": [
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/debug_sg194_nonabelian_local_library.py",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_single_local_irrep_library.json",
+    "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_double_local_corep_library.json"
+  ],
+  "local_library_wired_into_ai_builder": true,
+  "family_count": 12,
+  "local_object_count": 45,
+  "candidate_count": 45,
+  "family_local_object_counts": {
+    "a": 6,
+    "b": 6,
+    "c": 6,
+    "d": 6,
+    "e": 3,
+    "f": 3,
+    "g": 4,
+    "h": 4,
+    "i": 2,
+    "j": 2,
+    "k": 2,
+    "l": 1
+  },
+  "site_symmetry_type_keys": [
+    "C1",
+    "C2",
+    "C2h",
+    "C2v",
+    "C3v",
+    "Cs",
+    "D3d_like",
+    "D3h_like"
+  ],
+  "success_candidate_count": 45,
+  "failure_count": 0,
+  "compatibility_zero_candidate_count": 11,
+  "nonzero_residual_candidate_count": 34,
+  "distinct_unknown_vector_count": 45,
+  "family_success_counts": {
+    "a": 6,
+    "b": 6,
+    "c": 6,
+    "d": 6,
+    "e": 3,
+    "f": 3,
+    "g": 4,
+    "h": 4,
+    "i": 2,
+    "j": 2,
+    "k": 2,
+    "l": 1
+  },
+  "failure_family_ids": [],
+  "compatibility_zero_generator_ids": [
+    "a_Eg",
+    "a_Eu",
+    "e_A1",
+    "e_A2",
+    "e_E",
+    "f_A1",
+    "f_A2",
+    "f_E",
+    "j_A'",
+    "j_A''",
+    "l_A"
+  ],
+  "nonzero_residual_candidates": [
+    {
+      "generator_id": "a_A1g",
+      "family_id": "a",
+      "local_object_label": "A1g",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "a_A1u",
+      "family_id": "a",
+      "local_object_label": "A1u",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "a_A2g",
+      "family_id": "a",
+      "local_object_label": "A2g",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "a_A2u",
+      "family_id": "a",
+      "local_object_label": "A2u",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "b_A1''",
+      "family_id": "b",
+      "local_object_label": "A1''",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "b_A2'",
+      "family_id": "b",
+      "local_object_label": "A2'",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "b_A2''",
+      "family_id": "b",
+      "local_object_label": "A2''",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "b_E'",
+      "family_id": "b",
+      "local_object_label": "E'",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "b_E''",
+      "family_id": "b",
+      "local_object_label": "E''",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "compatibility_residual_norm": 1,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "c_A1''",
+      "family_id": "c",
+      "local_object_label": "A1''",
+      "compatibility_residual_norm": 1,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "c_A2'",
+      "family_id": "c",
+      "local_object_label": "A2'",
+      "compatibility_residual_norm": 1,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "c_A2''",
+      "family_id": "c",
+      "local_object_label": "A2''",
+      "compatibility_residual_norm": 1,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "c_E'",
+      "family_id": "c",
+      "local_object_label": "E'",
+      "compatibility_residual_norm": 3,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        },
+        {
+          "row_index": 24,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "c_E''",
+      "family_id": "c",
+      "local_object_label": "E''",
+      "compatibility_residual_norm": 3,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        },
+        {
+          "row_index": 24,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "compatibility_residual_norm": 1,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "d_A1''",
+      "family_id": "d",
+      "local_object_label": "A1''",
+      "compatibility_residual_norm": 1,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "d_A2'",
+      "family_id": "d",
+      "local_object_label": "A2'",
+      "compatibility_residual_norm": 1,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "d_A2''",
+      "family_id": "d",
+      "local_object_label": "A2''",
+      "compatibility_residual_norm": 1,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 24,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "d_E'",
+      "family_id": "d",
+      "local_object_label": "E'",
+      "compatibility_residual_norm": 3,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        },
+        {
+          "row_index": 24,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "d_E''",
+      "family_id": "d",
+      "local_object_label": "E''",
+      "compatibility_residual_norm": 3,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        },
+        {
+          "row_index": 24,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "g_Ag",
+      "family_id": "g",
+      "local_object_label": "Ag",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "g_Bg",
+      "family_id": "g",
+      "local_object_label": "Bg",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "g_Au",
+      "family_id": "g",
+      "local_object_label": "Au",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "g_Bu",
+      "family_id": "g",
+      "local_object_label": "Bu",
+      "compatibility_residual_norm": 2,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "h_A1",
+      "family_id": "h",
+      "local_object_label": "A1",
+      "compatibility_residual_norm": 4,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        },
+        {
+          "row_index": 24,
+          "residual": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "h_A2",
+      "family_id": "h",
+      "local_object_label": "A2",
+      "compatibility_residual_norm": 4,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        },
+        {
+          "row_index": 24,
+          "residual": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "h_B1",
+      "family_id": "h",
+      "local_object_label": "B1",
+      "compatibility_residual_norm": 4,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -1
+        },
+        {
+          "row_index": 23,
+          "residual": 1
+        },
+        {
+          "row_index": 24,
+          "residual": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "h_B2",
+      "family_id": "h",
+      "local_object_label": "B2",
+      "compatibility_residual_norm": 4,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 1
+        },
+        {
+          "row_index": 23,
+          "residual": -1
+        },
+        {
+          "row_index": 24,
+          "residual": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "i_A",
+      "family_id": "i",
+      "local_object_label": "A",
+      "compatibility_residual_norm": 4,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -2
+        },
+        {
+          "row_index": 23,
+          "residual": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "i_B",
+      "family_id": "i",
+      "local_object_label": "B",
+      "compatibility_residual_norm": 4,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 2
+        },
+        {
+          "row_index": 23,
+          "residual": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "k_A'",
+      "family_id": "k",
+      "local_object_label": "A'",
+      "compatibility_residual_norm": 8,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": -2
+        },
+        {
+          "row_index": 23,
+          "residual": 2
+        },
+        {
+          "row_index": 24,
+          "residual": -4
+        }
+      ]
+    },
+    {
+      "generator_id": "k_A''",
+      "family_id": "k",
+      "local_object_label": "A''",
+      "compatibility_residual_norm": 8,
+      "nonzero_residual_rows": [
+        {
+          "row_index": 22,
+          "residual": 2
+        },
+        {
+          "row_index": 23,
+          "residual": -2
+        },
+        {
+          "row_index": 24,
+          "residual": 4
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "historical_point_row_translation_profile": "legacy",
+  "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
+  "point_row_translation_enabled": false,
+  "integration_status": "wired_candidate_set_with_residual_sector"
+}

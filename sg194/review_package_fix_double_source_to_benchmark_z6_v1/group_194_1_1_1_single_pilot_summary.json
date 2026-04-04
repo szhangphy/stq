@@ -1,0 +1,217 @@
+{
+  "target_group": "194.1.1.1",
+  "group_type": 1,
+  "geometry_status": "success",
+  "compatibility_status": {
+    "internal_line_blocks_built": 8,
+    "publication_line_blocks_built": 7,
+    "synthetic_boundary_points_added": 0,
+    "point_line_relations": 14,
+    "unmatched_line_endpoints_before_augmentation": 0,
+    "plane_blocks_built": 4,
+    "status": "success",
+    "authoritative_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+    "raw_builder_phase_aware_profile": "phase_aware_l2_projective_v1",
+    "internal_object_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
+    "published_object_kind": "publication_level_point_path_shell_v1",
+    "diagnostic_raw_with_planes_retained": true,
+    "internal_and_publication_objects_explicitly_separated": true
+  },
+  "BS_status": {
+    "status": "success",
+    "compatibility_matrix_shape": [
+      29,
+      34
+    ],
+    "compatibility_matrix_rank": 24,
+    "compatibility_matrix_nullity": 10,
+    "bs_rank": 10,
+    "smith_diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "internal_honest_shell_path_count": 8,
+    "internal_honest_shell_rank": 24,
+    "published_object_kind": "publication_level_point_path_shell_v1",
+    "final_selected_path_count": 7,
+    "final_unique_endpoint_pair_count": 7,
+    "actual_path_pairs": [
+      [
+        "P1",
+        "P2"
+      ],
+      [
+        "P1",
+        "P3"
+      ],
+      [
+        "P1",
+        "P5"
+      ],
+      [
+        "P2",
+        "P4"
+      ],
+      [
+        "P2",
+        "P6"
+      ],
+      [
+        "P3",
+        "P4"
+      ],
+      [
+        "P5",
+        "P6"
+      ]
+    ],
+    "diagnostic_raw_with_planes_compatibility_matrix_shape": [
+      61,
+      42
+    ],
+    "row_language_full_span_pass": true,
+    "bilbao_equivalent_final_object_pass": true
+  },
+  "AI_status": {
+    "status": "full_ai_lattice",
+    "trivial_generators_count": 12,
+    "trivial_generator_failure_count": 0,
+    "rank_trivial_family_span": 12,
+    "old_verified_ai_rank": 5,
+    "authoritative_ai_rank": 10,
+    "promoted_ai_rank_increment": 5,
+    "compatibility_zero_count": 4,
+    "all_trivial_generators_compatibility_zero": false,
+    "point_row_translation_legality": "removed",
+    "authoritative_ai_character_field": "point=character, line=character, plane=character, default=character",
+    "residual_pattern_changed_vs_previous_branch": false,
+    "local_library_wired_into_ai_builder": true,
+    "library_integration_status": "wired_and_materialized_into_authoritative_kernel_lattice",
+    "library_integration_success_candidate_count": 45,
+    "library_integration_failure_count": 0,
+    "library_integration_compatibility_zero_candidate_count": 11,
+    "published_bs_rank": 10,
+    "zero_subset_rank": 5,
+    "zero_subset_generator_ids": [
+      "a_Eg",
+      "a_Eu",
+      "e_A1",
+      "e_A2",
+      "e_E",
+      "f_A1",
+      "f_A2",
+      "f_E",
+      "j_A'",
+      "j_A''",
+      "l_A"
+    ],
+    "missing_ai_rank": 5,
+    "p4_induction_failure_count": 0,
+    "p4_failure_family_ids": [],
+    "p4_current_verdict": "setting_specific_fix_confirmed",
+    "p4_theorem_status": "not_global_not_basis_independent",
+    "p4_setting_specific_validation_scope": "SG194_current_setting_only",
+    "p4_setting_specific_numerical_consistency_pass": true,
+    "sg194_setting_specific_linear_to_character_consistency_pass": true,
+    "character_conversion_general_theorem_promoted": false,
+    "p4_first_formula_vs_explicit_mismatch": null,
+    "blocker_summary": "No active AI blocker; single-group quotient already extracted on the authoritative publication-shell AI lattice.",
+    "obstruction_classification_counts": {
+      "fails_on_raw42": 34,
+      "compatible_on_publication_shell": 11
+    },
+    "published_fail_path_histogram": {
+      "PPATH06": 68
+    },
+    "published_fail_row_histogram": {
+      "22": 24,
+      "23": 24,
+      "24": 20
+    },
+    "ppath06_publication_residual_support_rows": [
+      22,
+      23,
+      24
+    ],
+    "residual_sector_quotient_rank_contribution": 5,
+    "missing_rank5_pivot_generator_ids": [
+      "a_A1u",
+      "b_A1''",
+      "c_A1'",
+      "d_A1'",
+      "g_Ag"
+    ],
+    "residual_completion_feasible": true,
+    "residual_completion_liftable_direction_ids": [
+      "lifted_a_A1g_minus_a_A1u",
+      "lifted_b_A1_prime_plus_b_A1_doubleprime",
+      "lifted_b_E_prime_minus_2_c_A1_prime",
+      "lifted_b_E_prime_minus_2_d_A1_prime",
+      "lifted_a_A1g_minus_g_Ag"
+    ],
+    "promoted_authoritative_generator_ids": [
+      "promoted_a_A1g_minus_a_A1u",
+      "promoted_b_A1_prime_plus_b_A1_doubleprime",
+      "promoted_b_E_prime_minus_2_c_A1_prime",
+      "promoted_b_E_prime_minus_2_d_A1_prime",
+      "promoted_a_A1g_minus_g_Ag"
+    ],
+    "all_promoted_authoritative_generators_actual_compatibility_zero": true,
+    "ai_aligned_with_bilbao": true,
+    "quotient_stage_allowed": true,
+    "publication_point_basis_usage_counts": {
+      "raw_capture_point_basis": 225,
+      "publication_collapsed_point_basis_fallback_raw": 34,
+      "publication_collapsed_point_basis": 11
+    }
+  },
+  "completeness_status": {
+    "status": "ready",
+    "blocker": "No active AI blocker; single-group quotient already extracted on the authoritative publication-shell AI lattice."
+  },
+  "quotient_status": {
+    "status": "success",
+    "blocker": null,
+    "quotient_group": "trivial",
+    "quotient_kind": "trivial",
+    "quotient_invariants": [],
+    "snf_diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "classification_expected_by_user": "trivial",
+    "classification_matches_user_expectation": true
+  },
+  "active_blocker_stage": "quotient_success_trivial",
+  "blocker": "No active single-group blocker; authoritative publication-shell BS/AI quotient extracted successfully."
+}

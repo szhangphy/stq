@@ -1,0 +1,48 @@
+{
+  "benchmark_oracle_file": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
+  "classification_reference_source": "sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json::source_breakdown.copied_experimental_compute",
+  "input_shape_metadata": [
+    10,
+    33
+  ],
+  "stored_outer_length": 33,
+  "stored_inner_length": 10,
+  "interpreted_orientation": "generator_rows_in_bs_coordinates",
+  "interpreted_generator_matrix_shape": [
+    10,
+    33
+  ],
+  "authoritative_ai_rank": 10,
+  "published_bs_rank": 10,
+  "quotient_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "quotient_group": "Z6",
+  "quotient_invariants": [
+    6
+  ],
+  "expected_quotient_group": "Z6",
+  "expected_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "matches_benchmark_reference": true,
+  "summary": "The benchmark oracle stores 33 explicit double AI generators in BS coordinates. After interpreting the stored rows as generator coordinates in the 10-dimensional BS basis, their Smith form reproduces the benchmark Z6 quotient."
+}
