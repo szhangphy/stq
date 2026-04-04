@@ -46,7 +46,21 @@ def ssgreps_module():
 
 
 def _class_key(restricted_vector: list[dict[str, Any]]) -> str:
-    return json.dumps(restricted_vector, sort_keys=True, separators=(",", ":"))
+    def normalize(value: Any) -> Any:
+        if isinstance(value, dict):
+            return {key: normalize(item) for key, item in value.items()}
+        if isinstance(value, list):
+            return [normalize(item) for item in value]
+        if isinstance(value, float):
+            if abs(value) < 1e-12:
+                return 0
+            rounded = round(value)
+            if abs(value - rounded) < 1e-12:
+                return int(rounded)
+            return float(value)
+        return value
+
+    return json.dumps(normalize(restricted_vector), sort_keys=True, separators=(",", ":"))
 
 
 def _parse_line_orbit_coordinate(piece: str, sample: Fraction) -> Fraction:
@@ -200,6 +214,7 @@ def _build_restriction_class_rows(
     source_type: str,
     field: str = "linear_character",
     match_provider=None,
+    endpoint_label_key: str = "point_id",
 ) -> dict[str, Any]:
     port = stage1_backend()
     endpoint_classes = {}
@@ -207,7 +222,7 @@ def _build_restriction_class_rows(
     vectors_by_key: dict[str, list[dict[str, Any]]] = {}
 
     for entry in endpoint_entries:
-        endpoint_id = entry["point_id"]
+        endpoint_id = str(entry[endpoint_label_key])
         capture_id = entry.get("capture_id", endpoint_id)
         endpoint_raw = captures[capture_id]
         matched = (
@@ -223,7 +238,7 @@ def _build_restriction_class_rows(
             vectors_by_key[key] = list(klass["restricted_vector"])
 
     equations = []
-    endpoint_ids = [entry["point_id"] for entry in endpoint_entries]
+    endpoint_ids = [str(entry[endpoint_label_key]) for entry in endpoint_entries]
     anchor = endpoint_ids[0]
     for class_index, key in enumerate(sorted(union), start=1):
         support = union[key]
@@ -750,6 +765,7 @@ def _build_target_restriction_line_block(
     endpoint_entries: list[dict[str, Any]],
     captures: dict[str, Any],
     builder_variant: str,
+    endpoint_label_key: str = "point_id",
 ) -> dict[str, Any]:
     block = _build_restriction_class_rows(
         captures[source_line["id"]],
@@ -757,11 +773,12 @@ def _build_target_restriction_line_block(
         captures,
         source_type="line",
         field="character",
+        endpoint_label_key=endpoint_label_key,
     )
     endpoint_decompositions: dict[str, list[dict[str, Any]]] = {}
     local_unknown_ordering: list[str] = []
     for endpoint_entry in endpoint_entries:
-        endpoint_id = endpoint_entry["point_id"]
+        endpoint_id = str(endpoint_entry[endpoint_label_key])
         endpoint_raw = captures[endpoint_entry.get("capture_id", endpoint_id)]
         reps = []
         for rep_index in range(1, len(endpoint_raw["linear_character"]) + 1):
@@ -776,26 +793,108 @@ def _build_target_restriction_line_block(
             )
             local_unknown_ordering.append(rep_id)
         endpoint_decompositions[endpoint_id] = reps
+    equations = []
+    for equation in block["equations"]:
+        equations.append(
+            {
+                **equation,
+                "builder_variant": builder_variant,
+                "row_kind": "restriction_class_sum",
+                "target_line_block_kind": "real_line",
+                "line_window_kind": "ordinary",
+                "source_line_family": source_line["id"],
+                "source_line_id": source_line["id"],
+                "endpoint_capture_ids": [
+                    entry.get("capture_id", entry["point_id"])
+                    for entry in endpoint_entries
+                ],
+            }
+        )
+    matrix_rows = _build_block_matrix_rows_from_equations(
+        local_unknown_ordering,
+        equations,
+        block_id=block_id,
+    )
     return {
         "status": "fallback_restriction_classes",
         "line_id": block_id,
         "source_line_id": source_line["id"],
-        "endpoint_ids": [entry["point_id"] for entry in endpoint_entries],
+        "endpoint_ids": [str(entry[endpoint_label_key]) for entry in endpoint_entries],
         "line_sample_point": source_line.get("sample_point"),
         "line_parametrization": source_line.get("parametrization"),
         "line_symmetry_summary": source_line.get("symmetry_summary"),
         "endpoint_decompositions": endpoint_decompositions,
         "local_unknown_ordering": local_unknown_ordering,
-        "equations": block["equations"],
-        "matrix_rows": [],
+        "equations": equations,
+        "matrix_rows": matrix_rows,
         "line_basis_labels": [],
         "builder_variant": builder_variant,
+        "target_line_block_kind": "real_line",
         "compatibility_builder_kind": "generic_same_shell_target_restriction_class_line_builder",
         "restriction_class_builder": {
             "builder_kind": "generic_same_shell_target_restriction_class_line_builder",
             "endpoint_capture_ids": [entry.get("capture_id", entry["point_id"]) for entry in endpoint_entries],
         },
     }
+
+
+def _ordered_target_capture_ids(
+    *,
+    shared: dict[str, Any],
+    catalog: dict[tuple[str, str, str], list[dict[str, Any]]],
+) -> list[str]:
+    target_point_ids = set(shared["target_point_ids"])
+    by_capture: dict[str, dict[str, Any]] = {}
+    for entries in catalog.values():
+        for entry in entries:
+            if entry["point_id"] not in target_point_ids:
+                continue
+            by_capture[str(entry["capture_id"])] = {
+                "capture_id": str(entry["capture_id"]),
+                "point_id": str(entry["point_id"]),
+                "point_coordinates": list(entry["point_coordinates"]),
+            }
+    ordered = sorted(
+        by_capture.values(),
+        key=lambda item: (
+            item["point_id"],
+            item["capture_id"] != item["point_id"],
+            item["capture_id"],
+            tuple(item["point_coordinates"]),
+        ),
+    )
+    return [item["capture_id"] for item in ordered]
+
+
+def _build_block_matrix_rows_from_equations(
+    local_unknown_ordering: list[str],
+    equations: list[dict[str, Any]],
+    *,
+    block_id: str,
+) -> list[list[int]]:
+    local_index = {unknown: index for index, unknown in enumerate(local_unknown_ordering)}
+    matrix_rows: list[list[int]] = []
+    for equation in equations:
+        row = [0] * len(local_unknown_ordering)
+        seen_side_unknown: set[tuple[str, str]] = set()
+        for term in equation.get("terms", []):
+            unknown = str(term["unknown"])
+            side = str(term.get("side", ""))
+            coeff = int(term["coeff"])
+            if unknown not in local_index:
+                raise ValueError(f"{block_id}: unknown {unknown} is outside the local signature universe")
+            marker = (side, unknown)
+            if marker in seen_side_unknown:
+                raise ValueError(f"{block_id}: duplicated same-side insertion for {side}:{unknown}")
+            seen_side_unknown.add(marker)
+            row[local_index[unknown]] += coeff
+        nonzero = [value for value in row if value]
+        if not nonzero:
+            raise ValueError(f"{block_id}: generated a structurally empty compatibility row")
+        if not any(value > 0 for value in nonzero) or not any(value < 0 for value in nonzero):
+            raise ValueError(f"{block_id}: compatibility row does not contain both signs")
+        matrix_rows.append(row)
+    return matrix_rows
 
 
 def _build_target_line_blocks_for_window(
@@ -893,6 +992,7 @@ def _build_target_line_blocks_for_window(
                     endpoint_entries=endpoint_entries,
                     captures=captures,
                     builder_variant=builder_variant,
+                    endpoint_label_key="point_id",
                 )
             except Exception as exc:
                 records.append(
@@ -944,9 +1044,272 @@ def _build_target_real_line_blocks(
         catalog=catalog,
         point_representatives=point_representatives,
         start_sample=Fraction(0, 1),
-        end_sample=Fraction(1, 2),
+        end_sample=Fraction(1, 1),
         window_tag="ordinary",
     )
+
+
+def _collect_same_point_monodromy_pairs(
+    *,
+    shared: dict[str, Any],
+    captures: dict[str, Any],
+    module: Any,
+    group_id: str,
+    ssg_dict: dict[str, Any],
+    ctx: dict[str, Any],
+    mode: str,
+    catalog: dict[tuple[str, str, str], list[dict[str, Any]]],
+    point_representatives: dict[str, list[str]],
+) -> list[dict[str, Any]]:
+    target_point_ids = set(shared["target_point_ids"])
+    port = stage1_backend()
+    pairs: list[dict[str, Any]] = []
+    seen: set[tuple[str, str, tuple[str, str]]] = set()
+    for line in shared["grouped"]["lines"]:
+        for branch_index, orbit_expr in enumerate(line.get("metadata", {}).get("source_orbit", []), start=1):
+            pieces = [piece.strip() for piece in orbit_expr.split(",")]
+            if len(pieces) != 3:
+                continue
+            endpoint_entries = []
+            for sample in (Fraction(0, 1), Fraction(1, 1)):
+                coords = [str(_parse_line_orbit_coordinate(piece, sample)) for piece in pieces]
+                entry = _resolve_target_capture_entry(
+                    point_coordinates=coords,
+                    allowed_point_ids=target_point_ids,
+                    catalog=catalog,
+                    point_representatives=point_representatives,
+                    captures=captures,
+                    port=port,
+                    module=module,
+                    group_id=group_id,
+                    ssg_dict=ssg_dict,
+                    ctx=ctx,
+                    mode=mode,
+                )
+                if entry is None:
+                    endpoint_entries = []
+                    break
+                endpoint_entries.append(entry)
+            if len(endpoint_entries) != 2:
+                continue
+            left_entry, right_entry = endpoint_entries
+            if left_entry["point_id"] != right_entry["point_id"]:
+                continue
+            if left_entry["capture_id"] == right_entry["capture_id"]:
+                continue
+            key = (
+                line["id"],
+                left_entry["point_id"],
+                tuple(sorted((left_entry["capture_id"], right_entry["capture_id"]))),
+            )
+            if key in seen:
+                continue
+            seen.add(key)
+            pairs.append(
+                {
+                    "line_family": line["id"],
+                    "source_line_id": line["id"],
+                    "branch_index": branch_index,
+                    "point_id": left_entry["point_id"],
+                    "left_capture_id": left_entry["capture_id"],
+                    "right_capture_id": right_entry["capture_id"],
+                    "left_coordinates": list(left_entry["point_coordinates"]),
+                    "right_coordinates": list(right_entry["point_coordinates"]),
+                    "orbit_expr": orbit_expr,
+                }
+            )
+    return pairs
+
+
+def _sample_branch_point_from_orbit_expr(
+    orbit_expr: str,
+    sample: Fraction = LINE_SAMPLE,
+) -> list[float]:
+    pieces = [piece.strip() for piece in orbit_expr.split(",")]
+    if len(pieces) != 3:
+        raise ValueError(f"invalid orbit expression for line branch sample: {orbit_expr!r}")
+    return [float(_parse_line_orbit_coordinate(piece, sample)) for piece in pieces]
+
+
+def _build_target_monodromy_block_from_pair(
+    *,
+    pair: dict[str, Any],
+    captures: dict[str, Any],
+    line_raw: dict[str, Any],
+    builder_variant: str,
+) -> dict[str, Any]:
+    port = stage1_backend()
+    point_id = str(pair["point_id"])
+    left_capture_id = str(pair["left_capture_id"])
+    right_capture_id = str(pair["right_capture_id"])
+    left_raw = captures[left_capture_id]
+    right_raw = captures[right_capture_id]
+    matched_left = port.matched_unitary_indices(line_raw, left_raw)
+    matched_right = port.matched_unitary_indices(line_raw, right_raw)
+    monodromy_field = "character"
+    line_basis_labels = [
+        f"{pair['source_line_id']}_M{pair['branch_index']:02d}_R{i}"
+        for i in range(1, len(line_raw[monodromy_field]) + 1)
+    ]
+    line_basis_matrix = port._exact_basis_matrix_from_capture(
+        line_raw,
+        monodromy_field,
+        manifold_id=pair["source_line_id"],
+    )
+    if len(left_raw["linear_character"]) != len(right_raw["linear_character"]):
+        raise ValueError(
+            f"same-point monodromy pair {point_id}: mismatched rep counts "
+            f"{len(left_raw['linear_character'])} vs {len(right_raw['linear_character'])}"
+        )
+    local_unknown_ordering = [
+        f"{point_id}_R{rep_index}"
+        for rep_index in range(1, len(left_raw["linear_character"]) + 1)
+    ]
+    endpoint_decompositions = {
+        point_id: [
+            {
+                "rep_id": f"{point_id}_R{rep_index}",
+                "rep_degree": int(left_raw["rep_degree"][rep_index - 1]),
+                "torsion": int(left_raw["torsion"][rep_index - 1]),
+                "decomposition_on_line_basis_left": {},
+                "decomposition_on_line_basis_right": {},
+            }
+            for rep_index in range(1, len(left_raw["linear_character"]) + 1)
+        ],
+    }
+    left_decompositions_by_rep: dict[str, dict[str, int]] = {}
+    right_decompositions_by_rep: dict[str, dict[str, int]] = {}
+    for rep_index in range(1, len(left_raw[monodromy_field]) + 1):
+        rep_id = f"{point_id}_R{rep_index}"
+        left_restricted = port._exact_restriction_vector(
+            line_raw,
+            left_raw,
+            matched_left,
+            field=monodromy_field,
+            parent_manifold_id=pair["source_line_id"],
+            child_manifold_id=left_capture_id,
+            rep_id=rep_id,
+        )
+        right_restricted = port._exact_restriction_vector(
+            line_raw,
+            right_raw,
+            matched_right,
+            field=monodromy_field,
+            parent_manifold_id=pair["source_line_id"],
+            child_manifold_id=right_capture_id,
+            rep_id=rep_id,
+        )
+        left_coeffs = port.solve_unique_integer_decomposition(
+            line_basis_matrix,
+            left_restricted,
+            mode=port._mode_label_from_raw(left_raw),
+            manifold_id=pair["source_line_id"],
+            endpoint_id=left_capture_id,
+            rep_id=rep_id,
+            field=monodromy_field,
+        )
+        right_coeffs = port.solve_unique_integer_decomposition(
+            line_basis_matrix,
+            right_restricted,
+            mode=port._mode_label_from_raw(right_raw),
+            manifold_id=pair["source_line_id"],
+            endpoint_id=right_capture_id,
+            rep_id=rep_id,
+            field=monodromy_field,
+        )
+        left_decompositions_by_rep[rep_id] = {
+            basis_label: coeff
+            for basis_label, coeff in zip(line_basis_labels, left_coeffs)
+            if coeff
+        }
+        right_decompositions_by_rep[rep_id] = {
+            basis_label: coeff
+            for basis_label, coeff in zip(line_basis_labels, right_coeffs)
+            if coeff
+        }
+    for rep in endpoint_decompositions[point_id]:
+        rep_id = rep["rep_id"]
+        rep["decomposition_on_line_basis_left"] = left_decompositions_by_rep[rep_id]
+        rep["decomposition_on_line_basis_right"] = right_decompositions_by_rep[rep_id]
+    equations = []
+    for basis_label in line_basis_labels:
+        coeff_by_unknown: dict[str, int] = {}
+        left_support = []
+        right_support = []
+        for rep_id in local_unknown_ordering:
+            left_coeff = int(left_decompositions_by_rep[rep_id].get(basis_label, 0))
+            right_coeff = int(right_decompositions_by_rep[rep_id].get(basis_label, 0))
+            net = left_coeff - right_coeff
+            if left_coeff:
+                left_support.append({"rep_id": rep_id, "coeff": left_coeff})
+            if right_coeff:
+                right_support.append({"rep_id": rep_id, "coeff": right_coeff})
+            if net:
+                coeff_by_unknown[rep_id] = net
+        terms = []
+        for rep_id in local_unknown_ordering:
+            coeff = coeff_by_unknown.get(rep_id, 0)
+            if coeff > 0:
+                terms.append({"unknown": rep_id, "coeff": coeff, "side": "left_capture"})
+            elif coeff < 0:
+                terms.append({"unknown": rep_id, "coeff": coeff, "side": "right_capture"})
+        if not terms:
+            continue
+        equations.append(
+            {
+                "basis_id": basis_label,
+                "terms": terms,
+                "row_kind": "same_point_monodromy_line_basis",
+                "builder_variant": builder_variant,
+                "target_line_block_kind": "monodromy_line",
+                "line_window_kind": "monodromy",
+                "source_line_family": pair["line_family"],
+                "source_line_id": pair["source_line_id"],
+                "endpoint_capture_ids": [left_capture_id, right_capture_id],
+                "monodromy_field": monodromy_field,
+                "monodromy_pair": {
+                    "point_id": point_id,
+                    "left_capture_id": left_capture_id,
+                    "right_capture_id": right_capture_id,
+                    "left_coordinates": list(pair["left_coordinates"]),
+                    "right_coordinates": list(pair["right_coordinates"]),
+                    "line_family": pair["line_family"],
+                    "branch_index": int(pair["branch_index"]),
+                },
+                "left_support": left_support,
+                "right_support": right_support,
+            }
+        )
+    block_id = f"{pair['source_line_id']}__monodromy_{point_id}_{pair['branch_index']:02d}"
+    matrix_rows = _build_block_matrix_rows_from_equations(
+        local_unknown_ordering,
+        equations,
+        block_id=block_id,
+    )
+    return {
+        "status": "fallback_same_point_monodromy_restriction_classes",
+        "line_id": block_id,
+        "source_line_id": pair["source_line_id"],
+        "endpoint_ids": [point_id],
+        "line_sample_point": line_raw.get("capture_sample_point", line_raw.get("sample_point")),
+        "line_parametrization": None,
+        "line_symmetry_summary": None,
+        "endpoint_decompositions": endpoint_decompositions,
+        "local_unknown_ordering": local_unknown_ordering,
+        "equations": equations,
+        "matrix_rows": matrix_rows,
+        "line_basis_labels": line_basis_labels,
+        "builder_variant": builder_variant,
+        "target_line_block_kind": "monodromy_line",
+        "compatibility_builder_kind": "generic_same_shell_target_monodromy_pair_builder",
+        "monodromy_field_used": monodromy_field,
+        "restriction_class_builder": {
+            "builder_kind": "generic_same_shell_target_monodromy_pair_builder",
+            "endpoint_capture_ids": [left_capture_id, right_capture_id],
+            "point_id": point_id,
+            "monodromy_field": monodromy_field,
+        },
+    }
 
 
 def _build_target_monodromy_line_blocks(
@@ -962,7 +1325,11 @@ def _build_target_monodromy_line_blocks(
     catalog: dict[tuple[str, str, str], list[dict[str, Any]]],
     point_representatives: dict[str, list[str]],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    return _build_target_line_blocks_for_window(
+    blocks: list[dict[str, Any]] = []
+    records: list[dict[str, Any]] = []
+    port = stage1_backend()
+    branch_line_raw_cache: dict[tuple[str, int], dict[str, Any]] = {}
+    for pair in _collect_same_point_monodromy_pairs(
         shared=shared,
         captures=captures,
         module=module,
@@ -970,13 +1337,57 @@ def _build_target_monodromy_line_blocks(
         ssg_dict=ssg_dict,
         ctx=ctx,
         mode=mode,
-        builder_variant=builder_variant,
         catalog=catalog,
         point_representatives=point_representatives,
-        start_sample=Fraction(1, 2),
-        end_sample=Fraction(1, 1),
-        window_tag="monodromy",
-    )
+    ):
+        line_cache_key = (pair["source_line_id"], int(pair["branch_index"]))
+        line_raw = branch_line_raw_cache.get(line_cache_key)
+        if line_raw is None:
+            line_raw = port.capture_little_group(
+                module,
+                group_id,
+                ssg_dict,
+                ctx,
+                mode,
+                pair["source_line_id"],
+                _sample_branch_point_from_orbit_expr(pair["orbit_expr"]),
+            )
+            line_raw = {
+                **line_raw,
+                "capture_sample_point": _sample_branch_point_from_orbit_expr(pair["orbit_expr"]),
+                "capture_canonicalization_source": "generic_same_shell_monodromy_branch_sample",
+            }
+            branch_line_raw_cache[line_cache_key] = line_raw
+        try:
+            block = _build_target_monodromy_block_from_pair(
+                pair=pair,
+                captures=captures,
+                line_raw=line_raw,
+                builder_variant=builder_variant,
+            )
+        except Exception as exc:
+            records.append(
+                {
+                    "line_id": f"{pair['source_line_id']}__monodromy_{pair['point_id']}_{pair['branch_index']:02d}",
+                    "source_line_id": pair["source_line_id"],
+                    "window_tag": "monodromy",
+                    "kind": "same_point_monodromy_skipped",
+                    "pair": pair,
+                    "skipped_reason": str(exc),
+                }
+            )
+            continue
+        blocks.append(block)
+        records.append(
+            {
+                "line_id": block["line_id"],
+                "source_line_id": pair["source_line_id"],
+                "window_tag": "monodromy",
+                "kind": "same_point_monodromy_restriction_class_line",
+                "pair": pair,
+            }
+        )
+    return blocks, records
 
 
 def _build_same_shell_target_row_language(
@@ -1020,6 +1431,10 @@ def _build_same_shell_target_row_language(
         catalog=catalog,
         point_representatives=point_representatives,
     )
+    target_capture_ids = _ordered_target_capture_ids(
+        shared=shared,
+        catalog=catalog,
+    )
     target_line_blocks = ordinary_line_blocks + monodromy_line_blocks
     availability = "available" if target_line_blocks else "blocked"
     blocker_stage = None if target_line_blocks else "generic_target_compatibility_missing_line_blocks"
@@ -1031,6 +1446,7 @@ def _build_same_shell_target_row_language(
         target_compatibility = port.build_global_compatibility(target_line_blocks, target_point_ids)
         target_bs_analysis = port.analyze_kernel(target_compatibility)
         target_unknown_ordering = list(target_compatibility["global_unknown_ordering"])
+    target_bs_rank = None if target_bs_analysis is None else int(len(target_bs_analysis.get("basis_vectors", [])))
     return {
         "group": group_id,
         "mode": mode,
@@ -1041,6 +1457,7 @@ def _build_same_shell_target_row_language(
         "current_unknown_count": len(current_unknown_ordering),
         "target_unknown_count": len(target_unknown_ordering),
         "target_unknown_ordering": target_unknown_ordering,
+        "target_capture_ids": list(target_capture_ids),
         "projection_indices": None,
         "target_projection_matrix_shape": None,
         "target_projection_matrix": None,
@@ -1050,13 +1467,26 @@ def _build_same_shell_target_row_language(
         "blocker": blocker,
         "target_compatibility": target_compatibility,
         "target_bs_analysis": target_bs_analysis,
+        "target_compatibility_shape": (
+            list(target_compatibility.get("matrix_shape", []))
+            if target_compatibility is not None
+            else None
+        ),
+        "target_bs_rank": target_bs_rank,
         "ordinary_line_block_count": len(ordinary_line_blocks),
         "monodromy_line_block_count": len(monodromy_line_blocks),
         "current_unknown_ordering": current_unknown_ordering,
         "evidence": {
             "target_point_ids": list(target_point_ids),
+            "target_capture_ids": list(target_capture_ids),
             "ordinary_line_block_count": len(ordinary_line_blocks),
             "monodromy_line_block_count": len(monodromy_line_blocks),
+            "target_compatibility_shape": (
+                list(target_compatibility.get("matrix_shape", []))
+                if target_compatibility is not None
+                else None
+            ),
+            "target_bs_rank": target_bs_rank,
             "ordinary_target_line_records": ordinary_records,
             "monodromy_line_records": monodromy_records,
         },
@@ -1119,6 +1549,38 @@ def _reindex_candidate_to_target_unknown_ordering(
     return [int(values.get(label, 0)) for label in target_unknown_ordering]
 
 
+def _target_compatibility_row_payload(
+    row_index: int,
+    row: dict[str, Any],
+    unknown_ordering: list[str],
+    residual: int | None = None,
+) -> dict[str, Any]:
+    nonzero_columns = []
+    coefficients = []
+    column_labels = []
+    for index, (label, coeff) in enumerate(zip(unknown_ordering, row["matrix_row"])):
+        coeff_int = int(coeff)
+        if coeff_int == 0:
+            continue
+        nonzero_columns.append(index)
+        coefficients.append(coeff_int)
+        column_labels.append(label)
+    row_kind = row.get("target_line_block_kind") or row.get("equation_metadata", {}).get("target_line_block_kind")
+    return {
+        "row_index": int(row_index),
+        "line_id": row.get("line_id"),
+        "source_line_id": row.get("source_line_id", row.get("line_id")),
+        "basis_id": row.get("basis_id"),
+        "row_kind": row.get("row_kind"),
+        "target_line_block_kind": row_kind,
+        "nonzero_columns": nonzero_columns,
+        "column_labels": column_labels,
+        "coefficients": coefficients,
+        "signature_label": row.get("basis_id"),
+        **({"residual": int(residual)} if residual is not None else {}),
+    }
+
+
 def _build_same_shell_target_quotient(
     *,
     target_row_language: dict[str, Any],
@@ -1158,10 +1620,9 @@ def _build_same_shell_target_quotient(
     compatible_target_vectors = []
     rejected_candidates = []
     embedding_failures = []
+    failing_row_payloads: list[dict[str, Any]] = []
+    max_absolute_residual = 0
     for candidate in induced["candidates"]:
-        if not candidate.get("compatibility_zero", False):
-            rejected_candidates.append(_candidate_residual_payload(candidate, compatibility_rows))
-            continue
         target_vector = _reindex_candidate_to_target_unknown_ordering(
             candidate,
             current_unknown_ordering,
@@ -1171,20 +1632,24 @@ def _build_same_shell_target_quotient(
         for row_index, item in enumerate(compatibility_rows):
             residual = int(sum(int(left) * int(right) for left, right in zip(item["matrix_row"], target_vector)))
             if residual:
+                max_absolute_residual = max(max_absolute_residual, abs(residual))
                 target_residual_rows.append(
-                    {
-                        "row_index": row_index,
-                        "residual": residual,
-                        "row": item,
-                    }
+                    _target_compatibility_row_payload(
+                        row_index,
+                        item,
+                        target_unknown_ordering,
+                        residual=residual,
+                    )
                 )
         if target_residual_rows:
+            failing_row_payloads.extend(target_residual_rows)
             rejected_candidates.append(
                 {
                     "generator_id": candidate.get("generator_id"),
                     "family_letter": candidate.get("family_letter"),
-                    "compatibility_zero": False,
+                    "compatibility_zero_in_current_rows": bool(candidate.get("compatibility_zero", False)),
                     "reason": "same_shell_target_compatibility_nonzero",
+                    "max_abs_residual": max(abs(item["residual"]) for item in target_residual_rows),
                     "nonzero_residual_rows": target_residual_rows,
                 }
             )
@@ -1218,22 +1683,21 @@ def _build_same_shell_target_quotient(
     free_rank = int(target_bs_rank - ai_image_rank_in_bs)
     finite_part = [value for value in smith_diag if value > 1]
     classification = _quotient_group_string(free_rank, finite_part)
-    availability = (
-        "available"
-        if not (induced["failure_count"] or rejected_candidates or embedding_failures)
-        else "blocked"
-    )
+    availability = "available" if compatible_candidates and not embedding_failures else "blocked"
     blocker_stage = None
     blocker = None
     if induced["failure_count"]:
         blocker_stage = "generic_target_row_language_induction_failure"
         blocker = "generic target quotient induction failed for one or more local-library generators"
-    elif rejected_candidates:
-        blocker_stage = "generic_target_row_language_nonzero_residual_candidates"
-        blocker = "one or more local-library generators are not compatibility-zero before target-row projection"
     elif embedding_failures:
         blocker_stage = "generic_target_row_language_embedding_failure"
         blocker = "target-row-language AI-in-BS embedding failed for at least one compatibility-zero candidate"
+    elif not compatible_candidates:
+        blocker_stage = "generic_target_row_language_zero_compatible_candidates"
+        blocker = "no induced candidate satisfies the same-shell target compatibility"
+    elif rejected_candidates:
+        blocker_stage = "generic_target_row_language_nonzero_residual_candidates"
+        blocker = "one or more induced candidates violate the same-shell target compatibility"
     verification_status = (
         "semantic_pass"
         if availability == "available" and target_bs_rank == target_ai_rank
@@ -1241,30 +1705,40 @@ def _build_same_shell_target_quotient(
         if availability == "available"
         else "target_row_language_quotient_blocked"
     )
+    unique_offending_rows: list[dict[str, Any]] = []
+    seen_rows: set[int] = set()
+    for row in failing_row_payloads:
+        row_index = int(row["row_index"])
+        if row_index in seen_rows:
+            continue
+        seen_rows.add(row_index)
+        unique_offending_rows.append(row)
+        if len(unique_offending_rows) >= 20:
+            break
     return {
         "availability": availability,
         "blocker_stage": blocker_stage,
         "blocker": blocker,
-        "dBS": target_bs_rank if availability == "available" else None,
-        "dAI": target_ai_rank if availability == "available" else None,
-        "ai_image_rank_in_bs": ai_image_rank_in_bs if availability == "available" else None,
+        "dBS": target_bs_rank,
+        "dAI": target_ai_rank,
+        "ai_image_rank_in_bs": ai_image_rank_in_bs,
         "dbs_dai_gap": (
-            int(target_bs_rank - target_ai_rank) if availability == "available" else None
+            int(target_bs_rank - target_ai_rank)
         ),
         "dbs_minus_ai_image_rank": (
-            int(target_bs_rank - ai_image_rank_in_bs) if availability == "available" else None
+            int(target_bs_rank - ai_image_rank_in_bs)
         ),
-        "free_rank": free_rank if availability == "available" else None,
-        "finite_part": finite_part if availability == "available" else [],
-        "classification": classification if availability == "available" else None,
+        "free_rank": free_rank,
+        "finite_part": finite_part,
+        "classification": classification,
         "smith_diagonal_nonzero": smith_diag,
         "reported_dbs_semantics": "same_shell_target_row_language_bs_rank",
         "reported_dai_semantics": "same_shell_target_ai_rank",
         "classification_derivation_basis": "smith_rank_of_ai_image_in_bs_on_same_shell_target_row_language",
         "same_shell_rank_check": {
-            "dBS": target_bs_rank if availability == "available" else None,
-            "dAI": target_ai_rank if availability == "available" else None,
-            "ai_image_rank_in_bs": ai_image_rank_in_bs if availability == "available" else None,
+            "dBS": target_bs_rank,
+            "dAI": target_ai_rank,
+            "ai_image_rank_in_bs": ai_image_rank_in_bs,
         },
         "ai_candidate_count": induced["candidate_count"],
         "ai_candidate_count_used": len(compatible_candidates),
@@ -1272,6 +1746,11 @@ def _build_same_shell_target_quotient(
         "ai_incompatible_count": len(rejected_candidates),
         "ai_embedding_failure_count": len(embedding_failures),
         "ai_incompatible_candidates": rejected_candidates,
+        "failing_candidate_examples": rejected_candidates[:5],
+        "target_compatibility_exact_pass_count": len(compatible_candidates),
+        "target_compatibility_fail_count": len(rejected_candidates),
+        "target_compatibility_max_absolute_residual": int(max_absolute_residual),
+        "offending_rows_summary": unique_offending_rows,
         "ai_embedding_failures": embedding_failures,
         "ai_in_bs_matrix_shape": [int(ai_in_bs.rows), int(ai_in_bs.cols)],
         "object_semantics": "same_shell_published_target_quotient_candidate",
@@ -1282,6 +1761,8 @@ def _build_same_shell_target_quotient(
         "target_unknown_ordering": list(target_row_language["target_unknown_ordering"]),
         "target_projection_matrix_shape": target_row_language.get("target_projection_matrix_shape"),
         "target_row_language_evidence": dict(target_row_language.get("evidence", {})),
+        "target_compatibility_shape": list(target_compatibility.get("matrix_shape", [])),
+        "target_compatibility_row_count": len(compatibility_rows),
     }
 
 
