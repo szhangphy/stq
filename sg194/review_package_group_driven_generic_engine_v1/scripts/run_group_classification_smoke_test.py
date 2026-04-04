@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+import tempfile
+from pathlib import Path
+from typing import Any
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
+import sys
+
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from sg194.pipeline_v2.driver import run_pipeline
+from sg194.pipeline_v2.models import PipelineRunConfig
+
+
+def _pick_target_object(summary: dict[str, Any], mode: str) -> dict[str, Any]:
+    for item in summary["objects"]:
+        if item.get("mode") == mode and item.get("row_language_level") == "target":
+            return item
+    raise ValueError(f"missing target object for mode={mode}")
+
+
+def _coalesce_target_value(
+    final_status: dict[str, Any],
+    records: list[dict[str, Any]],
+    field: str,
+) -> Any:
+    if field in final_status and final_status[field] is not None:
+        return final_status[field]
+    values = {
+        item.get(field)
+        for item in records
+        if item.get("row_language_level") == "target"
+    }
+    values.discard(None)
+    if not values:
+        return None
+    if len(values) == 1:
+        return next(iter(values))
+    return sorted(values)
+
+
+def build_report(target_group: str, result: dict[str, Any]) -> dict[str, Any]:
+    final_status = result["final_status"]
+    bs_summary = result["bs_summary"]
+    ai_summary = result["ai_summary"]
+    quotient_summary = result["quotient_summary"]
+    target_bs_objects = [
+        item for item in bs_summary["objects"] if item.get("row_language_level") == "target"
+    ]
+    single_bs = _pick_target_object(bs_summary, "single")
+    double_bs = _pick_target_object(bs_summary, "double")
+    single_ai = _pick_target_object(ai_summary, "single")
+    double_ai = _pick_target_object(ai_summary, "double")
+    single_quotient = _pick_target_object(quotient_summary, "single")
+    double_quotient = _pick_target_object(quotient_summary, "double")
+    return {
+        "target_group": target_group,
+        "benchmark_oracle_available": bool(
+            final_status.get("benchmark_oracle_available")
+            if final_status.get("benchmark_oracle_available") is not None
+            else any(item.get("benchmark_oracle_available") for item in target_bs_objects)
+        ),
+        "final_result_mode": _coalesce_target_value(
+            final_status,
+            target_bs_objects,
+            "final_result_mode",
+        ),
+        "classification_is_published_final": bool(
+            _coalesce_target_value(
+                final_status,
+                target_bs_objects,
+                "classification_is_published_final",
+            )
+        ),
+        "status": str(final_status.get("status") or "not_final"),
+        "checks_passed": bool(result["checks"]["checks_passed"]),
+        "final_results_available": bool(result["checks"]["final_results_available"]),
+        "final_results_verified": bool(result["checks"]["final_results_verified"]),
+        "single_target_dBS": single_bs.get("dBS"),
+        "single_target_dAI": single_ai.get("dAI"),
+        "single_target_classification": single_quotient.get("classification"),
+        "double_target_dBS": double_bs.get("dBS"),
+        "double_target_dAI": double_ai.get("dAI"),
+        "double_target_classification": double_quotient.get("classification"),
+        "single_target_object_kind": single_bs.get("object_kind"),
+        "double_target_object_kind": double_bs.get("object_kind"),
+        "single_target_blocker": single_bs.get("blocker"),
+        "double_target_blocker": double_bs.get("blocker"),
+        "single_final_status": final_status.get("single_final", {}).get("status"),
+        "double_final_status": final_status.get("double_final", {}).get("status"),
+        "trust_level": result["spec"]["trust_level"],
+    }
+
+
+def build_markdown(report: dict[str, Any]) -> str:
+    return "\n".join(
+        [
+            f"# Group Engine Mode Report: {report['target_group']}",
+            "",
+            f"- Benchmark oracle available: `{report['benchmark_oracle_available']}`.",
+            f"- Final result mode: `{report['final_result_mode']}`.",
+            f"- Classification is published final: `{report['classification_is_published_final']}`.",
+            f"- Status: `{report['status']}`.",
+            f"- Checks passed / final results available / final results verified: `{report['checks_passed']}` / `{report['final_results_available']}` / `{report['final_results_verified']}`.",
+            f"- Single target dBS / dAI / classification: `{report['single_target_dBS']}` / `{report['single_target_dAI']}` / `{report['single_target_classification']}`.",
+            f"- Double target dBS / dAI / classification: `{report['double_target_dBS']}` / `{report['double_target_dAI']}` / `{report['double_target_classification']}`.",
+            f"- Trust level: `{report['trust_level']}`.",
+        ]
+    )
+
+
+def assert_expected_contract(report: dict[str, Any]) -> None:
+    target_group = report["target_group"]
+    if target_group == "194.1.1.1":
+        if report["benchmark_oracle_available"] is not True:
+            raise SystemExit("194.1.1.1 should have a benchmark oracle")
+        if report["final_result_mode"] != "benchmark_aligned_final":
+            raise SystemExit("194.1.1.1 should stay in benchmark_aligned_final mode")
+        if report["classification_is_published_final"] is not True:
+            raise SystemExit("194.1.1.1 should stay published-final")
+        if report["single_target_classification"] != "trivial":
+            raise SystemExit("194.1.1.1 single target should stay trivial")
+        if report["double_target_classification"] != "Z6":
+            raise SystemExit("194.1.1.1 double target should stay Z6")
+        return
+    if target_group == "99.1.1.1":
+        if report["benchmark_oracle_available"] is not False:
+            raise SystemExit("99.1.1.1 must not see a benchmark oracle")
+        if report["final_result_mode"] != "diagnostic_only":
+            raise SystemExit("99.1.1.1 must fall back to diagnostic_only")
+        if report["classification_is_published_final"] is not False:
+            raise SystemExit("99.1.1.1 must not be marked published-final")
+        if report["status"] != "not_final":
+            raise SystemExit("99.1.1.1 must end as not_final")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Run the group-driven classification smoke test")
+    parser.add_argument("--target-group", required=True)
+    parser.add_argument("--report-json", type=Path)
+    parser.add_argument("--report-md", type=Path)
+    args = parser.parse_args()
+
+    smoke_root = REPO_ROOT / "sg194" / "pipeline_runs_v2"
+    smoke_root.mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="group-classification-smoke-", dir=smoke_root) as td:
+        config = PipelineRunConfig(
+            group=args.target_group,
+            mode="both",
+            row_language="all",
+            output_dir=Path(td),
+            validate=False,
+            build_package=False,
+            refresh=False,
+        )
+        result = run_pipeline(config, REPO_ROOT)
+
+    report = build_report(args.target_group, result)
+    assert_expected_contract(report)
+
+    if args.report_json is not None:
+        args.report_json.parent.mkdir(parents=True, exist_ok=True)
+        args.report_json.write_text(json.dumps(report, indent=2, ensure_ascii=True) + "\n")
+    if args.report_md is not None:
+        args.report_md.parent.mkdir(parents=True, exist_ok=True)
+        args.report_md.write_text(build_markdown(report) + "\n")
+
+    print(json.dumps(report, ensure_ascii=True))
+
+
+if __name__ == "__main__":
+    main()

@@ -265,6 +265,15 @@ REFERENCE_BASELINE_FILES = [
 ]
 
 PACKAGE_BACKGROUND_FILES = [
+    "pipeline_v2/benchmark_oracle_registry.py",
+    "pipeline_v2/bs_ai.py",
+    "pipeline_v2/alignment.py",
+    "pipeline_v2/checks.py",
+    "pipeline_v2/specs.py",
+    "pipeline_v2/local_irreps.py",
+    "pipeline_v2/adapters/__init__.py",
+    "pipeline_v2/adapters/sg194.py",
+    "pipeline_v2/adapters/generic_diagnostic.py",
     "double_group_ai_completeness_audit_10.4.1.31.md",
     "double_group_ai_completeness_summary_10.4.1.31.json",
     "double_group_indicator_group_summary_10.4.1.31.json",
@@ -284,6 +293,7 @@ PACKAGE_BACKGROUND_FILES = [
     "SSGReps/SSGReps/SSGReps.py",
     "SSGReps/SSGReps/SG_utils.py",
     "SSGReps/SSGReps/rep_utils.py",
+    "scripts/run_group_classification_smoke_test.py",
 ]
 
 
@@ -321,7 +331,7 @@ def resolve_repo_asset(rel: str | Path) -> Path:
     rel_path = Path(rel)
     if rel_path.is_absolute():
         return rel_path
-    for base in (ROOT, COMMON_ROOT):
+    for base in (ROOT, REPO_ROOT, COMMON_ROOT):
         candidate = base / rel_path
         if candidate.exists():
             return candidate
