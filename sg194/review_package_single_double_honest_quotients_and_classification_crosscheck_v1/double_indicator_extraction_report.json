@@ -1,0 +1,37 @@
+{
+  "quotient_status": "success",
+  "indicator_group": "trivial",
+  "indicator_invariants": [],
+  "indicator_generator_count": 0,
+  "snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "finite_torsion": false,
+  "torsion_generators": [],
+  "summary": "Indicator extraction is read directly from the finite torsion part of the BS/AI quotient in published BS coordinates.",
+  "classification_reference_source": "current_status_1941111_benchmark_v1.json::benchmark_result",
+  "classification_reference_scope": "Bilbao-backed prior reference in workspace/user context",
+  "reference_expected_quotient_group": "Z6",
+  "reference_expected_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "classification_matches_reference": false
+}

@@ -889,7 +889,8 @@
     0
   ],
   "nonzero_residual_rows": [],
-  "point_row_translation_profile": "legacy",
+  "historical_point_row_translation_profile": "legacy",
+  "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
   "character_field_used": "point=character, line=character, plane=character, default=character",
   "manifold_character_fields": {
     "P1": "character",
@@ -917,37 +918,188 @@
       "character_field": "character",
       "integral_success": true,
       "numeric_solver_status": "integral",
-      "exact_solver_status": "integral"
+      "exact_solver_status": "integral",
+      "point_basis_mode": "raw_capture_point_basis",
+      "point_merge_groups": [],
+      "collapsed_class_groups": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ],
+        [
+          8
+        ],
+        [
+          9
+        ],
+        [
+          10
+        ],
+        [
+          11
+        ]
+      ],
+      "publication_point_basis_attempted": false,
+      "publication_point_basis_fallback_used": false,
+      "publication_point_basis_attempt_integral_success": null
     },
     "P2": {
       "character_field": "character",
       "integral_success": true,
       "numeric_solver_status": "integral",
-      "exact_solver_status": "integral"
+      "exact_solver_status": "integral",
+      "point_basis_mode": "raw_capture_point_basis",
+      "point_merge_groups": [],
+      "collapsed_class_groups": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "publication_point_basis_attempted": false,
+      "publication_point_basis_fallback_used": false,
+      "publication_point_basis_attempt_integral_success": null
     },
     "P3": {
       "character_field": "character",
       "integral_success": true,
       "numeric_solver_status": "integral",
-      "exact_solver_status": "integral"
+      "exact_solver_status": "integral",
+      "point_basis_mode": "publication_collapsed_point_basis",
+      "point_merge_groups": [
+        [
+          "P3_R1",
+          "P3_R4"
+        ],
+        [
+          "P3_R2",
+          "P3_R3"
+        ],
+        [
+          "P3_R5",
+          "P3_R6"
+        ]
+      ],
+      "collapsed_class_groups": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "publication_point_basis_attempted": true,
+      "publication_point_basis_fallback_used": false,
+      "publication_point_basis_attempt_integral_success": true
     },
     "P4": {
       "character_field": "character",
       "integral_success": true,
       "numeric_solver_status": "integral",
-      "exact_solver_status": "integral"
+      "exact_solver_status": "integral",
+      "point_basis_mode": "raw_capture_point_basis",
+      "point_merge_groups": [],
+      "collapsed_class_groups": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "publication_point_basis_attempted": false,
+      "publication_point_basis_fallback_used": false,
+      "publication_point_basis_attempt_integral_success": null
     },
     "P5": {
       "character_field": "character",
       "integral_success": true,
       "numeric_solver_status": "integral",
-      "exact_solver_status": "integral"
+      "exact_solver_status": "integral",
+      "point_basis_mode": "raw_capture_point_basis",
+      "point_merge_groups": [],
+      "collapsed_class_groups": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          6
+        ],
+        [
+          7
+        ]
+      ],
+      "publication_point_basis_attempted": false,
+      "publication_point_basis_fallback_used": false,
+      "publication_point_basis_attempt_integral_success": null
     },
     "P6": {
       "character_field": "character",
       "integral_success": true,
       "numeric_solver_status": "integral",
-      "exact_solver_status": "integral"
+      "exact_solver_status": "integral",
+      "point_basis_mode": "raw_capture_point_basis",
+      "point_merge_groups": [],
+      "collapsed_class_groups": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "publication_point_basis_attempted": false,
+      "publication_point_basis_fallback_used": false,
+      "publication_point_basis_attempt_integral_success": null
     },
     "L1": {
       "character_field": "character",

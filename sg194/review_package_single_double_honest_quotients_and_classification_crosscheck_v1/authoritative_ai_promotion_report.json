@@ -1,0 +1,167 @@
+{
+  "residual_pivot_generator_ids": [
+    "a_A1u",
+    "b_A1''",
+    "c_A1'",
+    "d_A1'",
+    "g_Ag"
+  ],
+  "liftable_residual_direction_ids": [
+    "lifted_a_A1g_minus_a_A1u",
+    "lifted_b_A1_prime_plus_b_A1_doubleprime",
+    "lifted_b_E_prime_minus_2_c_A1_prime",
+    "lifted_b_E_prime_minus_2_d_A1_prime",
+    "lifted_a_A1g_minus_g_Ag"
+  ],
+  "promoted_authoritative_generator_ids": [
+    "promoted_a_A1g_minus_a_A1u",
+    "promoted_b_A1_prime_plus_b_A1_doubleprime",
+    "promoted_b_E_prime_minus_2_c_A1_prime",
+    "promoted_b_E_prime_minus_2_d_A1_prime",
+    "promoted_a_A1g_minus_g_Ag"
+  ],
+  "promoted_generators": [
+    {
+      "generator_id": "promoted_a_A1g_minus_a_A1u",
+      "lifted_direction_id": "lifted_a_A1g_minus_a_A1u",
+      "lead_generator_id": "a_A1g",
+      "combination": [
+        {
+          "generator_id": "a_A1g",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "a_A1u",
+          "coefficient": -1
+        }
+      ],
+      "combination_string": "a_A1g - a_A1u",
+      "actual_compatibility_zero": true,
+      "adds_independent_bs_direction": true,
+      "fills_missing_direction_index": 1,
+      "promotion_reason": "fills_missing_publication_ai_rank_direction",
+      "source_generator_ids": [
+        "a_A1g",
+        "a_A1u"
+      ],
+      "source_local_object_labels": [
+        "A1g",
+        "A1u"
+      ]
+    },
+    {
+      "generator_id": "promoted_b_A1_prime_plus_b_A1_doubleprime",
+      "lifted_direction_id": "lifted_b_A1_prime_plus_b_A1_doubleprime",
+      "lead_generator_id": "b_A1'",
+      "combination": [
+        {
+          "generator_id": "b_A1'",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "b_A1''",
+          "coefficient": 1
+        }
+      ],
+      "combination_string": "b_A1' + b_A1''",
+      "actual_compatibility_zero": true,
+      "adds_independent_bs_direction": true,
+      "fills_missing_direction_index": 2,
+      "promotion_reason": "fills_missing_publication_ai_rank_direction",
+      "source_generator_ids": [
+        "b_A1'",
+        "b_A1''"
+      ],
+      "source_local_object_labels": [
+        "A1'",
+        "A1''"
+      ]
+    },
+    {
+      "generator_id": "promoted_b_E_prime_minus_2_c_A1_prime",
+      "lifted_direction_id": "lifted_b_E_prime_minus_2_c_A1_prime",
+      "lead_generator_id": "b_E'",
+      "combination": [
+        {
+          "generator_id": "b_E'",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "c_A1'",
+          "coefficient": -2
+        }
+      ],
+      "combination_string": "b_E' - 2 c_A1'",
+      "actual_compatibility_zero": true,
+      "adds_independent_bs_direction": true,
+      "fills_missing_direction_index": 3,
+      "promotion_reason": "fills_missing_publication_ai_rank_direction",
+      "source_generator_ids": [
+        "b_E'",
+        "c_A1'"
+      ],
+      "source_local_object_labels": [
+        "E'",
+        "A1'"
+      ]
+    },
+    {
+      "generator_id": "promoted_b_E_prime_minus_2_d_A1_prime",
+      "lifted_direction_id": "lifted_b_E_prime_minus_2_d_A1_prime",
+      "lead_generator_id": "b_E'",
+      "combination": [
+        {
+          "generator_id": "b_E'",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "d_A1'",
+          "coefficient": -2
+        }
+      ],
+      "combination_string": "b_E' - 2 d_A1'",
+      "actual_compatibility_zero": true,
+      "adds_independent_bs_direction": true,
+      "fills_missing_direction_index": 4,
+      "promotion_reason": "fills_missing_publication_ai_rank_direction",
+      "source_generator_ids": [
+        "b_E'",
+        "d_A1'"
+      ],
+      "source_local_object_labels": [
+        "E'",
+        "A1'"
+      ]
+    },
+    {
+      "generator_id": "promoted_a_A1g_minus_g_Ag",
+      "lifted_direction_id": "lifted_a_A1g_minus_g_Ag",
+      "lead_generator_id": "a_A1g",
+      "combination": [
+        {
+          "generator_id": "a_A1g",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "g_Ag",
+          "coefficient": -1
+        }
+      ],
+      "combination_string": "a_A1g - g_Ag",
+      "actual_compatibility_zero": true,
+      "adds_independent_bs_direction": true,
+      "fills_missing_direction_index": 5,
+      "promotion_reason": "fills_missing_publication_ai_rank_direction",
+      "source_generator_ids": [
+        "a_A1g",
+        "g_Ag"
+      ],
+      "source_local_object_labels": [
+        "A1g",
+        "Ag"
+      ]
+    }
+  ],
+  "all_promoted_generators_actual_compatibility_zero": true,
+  "summary": "Residual-sector kernel combinations are now materialized as authoritative publication-shell AI generators. The residual pivot ids remain obstruction witnesses, the lifted direction ids identify zeroed residual combinations, and the promoted authoritative generator ids name the materialized generators added to the authoritative AI payload."
+}

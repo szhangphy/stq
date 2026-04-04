@@ -1,0 +1,13 @@
+{
+  "retired_invalidated": true,
+  "legacy_report_name": "character_field_conversion_global_validation_report",
+  "validation_scope": "retired_invalidated_overclaim",
+  "basis_independent_global_theorem": false,
+  "formula_promoted_as_general_theorem": false,
+  "setting_specific_numerical_consistency_pass": true,
+  "replacement_reports": [
+    "character_field_basis_convention_audit.json",
+    "sg194_setting_specific_character_conversion_validation.json"
+  ],
+  "summary": "This legacy file is retained only to retire the earlier overclaim. The SG194 numerical success is kept, but the former 'global/all-manifold validation' wording is invalidated and replaced by setting-specific audits."
+}

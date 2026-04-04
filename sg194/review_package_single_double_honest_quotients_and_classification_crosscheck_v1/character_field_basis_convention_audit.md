@@ -1,0 +1,12 @@
+# Character-Field Basis Convention Audit
+
+- Validation scope: `SG194_current_setting_only`.
+- Capture manifold count: `92`.
+- k-coordinate input basis: user-provided k coordinates (including SSGReps command-line k and swyckoff_k.py k labels) are interpreted in the expanded-cell primitive reciprocal basis used by the current SG194 run.
+- Runtime `kconv` basis role: kconv is the runtime reciprocal-space vector assembled for the current SG194 setting from those k coordinates.
+- Capture `tauC` basis: tauC(op) is stored in the capture-layer conventional/pre-supercell direct-space basis.
+- General reciprocal/direct dual pairing guaranteed: `False`.
+- Current success depends on SG194 being P-lattice under present basis conventions: `True`.
+- Formula promoted as a general theorem: `False`.
+- Why `np.dot(kconv, tauC)` is not a general theorem: Because kconv and tauC are not established here as a universally dual reciprocal/direct basis pair across arbitrary settings. The current numerical agreement is therefore setting-specific, not a basis-independent proof.
+- Summary: This audit records the basis-convention boundary of the current SG194 repair. The conversion used in the P4 fix is treated only as SG194/current-setting-specific because the present run pairs expanded-cell primitive reciprocal k coordinates with capture-layer tauC data stored in the pre-supercell conventional basis.

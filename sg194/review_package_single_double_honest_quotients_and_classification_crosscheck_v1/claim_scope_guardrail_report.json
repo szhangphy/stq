@@ -1,0 +1,24 @@
+{
+  "allowed_claims": [
+    "BS/publication shell is Bilbao-equivalent",
+    "the SG194/P-lattice/current-setting conversion patch works numerically in the present setting",
+    "current authoritative AI rank is 10 on the publication shell",
+    "AI is aligned with Bilbao on the publication shell",
+    "single-group BS/AI quotient extraction is now meaningful and has been carried out on the authoritative publication-shell AI lattice"
+  ],
+  "forbidden_claims": [
+    "global conversion theorem proved",
+    "all-manifold validation proved the formula in general",
+    "basis-independent statement established",
+    "the SG194-setting-specific conversion patch is a basis-independent theorem",
+    "double-group AI / quotient is already complete on 194.1.1.1"
+  ],
+  "setting_specific_validation_scope": "SG194_current_setting_only",
+  "all_fake_global_claims_removed": true,
+  "current_conversion_result_labeled_setting_specific_only": true,
+  "formula_promoted_as_general_theorem": false,
+  "current_success_depends_on_p_lattice_under_present_basis_conventions": true,
+  "residual_completion_feasible": true,
+  "ai_aligned_with_bilbao": true,
+  "single_group_quotient_extracted": true
+}

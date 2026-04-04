@@ -14474,7 +14474,7 @@
   },
   "ai_library_integration_report": {
     "local_library_wired_into_ai_builder": true,
-    "integration_status": "wired_but_blocked_on_published_shell",
+    "integration_status": "wired_candidate_set_with_residual_sector",
     "success_candidate_count": 45,
     "failure_count": 0,
     "compatibility_zero_candidate_count": 11
@@ -14803,11 +14803,9 @@
   },
   "bs_ai_quotient_report": {
     "quotient_status": "success",
-    "quotient_kind": "finite_torsion",
-    "quotient_group": "Z2",
-    "quotient_invariants": [
-      2
-    ],
+    "quotient_kind": "trivial",
+    "quotient_group": "trivial",
+    "quotient_invariants": [],
     "snf_diagonal": [
       1,
       1,
@@ -14818,7 +14816,9 @@
       1,
       1,
       1,
-      2
-    ]
+      1
+    ],
+    "classification_expected_by_user": "trivial",
+    "classification_matches_user_expectation": true
   }
 }

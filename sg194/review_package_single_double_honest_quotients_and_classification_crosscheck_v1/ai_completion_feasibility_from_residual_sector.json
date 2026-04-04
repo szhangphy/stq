@@ -1,0 +1,440 @@
+{
+  "published_bs_rank": 10,
+  "current_verified_ai_rank": 5,
+  "missing_ai_rank": 5,
+  "support_rows": [
+    22,
+    23,
+    24
+  ],
+  "ambient_residual_quotient_pivot_generator_ids": [
+    "a_A1g",
+    "a_A1u",
+    "b_A1'",
+    "b_A1''",
+    "b_E'",
+    "c_A1'",
+    "d_A1'",
+    "g_Ag"
+  ],
+  "zero_pivot_generator_ids": [
+    "a_Eg",
+    "a_Eu",
+    "e_A1",
+    "e_A2",
+    "f_A1"
+  ],
+  "lifted_records": [
+    {
+      "lifted_direction_id": "lifted_a_A1g_minus_a_A1u",
+      "lead_generator_id": "a_A1g",
+      "combination": [
+        {
+          "generator_id": "a_A1g",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "a_A1u",
+          "coefficient": -1
+        }
+      ],
+      "combination_string": "a_A1g - a_A1u",
+      "actual_compatibility_zero_after_recombination": true,
+      "adds_independent_bs_direction": true,
+      "support_row_residual_after_recombination": [
+        0,
+        0,
+        0
+      ],
+      "nonzero_unknown_terms": [
+        {
+          "unknown": "P1_R3",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R3",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R7",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "lifted_direction_id": "lifted_b_A1_prime_plus_b_A1_doubleprime",
+      "lead_generator_id": "b_A1'",
+      "combination": [
+        {
+          "generator_id": "b_A1'",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "b_A1''",
+          "coefficient": 1
+        }
+      ],
+      "combination_string": "b_A1' + b_A1''",
+      "actual_compatibility_zero_after_recombination": true,
+      "adds_independent_bs_direction": true,
+      "support_row_residual_after_recombination": [
+        0,
+        0,
+        0
+      ],
+      "nonzero_unknown_terms": [
+        {
+          "unknown": "P1_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P3_R4",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R3",
+          "value": 2
+        },
+        {
+          "unknown": "P5_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "lifted_direction_id": "lifted_b_E_prime_minus_2_c_A1_prime",
+      "lead_generator_id": "b_E'",
+      "combination": [
+        {
+          "generator_id": "b_E'",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "c_A1'",
+          "coefficient": -2
+        }
+      ],
+      "combination_string": "b_E' - 2 c_A1'",
+      "actual_compatibility_zero_after_recombination": true,
+      "adds_independent_bs_direction": true,
+      "support_row_residual_after_recombination": [
+        0,
+        0,
+        0
+      ],
+      "nonzero_unknown_terms": [
+        {
+          "unknown": "P1_R1",
+          "value": -2
+        },
+        {
+          "unknown": "P1_R8",
+          "value": -2
+        },
+        {
+          "unknown": "P1_R9",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R12",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": -2
+        },
+        {
+          "unknown": "P2_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": -1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "lifted_direction_id": "lifted_b_E_prime_minus_2_d_A1_prime",
+      "lead_generator_id": "b_E'",
+      "combination": [
+        {
+          "generator_id": "b_E'",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "d_A1'",
+          "coefficient": -2
+        }
+      ],
+      "combination_string": "b_E' - 2 d_A1'",
+      "actual_compatibility_zero_after_recombination": true,
+      "adds_independent_bs_direction": true,
+      "support_row_residual_after_recombination": [
+        0,
+        0,
+        0
+      ],
+      "nonzero_unknown_terms": [
+        {
+          "unknown": "P1_R1",
+          "value": -2
+        },
+        {
+          "unknown": "P1_R8",
+          "value": -2
+        },
+        {
+          "unknown": "P1_R9",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R12",
+          "value": 1
+        },
+        {
+          "unknown": "P2_R2",
+          "value": -2
+        },
+        {
+          "unknown": "P2_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R6",
+          "value": 1
+        },
+        {
+          "unknown": "P5_R8",
+          "value": -1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "lifted_direction_id": "lifted_a_A1g_minus_g_Ag",
+      "lead_generator_id": "a_A1g",
+      "combination": [
+        {
+          "generator_id": "a_A1g",
+          "coefficient": 1
+        },
+        {
+          "generator_id": "g_Ag",
+          "coefficient": -1
+        }
+      ],
+      "combination_string": "a_A1g - g_Ag",
+      "actual_compatibility_zero_after_recombination": true,
+      "adds_independent_bs_direction": true,
+      "support_row_residual_after_recombination": [
+        0,
+        0,
+        0
+      ],
+      "nonzero_unknown_terms": [
+        {
+          "unknown": "P1_R10",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R12",
+          "value": -1
+        },
+        {
+          "unknown": "P2_R3",
+          "value": -1
+        },
+        {
+          "unknown": "P3_R5",
+          "value": -1
+        },
+        {
+          "unknown": "P3_R6",
+          "value": -1
+        },
+        {
+          "unknown": "P4_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R3",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R5",
+          "value": -1
+        },
+        {
+          "unknown": "P5_R7",
+          "value": -1
+        },
+        {
+          "unknown": "P6_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P6_R2",
+          "value": -1
+        }
+      ]
+    }
+  ],
+  "any_liftable_to_actual_compatibility_zero": true,
+  "liftable_residual_direction_ids": [
+    "lifted_a_A1g_minus_a_A1u",
+    "lifted_b_A1_prime_plus_b_A1_doubleprime",
+    "lifted_b_E_prime_minus_2_c_A1_prime",
+    "lifted_b_E_prime_minus_2_d_A1_prime",
+    "lifted_a_A1g_minus_g_Ag"
+  ],
+  "lifted_rank_if_promoted": 10,
+  "would_complete_published_ai_rank_if_promoted": true,
+  "summary": "The residual sector already contains integer recombinations of existing induced objects that kill the PPATH06 residual-support rows. Those recombinations can supply the missing rank-5 directions in BS coordinates; this report records the feasibility layer, while authoritative promotion is tracked separately."
+}

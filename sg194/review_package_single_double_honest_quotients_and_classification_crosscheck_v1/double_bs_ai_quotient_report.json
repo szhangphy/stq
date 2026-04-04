@@ -1,0 +1,2647 @@
+{
+  "published_bs_rank": 10,
+  "authoritative_ai_rank": 10,
+  "quotient_status": "success",
+  "quotient_kind": "trivial",
+  "quotient_is_trivial": true,
+  "quotient_is_finite_torsion": false,
+  "has_free_part": false,
+  "quotient_group": "trivial",
+  "quotient_invariants": [],
+  "snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "bs_basis_vectors": [
+    {
+      "id": "basis_01",
+      "vector": [
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_02",
+      "vector": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_03",
+      "vector": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_04",
+      "vector": [
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        -2,
+        0
+      ]
+    },
+    {
+      "id": "basis_05",
+      "vector": [
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1
+      ]
+    },
+    {
+      "id": "basis_06",
+      "vector": [
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_07",
+      "vector": [
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_08",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        2,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_09",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_10",
+      "vector": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "ai_coordinate_records": [
+    {
+      "generator_id": "double_honest_ai_kernel_01",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "f_proj_E_half",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_02",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- a_proj_u_1d_1 + g_proj_u_m1",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_03",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "a_proj_u_1d_1 + g_proj_u_1",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        1,
+        -2,
+        2,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_04",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- a_proj_u_1d_1 + g_proj_g_m1",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        0,
+        -1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_05",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "a_proj_u_1d_1 + g_proj_g_1",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        3,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_06",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- b_proj_doubleprime_1d_1 - 2 c_proj_doubleprime_1d_1 + h_proj_mm2_1",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_07",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "b_proj_doubleprime_1d_1 + 2 c_proj_doubleprime_1d_1 + h_proj_mm2_2",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        1,
+        -3,
+        4,
+        1,
+        0,
+        2,
+        3,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_08",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- b_proj_doubleprime_1d_1 - 2 c_proj_doubleprime_1d_1 + h_proj_mm2_3",
+      "bs_basis_coordinates": [
+        0,
+        2,
+        0,
+        0,
+        -2,
+        1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_09",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "b_proj_doubleprime_1d_1 + 2 c_proj_doubleprime_1d_1 + h_proj_mm2_4",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        2,
+        -3,
+        5,
+        1,
+        0,
+        2,
+        3,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 5
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_10",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- 2 a_proj_u_1d_1 + i_proj_minus_i",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_11",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "2 a_proj_u_1d_1 + i_proj_plus_i",
+      "bs_basis_coordinates": [
+        1,
+        2,
+        2,
+        -4,
+        5,
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -4
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 5
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_12",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "j_proj_minus_i",
+      "bs_basis_coordinates": [
+        1,
+        2,
+        1,
+        -3,
+        2,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_13",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "j_proj_plus_i",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        2,
+        -3,
+        4,
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_14",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- 2 b_proj_doubleprime_1d_1 - 4 c_proj_doubleprime_1d_1 + k_proj_minus_i",
+      "bs_basis_coordinates": [
+        0,
+        3,
+        0,
+        0,
+        -3,
+        2,
+        2,
+        0,
+        -2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_15",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "2 b_proj_doubleprime_1d_1 + 4 c_proj_doubleprime_1d_1 + k_proj_plus_i",
+      "bs_basis_coordinates": [
+        2,
+        0,
+        3,
+        -6,
+        9,
+        2,
+        0,
+        4,
+        6,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -6
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 9
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 6
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_16",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "l_proj_1",
+      "bs_basis_coordinates": [
+        2,
+        3,
+        3,
+        -6,
+        6,
+        4,
+        2,
+        4,
+        4,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -6
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 6
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_17",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "f_proj_1d_2",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_18",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "f_proj_1d_1",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_19",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "e_proj_E_half",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_20",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "e_proj_1d_2",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_21",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "e_proj_1d_1",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_22",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "b_proj_doubleprime_1d_1 + c_proj_doubleprime_1d_1 + d_proj_doubleprime_2d_6",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        1,
+        -2,
+        3,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_23",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- b_proj_doubleprime_1d_1 - c_proj_doubleprime_1d_1 + d_proj_doubleprime_2d_5",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_24",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "c_proj_doubleprime_1d_1 + d_proj_prime_1d_4",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_25",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "c_proj_doubleprime_1d_1 + d_proj_prime_1d_3",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        2,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_26",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- c_proj_doubleprime_1d_1 + d_proj_doubleprime_1d_2",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_27",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- c_proj_doubleprime_1d_1 + d_proj_doubleprime_1d_1",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_28",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "b_proj_doubleprime_1d_1 + c_proj_doubleprime_1d_1 + c_proj_doubleprime_2d_6",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        1,
+        -2,
+        3,
+        1,
+        0,
+        1,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_29",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- b_proj_doubleprime_1d_1 - c_proj_doubleprime_1d_1 + c_proj_doubleprime_2d_5",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_30",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "c_proj_doubleprime_1d_1 + c_proj_prime_1d_4",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_31",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "c_proj_doubleprime_1d_1 + c_proj_prime_1d_3",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_32",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- c_proj_doubleprime_1d_1 + c_proj_doubleprime_1d_2",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_33",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "b_proj_doubleprime_2d_5 - 2 c_proj_doubleprime_1d_1",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_34",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "b_proj_doubleprime_2d_5 + b_proj_doubleprime_2d_6",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_35",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "b_proj_doubleprime_1d_1 + b_proj_prime_1d_4",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_36",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "b_proj_doubleprime_1d_1 + b_proj_prime_1d_3",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_37",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- b_proj_doubleprime_1d_1 + b_proj_doubleprime_1d_2",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_38",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "a_proj_u_2d_6",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_39",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "a_proj_u_2d_5",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_40",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "- a_proj_u_1d_1 + a_proj_g_1d_4",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_41",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "a_proj_u_1d_1 + a_proj_g_1d_3",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_honest_ai_kernel_42",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "combination_string": "a_proj_u_1d_1 + a_proj_u_1d_2",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "ai_coordinate_matrix_in_bs_basis": [
+    [
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2,
+      0,
+      1,
+      2,
+      2,
+      1,
+      3,
+      0,
+      3,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2,
+      1,
+      2,
+      1,
+      2,
+      0,
+      3,
+      3,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0
+    ],
+    [
+      -2,
+      -1,
+      -2,
+      -1,
+      -2,
+      0,
+      -3,
+      0,
+      -3,
+      -2,
+      -4,
+      -3,
+      -3,
+      0,
+      -6,
+      -6,
+      -1,
+      -1,
+      -2,
+      -1,
+      -1,
+      -2,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      -2,
+      0,
+      -1,
+      -1,
+      0,
+      0,
+      -2,
+      -1,
+      -1,
+      0,
+      -1,
+      -1,
+      0,
+      -1,
+      -1
+    ],
+    [
+      2,
+      1,
+      2,
+      0,
+      3,
+      -1,
+      4,
+      -2,
+      5,
+      1,
+      5,
+      2,
+      4,
+      -3,
+      9,
+      6,
+      2,
+      0,
+      2,
+      2,
+      0,
+      3,
+      -1,
+      1,
+      2,
+      -1,
+      0,
+      3,
+      -1,
+      1,
+      2,
+      -1,
+      -1,
+      2,
+      1,
+      2,
+      -1,
+      1,
+      1,
+      -1,
+      2,
+      1
+    ],
+    [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      0,
+      0,
+      2,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      2,
+      0,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2,
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      0,
+      4,
+      4,
+      1,
+      1,
+      2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      -1,
+      3,
+      -1,
+      3,
+      2,
+      2,
+      2,
+      2,
+      -2,
+      6,
+      4,
+      1,
+      1,
+      2,
+      0,
+      0,
+      1,
+      0,
+      2,
+      2,
+      -1,
+      -1,
+      2,
+      -1,
+      1,
+      1,
+      0,
+      -1,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  ],
+  "torsion_generators": [],
+  "summary": "The quotient is extracted directly on the publication-shell BS basis using the authoritative AI lattice generators. Because the authoritative AI rank matches the published BS rank, the quotient has no free part; any remaining nontriviality is finite torsion encoded by the Smith diagonal in BS coordinates.",
+  "classification_reference_source": "current_status_1941111_benchmark_v1.json::benchmark_result",
+  "classification_reference_scope": "Bilbao-backed prior reference in workspace/user context",
+  "reference_expected_quotient_group": "Z6",
+  "reference_expected_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "classification_matches_reference": false
+}

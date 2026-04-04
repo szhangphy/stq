@@ -459,6 +459,13 @@
       ]
     }
   ],
+  "compatibility_matrix_shape": [
+    29,
+    34
+  ],
+  "compatibility_matrix_rank": 24,
+  "compatibility_matrix_nullity": 10,
+  "bs_rank": 10,
   "object_role": "published_publication_level_C_pub_kernel",
   "final_object_kind": "publication_level_point_path_shell_v1",
   "path_set_kind": "publication_level_point_path_shell_v1",
