@@ -1,0 +1,32 @@
+{
+  "benchmark_oracle_file": "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
+  "classification_reference_source": "sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json::source_breakdown.copied_experimental_compute",
+  "raw_matrix_shape": [
+    33,
+    10
+  ],
+  "interpreted_generator_orientation": "rows_are_generators_in_bs_basis_transposed_to_columns",
+  "interpreted_generator_count": 33,
+  "transpose_applied": true,
+  "interpreted_generator_matrix_shape": [
+    10,
+    33
+  ],
+  "authoritative_ai_rank": 10,
+  "published_bs_rank": 10,
+  "expected_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "expected_quotient_group": "Z6",
+  "orientation_semantics_consistent": true,
+  "summary": "Raw oracle matrix shape [33, 10] is interpreted as `rows_are_generators_in_bs_basis_transposed_to_columns`; transpose_applied=True yields a BS-basis generator matrix with shape [10, 33] and generator_count=33."
+}

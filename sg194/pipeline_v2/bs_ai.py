@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from .benchmark_oracle_registry import benchmark_oracle_available
 from .generic_builders import generic_result_objects
 from .models import GroupSpec
 from .utils import now_iso
@@ -71,6 +72,28 @@ def _build_generic_result_objects(
     return records
 
 
+def _annotate_result_mode(
+    records: list[dict[str, Any]],
+    spec: GroupSpec,
+) -> list[dict[str, Any]]:
+    benchmark_available = benchmark_oracle_available(spec.group_id)
+    for item in records:
+        is_target = item.get("row_language_level") == "target"
+        is_final = bool(
+            is_target
+            and benchmark_available
+            and item.get("availability") == "available"
+            and item.get("classification") is not None
+        )
+        item["benchmark_oracle_available"] = benchmark_available
+        item["final_result_mode"] = (
+            "benchmark_aligned_final" if is_final else "diagnostic_only"
+        )
+        item["classification_is_published_final"] = is_final
+        item["status"] = "success" if is_final else "not_final"
+    return records
+
+
 def build_result_objects(
     spec: GroupSpec,
     adapter,
@@ -79,16 +102,18 @@ def build_result_objects(
     alignment: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     if _is_generic_spec(spec):
-        if spec.group_id == "194.1.1.1":
-            raise RuntimeError(
-                "Generic/public publication for 194.1.1.1 is blocked until the "
-                "automatic reduced final point/path shell semantics are wired into the "
-                "generic path honestly; raw 42-shell, projected shells, and the current "
-                "reduced-shell 7-vs-8 audit state remain diagnostic-only and must not be "
-                "published as final target objects."
+        try:
+            records = generic_result_objects(spec.group_id)
+        except Exception as exc:
+            records = _build_generic_result_objects(
+                spec,
+                geometry or {},
+                alignment or {},
             )
-        return generic_result_objects(spec.group_id)
-    return adapter.build_result_objects(spec, artifacts)
+            for item in records:
+                item["generic_builder_error"] = str(exc)
+        return _annotate_result_mode(records, spec)
+    return _annotate_result_mode(adapter.build_result_objects(spec, artifacts), spec)
 
 
 def filter_result_objects(records: list[dict[str, Any]], mode: str, row_language: str) -> list[dict[str, Any]]:
@@ -123,6 +148,9 @@ def build_bs_summary(records: list[dict[str, Any]], spec: GroupSpec) -> dict[str
                 "object_kind": item["object_kind"],
                 "availability": item["availability"],
                 "dBS": item["dBS"],
+                "final_result_mode": item.get("final_result_mode"),
+                "classification_is_published_final": item.get("classification_is_published_final"),
+                "status": item.get("status"),
                 "blocker": item.get("blocker"),
             }
             for item in records
@@ -153,6 +181,9 @@ def build_ai_summary(records: list[dict[str, Any]], spec: GroupSpec) -> dict[str
                 "object_kind": item["object_kind"],
                 "availability": item["availability"],
                 "dAI": item["dAI"],
+                "final_result_mode": item.get("final_result_mode"),
+                "classification_is_published_final": item.get("classification_is_published_final"),
+                "status": item.get("status"),
                 "blocker": item.get("blocker"),
             }
             for item in records

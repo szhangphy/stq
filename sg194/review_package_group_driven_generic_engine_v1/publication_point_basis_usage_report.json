@@ -1,0 +1,239 @@
+{
+  "shells": {
+    "raw42": {
+      "candidate_count": 45,
+      "mode_counts": {
+        "raw_capture_point_basis": 225,
+        "publication_collapsed_point_basis_fallback_raw": 34,
+        "publication_collapsed_point_basis": 11
+      },
+      "manifold_stats": {
+        "P1": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P2": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P3": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 45,
+          "publication_collapse_used_count": 11,
+          "publication_collapse_fallback_count": 34,
+          "raw_capture_basis_count": 0,
+          "merge_groups_examples": [
+            [
+              [
+                "P3_R1",
+                "P3_R4"
+              ],
+              [
+                "P3_R2",
+                "P3_R3"
+              ],
+              [
+                "P3_R5",
+                "P3_R6"
+              ]
+            ]
+          ]
+        },
+        "P4": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P5": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P6": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        }
+      }
+    },
+    "internal": {
+      "candidate_count": 45,
+      "mode_counts": {
+        "raw_capture_point_basis": 225,
+        "publication_collapsed_point_basis_fallback_raw": 34,
+        "publication_collapsed_point_basis": 11
+      },
+      "manifold_stats": {
+        "P1": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P2": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P3": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 45,
+          "publication_collapse_used_count": 11,
+          "publication_collapse_fallback_count": 34,
+          "raw_capture_basis_count": 0,
+          "merge_groups_examples": [
+            [
+              [
+                "P3_R1",
+                "P3_R4"
+              ],
+              [
+                "P3_R2",
+                "P3_R3"
+              ],
+              [
+                "P3_R5",
+                "P3_R6"
+              ]
+            ]
+          ]
+        },
+        "P4": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P5": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P6": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        }
+      }
+    },
+    "publication": {
+      "candidate_count": 45,
+      "mode_counts": {
+        "raw_capture_point_basis": 225,
+        "publication_collapsed_point_basis_fallback_raw": 34,
+        "publication_collapsed_point_basis": 11
+      },
+      "manifold_stats": {
+        "P1": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P2": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P3": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 45,
+          "publication_collapse_used_count": 11,
+          "publication_collapse_fallback_count": 34,
+          "raw_capture_basis_count": 0,
+          "merge_groups_examples": [
+            [
+              [
+                "P3_R1",
+                "P3_R4"
+              ],
+              [
+                "P3_R2",
+                "P3_R3"
+              ],
+              [
+                "P3_R5",
+                "P3_R6"
+              ]
+            ]
+          ]
+        },
+        "P4": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P5": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        },
+        "P6": {
+          "trace_count": 45,
+          "publication_collapse_attempt_count": 0,
+          "publication_collapse_used_count": 0,
+          "publication_collapse_fallback_count": 0,
+          "raw_capture_basis_count": 45,
+          "merge_groups_examples": []
+        }
+      }
+    }
+  },
+  "total_mode_counts": {
+    "raw_capture_point_basis": 675,
+    "publication_collapsed_point_basis_fallback_raw": 102,
+    "publication_collapsed_point_basis": 33
+  },
+  "publication_point_basis_usage_counts": {
+    "raw_capture_point_basis": 225,
+    "publication_collapsed_point_basis_fallback_raw": 34,
+    "publication_collapsed_point_basis": 11
+  },
+  "raw42_internal_diagnostic_induction_uses_point_merge_classes": true,
+  "any_point_basis_fallback_affects_authoritative_ai_rank": false,
+  "any_point_basis_fallback_affects_bilbao_alignment": false,
+  "authoritative_ai_rank": 10,
+  "published_shell_bilbao_equivalent": true,
+  "summary": "Point-basis collapse is now wired through raw42, internal, and publication diagnostic inductions. Fallback-to-raw traces remain visible for some point manifolds, but they do not change the authoritative AI rank or the publication-shell Bilbao alignment."
+}

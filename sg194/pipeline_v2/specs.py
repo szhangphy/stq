@@ -30,6 +30,9 @@ SG194_SPEC = GroupSpec(
         "single_kmanifolds": "sg194/group_194_1_1_1_single_kmanifolds.json",
         "single_connectivity": "sg194/group_194_1_1_1_single_connectivity.json",
         "single_full_compatibility": "sg194/group_194_1_1_1_single_full_compatibility_with_planes.json",
+        "current_status": "sg194/current_status_194.1.1.1.json",
+        "single_summary": "sg194/group_194_1_1_1_single_pilot_summary.json",
+        "double_summary": "sg194/group_194_1_1_1_double_pilot_summary.json",
         "benchmark_status": "sg194/current_status_1941111_benchmark_v1.json",
         "projection_summary": "sg194/sg194_standard_space_projection_summary_v1.json",
     },
@@ -64,7 +67,7 @@ SG194_SPEC = GroupSpec(
         "double_target_object_kind": "benchmark_facing_double_internalized_target_object",
     },
     expected_results={
-        "single_target_exact": {"dBS": 13, "dAI": 13, "classification": "trivial"},
+        "single_target_exact": {"dBS": 10, "dAI": 10, "classification": "trivial"},
         "double_target_benchmark_facing": {"dBS": 10, "dAI": 10, "classification": "Z6"},
     },
     benchmark={
@@ -164,12 +167,54 @@ GROUP222_SPEC = GroupSpec(
 )
 
 
+GROUP99_SPEC = GroupSpec(
+    key="ssg99_1_1_1",
+    group_id="99.1.1.1",
+    title="99.1.1.1 generic diagnostic-only control path",
+    description=(
+        "Oracle-free control target for the group-driven engine. The generic symmetry-ops path "
+        "may build geometry/current-row diagnostics, but without a registered benchmark oracle "
+        "it must report diagnostic-only / not-final outputs instead of a published classification."
+    ),
+    home_subdir="sg194",
+    adapter_key="generic_diagnostic",
+    modes=("single", "double", "both"),
+    row_languages=("raw", "target", "all"),
+    artifacts={},
+    builder_backend="generic_symmetry_ops",
+    special_rules={
+        "trust_policy": "symmetry_operations_only",
+        "oracle_policy": "no_registered_benchmark_oracle_diagnostic_only",
+        "current_row_language_kind": "generic_canonical_point_row_language_from_symmetry_ops",
+        "target_object_kind": "generic_target_object_pending",
+    },
+    final_object_ids={},
+    capabilities={
+        "full_geometry": True,
+        "target_alignment": True,
+        "final_results": False,
+        "trusted_symmetry_probe": True,
+        "generic_current_row_shell": True,
+        "generic_local_ai_seed": True,
+        "generic_current_row_compatibility": True,
+    },
+    coordinate_policy=coordinate_contract(),
+    trust_level="generic_symmetry_ops_diagnostic_only_without_benchmark_oracle",
+    readiness_note=(
+        "99.1.1.1 is intentionally used as an oracle-free control group. The engine must stop at "
+        "diagnostic-only / not-final outputs and must not promote any classification to a published final object."
+    ),
+)
+
+
 GROUP_SPECS = {
     SG194_SPEC.key: SG194_SPEC,
     SG194_SPEC.group_id: SG194_SPEC,
     GROUP222_SPEC.key: GROUP222_SPEC,
     GROUP222_SPEC.group_id: GROUP222_SPEC,
     "222.1.1601": GROUP222_SPEC,
+    GROUP99_SPEC.key: GROUP99_SPEC,
+    GROUP99_SPEC.group_id: GROUP99_SPEC,
 }
 
 

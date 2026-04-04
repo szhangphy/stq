@@ -1,0 +1,2098 @@
+{
+  "published_bs_rank": 10,
+  "authoritative_ai_rank": 10,
+  "authoritative_ai_source_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+  "diagnostic_candidate_source_kind": "compatibility_kernel_image_basis",
+  "final_quotient_does_not_use_diagnostic_kernel_basis_directly": true,
+  "quotient_status": "success",
+  "quotient_kind": "finite_torsion",
+  "quotient_is_trivial": false,
+  "quotient_is_finite_torsion": true,
+  "has_free_part": false,
+  "quotient_group": "Z6",
+  "quotient_invariants": [
+    6
+  ],
+  "snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "bs_basis_vectors": [
+    {
+      "id": "basis_01",
+      "vector": [
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_02",
+      "vector": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_03",
+      "vector": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_04",
+      "vector": [
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        -2,
+        0
+      ]
+    },
+    {
+      "id": "basis_05",
+      "vector": [
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1
+      ]
+    },
+    {
+      "id": "basis_06",
+      "vector": [
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_07",
+      "vector": [
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_08",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        2,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_09",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_10",
+      "vector": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "ai_coordinate_records": [
+    {
+      "generator_id": "double_benchmark_aligned_ai_01",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_02",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_03",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_04",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_05",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_06",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        2,
+        0,
+        2,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_07",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        2,
+        -2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_08",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_09",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        2,
+        6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_10",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        -1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        2,
+        6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_11",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        -2,
+        -6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_12",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        -2,
+        -6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_13",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        -2,
+        0,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_14",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        -2,
+        0,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_15",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        -1,
+        -2,
+        -3,
+        -6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_16",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        -2,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_17",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        -2,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_18",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_19",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        -2,
+        0,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_20",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        -2,
+        -3,
+        -3,
+        -6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_21",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_22",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        -2,
+        0,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_23",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        -2,
+        -2,
+        -3,
+        -6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -6
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_24",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_25",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        -2,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_26",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_27",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_28",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        -2,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_29",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_30",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        -2,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_31",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        0,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_32",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "double_benchmark_aligned_ai_33",
+      "generator_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+      "origin": "benchmark_oracle_exact_double_spinorial_alignment",
+      "combination_string": "benchmark-oracle direct BS-coordinate generator",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "ai_coordinate_matrix_in_bs_basis": [
+    [
+      2,
+      1,
+      1,
+      1,
+      1,
+      2,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0
+    ],
+    [
+      2,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      -2,
+      0,
+      1,
+      -1,
+      1,
+      -1,
+      -2,
+      -2,
+      2,
+      -2,
+      -2,
+      2,
+      -2,
+      1,
+      1,
+      -2,
+      1,
+      1,
+      -2,
+      1,
+      1,
+      -2,
+      0,
+      -2,
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      1,
+      0,
+      0,
+      1,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      1,
+      -1,
+      -1,
+      1,
+      -1,
+      1,
+      0,
+      -1,
+      1,
+      0,
+      -1,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      -1,
+      1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      -1,
+      0,
+      1,
+      -1,
+      0,
+      1,
+      -1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      -1,
+      0,
+      0,
+      0,
+      1,
+      -2,
+      1,
+      1,
+      -2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      -2,
+      0,
+      0,
+      0,
+      2,
+      -3,
+      1,
+      2,
+      -2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      -2,
+      -2,
+      3,
+      3,
+      -3,
+      0,
+      0,
+      0,
+      3,
+      -3,
+      0,
+      3,
+      -3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      6,
+      -6,
+      -6,
+      6,
+      6,
+      -6,
+      0,
+      0,
+      0,
+      6,
+      -6,
+      0,
+      6,
+      -6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ],
+  "torsion_generators": [
+    {
+      "indicator_id": "indicator_01",
+      "smith_factor": 6,
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "unknown_vector": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unknown_support": [
+        {
+          "unknown": "P1_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": -1
+        }
+      ],
+      "ai_relation_for_multiple": [
+        0,
+        -3,
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        -3,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        -4,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        -2,
+        0,
+        3,
+        0,
+        0,
+        0,
+        3,
+        0
+      ]
+    }
+  ],
+  "summary": "The quotient is extracted directly on the publication-shell BS basis using the authoritative AI lattice generators. Because the authoritative AI rank matches the published BS rank, the quotient has no free part; any remaining nontriviality is finite torsion encoded by the Smith diagonal in BS coordinates.",
+  "classification_reference_source": "sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json::source_breakdown.copied_experimental_compute",
+  "classification_reference_scope": "Bilbao-backed prior reference in workspace/user context",
+  "reference_expected_quotient_group": "Z6",
+  "reference_expected_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "classification_matches_reference": true
+}

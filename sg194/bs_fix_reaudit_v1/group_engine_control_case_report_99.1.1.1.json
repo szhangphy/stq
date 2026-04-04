@@ -1,0 +1,23 @@
+{
+  "target_group": "99.1.1.1",
+  "benchmark_oracle_available": false,
+  "final_result_mode": "diagnostic_only",
+  "classification_is_published_final": false,
+  "status": "not_final",
+  "checks_passed": false,
+  "final_results_available": false,
+  "final_results_verified": false,
+  "single_target_dBS": null,
+  "single_target_dAI": null,
+  "single_target_classification": null,
+  "double_target_dBS": null,
+  "double_target_dAI": null,
+  "double_target_classification": null,
+  "single_target_object_kind": "generic_target_object_pending",
+  "double_target_object_kind": "generic_target_object_pending",
+  "single_target_blocker": "generic_current_row_compatibility_builder",
+  "double_target_blocker": "generic_current_row_compatibility_builder",
+  "single_final_status": "not_final",
+  "double_final_status": "not_final",
+  "trust_level": "generic_symmetry_ops_diagnostic_only_without_benchmark_oracle"
+}

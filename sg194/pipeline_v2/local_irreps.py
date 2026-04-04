@@ -12,13 +12,34 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TARGET_GROUP = "194.1.1.1"
-REFERENCE_GROUP = "10.4.1.31"
+DEFAULT_TARGET_GROUP = "194.1.1.1"
+DEFAULT_REFERENCE_GROUP = "10.4.1.31"
 
 INVENTORY_MD = ROOT / "sg194_nonabelian_site_symmetry_inventory.md"
 INVENTORY_JSON = ROOT / "sg194_nonabelian_site_symmetry_inventory.json"
 SINGLE_LIBRARY_JSON = ROOT / "sg194_single_local_irrep_library.json"
 DOUBLE_LIBRARY_JSON = ROOT / "sg194_double_local_corep_library.json"
+
+
+def _slug_group_id(group: str) -> str:
+    return group.replace(".", "_")
+
+
+def _output_paths(target_group: str) -> dict[str, Path]:
+    if target_group == DEFAULT_TARGET_GROUP:
+        return {
+            "inventory_md": INVENTORY_MD,
+            "inventory_json": INVENTORY_JSON,
+            "single_library_json": SINGLE_LIBRARY_JSON,
+            "double_library_json": DOUBLE_LIBRARY_JSON,
+        }
+    slug = _slug_group_id(target_group)
+    return {
+        "inventory_md": ROOT / f"{slug}_nonabelian_site_symmetry_inventory.md",
+        "inventory_json": ROOT / f"{slug}_nonabelian_site_symmetry_inventory.json",
+        "single_library_json": ROOT / f"{slug}_single_local_irrep_library.json",
+        "double_library_json": ROOT / f"{slug}_double_local_corep_library.json",
+    }
 
 
 def load_stage1_module():
@@ -45,6 +66,21 @@ def write_json(path: Path, payload: Any) -> None:
 
 def write_text(path: Path, text: str) -> None:
     path.write_text(text.rstrip() + "\n")
+
+
+def _nonabelian_family_summary(payload: dict[str, Any]) -> str:
+    grouped: dict[str, list[str]] = {}
+    for record in payload["inventory_records"]:
+        if not record["nonabelian"]:
+            continue
+        label = f"{record['site_symmetry_type_key']} / {record['site_symmetry_type_label']}"
+        grouped.setdefault(label, []).append(record["family_id"])
+    if not grouped:
+        return "none"
+    parts = []
+    for label, families in sorted(grouped.items()):
+        parts.append(f"{','.join(sorted(families))} -> {label}")
+    return "; ".join(parts)
 
 
 def complex_close(a: complex, b: complex, tol: float = 1e-8) -> bool:
@@ -850,13 +886,19 @@ def serializable_projective_irreps(record: dict[str, Any], irreps: list[dict[str
     }
 
 
-def build_inventory_and_libraries() -> dict[str, Any]:
-    port = load_stage1_module()
+def build_inventory_and_libraries(
+    *,
+    target_group: str = DEFAULT_TARGET_GROUP,
+    reference_group: str = DEFAULT_REFERENCE_GROUP,
+    port=None,
+) -> dict[str, Any]:
+    if port is None:
+        port = load_stage1_module()
     module = port.load_ssgreps_module()
-    ssg_dict = port.load_ssg_dict(TARGET_GROUP)
+    ssg_dict = port.load_ssg_dict(target_group)
 
-    ctx_single = port.load_context(module, TARGET_GROUP, "single", ssg_dict)
-    ctx_double = port.load_context(module, TARGET_GROUP, "double", ssg_dict)
+    ctx_single = port.load_context(module, target_group, "single", ssg_dict)
+    ctx_double = port.load_context(module, target_group, "double", ssg_dict)
 
     inventory_records = []
     single_types: dict[str, dict[str, Any]] = {}
@@ -943,8 +985,8 @@ def build_inventory_and_libraries() -> dict[str, Any]:
     }
 
     inventory_json = {
-        "reference_group": REFERENCE_GROUP,
-        "target_group": TARGET_GROUP,
+        "reference_group": reference_group,
+        "target_group": target_group,
         "families": [
             {
                 "family_id": record["family_id"],
@@ -965,16 +1007,16 @@ def build_inventory_and_libraries() -> dict[str, Any]:
     }
 
     single_library_json = {
-        "reference_group": REFERENCE_GROUP,
-        "target_group": TARGET_GROUP,
+        "reference_group": reference_group,
+        "target_group": target_group,
         "nonabelian_site_symmetry_types": nonabelian_single_types,
         "auxiliary_abelian_site_symmetry_types_used_for_ai": {
             key: value for key, value in single_types.items() if key not in nonabelian_single_types
         },
     }
     double_library_json = {
-        "reference_group": REFERENCE_GROUP,
-        "target_group": TARGET_GROUP,
+        "reference_group": reference_group,
+        "target_group": target_group,
         "nonabelian_site_symmetry_types": nonabelian_double_types,
         "auxiliary_abelian_site_symmetry_types_used_for_ai": {
             key: value for key, value in double_types.items() if key not in nonabelian_double_types
@@ -982,11 +1024,12 @@ def build_inventory_and_libraries() -> dict[str, Any]:
     }
 
     md_lines = [
-        "# SG 194 Non-Abelian Site-Symmetry Inventory",
+        f"# Non-Abelian Site-Symmetry Inventory for {target_group}",
         "",
         "## Scope",
         "",
-        "- Target group fixed to `194.1.1.1`.",
+        f"- Target group: `{target_group}`.",
+        f"- Reference group: `{reference_group}`.",
         "- This inventory is built from the current local `swyckoff_r.py` real-space families plus direct stabilizer recomputation through the audited stage-1 bridge.",
         "",
         "## Family Table",
@@ -1016,7 +1059,7 @@ def build_inventory_and_libraries() -> dict[str, Any]:
             "",
             "- The primary stage-1 blocker source is the non-abelian set `C3v` on `e,f` and the two order-12 non-abelian types on `a,b,c,d`.",
             "- The order-2 / order-4 abelian families are follow-on work for AI closure, but they are not the conceptual reason the stage-1 portability pilot stalled.",
-            "- All site symmetries remain purely unitary in the present SG 194 controlled case, so the double-group stage requires projective local irreps, not antiunitary Wigner-corep extensions.",
+        f"- All site symmetries remain purely unitary in the present {target_group} controlled case, so the double-group stage requires projective local irreps, not antiunitary Wigner-corep extensions.",
         ]
     )
 
@@ -1031,35 +1074,58 @@ def build_inventory_and_libraries() -> dict[str, Any]:
     }
 
 
-def generate_outputs() -> dict[str, Any]:
-    payload = build_inventory_and_libraries()
-    write_text(INVENTORY_MD, payload["inventory_md"])
-    write_json(INVENTORY_JSON, payload["inventory_json"])
-    write_json(SINGLE_LIBRARY_JSON, payload["single_library_json"])
-    write_json(DOUBLE_LIBRARY_JSON, payload["double_library_json"])
+def generate_outputs(
+    *,
+    target_group: str = DEFAULT_TARGET_GROUP,
+    reference_group: str = DEFAULT_REFERENCE_GROUP,
+) -> dict[str, Any]:
+    payload = build_inventory_and_libraries(
+        target_group=target_group,
+        reference_group=reference_group,
+    )
+    output_paths = _output_paths(target_group)
+    write_text(output_paths["inventory_md"], payload["inventory_md"])
+    write_json(output_paths["inventory_json"], payload["inventory_json"])
+    write_json(output_paths["single_library_json"], payload["single_library_json"])
+    write_json(output_paths["double_library_json"], payload["double_library_json"])
     return payload
 
 
-def validate_outputs() -> None:
-    inventory = json.loads(INVENTORY_JSON.read_text())
-    single = json.loads(SINGLE_LIBRARY_JSON.read_text())
-    double = json.loads(DOUBLE_LIBRARY_JSON.read_text())
+def validate_outputs(target_group: str = DEFAULT_TARGET_GROUP) -> None:
+    output_paths = _output_paths(target_group)
+    inventory = json.loads(output_paths["inventory_json"].read_text())
+    single = json.loads(output_paths["single_library_json"].read_text())
+    double = json.loads(output_paths["double_library_json"].read_text())
 
-    nonabelian_families = {
-        entry["family_id"]
-        for entry in inventory["families"]
-        if entry["nonabelian"]
-    }
-    if nonabelian_families != {"a", "b", "c", "d", "e", "f"}:
-        raise ValueError(f"unexpected nonabelian family set: {sorted(nonabelian_families)}")
+    if inventory.get("target_group") != target_group:
+        raise ValueError(
+            f"inventory target_group mismatch: expected {target_group}, got {inventory.get('target_group')}"
+        )
+    if single.get("target_group") != target_group:
+        raise ValueError(
+            f"single library target_group mismatch: expected {target_group}, got {single.get('target_group')}"
+        )
+    if double.get("target_group") != target_group:
+        raise ValueError(
+            f"double library target_group mismatch: expected {target_group}, got {double.get('target_group')}"
+        )
 
-    single_types = set(single["nonabelian_site_symmetry_types"])
-    if single_types != {"C3v", "D3d_like", "D3h_like"}:
-        raise ValueError(f"unexpected single nonabelian type set: {sorted(single_types)}")
+    if target_group == DEFAULT_TARGET_GROUP:
+        nonabelian_families = {
+            entry["family_id"]
+            for entry in inventory["families"]
+            if entry["nonabelian"]
+        }
+        if nonabelian_families != {"a", "b", "c", "d", "e", "f"}:
+            raise ValueError(f"unexpected nonabelian family set: {sorted(nonabelian_families)}")
 
-    double_types = set(double["nonabelian_site_symmetry_types"])
-    if double_types != {"C3v", "D3d_like", "D3h_like"}:
-        raise ValueError(f"unexpected double nonabelian type set: {sorted(double_types)}")
+        single_types = set(single["nonabelian_site_symmetry_types"])
+        if single_types != {"C3v", "D3d_like", "D3h_like"}:
+            raise ValueError(f"unexpected single nonabelian type set: {sorted(single_types)}")
+
+        double_types = set(double["nonabelian_site_symmetry_types"])
+        if double_types != {"C3v", "D3d_like", "D3h_like"}:
+            raise ValueError(f"unexpected double nonabelian type set: {sorted(double_types)}")
 
     for payload in single["nonabelian_site_symmetry_types"].values():
         if not payload["validation_summary"]["matches_group_order"]:
@@ -1079,17 +1145,22 @@ def validate_outputs() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--validate", action="store_true")
+    parser.add_argument("--target-group", default=DEFAULT_TARGET_GROUP)
+    parser.add_argument("--reference-group", default=DEFAULT_REFERENCE_GROUP)
     args = parser.parse_args()
 
     if args.validate:
-        validate_outputs()
-        print("validated stage-2 SG194 local-library outputs")
+        validate_outputs(target_group=args.target_group)
+        print(f"validated local-library outputs for {args.target_group}")
         return
 
-    payload = generate_outputs()
-    validate_outputs()
-    print("1. 194.1.1.1 上真实出现的 non-abelian site symmetries 是哪些？")
-    print("   e,f -> C3v / 3m; a -> D3d-like / -3m; b,c,d -> D3h-like / -6m2")
+    payload = generate_outputs(
+        target_group=args.target_group,
+        reference_group=args.reference_group,
+    )
+    validate_outputs(target_group=args.target_group)
+    print(f"1. {args.target_group} 上真实出现的 non-abelian site symmetries 是哪些？")
+    print(f"   {_nonabelian_family_summary(payload)}")
     print("2. single-group non-abelian local-irrep library 是否已实现？")
     print("   True")
     print("3. double-group non-abelian local-corep / projective-irrep library 是否已实现？")

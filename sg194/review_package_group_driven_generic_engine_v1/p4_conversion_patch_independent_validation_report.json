@@ -1,0 +1,12 @@
+{
+  "validation_scope": "SG194_current_setting_only",
+  "basis_independent_global_theorem": false,
+  "basis_independent_global_theorem_status": "not_global_not_basis_independent",
+  "shared_patch_self_validation_risk_removed": true,
+  "setting_specific_numerical_consistency_pass": true,
+  "p4_linear_trace_differing_ops_count_total": 0,
+  "p4_converted_trace_differing_ops_count_total": 0,
+  "p4_induction_failure_count": 0,
+  "current_verdict": "For SG194 in the current P-lattice setting, the earlier P4 mismatch is removed by a conversion numerically consistent with the present capture conventions. This is not promoted to a basis-independent global theorem.",
+  "summary": "The P4 repair is now justified only within the current SG194 setting. Legacy and explicit-orbit traces agree before and after conversion on the audited P4 objects, but the claim scope is explicitly limited to the present capture conventions."
+}

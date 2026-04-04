@@ -1,0 +1,36 @@
+{
+  "diagnostic_kernel_generator_count": 42,
+  "diagnostic_kernel_rank": 10,
+  "diagnostic_kernel_source_kind": "compatibility_kernel_image_basis",
+  "diagnostic_kernel_quotient_group": "trivial",
+  "diagnostic_kernel_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "benchmark_aligned_generator_count": 33,
+  "benchmark_aligned_ai_rank": 10,
+  "benchmark_aligned_source_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+  "benchmark_aligned_quotient_group": "Z6",
+  "benchmark_aligned_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "published_bs_rank": 10,
+  "conclusion": "The current double diagnostic kernel image is a larger provenance object than the benchmark-aligned final double published quotient source. Both span rank 10, but the diagnostic 42-generator kernel image trivializes the quotient, whereas the benchmark-aligned exact 33-generator source preserves the expected Z6 torsion."
+}

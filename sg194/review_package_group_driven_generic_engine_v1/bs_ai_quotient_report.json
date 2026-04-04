@@ -1,0 +1,2790 @@
+{
+  "published_bs_rank": 10,
+  "authoritative_ai_rank": 10,
+  "authoritative_ai_source_kind": "full_induced_object_compatibility_kernel_image",
+  "diagnostic_candidate_source_kind": null,
+  "final_quotient_does_not_use_diagnostic_kernel_basis_directly": false,
+  "quotient_status": "success",
+  "quotient_kind": "trivial",
+  "quotient_is_trivial": true,
+  "quotient_is_finite_torsion": false,
+  "has_free_part": false,
+  "quotient_group": "trivial",
+  "quotient_invariants": [],
+  "snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "bs_basis_vectors": [
+    {
+      "id": "basis_01",
+      "vector": [
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_02",
+      "vector": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_03",
+      "vector": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_04",
+      "vector": [
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        -2,
+        0
+      ]
+    },
+    {
+      "id": "basis_05",
+      "vector": [
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1
+      ]
+    },
+    {
+      "id": "basis_06",
+      "vector": [
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_07",
+      "vector": [
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_08",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        2,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_09",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_10",
+      "vector": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "ai_coordinate_records": [
+    {
+      "generator_id": "single_honest_ai_kernel_01",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "f_E",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_02",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- a_A1g + g_Ag",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        0,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_03",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "a_A1g + g_Bg",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_04",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- a_A1g + g_Au",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        1,
+        -1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_05",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "a_A1g + g_Bu",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        2,
+        -2,
+        3,
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_06",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- b_A1' - 2 c_A1' + h_A1",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        -2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_07",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "b_A1' + 2 c_A1' + h_A2",
+      "bs_basis_coordinates": [
+        0,
+        2,
+        3,
+        -3,
+        4,
+        1,
+        1,
+        2,
+        1,
+        3
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_08",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- b_A1' - 2 c_A1' + h_B1",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        -2,
+        0,
+        -2,
+        1,
+        0,
+        0,
+        1,
+        -3
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -3
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_09",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "b_A1' + 2 c_A1' + h_B2",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        3,
+        -3,
+        5,
+        1,
+        1,
+        2,
+        1,
+        3
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 5
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_10",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- 2 a_A1g + i_A",
+      "bs_basis_coordinates": [
+        1,
+        2,
+        0,
+        -2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        -1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_11",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "2 a_A1g + i_B",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        3,
+        -4,
+        5,
+        2,
+        1,
+        2,
+        2,
+        2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -4
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 5
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_12",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "j_A'",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        2,
+        -3,
+        4,
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_13",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "j_A''",
+      "bs_basis_coordinates": [
+        1,
+        2,
+        1,
+        -3,
+        2,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_14",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- 2 b_A1' - 4 c_A1' + k_A'",
+      "bs_basis_coordinates": [
+        2,
+        0,
+        -3,
+        0,
+        -3,
+        2,
+        0,
+        0,
+        2,
+        -5
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -5
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_15",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "2 b_A1' + 4 c_A1' + k_A''",
+      "bs_basis_coordinates": [
+        0,
+        3,
+        6,
+        -6,
+        9,
+        2,
+        2,
+        4,
+        2,
+        6
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 6
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -6
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 9
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_16",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "l_A",
+      "bs_basis_coordinates": [
+        2,
+        3,
+        3,
+        -6,
+        6,
+        4,
+        2,
+        4,
+        4,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -6
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 6
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_17",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "f_A2",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_18",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "f_A1",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_19",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "e_E",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_20",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "e_A2",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_21",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "e_A1",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_22",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "b_A1' + c_A1' + d_E''",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        2,
+        -2,
+        3,
+        1,
+        1,
+        1,
+        1,
+        2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_23",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- b_A1' - c_A1' + d_E'",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        -2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_24",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "c_A1' + d_A2''",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_25",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- c_A1' + d_A2'",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        -1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_26",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "c_A1' + d_A1''",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_27",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- c_A1' + d_A1'",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_28",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "b_A1' + c_A1' + c_E''",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        2,
+        -2,
+        3,
+        1,
+        1,
+        1,
+        0,
+        2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_29",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- b_A1' - c_A1' + c_E'",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        -2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_30",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "c_A1' + c_A2''",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_31",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- c_A1' + c_A2'",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_32",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "c_A1' + c_A1''",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_33",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- b_E' + 2 c_A1'",
+      "bs_basis_coordinates": [
+        -1,
+        0,
+        1,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_34",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "b_E' + b_E''",
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_35",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "b_A1' + b_A2''",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_36",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- b_A1' + b_A2'",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_37",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "b_A1' + b_A1''",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_38",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "a_Eu",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_39",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "a_Eg",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_40",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "a_A1g + a_A2u",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_41",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "a_A1g + a_A2g",
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "single_honest_ai_kernel_42",
+      "generator_kind": "compatibility_kernel_image_basis",
+      "origin": null,
+      "combination_string": "- a_A1g + a_A1u",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -1
+        }
+      ]
+    }
+  ],
+  "ai_coordinate_matrix_in_bs_basis": [
+    [
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      2,
+      0,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      2,
+      0,
+      1,
+      2,
+      1,
+      1,
+      2,
+      0,
+      3,
+      3,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      2,
+      -1,
+      3,
+      -2,
+      3,
+      0,
+      3,
+      2,
+      1,
+      -3,
+      6,
+      3,
+      0,
+      1,
+      1,
+      0,
+      1,
+      2,
+      -1,
+      1,
+      -1,
+      1,
+      0,
+      2,
+      -1,
+      1,
+      -1,
+      1,
+      1,
+      1,
+      1,
+      -1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      -1
+    ],
+    [
+      -2,
+      -1,
+      -2,
+      -1,
+      -2,
+      0,
+      -3,
+      0,
+      -3,
+      -2,
+      -4,
+      -3,
+      -3,
+      0,
+      -6,
+      -6,
+      -1,
+      -1,
+      -2,
+      -1,
+      -1,
+      -2,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      -2,
+      0,
+      -1,
+      0,
+      -1,
+      0,
+      -2,
+      -1,
+      0,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      0
+    ],
+    [
+      2,
+      1,
+      2,
+      0,
+      3,
+      -1,
+      4,
+      -2,
+      5,
+      1,
+      5,
+      4,
+      2,
+      -3,
+      9,
+      6,
+      0,
+      2,
+      2,
+      0,
+      2,
+      3,
+      -1,
+      2,
+      -1,
+      1,
+      0,
+      3,
+      -1,
+      2,
+      -1,
+      1,
+      1,
+      2,
+      2,
+      -1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      -1
+    ],
+    [
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      0,
+      0,
+      2,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      -1,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      2,
+      0,
+      2,
+      2,
+      2,
+      2,
+      2,
+      0,
+      4,
+      4,
+      1,
+      1,
+      2,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      4,
+      1,
+      1,
+      2,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      -1,
+      2,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      -1,
+      1,
+      -2,
+      3,
+      -3,
+      3,
+      -1,
+      2,
+      1,
+      0,
+      -5,
+      6,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      2,
+      -2,
+      1,
+      -1,
+      1,
+      0,
+      2,
+      -2,
+      1,
+      -1,
+      1,
+      2,
+      0,
+      1,
+      -1,
+      1,
+      0,
+      0,
+      1,
+      1,
+      -1
+    ]
+  ],
+  "torsion_generators": [],
+  "summary": "The quotient is extracted directly on the publication-shell BS basis using the authoritative AI lattice generators. Because the authoritative AI rank matches the published BS rank, the quotient has no free part; any remaining nontriviality is finite torsion encoded by the Smith diagonal in BS coordinates.",
+  "classification_expected_by_user": "trivial",
+  "classification_matches_user_expectation": true
+}

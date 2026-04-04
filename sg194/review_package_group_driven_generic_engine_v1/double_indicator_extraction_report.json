@@ -1,0 +1,161 @@
+{
+  "quotient_status": "success",
+  "indicator_group": "Z6",
+  "indicator_invariants": [
+    6
+  ],
+  "indicator_generator_count": 1,
+  "snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "finite_torsion": true,
+  "torsion_generators": [
+    {
+      "indicator_id": "indicator_01",
+      "smith_factor": 6,
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "unknown_vector": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unknown_support": [
+        {
+          "unknown": "P1_R1",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R2",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R3",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R4",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R5",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R6",
+          "value": -1
+        },
+        {
+          "unknown": "P1_R7",
+          "value": 1
+        },
+        {
+          "unknown": "P1_R8",
+          "value": -1
+        }
+      ],
+      "ai_relation_for_multiple": [
+        0,
+        -3,
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        -3,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        -4,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        -2,
+        0,
+        3,
+        0,
+        0,
+        0,
+        3,
+        0
+      ]
+    }
+  ],
+  "summary": "Indicator extraction is read directly from the finite torsion part of the BS/AI quotient in published BS coordinates.",
+  "classification_reference_source": "sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json::source_breakdown.copied_experimental_compute",
+  "classification_reference_scope": "Bilbao-backed prior reference in workspace/user context",
+  "reference_expected_quotient_group": "Z6",
+  "reference_expected_snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    6
+  ],
+  "classification_matches_reference": true
+}

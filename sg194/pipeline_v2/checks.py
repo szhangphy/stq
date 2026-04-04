@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from .benchmark_oracle_registry import benchmark_oracle_available
 from .coordinates import coordinate_usage_audit
 from .models import GroupSpec
 from .utils import now_iso
@@ -81,6 +82,10 @@ def build_consistency_checks(
             for item in records
             if item.get("row_language_level") == "target"
         ]
+        oracle_available = benchmark_oracle_available(spec.group_id)
+        expected_final_mode = (
+            "benchmark_aligned_final" if oracle_available else "diagnostic_only"
+        )
         checks.extend(
             [
                 {
@@ -104,9 +109,33 @@ def build_consistency_checks(
                     "actual": alignment.get("compatibility_builder"),
                 },
                 {
-                    "name": "second_group_target_is_222_1_1_1",
-                    "passed": spec.group_id == "222.1.1.1",
-                    "actual": spec.group_id,
+                    "name": "generic_result_mode_matches_oracle_policy",
+                    "passed": all(
+                        item.get("final_result_mode") == expected_final_mode
+                        and (
+                            oracle_available
+                            or (
+                                item.get("status") == "not_final"
+                                and item.get("classification_is_published_final") is False
+                            )
+                        )
+                        for item in target_records
+                    ),
+                    "actual": {
+                        "benchmark_oracle_available": oracle_available,
+                        "expected_final_mode": expected_final_mode,
+                        "target_records": [
+                            {
+                                "object_id": item.get("object_id"),
+                                "final_result_mode": item.get("final_result_mode"),
+                                "status": item.get("status"),
+                                "classification_is_published_final": item.get(
+                                    "classification_is_published_final"
+                                ),
+                            }
+                            for item in target_records
+                        ],
+                    },
                 },
                 {
                     "name": "generic_ai_filter_is_exact",

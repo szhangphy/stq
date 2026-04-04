@@ -69,5 +69,63 @@ def _build_local_ai_seed(entries: list[dict[str, Any]], coord_key: str) -> dict[
 
 def build_alignment_summary(spec: GroupSpec, adapter, artifacts: dict[str, Any]) -> dict[str, Any]:
     if _is_generic_spec(spec):
-        return generic_alignment_summary(spec.group_id)
+        try:
+            return generic_alignment_summary(spec.group_id)
+        except Exception as exc:
+            fallback_error = str(exc)
+            current_row_shell = {
+                "status": "available",
+                "row_language_kind": "generic_current_row_shell_from_symmetry_ops",
+                "coordinate_system": "post_supercell_primitive_basis_for_pipeline_modules",
+                "point_count": None,
+                "point_ids": [],
+            }
+            return {
+                "generated_at": now_iso(),
+                "group": spec.group_id,
+                "trust_policy": "symmetry_operations_only",
+                "builder_error": fallback_error,
+                "current_row_shell": current_row_shell,
+                "local_ai_seed_builder": {
+                    "status": "available",
+                    "row_language_kind": "generic_local_ai_seed_from_site_symmetry_data",
+                    "coordinate_system": "post_supercell_primitive_basis_for_pipeline_modules",
+                    "realspace_wyckoff_family_count": None,
+                },
+                "compatibility_builder": {
+                    "status": "blocked",
+                    "row_language_kind": current_row_shell["row_language_kind"],
+                    "error": fallback_error,
+                },
+                "single": {
+                    "raw": {
+                        "row_language_kind": current_row_shell["row_language_kind"],
+                        "exact_alignment_status": "not_applicable_current_row_shell_only",
+                        "object_kind": "generic_current_row_shell",
+                        "availability": "available",
+                    },
+                    "target": {
+                        "row_language_kind": "generic_target_row_language_pending_same_shell_builder",
+                        "exact_alignment_status": "blocked_generic_alignment_builder_error",
+                        "object_kind": "generic_target_object_pending",
+                        "availability": "blocked",
+                        "blocker": fallback_error,
+                    },
+                },
+                "double": {
+                    "raw": {
+                        "row_language_kind": current_row_shell["row_language_kind"],
+                        "exact_alignment_status": "not_applicable_current_row_shell_only",
+                        "object_kind": "generic_current_row_shell",
+                        "availability": "available",
+                    },
+                    "target": {
+                        "row_language_kind": "generic_target_row_language_pending_same_shell_builder",
+                        "exact_alignment_status": "blocked_generic_alignment_builder_error",
+                        "object_kind": "generic_target_object_pending",
+                        "availability": "blocked",
+                        "blocker": fallback_error,
+                    },
+                },
+            }
     return adapter.build_alignment_summary(spec, artifacts)

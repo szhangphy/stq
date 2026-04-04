@@ -1,0 +1,687 @@
+{
+  "manifold_id": "P4",
+  "passing_generator_id": "b_A1'",
+  "failing_generator_ids": [
+    "c_A1'",
+    "d_A1'"
+  ],
+  "same_chars_matrix_for_all_compared_objects": true,
+  "compared_records": [
+    {
+      "generator_id": "b_A1'",
+      "family_id": "b",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral",
+      "integral_success": true,
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ]
+    },
+    {
+      "generator_id": "c_A1'",
+      "family_id": "c",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral",
+      "integral_success": true,
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ]
+    },
+    {
+      "generator_id": "d_A1'",
+      "family_id": "d",
+      "local_object_label": "A1'",
+      "site_symmetry_type_key": "D3h_like",
+      "raw_band_character": [
+        {
+          "real": 2.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": -1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.732050807569,
+          "imag": -0.0
+        },
+        {
+          "real": -1.732050807569,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": -0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solution_before_rounding": [
+        {
+          "real": -0.0,
+          "imag": 0.0
+        },
+        {
+          "real": 1.0,
+          "imag": 0.0
+        },
+        {
+          "real": 0.0,
+          "imag": 0.0
+        }
+      ],
+      "numeric_solver_status": "integral",
+      "exact_solver_status": "integral",
+      "integral_success": true,
+      "chars_matrix": [
+        [
+          {
+            "real": 2.0,
+            "imag": 0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": -0.0
+          },
+          {
+            "real": -1.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 1.732050807569,
+            "imag": -0.0
+          },
+          {
+            "real": -1.732050807569,
+            "imag": 0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": 2.0,
+            "imag": -0.0
+          },
+          {
+            "real": -0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ]
+    }
+  ],
+  "first_mismatch_stage": "not_detected"
+}

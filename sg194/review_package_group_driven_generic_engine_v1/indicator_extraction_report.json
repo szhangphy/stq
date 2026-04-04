@@ -1,0 +1,23 @@
+{
+  "quotient_status": "success",
+  "indicator_group": "trivial",
+  "indicator_invariants": [],
+  "indicator_generator_count": 0,
+  "snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "finite_torsion": false,
+  "torsion_generators": [],
+  "summary": "Indicator extraction is read directly from the finite torsion part of the BS/AI quotient in published BS coordinates.",
+  "classification_expected_by_user": "trivial",
+  "classification_matches_user_expectation": true
+}

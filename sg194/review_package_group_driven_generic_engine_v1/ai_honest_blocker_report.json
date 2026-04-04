@@ -1,0 +1,30 @@
+{
+  "status": "not_blocked",
+  "blocker": "No active AI blocker; single-group quotient already extracted on the authoritative publication-shell AI lattice.",
+  "blocker_stage": "single_group_quotient_complete",
+  "ai_status": "full_ai_lattice",
+  "local_library_present": true,
+  "local_library_wired_into_ai_builder": true,
+  "integration_status": "wired_candidate_set_with_residual_sector",
+  "failure_count": 0,
+  "nonzero_residual_candidate_count": 34,
+  "published_shell_candidate_count": 45,
+  "published_shell_compatible_zero_count": 11,
+  "quotient_rank_contribution_of_residual_sector": 5,
+  "residual_completion_feasible": true,
+  "liftable_residual_direction_ids": [
+    "lifted_a_A1g_minus_a_A1u",
+    "lifted_b_A1_prime_plus_b_A1_doubleprime",
+    "lifted_b_E_prime_minus_2_c_A1_prime",
+    "lifted_b_E_prime_minus_2_d_A1_prime",
+    "lifted_a_A1g_minus_g_Ag"
+  ],
+  "promoted_authoritative_generator_ids": [
+    "promoted_a_A1g_minus_a_A1u",
+    "promoted_b_A1_prime_plus_b_A1_doubleprime",
+    "promoted_b_E_prime_minus_2_c_A1_prime",
+    "promoted_b_E_prime_minus_2_d_A1_prime",
+    "promoted_a_A1g_minus_g_Ag"
+  ],
+  "summary": "The authoritative publication-shell AI generator set now includes promoted residual-sector lifts, the authoritative AI rank matches the published BS rank, and the single-group quotient is already extracted."
+}

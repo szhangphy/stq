@@ -1,0 +1,108 @@
+{
+  "target_group": "194.1.1.1",
+  "group_type": 2,
+  "double_group_feasibility_status": "success",
+  "minimal_realspace_prototype_status": "success",
+  "bridge_status": "success",
+  "induction_status": "success",
+  "kspace_backbone_status": {
+    "status": "success",
+    "compatibility_matrix_shape": [
+      29,
+      34
+    ],
+    "compatibility_matrix_rank": 24,
+    "compatibility_matrix_nullity": 10,
+    "bs_rank": 10,
+    "matrix_shape": [
+      29,
+      34
+    ],
+    "rank": 24,
+    "nullity": 10,
+    "smith_diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "authoritative_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+    "raw_builder_phase_aware_profile": "phase_aware_l2_projective_v1",
+    "internal_object_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
+    "published_object_kind": "publication_level_point_path_shell_v1",
+    "diagnostic_raw_with_planes_matrix_shape": [
+      61,
+      42
+    ],
+    "row_language_full_span_pass": true,
+    "bilbao_equivalent_final_object_pass": true
+  },
+  "AI_status": {
+    "status": "full_ai_lattice",
+    "authoritative_ai_rank": 10,
+    "old_verified_ai_rank": 5,
+    "local_corep_library_wired_into_ai_builder": true,
+    "library_integration_status": "diagnostic_candidate_set_wired_final_quotient_uses_benchmark_aligned_source",
+    "compatibility_zero_candidate_count": 11,
+    "success_candidate_count": 45,
+    "failure_count": 0,
+    "final_authoritative_ai_source_kind": "benchmark_oracle_exact_double_spinorial_alignment",
+    "final_authoritative_generator_count": 33,
+    "diagnostic_kernel_generator_count": 42
+  },
+  "quotient_status": {
+    "status": "success",
+    "blocker": null,
+    "quotient_group": "Z6",
+    "quotient_kind": "finite_torsion",
+    "quotient_invariants": [
+      6
+    ],
+    "snf_diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      6
+    ],
+    "classification_matches_reference": true
+  },
+  "point_like_AI_status": {
+    "status": "full_ai_lattice",
+    "blocker": null
+  },
+  "parametric_status": {
+    "status": "ready",
+    "blocker": null
+  },
+  "classification_reference_source": "sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json::source_breakdown.copied_experimental_compute",
+  "classification_reference_scope": "Bilbao-backed prior reference in workspace/user context",
+  "classification_matches_reference": true,
+  "blocker_stage": null,
+  "blocker": "No active double-group blocker; honest quotient extracted and matched to the Bilbao-backed workspace reference."
+}
