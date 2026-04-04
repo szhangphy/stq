@@ -1,0 +1,1412 @@
+{
+  "published_bs_rank": 10,
+  "authoritative_ai_rank": 10,
+  "quotient_status": "success",
+  "quotient_kind": "finite_torsion",
+  "quotient_is_trivial": false,
+  "quotient_is_finite_torsion": true,
+  "has_free_part": false,
+  "quotient_group": "Z2",
+  "quotient_invariants": [
+    2
+  ],
+  "snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+  ],
+  "bs_basis_vectors": [
+    {
+      "id": "basis_01",
+      "vector": [
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_02",
+      "vector": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_03",
+      "vector": [
+        1,
+        0,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        -1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_04",
+      "vector": [
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -2,
+        1,
+        -1,
+        -1,
+        -1,
+        0,
+        -2,
+        0,
+        0,
+        -2,
+        0
+      ]
+    },
+    {
+      "id": "basis_05",
+      "vector": [
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        1,
+        -1,
+        0,
+        0,
+        -1,
+        1
+      ]
+    },
+    {
+      "id": "basis_06",
+      "vector": [
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        -1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        -1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_07",
+      "vector": [
+        1,
+        -1,
+        1,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_08",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        2,
+        0,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_09",
+      "vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "basis_10",
+      "vector": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "ai_coordinate_records": [
+    {
+      "generator_id": "a_Eg",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        1,
+        0,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "a_Eu",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "e_A1",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "e_A2",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        }
+      ]
+    },
+    {
+      "generator_id": "e_E",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "f_A1",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        0,
+        0,
+        1,
+        -1,
+        2,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "f_A2",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "f_E",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        1,
+        1,
+        1,
+        -2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -2
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "j_A'",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        1,
+        1,
+        2,
+        -3,
+        4,
+        2,
+        1,
+        2,
+        2,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "j_A''",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        1,
+        2,
+        1,
+        -3,
+        2,
+        2,
+        1,
+        2,
+        2,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -3
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "generator_id": "l_A",
+      "generator_kind": "native_compatibility_zero",
+      "combination_string": null,
+      "bs_basis_coordinates": [
+        2,
+        3,
+        3,
+        -6,
+        6,
+        4,
+        2,
+        4,
+        4,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_02",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 3
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -6
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 6
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_07",
+          "value": 2
+        },
+        {
+          "basis_id": "basis_08",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 4
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "promoted_a_A1g_minus_a_A1u",
+      "generator_kind": "promoted_from_residual_completion",
+      "combination_string": "a_A1g - a_A1u",
+      "bs_basis_coordinates": [
+        0,
+        -1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "promoted_b_A1_prime_plus_b_A1_doubleprime",
+      "generator_kind": "promoted_from_residual_completion",
+      "combination_string": "b_A1' + b_A1''",
+      "bs_basis_coordinates": [
+        0,
+        1,
+        1,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_02",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "generator_id": "promoted_b_E_prime_minus_2_c_A1_prime",
+      "generator_kind": "promoted_from_residual_completion",
+      "combination_string": "b_E' - 2 c_A1'",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        1,
+        -2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "promoted_b_E_prime_minus_2_d_A1_prime",
+      "generator_kind": "promoted_from_residual_completion",
+      "combination_string": "b_E' - 2 d_A1'",
+      "bs_basis_coordinates": [
+        1,
+        0,
+        -1,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        -1,
+        -2
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_03",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_10",
+          "value": -2
+        }
+      ]
+    },
+    {
+      "generator_id": "promoted_a_A1g_minus_g_Ag",
+      "generator_kind": "promoted_from_residual_completion",
+      "combination_string": "a_A1g - g_Ag",
+      "bs_basis_coordinates": [
+        -1,
+        -1,
+        0,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "nonzero_bs_basis_terms": [
+        {
+          "basis_id": "basis_01",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_02",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_04",
+          "value": 1
+        },
+        {
+          "basis_id": "basis_05",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_06",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_07",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_08",
+          "value": -1
+        },
+        {
+          "basis_id": "basis_09",
+          "value": -1
+        }
+      ]
+    }
+  ],
+  "ai_coordinate_matrix_in_bs_basis": [
+    [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      2,
+      0,
+      0,
+      1,
+      1,
+      -1
+    ],
+    [
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      2,
+      3,
+      -1,
+      1,
+      0,
+      0,
+      -1
+    ],
+    [
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      2,
+      1,
+      3,
+      1,
+      1,
+      -1,
+      -1,
+      0
+    ],
+    [
+      -1,
+      -1,
+      -1,
+      -1,
+      -2,
+      -1,
+      -1,
+      -2,
+      -3,
+      -3,
+      -6,
+      0,
+      -1,
+      0,
+      0,
+      1
+    ],
+    [
+      1,
+      1,
+      2,
+      0,
+      2,
+      2,
+      0,
+      2,
+      4,
+      2,
+      6,
+      1,
+      1,
+      -1,
+      -1,
+      -1
+    ],
+    [
+      1,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      2,
+      2,
+      2,
+      4,
+      0,
+      0,
+      1,
+      1,
+      -1
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      1,
+      1,
+      0,
+      0,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      4,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      1,
+      1,
+      0,
+      0,
+      2,
+      1,
+      1,
+      1,
+      2,
+      2,
+      4,
+      0,
+      0,
+      1,
+      -1,
+      -1
+    ],
+    [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      -2,
+      -2,
+      0
+    ]
+  ],
+  "torsion_generators": [
+    {
+      "indicator_id": "indicator_01",
+      "smith_factor": 2,
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "unknown_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unknown_support": [
+        {
+          "unknown": "P4_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": 1
+        }
+      ],
+      "ai_relation_for_multiple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0
+      ]
+    }
+  ],
+  "summary": "The quotient is extracted directly on the publication-shell BS basis using the authoritative promoted AI generators. Because the authoritative AI rank matches the published BS rank, the quotient has no free part; any remaining nontriviality is finite torsion encoded by the Smith diagonal in BS coordinates."
+}

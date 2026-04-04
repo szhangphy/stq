@@ -1,0 +1,104 @@
+{
+  "quotient_status": "success",
+  "indicator_group": "Z2",
+  "indicator_invariants": [
+    2
+  ],
+  "indicator_generator_count": 1,
+  "snf_diagonal": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+  ],
+  "finite_torsion": true,
+  "torsion_generators": [
+    {
+      "indicator_id": "indicator_01",
+      "smith_factor": 2,
+      "bs_basis_coordinates": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "unknown_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "unknown_support": [
+        {
+          "unknown": "P4_R1",
+          "value": -1
+        },
+        {
+          "unknown": "P4_R2",
+          "value": 1
+        }
+      ],
+      "ai_relation_for_multiple": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -1,
+        0
+      ]
+    }
+  ],
+  "summary": "Indicator extraction is read directly from the finite torsion part of the BS/AI quotient in published BS coordinates."
+}

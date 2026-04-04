@@ -1041,7 +1041,8 @@
         0
       ],
       "nonzero_residual_rows": [],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -1109,7 +1110,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -1128,7 +1132,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -1163,7 +1170,10 @@
               4,
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": true
         },
         "P4": {
           "character_field": "character",
@@ -1182,7 +1192,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -1216,7 +1229,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -1232,7 +1248,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -2207,7 +2226,8 @@
           "residual": -4
         }
       ],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -2275,7 +2295,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -2294,7 +2317,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -2335,7 +2361,10 @@
             [
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": true,
+          "publication_point_basis_attempt_integral_success": false
         },
         "P4": {
           "character_field": "character",
@@ -2354,7 +2383,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -2388,7 +2420,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -2404,7 +2439,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -3366,7 +3404,8 @@
         0
       ],
       "nonzero_residual_rows": [],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -3434,7 +3473,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -3453,7 +3495,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -3488,7 +3533,10 @@
               4,
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": true
         },
         "P4": {
           "character_field": "character",
@@ -3507,7 +3555,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -3541,7 +3592,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -3557,7 +3611,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -4528,7 +4585,8 @@
           "residual": -2
         }
       ],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -4596,7 +4654,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -4615,7 +4676,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -4656,7 +4720,10 @@
             [
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": true,
+          "publication_point_basis_attempt_integral_success": false
         },
         "P4": {
           "character_field": "character",
@@ -4675,7 +4742,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -4709,7 +4779,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -4725,7 +4798,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -5700,7 +5776,8 @@
           "residual": -2
         }
       ],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -5768,7 +5845,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -5787,7 +5867,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -5828,7 +5911,10 @@
             [
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": true,
+          "publication_point_basis_attempt_integral_success": false
         },
         "P4": {
           "character_field": "character",
@@ -5847,7 +5933,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -5881,7 +5970,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -5897,7 +5989,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -6868,7 +6963,8 @@
           "residual": -1
         }
       ],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -6936,7 +7032,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -6955,7 +7054,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -6996,7 +7098,10 @@
             [
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": true,
+          "publication_point_basis_attempt_integral_success": false
         },
         "P4": {
           "character_field": "character",
@@ -7015,7 +7120,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -7049,7 +7157,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -7065,7 +7176,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -8027,7 +8141,8 @@
         0
       ],
       "nonzero_residual_rows": [],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -8095,7 +8210,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -8114,7 +8232,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -8149,7 +8270,10 @@
               4,
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": true
         },
         "P4": {
           "character_field": "character",
@@ -8168,7 +8292,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -8202,7 +8329,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -8218,7 +8348,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -9180,7 +9313,8 @@
         0
       ],
       "nonzero_residual_rows": [],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -9248,7 +9382,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -9267,7 +9404,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -9302,7 +9442,10 @@
               4,
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": true
         },
         "P4": {
           "character_field": "character",
@@ -9321,7 +9464,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -9355,7 +9501,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -9371,7 +9520,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -10338,7 +10490,8 @@
           "residual": -1
         }
       ],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -10406,7 +10559,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -10425,7 +10581,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -10466,7 +10625,10 @@
             [
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": true,
+          "publication_point_basis_attempt_integral_success": false
         },
         "P4": {
           "character_field": "character",
@@ -10485,7 +10647,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -10519,7 +10684,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -10535,7 +10703,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -11502,7 +11673,8 @@
           "residual": -1
         }
       ],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -11570,7 +11742,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -11589,7 +11764,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -11630,7 +11808,10 @@
             [
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": true,
+          "publication_point_basis_attempt_integral_success": false
         },
         "P4": {
           "character_field": "character",
@@ -11649,7 +11830,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -11683,7 +11867,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -11699,7 +11886,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -12670,7 +12860,8 @@
           "residual": 1
         }
       ],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -12738,7 +12929,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -12757,7 +12951,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -12798,7 +12995,10 @@
             [
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": true,
+          "publication_point_basis_attempt_integral_success": false
         },
         "P4": {
           "character_field": "character",
@@ -12817,7 +13017,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -12851,7 +13054,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -12867,7 +13073,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -13838,7 +14047,8 @@
           "residual": -1
         }
       ],
-      "point_row_translation_profile": "legacy",
+      "historical_point_row_translation_profile": "legacy",
+      "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
       "character_field_used": "point=character, line=character, plane=character, default=character",
       "manifold_character_fields": {
         "P1": "character",
@@ -13906,7 +14116,10 @@
             [
               11
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P2": {
           "character_field": "character",
@@ -13925,7 +14138,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P3": {
           "character_field": "character",
@@ -13966,7 +14182,10 @@
             [
               5
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": true,
+          "publication_point_basis_fallback_used": true,
+          "publication_point_basis_attempt_integral_success": false
         },
         "P4": {
           "character_field": "character",
@@ -13985,7 +14204,10 @@
             [
               2
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P5": {
           "character_field": "character",
@@ -14019,7 +14241,10 @@
             [
               7
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "P6": {
           "character_field": "character",
@@ -14035,7 +14260,10 @@
             [
               1
             ]
-          ]
+          ],
+          "publication_point_basis_attempted": false,
+          "publication_point_basis_fallback_used": false,
+          "publication_point_basis_attempt_integral_success": null
         },
         "L1": {
           "character_field": "character",
@@ -14110,7 +14338,7 @@
   "rank_trivial_family_span": 12,
   "generator_failure_count": 0,
   "generator_failures": [],
-  "blocker_summary": "No active AI blocker; quotient stage is ready.",
+  "blocker_summary": "No active AI blocker; single-group quotient already extracted on the authoritative publication-shell AI lattice.",
   "local_library_wired_into_ai_builder": true,
   "ai_character_field_alignment_report": {
     "authoritative_compatibility_field": "character",
@@ -14309,18 +14537,18 @@
   },
   "authoritative_ai_promotion_report": {
     "liftable_residual_direction_ids": [
-      "lifted_direction_01",
-      "lifted_direction_02",
-      "lifted_direction_03",
-      "lifted_direction_04",
-      "lifted_direction_05"
+      "lifted_a_A1g_minus_a_A1u",
+      "lifted_b_A1_prime_plus_b_A1_doubleprime",
+      "lifted_b_E_prime_minus_2_c_A1_prime",
+      "lifted_b_E_prime_minus_2_d_A1_prime",
+      "lifted_a_A1g_minus_g_Ag"
     ],
     "promoted_authoritative_generator_ids": [
-      "promoted_residual_01",
-      "promoted_residual_02",
-      "promoted_residual_03",
-      "promoted_residual_04",
-      "promoted_residual_05"
+      "promoted_a_A1g_minus_a_A1u",
+      "promoted_b_A1_prime_plus_b_A1_doubleprime",
+      "promoted_b_E_prime_minus_2_c_A1_prime",
+      "promoted_b_E_prime_minus_2_d_A1_prime",
+      "promoted_a_A1g_minus_g_Ag"
     ],
     "all_promoted_generators_actual_compatibility_zero": true
   },
@@ -14333,5 +14561,264 @@
     "quotient_stage_allowed": true,
     "ai_status": "full_ai_lattice",
     "active_blocker_stage": "quotient_stage_ready"
+  },
+  "publication_point_basis_usage_report": {
+    "shells": {
+      "raw42": {
+        "candidate_count": 45,
+        "mode_counts": {
+          "raw_capture_point_basis": 225,
+          "publication_collapsed_point_basis_fallback_raw": 34,
+          "publication_collapsed_point_basis": 11
+        },
+        "manifold_stats": {
+          "P1": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P2": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P3": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 45,
+            "publication_collapse_used_count": 11,
+            "publication_collapse_fallback_count": 34,
+            "raw_capture_basis_count": 0,
+            "merge_groups_examples": [
+              [
+                [
+                  "P3_R1",
+                  "P3_R4"
+                ],
+                [
+                  "P3_R2",
+                  "P3_R3"
+                ],
+                [
+                  "P3_R5",
+                  "P3_R6"
+                ]
+              ]
+            ]
+          },
+          "P4": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P5": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P6": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          }
+        }
+      },
+      "internal": {
+        "candidate_count": 45,
+        "mode_counts": {
+          "raw_capture_point_basis": 225,
+          "publication_collapsed_point_basis_fallback_raw": 34,
+          "publication_collapsed_point_basis": 11
+        },
+        "manifold_stats": {
+          "P1": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P2": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P3": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 45,
+            "publication_collapse_used_count": 11,
+            "publication_collapse_fallback_count": 34,
+            "raw_capture_basis_count": 0,
+            "merge_groups_examples": [
+              [
+                [
+                  "P3_R1",
+                  "P3_R4"
+                ],
+                [
+                  "P3_R2",
+                  "P3_R3"
+                ],
+                [
+                  "P3_R5",
+                  "P3_R6"
+                ]
+              ]
+            ]
+          },
+          "P4": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P5": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P6": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          }
+        }
+      },
+      "publication": {
+        "candidate_count": 45,
+        "mode_counts": {
+          "raw_capture_point_basis": 225,
+          "publication_collapsed_point_basis_fallback_raw": 34,
+          "publication_collapsed_point_basis": 11
+        },
+        "manifold_stats": {
+          "P1": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P2": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P3": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 45,
+            "publication_collapse_used_count": 11,
+            "publication_collapse_fallback_count": 34,
+            "raw_capture_basis_count": 0,
+            "merge_groups_examples": [
+              [
+                [
+                  "P3_R1",
+                  "P3_R4"
+                ],
+                [
+                  "P3_R2",
+                  "P3_R3"
+                ],
+                [
+                  "P3_R5",
+                  "P3_R6"
+                ]
+              ]
+            ]
+          },
+          "P4": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P5": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          },
+          "P6": {
+            "trace_count": 45,
+            "publication_collapse_attempt_count": 0,
+            "publication_collapse_used_count": 0,
+            "publication_collapse_fallback_count": 0,
+            "raw_capture_basis_count": 45,
+            "merge_groups_examples": []
+          }
+        }
+      }
+    },
+    "total_mode_counts": {
+      "raw_capture_point_basis": 675,
+      "publication_collapsed_point_basis_fallback_raw": 102,
+      "publication_collapsed_point_basis": 33
+    },
+    "publication_point_basis_usage_counts": {
+      "raw_capture_point_basis": 225,
+      "publication_collapsed_point_basis_fallback_raw": 34,
+      "publication_collapsed_point_basis": 11
+    },
+    "raw42_internal_diagnostic_induction_uses_point_merge_classes": true,
+    "any_point_basis_fallback_affects_authoritative_ai_rank": false,
+    "any_point_basis_fallback_affects_bilbao_alignment": false,
+    "authoritative_ai_rank": 10,
+    "published_shell_bilbao_equivalent": true,
+    "summary": "Point-basis collapse is now wired through raw42, internal, and publication diagnostic inductions. Fallback-to-raw traces remain visible for some point manifolds, but they do not change the authoritative AI rank or the publication-shell Bilbao alignment."
+  },
+  "bs_ai_quotient_report": {
+    "quotient_status": "success",
+    "quotient_kind": "finite_torsion",
+    "quotient_group": "Z2",
+    "quotient_invariants": [
+      2
+    ],
+    "snf_diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ]
   }
 }

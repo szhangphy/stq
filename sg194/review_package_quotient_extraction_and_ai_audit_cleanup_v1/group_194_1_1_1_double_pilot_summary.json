@@ -1,0 +1,62 @@
+{
+  "target_group": "194.1.1.1",
+  "group_type": 2,
+  "double_group_feasibility_status": "success",
+  "minimal_realspace_prototype_status": "success",
+  "bridge_status": "success",
+  "induction_status": "success",
+  "kspace_backbone_status": {
+    "status": "success",
+    "matrix_shape": [
+      29,
+      34
+    ],
+    "rank": 24,
+    "nullity": 10,
+    "smith_diagonal": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "authoritative_builder_kind": "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1",
+    "raw_builder_phase_aware_profile": "phase_aware_l2_projective_v1",
+    "internal_object_kind": "automatic_reduced_final_point_path_shell_v3_fullspan_augmented",
+    "published_object_kind": "publication_level_point_path_shell_v1",
+    "diagnostic_raw_with_planes_matrix_shape": [
+      61,
+      42
+    ],
+    "row_language_full_span_pass": true,
+    "bilbao_equivalent_final_object_pass": true
+  },
+  "point_like_AI_status": {
+    "status": "blocked",
+    "blocker": "Non-abelian SG 194 projective local-corep libraries already exist and validate, but the published-shell double AI induction path is not yet wired beyond the current trivial-stabilizer witness."
+  },
+  "parametric_status": {
+    "status": "blocked",
+    "blocker": "Non-abelian SG 194 projective local-corep libraries already exist and validate, but the published-shell double AI induction path is not yet wired beyond the current trivial-stabilizer witness."
+  },
+  "blocker": "Non-abelian SG 194 projective local-corep libraries already exist and validate, but the published-shell double AI induction path is not yet wired beyond the current trivial-stabilizer witness."
+}

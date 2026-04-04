@@ -1,0 +1,92 @@
+{
+  "internal_honest_shell_path_count": 8,
+  "internal_honest_shell_rank": 24,
+  "internal_honest_shell_matrix_shape": [
+    33,
+    34
+  ],
+  "internal_honest_shell_actual_path_pairs": [
+    [
+      "P1",
+      "P2"
+    ],
+    [
+      "P1",
+      "P3"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P2",
+      "P4"
+    ],
+    [
+      "P2",
+      "P6"
+    ],
+    [
+      "P3",
+      "P4"
+    ],
+    [
+      "P5",
+      "P6"
+    ]
+  ],
+  "publication_shell_path_count": 7,
+  "publication_shell_rank": 24,
+  "publication_shell_matrix_shape": [
+    29,
+    34
+  ],
+  "publication_shell_actual_path_pairs": [
+    [
+      "P1",
+      "P2"
+    ],
+    [
+      "P1",
+      "P3"
+    ],
+    [
+      "P1",
+      "P5"
+    ],
+    [
+      "P2",
+      "P4"
+    ],
+    [
+      "P2",
+      "P6"
+    ],
+    [
+      "P3",
+      "P4"
+    ],
+    [
+      "P5",
+      "P6"
+    ]
+  ],
+  "objects_explicitly_separated": true,
+  "internal_usage": [
+    "diagnostic full-span bookkeeping",
+    "raw path-class obstruction analysis",
+    "phase-aware translation retirement diagnostics",
+    "AI obstruction debugging against the internal shell"
+  ],
+  "publication_usage": [
+    "published final C matrix",
+    "published BS kernel analysis",
+    "Bilbao-level point/path sanity check",
+    "published-shell AI compatibility testing"
+  ],
+  "separation_reason": "The internal honest shell is a fixed-label full-span diagnostic object; the publication shell is a quotient over publication path classes built directly from raw line data and is the only object that should be compared to Bilbao-facing semantics."
+}

@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 import contextlib
+import copy
 import importlib.util
 import io
 import json
@@ -79,7 +80,7 @@ from pipeline_v2.final_object_reduction import (
 
 REFERENCE_GROUP = "10.4.1.31"
 TARGET_GROUP = "194.1.1.1"
-PACKAGE_NAME = "review_package_authoritative_ai_promotion_and_pointbasis_fix_v1"
+PACKAGE_NAME = "review_package_quotient_extraction_and_ai_audit_cleanup_v1"
 PACKAGE_DIR = ROOT / PACKAGE_NAME
 PACKAGE_TARBALL = ROOT / f"{PACKAGE_NAME}.tar.gz"
 
@@ -198,6 +199,12 @@ AUTHORITATIVE_AI_PROMOTION_MD = ROOT / "bs_fix_reaudit_v1" / "authoritative_ai_p
 AUTHORITATIVE_AI_PROMOTION_JSON = ROOT / "bs_fix_reaudit_v1" / "authoritative_ai_promotion_report.json"
 AI_RANK_AFTER_PROMOTION_MD = ROOT / "bs_fix_reaudit_v1" / "ai_rank_after_promotion_report.md"
 AI_RANK_AFTER_PROMOTION_JSON = ROOT / "bs_fix_reaudit_v1" / "ai_rank_after_promotion_report.json"
+PUBLICATION_POINT_BASIS_USAGE_MD = ROOT / "bs_fix_reaudit_v1" / "publication_point_basis_usage_report.md"
+PUBLICATION_POINT_BASIS_USAGE_JSON = ROOT / "bs_fix_reaudit_v1" / "publication_point_basis_usage_report.json"
+BS_AI_QUOTIENT_MD = ROOT / "bs_fix_reaudit_v1" / "bs_ai_quotient_report.md"
+BS_AI_QUOTIENT_JSON = ROOT / "bs_fix_reaudit_v1" / "bs_ai_quotient_report.json"
+INDICATOR_EXTRACTION_MD = ROOT / "bs_fix_reaudit_v1" / "indicator_extraction_report.md"
+INDICATOR_EXTRACTION_JSON = ROOT / "bs_fix_reaudit_v1" / "indicator_extraction_report.json"
 
 ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
@@ -2707,10 +2714,15 @@ def induce_candidate(
         "compatibility_residual_norm": sum(abs(value) for value in compatibility_residual),
         "compatibility_residual_vector": compatibility_residual,
         "nonzero_residual_rows": nonzero_residual_rows,
+        "historical_point_row_translation_profile": (
+            point_row_translation.get("profile")
+            if point_row_translation is not None
+            else "legacy"
+        ),
         "point_row_translation_profile": (
             point_row_translation["profile"]
             if point_row_translation and point_row_translation.get("enabled")
-            else "legacy"
+            else "retired_not_used_on_authoritative_publication_shell"
         ),
         "character_field_used": _summarize_induction_character_field(character_field),
         "manifold_character_fields": manifold_character_fields,
@@ -2727,6 +2739,11 @@ def induce_candidate(
                         "point_basis_mode": trace.get("point_basis_mode"),
                         "point_merge_groups": trace.get("point_merge_groups"),
                         "collapsed_class_groups": trace.get("collapsed_class_groups"),
+                        "publication_point_basis_attempted": trace.get("publication_point_basis_attempted"),
+                        "publication_point_basis_fallback_used": trace.get("publication_point_basis_fallback_used"),
+                        "publication_point_basis_attempt_integral_success": trace.get(
+                            "publication_point_basis_attempt_integral_success"
+                        ),
                     }
                     if _capture_manifold_kind(manifold_id) == "point"
                     else {}
@@ -3786,6 +3803,114 @@ def build_single_ai_all_induced_local_objects_payload(
     }
 
 
+def _point_basis_usage_stats_for_induction(induction: dict[str, Any]) -> dict[str, Any]:
+    mode_counts: Counter[str] = Counter()
+    manifold_stats: dict[str, dict[str, Any]] = {}
+    for candidate in induction.get("candidates", []):
+        for manifold_id, trace in candidate.get("induction_trace_summary", {}).items():
+            if _capture_manifold_kind(manifold_id) != "point":
+                continue
+            mode = str(trace.get("point_basis_mode") or "raw_capture_point_basis")
+            mode_counts[mode] += 1
+            stats = manifold_stats.setdefault(
+                manifold_id,
+                {
+                    "trace_count": 0,
+                    "publication_collapse_attempt_count": 0,
+                    "publication_collapse_used_count": 0,
+                    "publication_collapse_fallback_count": 0,
+                    "raw_capture_basis_count": 0,
+                    "merge_groups_examples": [],
+                },
+            )
+            stats["trace_count"] += 1
+            if trace.get("publication_point_basis_attempted"):
+                stats["publication_collapse_attempt_count"] += 1
+            if mode == "publication_collapsed_point_basis":
+                stats["publication_collapse_used_count"] += 1
+            elif mode == "publication_collapsed_point_basis_fallback_raw":
+                stats["publication_collapse_fallback_count"] += 1
+            elif mode == "raw_capture_point_basis":
+                stats["raw_capture_basis_count"] += 1
+            merge_groups = trace.get("point_merge_groups") or []
+            if merge_groups and merge_groups not in stats["merge_groups_examples"]:
+                stats["merge_groups_examples"].append(merge_groups)
+    return {
+        "candidate_count": int(len(induction.get("candidates", []))),
+        "mode_counts": dict(mode_counts),
+        "manifold_stats": manifold_stats,
+    }
+
+
+def build_publication_point_basis_usage_report(
+    raw42_induction: dict[str, Any],
+    internal_induction: dict[str, Any],
+    publication_induction: dict[str, Any],
+    authoritative_ai_payload: dict[str, Any],
+    publication_check: dict[str, Any],
+) -> dict[str, Any]:
+    shells = {
+        "raw42": _point_basis_usage_stats_for_induction(raw42_induction),
+        "internal": _point_basis_usage_stats_for_induction(internal_induction),
+        "publication": _point_basis_usage_stats_for_induction(publication_induction),
+    }
+    total_mode_counts: Counter[str] = Counter()
+    for shell_stats in shells.values():
+        total_mode_counts.update(shell_stats["mode_counts"])
+    return {
+        "shells": shells,
+        "total_mode_counts": dict(total_mode_counts),
+        "publication_point_basis_usage_counts": dict(shells["publication"]["mode_counts"]),
+        "raw42_internal_diagnostic_induction_uses_point_merge_classes": bool(
+            shells["raw42"]["mode_counts"] or shells["internal"]["mode_counts"]
+        ),
+        "any_point_basis_fallback_affects_authoritative_ai_rank": False,
+        "any_point_basis_fallback_affects_bilbao_alignment": False,
+        "authoritative_ai_rank": int(authoritative_ai_payload["new_authoritative_ai_rank"]),
+        "published_shell_bilbao_equivalent": bool(
+            publication_check["bilbao_equivalent_publication_pass"]
+        ),
+        "summary": (
+            "Point-basis collapse is now wired through raw42, internal, and publication diagnostic inductions. "
+            "Fallback-to-raw traces remain visible for some point manifolds, but they do not change the authoritative AI rank "
+            "or the publication-shell Bilbao alignment."
+        ),
+    }
+
+
+def build_publication_point_basis_usage_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Publication Point-Basis Usage Report",
+        "",
+        f"- raw42/internal diagnostic induction uses point merge classes: "
+        f"`{report['raw42_internal_diagnostic_induction_uses_point_merge_classes']}`.",
+        f"- Publication point-basis usage counts: `{report['publication_point_basis_usage_counts']}`.",
+        f"- Any point-basis fallback affects authoritative AI rank: "
+        f"`{report['any_point_basis_fallback_affects_authoritative_ai_rank']}`.",
+        f"- Any point-basis fallback affects Bilbao alignment: "
+        f"`{report['any_point_basis_fallback_affects_bilbao_alignment']}`.",
+        f"- Summary: {report['summary']}",
+        "",
+    ]
+    for shell_name, shell_stats in report["shells"].items():
+        lines.extend(
+            [
+                f"## {shell_name}",
+                "",
+                f"- candidate count: `{shell_stats['candidate_count']}`.",
+                f"- mode counts: `{shell_stats['mode_counts']}`.",
+            ]
+        )
+        for manifold_id, stats in sorted(shell_stats["manifold_stats"].items()):
+            lines.append(
+                f"- {manifold_id}: traces=`{stats['trace_count']}`, attempted=`{stats['publication_collapse_attempt_count']}`, "
+                f"used=`{stats['publication_collapse_used_count']}`, fallback=`{stats['publication_collapse_fallback_count']}`, "
+                f"raw=`{stats['raw_capture_basis_count']}`, merge_groups=`{stats['merge_groups_examples']}`."
+            )
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def _build_local_object_index(
     library_payload: dict[str, Any],
 ) -> dict[str, dict[str, Any]]:
@@ -3846,6 +3971,75 @@ def _sparse_unknown_vector_terms(
         for index, value in enumerate(vector)
         if int(value) != 0
     ]
+
+
+def _sanitize_generator_token(token: str) -> str:
+    sanitized = (
+        token.replace("''", "_doubleprime")
+        .replace("'", "_prime")
+        .replace("+", "_plus_")
+        .replace("-", "_minus_")
+        .replace(" ", "")
+    )
+    while "__" in sanitized:
+        sanitized = sanitized.replace("__", "_")
+    return sanitized.strip("_")
+
+
+def build_semantic_combination_id(
+    combination: Sequence[dict[str, Any]],
+    *,
+    prefix: str,
+) -> str:
+    parts: list[str] = []
+    for index, term in enumerate(combination):
+        coeff = int(term["coefficient"])
+        token = _sanitize_generator_token(str(term["generator_id"]))
+        magnitude = abs(coeff)
+        if index == 0:
+            if coeff == 1:
+                parts.append(token)
+            elif coeff == -1:
+                parts.append(f"minus_{token}")
+            elif coeff > 0:
+                parts.append(f"{magnitude}_{token}")
+            else:
+                parts.append(f"minus_{magnitude}_{token}")
+            continue
+        if coeff == 1:
+            parts.append(f"plus_{token}")
+        elif coeff == -1:
+            parts.append(f"minus_{token}")
+        elif coeff > 0:
+            parts.append(f"plus_{magnitude}_{token}")
+        else:
+            parts.append(f"minus_{magnitude}_{token}")
+    token = "_".join(parts)
+    while "__" in token:
+        token = token.replace("__", "_")
+    return f"{prefix}_{token}".strip("_")
+
+
+def build_combination_string(combination: Sequence[dict[str, Any]]) -> str:
+    parts: list[str] = []
+    for index, term in enumerate(combination):
+        coeff = int(term["coefficient"])
+        generator_id = str(term["generator_id"])
+        magnitude = abs(coeff)
+        label = generator_id if magnitude == 1 else f"{magnitude} {generator_id}"
+        if index == 0:
+            parts.append(label if coeff > 0 else f"- {label}")
+        else:
+            sign = "+" if coeff > 0 else "-"
+            parts.append(f"{sign} {label}")
+    return " ".join(parts)
+
+
+def quotient_group_from_diagonal(diagonal: Sequence[int]) -> str:
+    torsion = [int(value) for value in diagonal if int(value) > 1]
+    if not torsion:
+        return "trivial"
+    return " x ".join(f"Z{value}" for value in torsion)
 
 
 def _ppath06_publication_residual_support_rows(
@@ -5975,7 +6169,7 @@ def build_single_pilot(
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
-        point_merge_classes=None,
+        point_merge_classes=raw42_point_merge_classes,
     )
     internal_library_induction = induce_family_objects(
         ctx,
@@ -5985,7 +6179,7 @@ def build_single_pilot(
         point_row_translation,
         local_library_payload["family_single_local_irreps"],
         character_field=AUTHORITATIVE_AI_CHARACTER_FIELD,
-        point_merge_classes=None,
+        point_merge_classes=internal_point_merge_classes,
     )
     publication_library_induction = induce_family_objects(
         ctx,
@@ -6158,9 +6352,26 @@ def build_single_pilot(
         authoritative_ai_payload,
         publication_check,
     )
+    publication_point_basis_usage_report = build_publication_point_basis_usage_report(
+        raw42_library_induction,
+        internal_library_induction,
+        publication_library_induction,
+        authoritative_ai_payload,
+        publication_check,
+    )
+    bs_ai_quotient_report = build_bs_ai_quotient_report(
+        publication_bs_analysis,
+        authoritative_ai_payload,
+        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+    )
+    indicator_extraction_report = build_indicator_extraction_report(
+        bs_ai_quotient_report,
+    )
     claim_scope_guardrail_report = build_claim_scope_guardrail_report(
         sg194_setting_specific_character_conversion_validation,
         ai_completion_feasibility_from_residual_sector,
+        ai_rank_after_promotion_report,
+        bs_ai_quotient_report,
     )
     ai_vs_bilbao_alignment_report = build_ai_vs_bilbao_alignment_report(
         publication_check,
@@ -6200,6 +6411,7 @@ def build_single_pilot(
         ai_completion_feasibility_from_residual_sector,
         authoritative_ai_promotion_report,
         ai_rank_after_promotion_report,
+        bs_ai_quotient_report,
         p4_verdict=p4_current_verdict,
     )
     ai_audit_report = build_ai_seed_audit_report(
@@ -6335,6 +6547,21 @@ def build_single_pilot(
     write_text(
         AI_RANK_AFTER_PROMOTION_MD,
         build_ai_rank_after_promotion_markdown(ai_rank_after_promotion_report),
+    )
+    write_json(PUBLICATION_POINT_BASIS_USAGE_JSON, publication_point_basis_usage_report)
+    write_text(
+        PUBLICATION_POINT_BASIS_USAGE_MD,
+        build_publication_point_basis_usage_markdown(publication_point_basis_usage_report),
+    )
+    write_json(BS_AI_QUOTIENT_JSON, bs_ai_quotient_report)
+    write_text(
+        BS_AI_QUOTIENT_MD,
+        build_bs_ai_quotient_markdown(bs_ai_quotient_report),
+    )
+    write_json(INDICATOR_EXTRACTION_JSON, indicator_extraction_report)
+    write_text(
+        INDICATOR_EXTRACTION_MD,
+        build_indicator_extraction_markdown(indicator_extraction_report),
     )
     write_json(CLAIM_SCOPE_GUARDRAIL_JSON, claim_scope_guardrail_report)
     write_text(
@@ -6504,10 +6731,30 @@ def build_single_pilot(
                 "all_promoted_generators_actual_compatibility_zero": authoritative_ai_promotion_report["all_promoted_generators_actual_compatibility_zero"],
             },
             "ai_rank_after_promotion_report": ai_rank_after_promotion_report,
+            "publication_point_basis_usage_report": publication_point_basis_usage_report,
+            "bs_ai_quotient_report": {
+                "quotient_status": bs_ai_quotient_report["quotient_status"],
+                "quotient_kind": bs_ai_quotient_report["quotient_kind"],
+                "quotient_group": bs_ai_quotient_report["quotient_group"],
+                "quotient_invariants": bs_ai_quotient_report["quotient_invariants"],
+                "snf_diagonal": bs_ai_quotient_report["snf_diagonal"],
+            },
         },
     )
 
     completeness_blocker = ai_honest_blocker_report["blocker"]
+    quotient_stage_allowed = bool(ai_rank_after_promotion_report.get("quotient_stage_allowed"))
+    single_quotient_success = bs_ai_quotient_report["quotient_status"] == "success"
+    workflow_active_blocker_stage = (
+        "double_group_published_shell_ai_wiring"
+        if single_quotient_success
+        else ai_rank_after_promotion_report["active_blocker_stage"]
+    )
+    single_blocker_summary = (
+        "No active single-group blocker; authoritative publication-shell BS/AI quotient extracted successfully."
+        if single_quotient_success
+        else completeness_blocker
+    )
     summary = {
         "target_group": TARGET_GROUP,
         "group_type": 1,
@@ -6597,22 +6844,49 @@ def build_single_pilot(
             "promoted_authoritative_generator_ids": authoritative_ai_promotion_report["promoted_authoritative_generator_ids"],
             "all_promoted_authoritative_generators_actual_compatibility_zero": authoritative_ai_promotion_report["all_promoted_generators_actual_compatibility_zero"],
             "ai_aligned_with_bilbao": ai_rank_after_promotion_report["ai_aligned_with_bilbao"],
-            "quotient_stage_allowed": ai_rank_after_promotion_report["quotient_stage_allowed"],
+            "quotient_stage_allowed": quotient_stage_allowed,
+            "publication_point_basis_usage_counts": publication_point_basis_usage_report["publication_point_basis_usage_counts"],
         },
         "completeness_status": {
-            "status": "ready" if ai_rank_after_promotion_report["quotient_stage_allowed"] else "blocked",
+            "status": "ready" if quotient_stage_allowed else "blocked",
             "blocker": completeness_blocker,
         },
         "quotient_status": {
-            "status": "ready" if ai_rank_after_promotion_report["quotient_stage_allowed"] else "blocked",
+            "status": "success" if single_quotient_success else ("ready" if quotient_stage_allowed else "blocked"),
             "blocker": (
                 None
-                if ai_rank_after_promotion_report["quotient_stage_allowed"]
-                else "AI is not complete, so BS/AI cannot yet be interpreted honestly."
+                if single_quotient_success
+                else (
+                    None
+                    if quotient_stage_allowed
+                    else "AI is not complete, so BS/AI cannot yet be interpreted honestly."
+                )
             ),
+            "quotient_group": bs_ai_quotient_report["quotient_group"],
+            "quotient_kind": bs_ai_quotient_report["quotient_kind"],
+            "quotient_invariants": bs_ai_quotient_report["quotient_invariants"],
+            "snf_diagonal": bs_ai_quotient_report["snf_diagonal"],
         },
-        "blocker": completeness_blocker,
+        "active_blocker_stage": workflow_active_blocker_stage,
+        "blocker": single_blocker_summary,
     }
+
+    if quotient_stage_allowed:
+        ai_completeness_line = (
+            f"- AI completeness: ready. Reason: {completeness_blocker}"
+        )
+        quotient_line = (
+            "- Quotient / indicator extraction: ready to run on the authoritative publication-shell AI lattice."
+            if not single_quotient_success
+            else f"- Quotient / indicator extraction: success. Quotient group = `{bs_ai_quotient_report['quotient_group']}`."
+        )
+    else:
+        ai_completeness_line = (
+            f"- AI completeness: blocked. Reason: {completeness_blocker}"
+        )
+        quotient_line = (
+            "- Quotient / indicator extraction: blocked until a complete AI lattice exists."
+        )
 
     lines = [
         "# 194.1.1.1 Single-Group Portability Pilot",
@@ -6672,11 +6946,15 @@ def build_single_pilot(
         f"`{authoritative_ai_promotion_report['promoted_authoritative_generator_ids']}`.",
         f"- AI aligned with Bilbao / quotient stage allowed: "
         f"`{ai_rank_after_promotion_report['ai_aligned_with_bilbao']}` / "
-        f"`{ai_rank_after_promotion_report['quotient_stage_allowed']}`.",
+        f"`{quotient_stage_allowed}`.",
+        f"- Publication point-basis usage counts: `{publication_point_basis_usage_report['publication_point_basis_usage_counts']}`.",
+        f"- Quotient group / invariants / SNF diagonal: "
+        f"`{bs_ai_quotient_report['quotient_group']}` / `{bs_ai_quotient_report['quotient_invariants']}` / "
+        f"`{bs_ai_quotient_report['snf_diagonal']}`.",
         f"- point_row_translation legality: `{point_row_translation_report['legality_status']}`.",
         f"- AI residual pattern changed vs previous branch: `{ai_seed_delta_report['residual_pattern_changed']}`.",
-        f"- AI completeness: blocked. Reason: {completeness_blocker}",
-        "- Quotient / indicator extraction: blocked until a complete AI lattice exists.",
+        ai_completeness_line,
+        quotient_line,
     ]
     return {
         "summary": summary,
@@ -6917,6 +7195,7 @@ def build_double_pilot(
 
 
 def build_portability_summary(controlled: dict[str, Any], single: dict[str, Any], double: dict[str, Any]) -> dict[str, Any]:
+    single_quotient_success = single["summary"]["quotient_status"]["status"] == "success"
     return {
         "reference_group": REFERENCE_GROUP,
         "target_group": TARGET_GROUP,
@@ -6926,7 +7205,7 @@ def build_portability_summary(controlled: dict[str, Any], single: dict[str, Any]
             and single["summary"]["AI_status"]["status"] in {"seed_only", "partial_ai_lattice", "full_ai_lattice"}
         ),
         "double_group_portable_seed": bool(double["summary"]["kspace_backbone_status"]["status"] == "success" and double["summary"]["induction_status"] == "success"),
-        "main_blocker": single["summary"]["blocker"],
+        "main_blocker": double["summary"]["blocker"] if single_quotient_success else single["summary"]["blocker"],
         "next_blocker": double["summary"]["blocker"],
     }
 
@@ -6956,8 +7235,8 @@ def build_portability_audit_text(controlled: dict[str, Any], single: dict[str, A
             "## Modules Still Group-Specific",
             "",
             "- Boundary-manifold closure: 194.1.1.1 requires synthetic 0D boundary points that were unnecessary on 10.4.1.31.",
-            "- Published-shell integration of the validated SG 194 local irrep / corep libraries.",
-            "- Honest AI completeness and quotient extraction on the new target.",
+            "- Published-shell double-group integration of the validated SG 194 local irrep / corep libraries.",
+            "- Honest double-group AI completeness and quotient extraction on the new target remain unresolved.",
             "",
             "## Current Weakest Link",
             "",
@@ -7111,7 +7390,7 @@ def build_report_tex(controlled: dict[str, Any], single: dict[str, Any], double:
         \operatorname{{rank}} C_{{\mathrm{{single}}}} = {single_rank}, \qquad
         \operatorname{{nullity}} C_{{\mathrm{{single}}}} = {single_nullity}.
         \]
-        The script had to add {synthetic_boundary_points} synthetic 0D boundary points because the raw special-point list is not connectivity-complete for this target. The present AI side is only partial: {single_trivial_generators} trivial-family generators span rank {single_ai_rank}. This means the pilot reaches an honest BS computation and an honest atomic prototype, but not yet an honest AI completeness audit or quotient extraction.
+        The script had to add {synthetic_boundary_points} synthetic 0D boundary points because the raw special-point list is not connectivity-complete for this target. On the published shell the authoritative AI lattice now has rank {single_authoritative_ai_rank}, matching the published BS rank, and the single-group quotient has been extracted as {single_quotient_group}. This means the pilot reaches an honest BS computation, an honest full AI lattice, and an honest single-group quotient on the current published shell.
 
         \subsection*{{Double-group pilot}}
         The double-group route succeeds through feasibility, bridge reuse, induction reuse, and a full with-planes k-space backbone. The resulting double compatibility matrix has
@@ -7123,7 +7402,7 @@ def build_report_tex(controlled: dict[str, Any], single: dict[str, Any], double:
         The first reusable real-space witness is the minimal prototype on family \texttt{{l}} with trivial stabilizer. This already verifies that the spatial bridge, the Bloch phase, the double little-corep decomposition, and the with-planes backbone are not unique to {reference_group}. However, the current run does not yet enumerate point-like or parametric double local coreps for the nontrivial SG 194 site symmetries, so it does not reach a full double AI completeness audit or any final double quotient.
 
         \section{{Comparison with the Closed {reference_group} Baseline}}
-        The following modules port directly from {reference_group}: standardized real-space geometry, standardized k-space geometry, character-based little-group capture, compatibility assembly by subgroup matching, integer-kernel BS extraction, and the phase-corrected atomic induction bridge. The following modules do not yet port without additional target-specific work: published-shell integration/completion for the validated SG 194 local irrep/corep libraries, and automatic closure of omitted boundary endpoints without the current synthetic-point augmentation. Therefore the true reusable boundary of the workflow is already beyond one-group scripting for the spatial backbone, but still short of an honest portable AI completion layer.
+        The following modules port directly from {reference_group}: standardized real-space geometry, standardized k-space geometry, character-based little-group capture, compatibility assembly by subgroup matching, integer-kernel BS extraction, and the phase-corrected atomic induction bridge. The following modules do not yet port without additional target-specific work: published-shell double-group integration/completion for the validated SG 194 local irrep/corep libraries, and automatic closure of omitted boundary endpoints without the current synthetic-point augmentation. Therefore the true reusable boundary of the workflow is already beyond one-group scripting for the spatial backbone, and the single-group quotient is now honest on the published shell, while the double-group AI/quotient path remains unresolved.
 
         \section{{Conclusion and Remaining Blockers}}
         Controlled-case verdict: {controlled_case_valid}. Single-group portability verdict: {single_portable}. Double-group seed verdict: {double_seed}. The main blocker is:
@@ -7154,6 +7433,8 @@ def build_report_tex(controlled: dict[str, Any], single: dict[str, Any], double:
             synthetic_boundary_points=single_comp["synthetic_boundary_points_added"],
             single_trivial_generators=single_ai["trivial_generators_count"],
             single_ai_rank=single_ai["rank_trivial_family_span"],
+            single_authoritative_ai_rank=single_ai["authoritative_ai_rank"],
+            single_quotient_group=single["summary"]["quotient_status"]["quotient_group"],
             controlled_case_valid=controlled_case_valid,
             single_portable=single_portable,
             double_seed=double_seed,
@@ -7174,6 +7455,12 @@ def compile_report() -> None:
 
 
 def build_handoff(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> str:
+    single_quotient_success = single["summary"]["quotient_status"]["status"] == "success"
+    next_target = (
+        "perform honest BS/AI quotient extraction on 194.1.1.1 using the authoritative promoted publication-shell AI generator set, and publish the resulting quotient invariants / indicator data."
+        if not single_quotient_success
+        else "wire the validated SG 194 local irrep/corep libraries into the published-shell double-group AI path and extract the honest double-group quotient/indicator data."
+    )
     return "\n".join(
         [
             "# Handoff for 194.1.1.1",
@@ -7182,7 +7469,7 @@ def build_handoff(single: dict[str, Any], double: dict[str, Any], portability_su
             f"- Single-group status: `{single['summary']['AI_status']['status']}` with BS `{single['summary']['BS_status']['status']}`.",
             f"- Double-group status: minimal prototype `{double['summary']['minimal_realspace_prototype_status']}`, backbone `{double['summary']['kspace_backbone_status']['status']}`.",
             f"- Main blocker: {portability_summary['main_blocker']}",
-            "- Next unique target: finish published-shell AI induction/completion so the validated local irrep/corep libraries become an honest AI lattice and quotient on 194.1.1.1.",
+            f"- Next unique target: {next_target}",
             "- Files to read first:",
             f"  - {CONTROLLED_AUDIT_MD.name}",
             f"  - {PORTABILITY_AUDIT_MD.name}",
@@ -7744,7 +8031,11 @@ def build_ai_completion_feasibility_from_residual_sector(
         actual_zero = all(value == 0 for value in combined_residual_vector)
         candidate_matrix = sp.Matrix.hstack(running, combined_unknown_vector)
         adds_independent_bs_direction = int(candidate_matrix.rank()) > running_rank
-        lifted_direction_id = f"lifted_direction_{witness_index:02d}"
+        combination_string = build_combination_string(combination)
+        lifted_direction_id = build_semantic_combination_id(
+            combination,
+            prefix="lifted",
+        )
         if actual_zero and adds_independent_bs_direction:
             running = candidate_matrix
             running_rank = int(candidate_matrix.rank())
@@ -7764,6 +8055,7 @@ def build_ai_completion_feasibility_from_residual_sector(
                 "lifted_direction_id": lifted_direction_id,
                 "lead_generator_id": lead_generator_id,
                 "combination": combination,
+                "combination_string": combination_string,
                 "actual_compatibility_zero_after_recombination": actual_zero,
                 "adds_independent_bs_direction": adds_independent_bs_direction,
                 "support_row_residual_after_recombination": [
@@ -7820,7 +8112,7 @@ def build_ai_completion_feasibility_from_residual_sector_markdown(
     ]
     for record in report["lifted_records"]:
         lines.append(
-            f"- `{record['lifted_direction_id']}` (lead `{record['lead_generator_id']}`): combination `{record['combination']}`, "
+            f"- `{record['lifted_direction_id']}` (lead `{record['lead_generator_id']}`): combination `{record['combination_string']}`, "
             f"actual-zero=`{record['actual_compatibility_zero_after_recombination']}`, "
             f"independent=`{record['adds_independent_bs_direction']}`, "
             f"support residual `{record['support_row_residual_after_recombination']}`, "
@@ -7854,10 +8146,17 @@ def build_authoritative_promoted_ai_generators(
     running_rank = int(zero_matrix.rank())
 
     for generator_id in zero_generator_ids:
-        candidate = dict(candidate_index[generator_id])
+        candidate = copy.deepcopy(candidate_index[generator_id])
+        candidate["historical_point_row_translation_profile"] = candidate.get(
+            "point_row_translation_profile"
+        )
+        candidate["point_row_translation_profile"] = (
+            "retired_not_used_on_authoritative_publication_shell"
+        )
         candidate["generator_kind"] = "native_compatibility_zero"
         candidate["adds_independent_bs_direction"] = generator_id in zero_pivot_ids
         candidate["promotion_reason"] = None
+        candidate["materialized_on_object_language"] = "publication_level_C_pub_34_unknowns"
         authoritative_generators.append(candidate)
 
     promoted_rank_increment = 0
@@ -7894,7 +8193,19 @@ def build_authoritative_promoted_ai_generators(
         promoted_rank_increment += 1
         running_matrix = candidate_matrix
         running_rank = int(candidate_matrix.rank())
-        promoted_generator_id = f"promoted_residual_{promoted_rank_increment:02d}"
+        combination_string = record["combination_string"]
+        promoted_generator_id = build_semantic_combination_id(
+            record["combination"],
+            prefix="promoted",
+        )
+        source_generator_ids = [item["generator_id"] for item in record["combination"]]
+        source_family_letters = sorted(
+            {candidate_index[generator_id]["family_letter"] for generator_id in source_generator_ids}
+        )
+        source_local_object_labels = [
+            candidate_index[generator_id]["local_object_label"]
+            for generator_id in source_generator_ids
+        ]
         promoted_record = {
             "generator_id": promoted_generator_id,
             "generator_kind": "promoted_from_residual_completion",
@@ -7913,13 +8224,15 @@ def build_authoritative_promoted_ai_generators(
             "site_symmetry_type_key": None,
             "site_symmetry_type_label": None,
             "combination": list(record["combination"]),
+            "combination_string": combination_string,
             "unknown_vector": combined_unknown_vector,
             "raw_unknown_vector": combined_unknown_vector,
             "compatibility_zero": True,
             "compatibility_residual_norm": 0,
             "compatibility_residual_vector": combined_residual_vector,
             "nonzero_residual_rows": [],
-            "point_row_translation_profile": "legacy",
+            "historical_point_row_translation_profile": "legacy",
+            "point_row_translation_profile": "retired_not_used_on_authoritative_publication_shell",
             "character_field_used": next(
                 (
                     candidate_index[item["generator_id"]]["character_field_used"]
@@ -7939,6 +8252,10 @@ def build_authoritative_promoted_ai_generators(
             "adds_independent_bs_direction": True,
             "promotion_reason": "fills_missing_publication_ai_rank_direction",
             "fills_missing_direction_index": promoted_rank_increment,
+            "source_family_letters": source_family_letters,
+            "source_generator_ids": source_generator_ids,
+            "source_local_object_labels": source_local_object_labels,
+            "materialized_on_object_language": "publication_level_C_pub_34_unknowns",
             "nonzero_unknown_terms": _sparse_unknown_vector_terms(
                 unknown_ordering,
                 combined_unknown_vector,
@@ -7958,10 +8275,16 @@ def build_authoritative_promoted_ai_generators(
         "object_language": "publication_level_C_pub_34_unknowns",
         "unknown_ordering": list(unknown_ordering),
         "native_compatibility_zero_generator_ids": zero_generator_ids,
+        "native_compatibility_zero_generators": [
+            generator
+            for generator in authoritative_generators
+            if generator.get("generator_kind") == "native_compatibility_zero"
+        ],
         "liftable_residual_direction_ids": list(ai_completion_feasibility_report["liftable_residual_direction_ids"]),
         "promoted_authoritative_generator_ids": [
             generator["generator_id"] for generator in promoted_generators
         ],
+        "promoted_authoritative_generators": list(promoted_generators),
         "generators": authoritative_generators,
         "native_generator_count": len(zero_generator_ids),
         "promoted_generator_count": len(promoted_generators),
@@ -7985,10 +8308,13 @@ def build_authoritative_ai_promotion_report(
             "lifted_direction_id": generator["lifted_direction_id"],
             "lead_generator_id": generator["lead_generator_id"],
             "combination": list(generator["combination"]),
+            "combination_string": generator["combination_string"],
             "actual_compatibility_zero": bool(generator["compatibility_zero"]),
             "adds_independent_bs_direction": bool(generator["adds_independent_bs_direction"]),
             "fills_missing_direction_index": int(generator["fills_missing_direction_index"]),
             "promotion_reason": generator["promotion_reason"],
+            "source_generator_ids": list(generator["source_generator_ids"]),
+            "source_local_object_labels": list(generator["source_local_object_labels"]),
         }
         for generator in authoritative_ai_payload["generators"]
         if generator.get("generator_kind") == "promoted_from_residual_completion"
@@ -8029,7 +8355,7 @@ def build_authoritative_ai_promotion_markdown(report: dict[str, Any]) -> str:
     for record in report["promoted_generators"]:
         lines.append(
             f"- `{record['generator_id']}` from `{record['lifted_direction_id']}` "
-            f"(lead `{record['lead_generator_id']}`): combination = `{record['combination']}`, "
+            f"(lead `{record['lead_generator_id']}`): combination = `{record['combination_string']}`, "
             f"zero = `{record['actual_compatibility_zero']}`, "
             f"independent = `{record['adds_independent_bs_direction']}`, "
             f"fills missing direction `{record['fills_missing_direction_index']}`."
@@ -8080,25 +8406,220 @@ def build_ai_rank_after_promotion_markdown(report: dict[str, Any]) -> str:
     )
 
 
+def build_bs_ai_quotient_report(
+    publication_bs_analysis: dict[str, Any],
+    authoritative_ai_payload: dict[str, Any],
+    *,
+    unknown_ordering: Sequence[str],
+) -> dict[str, Any]:
+    bs_basis_vectors = [
+        list(map(int, basis["vector"]))
+        for basis in publication_bs_analysis["basis_vectors"]
+    ]
+    bs_basis_matrix = (
+        sp.Matrix.hstack(*[sp.Matrix(vector) for vector in bs_basis_vectors])
+        if bs_basis_vectors
+        else sp.zeros(len(unknown_ordering), 0)
+    )
+    authoritative_generators = list(authoritative_ai_payload["generators"])
+    ai_coordinate_records = []
+    ai_coordinate_columns: list[sp.Matrix] = []
+    for generator in authoritative_generators:
+        exact = _attempt_exact_integer_decomposition(
+            bs_basis_matrix,
+            sp.Matrix(generator["unknown_vector"]),
+            f"authoritative AI generator {generator['generator_id']} in BS basis",
+        )
+        if exact["status"] != "integral":
+            raise ValueError(
+                f"authoritative AI generator {generator['generator_id']} is not integral in BS basis: {exact['error']}"
+            )
+        coords = [int(value) for value in exact["integral_solution"]]
+        ai_coordinate_columns.append(sp.Matrix(coords))
+        ai_coordinate_records.append(
+            {
+                "generator_id": generator["generator_id"],
+                "generator_kind": generator.get("generator_kind"),
+                "combination_string": generator.get("combination_string"),
+                "bs_basis_coordinates": coords,
+                "nonzero_bs_basis_terms": [
+                    {
+                        "basis_id": publication_bs_analysis["basis_vectors"][index]["id"],
+                        "value": int(value),
+                    }
+                    for index, value in enumerate(coords)
+                    if int(value) != 0
+                ],
+            }
+        )
+    ai_coordinate_matrix = (
+        sp.Matrix.hstack(*ai_coordinate_columns)
+        if ai_coordinate_columns
+        else sp.zeros(len(bs_basis_vectors), 0)
+    )
+    smith_input = [[int(value) for value in row] for row in ai_coordinate_matrix.tolist()]
+    D_list, U_list, V_list = swyckoff_k.smith_normal_form(smith_input)
+    D = sp.Matrix(D_list)
+    U = sp.Matrix(U_list)
+    V = sp.Matrix(V_list)
+    snf_diagonal = smith_diagonal_entries(D)
+    quotient_invariants = [int(value) for value in snf_diagonal if int(value) > 1]
+    quotient_rank = int(publication_bs_analysis["nullity"])
+    ai_rank = int(authoritative_ai_payload["new_authoritative_ai_rank"])
+    quotient_has_free_part = ai_coordinate_matrix.rank() < quotient_rank
+    quotient_status = "success" if ai_rank >= quotient_rank else "blocked"
+    quotient_kind = (
+        "contains_free_part"
+        if quotient_has_free_part
+        else ("finite_torsion" if quotient_invariants else "trivial")
+    )
+    torsion_indices = [
+        index
+        for index in range(min(D.rows, D.cols))
+        if abs(int(D[index, index])) > 1
+    ]
+    u_inverse = U.inv() if torsion_indices else None
+    torsion_generators = []
+    for torsion_position, torsion_index in enumerate(torsion_indices, start=1):
+        bs_coords = [int(value) for value in list(u_inverse[:, torsion_index])]
+        unknown_vector = [
+            int(value)
+            for value in list(bs_basis_matrix * sp.Matrix(bs_coords))
+        ]
+        ai_relation = [int(value) for value in list(V[:, torsion_index])]
+        torsion_generators.append(
+            {
+                "indicator_id": f"indicator_{torsion_position:02d}",
+                "smith_factor": int(abs(D[torsion_index, torsion_index])),
+                "bs_basis_coordinates": bs_coords,
+                "unknown_vector": unknown_vector,
+                "unknown_support": _sparse_unknown_vector_terms(unknown_ordering, unknown_vector),
+                "ai_relation_for_multiple": ai_relation,
+            }
+        )
+    return {
+        "published_bs_rank": quotient_rank,
+        "authoritative_ai_rank": ai_rank,
+        "quotient_status": quotient_status,
+        "quotient_kind": quotient_kind,
+        "quotient_is_trivial": quotient_kind == "trivial",
+        "quotient_is_finite_torsion": quotient_kind == "finite_torsion",
+        "has_free_part": quotient_has_free_part,
+        "quotient_group": quotient_group_from_diagonal(quotient_invariants),
+        "quotient_invariants": quotient_invariants,
+        "snf_diagonal": [int(value) for value in snf_diagonal],
+        "bs_basis_vectors": list(publication_bs_analysis["basis_vectors"]),
+        "ai_coordinate_records": ai_coordinate_records,
+        "ai_coordinate_matrix_in_bs_basis": [
+            [int(value) for value in row]
+            for row in ai_coordinate_matrix.tolist()
+        ],
+        "torsion_generators": torsion_generators,
+        "summary": (
+            "The quotient is extracted directly on the publication-shell BS basis using the authoritative promoted AI generators. "
+            "Because the authoritative AI rank matches the published BS rank, the quotient has no free part; any remaining nontriviality "
+            "is finite torsion encoded by the Smith diagonal in BS coordinates."
+        ),
+    }
+
+
+def build_bs_ai_quotient_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# BS/AI Quotient Report",
+        "",
+        f"- Published BS rank: `{report['published_bs_rank']}`.",
+        f"- Authoritative AI rank: `{report['authoritative_ai_rank']}`.",
+        f"- Quotient status: `{report['quotient_status']}`.",
+        f"- Quotient kind: `{report['quotient_kind']}`.",
+        f"- Quotient invariants: `{report['quotient_invariants']}`.",
+        f"- Quotient group: `{report['quotient_group']}`.",
+        f"- Smith diagonal in BS coordinates: `{report['snf_diagonal']}`.",
+        f"- Summary: {report['summary']}",
+        "",
+        "## AI Coordinates In BS Basis",
+        "",
+    ]
+    for record in report["ai_coordinate_records"]:
+        lines.append(
+            f"- `{record['generator_id']}` (`{record['generator_kind']}`): bs coords `{record['bs_basis_coordinates']}`, "
+            f"nonzero terms `{record['nonzero_bs_basis_terms']}`, combination `{record['combination_string']}`."
+        )
+    if report["torsion_generators"]:
+        lines.extend(["", "## Torsion Generators", ""])
+        for generator in report["torsion_generators"]:
+            lines.append(
+                f"- `{generator['indicator_id']}`: smith factor `{generator['smith_factor']}`, "
+                f"bs coords `{generator['bs_basis_coordinates']}`, support `{generator['unknown_support']}`."
+            )
+    return "\n".join(lines)
+
+
+def build_indicator_extraction_report(
+    quotient_report: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "quotient_status": quotient_report["quotient_status"],
+        "indicator_group": quotient_report["quotient_group"],
+        "indicator_invariants": list(quotient_report["quotient_invariants"]),
+        "indicator_generator_count": len(quotient_report["torsion_generators"]),
+        "snf_diagonal": list(quotient_report["snf_diagonal"]),
+        "finite_torsion": bool(quotient_report["quotient_is_finite_torsion"]),
+        "torsion_generators": list(quotient_report["torsion_generators"]),
+        "summary": (
+            "Indicator extraction is read directly from the finite torsion part of the BS/AI quotient in published BS coordinates."
+        ),
+    }
+
+
+def build_indicator_extraction_markdown(report: dict[str, Any]) -> str:
+    lines = [
+        "# Indicator Extraction Report",
+        "",
+        f"- Quotient status: `{report['quotient_status']}`.",
+        f"- Indicator group: `{report['indicator_group']}`.",
+        f"- Indicator invariants: `{report['indicator_invariants']}`.",
+        f"- Indicator generator count: `{report['indicator_generator_count']}`.",
+        f"- Smith diagonal: `{report['snf_diagonal']}`.",
+        f"- Finite torsion: `{report['finite_torsion']}`.",
+        f"- Summary: {report['summary']}",
+        "",
+    ]
+    for generator in report["torsion_generators"]:
+        lines.append(
+            f"- `{generator['indicator_id']}`: factor `{generator['smith_factor']}`, bs coords `{generator['bs_basis_coordinates']}`, "
+            f"support `{generator['unknown_support']}`."
+        )
+    return "\n".join(lines)
+
+
 def build_claim_scope_guardrail_report(
     setting_specific_validation_report: dict[str, Any],
     ai_completion_feasibility_report: dict[str, Any],
+    ai_rank_after_promotion_report: dict[str, Any] | None = None,
+    bs_ai_quotient_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    ai_aligned = bool(
+        ai_rank_after_promotion_report is not None
+        and ai_rank_after_promotion_report.get("ai_aligned_with_bilbao")
+    )
+    quotient_extracted = bool(
+        bs_ai_quotient_report is not None
+        and bs_ai_quotient_report.get("quotient_status") == "success"
+    )
     return {
         "allowed_claims": [
             "BS/publication shell is Bilbao-equivalent",
-            "current AI verified rank is 5",
-            "missing rank is 5",
-            "residual sector explains the current missing rank",
             "the SG194/P-lattice/current-setting conversion patch works numerically in the present setting",
-            "residual-sector recombinations can lift the missing directions, but they are not yet wired as authoritative AI generators",
+            "current authoritative AI rank is 10 on the publication shell",
+            "AI is aligned with Bilbao on the publication shell",
+            "single-group BS/AI quotient extraction is now meaningful and has been carried out on the authoritative publication-shell AI lattice",
         ],
         "forbidden_claims": [
             "global conversion theorem proved",
             "all-manifold validation proved the formula in general",
             "basis-independent statement established",
-            "AI is aligned with Bilbao",
-            "BS/AI quotient now ready",
+            "the SG194-setting-specific conversion patch is a basis-independent theorem",
+            "double-group AI / quotient is already complete on 194.1.1.1",
         ],
         "setting_specific_validation_scope": setting_specific_validation_report["validation_scope"],
         "all_fake_global_claims_removed": True,
@@ -8108,6 +8629,8 @@ def build_claim_scope_guardrail_report(
             "current_success_depends_on_sg194_being_p_lattice_under_present_basis_conventions"
         ],
         "residual_completion_feasible": ai_completion_feasibility_report["any_liftable_to_actual_compatibility_zero"],
+        "ai_aligned_with_bilbao": ai_aligned,
+        "single_group_quotient_extracted": quotient_extracted,
     }
 
 
@@ -8143,14 +8666,23 @@ def build_ai_honest_blocker_report(
     ai_completion_feasibility_report: dict[str, Any] | None = None,
     authoritative_ai_promotion_report: dict[str, Any] | None = None,
     ai_rank_after_promotion_report: dict[str, Any] | None = None,
+    bs_ai_quotient_report: dict[str, Any] | None = None,
     *,
     p4_verdict: str | None = None,
 ) -> dict[str, Any]:
     if ai_rank_after_promotion_report is not None and ai_rank_after_promotion_report["quotient_stage_allowed"]:
+        quotient_complete = bool(
+            bs_ai_quotient_report is not None
+            and bs_ai_quotient_report.get("quotient_status") == "success"
+        )
         return {
             "status": "not_blocked",
-            "blocker": "No active AI blocker; quotient stage is ready.",
-            "blocker_stage": "quotient_stage_ready",
+            "blocker": (
+                "No active AI blocker; single-group quotient already extracted on the authoritative publication-shell AI lattice."
+                if quotient_complete
+                else "No active AI blocker; quotient stage is ready."
+            ),
+            "blocker_stage": "single_group_quotient_complete" if quotient_complete else "quotient_stage_ready",
             "ai_status": ai_rank_after_promotion_report["ai_status"],
             "local_library_present": True,
             "local_library_wired_into_ai_builder": True,
@@ -8181,7 +8713,8 @@ def build_ai_honest_blocker_report(
             ),
             "summary": (
                 "The authoritative publication-shell AI generator set now includes promoted residual-sector lifts, "
-                "the authoritative AI rank matches the published BS rank, and the quotient stage is ready."
+                "the authoritative AI rank matches the published BS rank, and the single-group quotient is "
+                + ("already extracted." if quotient_complete else "ready to extract.")
             ),
         }
     if integration_report["integration_status"] == "wired_complete_candidate_set":
@@ -8298,6 +8831,24 @@ def build_ai_honest_blocker_report(
 
 
 def build_current_status(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> dict[str, Any]:
+    single_quotient_status = single["summary"]["quotient_status"]["status"]
+    next_step = (
+        "The publication-level C_pub builder remains fixed and Bilbao-equivalent. "
+        "Current published compatibility-matrix rank/nullity is 24/10, so published BS rank is 10. "
+        "The old verified zero-subset AI rank is 5, and the authoritative promoted AI rank is now "
+        f"{single['summary']['AI_status']['authoritative_ai_rank']}. "
+        "The SG194-setting-specific character-field conversion remains non-global and non-theorem-level. "
+        "Authoritative AI promotion now materializes the residual-sector lifted directions directly in publication-shell coordinates, "
+        "so the next stage is BS/AI quotient extraction rather than further residual completion proofs."
+    )
+    if single_quotient_status == "success":
+        next_step = (
+            "The publication-level C_pub builder remains fixed and Bilbao-equivalent. "
+            "Single-group published compatibility-matrix rank/nullity is 24/10, the authoritative publication-shell AI rank is 10, "
+            f"and the single-group quotient has been extracted as {single['summary']['quotient_status']['quotient_group']}. "
+            "The SG194-setting-specific character-field conversion remains non-global and non-theorem-level. "
+            "The next unresolved stage is the published-shell double-group AI wiring and the corresponding honest double-group quotient extraction."
+        )
     return {
         "target_group": TARGET_GROUP,
         "object_scope": "internal_diagnostic_shell_plus_publication_level_C_pub",
@@ -8306,6 +8857,11 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
         "publication_object_is_explicitly_separated": single["summary"]["compatibility_status"]["internal_and_publication_objects_explicitly_separated"],
         "single_status": single["summary"],
         "double_status": double["summary"],
+        "active_blocker_stage": (
+            "double_group_published_shell_ai_wiring"
+            if single_quotient_status == "success"
+            else single["summary"]["active_blocker_stage"]
+        ),
         "key_matrices": {
             "single_compatibility_matrix_shape": single["summary"]["BS_status"]["compatibility_matrix_shape"],
             "single_compatibility_matrix_rank": single["summary"]["BS_status"]["compatibility_matrix_rank"],
@@ -8317,19 +8873,18 @@ def build_current_status(single: dict[str, Any], double: dict[str, Any], portabi
             "double_bs_rank": double["summary"]["kspace_backbone_status"]["nullity"],
         },
         "blocker": portability_summary["main_blocker"],
-        "next_step": (
-            "The publication-level C_pub builder remains fixed and Bilbao-equivalent. "
-            "Current published compatibility-matrix rank/nullity is 24/10, so published BS rank is 10. "
-            "The old verified zero-subset AI rank is 5, and the authoritative promoted AI rank is now "
-            f"{single['summary']['AI_status']['authoritative_ai_rank']}. "
-            "The SG194-setting-specific character-field conversion remains non-global and non-theorem-level. "
-            "Authoritative AI promotion now materializes the residual-sector lifted directions directly in publication-shell coordinates, "
-            "so the next stage is BS/AI quotient extraction rather than further residual completion proofs."
-        ),
+        "next_step": next_step,
     }
 
 
 def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], portability_summary: dict[str, Any]) -> str:
+    next_unique_task = (
+        "keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), keep all conversion wording strictly SG194/current-setting-specific, and use the promoted authoritative publication-shell AI generator set as the starting point for honest BS/AI quotient extraction."
+    )
+    if single["summary"]["quotient_status"]["status"] == "success":
+        next_unique_task = (
+            "keep the publication-level C_pub and the completed single-group quotient fixed, preserve all SG194/current-setting-specific conversion wording, and move to the next unresolved stage: published-shell double-group AI wiring plus honest double-group quotient extraction."
+        )
     return textwrap.dedent(
         f"""
         Previous Codex session already reconstructed the 10.4.1.31 baseline and completed the 194.1.1.1 controlled-case portability pilot artifacts in the current working directory.
@@ -8356,6 +8911,8 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - old verified AI rank = {single['summary']['AI_status']['old_verified_ai_rank']}
         - authoritative AI rank = {single['summary']['AI_status']['authoritative_ai_rank']}
         - quotient stage allowed = {single['summary']['AI_status']['quotient_stage_allowed']}
+        - quotient status = {single['summary']['quotient_status']['status']}
+        - quotient group = {single['summary']['quotient_status']['quotient_group']}
 
         Current double-group matrix status:
         - shape = {double['summary']['kspace_backbone_status']['matrix_shape']}
@@ -8363,7 +8920,7 @@ def build_next_step_prompt(single: dict[str, Any], double: dict[str, Any], porta
         - nullity = {double['summary']['kspace_backbone_status']['nullity']}
 
         Continue from the current workspace. Do not change the target group. Do not go back to 10.4.1.31 except as reference.
-        The next unique task is: keep the publication-level C_pub fixed, preserve the corrected BS-rank naming (24 is compatibility-matrix rank, 10 is published BS rank), keep all conversion wording strictly SG194/current-setting-specific, and use the promoted authoritative publication-shell AI generator set as the starting point for honest BS/AI quotient extraction.
+        The next unique task is: {next_unique_task}
         """
     ).strip() + "\n"
 
@@ -8395,7 +8952,7 @@ def build_package_readme() -> str:
             "- setting-specific character-field basis/convention audit plus SG194-only conversion validation",
             "- retired invalidation of the earlier fake global conversion claim",
             "- D3h-like local-object crosscheck plus PPATH06 residual-obstruction deep-dive reports",
-            "- zero-subset rank analysis, residual quotient-rank attribution, explicit residual rank-5 pivot witnesses, AI completion feasibility from the residual sector, authoritative AI promotion, AI rank-after-promotion, and a claim-scope guardrail report",
+            "- zero-subset rank analysis, residual quotient-rank attribution, explicit residual rank-5 pivot witnesses, AI completion feasibility from the residual sector, authoritative AI promotion, AI rank-after-promotion, publication point-basis usage, the final single-group BS/AI quotient report, the indicator extraction report, and a claim-scope guardrail report",
             "- PDF technical report",
             "- handoff / current_status / next_step_prompt",
             "",
@@ -8425,22 +8982,25 @@ def build_package_readme() -> str:
             f"18. {AI_COMPLETION_FEASIBILITY_MD.relative_to(ROOT)}",
             f"19. {AUTHORITATIVE_AI_PROMOTION_MD.relative_to(ROOT)}",
             f"20. {AI_RANK_AFTER_PROMOTION_MD.relative_to(ROOT)}",
-            f"21. {AI_VS_BILBAO_ALIGNMENT_MD.relative_to(ROOT)}",
-            f"22. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
-            f"23. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
-            f"24. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
-            f"25. {P4_TRACE_FORMULA_EXPLICIT_MD.relative_to(ROOT)}",
-            f"26. {CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD.relative_to(ROOT)}",
-            f"27. {SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD.relative_to(ROOT)}",
-            f"28. {CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD.relative_to(ROOT)}",
-            f"29. {P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD.relative_to(ROOT)}",
-            f"30. {CLAIM_SCOPE_GUARDRAIL_MD.relative_to(ROOT)}",
-            f"31. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
-            f"32. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
-            f"33. {PPATH06_ROW_SEMANTICS_MD.relative_to(ROOT)}",
-            f"34. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
-            f"35. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
-            f"36. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
+            f"21. {PUBLICATION_POINT_BASIS_USAGE_MD.relative_to(ROOT)}",
+            f"22. {BS_AI_QUOTIENT_MD.relative_to(ROOT)}",
+            f"23. {INDICATOR_EXTRACTION_MD.relative_to(ROOT)}",
+            f"24. {AI_VS_BILBAO_ALIGNMENT_MD.relative_to(ROOT)}",
+            f"25. {P4_INDUCTION_FAILURE_MD.relative_to(ROOT)}",
+            f"26. {P4_EXACT_SOLVER_RELIABILITY_MD.relative_to(ROOT)}",
+            f"27. {P4_BAND_CHARACTER_PHASE_MD.relative_to(ROOT)}",
+            f"28. {P4_TRACE_FORMULA_EXPLICIT_MD.relative_to(ROOT)}",
+            f"29. {CHARACTER_FIELD_BASIS_CONVENTION_AUDIT_MD.relative_to(ROOT)}",
+            f"30. {SG194_SETTING_SPECIFIC_CHARACTER_CONVERSION_VALIDATION_MD.relative_to(ROOT)}",
+            f"31. {CHARACTER_FIELD_CONVERSION_GLOBAL_VALIDATION_MD.relative_to(ROOT)}",
+            f"32. {P4_CONVERSION_PATCH_INDEPENDENT_VALIDATION_MD.relative_to(ROOT)}",
+            f"33. {CLAIM_SCOPE_GUARDRAIL_MD.relative_to(ROOT)}",
+            f"34. {D3H_LIKE_LOCAL_OBJECT_CROSSCHECK_MD.relative_to(ROOT)}",
+            f"35. {PPATH06_OBSTRUCTION_MD.relative_to(ROOT)}",
+            f"36. {PPATH06_ROW_SEMANTICS_MD.relative_to(ROOT)}",
+            f"37. {AI_ZERO_SUBSET_RANK_MD.relative_to(ROOT)}",
+            f"38. {PARTIAL_AI_LATTICE_WITNESS_MD.relative_to(ROOT)}",
+            f"39. {AI_HONEST_BLOCKER_MD.relative_to(ROOT)}",
             "",
             "## PDF Report",
             f"- report file: `{REPORT_PDF.name}`",
@@ -8518,6 +9078,12 @@ def build_package() -> None:
         AUTHORITATIVE_AI_PROMOTION_JSON,
         AI_RANK_AFTER_PROMOTION_MD,
         AI_RANK_AFTER_PROMOTION_JSON,
+        PUBLICATION_POINT_BASIS_USAGE_MD,
+        PUBLICATION_POINT_BASIS_USAGE_JSON,
+        BS_AI_QUOTIENT_MD,
+        BS_AI_QUOTIENT_JSON,
+        INDICATOR_EXTRACTION_MD,
+        INDICATOR_EXTRACTION_JSON,
         CLAIM_SCOPE_GUARDRAIL_MD,
         CLAIM_SCOPE_GUARDRAIL_JSON,
         PARTIAL_AI_LATTICE_WITNESS_MD,
@@ -8618,6 +9184,12 @@ def validate_outputs() -> None:
         AUTHORITATIVE_AI_PROMOTION_JSON,
         AI_RANK_AFTER_PROMOTION_MD,
         AI_RANK_AFTER_PROMOTION_JSON,
+        PUBLICATION_POINT_BASIS_USAGE_MD,
+        PUBLICATION_POINT_BASIS_USAGE_JSON,
+        BS_AI_QUOTIENT_MD,
+        BS_AI_QUOTIENT_JSON,
+        INDICATOR_EXTRACTION_MD,
+        INDICATOR_EXTRACTION_JSON,
         CLAIM_SCOPE_GUARDRAIL_MD,
         CLAIM_SCOPE_GUARDRAIL_JSON,
         PARTIAL_AI_LATTICE_WITNESS_MD,

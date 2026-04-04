@@ -1,0 +1,10 @@
+{
+  "published_bs_rank": 10,
+  "old_verified_ai_rank": 5,
+  "promoted_ai_rank_increment": 5,
+  "new_authoritative_ai_rank": 10,
+  "ai_aligned_with_bilbao": true,
+  "quotient_stage_allowed": true,
+  "ai_status": "full_ai_lattice",
+  "active_blocker_stage": "quotient_stage_ready"
+}
