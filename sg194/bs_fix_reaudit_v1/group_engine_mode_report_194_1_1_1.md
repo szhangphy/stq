@@ -8,5 +8,7 @@
 - Single target dBS / dAI / classification: `10` / `10` / `trivial`.
 - Double target dBS / dAI / classification: `10` / `10` / `Z6`.
 - Current row shell / local AI seed / compatibility builder: `None` / `None` / `None`.
+- Single / double target-alignment builder status: `None` / `None`.
 - Minimal blocker: `None`.
+- Structured blocker evidence: `None`.
 - Trust level: `accepted_group_specific_final_objects`.

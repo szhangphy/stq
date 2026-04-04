@@ -21,6 +21,8 @@
   "current_row_shell_status": null,
   "local_ai_seed_status": null,
   "compatibility_builder_status": null,
+  "single_target_alignment_builder_status": null,
+  "double_target_alignment_builder_status": null,
   "single_target_exact_alignment_status": "available",
   "double_target_exact_alignment_status": "available",
   "single_target_generic_builder_ready": false,
@@ -28,6 +30,7 @@
   "single_target_generic_published_classification_ready": false,
   "double_target_generic_published_classification_ready": false,
   "minimal_blocker": null,
+  "structured_blocker_evidence": null,
   "single_final_status": "success",
   "double_final_status": "success",
   "trust_level": "accepted_group_specific_final_objects"

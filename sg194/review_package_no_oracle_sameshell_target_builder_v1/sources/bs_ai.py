@@ -51,7 +51,7 @@ def _build_generic_result_objects(
                 "current_row_shell_status": current_row_status,
                 "local_ai_seed_status": local_ai_status,
                 "quotient_prerequisites_status": quotient_prereq_status,
-                "blocker": blocked,
+                "blocker": target_alignment.get("blocker", blocked),
                 "source_files": [],
             }
         )
@@ -87,7 +87,7 @@ def _build_generic_result_objects(
                 "blocker_evidence": target_alignment.get("blocker_evidence"),
                 "direct_quotient_status": target_alignment.get("direct_quotient_status"),
                 "verification_status": target_alignment.get("verification_status"),
-                "blocker": target_alignment.get("blocker", blocked),
+                "blocker": blocked,
                 "source_files": [],
             }
         )
