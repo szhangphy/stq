@@ -6,7 +6,9 @@
 - Status: `success`.
 - Checks passed / final results available / final results verified: `False` / `True` / `False`.
 - Single target dBS / dAI / classification: `10` / `10` / `trivial`.
+- Single target ai_image_rank_in_bs / reported_dai_semantics / same_shell_semantics: `None` / `None` / `None`.
 - Double target dBS / dAI / classification: `10` / `10` / `Z6`.
+- Double target ai_image_rank_in_bs / reported_dai_semantics / same_shell_semantics: `None` / `None` / `None`.
 - Current row shell / local AI seed / compatibility builder: `None` / `None` / `None`.
 - Single / double target-alignment builder status: `None` / `None`.
 - Minimal blocker: `None`.
