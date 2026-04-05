@@ -28,6 +28,20 @@ GROUP_TARGET_REGISTRY: dict[str, GroupTargetSpec] = {
         require_same_shell_target_builder_for_generic_final=True,
         note="Oracle-free control group; promotion requires a real generic same-shell published target builder.",
     ),
+    "194.1.12.16": GroupTargetSpec(
+        group_id="194.1.12.16",
+        truth_compare_available=False,
+        generic_builders_expected=True,
+        require_same_shell_target_builder_for_generic_final=True,
+        note="Generic BS-rank reference control for this round; used to verify the unified path has not regressed.",
+    ),
+    "159.1.6.2": GroupTargetSpec(
+        group_id="159.1.6.2",
+        truth_compare_available=True,
+        generic_builders_expected=True,
+        require_same_shell_target_builder_for_generic_final=True,
+        note="Active generic extension target; compare-only external rank facts come from P31c (No. 159.61) with dBS=8 and dAI=8.",
+    ),
 }
 
 

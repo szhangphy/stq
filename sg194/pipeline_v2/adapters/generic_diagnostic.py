@@ -68,7 +68,7 @@ class GenericDiagnosticAdapter:
             "final_result_mode": final_result_mode,
             "classification_is_published_final": published_final,
             "truth_compare_available": target_spec.truth_compare_available,
-            "benchmark_oracle_available": target_spec.truth_compare_available,
+            "benchmark_oracle_available": False,
             "single_final": self._record_as_final(single_target),
             "double_final": self._record_as_final(double_target),
             "same_final_object": False,

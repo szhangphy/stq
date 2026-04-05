@@ -12,6 +12,8 @@ class BenchmarkOracleSpec:
     benchmark_status_file: str | None
     benchmark_verdict_file: str | None
     source_kind: str
+    truth_reference_file: str | None = None
+    external_object_label: str | None = None
     expected_classification: str | None = None
     truth_compare_only: bool = True
 
@@ -23,6 +25,14 @@ GROUP_BENCHMARK_ORACLE_REGISTRY: dict[str, BenchmarkOracleSpec] = {
         benchmark_verdict_file="sg194/sg194_target_1941111_og1494_bns263_benchmark_verdict_v1.json",
         source_kind="benchmark_oracle_exact_double_spinorial_alignment",
         expected_classification="Z6",
+    ),
+    "159.1.6.2": BenchmarkOracleSpec(
+        target_group="159.1.6.2",
+        benchmark_status_file=None,
+        benchmark_verdict_file=None,
+        truth_reference_file="sg194/compare_only_rank_reference_159_1_6_2.json",
+        source_kind="external_compare_only_rank_reference",
+        external_object_label="P31c (No. 159.61)",
     ),
 }
 
@@ -106,6 +116,21 @@ def load_group_truth_reference(
     if spec is None:
         return None
 
+    if spec.truth_reference_file is not None:
+        payload = json.loads((repo_root / spec.truth_reference_file).read_text())
+        return {
+            "target_group": target_group,
+            "truth_compare_only": spec.truth_compare_only,
+            "source_kind": spec.source_kind,
+            "status_file": spec.benchmark_status_file,
+            "verdict_file": spec.truth_reference_file,
+            "external_object_label": payload.get("external_object_label") or spec.external_object_label,
+            "reference_scope": payload.get("reference_scope"),
+            "note": payload.get("note"),
+            "single_truth": payload.get("single_truth") or {},
+            "double_truth": payload.get("double_truth") or {},
+        }
+
     status_payload = None
     verdict_payload = None
     if spec.benchmark_status_file is not None:
@@ -129,6 +154,9 @@ def load_group_truth_reference(
         "source_kind": spec.source_kind,
         "status_file": spec.benchmark_status_file,
         "verdict_file": spec.benchmark_verdict_file,
+        "external_object_label": spec.external_object_label,
+        "reference_scope": "full_single_and_double_truth",
+        "note": None,
         "single_truth": {
             "dBS": single_truth.get("dBS"),
             "dAI": single_truth.get("dAI"),

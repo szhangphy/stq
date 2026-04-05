@@ -1,0 +1,314 @@
+diff --git a/sg194/pipeline_v2/adapters/generic_diagnostic.py b/sg194/pipeline_v2/adapters/generic_diagnostic.py
+index f3bd0c5..7b9e4c1 100644
+--- a/sg194/pipeline_v2/adapters/generic_diagnostic.py
++++ b/sg194/pipeline_v2/adapters/generic_diagnostic.py
+@@ -68,7 +68,7 @@ class GenericDiagnosticAdapter:
+             "final_result_mode": final_result_mode,
+             "classification_is_published_final": published_final,
+             "truth_compare_available": target_spec.truth_compare_available,
+-            "benchmark_oracle_available": target_spec.truth_compare_available,
++            "benchmark_oracle_available": False,
+             "single_final": self._record_as_final(single_target),
+             "double_final": self._record_as_final(double_target),
+             "same_final_object": False,
+diff --git a/sg194/pipeline_v2/benchmark_oracle_registry.py b/sg194/pipeline_v2/benchmark_oracle_registry.py
+index 7905972..248c41d 100644
+--- a/sg194/pipeline_v2/benchmark_oracle_registry.py
++++ b/sg194/pipeline_v2/benchmark_oracle_registry.py
+@@ -12,6 +12,8 @@ class BenchmarkOracleSpec:
+     benchmark_status_file: str | None
+     benchmark_verdict_file: str | None
+     source_kind: str
++    truth_reference_file: str | None = None
++    external_object_label: str | None = None
+     expected_classification: str | None = None
+     truth_compare_only: bool = True
+ 
+@@ -24,6 +26,14 @@ GROUP_BENCHMARK_ORACLE_REGISTRY: dict[str, BenchmarkOracleSpec] = {
+         source_kind="benchmark_oracle_exact_double_spinorial_alignment",
+         expected_classification="Z6",
+     ),
++    "159.1.6.2": BenchmarkOracleSpec(
++        target_group="159.1.6.2",
++        benchmark_status_file=None,
++        benchmark_verdict_file=None,
++        truth_reference_file="sg194/compare_only_rank_reference_159_1_6_2.json",
++        source_kind="external_compare_only_rank_reference",
++        external_object_label="P31c (No. 159.61)",
++    ),
+ }
+ 
+ 
+@@ -106,6 +116,21 @@ def load_group_truth_reference(
+     if spec is None:
+         return None
+ 
++    if spec.truth_reference_file is not None:
++        payload = json.loads((repo_root / spec.truth_reference_file).read_text())
++        return {
++            "target_group": target_group,
++            "truth_compare_only": spec.truth_compare_only,
++            "source_kind": spec.source_kind,
++            "status_file": spec.benchmark_status_file,
++            "verdict_file": spec.truth_reference_file,
++            "external_object_label": payload.get("external_object_label") or spec.external_object_label,
++            "reference_scope": payload.get("reference_scope"),
++            "note": payload.get("note"),
++            "single_truth": payload.get("single_truth") or {},
++            "double_truth": payload.get("double_truth") or {},
++        }
++
+     status_payload = None
+     verdict_payload = None
+     if spec.benchmark_status_file is not None:
+@@ -129,6 +154,9 @@ def load_group_truth_reference(
+         "source_kind": spec.source_kind,
+         "status_file": spec.benchmark_status_file,
+         "verdict_file": spec.benchmark_verdict_file,
++        "external_object_label": spec.external_object_label,
++        "reference_scope": "full_single_and_double_truth",
++        "note": None,
+         "single_truth": {
+             "dBS": single_truth.get("dBS"),
+             "dAI": single_truth.get("dAI"),
+diff --git a/sg194/pipeline_v2/bs_ai.py b/sg194/pipeline_v2/bs_ai.py
+index 3c6961f..62e31b8 100644
+--- a/sg194/pipeline_v2/bs_ai.py
++++ b/sg194/pipeline_v2/bs_ai.py
+@@ -167,7 +167,7 @@ def _annotate_result_mode(
+     for item in records:
+         mode, is_final, status = _infer_result_mode(item, spec)
+         item["truth_compare_available"] = target_spec.truth_compare_available
+-        item["benchmark_oracle_available"] = target_spec.truth_compare_available
++        item["benchmark_oracle_available"] = False
+         item["final_result_mode"] = mode
+         item["classification_is_published_final"] = is_final
+         item["status"] = status
+diff --git a/sg194/pipeline_v2/group_target_registry.py b/sg194/pipeline_v2/group_target_registry.py
+index e552f0d..59051c2 100644
+--- a/sg194/pipeline_v2/group_target_registry.py
++++ b/sg194/pipeline_v2/group_target_registry.py
+@@ -28,6 +28,20 @@ GROUP_TARGET_REGISTRY: dict[str, GroupTargetSpec] = {
+         require_same_shell_target_builder_for_generic_final=True,
+         note="Oracle-free control group; promotion requires a real generic same-shell published target builder.",
+     ),
++    "194.1.12.16": GroupTargetSpec(
++        group_id="194.1.12.16",
++        truth_compare_available=False,
++        generic_builders_expected=True,
++        require_same_shell_target_builder_for_generic_final=True,
++        note="Generic BS-rank reference control for this round; used to verify the unified path has not regressed.",
++    ),
++    "159.1.6.2": GroupTargetSpec(
++        group_id="159.1.6.2",
++        truth_compare_available=True,
++        generic_builders_expected=True,
++        require_same_shell_target_builder_for_generic_final=True,
++        note="Active generic extension target; compare-only external rank facts come from P31c (No. 159.61) with dBS=8 and dAI=8.",
++    ),
+ }
+ 
+ 
+diff --git a/sg194/pipeline_v2/reporting.py b/sg194/pipeline_v2/reporting.py
+index eded240..1ccb721 100644
+--- a/sg194/pipeline_v2/reporting.py
++++ b/sg194/pipeline_v2/reporting.py
+@@ -186,8 +186,11 @@ def write_pipeline_outputs(
+                         [
+                             f"truth compare available: `{truth_compare.get('truth_compare_available')}`",
+                             f"matches truth: `{truth_compare.get('matches_truth')}`",
++                            f"external object label: `{truth_compare.get('external_object_label')}`",
++                            f"reference scope: `{truth_compare.get('reference_scope')}`",
+                             f"single compare: `{truth_compare.get('single')}`",
+                             f"double compare: `{truth_compare.get('double')}`",
++                            f"note: `{truth_compare.get('note')}`",
+                         ]
+                     )
+                 ),
+diff --git a/sg194/pipeline_v2/specs.py b/sg194/pipeline_v2/specs.py
+index 81340c5..9759266 100644
+--- a/sg194/pipeline_v2/specs.py
++++ b/sg194/pipeline_v2/specs.py
+@@ -47,6 +47,93 @@ SG194_SPEC = GroupSpec(
+ )
+ 
+ 
++GROUP194_1_12_16_SPEC = GroupSpec(
++    key="ssg194_1_12_16",
++    group_id="194.1.12.16",
++    title="194.1.12.16 generic BS-rank reference control",
++    description=(
++        "Generic symmetry-ops control object used to verify that the unified runtime can still "
++        "reproduce a known-good BS-rank path without falling back to benchmark-backed solving."
++    ),
++    home_subdir="sg194",
++    adapter_key="generic_diagnostic",
++    modes=("single", "double", "both"),
++    row_languages=("raw", "target", "all"),
++    artifacts={},
++    builder_backend="generic_symmetry_ops",
++    special_rules={
++        "trust_policy": "symmetry_operations_only",
++        "oracle_policy": "no_active_oracle_on_solver_path",
++        "current_row_language_kind": "generic_current_row_shell_from_symmetry_ops",
++        "target_object_kind": "generic_same_shell_target_object",
++        "control_role": "generic_bs_rank_reference_control",
++    },
++    final_object_ids={},
++    capabilities={
++        "full_geometry": True,
++        "target_alignment": True,
++        "final_results": True,
++        "generic_current_row_shell": True,
++        "generic_local_ai_seed": True,
++        "generic_current_row_compatibility": True,
++        "generic_local_ai_embedding": True,
++        "generic_same_shell_target_builder": True,
++        "generic_direct_quotient": True,
++        "truth_compare_only": False,
++    },
++    coordinate_policy=coordinate_contract(),
++    trust_level="generic_symmetry_ops_reference_control_for_bs_rank",
++    readiness_note=(
++        "194.1.12.16 is the active generic BS-rank control object for this round. It must remain "
++        "runnable through the same generic path used by all new targets."
++    ),
++)
++
++
++GROUP159_1_6_2_SPEC = GroupSpec(
++    key="ssg159_1_6_2",
++    group_id="159.1.6.2",
++    title="159.1.6.2 generic extension target with compare-only Bilbao hook",
++    description=(
++        "Primary generic extension target for this round. The active solve path must remain fully "
++        "generic, while the external Bilbao-derived rank facts for P31c (No. 159.61) are exposed "
++        "strictly through the compare-only truth layer."
++    ),
++    home_subdir="sg194",
++    adapter_key="generic_diagnostic",
++    modes=("single", "double", "both"),
++    row_languages=("raw", "target", "all"),
++    artifacts={},
++    builder_backend="generic_symmetry_ops",
++    special_rules={
++        "trust_policy": "symmetry_operations_only",
++        "oracle_policy": "compare_only_rank_reference_not_on_active_solver_path",
++        "current_row_language_kind": "generic_current_row_shell_from_symmetry_ops",
++        "target_object_kind": "generic_same_shell_target_object",
++        "external_compare_object": "P31c (No. 159.61)",
++    },
++    final_object_ids={},
++    capabilities={
++        "full_geometry": True,
++        "target_alignment": True,
++        "final_results": True,
++        "generic_current_row_shell": True,
++        "generic_local_ai_seed": True,
++        "generic_current_row_compatibility": True,
++        "generic_local_ai_embedding": True,
++        "generic_same_shell_target_builder": True,
++        "generic_direct_quotient": True,
++        "truth_compare_only": True,
++    },
++    coordinate_policy=coordinate_contract(),
++    trust_level="generic_symmetry_ops_extension_target_with_compare_only_rank_reference",
++    readiness_note=(
++        "159.1.6.2 is the active generic extension target. External rank facts for P31c "
++        "(No. 159.61) remain compare-only and must not feed the active solve path."
++    ),
++)
++
++
+ GROUP222_SPEC = GroupSpec(
+     key="ssg222_1_1_1",
+     group_id="222.1.1.1",
+@@ -171,6 +258,10 @@ GROUP99_SPEC = GroupSpec(
+ GROUP_SPECS = {
+     SG194_SPEC.key: SG194_SPEC,
+     SG194_SPEC.group_id: SG194_SPEC,
++    GROUP194_1_12_16_SPEC.key: GROUP194_1_12_16_SPEC,
++    GROUP194_1_12_16_SPEC.group_id: GROUP194_1_12_16_SPEC,
++    GROUP159_1_6_2_SPEC.key: GROUP159_1_6_2_SPEC,
++    GROUP159_1_6_2_SPEC.group_id: GROUP159_1_6_2_SPEC,
+     GROUP222_SPEC.key: GROUP222_SPEC,
+     GROUP222_SPEC.group_id: GROUP222_SPEC,
+     "222.1.1601": GROUP222_SPEC,
+diff --git a/sg194/pipeline_v2/truth_compare.py b/sg194/pipeline_v2/truth_compare.py
+index 8b19afe..beeca29 100644
+--- a/sg194/pipeline_v2/truth_compare.py
++++ b/sg194/pipeline_v2/truth_compare.py
+@@ -16,10 +16,16 @@ def _target_record(records: list[dict[str, Any]], mode: str) -> dict[str, Any]:
+ 
+ def _compare_mode(record: dict[str, Any], truth: dict[str, Any]) -> dict[str, Any]:
+     comparable_fields = ("dBS", "dAI", "classification")
++    truth_available = bool(truth) and any(truth.get(field) is not None for field in comparable_fields)
+     field_matches = {
+-        field: record.get(field) == truth.get(field)
++        field: (
++            None
++            if truth.get(field) is None
++            else record.get(field) == truth.get(field)
++        )
+         for field in comparable_fields
+     }
++    comparable_available_fields = [field for field in comparable_fields if truth.get(field) is not None]
+     return {
+         "solver_object_id": record.get("object_id"),
+         "solver_availability": record.get("availability"),
+@@ -31,11 +37,17 @@ def _compare_mode(record: dict[str, Any], truth: dict[str, Any]) -> dict[str, An
+         "solver_dAI": record.get("dAI"),
+         "solver_ai_image_rank_in_bs": record.get("ai_image_rank_in_bs"),
+         "solver_classification": record.get("classification"),
++        "truth_reference_available": truth_available,
++        "truth_available_fields": comparable_available_fields,
+         "truth_dBS": truth.get("dBS"),
+         "truth_dAI": truth.get("dAI"),
+         "truth_classification": truth.get("classification"),
+         "field_matches": field_matches,
+-        "all_fields_match": all(field_matches.values()),
++        "all_fields_match": (
++            None
++            if not comparable_available_fields
++            else all(bool(field_matches[field]) for field in comparable_available_fields)
++        ),
+     }
+ 
+ 
+@@ -67,9 +79,23 @@ def build_truth_compare_report(
+         "truth_compare_only": truth.get("truth_compare_only", True),
+         "status_file": truth.get("status_file"),
+         "verdict_file": truth.get("verdict_file"),
++        "external_object_label": truth.get("external_object_label"),
++        "reference_scope": truth.get("reference_scope"),
++        "note": truth.get("note"),
+         "single": single_compare,
+         "double": double_compare,
+-        "matches_truth": bool(single_compare["all_fields_match"] and double_compare["all_fields_match"]),
++        "matches_truth": (
++            None
++            if not any(
++                item["all_fields_match"] is not None
++                for item in (single_compare, double_compare)
++            )
++            else all(
++                item["all_fields_match"]
++                for item in (single_compare, double_compare)
++                if item["all_fields_match"] is not None
++            )
++        ),
+     }
+ 
+ 
+@@ -90,7 +116,9 @@ def build_truth_compare_markdown(report: dict[str, Any]) -> str:
+             f"- truth compare available: `{report['truth_compare_available']}`.",
+             f"- matches truth: `{report['matches_truth']}`.",
+             f"- truth source kind: `{report['truth_source_kind']}`.",
+-            f"- single solver vs truth: `({report['single']['solver_dBS']}, {report['single']['solver_dAI']}, {report['single']['solver_classification']})` vs `({report['single']['truth_dBS']}, {report['single']['truth_dAI']}, {report['single']['truth_classification']})`.",
+-            f"- double solver vs truth: `({report['double']['solver_dBS']}, {report['double']['solver_dAI']}, {report['double']['solver_classification']})` vs `({report['double']['truth_dBS']}, {report['double']['truth_dAI']}, {report['double']['truth_classification']})`.",
++            f"- external object label: `{report.get('external_object_label')}`.",
++            f"- reference scope: `{report.get('reference_scope')}`.",
++            f"- single solver vs truth: `({report['single']['solver_dBS']}, {report['single']['solver_dAI']}, {report['single']['solver_classification']})` vs `({report['single']['truth_dBS']}, {report['single']['truth_dAI']}, {report['single']['truth_classification']})`; available fields=`{report['single']['truth_available_fields']}`.",
++            f"- double solver vs truth: `({report['double']['solver_dBS']}, {report['double']['solver_dAI']}, {report['double']['solver_classification']})` vs `({report['double']['truth_dBS']}, {report['double']['truth_dAI']}, {report['double']['truth_classification']})`; available fields=`{report['double']['truth_available_fields']}`.",
+         ]
+     )

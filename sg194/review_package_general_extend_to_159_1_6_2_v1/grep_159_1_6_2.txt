@@ -1,0 +1,7 @@
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/autoresearch-state.json:4:    "goal": "\u4fee\u590d generic BS rank\uff0c\u4f7f 159.1.6.2, 194.1.12.16, 139.1.8.35 \u7684 single/double \u7ed3\u679c\u4e0e\u5bf9\u5e94\u7a7a\u95f4\u7fa4\u57fa\u51c6\u4e00\u81f4\uff0c\u4e14\u4e0d\u5f15\u5165\u7fa4\u53f7 hardcode",
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:5:    "159.1.6.2": {"single": 9, "double": 9},
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:10:    "159.1.6.2": {"single": 5, "double": 5},
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:15:    "159.1.6.2": {"single": 4, "double": 4},
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:6:# goal: 修复 generic BS rank，使 159.1.6.2, 194.1.12.16, 139.1.8.35 的 single/double 结果与对应空间群基准一致，且不引入群号 hardcode
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:15:0	8651115	17	0	-	baseline	Baseline before generic BS rank repair: 159.1.6.2=9/9, 194.1.12.16=13/10, 139.1.8.35=14/6
+sg194/review_package_bs_rank_parity_plane_fix_v1/notes/root_cause_note.md:22:- `159.1.6.2` still lacks one independent BS-lowering relation beyond the current point-to-plane constraints; likely a missing line-to-plane or interior-line compatibility relation.

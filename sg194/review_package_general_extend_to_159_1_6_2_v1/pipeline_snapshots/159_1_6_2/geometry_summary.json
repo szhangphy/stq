@@ -1,0 +1,129 @@
+{
+  "generated_at": "2026-04-05T13:07:26+08:00",
+  "group": "159.1.6.2",
+  "status": "built_from_trusted_symmetry_ops",
+  "shared_backbone_available": true,
+  "shared_backbone_mode": "generic_trusted_symmetry_ops_kgeometry",
+  "coordinate_system": "post_supercell_primitive_basis_for_pipeline_modules",
+  "object_counts": {
+    "points": 0,
+    "lines": 3,
+    "planes": 1,
+    "synthetic_boundary_points": 8
+  },
+  "connectivity_summary": {
+    "point_line": 0,
+    "line_plane": 1,
+    "unmatched_line_endpoints": 6,
+    "unmatched_plane_boundaries": 3
+  },
+  "source": {
+    "entrypoint": "common/swyckoff.py",
+    "conversion_sources": [
+      "common/swyckoff_k.py",
+      "common/swyckoff_r.py"
+    ],
+    "backend_runtime_module": "sg194/pipeline_v2/runtime_backend_free.py"
+  },
+  "trust_policy": "symmetry_operations_only",
+  "symmetry_operation_count": 6,
+  "crystal_system": "trigonal",
+  "centering_symbol": "P",
+  "source_centering_symbol": "P",
+  "kspace": {
+    "coord_key": "orbit",
+    "entry_count": 5,
+    "sample_entries": [
+      {
+        "index": 0,
+        "dim": 3,
+        "kind": "other",
+        "mult": 6,
+        "representative_coordinate": "u, v, w",
+        "coordinate_list_size": 6,
+        "basis_vector_count": 3
+      },
+      {
+        "index": 1,
+        "dim": 2,
+        "kind": "plane",
+        "mult": 3,
+        "representative_coordinate": "v, -2v, w",
+        "coordinate_list_size": 3,
+        "basis_vector_count": 2
+      },
+      {
+        "index": 2,
+        "dim": 1,
+        "kind": "line",
+        "mult": 1,
+        "representative_coordinate": "2/3, 2/3, w",
+        "coordinate_list_size": 1,
+        "basis_vector_count": 1
+      },
+      {
+        "index": 3,
+        "dim": 1,
+        "kind": "line",
+        "mult": 1,
+        "representative_coordinate": "1/3, 1/3, w",
+        "coordinate_list_size": 1,
+        "basis_vector_count": 1
+      },
+      {
+        "index": 4,
+        "dim": 1,
+        "kind": "line",
+        "mult": 1,
+        "representative_coordinate": "0, 0, w",
+        "coordinate_list_size": 1,
+        "basis_vector_count": 1
+      }
+    ]
+  },
+  "realspace": {
+    "coord_key": "orbit_with_moments",
+    "entry_count": 3,
+    "sample_entries": [
+      {
+        "index": 0,
+        "dim": 3,
+        "kind": "other",
+        "mult": 6,
+        "representative_coordinate": "x, y, z",
+        "coordinate_list_size": 6,
+        "basis_vector_count": 3,
+        "site_symmetry": "1"
+      },
+      {
+        "index": 1,
+        "dim": 1,
+        "kind": "line",
+        "mult": 2,
+        "representative_coordinate": "1/3, 2/3, z",
+        "coordinate_list_size": 2,
+        "basis_vector_count": 1,
+        "site_symmetry": "3[z]"
+      },
+      {
+        "index": 2,
+        "dim": 1,
+        "kind": "line",
+        "mult": 2,
+        "representative_coordinate": "0, 0, z",
+        "coordinate_list_size": 2,
+        "basis_vector_count": 1,
+        "site_symmetry": "3[z]"
+      }
+    ]
+  },
+  "generic_builder_layers": {
+    "geometry": "available",
+    "current_row_shell": "available",
+    "current_row_compatibility": "available",
+    "target_alignment": "available",
+    "local_ai_seed": "available",
+    "local_ai_embedding": "available",
+    "direct_quotient": "available"
+  }
+}

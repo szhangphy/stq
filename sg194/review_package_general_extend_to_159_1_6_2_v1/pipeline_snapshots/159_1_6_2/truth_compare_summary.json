@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-04-05T13:07:48+08:00",
+  "group": "159.1.6.2",
+  "truth_compare_available": true,
+  "status": "available",
+  "truth_source_kind": "external_compare_only_rank_reference",
+  "truth_compare_only": true,
+  "status_file": null,
+  "verdict_file": "sg194/compare_only_rank_reference_159_1_6_2.json",
+  "external_object_label": "P31c (No. 159.61)",
+  "reference_scope": "double_only_rank_reference",
+  "note": "These are compare-only external Bilbao-grounded rank facts reconstructed by the user. They must not be used as solver input.",
+  "single": {
+    "solver_object_id": "single_target_pending",
+    "solver_availability": "blocked",
+    "solver_final_result_mode": "diagnostic_only",
+    "solver_classification_is_published_final": false,
+    "solver_verification_status": "blocked_generic_alignment_summary_exception",
+    "solver_same_shell_semantics": null,
+    "solver_dBS": null,
+    "solver_dAI": null,
+    "solver_ai_image_rank_in_bs": null,
+    "solver_classification": null,
+    "truth_reference_available": false,
+    "truth_available_fields": [],
+    "truth_dBS": null,
+    "truth_dAI": null,
+    "truth_classification": null,
+    "field_matches": {
+      "dBS": null,
+      "dAI": null,
+      "classification": null
+    },
+    "all_fields_match": null
+  },
+  "double": {
+    "solver_object_id": "double_target_pending",
+    "solver_availability": "blocked",
+    "solver_final_result_mode": "diagnostic_only",
+    "solver_classification_is_published_final": false,
+    "solver_verification_status": "blocked_generic_alignment_summary_exception",
+    "solver_same_shell_semantics": null,
+    "solver_dBS": null,
+    "solver_dAI": null,
+    "solver_ai_image_rank_in_bs": null,
+    "solver_classification": null,
+    "truth_reference_available": true,
+    "truth_available_fields": [
+      "dBS",
+      "dAI"
+    ],
+    "truth_dBS": 8,
+    "truth_dAI": 8,
+    "truth_classification": null,
+    "field_matches": {
+      "dBS": false,
+      "dAI": false,
+      "classification": null
+    },
+    "all_fields_match": false
+  },
+  "matches_truth": false
+}

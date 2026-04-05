@@ -1,0 +1,5 @@
+sg194: group=194.1.1.1 runnable=True trust=generic_symmetry_ops_main_solver_with_truth_compare_only
+ssg194_1_12_16: group=194.1.12.16 runnable=True trust=generic_symmetry_ops_reference_control_for_bs_rank
+ssg159_1_6_2: group=159.1.6.2 runnable=True trust=generic_symmetry_ops_extension_target_with_compare_only_rank_reference
+ssg222_1_1_1: group=222.1.1.1 runnable=True trust=backend_free_generic_symmetry_ops_with_external_oracle_compare
+ssg99_1_1_1: group=99.1.1.1 runnable=True trust=generic_symmetry_ops_same_shell_target_without_benchmark_oracle

@@ -1,0 +1,13 @@
+sg194/compare_only_rank_reference_159_1_6_2.json:2:  "target_group": "159.1.6.2",
+sg194/pipeline_v2/benchmark_oracle_registry.py:29:    "159.1.6.2": BenchmarkOracleSpec(
+sg194/pipeline_v2/benchmark_oracle_registry.py:30:        target_group="159.1.6.2",
+sg194/pipeline_v2/group_target_registry.py:31:    "194.1.12.16": GroupTargetSpec(
+sg194/pipeline_v2/group_target_registry.py:32:        group_id="194.1.12.16",
+sg194/pipeline_v2/group_target_registry.py:38:    "159.1.6.2": GroupTargetSpec(
+sg194/pipeline_v2/group_target_registry.py:39:        group_id="159.1.6.2",
+sg194/pipeline_v2/specs.py:52:    group_id="194.1.12.16",
+sg194/pipeline_v2/specs.py:53:    title="194.1.12.16 generic BS-rank reference control",
+sg194/pipeline_v2/specs.py:87:        "194.1.12.16 is the active generic BS-rank control object for this round. It must remain "
+sg194/pipeline_v2/specs.py:95:    group_id="159.1.6.2",
+sg194/pipeline_v2/specs.py:96:    title="159.1.6.2 generic extension target with compare-only Bilbao hook",
+sg194/pipeline_v2/specs.py:131:        "159.1.6.2 is the active generic extension target. External rank facts for P31c "

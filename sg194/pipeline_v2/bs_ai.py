@@ -167,7 +167,7 @@ def _annotate_result_mode(
     for item in records:
         mode, is_final, status = _infer_result_mode(item, spec)
         item["truth_compare_available"] = target_spec.truth_compare_available
-        item["benchmark_oracle_available"] = target_spec.truth_compare_available
+        item["benchmark_oracle_available"] = False
         item["final_result_mode"] = mode
         item["classification_is_published_final"] = is_final
         item["status"] = status

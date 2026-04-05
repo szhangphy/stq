@@ -47,6 +47,93 @@ SG194_SPEC = GroupSpec(
 )
 
 
+GROUP194_1_12_16_SPEC = GroupSpec(
+    key="ssg194_1_12_16",
+    group_id="194.1.12.16",
+    title="194.1.12.16 generic BS-rank reference control",
+    description=(
+        "Generic symmetry-ops control object used to verify that the unified runtime can still "
+        "reproduce a known-good BS-rank path without falling back to benchmark-backed solving."
+    ),
+    home_subdir="sg194",
+    adapter_key="generic_diagnostic",
+    modes=("single", "double", "both"),
+    row_languages=("raw", "target", "all"),
+    artifacts={},
+    builder_backend="generic_symmetry_ops",
+    special_rules={
+        "trust_policy": "symmetry_operations_only",
+        "oracle_policy": "no_active_oracle_on_solver_path",
+        "current_row_language_kind": "generic_current_row_shell_from_symmetry_ops",
+        "target_object_kind": "generic_same_shell_target_object",
+        "control_role": "generic_bs_rank_reference_control",
+    },
+    final_object_ids={},
+    capabilities={
+        "full_geometry": True,
+        "target_alignment": True,
+        "final_results": True,
+        "generic_current_row_shell": True,
+        "generic_local_ai_seed": True,
+        "generic_current_row_compatibility": True,
+        "generic_local_ai_embedding": True,
+        "generic_same_shell_target_builder": True,
+        "generic_direct_quotient": True,
+        "truth_compare_only": False,
+    },
+    coordinate_policy=coordinate_contract(),
+    trust_level="generic_symmetry_ops_reference_control_for_bs_rank",
+    readiness_note=(
+        "194.1.12.16 is the active generic BS-rank control object for this round. It must remain "
+        "runnable through the same generic path used by all new targets."
+    ),
+)
+
+
+GROUP159_1_6_2_SPEC = GroupSpec(
+    key="ssg159_1_6_2",
+    group_id="159.1.6.2",
+    title="159.1.6.2 generic extension target with compare-only Bilbao hook",
+    description=(
+        "Primary generic extension target for this round. The active solve path must remain fully "
+        "generic, while the external Bilbao-derived rank facts for P31c (No. 159.61) are exposed "
+        "strictly through the compare-only truth layer."
+    ),
+    home_subdir="sg194",
+    adapter_key="generic_diagnostic",
+    modes=("single", "double", "both"),
+    row_languages=("raw", "target", "all"),
+    artifacts={},
+    builder_backend="generic_symmetry_ops",
+    special_rules={
+        "trust_policy": "symmetry_operations_only",
+        "oracle_policy": "compare_only_rank_reference_not_on_active_solver_path",
+        "current_row_language_kind": "generic_current_row_shell_from_symmetry_ops",
+        "target_object_kind": "generic_same_shell_target_object",
+        "external_compare_object": "P31c (No. 159.61)",
+    },
+    final_object_ids={},
+    capabilities={
+        "full_geometry": True,
+        "target_alignment": True,
+        "final_results": True,
+        "generic_current_row_shell": True,
+        "generic_local_ai_seed": True,
+        "generic_current_row_compatibility": True,
+        "generic_local_ai_embedding": True,
+        "generic_same_shell_target_builder": True,
+        "generic_direct_quotient": True,
+        "truth_compare_only": True,
+    },
+    coordinate_policy=coordinate_contract(),
+    trust_level="generic_symmetry_ops_extension_target_with_compare_only_rank_reference",
+    readiness_note=(
+        "159.1.6.2 is the active generic extension target. External rank facts for P31c "
+        "(No. 159.61) remain compare-only and must not feed the active solve path."
+    ),
+)
+
+
 GROUP222_SPEC = GroupSpec(
     key="ssg222_1_1_1",
     group_id="222.1.1.1",
@@ -171,6 +258,10 @@ GROUP99_SPEC = GroupSpec(
 GROUP_SPECS = {
     SG194_SPEC.key: SG194_SPEC,
     SG194_SPEC.group_id: SG194_SPEC,
+    GROUP194_1_12_16_SPEC.key: GROUP194_1_12_16_SPEC,
+    GROUP194_1_12_16_SPEC.group_id: GROUP194_1_12_16_SPEC,
+    GROUP159_1_6_2_SPEC.key: GROUP159_1_6_2_SPEC,
+    GROUP159_1_6_2_SPEC.group_id: GROUP159_1_6_2_SPEC,
     GROUP222_SPEC.key: GROUP222_SPEC,
     GROUP222_SPEC.group_id: GROUP222_SPEC,
     "222.1.1601": GROUP222_SPEC,

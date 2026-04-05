@@ -186,8 +186,11 @@ def write_pipeline_outputs(
                         [
                             f"truth compare available: `{truth_compare.get('truth_compare_available')}`",
                             f"matches truth: `{truth_compare.get('matches_truth')}`",
+                            f"external object label: `{truth_compare.get('external_object_label')}`",
+                            f"reference scope: `{truth_compare.get('reference_scope')}`",
                             f"single compare: `{truth_compare.get('single')}`",
                             f"double compare: `{truth_compare.get('double')}`",
+                            f"note: `{truth_compare.get('note')}`",
                         ]
                     )
                 ),

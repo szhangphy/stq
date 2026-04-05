@@ -1,0 +1,13 @@
+{
+  "target_group": "159.1.6.2",
+  "external_object_label": "P31c (No. 159.61)",
+  "reference_scope": "double_only_rank_reference",
+  "truth_compare_only": true,
+  "note": "These are compare-only external Bilbao-grounded rank facts reconstructed by the user. They must not be used as solver input.",
+  "single_truth": {},
+  "double_truth": {
+    "dBS": 8,
+    "dAI": 8,
+    "classification": null
+  }
+}
