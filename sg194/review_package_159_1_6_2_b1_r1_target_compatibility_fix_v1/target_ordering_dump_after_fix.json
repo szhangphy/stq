@@ -1,0 +1,108 @@
+{
+  "group": "159.1.6.2",
+  "mode": "single",
+  "target_point_ids_current": [],
+  "target_global_point_ids": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6"
+  ],
+  "target_capture_ids": [],
+  "target_unknown_count": 18,
+  "target_unknown_ordering": [
+    "B1_R1",
+    "B1_R2",
+    "B1_R3",
+    "B2_R1",
+    "B2_R2",
+    "B2_R3",
+    "B3_R1",
+    "B3_R2",
+    "B3_R3",
+    "B4_R1",
+    "B4_R2",
+    "B4_R3",
+    "B5_R1",
+    "B5_R2",
+    "B5_R3",
+    "B6_R1",
+    "B6_R2",
+    "B6_R3"
+  ],
+  "target_compatibility_shape": [],
+  "target_bs_rank": 9,
+  "availability": "available",
+  "blocker_stage": null,
+  "blocker": null,
+  "line_capture_canonicalization": [
+    {
+      "line_id": "L1",
+      "chosen_sample_point": [
+        "0",
+        "0",
+        "1/5"
+      ],
+      "chosen_source": "default_sample_point",
+      "exact_endpoint_subduction": true,
+      "candidate_records": [
+        {
+          "source": "default_sample_point",
+          "sample_point": [
+            "0",
+            "0",
+            "1/5"
+          ],
+          "exact_endpoint_subduction": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "line_id": "L2",
+      "chosen_sample_point": [
+        "1/3",
+        "1/3",
+        "1/5"
+      ],
+      "chosen_source": "default_sample_point",
+      "exact_endpoint_subduction": true,
+      "candidate_records": [
+        {
+          "source": "default_sample_point",
+          "sample_point": [
+            "1/3",
+            "1/3",
+            "1/5"
+          ],
+          "exact_endpoint_subduction": true,
+          "error": null
+        }
+      ]
+    },
+    {
+      "line_id": "L3",
+      "chosen_sample_point": [
+        "2/3",
+        "2/3",
+        "1/5"
+      ],
+      "chosen_source": "default_sample_point",
+      "exact_endpoint_subduction": true,
+      "candidate_records": [
+        {
+          "source": "default_sample_point",
+          "sample_point": [
+            "2/3",
+            "2/3",
+            "1/5"
+          ],
+          "exact_endpoint_subduction": true,
+          "error": null
+        }
+      ]
+    }
+  ]
+}

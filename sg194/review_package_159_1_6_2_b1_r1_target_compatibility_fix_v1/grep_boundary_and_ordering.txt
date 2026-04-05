@@ -1,0 +1,759 @@
+## grep 194.1.12.16
+sg194/review_package_general_extend_to_159_1_6_2_v1/progress_probe_results.json:4:    "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/progress_probe_results.json:9:  "active_control_group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/progress_probe_results.json:35:    "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/README.md:5:- 保持 `194.1.12.16` 作为当前 generic BS-rank 参考控制组，不回退统一入口。
+sg194/review_package_general_extend_to_159_1_6_2_v1/README.md:11:- 已通过参考控制组：`194.1.12.16`
+sg194/review_package_general_extend_to_159_1_6_2_v1/unified_git_diff.diff:95:+    "194.1.12.16": GroupTargetSpec(
+sg194/review_package_general_extend_to_159_1_6_2_v1/unified_git_diff.diff:96:+        group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/unified_git_diff.diff:138:+    group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/unified_git_diff.diff:139:+    title="194.1.12.16 generic BS-rank reference control",
+sg194/review_package_general_extend_to_159_1_6_2_v1/unified_git_diff.diff:173:+        "194.1.12.16 is the active generic BS-rank control object for this round. It must remain "
+sg194/review_package_general_extend_to_159_1_6_2_v1/key_code_snippets.md:3:## 1. `194.1.12.16` 控制组 spec 注册
+sg194/review_package_general_extend_to_159_1_6_2_v1/key_code_snippets.md:10:    group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:4:sg194/pipeline_v2/group_target_registry.py:31:    "194.1.12.16": GroupTargetSpec(
+sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:5:sg194/pipeline_v2/group_target_registry.py:32:        group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:8:sg194/pipeline_v2/specs.py:52:    group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:9:sg194/pipeline_v2/specs.py:53:    title="194.1.12.16 generic BS-rank reference control",
+sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:10:sg194/pipeline_v2/specs.py:87:        "194.1.12.16 is the active generic BS-rank control object for this round. It must remain "
+sg194/review_package_general_extend_to_159_1_6_2_v1/stage_status_matrix.md:12:## 194.1.12.16（参考控制组）
+sg194/review_package_general_extend_to_159_1_6_2_v1/file_audit_table.md:5:| `sg194/README.md` | 顶层说明 | 否 | 否 | 是 | 否 | README 仍偏旧，未提到 `194.1.12.16` 和 `159.1.6.2`。 |
+sg194/review_package_general_extend_to_159_1_6_2_v1/file_audit_table.md:22:| `sg194/pipeline_v2/adapters/sg194.py` | 旧 SG194 adapter | 是 | 是 | 是 | 否 | 本轮未用作 `159.1.6.2` 或 `194.1.12.16` 的 active adapter。 |
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:89:        "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:8125:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:16191:        "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:21367:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/run_commands.txt:21:python -m sg194.run_group_pipeline --group 194.1.12.16 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1 --build-package
+sg194/review_package_general_extend_to_159_1_6_2_v1/run_commands.txt:26:... probe 194.1.12.16 output JSONs ...
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/bs_results.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/bs_results.json:71:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/bs_results.json:8156:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/run_194_1_12_16.log:1:pipeline ok: group=194.1.12.16 mode=both row_language=all checks_passed=True final_results_available=False final_results_verified=False trust=generic_symmetry_ops_reference_control_for_bs_rank output_dir=/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/final_status_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/final_status_summary.json:43:  "note": "194.1.12.16 is the active generic BS-rank control object for this round. It must remain runnable through the same generic path used by all new targets."
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:1:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/run_194_1_12_16.log:1:pipeline ok: group=194.1.12.16 mode=both row_language=all checks_passed=True final_results_available=False final_results_verified=False trust=generic_symmetry_ops_reference_control_for_bs_rank output_dir=/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:2:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/registered_groups.txt:2:ssg194_1_12_16: group=194.1.12.16 runnable=True trust=generic_symmetry_ops_reference_control_for_bs_rank
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:3:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/wrong_group_grep.txt:4301:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/autoresearch-state.json:4:    "goal": "\u4fee\u590d generic BS rank\uff0c\u4f7f 159.1.6.2, 194.1.12.16, 139.1.8.35 \u7684 single/double \u7ed3\u679c\u4e0e\u5bf9\u5e94\u7a7a\u95f4\u7fa4\u57fa\u51c6\u4e00\u81f4\uff0c\u4e14\u4e0d\u5f15\u5165\u7fa4\u53f7 hardcode",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:4:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/wrong_group_grep.txt:4305:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:6:# goal: 修复 generic BS rank，使 159.1.6.2, 194.1.12.16, 139.1.8.35 的 single/double 结果与对应空间群基准一致，且不引入群号 hardcode
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:5:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/wrong_group_grep.txt:4306:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:15:0	8651115	17	0	-	baseline	Baseline before generic BS rank repair: 159.1.6.2=9/9, 194.1.12.16=13/10, 139.1.8.35=14/6
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:6:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:7:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:89:        "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:8:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:8125:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:9:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:16191:        "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:10:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/representation_alignment_summary.json:21367:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:11:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:4:sg194/pipeline_v2/group_target_registry.py:31:    "194.1.12.16": GroupTargetSpec(
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:12:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:5:sg194/pipeline_v2/group_target_registry.py:32:        group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:13:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:8:sg194/pipeline_v2/specs.py:52:    group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:14:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:9:sg194/pipeline_v2/specs.py:53:    title="194.1.12.16 generic BS-rank reference control",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:15:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/new_target_registration_scan.txt:10:sg194/pipeline_v2/specs.py:87:        "194.1.12.16 is the active generic BS-rank control object for this round. It must remain "
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:16:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/bs_results.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:17:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/bs_results.json:71:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:18:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/bs_results.json:8156:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:19:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/final_status_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:20:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/final_status_summary.json:43:  "note": "194.1.12.16 is the active generic BS-rank control object for this round. It must remain runnable through the same generic path used by all new targets."
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:21:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/consistency_checks.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:22:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/grep_159_1_6_2.txt:1:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/autoresearch-state.json:4:    "goal": "\u4fee\u590d generic BS rank\uff0c\u4f7f 159.1.6.2, 194.1.12.16, 139.1.8.35 \u7684 single/double \u7ed3\u679c\u4e0e\u5bf9\u5e94\u7a7a\u95f4\u7fa4\u57fa\u51c6\u4e00\u81f4\uff0c\u4e14\u4e0d\u5f15\u5165\u7fa4\u53f7 hardcode",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:23:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/grep_159_1_6_2.txt:5:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:6:# goal: 修复 generic BS rank，使 159.1.6.2, 194.1.12.16, 139.1.8.35 的 single/double 结果与对应空间群基准一致，且不引入群号 hardcode
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:24:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/grep_159_1_6_2.txt:6:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:15:0	8651115	17	0	-	baseline	Baseline before generic BS rank repair: 159.1.6.2=9/9, 194.1.12.16=13/10, 139.1.8.35=14/6
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:25:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_general_extend_to_159_1_6_2_v1/registered_groups_after_patch.txt:2:ssg194_1_12_16: group=194.1.12.16 runnable=True trust=generic_symmetry_ops_reference_control_for_bs_rank
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:26:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:27:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:89:        "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:28:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:8125:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:29:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:16191:        "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:30:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:21367:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:31:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/package_manifest.json:2:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:32:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/truth_compare_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:33:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_bs_rank_parity_plane_fix_v1/notes/root_cause_note.md:23:- `194.1.12.16` and `139.1.8.35` now show that point-only plane augmentation is not yet selective enough: it helps `159`, helps `139` partially, but still overconstrains `194` and underconstrains `139` relative to the target values.
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:34:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/geometry_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:35:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/bs_results.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:36:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/bs_results.json:71:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:37:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/bs_results.json:8156:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:38:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/final_status_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:39:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/final_status_summary.json:43:  "note": "194.1.12.16 is the active generic BS-rank control object for this round. It must remain runnable through the same generic path used by all new targets."
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:40:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:6:# goal: 修复 generic BS rank，使 159.1.6.2, 194.1.12.16, 139.1.8.35 的 single/double 结果与对应空间群基准一致，且不引入群号 hardcode
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:41:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:15:0	8651115	17	0	-	baseline	Baseline before generic BS rank repair: 159.1.6.2=9/9, 194.1.12.16=13/10, 139.1.8.35=14/6
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:42:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/final_status_summary.md:8:- note: `194.1.12.16 is the active generic BS-rank control object for this round. It must remain runnable through the same generic path used by all new targets.`
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:43:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/consistency_checks.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:44:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:6:    "194.1.12.16": {"single": 13, "double": 10},
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:45:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:11:    "194.1.12.16": {"single": 11, "double": 9},
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:46:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:16:    "194.1.12.16": {"single": 13, "double": 10},
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:47:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/ai_results.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:48:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/ai_results.json:71:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:49:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/ai_results.json:8156:          "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:50:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/geometry_summary.md:3:- group: `194.1.12.16`
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:51:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/quotient_results.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:52:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_v2/specs.py:52:    group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:53:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_v2/specs.py:53:    title="194.1.12.16 generic BS-rank reference control",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:54:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_v2/specs.py:87:        "194.1.12.16 is the active generic BS-rank control object for this round. It must remain "
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:55:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_v2/group_target_registry.py:31:    "194.1.12.16": GroupTargetSpec(
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_194_1_12_16.txt:56:/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_v2/group_target_registry.py:32:        group_id="194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_159_1_6_2.txt:1:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/autoresearch-state.json:4:    "goal": "\u4fee\u590d generic BS rank\uff0c\u4f7f 159.1.6.2, 194.1.12.16, 139.1.8.35 \u7684 single/double \u7ed3\u679c\u4e0e\u5bf9\u5e94\u7a7a\u95f4\u7fa4\u57fa\u51c6\u4e00\u81f4\uff0c\u4e14\u4e0d\u5f15\u5165\u7fa4\u53f7 hardcode",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_159_1_6_2.txt:5:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:6:# goal: 修复 generic BS rank，使 159.1.6.2, 194.1.12.16, 139.1.8.35 的 single/double 结果与对应空间群基准一致，且不引入群号 hardcode
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_159_1_6_2.txt:6:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:15:0	8651115	17	0	-	baseline	Baseline before generic BS rank repair: 159.1.6.2=9/9, 194.1.12.16=13/10, 139.1.8.35=14/6
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/194_1_12_16/consistency_checks.json:3:  "group": "194.1.12.16",
+sg194/review_package_general_extend_to_159_1_6_2_v1/registered_groups.txt:2:ssg194_1_12_16: group=194.1.12.16 runnable=True trust=generic_symmetry_ops_reference_control_for_bs_rank
+sg194/review_package_general_extend_to_159_1_6_2_v1/wrong_group_grep.txt:4301:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/autoresearch-state.json:4:    "goal": "\u4fee\u590d generic BS rank\uff0c\u4f7f 159.1.6.2, 194.1.12.16, 139.1.8.35 \u7684 single/double \u7ed3\u679c\u4e0e\u5bf9\u5e94\u7a7a\u95f4\u7fa4\u57fa\u51c6\u4e00\u81f4\uff0c\u4e14\u4e0d\u5f15\u5165\u7fa4\u53f7 hardcode",
+sg194/review_package_general_extend_to_159_1_6_2_v1/wrong_group_grep.txt:4305:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:6:# goal: 修复 generic BS rank，使 159.1.6.2, 194.1.12.16, 139.1.8.35 的 single/double 结果与对应空间群基准一致，且不引入群号 hardcode
+sg194/review_package_general_extend_to_159_1_6_2_v1/wrong_group_grep.txt:4306:sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:15:0	8651115	17	0	-	baseline	Baseline before generic BS rank repair: 159.1.6.2=9/9, 194.1.12.16=13/10, 139.1.8.35=14/6
+sg194/review_package_general_extend_to_159_1_6_2_v1/final_summary.json:3:  "control_group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:3:  "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:89:        "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:8125:          "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:16191:        "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/representation_alignment_summary.json:21367:          "group": "194.1.12.16",
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:6:# goal: 修复 generic BS rank，使 159.1.6.2, 194.1.12.16, 139.1.8.35 的 single/double 结果与对应空间群基准一致，且不引入群号 hardcode
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/fix-results.tsv:15:0	8651115	17	0	-	baseline	Baseline before generic BS rank repair: 159.1.6.2=9/9, 194.1.12.16=13/10, 139.1.8.35=14/6
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/package_manifest.json:2:  "group": "194.1.12.16",
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:6:    "194.1.12.16": {"single": 13, "double": 10},
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:11:    "194.1.12.16": {"single": 11, "double": 9},
+sg194/review_package_bs_rank_parity_plane_fix_v1/metrics/before_after_metrics.json:16:    "194.1.12.16": {"single": 13, "double": 10},
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/truth_compare_summary.json:3:  "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/geometry_summary.json:3:  "group": "194.1.12.16",
+sg194/review_package_bs_rank_parity_plane_fix_v1/notes/root_cause_note.md:23:- `194.1.12.16` and `139.1.8.35` now show that point-only plane augmentation is not yet selective enough: it helps `159`, helps `139` partially, but still overconstrains `194` and underconstrains `139` relative to the target values.
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/consistency_checks.json:3:  "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/bs_results.json:3:  "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/bs_results.json:71:          "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/bs_results.json:8156:          "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/ai_results.json:3:  "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/ai_results.json:71:          "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/ai_results.json:8156:          "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/final_status_summary.json:3:  "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/final_status_summary.json:43:  "note": "194.1.12.16 is the active generic BS-rank control object for this round. It must remain runnable through the same generic path used by all new targets."
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/geometry_summary.md:3:- group: `194.1.12.16`
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/quotient_results.json:3:  "group": "194.1.12.16",
+sg194/pipeline_runs_v2/194_1_12_16_both_all_extend159_v1/final_status_summary.md:8:- note: `194.1.12.16 is the active generic BS-rank control object for this round. It must remain runnable through the same generic path used by all new targets.`
+sg194/pipeline_v2/specs.py:52:    group_id="194.1.12.16",
+sg194/pipeline_v2/specs.py:53:    title="194.1.12.16 generic BS-rank reference control",
+sg194/pipeline_v2/specs.py:87:        "194.1.12.16 is the active generic BS-rank control object for this round. It must remain "
+sg194/pipeline_v2/group_target_registry.py:31:    "194.1.12.16": GroupTargetSpec(
+sg194/pipeline_v2/group_target_registry.py:32:        group_id="194.1.12.16",
+
+## grep 194.1.16.12
+sg194/review_package_general_extend_to_159_1_6_2_v1/run_commands.txt:20:python -m sg194.run_group_pipeline --group 194.1.16.12 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/194_1_16_12_both_all_extend159_v1 --build-package
+
+## grep B1_R1
+sg194/sg194_single_bs_mismatch_localization.json:743:          "label": "B1_R1",
+sg194/sg194_single_bs_mismatch_localization.json:2561:          "label": "B1_R1",
+sg194/sg194_single_bs_mismatch_localization.json:2837:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:38:    "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:468:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:524:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:575:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:615:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:819:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:950:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:990:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:1050:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:1197:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:1277:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:1357:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:1437:              "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:1691:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:1753:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:1979:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2045:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2111:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2213:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2307:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2401:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2495:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2589:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2711:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2833:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:2959:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:3085:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:3179:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:3273:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:3419:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:3652:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:3723:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:3889:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:4031:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:4130:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:4279:          "label": "B1_R1",
+sg194/sg194_double_repcontent_alignment.json:4311:          "label": "B1_R1",
+sg194/sg194_double_problem_sector_lift.md:29:- current basis row `31` = `B1_R1`
+sg194/sg194_single_external_rowspace_projection.json:38:    "B1_R1",
+sg194/sg194_single_external_rowspace_projection.json:164:    "B1_R1",
+sg194/sg194_double_problem_sector_lift.json:51:      "B1_R1"
+sg194/sg194_double_delta_external_verdict.json:37:          "label": "B1_R1",
+sg194/sg194_standard_alignment_report_v2.md:64:        - `delta_c1_minus_b1` with support [{'label': 'P3_R1', 'coeff': -2}, {'label': 'P3_R3', 'coeff': -2}, {'label': 'P3_R5', 'coeff': 2}, {'label': 'B1_R1', 'coeff': 2}, {'label': 'B1_R3', 'coeff': -2}]
+sg194/sg194_single_standard_space_map.json:70:    "B1_R1",
+sg194/review_package_general_extend_to_159_1_6_2_v1/progress_probe_results.json:30:    "missing_unknown": "B1_R1",
+sg194/review_package_general_extend_to_159_1_6_2_v1/README.md:28:- 直接错误：`KeyError: 'B1_R1'`
+sg194/review_package_general_extend_to_159_1_6_2_v1/key_code_snippets.md:135:## 10. `B1_R1` 报错真正发生点
+sg194/review_package_general_extend_to_159_1_6_2_v1/wrong_group_grep.txt:4236:sg194/bs_fix_reaudit_v1/group_engine_control_case_report_99_1_1_1.md:16:- Structured blocker evidence: `{'same_shell_candidate_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'same_shell_candidate_verification_status': 'target_row_language_blocked', 'projected_point_shell_status': 'blocked', 'projected_point_shell_blocker_stage': 'generic_same_shell_target_rank_loss', 'target_row_language': {'group': '99.1.1.1', 'mode': 'single', 'row_language_kind': 'generic_same_shell_published_target', 'object_kind': 'generic_target_row_language_projection', 'availability': 'blocked', 'current_unknown_count': 42, 'target_unknown_count': 0, 'target_unknown_ordering': [], 'projection_indices': [], 'target_projection_matrix_shape': [0, 42], 'target_projection_matrix': [], 'point_row_translation_profile': None, 'compatibility_matrix_shape': [38, 42], 'object_semantics': 'generic_target_row_language_projection_from_native_point_rows', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'evidence': {'target_point_ids': [], 'projection_row_count': 0}}, 'target_quotient': {'availability': 'blocked', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'object_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'reported_dbs_semantics': None, 'reported_dai_semantics': 'unresolved_target_row_language_blocked', 'classification_derivation_basis': None, 'same_shell_rank_check': None, 'verification_status': 'target_row_language_blocked', 'same_shell_semantics': 'target_row_language_blocked', 'quotient_semantics': 'blocked_before_target_row_language_quotient'}, 'full_current_shell_quotient': {'object_semantics': 'full_current_shell_diagnostic_quotient', 'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'same_shell_candidate_ai_rank': 9, 'dbs_dai_gap': None, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dbs_semantics': 'full_current_shell_rank', 'reported_dai_semantics': 'ai_rank_placeholder_do_not_treat_as_published_target', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs_on_full_current_shell', 'same_shell_rank_check': {'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'diagnostic_same_shell_candidate_ai_rank': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_diagnostic_quotient_available', 'same_shell_semantics': 'full_current_shell_diagnostic_object', 'quotient_semantics': 'full_current_shell_diagnostic_quotient'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/review_package_general_extend_to_159_1_6_2_v1/wrong_group_grep.txt:4255:sg194/review_package_generic_main_path_no_benchmark_v1/group_engine_control_case_report_99_1_1_1.md:16:- Structured blocker evidence: `{'same_shell_candidate_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'same_shell_candidate_verification_status': 'target_row_language_blocked', 'projected_point_shell_status': 'blocked', 'projected_point_shell_blocker_stage': 'generic_same_shell_target_rank_loss', 'target_row_language': {'group': '99.1.1.1', 'mode': 'single', 'row_language_kind': 'generic_same_shell_published_target', 'object_kind': 'generic_target_row_language_projection', 'availability': 'blocked', 'current_unknown_count': 42, 'target_unknown_count': 0, 'target_unknown_ordering': [], 'projection_indices': [], 'target_projection_matrix_shape': [0, 42], 'target_projection_matrix': [], 'point_row_translation_profile': None, 'compatibility_matrix_shape': [38, 42], 'object_semantics': 'generic_target_row_language_projection_from_native_point_rows', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'evidence': {'target_point_ids': [], 'projection_row_count': 0}}, 'target_quotient': {'availability': 'blocked', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'object_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'reported_dbs_semantics': None, 'reported_dai_semantics': 'unresolved_target_row_language_blocked', 'classification_derivation_basis': None, 'same_shell_rank_check': None, 'verification_status': 'target_row_language_blocked', 'same_shell_semantics': 'target_row_language_blocked', 'quotient_semantics': 'blocked_before_target_row_language_quotient'}, 'full_current_shell_quotient': {'object_semantics': 'full_current_shell_diagnostic_quotient', 'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'same_shell_candidate_ai_rank': 9, 'dbs_dai_gap': None, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dbs_semantics': 'full_current_shell_rank', 'reported_dai_semantics': 'ai_rank_placeholder_do_not_treat_as_published_target', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs_on_full_current_shell', 'same_shell_rank_check': {'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'diagnostic_same_shell_candidate_ai_rank': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_diagnostic_quotient_available', 'same_shell_semantics': 'full_current_shell_diagnostic_object', 'quotient_semantics': 'full_current_shell_diagnostic_quotient'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/sg194_mismatch_localization_audit.md:390:        "label": "B1_R1",
+sg194/review_package_general_extend_to_159_1_6_2_v1/stage_status_matrix.md:34:| target_row_language | `blocked` | `_build_same_shell_target_row_language` 在 `build_global_compatibility` 报 `KeyError: 'B1_R1'` |
+sg194/review_package_general_extend_to_159_1_6_2_v1/stage_status_matrix.md:46:- line-block terms 引入 `B1_R1`
+sg194/review_package_general_extend_to_159_1_6_2_v1/stage_status_matrix.md:48:- `runtime_backend_free.build_global_compatibility` 在 `unknown_index['B1_R1']` 处抛出 `KeyError`
+sg194/review_package_general_extend_to_159_1_6_2_v1/file_audit_table.md:17:| `sg194/pipeline_v2/runtime_backend_free.py` | backend-free 兼容矩阵构造 | 否 | 是 | 否 | 否 | `build_global_compatibility` 在 `unknown_index['B1_R1']` 处报错。 |
+sg194/review_package_general_extend_to_159_1_6_2_v1/final_summary.json:10:  "current_blocking_exception": "KeyError: 'B1_R1'",
+sg194/sg194_double_ai_patch_before_after_v2.json:100:          "unknown": "B1_R1",
+sg194/sg194_double_ai_patch_before_after_v2.json:122:          "unknown": "B1_R1",
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_99_1_1_1.txt:58:sg194/bs_fix_reaudit_v1/group_engine_control_case_report_99_1_1_1.md:16:- Structured blocker evidence: `{'same_shell_candidate_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'same_shell_candidate_verification_status': 'target_row_language_blocked', 'projected_point_shell_status': 'blocked', 'projected_point_shell_blocker_stage': 'generic_same_shell_target_rank_loss', 'target_row_language': {'group': '99.1.1.1', 'mode': 'single', 'row_language_kind': 'generic_same_shell_published_target', 'object_kind': 'generic_target_row_language_projection', 'availability': 'blocked', 'current_unknown_count': 42, 'target_unknown_count': 0, 'target_unknown_ordering': [], 'projection_indices': [], 'target_projection_matrix_shape': [0, 42], 'target_projection_matrix': [], 'point_row_translation_profile': None, 'compatibility_matrix_shape': [38, 42], 'object_semantics': 'generic_target_row_language_projection_from_native_point_rows', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'evidence': {'target_point_ids': [], 'projection_row_count': 0}}, 'target_quotient': {'availability': 'blocked', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'object_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'reported_dbs_semantics': None, 'reported_dai_semantics': 'unresolved_target_row_language_blocked', 'classification_derivation_basis': None, 'same_shell_rank_check': None, 'verification_status': 'target_row_language_blocked', 'same_shell_semantics': 'target_row_language_blocked', 'quotient_semantics': 'blocked_before_target_row_language_quotient'}, 'full_current_shell_quotient': {'object_semantics': 'full_current_shell_diagnostic_quotient', 'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'same_shell_candidate_ai_rank': 9, 'dbs_dai_gap': None, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dbs_semantics': 'full_current_shell_rank', 'reported_dai_semantics': 'ai_rank_placeholder_do_not_treat_as_published_target', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs_on_full_current_shell', 'same_shell_rank_check': {'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'diagnostic_same_shell_candidate_ai_rank': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_diagnostic_quotient_available', 'same_shell_semantics': 'full_current_shell_diagnostic_object', 'quotient_semantics': 'full_current_shell_diagnostic_quotient'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/review_package_general_extend_to_159_1_6_2_v1/grep_99_1_1_1.txt:77:sg194/review_package_generic_main_path_no_benchmark_v1/group_engine_control_case_report_99_1_1_1.md:16:- Structured blocker evidence: `{'same_shell_candidate_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'same_shell_candidate_verification_status': 'target_row_language_blocked', 'projected_point_shell_status': 'blocked', 'projected_point_shell_blocker_stage': 'generic_same_shell_target_rank_loss', 'target_row_language': {'group': '99.1.1.1', 'mode': 'single', 'row_language_kind': 'generic_same_shell_published_target', 'object_kind': 'generic_target_row_language_projection', 'availability': 'blocked', 'current_unknown_count': 42, 'target_unknown_count': 0, 'target_unknown_ordering': [], 'projection_indices': [], 'target_projection_matrix_shape': [0, 42], 'target_projection_matrix': [], 'point_row_translation_profile': None, 'compatibility_matrix_shape': [38, 42], 'object_semantics': 'generic_target_row_language_projection_from_native_point_rows', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'evidence': {'target_point_ids': [], 'projection_row_count': 0}}, 'target_quotient': {'availability': 'blocked', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'object_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'reported_dbs_semantics': None, 'reported_dai_semantics': 'unresolved_target_row_language_blocked', 'classification_derivation_basis': None, 'same_shell_rank_check': None, 'verification_status': 'target_row_language_blocked', 'same_shell_semantics': 'target_row_language_blocked', 'quotient_semantics': 'blocked_before_target_row_language_quotient'}, 'full_current_shell_quotient': {'object_semantics': 'full_current_shell_diagnostic_quotient', 'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'same_shell_candidate_ai_rank': 9, 'dbs_dai_gap': None, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dbs_semantics': 'full_current_shell_rank', 'reported_dai_semantics': 'ai_rank_placeholder_do_not_treat_as_published_target', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs_on_full_current_shell', 'same_shell_rank_check': {'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'diagnostic_same_shell_candidate_ai_rank': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_diagnostic_quotient_available', 'same_shell_semantics': 'full_current_shell_diagnostic_object', 'quotient_semantics': 'full_current_shell_diagnostic_quotient'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/159_1_6_2/representation_alignment_summary.json:5:  "builder_error": "'B1_R1'",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/159_1_6_2/representation_alignment_summary.json:23:    "error": "'B1_R1'"
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/159_1_6_2/representation_alignment_summary.json:59:      "blocker": "'B1_R1'"
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/159_1_6_2/representation_alignment_summary.json:96:      "blocker": "'B1_R1'"
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/159_1_6_2/final_status_summary.json:15:    "blocker": "'B1_R1'",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/159_1_6_2/final_status_summary.json:31:    "blocker": "'B1_R1'",
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/159_1_6_2/consistency_checks.json:67:        "error": "'B1_R1'"
+sg194/review_package_general_extend_to_159_1_6_2_v1/pipeline_snapshots/159_1_6_2/consistency_checks.json:157:        "error": "'B1_R1'"
+sg194/sg194_double_repcontent_alignment.md:28:        - `delta_c1_minus_b1`: [{'label': 'P3_R1', 'coeff': -2}, {'label': 'P3_R3', 'coeff': -2}, {'label': 'P3_R5', 'coeff': 2}, {'label': 'B1_R1', 'coeff': 2}, {'label': 'B1_R3', 'coeff': -2}]
+sg194/sg194_double_bs_vs_external.json:41:    "B1_R1",
+sg194/sg194_double_bs_vs_external.json:473:            "label": "B1_R1",
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/representation_alignment_summary.json:5:  "builder_error": "'B1_R1'",
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/representation_alignment_summary.json:23:    "error": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/representation_alignment_summary.json:59:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/representation_alignment_summary.json:96:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/quotient_results.md:3:- single_raw_shell: `null` via `quotient_prerequisites_only` / `partial` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/quotient_results.md:4:- single_target_pending: `null` via `blocked_generic_alignment_summary_exception` / `blocked` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/quotient_results.md:5:- double_raw_shell: `null` via `quotient_prerequisites_only` / `partial` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/quotient_results.md:6:- double_target_pending: `null` via `blocked_generic_alignment_summary_exception` / `blocked` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/bs_results.json:59:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/bs_results.json:89:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/bs_results.json:119:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/bs_results.json:149:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/final_status_summary.json:15:    "blocker": "'B1_R1'",
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/final_status_summary.json:31:    "blocker": "'B1_R1'",
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/consistency_checks.json:67:        "error": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/consistency_checks.json:157:        "error": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/ai_results.md:3:- single_raw_shell: `null` in `raw` / `generic_current_row_shell_with_local_ai_seed` / `partial` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/ai_results.md:4:- single_target_pending: `null` in `target` / `generic_same_shell_target_object` / `blocked` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/ai_results.md:5:- double_raw_shell: `null` in `raw` / `generic_current_row_shell_with_local_ai_seed` / `partial` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/ai_results.md:6:- double_target_pending: `null` in `target` / `generic_same_shell_target_object` / `blocked` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/ai_results.json:59:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/ai_results.json:89:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/ai_results.json:119:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/ai_results.json:149:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/quotient_results.json:48:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/quotient_results.json:67:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/quotient_results.json:86:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/quotient_results.json:105:      "blocker": "'B1_R1'"
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/bs_results.md:3:- single_raw_shell: `null` in `raw` / `generic_current_row_shell_with_local_ai_seed` / `partial` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/bs_results.md:4:- single_target_pending: `null` in `target` / `generic_same_shell_target_object` / `blocked` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/bs_results.md:5:- double_raw_shell: `null` in `raw` / `generic_current_row_shell_with_local_ai_seed` / `partial` blocker=`'B1_R1'`
+sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1/bs_results.md:6:- double_target_pending: `null` in `target` / `generic_same_shell_target_object` / `blocked` blocker=`'B1_R1'`
+sg194/bs_fix_reaudit_v1/group_engine_control_case_report_99_1_1_1.md:16:- Structured blocker evidence: `{'same_shell_candidate_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'same_shell_candidate_verification_status': 'target_row_language_blocked', 'projected_point_shell_status': 'blocked', 'projected_point_shell_blocker_stage': 'generic_same_shell_target_rank_loss', 'target_row_language': {'group': '99.1.1.1', 'mode': 'single', 'row_language_kind': 'generic_same_shell_published_target', 'object_kind': 'generic_target_row_language_projection', 'availability': 'blocked', 'current_unknown_count': 42, 'target_unknown_count': 0, 'target_unknown_ordering': [], 'projection_indices': [], 'target_projection_matrix_shape': [0, 42], 'target_projection_matrix': [], 'point_row_translation_profile': None, 'compatibility_matrix_shape': [38, 42], 'object_semantics': 'generic_target_row_language_projection_from_native_point_rows', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'evidence': {'target_point_ids': [], 'projection_row_count': 0}}, 'target_quotient': {'availability': 'blocked', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'object_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'reported_dbs_semantics': None, 'reported_dai_semantics': 'unresolved_target_row_language_blocked', 'classification_derivation_basis': None, 'same_shell_rank_check': None, 'verification_status': 'target_row_language_blocked', 'same_shell_semantics': 'target_row_language_blocked', 'quotient_semantics': 'blocked_before_target_row_language_quotient'}, 'full_current_shell_quotient': {'object_semantics': 'full_current_shell_diagnostic_quotient', 'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'same_shell_candidate_ai_rank': 9, 'dbs_dai_gap': None, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dbs_semantics': 'full_current_shell_rank', 'reported_dai_semantics': 'ai_rank_placeholder_do_not_treat_as_published_target', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs_on_full_current_shell', 'same_shell_rank_check': {'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'diagnostic_same_shell_candidate_ai_rank': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_diagnostic_quotient_available', 'same_shell_semantics': 'full_current_shell_diagnostic_object', 'quotient_semantics': 'full_current_shell_diagnostic_quotient'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/bs_fix_reaudit_v1/group_engine_control_case_report_99_1_1_1.json:140:        "B1_R1",
+sg194/bs_fix_reaudit_v1/group_engine_control_case_report_99.1.1.1.md:15:- Structured blocker evidence: `{'same_shell_candidate_semantics': 'full_current_shell_diagnostic_quotient', 'projected_point_shell_status': 'blocked', 'projected_point_shell_blocker_stage': 'generic_same_shell_target_rank_loss', 'full_current_shell_quotient': {'object_semantics': 'full_current_shell_diagnostic_quotient', 'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'same_shell_candidate_ai_rank': 9, 'dbs_dai_gap': None, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dbs_semantics': 'full_current_shell_rank', 'reported_dai_semantics': 'ai_rank_placeholder_do_not_treat_as_published_target', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs_on_full_current_shell', 'same_shell_rank_check': {'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'diagnostic_same_shell_candidate_ai_rank': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_diagnostic_quotient_available', 'same_shell_semantics': 'full_current_shell_diagnostic_object', 'quotient_semantics': 'full_current_shell_diagnostic_quotient'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/bs_fix_reaudit_v1/group_engine_control_case_report_99.1.1.1.json:97:        "B1_R1",
+sg194/sg194_double_final_external_reduction.json:123:          "label": "B1_R1",
+sg194/sg194_single_ai_vs_external.json:42:    "B1_R1",
+sg194/sg194_single_ai_vs_external.json:106:    "B1_R1",
+sg194/sg194_double_mismatch_localization.md:68:      "label": "B1_R1",
+sg194/sg194_double_problem_sector_inventory.json:145:      "B1_R1",
+sg194/sg194_double_problem_sector_inventory.json:249:          "B1_R1",
+sg194/sg194_double_problem_sector_inventory.json:363:      "B1_R1",
+sg194/sg194_double_problem_sector_inventory.json:467:          "B1_R1",
+sg194/review_package_cut_wrong_nooracle_promotion_v1/reports/group_engine_control_case_report_99_1_1_1.json:97:        "B1_R1",
+sg194/review_package_cut_wrong_nooracle_promotion_v1/reports/group_engine_control_case_report_99_1_1_1.md:15:- Structured blocker evidence: `{'same_shell_candidate_semantics': 'full_current_shell_diagnostic_quotient', 'projected_point_shell_status': 'blocked', 'projected_point_shell_blocker_stage': 'generic_same_shell_target_rank_loss', 'full_current_shell_quotient': {'object_semantics': 'full_current_shell_diagnostic_quotient', 'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'same_shell_candidate_ai_rank': 9, 'dbs_dai_gap': None, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dbs_semantics': 'full_current_shell_rank', 'reported_dai_semantics': 'ai_rank_placeholder_do_not_treat_as_published_target', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs_on_full_current_shell', 'same_shell_rank_check': {'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'diagnostic_same_shell_candidate_ai_rank': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_diagnostic_quotient_available', 'same_shell_semantics': 'full_current_shell_diagnostic_object', 'quotient_semantics': 'full_current_shell_diagnostic_quotient'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/sg194_double_ai_vs_external.json:41:    "B1_R1",
+sg194/sg194_double_ai_vs_external.json:151:          "label": "B1_R1",
+sg194/sg194_double_global_decomposition.json:1027:      "B1_R1",
+sg194/review_package_generic_main_path_no_benchmark_v1/group_engine_control_case_report_99_1_1_1.json:140:        "B1_R1",
+sg194/review_package_generic_main_path_no_benchmark_v1/group_engine_control_case_report_99_1_1_1.md:16:- Structured blocker evidence: `{'same_shell_candidate_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'same_shell_candidate_verification_status': 'target_row_language_blocked', 'projected_point_shell_status': 'blocked', 'projected_point_shell_blocker_stage': 'generic_same_shell_target_rank_loss', 'target_row_language': {'group': '99.1.1.1', 'mode': 'single', 'row_language_kind': 'generic_same_shell_published_target', 'object_kind': 'generic_target_row_language_projection', 'availability': 'blocked', 'current_unknown_count': 42, 'target_unknown_count': 0, 'target_unknown_ordering': [], 'projection_indices': [], 'target_projection_matrix_shape': [0, 42], 'target_projection_matrix': [], 'point_row_translation_profile': None, 'compatibility_matrix_shape': [38, 42], 'object_semantics': 'generic_target_row_language_projection_from_native_point_rows', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'evidence': {'target_point_ids': [], 'projection_row_count': 0}}, 'target_quotient': {'availability': 'blocked', 'blocker_stage': 'generic_target_row_language_missing_point_rows', 'blocker': 'generic target row language could not find any native point-shell rows', 'object_semantics': 'generic_target_row_language_quotient_candidate_blocked', 'reported_dbs_semantics': None, 'reported_dai_semantics': 'unresolved_target_row_language_blocked', 'classification_derivation_basis': None, 'same_shell_rank_check': None, 'verification_status': 'target_row_language_blocked', 'same_shell_semantics': 'target_row_language_blocked', 'quotient_semantics': 'blocked_before_target_row_language_quotient'}, 'full_current_shell_quotient': {'object_semantics': 'full_current_shell_diagnostic_quotient', 'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'same_shell_candidate_ai_rank': 9, 'dbs_dai_gap': None, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dbs_semantics': 'full_current_shell_rank', 'reported_dai_semantics': 'ai_rank_placeholder_do_not_treat_as_published_target', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs_on_full_current_shell', 'same_shell_rank_check': {'dBS': 14, 'dAI': None, 'ai_image_rank_in_bs': 9, 'diagnostic_same_shell_candidate_ai_rank': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_diagnostic_quotient_available', 'same_shell_semantics': 'full_current_shell_diagnostic_object', 'quotient_semantics': 'full_current_shell_diagnostic_quotient'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/sg194_double_delta_localization.json:71:        "label": "B1_R1",
+sg194/review_package_fix_nooracle_target_semantics_v1/reports/group_engine_control_case_report_99_1_1_1.json:103:        "B1_R1",
+sg194/review_package_fix_nooracle_target_semantics_v1/reports/group_engine_control_case_report_99_1_1_1.md:15:- Structured blocker evidence: `{'same_shell_rank_check': {'dBS': 14, 'dAI': 9, 'ai_image_rank_in_bs': 9}, 'full_current_shell_quotient': {'availability': 'available', 'blocker_stage': None, 'blocker': None, 'dBS': 14, 'dAI': 9, 'ai_image_rank_in_bs': 9, 'dbs_dai_gap': 5, 'dbs_minus_ai_image_rank': 5, 'free_rank': 5, 'finite_part': [], 'classification': 'Z^5', 'smith_diagonal_nonzero': [1, 1, 1, 1, 1, 1, 1, 1, 1], 'reported_dai_semantics': 'same_shell_target_ai_rank', 'classification_derivation_basis': 'smith_rank_of_ai_image_in_bs', 'same_shell_rank_check': {'dBS': 14, 'dAI': 9, 'ai_image_rank_in_bs': 9}, 'ai_candidate_count': 21, 'ai_candidate_count_used': 21, 'ai_failure_count': 0, 'ai_incompatible_count': 0, 'ai_embedding_failure_count': 0, 'ai_incompatible_candidates': [], 'ai_embedding_failures': [], 'ai_in_bs_matrix_shape': [14, 21], 'compatibility_check_mode': 'same_shell_full_current_rows_over_full_kernel_basis', 'target_unknown_count': 42, 'target_unknown_ordering': ['B1_R1', 'B1_R2', 'B1_R3', 'B1_R4', 'B1_R5', 'B2_R1', 'B2_R2', 'B2_R3', 'B2_R4', 'B2_R5', 'B3_R1', 'B3_R2', 'B3_R3', 'B3_R4', 'B3_R5', 'B4_R1', 'B4_R2', 'B4_R3', 'B4_R4', 'B4_R5', 'B5_R1', 'B5_R2', 'B5_R3', 'B5_R4', 'B6_R1', 'B6_R2', 'B6_R3', 'B6_R4', 'S1_R1', 'S1_R2', 'S2_R1', 'S2_R2', 'B7_R1', 'B7_R2', 'B7_R3', 'B7_R4', 'B8_R1', 'B8_R2', 'B8_R3', 'B8_R4', 'S3_R1', 'S3_R2'], 'verification_status': 'generic_same_shell_target_verified_from_current_shell_compatibility_zero_subset'}, 'projected_point_shell_attempt': {'status': 'blocked', 'attempt_kind': 'projected_point_shell', 'diagnostic_only': True, 'quotient': None, 'blocker_stage': 'generic_same_shell_target_rank_loss', 'blocker': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous', 'evidence': {'full_rank': 14, 'projected_rank': 0}, 'raw_error': 'generic point-shell projection lost rank; direct quotient on projected current rows is ambiguous (full=14, point=0)'}}`.
+sg194/sg194_double_lift_report.md:23:`['P1_R1', 'P1_R2', 'P1_R9', 'P3_R1', 'P3_R2', 'B1_R1']`
+sg194/sg194_single_bs_vs_external.json:42:    "B1_R1",
+sg194/sg194_single_bs_vs_external.json:240:      "current_hsp_label": "B1_R1",
+sg194/sg194_single_bs_vs_external.json:979:          "label": "B1_R1",
+
+## grep build_global_compatibility
+sg194/pipeline_v2/generic_builders.py:399:    line_full = port.build_global_compatibility(line_blocks, point_ids)
+sg194/pipeline_v2/generic_builders.py:1446:        target_compatibility = port.build_global_compatibility(target_line_blocks, target_point_ids)
+sg194/pipeline_v2/runtime_backend_free.py:2058:def build_global_compatibility(line_blocks: list[dict[str, Any]], point_ids: list[str]) -> dict[str, Any]:
+sg194/pipeline_v2/runtime_backend_free.py:6943:    raw_line_full = build_global_compatibility(raw_line_blocks, point_ids)
+sg194/pipeline_v2/runtime_backend_free.py:6988:    internal_line_full = build_global_compatibility(internal_line_blocks, reduction["final_point_ids"])
+sg194/pipeline_v2/runtime_backend_free.py:7979:    raw_line_full = build_global_compatibility(raw_line_blocks, point_ids)
+sg194/pipeline_v2/runtime_backend_free.py:8023:    internal_line_full = build_global_compatibility(internal_line_blocks, reduction["final_point_ids"])
+
+## grep target ordering
+sg194/pipeline_v2/runtime_group_ops.py:379:        "- `swyckoff_k.py`: background source of the same standardized operation convention and with-planes unknown ordering context.",
+sg194/pipeline_v2/runtime_group_ops.py:420:        f"- The target space remains the audited 31-dimensional with-planes unknown ordering from `single_group_bs_with_planes_basis_raw.json` and `single_group_full_compatibility_with_planes.json`.",
+sg194/pipeline_v2/runtime_group_ops.py:485:    for token in ctx["basis_raw"]["unknown_ordering"]:
+sg194/pipeline_v2/runtime_group_ops.py:652:        "unknown_ordering": ctx["basis_raw"]["unknown_ordering"],
+sg194/pipeline_v2/runtime_group_ops.py:660:    for index, unknown in enumerate(ctx["basis_raw"]["unknown_ordering"]):
+sg194/pipeline_v2/runtime_group_ops.py:671:        "unknown_ordering": ctx["basis_raw"]["unknown_ordering"],
+sg194/pipeline_v2/runtime_group_ops.py:689:        "unknown_ordering": ctx["basis_raw"]["unknown_ordering"],
+sg194/pipeline_v2/runtime_group_ops.py:719:        "- `single_group_ai_expanded_matrix.json`: raw candidate matrix aligned with the 31-dimensional unknown ordering",
+sg194/pipeline_v2/local_irreps.py:867:                "stabilizer_element_ordering_local": list(range(record["group_order"])),
+sg194/pipeline_v2/local_irreps.py:891:                "stabilizer_element_ordering_local": list(range(record["group_order"])),
+sg194/pipeline_v2/generic_builders.py:200:def _build_unknown_ordering(captures: dict[str, Any], point_ids: list[str]) -> list[str]:
+sg194/pipeline_v2/generic_builders.py:201:    ordering = []
+sg194/pipeline_v2/generic_builders.py:205:            ordering.append(f"{point_id}_R{rep_index}")
+sg194/pipeline_v2/generic_builders.py:206:    return ordering
+sg194/pipeline_v2/generic_builders.py:344:    local_unknown_ordering = []
+sg194/pipeline_v2/generic_builders.py:349:            local_unknown_ordering.append(f"{point_id}_R{rep_index}")
+sg194/pipeline_v2/generic_builders.py:358:        "local_unknown_ordering": local_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:415:        "global_unknown_ordering": list(with_planes["global_unknown_ordering"]),
+sg194/pipeline_v2/generic_builders.py:422:            len(with_planes["global_unknown_ordering"]),
+sg194/pipeline_v2/generic_builders.py:542:    unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:558:                    unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:613:def _point_row_indices(unknown_ordering: list[str], point_ids: list[str]) -> list[int]:
+sg194/pipeline_v2/generic_builders.py:615:    return [index for index, unknown in enumerate(unknown_ordering) if unknown.startswith(prefixes)]
+sg194/pipeline_v2/generic_builders.py:779:    local_unknown_ordering: list[str] = []
+sg194/pipeline_v2/generic_builders.py:794:            local_unknown_ordering.append(rep_id)
+sg194/pipeline_v2/generic_builders.py:814:        local_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:827:        "local_unknown_ordering": local_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:870:    local_unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:875:    local_index = {unknown: index for index, unknown in enumerate(local_unknown_ordering)}
+sg194/pipeline_v2/generic_builders.py:878:        row = [0] * len(local_unknown_ordering)
+sg194/pipeline_v2/generic_builders.py:1164:    local_unknown_ordering = [
+sg194/pipeline_v2/generic_builders.py:1239:        for rep_id in local_unknown_ordering:
+sg194/pipeline_v2/generic_builders.py:1250:        for rep_id in local_unknown_ordering:
+sg194/pipeline_v2/generic_builders.py:1285:        local_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:1298:        "local_unknown_ordering": local_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:1407:    current_unknown_ordering = list(bs_analysis["unknown_ordering"])
+sg194/pipeline_v2/generic_builders.py:1444:    target_unknown_ordering: list[str] = []
+sg194/pipeline_v2/generic_builders.py:1448:        target_unknown_ordering = list(target_compatibility["global_unknown_ordering"])
+sg194/pipeline_v2/generic_builders.py:1456:        "source_unknown_count": len(current_unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:1457:        "current_unknown_count": len(current_unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:1458:        "target_unknown_count": len(target_unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:1459:        "target_unknown_ordering": target_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:1478:        "current_unknown_ordering": current_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:1506:    current_unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:1517:        "source_unknown_count": len(current_unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:1518:        "current_unknown_count": len(current_unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:1520:        "target_unknown_ordering": [],
+sg194/pipeline_v2/generic_builders.py:1532:        "current_unknown_ordering": list(current_unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:1540:def _reindex_candidate_to_target_unknown_ordering(
+sg194/pipeline_v2/generic_builders.py:1542:    current_unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:1543:    target_unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:1547:        for index, label in enumerate(current_unknown_ordering)
+sg194/pipeline_v2/generic_builders.py:1549:    return [int(values.get(label, 0)) for label in target_unknown_ordering]
+sg194/pipeline_v2/generic_builders.py:1555:    unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:1561:    for index, (label, coeff) in enumerate(zip(unknown_ordering, row["matrix_row"])):
+sg194/pipeline_v2/generic_builders.py:1607:    target_unknown_ordering = list(target_row_language.get("target_unknown_ordering", []))
+sg194/pipeline_v2/generic_builders.py:1608:    current_unknown_ordering = list(target_row_language.get("current_unknown_ordering", []))
+sg194/pipeline_v2/generic_builders.py:1614:        else sp.zeros(len(target_unknown_ordering), 0)
+sg194/pipeline_v2/generic_builders.py:1626:        target_vector = _reindex_candidate_to_target_unknown_ordering(
+sg194/pipeline_v2/generic_builders.py:1628:            current_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:1629:            target_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:1640:                        target_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:1680:        else sp.zeros(len(target_unknown_ordering), 0)
+sg194/pipeline_v2/generic_builders.py:1760:        "target_unknown_count": len(target_unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:1761:        "target_unknown_ordering": list(target_row_language["target_unknown_ordering"]),
+sg194/pipeline_v2/generic_builders.py:1784:    unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:1794:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/generic_builders.py:1796:    point_indices = _point_row_indices(unknown_ordering, point_ids)
+sg194/pipeline_v2/generic_builders.py:1797:    point_unknown_ordering = [unknown_ordering[index] for index in point_indices]
+sg194/pipeline_v2/generic_builders.py:1868:        else sp.zeros(len(point_unknown_ordering), 0)
+sg194/pipeline_v2/generic_builders.py:1917:        "point_unknown_count": len(point_unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:1918:        "point_unknown_ordering": point_unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:1967:    unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:1977:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/generic_builders.py:2014:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/generic_builders.py:2072:        "target_unknown_count": len(unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:2073:        "target_unknown_ordering": list(unknown_ordering),
+sg194/pipeline_v2/generic_builders.py:2148:    unknown_ordering: list[str],
+sg194/pipeline_v2/generic_builders.py:2156:            unknown_ordering,
+sg194/pipeline_v2/generic_builders.py:2208:        bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/generic_builders.py:2470:            bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/generic_builders.py:2510:            bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/generic_builders.py:2531:        bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/generic_builders.py:2647:        bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/generic_builders.py:2659:        bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/generic_builders.py:2665:        bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_bridge.py:401:    for token in ctx["basis_raw"]["unknown_ordering"]:
+sg194/pipeline_v2/runtime_bridge.py:454:        "unknown_ordering": ctx["basis_raw"]["unknown_ordering"],
+sg194/pipeline_v2/runtime_bridge.py:540:def build_ai_min_generators_json(ai_min: dict[str, Any], unknown_ordering: list[str]) -> dict[str, Any]:
+sg194/pipeline_v2/runtime_bridge.py:543:        "unknown_ordering": unknown_ordering,
+sg194/pipeline_v2/runtime_bridge.py:548:def build_ai_min_matrix_json(ai_min: dict[str, Any], unknown_ordering: list[str]) -> dict[str, Any]:
+sg194/pipeline_v2/runtime_bridge.py:550:    for index, unknown in enumerate(unknown_ordering):
+sg194/pipeline_v2/runtime_bridge.py:561:        "unknown_ordering": unknown_ordering,
+sg194/pipeline_v2/runtime_bridge.py:607:        "- `single_group_ai_min_matrix.json`: `A_min` aligned with the current 31-dimensional unknown ordering",
+sg194/pipeline_v2/runtime_bridge.py:678:    write_json(AI_MIN_GENERATORS_JSON, build_ai_min_generators_json(ai_min, ctx["basis_raw"]["unknown_ordering"]))
+sg194/pipeline_v2/runtime_bridge.py:679:    write_json(AI_MIN_MATRIX_JSON, build_ai_min_matrix_json(ai_min, ctx["basis_raw"]["unknown_ordering"]))
+sg194/pipeline_v2/final_object_reduction.py:537:    ordering: Sequence[str],
+sg194/pipeline_v2/final_object_reduction.py:539:    unknown_index = {unknown: index for index, unknown in enumerate(ordering)}
+sg194/pipeline_v2/final_object_reduction.py:542:        row = [0] * len(ordering)
+sg194/pipeline_v2/final_object_reduction.py:566:                raise ValueError(f"inconsistent point-shell rep ordering for {endpoint_id}")
+sg194/pipeline_v2/final_object_reduction.py:567:    global_unknown_ordering: list[str] = []
+sg194/pipeline_v2/final_object_reduction.py:569:        global_unknown_ordering.extend(per_point_ids.get(point_id, []))
+sg194/pipeline_v2/final_object_reduction.py:573:        global_rows = _block_rows_on_point_shell(block, global_unknown_ordering)
+sg194/pipeline_v2/final_object_reduction.py:596:            "global_unknown_ordering": list(global_unknown_ordering),
+sg194/pipeline_v2/final_object_reduction.py:955:def _candidate_record_unknown_ordering(
+sg194/pipeline_v2/final_object_reduction.py:961:    ordering = list(candidate_records[0]["global_unknown_ordering"])
+sg194/pipeline_v2/final_object_reduction.py:963:        if list(record["global_unknown_ordering"]) != ordering:
+sg194/pipeline_v2/final_object_reduction.py:964:            raise ValueError("candidate path records disagree on global unknown ordering")
+sg194/pipeline_v2/final_object_reduction.py:965:    return ordering
+sg194/pipeline_v2/final_object_reduction.py:980:    unknown_ordering = _candidate_record_unknown_ordering(reduction)
+sg194/pipeline_v2/final_object_reduction.py:981:    point_unknown_ordering = _point_unknown_ordering(unknown_ordering)
+sg194/pipeline_v2/final_object_reduction.py:987:        "unknown_ordering": unknown_ordering,
+sg194/pipeline_v2/final_object_reduction.py:988:        "point_unknown_ordering": {
+sg194/pipeline_v2/final_object_reduction.py:989:            point_id: list(point_unknown_ordering.get(point_id, []))
+sg194/pipeline_v2/final_object_reduction.py:992:        "unknown_count": len(unknown_ordering),
+sg194/pipeline_v2/final_object_reduction.py:1297:        "publication_unknown_ordering": list(publication_point_shell["unknown_ordering"]),
+sg194/pipeline_v2/final_object_reduction.py:1310:    unknown_ordering = list(publication_shell["publication_unknown_ordering"])
+sg194/pipeline_v2/final_object_reduction.py:1319:                {"unknown": unknown_ordering[column_index], "coeff": int(value)}
+sg194/pipeline_v2/final_object_reduction.py:1361:        "global_unknown_ordering": unknown_ordering,
+sg194/pipeline_v2/final_object_reduction.py:1857:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/final_object_reduction.py:1860:    index = {unknown: position for position, unknown in enumerate(unknown_ordering)}
+sg194/pipeline_v2/final_object_reduction.py:1861:    column_map = list(range(len(unknown_ordering)))
+sg194/pipeline_v2/final_object_reduction.py:1873:    unknown_ordering = list(reference_record["global_unknown_ordering"])
+sg194/pipeline_v2/final_object_reduction.py:1874:    if unknown_ordering != list(candidate_record["global_unknown_ordering"]):
+sg194/pipeline_v2/final_object_reduction.py:1875:        raise ValueError("reference/candidate records use different global unknown ordering")
+sg194/pipeline_v2/final_object_reduction.py:1926:        column_map = _build_endpoint_column_map(unknown_ordering, endpoint_relabel)
+sg194/pipeline_v2/final_object_reduction.py:1974:def _point_unknown_ordering(
+sg194/pipeline_v2/final_object_reduction.py:1975:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/final_object_reduction.py:1978:    for unknown in unknown_ordering:
+sg194/pipeline_v2/final_object_reduction.py:2005:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/final_object_reduction.py:2007:    point_unknowns = _point_unknown_ordering(unknown_ordering)
+sg194/pipeline_v2/final_object_reduction.py:2051:            "unknown_ordering": list(point_unknowns.get(point_id, [])),
+sg194/pipeline_v2/final_object_reduction.py:2068:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/final_object_reduction.py:2072:    point_metadata = _point_shell_search_metadata(reduction, unknown_ordering)
+sg194/pipeline_v2/final_object_reduction.py:2120:    unknown_ordering = list(reference_record["global_unknown_ordering"])
+sg194/pipeline_v2/final_object_reduction.py:2121:    if unknown_ordering != list(candidate_record["global_unknown_ordering"]):
+sg194/pipeline_v2/final_object_reduction.py:2122:        raise ValueError("reference/candidate records use different global unknown ordering")
+sg194/pipeline_v2/final_object_reduction.py:2123:    point_unknowns = _point_unknown_ordering(unknown_ordering)
+sg194/pipeline_v2/final_object_reduction.py:2124:    point_metadata = _point_shell_search_metadata(reduction, unknown_ordering)
+sg194/pipeline_v2/final_object_reduction.py:2136:            "point_shell_equivalence_classes": _point_search_equivalence_classes(reduction, unknown_ordering),
+sg194/pipeline_v2/final_object_reduction.py:2150:    all_equivalence_classes = _point_search_equivalence_classes(reduction, unknown_ordering)
+sg194/pipeline_v2/final_object_reduction.py:2158:                unknown_ordering,
+sg194/pipeline_v2/final_object_reduction.py:2278:            column_map = _build_endpoint_column_map(unknown_ordering, combined_relabel)
+sg194/pipeline_v2/final_object_reduction.py:2620:    unknown_ordering = list(published_line_full["global_unknown_ordering"])
+sg194/pipeline_v2/final_object_reduction.py:2621:    has_auxiliary_unknowns = any(token.startswith("S") and "_R" in token for token in unknown_ordering)
+sg194/pipeline_v2/final_object_reduction.py:2661:        "publication_unknown_count": len(unknown_ordering),
+sg194/pipeline_v2/final_object_reduction.py:2662:        "published_unknown_ordering": unknown_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:1685:    local_unknown_ordering: list[str] = []
+sg194/pipeline_v2/runtime_backend_free.py:1719:            local_unknown_ordering.append(rep_id)
+sg194/pipeline_v2/runtime_backend_free.py:1759:        local_index = {unknown: index for index, unknown in enumerate(local_unknown_ordering)}
+sg194/pipeline_v2/runtime_backend_free.py:1761:            row = [0] * len(local_unknown_ordering)
+sg194/pipeline_v2/runtime_backend_free.py:1792:        "local_unknown_ordering": local_unknown_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:1925:    local_index = {unknown: index for index, unknown in enumerate(coarse_block["local_unknown_ordering"])}
+sg194/pipeline_v2/runtime_backend_free.py:1967:        row = [0] * len(coarse_block["local_unknown_ordering"])
+sg194/pipeline_v2/runtime_backend_free.py:2067:                raise ValueError(f"inconsistent rep ordering for {endpoint_id}")
+sg194/pipeline_v2/runtime_backend_free.py:2068:    ordering = []
+sg194/pipeline_v2/runtime_backend_free.py:2070:        ordering.extend(per_point_ids.get(point_id, []))
+sg194/pipeline_v2/runtime_backend_free.py:2071:    unknown_index = {unknown: index for index, unknown in enumerate(ordering)}
+sg194/pipeline_v2/runtime_backend_free.py:2075:            row = [0] * len(ordering)
+sg194/pipeline_v2/runtime_backend_free.py:2092:        "global_unknown_ordering": ordering,
+sg194/pipeline_v2/runtime_backend_free.py:2101:    unknown_ordering: list[str],
+sg194/pipeline_v2/runtime_backend_free.py:2149:    unknown_index = {label: idx for idx, label in enumerate(unknown_ordering)}
+sg194/pipeline_v2/runtime_backend_free.py:2372:    unknown_ordering: list[str],
+sg194/pipeline_v2/runtime_backend_free.py:2375:    for token in unknown_ordering:
+sg194/pipeline_v2/runtime_backend_free.py:2398:    local_unknown_ordering: list[str] = []
+sg194/pipeline_v2/runtime_backend_free.py:2436:            local_unknown_ordering.append(rep_id)
+sg194/pipeline_v2/runtime_backend_free.py:2438:    local_unknown_ordering.extend(plane_basis_labels)
+sg194/pipeline_v2/runtime_backend_free.py:2439:    local_index = {unknown: index for index, unknown in enumerate(local_unknown_ordering)}
+sg194/pipeline_v2/runtime_backend_free.py:2444:            row = [0] * len(local_unknown_ordering)
+sg194/pipeline_v2/runtime_backend_free.py:2464:        "local_unknown_ordering": local_unknown_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:2473:    ordering = list(line_full["global_unknown_ordering"])
+sg194/pipeline_v2/runtime_backend_free.py:2475:        for unknown in block["local_unknown_ordering"]:
+sg194/pipeline_v2/runtime_backend_free.py:2476:            if unknown not in ordering:
+sg194/pipeline_v2/runtime_backend_free.py:2477:                ordering.append(unknown)
+sg194/pipeline_v2/runtime_backend_free.py:2478:    unknown_index = {unknown: index for index, unknown in enumerate(ordering)}
+sg194/pipeline_v2/runtime_backend_free.py:2480:    extra_unknown_count = len(ordering) - len(line_full["global_unknown_ordering"])
+sg194/pipeline_v2/runtime_backend_free.py:2486:            row = [0] * len(ordering)
+sg194/pipeline_v2/runtime_backend_free.py:2503:        "global_unknown_ordering": ordering,
+sg194/pipeline_v2/runtime_backend_free.py:2534:        "unknown_ordering": list(matrix_payload["global_unknown_ordering"]),
+sg194/pipeline_v2/runtime_backend_free.py:3186:    unknown_ordering: list[str],
+sg194/pipeline_v2/runtime_backend_free.py:3236:    raw_unknown_vector = unknown_vector_from_multiplicities(raw_manifold_multiplicities, unknown_ordering)
+sg194/pipeline_v2/runtime_backend_free.py:3241:    unknown_vector = unknown_vector_from_multiplicities(translated_multiplicities, unknown_ordering)
+sg194/pipeline_v2/runtime_backend_free.py:3473:            len(internal_line_full["global_unknown_ordering"]),
+sg194/pipeline_v2/runtime_backend_free.py:3479:            len(publication_line_full["global_unknown_ordering"]),
+sg194/pipeline_v2/runtime_backend_free.py:3484:            len(diagnostic_with_planes["global_unknown_ordering"]),
+sg194/pipeline_v2/runtime_backend_free.py:3672:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:3679:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/runtime_backend_free.py:3690:        "unknown_count": len(unknown_ordering),
+sg194/pipeline_v2/runtime_backend_free.py:3997:                    bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:4027:            "vector_in_unknown_ordering": list(vector),
+sg194/pipeline_v2/runtime_backend_free.py:4046:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:4092:        "unknown_count": len(unknown_ordering),
+sg194/pipeline_v2/runtime_backend_free.py:4322:            "raw42": [len(raw_with_planes["global_matrix"]), len(raw_with_planes["global_unknown_ordering"])],
+sg194/pipeline_v2/runtime_backend_free.py:4323:            "internal_shell": [len(internal_line_full["global_matrix"]), len(internal_line_full["global_unknown_ordering"])],
+sg194/pipeline_v2/runtime_backend_free.py:4324:            "publication_shell": [len(publication_line_full["global_matrix"]), len(publication_line_full["global_unknown_ordering"])],
+sg194/pipeline_v2/runtime_backend_free.py:4570:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:4574:        {"unknown": unknown_ordering[index], "value": int(value)}
+sg194/pipeline_v2/runtime_backend_free.py:5600:    all_same_ordering = True
+sg194/pipeline_v2/runtime_backend_free.py:5609:            ordering = sorted(local_object["character_on_unitary_stabilizer_complex"])
+sg194/pipeline_v2/runtime_backend_free.py:5612:                for index in ordering
+sg194/pipeline_v2/runtime_backend_free.py:5617:                "stabilizer_size": len(ordering),
+sg194/pipeline_v2/runtime_backend_free.py:5618:                "stabilizer_ordering": ordering,
+sg194/pipeline_v2/runtime_backend_free.py:5625:                all_same_ordering &= payload["stabilizer_ordering"] == reference["stabilizer_ordering"]
+sg194/pipeline_v2/runtime_backend_free.py:5634:                "same_stabilizer_ordering_across_b_c_d": len(
+sg194/pipeline_v2/runtime_backend_free.py:5636:                        tuple(record["stabilizer_ordering"])
+sg194/pipeline_v2/runtime_backend_free.py:5652:        "all_same_stabilizer_ordering": all_same_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:5656:            "No family-level local-library mismatch is visible for D3h_like. Families b/c/d share the same stabilizer ordering and the same unitary character vectors for each audited local object label."
+sg194/pipeline_v2/runtime_backend_free.py:5667:        f"- Same stabilizer ordering across b/c/d: `{report['all_same_stabilizer_ordering']}`.",
+sg194/pipeline_v2/runtime_backend_free.py:5674:            f"- `{entry['label']}`: same ordering = `{entry['same_stabilizer_ordering_across_b_c_d']}`, "
+sg194/pipeline_v2/runtime_backend_free.py:5888:        and local_crosscheck_report["all_same_stabilizer_ordering"]
+sg194/pipeline_v2/runtime_backend_free.py:5954:                    {"unknown": publication_line_full["global_unknown_ordering"][col], "coeff": int(value)}
+sg194/pipeline_v2/runtime_backend_free.py:6220:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:6236:                    unknown_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:6335:    ) if publication_induction["candidates"] else sp.zeros(len(publication_bs_analysis["unknown_ordering"]), 0)
+sg194/pipeline_v2/runtime_backend_free.py:6410:    n_unknowns = len(publication_bs_analysis["unknown_ordering"])
+sg194/pipeline_v2/runtime_backend_free.py:6557:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:6574:                    unknown_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:7002:        publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7012:    reduction["internal_unknown_ordering"] = list(internal_bs_analysis["unknown_ordering"])
+sg194/pipeline_v2/runtime_backend_free.py:7014:    publication_shell["publication_unknown_ordering"] = list(publication_bs_analysis["unknown_ordering"])
+sg194/pipeline_v2/runtime_backend_free.py:7034:                publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7070:                publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7104:        {"unknown_ordering": with_planes["global_unknown_ordering"]},
+sg194/pipeline_v2/runtime_backend_free.py:7136:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7242:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7265:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7272:            unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7279:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7288:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7314:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7369:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:7626:            "unknown_ordering": publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:8030:    publication_shell["publication_unknown_ordering"] = list(publication_bs_analysis["unknown_ordering"])
+sg194/pipeline_v2/runtime_backend_free.py:8041:        publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:8060:        publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:8075:        {"unknown_ordering": with_planes["global_unknown_ordering"]},
+sg194/pipeline_v2/runtime_backend_free.py:8107:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:8115:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:8125:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:8143:        unknown_ordering=publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:8278:            "unknown_ordering": publication_bs_analysis["unknown_ordering"],
+sg194/pipeline_v2/runtime_backend_free.py:9225:        and local_crosscheck_report["all_same_stabilizer_ordering"]
+sg194/pipeline_v2/runtime_backend_free.py:9249:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:9259:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/runtime_backend_free.py:9296:                for row_index in range(len(unknown_ordering))
+sg194/pipeline_v2/runtime_backend_free.py:9340:                    unknown_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:9404:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:9418:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/runtime_backend_free.py:9453:            for row_index in range(len(unknown_ordering))
+sg194/pipeline_v2/runtime_backend_free.py:9535:                unknown_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:9545:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/runtime_backend_free.py:9551:        "unknown_ordering": list(unknown_ordering),
+sg194/pipeline_v2/runtime_backend_free.py:9578:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:9593:            "unknown_ordering": list(unknown_ordering),
+sg194/pipeline_v2/runtime_backend_free.py:9616:            "global_unknown_ordering": candidate_ids,
+sg194/pipeline_v2/runtime_backend_free.py:9695:                    unknown_ordering,
+sg194/pipeline_v2/runtime_backend_free.py:9703:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/runtime_backend_free.py:9709:        "unknown_ordering": list(unknown_ordering),
+sg194/pipeline_v2/runtime_backend_free.py:9862:    unknown_ordering: Sequence[str],
+sg194/pipeline_v2/runtime_backend_free.py:9871:        else sp.zeros(len(unknown_ordering), 0)
+sg194/pipeline_v2/runtime_backend_free.py:9949:                "unknown_support": _sparse_unknown_vector_terms(unknown_ordering, unknown_vector),
+sg194/pipeline_v2/adapters/sg194.py:58:            "global_unknown_count": len(compatibility["global_unknown_ordering"]),
+
+## grep boundary
+sg194/pipeline_v2/final_object_reduction.py:151:    for point in kgeom.get("synthetic_boundary_points", []):
+sg194/pipeline_v2/final_object_reduction.py:224:        for boundary in plane.get("boundary_lines", []):
+sg194/pipeline_v2/final_object_reduction.py:225:            matched_line_id = boundary.get("line_id") or boundary.get("special_line_orbit_match")
+sg194/pipeline_v2/final_object_reduction.py:228:            parameter_name = boundary["parameters"][0]
+sg194/pipeline_v2/final_object_reduction.py:230:                "source_kind": "plane_boundary_orbit_match",
+sg194/pipeline_v2/final_object_reduction.py:231:                "source_id": f"{plane['id']}::{boundary['boundary_condition']}",
+sg194/pipeline_v2/final_object_reduction.py:235:                "coordinate_expressions": list(boundary["coordinate_expressions"]),
+sg194/pipeline_v2/final_object_reduction.py:237:                "boundary_condition": boundary["boundary_condition"],
+sg194/pipeline_v2/final_object_reduction.py:359:                "boundary_condition": f"{segment['parameter_name']} = {segment['parameter_interval'][0]}",
+sg194/pipeline_v2/final_object_reduction.py:365:                "boundary_condition": f"{segment['parameter_name']} = {segment['parameter_interval'][1]}",
+sg194/pipeline_v2/final_object_reduction.py:933:            "synthetic_boundary_point_count": len(kgeom.get("synthetic_boundary_points", [])),
+sg194/pipeline_v2/generic_builders.py:120:    synthetic_points = port.build_synthetic_boundary_points(kgeom)
+sg194/pipeline_v2/generic_builders.py:121:    kgeom["synthetic_boundary_points"] = synthetic_points
+sg194/pipeline_v2/generic_builders.py:122:    port.augment_connectivity_with_boundary_points(kgeom, synthetic_points)
+sg194/pipeline_v2/generic_builders.py:2707:            "synthetic_boundary_points": len(shared["synthetic_points"]),
+sg194/pipeline_v2/runtime_backend_free.py:455:def boundary_line_expressions(anchor: Sequence[Fraction], basis: Sequence[Fraction], parameter: str) -> list[sp.Expr]:
+sg194/pipeline_v2/runtime_backend_free.py:748:        for boundary in BOUNDARY_VALUES:
+sg194/pipeline_v2/runtime_backend_free.py:749:            boundary_point = vector_add_scaled(line["_anchor"], basis, boundary)
+sg194/pipeline_v2/runtime_backend_free.py:750:            key = vector_key(boundary_point)
+sg194/pipeline_v2/runtime_backend_free.py:751:            condition = f"{param} = {frac_str(boundary)}"
+sg194/pipeline_v2/runtime_backend_free.py:754:                "boundary_condition": condition,
+sg194/pipeline_v2/runtime_backend_free.py:755:                "point_coordinates": [frac_str(mod1_fraction(value)) for value in boundary_point],
+sg194/pipeline_v2/runtime_backend_free.py:764:                        "boundary_condition": condition,
+sg194/pipeline_v2/runtime_backend_free.py:772:                        "boundary_condition": condition,
+sg194/pipeline_v2/runtime_backend_free.py:792:            for boundary in BOUNDARY_VALUES:
+sg194/pipeline_v2/runtime_backend_free.py:793:                anchor = vector_add_scaled(plane["_anchor"], fixed_basis, boundary)
+sg194/pipeline_v2/runtime_backend_free.py:794:                exprs = boundary_line_expressions(anchor, free_basis, free_param)
+sg194/pipeline_v2/runtime_backend_free.py:795:                condition = f"{fixed_param} = {frac_str(boundary)}"
+sg194/pipeline_v2/runtime_backend_free.py:797:                    "boundary_condition": condition,
+sg194/pipeline_v2/runtime_backend_free.py:798:                    "boundary_role": "geometric_boundary_line",
+sg194/pipeline_v2/runtime_backend_free.py:825:                            "boundary_condition": condition,
+sg194/pipeline_v2/runtime_backend_free.py:836:                            + ", so this is treated as a geometric boundary only."
+sg194/pipeline_v2/runtime_backend_free.py:842:                            "boundary_condition": condition,
+sg194/pipeline_v2/runtime_backend_free.py:843:                            "boundary_role": candidate["boundary_role"],
+sg194/pipeline_v2/runtime_backend_free.py:854:        plane["boundary_lines"] = boundaries
+sg194/pipeline_v2/runtime_backend_free.py:919:        boundary_ids = {
+sg194/pipeline_v2/runtime_backend_free.py:921:            for entry in plane.get("boundary_lines", [])
+sg194/pipeline_v2/runtime_backend_free.py:937:                "incidence_role": "boundary" if line["id"] in boundary_ids else "interior",
+sg194/pipeline_v2/runtime_backend_free.py:999:def build_synthetic_boundary_points(kgeom: dict[str, Any]) -> list[dict[str, Any]]:
+sg194/pipeline_v2/runtime_backend_free.py:1016:            "type": "boundary_point",
+sg194/pipeline_v2/runtime_backend_free.py:1027:        ensure_point(relation["derived_point"], f"{relation['line_id']}:{relation['boundary_condition']}")
+sg194/pipeline_v2/runtime_backend_free.py:1041:def augment_connectivity_with_boundary_points(kgeom: dict[str, Any], synthetic_points: list[dict[str, Any]]) -> None:
+sg194/pipeline_v2/runtime_backend_free.py:1151:    for point in kgeom["synthetic_boundary_points"]:
+sg194/pipeline_v2/runtime_backend_free.py:2558:            kgeom["grouped"]["points"] + kgeom.get("synthetic_boundary_points", [])
+sg194/pipeline_v2/runtime_backend_free.py:3202:            + ctx["kgeom"]["synthetic_boundary_points"]
+sg194/pipeline_v2/runtime_backend_free.py:3305:    for point in kgeom["synthetic_boundary_points"]:
+sg194/pipeline_v2/runtime_backend_free.py:3312:    point_lookup.update({point["id"]: point for point in kgeom.get("synthetic_boundary_points", [])})
+sg194/pipeline_v2/runtime_backend_free.py:3357:            ) else "interior_or_boundary_noncorner"
+sg194/pipeline_v2/runtime_backend_free.py:6924:    synthetic_points = build_synthetic_boundary_points(kgeom)
+sg194/pipeline_v2/runtime_backend_free.py:6925:    kgeom["synthetic_boundary_points"] = synthetic_points
+sg194/pipeline_v2/runtime_backend_free.py:6926:    augment_connectivity_with_boundary_points(kgeom, synthetic_points)
+sg194/pipeline_v2/runtime_backend_free.py:7547:        "synthetic_boundary_points": synthetic_points,
+sg194/pipeline_v2/runtime_backend_free.py:7731:            "synthetic_boundary_points_added": len(synthetic_points),
+sg194/pipeline_v2/runtime_backend_free.py:7865:        f"- The current pilot had to add `{len(synthetic_points)}` synthetic 0D boundary points because the raw k-geometry contains `{len(kgeom_payload['unmatched_line_endpoints'])}` line endpoints that are not emitted by `swyckoff_k.py` as separately listed special points.",
+sg194/pipeline_v2/runtime_backend_free.py:7880:        "- The portability pilot therefore augments the boundary-point set with explicit synthetic 0D endpoints before assembling the global compatibility matrix.",
+sg194/pipeline_v2/runtime_backend_free.py:7968:    point_ids = [item["id"] for item in single_kgeom["grouped"]["points"]] + [item["id"] for item in single_kgeom["synthetic_boundary_points"]]
+sg194/pipeline_v2/runtime_backend_free.py:8350:        "- The same synthetic-boundary augmentation used by the single-group pilot also closes the double-group spatial connectivity layer.",
+sg194/pipeline_v2/runtime_backend_free.py:8460:            "- Boundary-manifold closure: 194.1.1.1 requires synthetic 0D boundary points that were unnecessary on 10.4.1.31.",
+sg194/pipeline_v2/runtime_backend_free.py:8550:        together with an explicit sample point used for the little-group probe. The current pilot also records synthetic 0D boundary points whenever a line endpoint is geometrically present but is not emitted by \texttt{{swyckoff\_k.py}} as a separately listed special point.
+sg194/pipeline_v2/runtime_backend_free.py:8600:        2 & special lines and planes & boundary connectivity, unmatched endpoints, synthetic 0D boundary points & \texttt{{infer\_line\_connectivity}}, \texttt{{infer\_plane\_connectivity}}, \texttt{{build\_synthetic\_boundary\_points}} \\
+sg194/pipeline_v2/runtime_backend_free.py:8625:        The script had to add {synthetic_boundary_points} synthetic 0D boundary points because the raw special-point list is not connectivity-complete for this target. On the published shell the authoritative AI lattice now has rank {single_authoritative_ai_rank}, matching the published BS rank, and the single-group quotient has been extracted as {single_quotient_group}. This means the pilot reaches an honest BS computation, an honest full AI lattice, and an honest single-group quotient on the current published shell.
+sg194/pipeline_v2/runtime_backend_free.py:8637:        The following modules port directly from {reference_group}: standardized real-space geometry, standardized k-space geometry, character-based little-group capture, compatibility assembly by subgroup matching, integer-kernel BS extraction, and the phase-corrected atomic induction bridge. The remaining engine-level work is no longer SG194 published-shell completion itself, but generic orchestration: target-group benchmark-spec lookup, explicit benchmark-vs-diagnostic source separation, and diagnostic-only fallback when no oracle is available. Therefore the true reusable boundary of the workflow is already beyond one-group scripting for the spatial backbone, while the SG194 published-shell single quotient is trivial and the published-shell double quotient matches the benchmark-aligned Z6 target.
+sg194/pipeline_v2/runtime_backend_free.py:8665:            synthetic_boundary_points=single_comp["synthetic_boundary_points_added"],
+sg194/pipeline_v2/runtime_backend_free.py:9044:            "This audit records the basis-convention boundary of the current SG194 repair. The conversion used in the P4 fix is "
+
+## grep line_block
+sg194/pipeline_v2/final_object_reduction.py:551:    candidate_line_blocks: Sequence[dict[str, Any]],
+sg194/pipeline_v2/final_object_reduction.py:554:    block_by_id = {block["line_id"]: block for block in candidate_line_blocks}
+sg194/pipeline_v2/final_object_reduction.py:556:    for block in candidate_line_blocks:
+sg194/pipeline_v2/final_object_reduction.py:1363:        "line_blocks": publication_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:1654:def build_line_block_coarse(
+sg194/pipeline_v2/runtime_backend_free.py:1814:def build_line_block_from_coarse_restriction(
+sg194/pipeline_v2/runtime_backend_free.py:1820:    block = build_line_block_coarse(line_obj, captures, phase_aware_profile=None)
+sg194/pipeline_v2/runtime_backend_free.py:1854:def _build_line_block_from_restriction_classes(
+sg194/pipeline_v2/runtime_backend_free.py:1864:    coarse_block = build_line_block_coarse(line_obj, captures, phase_aware_profile=None)
+sg194/pipeline_v2/runtime_backend_free.py:2010:def build_line_block_from_intrinsic_restriction_classes(
+sg194/pipeline_v2/runtime_backend_free.py:2016:    return _build_line_block_from_restriction_classes(
+sg194/pipeline_v2/runtime_backend_free.py:2024:def build_line_block_from_extrinsic_star_augmented_classes(
+sg194/pipeline_v2/runtime_backend_free.py:2030:    return _build_line_block_from_restriction_classes(
+sg194/pipeline_v2/runtime_backend_free.py:2038:def build_line_block(
+sg194/pipeline_v2/runtime_backend_free.py:2046:        return build_line_block_coarse(
+sg194/pipeline_v2/runtime_backend_free.py:2052:        return build_line_block_from_intrinsic_restriction_classes(line_obj, captures, field="character")
+sg194/pipeline_v2/runtime_backend_free.py:2058:def build_global_compatibility(line_blocks: list[dict[str, Any]], point_ids: list[str]) -> dict[str, Any]:
+sg194/pipeline_v2/runtime_backend_free.py:2060:    for block in line_blocks:
+sg194/pipeline_v2/runtime_backend_free.py:2073:    for block in line_blocks:
+sg194/pipeline_v2/runtime_backend_free.py:2095:        "covered_lines": [block["line_id"] for block in line_blocks],
+sg194/pipeline_v2/runtime_backend_free.py:2100:    line_blocks: list[dict[str, Any]],
+sg194/pipeline_v2/runtime_backend_free.py:2118:    line_block = next(
+sg194/pipeline_v2/runtime_backend_free.py:2121:            for block in line_blocks
+sg194/pipeline_v2/runtime_backend_free.py:2126:    if line_block is None:
+sg194/pipeline_v2/runtime_backend_free.py:2129:    refinement = line_block["phase_aware_refinement"]
+sg194/pipeline_v2/runtime_backend_free.py:2142:            "line_id": line_block["line_id"],
+sg194/pipeline_v2/runtime_backend_free.py:2150:    other_endpoint_id = next(endpoint_id for endpoint_id in line_block["endpoint_ids"] if endpoint_id != selected_endpoint_id)
+sg194/pipeline_v2/runtime_backend_free.py:2153:        for rep in line_block["endpoint_decompositions"][selected_endpoint_id]
+sg194/pipeline_v2/runtime_backend_free.py:2170:                "class_id": f"{line_block['line_id']}_phase_aware_class_{class_index:02d}",
+sg194/pipeline_v2/runtime_backend_free.py:2182:    for rep in line_block["endpoint_decompositions"][other_endpoint_id]:
+sg194/pipeline_v2/runtime_backend_free.py:2217:def build_point_merge_classes_from_line_blocks(
+sg194/pipeline_v2/runtime_backend_free.py:2218:    line_blocks: Sequence[dict[str, Any]],
+sg194/pipeline_v2/runtime_backend_free.py:2235:    for block in line_blocks:
+sg194/pipeline_v2/runtime_backend_free.py:2265:    internal_line_blocks: Sequence[dict[str, Any]],
+sg194/pipeline_v2/runtime_backend_free.py:2267:    direct = build_point_merge_classes_from_line_blocks(publication_line_full.get("line_blocks", []))
+sg194/pipeline_v2/runtime_backend_free.py:2273:    for block in publication_line_full.get("line_blocks", []):
+sg194/pipeline_v2/runtime_backend_free.py:2279:        for block in internal_line_blocks
+sg194/pipeline_v2/runtime_backend_free.py:2283:    return build_point_merge_classes_from_line_blocks(inherited_blocks)
+sg194/pipeline_v2/runtime_backend_free.py:4144:def build_line_block_row_maps(
+sg194/pipeline_v2/runtime_backend_free.py:4145:    line_blocks: Sequence[dict[str, Any]],
+sg194/pipeline_v2/runtime_backend_free.py:4150:    for block in line_blocks:
+sg194/pipeline_v2/runtime_backend_free.py:4161:    raw_line_blocks: Sequence[dict[str, Any]],
+sg194/pipeline_v2/runtime_backend_free.py:4162:    internal_line_blocks: Sequence[dict[str, Any]],
+sg194/pipeline_v2/runtime_backend_free.py:4178:    _raw_row_ranges, raw_row_to_line = build_line_block_row_maps(raw_line_blocks)
+sg194/pipeline_v2/runtime_backend_free.py:4179:    _internal_row_ranges, internal_row_to_line = build_line_block_row_maps(internal_line_blocks)
+sg194/pipeline_v2/runtime_backend_free.py:4180:    _publication_row_ranges, publication_row_to_line = build_line_block_row_maps(
+sg194/pipeline_v2/runtime_backend_free.py:4181:        publication_line_full["line_blocks"]
+sg194/pipeline_v2/runtime_backend_free.py:5908:    if "line_blocks" in line_full:
+sg194/pipeline_v2/runtime_backend_free.py:5909:        row_ranges, _row_to_line = build_line_block_row_maps(line_full["line_blocks"])
+sg194/pipeline_v2/runtime_backend_free.py:5934:            next(block["equations"] for block in publication_line_full["line_blocks"] if block["line_id"] == "PPATH06"),
+sg194/pipeline_v2/runtime_backend_free.py:6934:    raw_line_blocks = [
+sg194/pipeline_v2/runtime_backend_free.py:6935:        build_line_block(
+sg194/pipeline_v2/runtime_backend_free.py:6943:    raw_line_full = build_global_compatibility(raw_line_blocks, point_ids)
+sg194/pipeline_v2/runtime_backend_free.py:6958:    candidate_line_blocks = [
+sg194/pipeline_v2/runtime_backend_free.py:6959:        build_line_block(
+sg194/pipeline_v2/runtime_backend_free.py:6969:        build_candidate_path_records(reduction, candidate_line_blocks),
+sg194/pipeline_v2/runtime_backend_free.py:6979:    internal_line_blocks = [
+sg194/pipeline_v2/runtime_backend_free.py:6980:        build_line_block(
+sg194/pipeline_v2/runtime_backend_free.py:6988:    internal_line_full = build_global_compatibility(internal_line_blocks, reduction["final_point_ids"])
+sg194/pipeline_v2/runtime_backend_free.py:6994:    raw42_point_merge_classes = build_point_merge_classes_from_line_blocks(raw_line_blocks)
+sg194/pipeline_v2/runtime_backend_free.py:6995:    internal_point_merge_classes = build_point_merge_classes_from_line_blocks(internal_line_blocks)
+sg194/pipeline_v2/runtime_backend_free.py:6998:        internal_line_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:7001:        internal_line_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:7013:    reduction["internal_path_ids"] = [block["line_id"] for block in internal_line_blocks]
+sg194/pipeline_v2/runtime_backend_free.py:7015:    publication_shell["publication_path_ids"] = [block["line_id"] for block in publication_line_full["line_blocks"]]
+sg194/pipeline_v2/runtime_backend_free.py:7141:        raw_line_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:7142:        internal_line_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:7562:            "line_blocks": publication_line_full["line_blocks"],
+sg194/pipeline_v2/runtime_backend_free.py:7566:            "diagnostic_internal_line_blocks": internal_line_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:7568:            "candidate_line_blocks": candidate_line_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:7569:            "diagnostic_raw_line_blocks": raw_line_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:7729:            "internal_line_blocks_built": len(internal_line_blocks),
+sg194/pipeline_v2/runtime_backend_free.py:7730:            "publication_line_blocks_built": len(publication_line_full["line_blocks"]),
+sg194/pipeline_v2/runtime_backend_free.py:7970:    raw_line_blocks = [
+sg194/pipeline_v2/runtime_backend_free.py:7971:        build_line_block(
+sg194/pipeline_v2/runtime_backend_free.py:7979:    raw_line_full = build_global_compatibility(raw_line_blocks, point_ids)
+sg194/pipeline_v2/runtime_backend_free.py:7993:    candidate_line_blocks = [
+sg194/pipeline_v2/runtime_backend_free.py:7994:        build_line_block(
+sg194/pipeline_v2/runtime_backend_free.py:8004:        build_candidate_path_records(reduction, candidate_line_blocks),
+sg194/pipeline_v2/runtime_backend_free.py:8014:    internal_line_blocks = [
+sg194/pipeline_v2/runtime_backend_free.py:8015:        build_line_block(
+sg194/pipeline_v2/runtime_backend_free.py:8023:    internal_line_full = build_global_compatibility(internal_line_blocks, reduction["final_point_ids"])
+sg194/pipeline_v2/runtime_backend_free.py:8031:    publication_shell["publication_path_ids"] = [block["line_id"] for block in publication_line_full["line_blocks"]]
+sg194/pipeline_v2/runtime_backend_free.py:8033:    raw42_point_merge_classes = build_point_merge_classes_from_line_blocks(raw_line_blocks)
+sg194/pipeline_v2/runtime_backend_free.py:8034:    internal_point_merge_classes = build_point_merge_classes_from_line_blocks(internal_line_blocks)
+sg194/pipeline_v2/runtime_backend_free.py:8037:        internal_line_blocks,
+sg194/pipeline_v2/runtime_backend_free.py:8040:        internal_line_blocks,
+sg194/pipeline_v2/generic_builders.py:107:        port.build_line_block_coarse(line_obj, captures, phase_aware_profile=None)
+sg194/pipeline_v2/generic_builders.py:288:def _build_generic_line_block(
+sg194/pipeline_v2/generic_builders.py:299:    return stage1_backend().build_line_block(
+sg194/pipeline_v2/generic_builders.py:307:def _build_generic_line_block_compare_coarse(
+sg194/pipeline_v2/generic_builders.py:311:    return stage1_backend().build_line_block_coarse(line_obj, captures, phase_aware_profile=None)
+sg194/pipeline_v2/generic_builders.py:378:    line_blocks = []
+sg194/pipeline_v2/generic_builders.py:381:        block = _build_generic_line_block(line, captures, builder_variant=builder_variant)
+sg194/pipeline_v2/generic_builders.py:382:        line_blocks.append(block)
+sg194/pipeline_v2/generic_builders.py:383:        coarse_compare = _build_generic_line_block_compare_coarse(line, captures)
+sg194/pipeline_v2/generic_builders.py:399:    line_full = port.build_global_compatibility(line_blocks, point_ids)
+sg194/pipeline_v2/generic_builders.py:418:        "line_blocks": line_blocks,
+sg194/pipeline_v2/generic_builders.py:761:def _build_target_restriction_line_block(
+sg194/pipeline_v2/generic_builders.py:803:                "target_line_block_kind": "real_line",
+sg194/pipeline_v2/generic_builders.py:832:        "target_line_block_kind": "real_line",
+sg194/pipeline_v2/generic_builders.py:900:def _build_target_line_blocks_for_window(
+sg194/pipeline_v2/generic_builders.py:935:            blocks.append(_build_generic_line_block(line, captures, builder_variant=builder_variant))
+sg194/pipeline_v2/generic_builders.py:989:                block = _build_target_restriction_line_block(
+sg194/pipeline_v2/generic_builders.py:1022:def _build_target_real_line_blocks(
+sg194/pipeline_v2/generic_builders.py:1035:    return _build_target_line_blocks_for_window(
+sg194/pipeline_v2/generic_builders.py:1264:                "target_line_block_kind": "monodromy_line",
+sg194/pipeline_v2/generic_builders.py:1303:        "target_line_block_kind": "monodromy_line",
+sg194/pipeline_v2/generic_builders.py:1315:def _build_target_monodromy_line_blocks(
+sg194/pipeline_v2/generic_builders.py:1410:    ordinary_line_blocks, ordinary_records = _build_target_real_line_blocks(
+sg194/pipeline_v2/generic_builders.py:1422:    monodromy_line_blocks, monodromy_records = _build_target_monodromy_line_blocks(
+sg194/pipeline_v2/generic_builders.py:1438:    target_line_blocks = ordinary_line_blocks + monodromy_line_blocks
+sg194/pipeline_v2/generic_builders.py:1439:    availability = "available" if target_line_blocks else "blocked"
+sg194/pipeline_v2/generic_builders.py:1440:    blocker_stage = None if target_line_blocks else "generic_target_compatibility_missing_line_blocks"
+sg194/pipeline_v2/generic_builders.py:1441:    blocker = None if target_line_blocks else "generic same-shell published target compatibility could not assemble any target line blocks"
+sg194/pipeline_v2/generic_builders.py:1446:        target_compatibility = port.build_global_compatibility(target_line_blocks, target_point_ids)
+sg194/pipeline_v2/generic_builders.py:1476:        "ordinary_line_block_count": len(ordinary_line_blocks),
+sg194/pipeline_v2/generic_builders.py:1477:        "monodromy_line_block_count": len(monodromy_line_blocks),
+sg194/pipeline_v2/generic_builders.py:1482:            "ordinary_line_block_count": len(ordinary_line_blocks),
+sg194/pipeline_v2/generic_builders.py:1483:            "monodromy_line_block_count": len(monodromy_line_blocks),
+sg194/pipeline_v2/generic_builders.py:1530:        "ordinary_line_block_count": 0,
+sg194/pipeline_v2/generic_builders.py:1531:        "monodromy_line_block_count": 0,
+sg194/pipeline_v2/generic_builders.py:1568:    row_kind = row.get("target_line_block_kind") or row.get("equation_metadata", {}).get("target_line_block_kind")
+sg194/pipeline_v2/generic_builders.py:1575:        "target_line_block_kind": row_kind,
+sg194/pipeline_v2/generic_builders.py:2469:            compatibility["line_blocks"],
+sg194/pipeline_v2/generic_builders.py:2646:        compatibility["line_blocks"],
+
+## grep KeyError
+sg194/pipeline_v1/specs.py:121:    except KeyError as exc:
+sg194/pipeline_v1/specs.py:122:        raise KeyError(f"unsupported group spec: {key}") from exc
+sg194/review_package_general_extend_to_159_1_6_2_v1/progress_probe_results.json:29:    "exception_type": "KeyError",
+sg194/review_package_general_extend_to_159_1_6_2_v1/README.md:28:- 直接错误：`KeyError: 'B1_R1'`
+sg194/review_package_general_extend_to_159_1_6_2_v1/key_code_snippets.md:148:简注：当 line block 引入 synthetic boundary rep label 而 ordering 没有该列时，就会直接 `KeyError`。
+sg194/review_package_general_extend_to_159_1_6_2_v1/file_audit_table.md:13:| `sg194/pipeline_v2/alignment.py` | alignment 汇总 | 否 | 是 | 否 | 否 | 当前 `159.1.6.2` 在这里接住 generic builder 的 `KeyError` fallback。 |
+sg194/review_package_general_extend_to_159_1_6_2_v1/stage_status_matrix.md:34:| target_row_language | `blocked` | `_build_same_shell_target_row_language` 在 `build_global_compatibility` 报 `KeyError: 'B1_R1'` |
+sg194/review_package_general_extend_to_159_1_6_2_v1/stage_status_matrix.md:48:- `runtime_backend_free.build_global_compatibility` 在 `unknown_index['B1_R1']` 处抛出 `KeyError`
+sg194/review_package_general_extend_to_159_1_6_2_v1/final_summary.json:10:  "current_blocking_exception": "KeyError: 'B1_R1'",
+sg194/review_package_no_oracle_sameshell_target_builder_v1/sources/specs.py:228:    except KeyError as exc:
+sg194/review_package_no_oracle_sameshell_target_builder_v1/sources/specs.py:229:        raise KeyError(f"unsupported group spec: {key}") from exc
+sg194/review_package_generic_final_mode_engine_v2/sg194/pipeline_v2/specs.py:224:    except KeyError as exc:
+sg194/review_package_generic_final_mode_engine_v2/sg194/pipeline_v2/specs.py:225:        raise KeyError(f"unsupported group spec: {key}") from exc
+sg194/bs_fix_reaudit_v1/review_package_resolve_7vs8_bs_ai_v1/source/final_object_reduction.py:1238:    raise KeyError(f"unknown path class id: {path_class_id}")
+sg194/pipeline_v2/runtime_group_ops.py:240:    raise KeyError("no matching raw operation found")
+sg194/pipeline_v2/final_object_reduction.py:1819:    raise KeyError(f"unknown path class id: {path_class_id}")
+sg194/pipeline_v2/specs.py:276:    except KeyError as exc:
+sg194/pipeline_v2/specs.py:277:        raise KeyError(f"unsupported group spec: {key}") from exc
+sg194/pipeline_v2/adapters/__init__.py:18:    except KeyError as exc:
+sg194/pipeline_v2/adapters/__init__.py:19:        raise KeyError(f"unsupported adapter: {key}") from exc
+sg194/review_package_group_driven_generic_engine_v1/pipeline_v2/specs.py:224:    except KeyError as exc:
+sg194/review_package_group_driven_generic_engine_v1/pipeline_v2/specs.py:225:        raise KeyError(f"unsupported group spec: {key}") from exc
+sg194/review_package_group_driven_generic_engine_v1/pipeline_v2/adapters/__init__.py:18:    except KeyError as exc:
+sg194/review_package_group_driven_generic_engine_v1/pipeline_v2/adapters/__init__.py:19:        raise KeyError(f"unsupported adapter: {key}") from exc

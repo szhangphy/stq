@@ -1,0 +1,306 @@
+{
+  "branch": "159-1-6-2-b1-r1-target-compatibility-fix-v1",
+  "control_group_name_in_code": "194.1.12.16",
+  "group": "159.1.6.2",
+  "prefx_blocker": {
+    "exception": "KeyError",
+    "unknown": "B1_R1",
+    "root_cause": "target ordering excluded synthetic boundary endpoint ids referenced by target line blocks"
+  },
+  "post_fix_row_language": {
+    "group": "159.1.6.2",
+    "mode": "single",
+    "target_point_ids_current": [],
+    "target_global_point_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "target_capture_ids": [],
+    "target_unknown_count": 18,
+    "target_unknown_ordering": [
+      "B1_R1",
+      "B1_R2",
+      "B1_R3",
+      "B2_R1",
+      "B2_R2",
+      "B2_R3",
+      "B3_R1",
+      "B3_R2",
+      "B3_R3",
+      "B4_R1",
+      "B4_R2",
+      "B4_R3",
+      "B5_R1",
+      "B5_R2",
+      "B5_R3",
+      "B6_R1",
+      "B6_R2",
+      "B6_R3"
+    ],
+    "target_compatibility_shape": [],
+    "target_bs_rank": 9,
+    "availability": "available",
+    "blocker_stage": null,
+    "blocker": null,
+    "line_capture_canonicalization": [
+      {
+        "line_id": "L1",
+        "chosen_sample_point": [
+          "0",
+          "0",
+          "1/5"
+        ],
+        "chosen_source": "default_sample_point",
+        "exact_endpoint_subduction": true,
+        "candidate_records": [
+          {
+            "source": "default_sample_point",
+            "sample_point": [
+              "0",
+              "0",
+              "1/5"
+            ],
+            "exact_endpoint_subduction": true,
+            "error": null
+          }
+        ]
+      },
+      {
+        "line_id": "L2",
+        "chosen_sample_point": [
+          "1/3",
+          "1/3",
+          "1/5"
+        ],
+        "chosen_source": "default_sample_point",
+        "exact_endpoint_subduction": true,
+        "candidate_records": [
+          {
+            "source": "default_sample_point",
+            "sample_point": [
+              "1/3",
+              "1/3",
+              "1/5"
+            ],
+            "exact_endpoint_subduction": true,
+            "error": null
+          }
+        ]
+      },
+      {
+        "line_id": "L3",
+        "chosen_sample_point": [
+          "2/3",
+          "2/3",
+          "1/5"
+        ],
+        "chosen_source": "default_sample_point",
+        "exact_endpoint_subduction": true,
+        "candidate_records": [
+          {
+            "source": "default_sample_point",
+            "sample_point": [
+              "2/3",
+              "2/3",
+              "1/5"
+            ],
+            "exact_endpoint_subduction": true,
+            "error": null
+          }
+        ]
+      }
+    ]
+  },
+  "post_fix_solver": {
+    "single": {
+      "solver_object_id": "single_target_same_shell",
+      "solver_availability": "blocked",
+      "solver_final_result_mode": "diagnostic_only",
+      "solver_classification_is_published_final": false,
+      "solver_verification_status": "semantic_fail",
+      "solver_same_shell_semantics": "not_yet_published_target_object",
+      "solver_dBS": 9,
+      "solver_dAI": 4,
+      "solver_ai_image_rank_in_bs": 4,
+      "solver_classification": "Z^5",
+      "truth_reference_available": false,
+      "truth_available_fields": [],
+      "truth_dBS": null,
+      "truth_dAI": null,
+      "truth_classification": null,
+      "field_matches": {
+        "dBS": null,
+        "dAI": null,
+        "classification": null
+      },
+      "all_fields_match": null
+    },
+    "double": {
+      "solver_object_id": "double_target_same_shell",
+      "solver_availability": "blocked",
+      "solver_final_result_mode": "diagnostic_only",
+      "solver_classification_is_published_final": false,
+      "solver_verification_status": "semantic_fail",
+      "solver_same_shell_semantics": "not_yet_published_target_object",
+      "solver_dBS": 9,
+      "solver_dAI": 4,
+      "solver_ai_image_rank_in_bs": 4,
+      "solver_classification": "Z^5",
+      "truth_reference_available": true,
+      "truth_available_fields": [
+        "dBS",
+        "dAI",
+        "classification"
+      ],
+      "truth_dBS": 8,
+      "truth_dAI": 8,
+      "truth_classification": "trivial",
+      "field_matches": {
+        "dBS": false,
+        "dAI": false,
+        "classification": false
+      },
+      "all_fields_match": false
+    },
+    "final_status": {
+      "generated_at": "2026-04-05T13:56:59+08:00",
+      "group": "159.1.6.2",
+      "status": "not_final",
+      "final_result_mode": "diagnostic_only",
+      "classification_is_published_final": false,
+      "truth_compare_available": true,
+      "benchmark_oracle_available": false,
+      "single_final": {
+        "object_kind": "generic_same_shell_target_object",
+        "dBS": null,
+        "dAI": null,
+        "classification": null,
+        "row_language_kind": "generic_same_shell_published_target",
+        "blocker": "same-shell target quotient fails the published-target semantic guard because dBS != dAI",
+        "derivation_mode": "generic_same_shell_target_semantics_fail",
+        "verification_status": "semantic_fail",
+        "status": "not_final",
+        "final_result_mode": "diagnostic_only",
+        "classification_is_published_final": false,
+        "truth_compare_available": true,
+        "benchmark_oracle_available": false,
+        "source": "generic_symmetry_ops_same_shell_target_builder"
+      },
+      "double_final": {
+        "object_kind": "generic_same_shell_target_object",
+        "dBS": null,
+        "dAI": null,
+        "classification": null,
+        "row_language_kind": "generic_same_shell_published_target",
+        "blocker": "same-shell target quotient fails the published-target semantic guard because dBS != dAI",
+        "derivation_mode": "generic_same_shell_target_semantics_fail",
+        "verification_status": "semantic_fail",
+        "status": "not_final",
+        "final_result_mode": "diagnostic_only",
+        "classification_is_published_final": false,
+        "truth_compare_available": true,
+        "benchmark_oracle_available": false,
+        "source": "generic_symmetry_ops_same_shell_target_builder"
+      },
+      "same_final_object": false,
+      "relation": "diagnostic_only_generic_solver_not_yet_published_final",
+      "note": "159.1.6.2 is the active generic extension target. External rank facts for P31c (No. 159.61) remain compare-only and must not feed the active solve path."
+    },
+    "quotient_objects": [
+      {
+        "object_id": "single_raw_shell",
+        "mode": "single",
+        "row_language_level": "raw",
+        "availability": "available",
+        "classification": null,
+        "free_rank": null,
+        "finite_part": [],
+        "ai_image_rank_in_bs": null,
+        "reported_dai_semantics": null,
+        "classification_derivation_basis": null,
+        "same_shell_semantics": null,
+        "same_shell_rank_check": null,
+        "verification_status": null,
+        "quotient_derivation_mode": "not_applicable_current_row_shell_only",
+        "exact_alignment_status": "not_applicable_current_row_shell_only",
+        "quotient_prerequisites_status": null,
+        "blocker": null
+      },
+      {
+        "object_id": "single_target_same_shell",
+        "mode": "single",
+        "row_language_level": "target",
+        "availability": "blocked",
+        "classification": "Z^5",
+        "free_rank": 5,
+        "finite_part": [],
+        "ai_image_rank_in_bs": 4,
+        "reported_dai_semantics": "same_shell_target_ai_rank",
+        "classification_derivation_basis": "smith_rank_of_ai_image_in_bs_on_same_shell_target_row_language",
+        "same_shell_semantics": "not_yet_published_target_object",
+        "same_shell_rank_check": {
+          "dBS": 9,
+          "dAI": 4,
+          "ai_image_rank_in_bs": 4
+        },
+        "verification_status": "semantic_fail",
+        "quotient_derivation_mode": "generic_same_shell_target_semantics_fail",
+        "exact_alignment_status": "generic_same_shell_target_semantics_fail",
+        "quotient_prerequisites_status": null,
+        "blocker": "same-shell target quotient fails the published-target semantic guard because dBS != dAI"
+      },
+      {
+        "object_id": "double_raw_shell",
+        "mode": "double",
+        "row_language_level": "raw",
+        "availability": "available",
+        "classification": null,
+        "free_rank": null,
+        "finite_part": [],
+        "ai_image_rank_in_bs": null,
+        "reported_dai_semantics": null,
+        "classification_derivation_basis": null,
+        "same_shell_semantics": null,
+        "same_shell_rank_check": null,
+        "verification_status": null,
+        "quotient_derivation_mode": "not_applicable_current_row_shell_only",
+        "exact_alignment_status": "not_applicable_current_row_shell_only",
+        "quotient_prerequisites_status": null,
+        "blocker": null
+      },
+      {
+        "object_id": "double_target_same_shell",
+        "mode": "double",
+        "row_language_level": "target",
+        "availability": "blocked",
+        "classification": "Z^5",
+        "free_rank": 5,
+        "finite_part": [],
+        "ai_image_rank_in_bs": 4,
+        "reported_dai_semantics": "same_shell_target_ai_rank",
+        "classification_derivation_basis": "smith_rank_of_ai_image_in_bs_on_same_shell_target_row_language",
+        "same_shell_semantics": "not_yet_published_target_object",
+        "same_shell_rank_check": {
+          "dBS": 9,
+          "dAI": 4,
+          "ai_image_rank_in_bs": 4
+        },
+        "verification_status": "semantic_fail",
+        "quotient_derivation_mode": "generic_same_shell_target_semantics_fail",
+        "exact_alignment_status": "generic_same_shell_target_semantics_fail",
+        "quotient_prerequisites_status": null,
+        "blocker": "same-shell target quotient fails the published-target semantic guard because dBS != dAI"
+      }
+    ]
+  },
+  "current_blocker": "same-shell target quotient fails the published-target semantic guard because dBS != dAI",
+  "next_files": [
+    "sg194/pipeline_v2/generic_builders.py",
+    "sg194/pipeline_v2/alignment.py",
+    "sg194/pipeline_v2/bs_ai.py"
+  ]
+}

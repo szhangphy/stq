@@ -1,0 +1,17 @@
+git branch --show-current
+git status --short --untracked-files=no
+git log --oneline -n 20
+grep -RIn '194\.1\.12\.16' sg194 || true
+grep -RIn '194\.1\.16\.12' sg194 || true
+grep -RIn 'B1_R1' sg194 || true
+grep -RIn 'build_global_compatibility' sg194/pipeline_v2 || true
+grep -RIn 'target ordering' sg194/pipeline_v2 || true
+grep -RIn 'boundary' sg194/pipeline_v2 || true
+grep -RIn 'line_block' sg194/pipeline_v2 || true
+grep -RIn 'ordering' sg194/pipeline_v2 || true
+grep -RIn 'KeyError' sg194 || true
+python - <<'PY'
+from sg194.pipeline_v2.generic_builders import generic_mode_progress
+generic_mode_progress('159.1.6.2', 'single')
+PY
+python -m sg194.run_group_pipeline --group 159.1.6.2 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/159_1_6_2_both_all_b1_r1_fix_v1 --build-package

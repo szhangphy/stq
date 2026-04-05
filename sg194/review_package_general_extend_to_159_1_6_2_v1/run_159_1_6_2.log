@@ -1,1 +1,0 @@
-pipeline ok: group=159.1.6.2 mode=both row_language=all checks_passed=False final_results_available=False final_results_verified=False trust=generic_symmetry_ops_extension_target_with_compare_only_rank_reference output_dir=/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_runs_v2/159_1_6_2_both_all_extend159_v1

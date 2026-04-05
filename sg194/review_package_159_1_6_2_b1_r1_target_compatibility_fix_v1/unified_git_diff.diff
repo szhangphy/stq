@@ -1,0 +1,97 @@
+diff --git a/sg194/compare_only_rank_reference_159_1_6_2.json b/sg194/compare_only_rank_reference_159_1_6_2.json
+index 11a3988..516fc2d 100644
+--- a/sg194/compare_only_rank_reference_159_1_6_2.json
++++ b/sg194/compare_only_rank_reference_159_1_6_2.json
+@@ -8,6 +8,6 @@
+   "double_truth": {
+     "dBS": 8,
+     "dAI": 8,
+-    "classification": null
++    "classification": "trivial"
+   }
+ }
+diff --git a/sg194/pipeline_v2/generic_builders.py b/sg194/pipeline_v2/generic_builders.py
+index ebaf34a..b5787df 100644
+--- a/sg194/pipeline_v2/generic_builders.py
++++ b/sg194/pipeline_v2/generic_builders.py
+@@ -842,12 +842,13 @@ def _ordered_target_capture_ids(
+     *,
+     shared: dict[str, Any],
+     catalog: dict[tuple[str, str, str], list[dict[str, Any]]],
++    target_point_ids: list[str] | None = None,
+ ) -> list[str]:
+-    target_point_ids = set(shared["target_point_ids"])
++    target_point_ids_set = set(shared["target_point_ids"] if target_point_ids is None else target_point_ids)
+     by_capture: dict[str, dict[str, Any]] = {}
+     for entries in catalog.values():
+         for entry in entries:
+-            if entry["point_id"] not in target_point_ids:
++            if entry["point_id"] not in target_point_ids_set:
+                 continue
+             by_capture[str(entry["capture_id"])] = {
+                 "capture_id": str(entry["capture_id"]),
+@@ -866,6 +867,28 @@ def _ordered_target_capture_ids(
+     return [item["capture_id"] for item in ordered]
+ 
+ 
++def _target_global_point_ids_from_line_blocks(
++    *,
++    shared: dict[str, Any],
++    target_line_blocks: list[dict[str, Any]],
++) -> list[str]:
++    referenced = {
++        str(endpoint_id)
++        for block in target_line_blocks
++        for endpoint_id in block.get("endpoint_ids", [])
++    }
++    if not referenced:
++        return list(shared["target_point_ids"])
++    ordered: list[str] = []
++    for point_id in shared["all_point_ids"]:
++        if point_id in referenced:
++            ordered.append(str(point_id))
++    for point_id in sorted(referenced):
++        if point_id not in ordered:
++            ordered.append(point_id)
++    return ordered
++
++
+ def _build_block_matrix_rows_from_equations(
+     local_unknown_ordering: list[str],
+     equations: list[dict[str, Any]],
+@@ -1431,11 +1454,16 @@ def _build_same_shell_target_row_language(
+         catalog=catalog,
+         point_representatives=point_representatives,
+     )
++    target_line_blocks = ordinary_line_blocks + monodromy_line_blocks
++    target_global_point_ids = _target_global_point_ids_from_line_blocks(
++        shared=shared,
++        target_line_blocks=target_line_blocks,
++    )
+     target_capture_ids = _ordered_target_capture_ids(
+         shared=shared,
+         catalog=catalog,
++        target_point_ids=target_global_point_ids,
+     )
+-    target_line_blocks = ordinary_line_blocks + monodromy_line_blocks
+     availability = "available" if target_line_blocks else "blocked"
+     blocker_stage = None if target_line_blocks else "generic_target_compatibility_missing_line_blocks"
+     blocker = None if target_line_blocks else "generic same-shell published target compatibility could not assemble any target line blocks"
+@@ -1443,7 +1471,7 @@ def _build_same_shell_target_row_language(
+     target_bs_analysis = None
+     target_unknown_ordering: list[str] = []
+     if availability == "available":
+-        target_compatibility = port.build_global_compatibility(target_line_blocks, target_point_ids)
++        target_compatibility = port.build_global_compatibility(target_line_blocks, target_global_point_ids)
+         target_bs_analysis = port.analyze_kernel(target_compatibility)
+         target_unknown_ordering = list(target_compatibility["global_unknown_ordering"])
+     target_bs_rank = None if target_bs_analysis is None else int(len(target_bs_analysis.get("basis_vectors", [])))
+@@ -1457,6 +1485,8 @@ def _build_same_shell_target_row_language(
+         "current_unknown_count": len(current_unknown_ordering),
+         "target_unknown_count": len(target_unknown_ordering),
+         "target_unknown_ordering": target_unknown_ordering,
++        "target_point_ids_current": list(target_point_ids),
++        "target_global_point_ids": list(target_global_point_ids),
+         "target_capture_ids": list(target_capture_ids),
+         "projection_indices": None,
+         "target_projection_matrix_shape": None,

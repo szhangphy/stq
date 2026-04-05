@@ -1,0 +1,47 @@
+{
+  "block_index": 0,
+  "line_id": "L1",
+  "source_line_id": "L1",
+  "target_line_block_kind": null,
+  "endpoint_ids": [
+    "B1",
+    "B2"
+  ],
+  "local_unknown_ordering": [
+    "B1_R1",
+    "B1_R2",
+    "B1_R3",
+    "B2_R1",
+    "B2_R2",
+    "B2_R3"
+  ],
+  "equation_index": 0,
+  "equation": {
+    "basis_id": "L1_R1",
+    "terms": [
+      {
+        "unknown": "B1_R1",
+        "coeff": 1,
+        "side": "left"
+      },
+      {
+        "unknown": "B2_R1",
+        "coeff": -1,
+        "side": "right"
+      }
+    ],
+    "builder_variant": "coarse",
+    "row_kind": "line_basis_decomposition",
+    "uses_extrinsic_data": false,
+    "endpoint_support": {},
+    "class_members": [],
+    "intrinsic_fingerprint_by_rep": {},
+    "extrinsic_fingerprint_by_rep": {},
+    "coarse_signature_by_rep": {}
+  },
+  "term": {
+    "unknown": "B1_R1",
+    "coeff": 1,
+    "side": "left"
+  }
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_v2/generic_builders.py", line 2536, in generic_mode_progress
+    target_row_language = _build_same_shell_target_row_language(
+  File "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_v2/generic_builders.py", line 1446, in _build_same_shell_target_row_language
+    target_compatibility = port.build_global_compatibility(target_line_blocks, target_point_ids)
+  File "/data/work/szhang/ssg/comprel/stq_repo_export/repo/sg194/pipeline_v2/runtime_backend_free.py", line 2077, in build_global_compatibility
+    row[unknown_index[term["unknown"]]] += int(term["coeff"])
+KeyError: 'B1_R1'

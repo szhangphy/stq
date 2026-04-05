@@ -1,0 +1,104 @@
+{
+  "generated_at": "2026-04-05T13:56:59+08:00",
+  "group": "159.1.6.2",
+  "builder_prerequisites": [
+    {
+      "object_id": "single_raw_shell",
+      "current_row_shell_status": "available",
+      "local_ai_seed_status": null,
+      "quotient_prerequisites_status": null
+    },
+    {
+      "object_id": "double_raw_shell",
+      "current_row_shell_status": "available",
+      "local_ai_seed_status": null,
+      "quotient_prerequisites_status": null
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "single_raw_shell",
+      "mode": "single",
+      "row_language_level": "raw",
+      "availability": "available",
+      "classification": null,
+      "free_rank": null,
+      "finite_part": [],
+      "ai_image_rank_in_bs": null,
+      "reported_dai_semantics": null,
+      "classification_derivation_basis": null,
+      "same_shell_semantics": null,
+      "same_shell_rank_check": null,
+      "verification_status": null,
+      "quotient_derivation_mode": "not_applicable_current_row_shell_only",
+      "exact_alignment_status": "not_applicable_current_row_shell_only",
+      "quotient_prerequisites_status": null,
+      "blocker": null
+    },
+    {
+      "object_id": "single_target_same_shell",
+      "mode": "single",
+      "row_language_level": "target",
+      "availability": "blocked",
+      "classification": "Z^5",
+      "free_rank": 5,
+      "finite_part": [],
+      "ai_image_rank_in_bs": 4,
+      "reported_dai_semantics": "same_shell_target_ai_rank",
+      "classification_derivation_basis": "smith_rank_of_ai_image_in_bs_on_same_shell_target_row_language",
+      "same_shell_semantics": "not_yet_published_target_object",
+      "same_shell_rank_check": {
+        "dBS": 9,
+        "dAI": 4,
+        "ai_image_rank_in_bs": 4
+      },
+      "verification_status": "semantic_fail",
+      "quotient_derivation_mode": "generic_same_shell_target_semantics_fail",
+      "exact_alignment_status": "generic_same_shell_target_semantics_fail",
+      "quotient_prerequisites_status": null,
+      "blocker": "same-shell target quotient fails the published-target semantic guard because dBS != dAI"
+    },
+    {
+      "object_id": "double_raw_shell",
+      "mode": "double",
+      "row_language_level": "raw",
+      "availability": "available",
+      "classification": null,
+      "free_rank": null,
+      "finite_part": [],
+      "ai_image_rank_in_bs": null,
+      "reported_dai_semantics": null,
+      "classification_derivation_basis": null,
+      "same_shell_semantics": null,
+      "same_shell_rank_check": null,
+      "verification_status": null,
+      "quotient_derivation_mode": "not_applicable_current_row_shell_only",
+      "exact_alignment_status": "not_applicable_current_row_shell_only",
+      "quotient_prerequisites_status": null,
+      "blocker": null
+    },
+    {
+      "object_id": "double_target_same_shell",
+      "mode": "double",
+      "row_language_level": "target",
+      "availability": "blocked",
+      "classification": "Z^5",
+      "free_rank": 5,
+      "finite_part": [],
+      "ai_image_rank_in_bs": 4,
+      "reported_dai_semantics": "same_shell_target_ai_rank",
+      "classification_derivation_basis": "smith_rank_of_ai_image_in_bs_on_same_shell_target_row_language",
+      "same_shell_semantics": "not_yet_published_target_object",
+      "same_shell_rank_check": {
+        "dBS": 9,
+        "dAI": 4,
+        "ai_image_rank_in_bs": 4
+      },
+      "verification_status": "semantic_fail",
+      "quotient_derivation_mode": "generic_same_shell_target_semantics_fail",
+      "exact_alignment_status": "generic_same_shell_target_semantics_fail",
+      "quotient_prerequisites_status": null,
+      "blocker": "same-shell target quotient fails the published-target semantic guard because dBS != dAI"
+    }
+  ]
+}

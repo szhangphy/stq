@@ -1,0 +1,4 @@
+python - <<'PY'
+from sg194.pipeline_v2.generic_builders import generic_mode_progress
+generic_mode_progress('159.1.6.2', 'single')
+PY
