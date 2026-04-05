@@ -1318,7 +1318,25 @@ def build_publication_path_classes(
                 }
                 combined_row_records.append(payload)
                 combined_rows.append(list(row_record["matrix_row"]))
-        selected_basis_row_records, selected_basis_rows = _rank_gaining_row_records(combined_row_records)
+        # Publication-level path classes should be represented by a single
+        # canonical listed family, not by the union of every star-equivalent
+        # raw member that happens to survive internal reduction.  The full
+        # member-union row space is still kept for diagnostics, but the
+        # published C-matrix is built from the canonical representative only.
+        representative_row_records = [
+            {
+                **row_record,
+                "matrix_row": list(row_record["matrix_row"]),
+                "member_internal_path_class_id": members[0]["path_class_id"],
+                "member_candidate_id": members[0]["representative_candidate_id"],
+                "member_source_line_id": members[0]["representative_source_line_id"],
+                "member_source_kind": members[0]["representative_source_kind"],
+                "member_source_id": members[0]["representative_source_id"],
+                "member_branch_index": int(members[0]["representative_branch_index"]),
+            }
+            for row_record in representative["global_matrix_row_records"]
+        ]
+        representative_rows = [list(row_record["matrix_row"]) for row_record in representative_row_records]
         publication_classes.append(
             {
                 "publication_path_class_id": f"PUBCLASS{class_index:02d}",
@@ -1333,14 +1351,17 @@ def build_publication_path_classes(
                 "aggregate_row_count": len(combined_rows),
                 "aggregate_row_rank": _row_rank(combined_rows),
                 "aggregate_row_space_signature": _row_space_signature(combined_rows),
-                "selected_basis_row_count": len(selected_basis_rows),
-                "selected_basis_row_rank": _row_rank(selected_basis_rows),
-                "selected_basis_row_records": selected_basis_row_records,
-                "selected_basis_rows": selected_basis_rows,
+                "selected_basis_row_count": len(representative_rows),
+                "selected_basis_row_rank": _row_rank(representative_rows),
+                "selected_basis_row_records": representative_row_records,
+                "selected_basis_rows": representative_rows,
                 "publication_equivalence_reason": (
-                    "Raw strong path classes were merged because they share the same publication-level "
+                    "Raw strong path classes were grouped because they share the same publication-level "
                     "endpoint pair, line little-group type, and canonicalized endpoint restriction signature "
-                    "after basis-label permutations and endpoint-side relabel canonicalization."
+                    "after basis-label permutations and endpoint-side relabel canonicalization. "
+                    "The published path class is represented by the canonical member only; "
+                    "other grouped members are retained as diagnostic provenance rather than "
+                    "added to the published row span."
                 ),
                 "selected_as_publication": False,
                 "selection_reason": None,

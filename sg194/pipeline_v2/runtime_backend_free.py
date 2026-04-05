@@ -232,7 +232,10 @@ ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
 LINE_SAMPLE = Fraction(1, 5)
 BOUNDARY_VALUES = (ZERO, HALF)
+# Historical SG194-specific refinement profile. Keep it available as an
+# explicit opt-in, but do not treat it as the generic published-BS default.
 AUTHORITATIVE_PHASE_AWARE_PROFILE = "phase_aware_l2_projective_v1"
+GENERIC_PHASE_AWARE_PROFILE = None
 AUTHORITATIVE_COMPATIBILITY_BUILDER_KIND = (
     "authoritative_basis_decomposition_exact_unique_integer_with_phase_aware_l2_v1"
 )
@@ -7270,7 +7273,7 @@ def build_single_pilot(
     module: Any,
     ssg_dict: dict[str, Any],
     *,
-    line_phase_profile: str = AUTHORITATIVE_PHASE_AWARE_PROFILE,
+    line_phase_profile: str | None = GENERIC_PHASE_AWARE_PROFILE,
 ) -> dict[str, Any]:
     ctx = load_context(module, TARGET_GROUP, "single", ssg_dict)
     print("[pilot] single: geometry")
@@ -8323,7 +8326,7 @@ def build_double_pilot(
     ssg_dict: dict[str, Any],
     single_kgeom: dict[str, Any],
     *,
-    line_phase_profile: str = AUTHORITATIVE_PHASE_AWARE_PROFILE,
+    line_phase_profile: str | None = GENERIC_PHASE_AWARE_PROFILE,
 ) -> dict[str, Any]:
     ctx = load_context(module, TARGET_GROUP, "double", ssg_dict)
     ctx["kgeom"] = single_kgeom

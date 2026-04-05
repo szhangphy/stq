@@ -292,7 +292,11 @@ def _build_generic_line_block(
     builder_variant: str,
 ) -> dict[str, Any]:
     phase_aware_profile = (
-        stage1_backend().AUTHORITATIVE_PHASE_AWARE_PROFILE
+        getattr(
+            stage1_backend(),
+            "GENERIC_PHASE_AWARE_PROFILE",
+            stage1_backend().AUTHORITATIVE_PHASE_AWARE_PROFILE,
+        )
         if builder_variant in {"authoritative", "coarse"}
         else None
     )
@@ -453,7 +457,11 @@ def _build_generic_compatibility(
             "intrinsic": stage1_backend().RETIRED_INTRINSIC_BUILDER_KIND,
         }[builder_variant],
         "phase_aware_profile": (
-            stage1_backend().AUTHORITATIVE_PHASE_AWARE_PROFILE
+            getattr(
+                stage1_backend(),
+                "GENERIC_PHASE_AWARE_PROFILE",
+                stage1_backend().AUTHORITATIVE_PHASE_AWARE_PROFILE,
+            )
             if builder_variant in {"authoritative", "coarse"}
             else "disabled_compare_only"
         ),
@@ -2886,7 +2894,11 @@ def generic_mode_progress(group_id: str, mode: str, builder_variant: str = "auth
             compatibility["line_blocks"],
             bs_analysis["unknown_ordering"],
             phase_aware_profile=(
-                port.AUTHORITATIVE_PHASE_AWARE_PROFILE
+                getattr(
+                    port,
+                    "GENERIC_PHASE_AWARE_PROFILE",
+                    port.AUTHORITATIVE_PHASE_AWARE_PROFILE,
+                )
                 if builder_variant in {"authoritative", "coarse"}
                 else None
             ),
@@ -3063,7 +3075,11 @@ def generic_mode_bundle(group_id: str, mode: str, builder_variant: str = "author
         compatibility["line_blocks"],
         bs_analysis["unknown_ordering"],
         phase_aware_profile=(
-            port.AUTHORITATIVE_PHASE_AWARE_PROFILE
+            getattr(
+                port,
+                "GENERIC_PHASE_AWARE_PROFILE",
+                port.AUTHORITATIVE_PHASE_AWARE_PROFILE,
+            )
             if builder_variant in {"authoritative", "coarse"}
             else None
         ),
@@ -3099,7 +3115,11 @@ def generic_mode_bundle(group_id: str, mode: str, builder_variant: str = "author
         "line_capture_canonicalization": line_capture_canonicalization,
         "point_row_translation": point_row_translation,
         "phase_aware_profile": (
-            port.AUTHORITATIVE_PHASE_AWARE_PROFILE
+            getattr(
+                port,
+                "GENERIC_PHASE_AWARE_PROFILE",
+                port.AUTHORITATIVE_PHASE_AWARE_PROFILE,
+            )
             if builder_variant in {"authoritative", "coarse"}
             else None
         ),
