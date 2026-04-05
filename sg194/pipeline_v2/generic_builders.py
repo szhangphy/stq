@@ -1313,6 +1313,31 @@ def _capture_rep_row_signatures(
     return signatures
 
 
+def _manual_phase_adjusted_character_rows(raw: dict[str, Any]) -> list[list[complex]]:
+    character_rows = raw.get("character", [])
+    tau_c = raw.get("tauC", [])
+    kvec = np.array(raw.get("kvec", []), dtype=float)
+    adjusted_rows: list[list[complex]] = []
+    for row in character_rows:
+        adjusted_row: list[complex] = []
+        for op_index, value in enumerate(row):
+            tau = np.array(tau_c[op_index], dtype=float)
+            phase = np.exp(-2j * np.pi * float(np.dot(kvec, tau)))
+            adjusted_row.append(complex(value) * phase)
+        adjusted_rows.append(adjusted_row)
+    return adjusted_rows
+
+
+def _with_manual_phase_character(raw: dict[str, Any]) -> dict[str, Any]:
+    field_name = "__manual_phase_character"
+    if field_name in raw:
+        return raw
+    return {
+        **raw,
+        field_name: _manual_phase_adjusted_character_rows(raw),
+    }
+
+
 def _match_monodromy_rep_permutation(
     *,
     point_id: str,
@@ -1418,21 +1443,28 @@ def _build_target_monodromy_block_from_pair(
     right_capture_id = str(pair["right_capture_id"])
     left_raw = captures[left_capture_id]
     right_raw = captures[right_capture_id]
+    left_raw_phase = _with_manual_phase_character(left_raw)
+    right_raw_phase = _with_manual_phase_character(right_raw)
     matched_left = port.matched_unitary_indices(line_raw, left_raw)
     matched_right = port.matched_unitary_indices(line_raw, right_raw)
-    monodromy_field = "linear_character"
+    monodromy_field = "__manual_phase_character"
     line_basis_labels = [
         f"{pair['source_line_id']}_M{pair['branch_index']:02d}_R{i}"
         for i in range(1, len(line_raw["character"]) + 1)
     ]
-    if len(left_raw["linear_character"]) != len(right_raw["linear_character"]):
+    if len(left_raw["character"]) != len(right_raw["character"]):
         raise ValueError(
             f"same-point monodromy pair {point_id}: mismatched rep counts "
-            f"{len(left_raw['linear_character'])} vs {len(right_raw['linear_character'])}"
+            f"{len(left_raw['character'])} vs {len(right_raw['character'])}"
         )
+    line_basis_matrix = port._exact_basis_matrix_from_capture(
+        line_raw,
+        "character",
+        manifold_id=pair["source_line_id"],
+    )
     local_unknown_ordering = [
         f"{point_id}_R{rep_index}"
-        for rep_index in range(1, len(left_raw["linear_character"]) + 1)
+        for rep_index in range(1, len(left_raw["character"]) + 1)
     ]
     endpoint_decompositions = {
         point_id: [
@@ -1442,58 +1474,98 @@ def _build_target_monodromy_block_from_pair(
                 "torsion": int(left_raw["torsion"][rep_index - 1]),
                 "decomposition_on_line_basis_left": {},
                 "decomposition_on_line_basis_right": {},
+                "left_restricted_vector_exact": [],
+                "right_restricted_vector_exact": [],
             }
-            for rep_index in range(1, len(left_raw["linear_character"]) + 1)
+            for rep_index in range(1, len(left_raw["character"]) + 1)
         ],
     }
     left_decompositions_by_rep: dict[str, dict[str, int]] = {}
     right_decompositions_by_rep: dict[str, dict[str, int]] = {}
     permutation_debug = _match_monodromy_rep_permutation(
         point_id=point_id,
-        left_raw=left_raw,
-        right_raw=right_raw,
+        left_raw=left_raw_phase,
+        right_raw=right_raw_phase,
         field=monodromy_field,
     )
+    for rep_index, rep in enumerate(endpoint_decompositions[point_id], start=1):
+        rep_id = rep["rep_id"]
+        left_restricted = port._exact_restriction_vector(
+            line_raw,
+            left_raw,
+            matched_left,
+            field="character",
+            parent_manifold_id=pair["source_line_id"],
+            child_manifold_id=left_capture_id,
+            rep_id=rep_id,
+        )
+        right_restricted = port._exact_restriction_vector(
+            line_raw,
+            right_raw,
+            matched_right,
+            field="character",
+            parent_manifold_id=pair["source_line_id"],
+            child_manifold_id=right_capture_id,
+            rep_id=rep_id,
+        )
+        left_coeffs = port.solve_unique_integer_decomposition(
+            line_basis_matrix,
+            left_restricted,
+            mode=left_raw.get("group_type", "unknown"),
+            manifold_id=pair["source_line_id"],
+            endpoint_id=left_capture_id,
+            rep_id=rep_id,
+            field="character",
+        )
+        right_coeffs = port.solve_unique_integer_decomposition(
+            line_basis_matrix,
+            right_restricted,
+            mode=right_raw.get("group_type", "unknown"),
+            manifold_id=pair["source_line_id"],
+            endpoint_id=right_capture_id,
+            rep_id=rep_id,
+            field="character",
+        )
+        left_decompositions_by_rep[rep_id] = {
+            basis_label: coeff
+            for basis_label, coeff in zip(line_basis_labels, left_coeffs)
+            if coeff
+        }
+        right_decompositions_by_rep[rep_id] = {
+            basis_label: coeff
+            for basis_label, coeff in zip(line_basis_labels, right_coeffs)
+            if coeff
+        }
+        rep["left_restricted_vector_exact"] = [str(value) for value in list(left_restricted)]
+        rep["right_restricted_vector_exact"] = [str(value) for value in list(right_restricted)]
     for rep in endpoint_decompositions[point_id]:
         rep_id = rep["rep_id"]
         rep["decomposition_on_line_basis_left"] = left_decompositions_by_rep.get(rep_id, {})
         rep["decomposition_on_line_basis_right"] = right_decompositions_by_rep.get(rep_id, {})
     equations = []
-    permutation = permutation_debug["permutation"]
     point_level_equation_allowed = bool(pair.get("point_level_equation_allowed", True))
     if point_level_equation_allowed:
+        permutation = permutation_debug["permutation"]
         for cycle in permutation_debug["cycles"]:
             if len(cycle) <= 1:
                 continue
             ordered_cycle = sorted(cycle, key=lambda rep_id: int(rep_id.split("_R")[1]))
             anchor = ordered_cycle[0]
             for other in ordered_cycle[1:]:
-                left_support = [{"rep_id": anchor, "coeff": 1}]
-                right_support = [{"rep_id": other, "coeff": 1}]
+                left_rep = next(rep for rep in endpoint_decompositions[point_id] if rep["rep_id"] == anchor)
+                right_rep = next(rep for rep in endpoint_decompositions[point_id] if rep["rep_id"] == other)
                 class_members = [anchor, other]
                 intrinsic_fingerprint_by_rep = {
                     rep_id: {
-                        "fingerprint_kind": "same_point_monodromy_linear_character_match_v1",
+                        "fingerprint_kind": "same_point_monodromy_character_with_manual_phase_match_v1",
                         "point_id": point_id,
                         "left_capture_id": left_capture_id,
                         "right_capture_id": right_capture_id,
                         "mapped_rep_id": permutation.get(rep_id, rep_id),
-                        "left_row_exact": next(
-                            (
-                                item["left_row_exact"]
-                                for item in permutation_debug["matched_pairs"]
-                                if item["left_rep_id"] == rep_id
-                            ),
-                            [],
-                        ),
-                        "right_row_exact": next(
-                            (
-                                item["right_row_exact"]
-                                for item in permutation_debug["matched_pairs"]
-                                if item["left_rep_id"] == rep_id
-                            ),
-                            [],
-                        ),
+                        "left_decomposition": left_rep["decomposition_on_line_basis_left"] if rep_id == anchor else right_rep["decomposition_on_line_basis_left"],
+                        "right_decomposition": left_rep["decomposition_on_line_basis_right"] if rep_id == anchor else right_rep["decomposition_on_line_basis_right"],
+                        "left_row_exact": left_rep["left_restricted_vector_exact"] if rep_id == anchor else right_rep["left_restricted_vector_exact"],
+                        "right_row_exact": left_rep["right_restricted_vector_exact"] if rep_id == anchor else right_rep["right_restricted_vector_exact"],
                     }
                     for rep_id in class_members
                 }
@@ -1512,7 +1584,9 @@ def _build_target_monodromy_block_from_pair(
                         "canonical_family_key": str(pair["line_family"]),
                         "source_line_id": pair["source_line_id"],
                         "endpoint_capture_ids": [left_capture_id, right_capture_id],
-                        "monodromy_field": monodromy_field,
+                        "monodromy_field": "character",
+                        "manual_phase_applied": True,
+                        "manual_phase_field": monodromy_field,
                         "monodromy_pair": {
                             "point_id": point_id,
                             "left_capture_id": left_capture_id,
@@ -1522,8 +1596,8 @@ def _build_target_monodromy_block_from_pair(
                             "line_family": pair["line_family"],
                             "branch_index": int(pair["branch_index"]),
                         },
-                        "left_support": left_support,
-                        "right_support": right_support,
+                        "left_support": [{"rep_id": anchor, "coeff": 1}],
+                        "right_support": [{"rep_id": other, "coeff": 1}],
                         "endpoint_support": {
                             left_capture_id: [anchor],
                             right_capture_id: [other],
@@ -1557,7 +1631,7 @@ def _build_target_monodromy_block_from_pair(
         "builder_variant": effective_builder_variant,
         "target_line_block_kind": "monodromy_line",
         "compatibility_builder_kind": "generic_same_shell_target_monodromy_pair_builder",
-        "monodromy_field_used": monodromy_field,
+        "monodromy_field_used": "character",
         "monodromy_debug": {
             "matched_left": matched_left,
             "matched_right": matched_right,
@@ -1565,12 +1639,14 @@ def _build_target_monodromy_block_from_pair(
             "permutation_debug": permutation_debug,
             "point_level_equation_allowed": point_level_equation_allowed,
             "continuation_multiplicity": int(pair.get("continuation_multiplicity", 1)),
+            "manual_phase_field": monodromy_field,
         },
         "restriction_class_builder": {
             "builder_kind": "generic_same_shell_target_monodromy_pair_builder",
             "endpoint_capture_ids": [left_capture_id, right_capture_id],
             "point_id": point_id,
-            "monodromy_field": monodromy_field,
+            "monodromy_field": "character",
+            "manual_phase_field": monodromy_field,
         },
     }
 
