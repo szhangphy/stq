@@ -953,6 +953,105 @@ def annotate_special_line_plane_incidences(planes: Sequence[dict], lines: Sequen
     return incidences
 
 
+def _recover_boundary_special_points(
+    points: list[dict[str, Any]],
+    lines: Sequence[dict[str, Any]],
+    planes: Sequence[dict[str, Any]],
+    ctx: dict[str, Any],
+) -> list[dict[str, Any]]:
+    existing = coordinate_to_id_map(points)
+    candidate_map: dict[tuple[str, str, str], dict[str, Any]] = {}
+
+    def register_candidate(coords: Sequence[str], source: dict[str, Any]) -> None:
+        key = tuple(coords)
+        if key in existing:
+            return
+        bucket = candidate_map.setdefault(
+            key,
+            {
+                "coords": list(coords),
+                "sources": [],
+            },
+        )
+        bucket["sources"].append(dict(source))
+
+    for line in lines:
+        basis = line["_basis"][0]
+        param = line["_params"][0]
+        for boundary in BOUNDARY_VALUES:
+            boundary_point = vector_add_scaled(line["_anchor"], basis, boundary)
+            coords = [frac_str(mod1_fraction(value)) for value in boundary_point]
+            register_candidate(
+                coords,
+                {
+                    "source_kind": "line_endpoint",
+                    "line_id": line["id"],
+                    "boundary_condition": f"{param} = {frac_str(boundary)}",
+                },
+            )
+
+    for plane in planes:
+        anchor = plane["_anchor"]
+        basis1, basis2 = plane["_basis"]
+        for coeff1 in BOUNDARY_VALUES:
+            for coeff2 in BOUNDARY_VALUES:
+                corner = vector_add_scaled(vector_add_scaled(anchor, basis1, coeff1), basis2, coeff2)
+                coords = [frac_str(mod1_fraction(value)) for value in corner]
+                register_candidate(
+                    coords,
+                    {
+                        "source_kind": "plane_corner",
+                        "plane_id": plane["id"],
+                        "boundary_coefficients": [frac_str(coeff1), frac_str(coeff2)],
+                    },
+                )
+
+    ordered_candidates = sorted(
+        candidate_map.values(),
+        key=lambda item: tuple(Fraction(value) for value in item["coords"]),
+    )
+    next_index = len(points) + 1
+    recovered: list[dict[str, Any]] = []
+    for offset, item in enumerate(ordered_candidates):
+        coords = list(item["coords"])
+        anchor = [to_fraction(value) for value in coords]
+        source_rep = [[coord, {}] for coord in coords]
+        recovered_point = {
+            "label": f"recovered_{next_index + offset:02d}",
+            "type": "point",
+            "dimension": 0,
+            "parametrization": f"({', '.join(coords)})",
+            "coordinate_expressions": list(coords),
+            "parameters": [],
+            "constraints": [],
+            "constraint_summary": "",
+            "sample_point": list(coords),
+            "metadata": {
+                "source_letter": "recovered_boundary_point",
+                "source_mult": 1,
+                "source_dimension": 0,
+                "source_orbit": [", ".join(coords)],
+                "source_representative_coordinate": ", ".join(coords),
+                "source_x0": list(coords),
+                "source_basis_vecs": [],
+                "source_rep": source_rep,
+                "recovered_from_boundary_manifolds": list(item["sources"]),
+            },
+            "_anchor": anchor,
+            "_basis": [],
+            "_exprs": rep_to_sympy(source_rep),
+            "_params": [],
+            "id": f"P{next_index + offset}",
+            "manifold_role": "recovered_special_point_from_boundary_manifolds",
+            "symmetry_summary": subspace_symmetry_summary(anchor, [], ctx),
+            "recovery_sources": list(item["sources"]),
+            "incident_lines": [],
+            "incident_planes": [],
+        }
+        recovered.append(recovered_point)
+    return recovered
+
+
 def strip_internal_fields(entries: Sequence[dict]) -> List[dict]:
     return [{key: value for key, value in entry.items() if not key.startswith("_")} for entry in entries]
 
@@ -964,6 +1063,9 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
     planes = grouped["planes"]
     generic = grouped["generic"]
     ctx = load_reciprocal_context(group_number)
+    recovered_points = _recover_boundary_special_points(points, lines, planes, ctx)
+    if recovered_points:
+        points.extend(recovered_points)
     line_orbit_to_id, plane_orbit_to_id = subspace_orbit_id_maps(lines, planes, ctx)
     annotate_special_manifolds(lines, planes, ctx, line_orbit_to_id, plane_orbit_to_id)
     point_line, unmatched_endpoints = infer_line_connectivity(points, lines)

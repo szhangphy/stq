@@ -1,0 +1,65 @@
+{
+  "branch": "159-1-6-2-published-target-recovery-v1\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)",
+  "status": "not_final",
+  "control_group": "194.1.12.16",
+  "target_group": "159.1.6.2",
+  "task_scope": "published_target_universe_recovery_only",
+  "introduced_truth_hardcode": false,
+  "compare_only_truth": {
+    "external_object_label": "P31c (No. 159.61)",
+    "dBS": 8,
+    "dAI": 8,
+    "classification": "trivial",
+    "truth_compare_only": true
+  },
+  "before_fix": {
+    "grouped_points_count": 0,
+    "target_point_ids_current": [],
+    "target_capture_ids": [],
+    "published_target_universe_resolved": false,
+    "assembly_bs_rank": 9,
+    "published_target_target_bs_rank": null
+  },
+  "after_fix_159": {
+    "grouped_points_count": 8,
+    "target_point_ids_current": [
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P7",
+      "P8"
+    ],
+    "target_capture_ids": [
+      "P1",
+      "P1__0_0_1",
+      "P2",
+      "P3",
+      "P3__1d3_1d3_1",
+      "P4",
+      "P5",
+      "P6",
+      "P7",
+      "P7__2d3_2d3_1",
+      "P8"
+    ],
+    "published_target_universe_resolved": true,
+    "assembly_bs_rank_single": 9,
+    "assembly_bs_rank_double": 9,
+    "published_target_target_bs_rank_single": 9,
+    "published_target_target_bs_rank_double": 9,
+    "single_solver_dBS": 9,
+    "double_solver_dBS": 9,
+    "single_solver_dAI": 4,
+    "double_solver_dAI": 4
+  },
+  "control_group_after_fix": {
+    "single_target_bs_rank": 13,
+    "double_target_bs_rank": 10,
+    "single_solver_dBS": 13,
+    "double_solver_dBS": 10
+  },
+  "current_deepest_blocker": "quotient_semantics_mismatch_after_target_universe_recovery"
+}

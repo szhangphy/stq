@@ -1,0 +1,470 @@
+[
+  {
+    "label": "a",
+    "type": "line",
+    "dimension": 1,
+    "parametrization": "(0, 0, w)",
+    "coordinate_expressions": [
+      "0",
+      "0",
+      "w"
+    ],
+    "parameters": [
+      "w"
+    ],
+    "constraints": [
+      "0 < w",
+      "w < 1/2"
+    ],
+    "constraint_summary": "0 < w, w < 1/2",
+    "sample_point": [
+      "0",
+      "0",
+      "1/5"
+    ],
+    "metadata": {
+      "source_letter": "a",
+      "source_mult": 1,
+      "source_dimension": 1,
+      "source_orbit": [
+        "0, 0, w"
+      ],
+      "source_representative_coordinate": "0, 0, w",
+      "source_x0": [
+        "0",
+        "0",
+        "0"
+      ],
+      "source_basis_vecs": [
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "source_rep": [
+        [
+          "0",
+          {}
+        ],
+        [
+          "0",
+          {}
+        ],
+        [
+          "0",
+          {
+            "w": "1"
+          }
+        ]
+      ]
+    },
+    "id": "L1",
+    "manifold_role": "separately_listed_special_line_manifold",
+    "symmetry_summary": {
+      "generic_point": [
+        "0",
+        "0",
+        "1/5"
+      ],
+      "generic_stabilizer_size": 6,
+      "generic_rotation_stabilizer_size": 6,
+      "pointwise_stabilizer_size": 6,
+      "pointwise_rotation_stabilizer_size": 6,
+      "site_symmetry": "3[z] * m[1-10] * m[120] * m[210]",
+      "site_symmetry_custom": "2[(-1/2, 0.866025, 0)] * 2[(1/2, 0.866025, 0)] * 2[x] * 3[z] * 3[z]",
+      "unitary_site_symmetry": "?"
+    },
+    "closure_under_pointwise_stabilizer": [
+      {
+        "dimension": 1,
+        "x0": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L1",
+        "plane_id": null
+      },
+      {
+        "dimension": 1,
+        "x0": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L2",
+        "plane_id": null
+      },
+      {
+        "dimension": 1,
+        "x0": [
+          "2/3",
+          "2/3",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L3",
+        "plane_id": null
+      }
+    ],
+    "endpoints": [
+      {
+        "boundary_condition": "w = 0",
+        "point_coordinates": [
+          "0",
+          "0",
+          "0"
+        ],
+        "point_id": "P1"
+      },
+      {
+        "boundary_condition": "w = 1/2",
+        "point_coordinates": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "point_id": "P2"
+      }
+    ],
+    "containing_planes": [
+      {
+        "plane_id": "S1",
+        "incidence_role": "boundary",
+        "plane_coordinates": {
+          "anchor_coords": [
+            "0",
+            "0"
+          ],
+          "direction_coords": [
+            "0",
+            "1"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "label": "b",
+    "type": "line",
+    "dimension": 1,
+    "parametrization": "(1/3, 1/3, w)",
+    "coordinate_expressions": [
+      "1/3",
+      "1/3",
+      "w"
+    ],
+    "parameters": [
+      "w"
+    ],
+    "constraints": [
+      "0 < w",
+      "w < 1/2"
+    ],
+    "constraint_summary": "0 < w, w < 1/2",
+    "sample_point": [
+      "1/3",
+      "1/3",
+      "1/5"
+    ],
+    "metadata": {
+      "source_letter": "b",
+      "source_mult": 1,
+      "source_dimension": 1,
+      "source_orbit": [
+        "1/3, 1/3, w"
+      ],
+      "source_representative_coordinate": "1/3, 1/3, w",
+      "source_x0": [
+        "1/3",
+        "1/3",
+        "0"
+      ],
+      "source_basis_vecs": [
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "source_rep": [
+        [
+          "1/3",
+          {}
+        ],
+        [
+          "1/3",
+          {}
+        ],
+        [
+          "0",
+          {
+            "w": "1"
+          }
+        ]
+      ]
+    },
+    "id": "L2",
+    "manifold_role": "separately_listed_special_line_manifold",
+    "symmetry_summary": {
+      "generic_point": [
+        "1/3",
+        "1/3",
+        "1/5"
+      ],
+      "generic_stabilizer_size": 6,
+      "generic_rotation_stabilizer_size": 6,
+      "pointwise_stabilizer_size": 6,
+      "pointwise_rotation_stabilizer_size": 6,
+      "site_symmetry": "3[z] * m[1-10] * m[120] * m[210]",
+      "site_symmetry_custom": "2[(-1/2, 0.866025, 0)] * 2[(1/2, 0.866025, 0)] * 2[x] * 3[z] * 3[z]",
+      "unitary_site_symmetry": "?"
+    },
+    "closure_under_pointwise_stabilizer": [
+      {
+        "dimension": 1,
+        "x0": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L1",
+        "plane_id": null
+      },
+      {
+        "dimension": 1,
+        "x0": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L2",
+        "plane_id": null
+      },
+      {
+        "dimension": 1,
+        "x0": [
+          "2/3",
+          "2/3",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L3",
+        "plane_id": null
+      }
+    ],
+    "endpoints": [
+      {
+        "boundary_condition": "w = 0",
+        "point_coordinates": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "point_id": "P3"
+      },
+      {
+        "boundary_condition": "w = 1/2",
+        "point_coordinates": [
+          "1/3",
+          "1/3",
+          "1/2"
+        ],
+        "point_id": "P4"
+      }
+    ],
+    "containing_planes": []
+  },
+  {
+    "label": "c",
+    "type": "line",
+    "dimension": 1,
+    "parametrization": "(2/3, 2/3, w)",
+    "coordinate_expressions": [
+      "2/3",
+      "2/3",
+      "w"
+    ],
+    "parameters": [
+      "w"
+    ],
+    "constraints": [
+      "0 < w",
+      "w < 1/2"
+    ],
+    "constraint_summary": "0 < w, w < 1/2",
+    "sample_point": [
+      "2/3",
+      "2/3",
+      "1/5"
+    ],
+    "metadata": {
+      "source_letter": "c",
+      "source_mult": 1,
+      "source_dimension": 1,
+      "source_orbit": [
+        "2/3, 2/3, w"
+      ],
+      "source_representative_coordinate": "2/3, 2/3, w",
+      "source_x0": [
+        "2/3",
+        "2/3",
+        "0"
+      ],
+      "source_basis_vecs": [
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "source_rep": [
+        [
+          "2/3",
+          {}
+        ],
+        [
+          "2/3",
+          {}
+        ],
+        [
+          "0",
+          {
+            "w": "1"
+          }
+        ]
+      ]
+    },
+    "id": "L3",
+    "manifold_role": "separately_listed_special_line_manifold",
+    "symmetry_summary": {
+      "generic_point": [
+        "2/3",
+        "2/3",
+        "1/5"
+      ],
+      "generic_stabilizer_size": 6,
+      "generic_rotation_stabilizer_size": 6,
+      "pointwise_stabilizer_size": 6,
+      "pointwise_rotation_stabilizer_size": 6,
+      "site_symmetry": "3[z] * m[1-10] * m[120] * m[210]",
+      "site_symmetry_custom": "2[(-1/2, 0.866025, 0)] * 2[(1/2, 0.866025, 0)] * 2[x] * 3[z] * 3[z]",
+      "unitary_site_symmetry": "?"
+    },
+    "closure_under_pointwise_stabilizer": [
+      {
+        "dimension": 1,
+        "x0": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L1",
+        "plane_id": null
+      },
+      {
+        "dimension": 1,
+        "x0": [
+          "1/3",
+          "1/3",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L2",
+        "plane_id": null
+      },
+      {
+        "dimension": 1,
+        "x0": [
+          "2/3",
+          "2/3",
+          "0"
+        ],
+        "basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "line_id": "L3",
+        "plane_id": null
+      }
+    ],
+    "endpoints": [
+      {
+        "boundary_condition": "w = 0",
+        "point_coordinates": [
+          "2/3",
+          "2/3",
+          "0"
+        ],
+        "point_id": "P7"
+      },
+      {
+        "boundary_condition": "w = 1/2",
+        "point_coordinates": [
+          "2/3",
+          "2/3",
+          "1/2"
+        ],
+        "point_id": "P8"
+      }
+    ],
+    "containing_planes": []
+  }
+]

@@ -1,0 +1,14 @@
+git branch --show-current
+git status --short
+git log --oneline -n 20
+grep -RIn "194\.1\.12\.16" sg194 || true
+grep -RIn "194\.1\.16\.12" sg194 || true
+python - <<'python_probe'  # compute_wyckoff_output dims for 159.1.6.2 fast=True/False
+...
+python_probe
+python - <<'python_probe'  # prepare_kgeometry and shared_geometry_bundle probes for 159.1.6.2 and 194.1.12.16
+...
+python_probe
+python - <<'python_probe'  # generic_mode_progress probes for 159.1.6.2 and 194.1.12.16
+...
+python_probe
