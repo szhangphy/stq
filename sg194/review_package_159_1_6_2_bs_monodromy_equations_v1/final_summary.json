@@ -1,0 +1,50 @@
+{
+  "branch": "159-1-6-2-bs-monodromy-equations-v1",
+  "focus": "159.1.6.2 BS monodromy actual equations only",
+  "source_files_changed": [
+    "sg194/pipeline_v2/generic_builders.py"
+  ],
+  "159": {
+    "single": {
+      "target_bs_rank": 1,
+      "published_dBS": 1,
+      "published_dAI": 0,
+      "monodromy_equation_counts": {
+        "L1": 1,
+        "L2": 1,
+        "L3": 1,
+        "L4": 0,
+        "L5": 0,
+        "L6": 1
+      },
+      "zero_equation_families": [
+        "L4",
+        "L5"
+      ]
+    },
+    "double": {
+      "target_bs_rank": 0,
+      "published_dBS": 0,
+      "published_dAI": 0,
+      "monodromy_equation_counts": {
+        "L1": 1,
+        "L2": 1,
+        "L3": 1,
+        "L4": 0,
+        "L5": 0,
+        "L6": 1
+      },
+      "zero_equation_families": [
+        "L4",
+        "L5"
+      ]
+    }
+  },
+  "control_group_194_1_12_16": {
+    "single_target_bs_rank": 13,
+    "double_target_bs_rank": 10
+  },
+  "hardcoded_truth_used": false,
+  "compare_only_truth_pollutes_solver": false,
+  "status": "not_final"
+}

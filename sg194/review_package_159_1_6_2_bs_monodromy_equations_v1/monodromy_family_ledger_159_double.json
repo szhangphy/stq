@@ -1,0 +1,767 @@
+[
+  {
+    "mode": "double",
+    "family_id": "L1",
+    "bilbao_family": "DT",
+    "point_id": "P1",
+    "left_capture_id": "P1",
+    "right_capture_id": "P1__0_0_1",
+    "left_coordinates": [
+      "0",
+      "0",
+      "0"
+    ],
+    "right_coordinates": [
+      "0",
+      "0",
+      "1"
+    ],
+    "source_line_id": "L1",
+    "orbit_expr": "0, 0, w",
+    "branch_index": 1,
+    "line_raw_capture_sample_point": [
+      0.0,
+      0.0,
+      0.2
+    ],
+    "monodromy_field": "linear_character",
+    "matched_left": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "matched_right": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "line_basis_labels": [
+      "L1_M01_R1",
+      "L1_M01_R2",
+      "L1_M01_R3"
+    ],
+    "point_level_equation_allowed": true,
+    "continuation_multiplicity": 1,
+    "reps": [
+      {
+        "rep_id": "P1_R1",
+        "mapped_rep_id": "P1_R2",
+        "left_restricted_vector": [
+          "1",
+          "-I",
+          "I",
+          "I",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "-I",
+          "I",
+          "I",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": false
+      },
+      {
+        "rep_id": "P1_R2",
+        "mapped_rep_id": "P1_R1",
+        "left_restricted_vector": [
+          "1",
+          "I",
+          "-I",
+          "-I",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "I",
+          "-I",
+          "-I",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": false
+      },
+      {
+        "rep_id": "P1_R3",
+        "mapped_rep_id": "P1_R3",
+        "left_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "right_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      }
+    ],
+    "basis_equations": [
+      {
+        "basis_label": "P1_R1__P1_R2",
+        "positive_reps": [
+          "P1_R1"
+        ],
+        "negative_reps": [
+          "P1_R2"
+        ],
+        "generated_equation": true,
+        "reason_if_not_generated": null
+      }
+    ],
+    "equation_count": 1,
+    "rank_contribution_estimate": 1,
+    "is_zero_equation_family": false
+  },
+  {
+    "mode": "double",
+    "family_id": "L2",
+    "bilbao_family": "P",
+    "point_id": "P3",
+    "left_capture_id": "P3",
+    "right_capture_id": "P3__1d3_1d3_1",
+    "left_coordinates": [
+      "1/3",
+      "1/3",
+      "0"
+    ],
+    "right_coordinates": [
+      "1/3",
+      "1/3",
+      "1"
+    ],
+    "source_line_id": "L2",
+    "orbit_expr": "1/3, 1/3, w",
+    "branch_index": 1,
+    "line_raw_capture_sample_point": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.2
+    ],
+    "monodromy_field": "linear_character",
+    "matched_left": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "matched_right": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "line_basis_labels": [
+      "L2_M01_R1",
+      "L2_M01_R2",
+      "L2_M01_R3"
+    ],
+    "point_level_equation_allowed": true,
+    "continuation_multiplicity": 1,
+    "reps": [
+      {
+        "rep_id": "P3_R1",
+        "mapped_rep_id": "P3_R2",
+        "left_restricted_vector": [
+          "1",
+          "-I",
+          "I",
+          "I",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "-I",
+          "I",
+          "I",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": false
+      },
+      {
+        "rep_id": "P3_R2",
+        "mapped_rep_id": "P3_R1",
+        "left_restricted_vector": [
+          "1",
+          "I",
+          "-I",
+          "-I",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "I",
+          "-I",
+          "-I",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": false
+      },
+      {
+        "rep_id": "P3_R3",
+        "mapped_rep_id": "P3_R3",
+        "left_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "right_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      }
+    ],
+    "basis_equations": [
+      {
+        "basis_label": "P3_R1__P3_R2",
+        "positive_reps": [
+          "P3_R1"
+        ],
+        "negative_reps": [
+          "P3_R2"
+        ],
+        "generated_equation": true,
+        "reason_if_not_generated": null
+      }
+    ],
+    "equation_count": 1,
+    "rank_contribution_estimate": 1,
+    "is_zero_equation_family": false
+  },
+  {
+    "mode": "double",
+    "family_id": "L3",
+    "bilbao_family": "PC",
+    "point_id": "P7",
+    "left_capture_id": "P7",
+    "right_capture_id": "P7__2d3_2d3_1",
+    "left_coordinates": [
+      "2/3",
+      "2/3",
+      "0"
+    ],
+    "right_coordinates": [
+      "2/3",
+      "2/3",
+      "1"
+    ],
+    "source_line_id": "L3",
+    "orbit_expr": "2/3, 2/3, w",
+    "branch_index": 1,
+    "line_raw_capture_sample_point": [
+      0.6666666666666666,
+      0.6666666666666666,
+      0.2
+    ],
+    "monodromy_field": "linear_character",
+    "matched_left": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "matched_right": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "line_basis_labels": [
+      "L3_M01_R1",
+      "L3_M01_R2",
+      "L3_M01_R3"
+    ],
+    "point_level_equation_allowed": true,
+    "continuation_multiplicity": 1,
+    "reps": [
+      {
+        "rep_id": "P7_R1",
+        "mapped_rep_id": "P7_R2",
+        "left_restricted_vector": [
+          "1",
+          "-I",
+          "I",
+          "I",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "-I",
+          "I",
+          "I",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": false
+      },
+      {
+        "rep_id": "P7_R2",
+        "mapped_rep_id": "P7_R1",
+        "left_restricted_vector": [
+          "1",
+          "I",
+          "-I",
+          "-I",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "I",
+          "-I",
+          "-I",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": false
+      },
+      {
+        "rep_id": "P7_R3",
+        "mapped_rep_id": "P7_R3",
+        "left_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "right_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      }
+    ],
+    "basis_equations": [
+      {
+        "basis_label": "P7_R1__P7_R2",
+        "positive_reps": [
+          "P7_R1"
+        ],
+        "negative_reps": [
+          "P7_R2"
+        ],
+        "generated_equation": true,
+        "reason_if_not_generated": null
+      }
+    ],
+    "equation_count": 1,
+    "rank_contribution_estimate": 1,
+    "is_zero_equation_family": false
+  },
+  {
+    "mode": "double",
+    "family_id": "L4",
+    "bilbao_family": "Λ",
+    "point_id": "P1",
+    "left_capture_id": "P1",
+    "right_capture_id": "P1__1_m2_0",
+    "left_coordinates": [
+      "0",
+      "0",
+      "0"
+    ],
+    "right_coordinates": [
+      "1",
+      "-2",
+      "0"
+    ],
+    "source_line_id": "L4",
+    "orbit_expr": "v, -2v, 0",
+    "branch_index": 1,
+    "line_raw_capture_sample_point": [
+      0.2,
+      -0.4,
+      0.0
+    ],
+    "monodromy_field": "linear_character",
+    "matched_left": [
+      0,
+      3
+    ],
+    "matched_right": [
+      0,
+      3
+    ],
+    "line_basis_labels": [
+      "L4_M01_R1",
+      "L4_M01_R2"
+    ],
+    "point_level_equation_allowed": true,
+    "continuation_multiplicity": 1,
+    "reps": [
+      {
+        "rep_id": "P1_R1",
+        "mapped_rep_id": "P1_R1",
+        "left_restricted_vector": [
+          "1",
+          "-I",
+          "I",
+          "I",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "-I",
+          "I",
+          "I",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      },
+      {
+        "rep_id": "P1_R2",
+        "mapped_rep_id": "P1_R2",
+        "left_restricted_vector": [
+          "1",
+          "I",
+          "-I",
+          "-I",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "I",
+          "-I",
+          "-I",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      },
+      {
+        "rep_id": "P1_R3",
+        "mapped_rep_id": "P1_R3",
+        "left_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "right_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      }
+    ],
+    "basis_equations": [
+      {
+        "basis_label": null,
+        "positive_reps": [],
+        "negative_reps": [],
+        "generated_equation": false,
+        "reason_if_not_generated": "identity_permutation"
+      }
+    ],
+    "equation_count": 0,
+    "rank_contribution_estimate": 0,
+    "is_zero_equation_family": true
+  },
+  {
+    "mode": "double",
+    "family_id": "L5",
+    "bilbao_family": "Q",
+    "point_id": "P2",
+    "left_capture_id": "P2",
+    "right_capture_id": "P2__1_m2_1d2",
+    "left_coordinates": [
+      "0",
+      "0",
+      "1/2"
+    ],
+    "right_coordinates": [
+      "1",
+      "-2",
+      "1/2"
+    ],
+    "source_line_id": "L5",
+    "orbit_expr": "v, -2v, 1/2",
+    "branch_index": 1,
+    "line_raw_capture_sample_point": [
+      0.2,
+      -0.4,
+      0.5
+    ],
+    "monodromy_field": "linear_character",
+    "matched_left": [
+      0,
+      3
+    ],
+    "matched_right": [
+      0,
+      3
+    ],
+    "line_basis_labels": [
+      "L5_M01_R1",
+      "L5_M01_R2"
+    ],
+    "point_level_equation_allowed": true,
+    "continuation_multiplicity": 1,
+    "reps": [
+      {
+        "rep_id": "P2_R1",
+        "mapped_rep_id": "P2_R1",
+        "left_restricted_vector": [
+          "1",
+          "-1",
+          "1",
+          "1",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "-1",
+          "1",
+          "1",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      },
+      {
+        "rep_id": "P2_R2",
+        "mapped_rep_id": "P2_R2",
+        "left_restricted_vector": [
+          "1",
+          "1",
+          "-1",
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "1",
+          "-1",
+          "-1",
+          "-1",
+          "-1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      },
+      {
+        "rep_id": "P2_R3",
+        "mapped_rep_id": "P2_R3",
+        "left_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "right_restricted_vector": [
+          "2",
+          "0",
+          "0",
+          "0",
+          "1",
+          "1"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": true
+      }
+    ],
+    "basis_equations": [
+      {
+        "basis_label": null,
+        "positive_reps": [],
+        "negative_reps": [],
+        "generated_equation": false,
+        "reason_if_not_generated": "identity_permutation"
+      }
+    ],
+    "equation_count": 0,
+    "rank_contribution_estimate": 0,
+    "is_zero_equation_family": true
+  },
+  {
+    "mode": "double",
+    "family_id": "L6",
+    "bilbao_family": "U",
+    "point_id": "P5",
+    "left_capture_id": "P5__1d2_m1_0",
+    "right_capture_id": "P5__1d2_m1_1",
+    "left_coordinates": [
+      "1/2",
+      "-1",
+      "0"
+    ],
+    "right_coordinates": [
+      "1/2",
+      "-1",
+      "1"
+    ],
+    "source_line_id": "L6",
+    "orbit_expr": "1/2, -1, w",
+    "branch_index": 1,
+    "line_raw_capture_sample_point": [
+      0.5,
+      -1.0,
+      0.2
+    ],
+    "monodromy_field": "linear_character",
+    "matched_left": [
+      0,
+      1
+    ],
+    "matched_right": [
+      0,
+      1
+    ],
+    "line_basis_labels": [
+      "L6_M01_R1",
+      "L6_M01_R2"
+    ],
+    "point_level_equation_allowed": true,
+    "continuation_multiplicity": 1,
+    "reps": [
+      {
+        "rep_id": "P5_R1",
+        "mapped_rep_id": "P5_R2",
+        "left_restricted_vector": [
+          "1",
+          "-I"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "-I"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": false
+      },
+      {
+        "rep_id": "P5_R2",
+        "mapped_rep_id": "P5_R1",
+        "left_restricted_vector": [
+          "1",
+          "I"
+        ],
+        "right_restricted_vector": [
+          "1",
+          "I"
+        ],
+        "left_integer_decomposition_on_line_basis": null,
+        "right_integer_decomposition_on_line_basis": null,
+        "delta": null,
+        "identity_match": false
+      }
+    ],
+    "basis_equations": [
+      {
+        "basis_label": "P5_R1__P5_R2",
+        "positive_reps": [
+          "P5_R1"
+        ],
+        "negative_reps": [
+          "P5_R2"
+        ],
+        "generated_equation": true,
+        "reason_if_not_generated": null
+      }
+    ],
+    "equation_count": 1,
+    "rank_contribution_estimate": 1,
+    "is_zero_equation_family": false
+  }
+]

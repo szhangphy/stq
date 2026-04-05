@@ -1,0 +1,36 @@
+{
+  "single": {
+    "target_bs_rank": 1,
+    "published_dBS": 1,
+    "published_dAI": 0,
+    "compatibility_matrix_shape": [
+      23,
+      24
+    ],
+    "monodromy_equation_counts": {
+      "L1": 1,
+      "L2": 1,
+      "L3": 1,
+      "L4": 0,
+      "L5": 0,
+      "L6": 1
+    }
+  },
+  "double": {
+    "target_bs_rank": 0,
+    "published_dBS": 0,
+    "published_dAI": 0,
+    "compatibility_matrix_shape": [
+      23,
+      24
+    ],
+    "monodromy_equation_counts": {
+      "L1": 1,
+      "L2": 1,
+      "L3": 1,
+      "L4": 0,
+      "L5": 0,
+      "L6": 1
+    }
+  }
+}
