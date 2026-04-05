@@ -1,0 +1,1031 @@
+{
+  "double": {
+    "exact_row_count": 11,
+    "line_ids_with_exact_rows": [
+      "L4",
+      "L5",
+      "L6"
+    ],
+    "rows": [
+      {
+        "basis_id": "L4_intrinsic_class_01",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P1_R2"
+        ],
+        "endpoint_support": {
+          "P1": [
+            "P1_R2"
+          ],
+          "P5": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P1_R2"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L4_intrinsic_class_02",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P1_R1"
+        ],
+        "endpoint_support": {
+          "P1": [
+            "P1_R1"
+          ],
+          "P5": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P1_R1"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L4_intrinsic_class_03",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P5_R1"
+        ],
+        "endpoint_support": {
+          "P1": [],
+          "P5": [
+            "P5_R1"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P5_R1"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L4_intrinsic_class_04",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P5_R2"
+        ],
+        "endpoint_support": {
+          "P1": [],
+          "P5": [
+            "P5_R2"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P5_R2"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L4_intrinsic_class_05",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P1_R3"
+        ],
+        "endpoint_support": {
+          "P1": [
+            "P1_R3"
+          ],
+          "P5": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P1_R3"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_01",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P2_R1"
+        ],
+        "endpoint_support": {
+          "P2": [
+            "P2_R1"
+          ],
+          "P6": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P2_R1"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_02",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P2_R2",
+          "P6_R1"
+        ],
+        "endpoint_support": {
+          "P2": [
+            "P2_R2"
+          ],
+          "P6": [
+            "P6_R1"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P2_R2",
+          "P6_R1"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_03",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P6_R2"
+        ],
+        "endpoint_support": {
+          "P2": [],
+          "P6": [
+            "P6_R2"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P6_R2"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_04",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P2_R3"
+        ],
+        "endpoint_support": {
+          "P2": [
+            "P2_R3"
+          ],
+          "P6": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P2_R3"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L6_intrinsic_class_01",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P5_R1",
+          "P6_R1"
+        ],
+        "endpoint_support": {
+          "P5": [
+            "P5_R1"
+          ],
+          "P6": [
+            "P6_R1"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P5_R1",
+          "P6_R1"
+        ],
+        "line_id": "L6",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L6_intrinsic_class_02",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P5_R2",
+          "P6_R2"
+        ],
+        "endpoint_support": {
+          "P5": [
+            "P5_R2"
+          ],
+          "P6": [
+            "P6_R2"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P5_R2",
+          "P6_R2"
+        ],
+        "line_id": "L6",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      }
+    ]
+  },
+  "single": {
+    "exact_row_count": 12,
+    "line_ids_with_exact_rows": [
+      "L4",
+      "L5",
+      "L6"
+    ],
+    "rows": [
+      {
+        "basis_id": "L4_intrinsic_class_01",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P1_R2"
+        ],
+        "endpoint_support": {
+          "P1": [
+            "P1_R2"
+          ],
+          "P5": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P1_R2"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L4_intrinsic_class_02",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P1_R1"
+        ],
+        "endpoint_support": {
+          "P1": [
+            "P1_R1"
+          ],
+          "P5": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P1_R1"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L4_intrinsic_class_03",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P5_R1"
+        ],
+        "endpoint_support": {
+          "P1": [],
+          "P5": [
+            "P5_R1"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P5_R1"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L4_intrinsic_class_04",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P5_R2"
+        ],
+        "endpoint_support": {
+          "P1": [],
+          "P5": [
+            "P5_R2"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P5_R2"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L4_intrinsic_class_05",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P1_R3"
+        ],
+        "endpoint_support": {
+          "P1": [
+            "P1_R3"
+          ],
+          "P5": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P1_R3"
+        ],
+        "line_id": "L4",
+        "matrix_row": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_01",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P2_R2"
+        ],
+        "endpoint_support": {
+          "P2": [
+            "P2_R2"
+          ],
+          "P6": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P2_R2"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_02",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P2_R1"
+        ],
+        "endpoint_support": {
+          "P2": [
+            "P2_R1"
+          ],
+          "P6": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P2_R1"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_03",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P2_R3"
+        ],
+        "endpoint_support": {
+          "P2": [
+            "P2_R3"
+          ],
+          "P6": []
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P2_R3"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_04",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P6_R1"
+        ],
+        "endpoint_support": {
+          "P2": [],
+          "P6": [
+            "P6_R1"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P6_R1"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L5_intrinsic_class_05",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P6_R2"
+        ],
+        "endpoint_support": {
+          "P2": [],
+          "P6": [
+            "P6_R2"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P6_R2"
+        ],
+        "line_id": "L5",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L6_intrinsic_class_01",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P5_R1",
+          "P6_R1"
+        ],
+        "endpoint_support": {
+          "P5": [
+            "P5_R1"
+          ],
+          "P6": [
+            "P6_R1"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P5_R1",
+          "P6_R1"
+        ],
+        "line_id": "L6",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      },
+      {
+        "basis_id": "L6_intrinsic_class_02",
+        "builder_variant": "authoritative",
+        "class_members": [
+          "P5_R2",
+          "P6_R2"
+        ],
+        "endpoint_support": {
+          "P5": [
+            "P5_R2"
+          ],
+          "P6": [
+            "P6_R2"
+          ]
+        },
+        "extrinsic_fingerprint_keys": [],
+        "intrinsic_fingerprint_keys": [
+          "P5_R2",
+          "P6_R2"
+        ],
+        "line_id": "L6",
+        "matrix_row": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "row_kind": "restriction_class_sum"
+      }
+    ]
+  }
+}

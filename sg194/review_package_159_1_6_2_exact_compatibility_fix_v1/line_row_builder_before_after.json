@@ -1,0 +1,350 @@
+{
+  "double": {
+    "after": {
+      "L1": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L2": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L3": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L4": {
+        "builder_variants": {
+          "authoritative": 5
+        },
+        "exact_row_count": 5,
+        "has_class_members": true,
+        "has_endpoint_support": true,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": true,
+        "row_count": 5,
+        "row_kinds": {
+          "restriction_class_sum": 5
+        }
+      },
+      "L5": {
+        "builder_variants": {
+          "authoritative": 4
+        },
+        "exact_row_count": 4,
+        "has_class_members": true,
+        "has_endpoint_support": true,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": true,
+        "row_count": 4,
+        "row_kinds": {
+          "restriction_class_sum": 4
+        }
+      },
+      "L6": {
+        "builder_variants": {
+          "authoritative": 2
+        },
+        "exact_row_count": 2,
+        "has_class_members": true,
+        "has_endpoint_support": true,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": true,
+        "row_count": 2,
+        "row_kinds": {
+          "restriction_class_sum": 2
+        }
+      }
+    },
+    "before": {
+      "L1": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L2": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L3": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L4": {
+        "builder_variants": {
+          "coarse": 2
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 2,
+        "row_kinds": {
+          "line_basis_decomposition": 2
+        }
+      },
+      "L5": {
+        "builder_variants": {
+          "coarse": 2
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 2,
+        "row_kinds": {
+          "line_basis_decomposition": 2
+        }
+      },
+      "L6": {
+        "builder_variants": {
+          "coarse": 2
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 2,
+        "row_kinds": {
+          "line_basis_decomposition": 2
+        }
+      }
+    }
+  },
+  "single": {
+    "after": {
+      "L1": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L2": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L3": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L4": {
+        "builder_variants": {
+          "authoritative": 5
+        },
+        "exact_row_count": 5,
+        "has_class_members": true,
+        "has_endpoint_support": true,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": true,
+        "row_count": 5,
+        "row_kinds": {
+          "restriction_class_sum": 5
+        }
+      },
+      "L5": {
+        "builder_variants": {
+          "authoritative": 5
+        },
+        "exact_row_count": 5,
+        "has_class_members": true,
+        "has_endpoint_support": true,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": true,
+        "row_count": 5,
+        "row_kinds": {
+          "restriction_class_sum": 5
+        }
+      },
+      "L6": {
+        "builder_variants": {
+          "authoritative": 2
+        },
+        "exact_row_count": 2,
+        "has_class_members": true,
+        "has_endpoint_support": true,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": true,
+        "row_count": 2,
+        "row_kinds": {
+          "restriction_class_sum": 2
+        }
+      }
+    },
+    "before": {
+      "L1": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L2": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L3": {
+        "builder_variants": {
+          "coarse": 3
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 3,
+        "row_kinds": {
+          "line_basis_decomposition": 3
+        }
+      },
+      "L4": {
+        "builder_variants": {
+          "coarse": 2
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 2,
+        "row_kinds": {
+          "line_basis_decomposition": 2
+        }
+      },
+      "L5": {
+        "builder_variants": {
+          "coarse": 2
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 2,
+        "row_kinds": {
+          "line_basis_decomposition": 2
+        }
+      },
+      "L6": {
+        "builder_variants": {
+          "coarse": 2
+        },
+        "exact_row_count": 0,
+        "has_class_members": false,
+        "has_endpoint_support": false,
+        "has_extrinsic_fingerprint": false,
+        "has_intrinsic_fingerprint": false,
+        "row_count": 2,
+        "row_kinds": {
+          "line_basis_decomposition": 2
+        }
+      }
+    }
+  }
+}

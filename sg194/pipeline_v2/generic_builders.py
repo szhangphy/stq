@@ -767,6 +767,80 @@ def _build_target_restriction_line_block(
     builder_variant: str,
     endpoint_label_key: str = "point_id",
 ) -> dict[str, Any]:
+    use_exact_target_builder = (
+        builder_variant in {"authoritative", "intrinsic"}
+        and source_line.get("metadata", {}).get("source_letter") == "recovered_family_special_line"
+    )
+    if use_exact_target_builder:
+        port = stage1_backend()
+        normalized_endpoints = [
+            {
+                "point_id": str(entry[endpoint_label_key]),
+                "point_coordinates": list(entry["point_coordinates"]),
+                "capture_id": str(entry.get("capture_id", entry[endpoint_label_key])),
+                "incident_lines": list(entry.get("incident_lines", [])),
+                "incident_planes": list(entry.get("incident_planes", [])),
+                "plane_incidences": list(entry.get("plane_incidences", [])),
+            }
+            for entry in endpoint_entries
+        ]
+        line_obj = {
+            **source_line,
+            "id": source_line["id"],
+            "endpoints": normalized_endpoints,
+        }
+        exact_block = port.build_line_block_from_intrinsic_restriction_classes(
+            line_obj,
+            captures,
+            field="character",
+        )
+        equations = []
+        for equation in exact_block["equations"]:
+            equations.append(
+                {
+                    **equation,
+                    "builder_variant": builder_variant,
+                    "exact_builder_variant": "intrinsic",
+                    "target_line_block_kind": "real_line",
+                    "line_window_kind": "ordinary",
+                    "source_line_family": source_line["id"],
+                    "source_line_id": source_line["id"],
+                    "endpoint_capture_ids": [
+                        entry.get("capture_id", entry[endpoint_label_key])
+                        for entry in endpoint_entries
+                    ],
+                }
+            )
+        matrix_rows = _build_block_matrix_rows_from_equations(
+            exact_block["local_unknown_ordering"],
+            equations,
+            block_id=block_id,
+        )
+        return {
+            **exact_block,
+            "status": "target_exact_restriction_classes",
+            "line_id": block_id,
+            "source_line_id": source_line["id"],
+            "endpoint_ids": [str(entry[endpoint_label_key]) for entry in endpoint_entries],
+            "line_sample_point": source_line.get("sample_point"),
+            "line_parametrization": source_line.get("parametrization"),
+            "line_symmetry_summary": source_line.get("symmetry_summary"),
+            "equations": equations,
+            "matrix_rows": matrix_rows,
+            "builder_variant": builder_variant,
+            "target_line_block_kind": "real_line",
+            "compatibility_builder_kind": "generic_same_shell_target_exact_restriction_class_line_builder",
+            "restriction_class_builder": {
+                **exact_block.get("restriction_class_builder", {}),
+                "status": "exact_primary_path",
+                "builder_kind": "generic_same_shell_target_exact_restriction_class_line_builder",
+                "field": "character",
+                "endpoint_capture_ids": [
+                    entry.get("capture_id", entry[endpoint_label_key])
+                    for entry in endpoint_entries
+                ],
+            },
+        }
     block = _build_restriction_class_rows(
         captures[source_line["id"]],
         endpoint_entries,
@@ -914,7 +988,20 @@ def _build_block_matrix_rows_from_equations(
         nonzero = [value for value in row if value]
         if not nonzero:
             raise ValueError(f"{block_id}: generated a structurally empty compatibility row")
-        if not any(value > 0 for value in nonzero) or not any(value < 0 for value in nonzero):
+        row_kind = str(equation.get("row_kind", ""))
+        allow_one_sided_exact_row = row_kind == "same_point_monodromy_restriction_delta" or (
+            row_kind == "restriction_class_sum"
+            and (
+                bool(equation.get("endpoint_support"))
+                or bool(equation.get("class_members"))
+                or bool(equation.get("intrinsic_fingerprint_by_rep"))
+                or bool(equation.get("extrinsic_fingerprint_by_rep"))
+            )
+        )
+        if (
+            not allow_one_sided_exact_row
+            and (not any(value > 0 for value in nonzero) or not any(value < 0 for value in nonzero))
+        ):
             raise ValueError(f"{block_id}: compatibility row does not contain both signs")
         matrix_rows.append(row)
     return matrix_rows
@@ -955,7 +1042,32 @@ def _build_target_line_blocks_for_window(
         )
         if window_tag == "ordinary":
             seen_pairs.add(representative_key)
-            blocks.append(_build_generic_line_block(line, captures, builder_variant=builder_variant))
+            if (
+                builder_variant in {"authoritative", "intrinsic"}
+                and line.get("metadata", {}).get("source_letter") == "recovered_family_special_line"
+            ):
+                blocks.append(
+                    _build_target_restriction_line_block(
+                        source_line=line,
+                        block_id=line["id"],
+                        endpoint_entries=[
+                            {
+                                "point_id": endpoint["point_id"],
+                                "capture_id": endpoint.get("capture_id", endpoint["point_id"]),
+                                "point_coordinates": list(endpoint["point_coordinates"]),
+                                "incident_lines": list(endpoint.get("incident_lines", [])),
+                                "incident_planes": list(endpoint.get("incident_planes", [])),
+                                "plane_incidences": list(endpoint.get("plane_incidences", [])),
+                            }
+                            for endpoint in line["endpoints"]
+                        ],
+                        captures=captures,
+                        builder_variant=builder_variant,
+                        endpoint_label_key="point_id",
+                    )
+                )
+            else:
+                blocks.append(_build_generic_line_block(line, captures, builder_variant=builder_variant))
             records.append(
                 {
                     "line_id": line["id"],
@@ -1278,11 +1390,37 @@ def _build_target_monodromy_block_from_pair(
                 terms.append({"unknown": rep_id, "coeff": coeff, "side": "right_capture"})
         if not terms:
             continue
+        endpoint_support = {
+            left_capture_id: [item["rep_id"] for item in left_support],
+            right_capture_id: [item["rep_id"] for item in right_support],
+        }
+        class_members = [
+            rep_id
+            for rep_id in local_unknown_ordering
+            if rep_id in endpoint_support[left_capture_id] or rep_id in endpoint_support[right_capture_id]
+        ]
+        intrinsic_fingerprint_by_rep = {
+            rep_id: {
+                "fingerprint_kind": "same_point_monodromy_restriction_v1",
+                "point_id": point_id,
+                "left_capture_id": left_capture_id,
+                "right_capture_id": right_capture_id,
+                "left_line_basis_decomposition": [
+                    [basis, int(coeff)]
+                    for basis, coeff in sorted(left_decompositions_by_rep[rep_id].items())
+                ],
+                "right_line_basis_decomposition": [
+                    [basis, int(coeff)]
+                    for basis, coeff in sorted(right_decompositions_by_rep[rep_id].items())
+                ],
+            }
+            for rep_id in class_members
+        }
         equations.append(
             {
                 "basis_id": basis_label,
                 "terms": terms,
-                "row_kind": "same_point_monodromy_line_basis",
+                "row_kind": "same_point_monodromy_restriction_delta",
                 "builder_variant": builder_variant,
                 "target_line_block_kind": "monodromy_line",
                 "line_window_kind": "monodromy",
@@ -1301,6 +1439,18 @@ def _build_target_monodromy_block_from_pair(
                 },
                 "left_support": left_support,
                 "right_support": right_support,
+                "endpoint_support": endpoint_support,
+                "class_members": class_members,
+                "intrinsic_fingerprint_by_rep": intrinsic_fingerprint_by_rep,
+                "extrinsic_fingerprint_by_rep": {},
+                "coarse_signature_by_rep": {
+                    rep_id: {
+                        "left": intrinsic_fingerprint_by_rep[rep_id]["left_line_basis_decomposition"],
+                        "right": intrinsic_fingerprint_by_rep[rep_id]["right_line_basis_decomposition"],
+                    }
+                    for rep_id in class_members
+                },
+                "uses_extrinsic_data": False,
             }
         )
     block_id = f"{pair['source_line_id']}__monodromy_{point_id}_{pair['branch_index']:02d}"

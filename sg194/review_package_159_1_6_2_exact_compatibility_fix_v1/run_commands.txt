@@ -1,0 +1,12 @@
+git branch --show-current
+git status --short
+git log --oneline -n 20
+grep -RIn 'builder_variant' sg194/pipeline_v2 || true
+grep -RIn 'line_basis_decomposition' sg194/pipeline_v2 || true
+grep -RIn 'uses_extrinsic_data' sg194/pipeline_v2 || true
+grep -RIn 'endpoint_support' sg194/pipeline_v2 || true
+grep -RIn 'class_members' sg194/pipeline_v2 || true
+grep -RIn 'intrinsic_fingerprint_by_rep' sg194/pipeline_v2 || true
+grep -RIn 'extrinsic_fingerprint_by_rep' sg194/pipeline_v2 || true
+python -m sg194.run_group_pipeline --group 159.1.6.2 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/159_1_6_2_exact_compat_v1 --build-package
+python -m sg194.run_group_pipeline --group 194.1.12.16 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/194_1_12_16_exact_compat_control_v1 --build-package

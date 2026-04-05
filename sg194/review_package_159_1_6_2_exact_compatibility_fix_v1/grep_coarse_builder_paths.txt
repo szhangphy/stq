@@ -1,0 +1,151 @@
+$ grep -RIn 'builder_variant' sg194/pipeline_v2 || true
+sg194/pipeline_v2/generic_builders.py:292:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:296:        if builder_variant in {"authoritative", "coarse"}
+sg194/pipeline_v2/generic_builders.py:303:        builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:375:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:381:        block = _build_generic_line_block(line, captures, builder_variant=builder_variant)
+sg194/pipeline_v2/generic_builders.py:387:                "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:390:                    block.get("restriction_class_builder", {}).get("builder_kind", builder_variant),
+sg194/pipeline_v2/generic_builders.py:413:        "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:430:        }[builder_variant],
+sg194/pipeline_v2/generic_builders.py:433:            if builder_variant in {"authoritative", "coarse"}
+sg194/pipeline_v2/generic_builders.py:767:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:771:        builder_variant in {"authoritative", "intrinsic"}
+sg194/pipeline_v2/generic_builders.py:802:                    "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:803:                    "exact_builder_variant": "intrinsic",
+sg194/pipeline_v2/generic_builders.py:830:            "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:875:                "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:905:        "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:1019:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:1046:                builder_variant in {"authoritative", "intrinsic"}
+sg194/pipeline_v2/generic_builders.py:1065:                        builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:1070:                blocks.append(_build_generic_line_block(line, captures, builder_variant=builder_variant))
+sg194/pipeline_v2/generic_builders.py:1129:                    builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:1166:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:1178:        builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:1274:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:1424:                "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:1475:        "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:1497:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:1539:                builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:1576:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:1591:        builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:1603:        builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:2585:    builder_variant: str,
+sg194/pipeline_v2/generic_builders.py:2619:        "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:2640:def generic_mode_progress(group_id: str, mode: str, builder_variant: str = "authoritative") -> dict[str, Any]:
+sg194/pipeline_v2/generic_builders.py:2643:    if builder_variant == "extrinsic":
+sg194/pipeline_v2/generic_builders.py:2645:    if builder_variant not in {"authoritative", "coarse", "intrinsic"}:
+sg194/pipeline_v2/generic_builders.py:2646:        raise ValueError(f"unsupported builder variant: {builder_variant}")
+sg194/pipeline_v2/generic_builders.py:2655:            builder_variant,
+sg194/pipeline_v2/generic_builders.py:2681:            builder_variant,
+sg194/pipeline_v2/generic_builders.py:2695:            builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:2703:                if builder_variant in {"authoritative", "coarse"}
+sg194/pipeline_v2/generic_builders.py:2711:            builder_variant,
+sg194/pipeline_v2/generic_builders.py:2725:            builder_variant,
+sg194/pipeline_v2/generic_builders.py:2748:            builder_variant,
+sg194/pipeline_v2/generic_builders.py:2775:        builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:2802:            builder_variant,
+sg194/pipeline_v2/generic_builders.py:2823:        builder_variant,
+sg194/pipeline_v2/generic_builders.py:2843:def generic_mode_bundle(group_id: str, mode: str, builder_variant: str = "authoritative") -> dict[str, Any]:
+sg194/pipeline_v2/generic_builders.py:2846:    if builder_variant == "extrinsic":
+sg194/pipeline_v2/generic_builders.py:2848:    if builder_variant not in {"authoritative", "coarse", "intrinsic"}:
+sg194/pipeline_v2/generic_builders.py:2849:        raise ValueError(f"unsupported builder variant: {builder_variant}")
+sg194/pipeline_v2/generic_builders.py:2872:        builder_variant=builder_variant,
+sg194/pipeline_v2/generic_builders.py:2880:            if builder_variant in {"authoritative", "coarse"}
+sg194/pipeline_v2/generic_builders.py:2904:        "builder_variant": builder_variant,
+sg194/pipeline_v2/generic_builders.py:2916:            if builder_variant in {"authoritative", "coarse"}
+sg194/pipeline_v2/generic_builders.py:3092:def generic_result_objects(group_id: str, builder_variant: str = "authoritative") -> list[dict[str, Any]]:
+sg194/pipeline_v2/generic_builders.py:3095:        progress = generic_mode_progress(group_id, mode, builder_variant=builder_variant)
+sg194/pipeline_v2/generic_builders.py:3122:                "builder_variant": builder_variant,
+sg194/pipeline_v2/runtime_backend_free.py:1960:                "builder_variant": "coarse",
+sg194/pipeline_v2/runtime_backend_free.py:1996:                    "builder_variant": "coarse",
+sg194/pipeline_v2/runtime_backend_free.py:2008:        "builder_variant": "coarse",
+sg194/pipeline_v2/runtime_backend_free.py:2047:        "builder_variant": "coarse",
+sg194/pipeline_v2/runtime_backend_free.py:2082:    builder_variant: str,
+sg194/pipeline_v2/runtime_backend_free.py:2085:    if builder_variant not in {"intrinsic", "extrinsic"}:
+sg194/pipeline_v2/runtime_backend_free.py:2086:        raise ValueError(f"unsupported restriction-class builder variant: {builder_variant}")
+sg194/pipeline_v2/runtime_backend_free.py:2103:        extra_fingerprints: dict[str, dict[str, Any]] | None = {} if builder_variant == "extrinsic" else None
+sg194/pipeline_v2/runtime_backend_free.py:2137:                entry.get("extra_fingerprint") if builder_variant == "extrinsic" else None,
+sg194/pipeline_v2/runtime_backend_free.py:2164:            "basis_id": f"{line_obj['id']}_{builder_variant}_class_{class_index:02d}",
+sg194/pipeline_v2/runtime_backend_free.py:2166:            "builder_variant": builder_variant,
+sg194/pipeline_v2/runtime_backend_free.py:2180:                if builder_variant == "extrinsic"
+sg194/pipeline_v2/runtime_backend_free.py:2187:            "uses_extrinsic_data": builder_variant == "extrinsic",
+sg194/pipeline_v2/runtime_backend_free.py:2198:        if builder_variant == "intrinsic"
+sg194/pipeline_v2/runtime_backend_free.py:2204:        "builder_variant": builder_variant,
+sg194/pipeline_v2/runtime_backend_free.py:2218:            "uses_extrinsic_data": builder_variant == "extrinsic",
+sg194/pipeline_v2/runtime_backend_free.py:2243:        builder_variant="intrinsic",
+sg194/pipeline_v2/runtime_backend_free.py:2257:        builder_variant="extrinsic",
+sg194/pipeline_v2/runtime_backend_free.py:2267:    builder_variant: str = "authoritative",
+sg194/pipeline_v2/runtime_backend_free.py:2269:    if builder_variant in {"authoritative", "coarse"}:
+sg194/pipeline_v2/runtime_backend_free.py:2275:    if builder_variant == "intrinsic":
+sg194/pipeline_v2/runtime_backend_free.py:2277:    if builder_variant == "extrinsic":
+sg194/pipeline_v2/runtime_backend_free.py:2279:    raise ValueError(f"unsupported builder_variant: {builder_variant}")
+sg194/pipeline_v2/runtime_backend_free.py:2309:                    "builder_variant": block.get("builder_variant", "coarse"),
+sg194/pipeline_v2/runtime_backend_free.py:7163:            builder_variant="authoritative",
+sg194/pipeline_v2/runtime_backend_free.py:7187:            builder_variant="authoritative",
+sg194/pipeline_v2/runtime_backend_free.py:7208:            builder_variant="authoritative",
+sg194/pipeline_v2/runtime_backend_free.py:8199:            builder_variant="authoritative",
+sg194/pipeline_v2/runtime_backend_free.py:8222:            builder_variant="authoritative",
+sg194/pipeline_v2/runtime_backend_free.py:8243:            builder_variant="authoritative",
+
+$ grep -RIn 'line_basis_decomposition' sg194/pipeline_v2 || true
+sg194/pipeline_v2/generic_builders.py:1408:                "left_line_basis_decomposition": [
+sg194/pipeline_v2/generic_builders.py:1412:                "right_line_basis_decomposition": [
+sg194/pipeline_v2/generic_builders.py:1448:                        "left": intrinsic_fingerprint_by_rep[rep_id]["left_line_basis_decomposition"],
+sg194/pipeline_v2/generic_builders.py:1449:                        "right": intrinsic_fingerprint_by_rep[rep_id]["right_line_basis_decomposition"],
+sg194/pipeline_v2/final_object_reduction.py:578:                "row_kind": equation.get("row_kind", "line_basis_decomposition"),
+sg194/pipeline_v2/runtime_backend_free.py:1770:        "line_basis_decomposition": _line_decomposition_signature(decomposition[rep_id]),
+sg194/pipeline_v2/runtime_backend_free.py:1961:                "row_kind": "line_basis_decomposition",
+sg194/pipeline_v2/runtime_backend_free.py:2115:            coarse_signature_by_rep[rep_id] = intrinsic_fingerprints_by_rep[rep_id]["line_basis_decomposition"]
+
+$ grep -RIn 'uses_extrinsic_data' sg194/pipeline_v2 || true
+sg194/pipeline_v2/generic_builders.py:1453:                "uses_extrinsic_data": False,
+sg194/pipeline_v2/runtime_backend_free.py:1962:                "uses_extrinsic_data": False,
+sg194/pipeline_v2/runtime_backend_free.py:1998:                    "uses_extrinsic_data": False,
+sg194/pipeline_v2/runtime_backend_free.py:2054:            "uses_extrinsic_data": False,
+sg194/pipeline_v2/runtime_backend_free.py:2187:            "uses_extrinsic_data": builder_variant == "extrinsic",
+sg194/pipeline_v2/runtime_backend_free.py:2218:            "uses_extrinsic_data": builder_variant == "extrinsic",
+
+$ grep -RIn 'endpoint_support' sg194/pipeline_v2 || true
+sg194/pipeline_v2/generic_builders.py:995:                bool(equation.get("endpoint_support"))
+sg194/pipeline_v2/generic_builders.py:1393:        endpoint_support = {
+sg194/pipeline_v2/generic_builders.py:1400:            if rep_id in endpoint_support[left_capture_id] or rep_id in endpoint_support[right_capture_id]
+sg194/pipeline_v2/generic_builders.py:1442:                "endpoint_support": endpoint_support,
+sg194/pipeline_v2/runtime_backend_free.py:1963:                "endpoint_support": {},
+sg194/pipeline_v2/runtime_backend_free.py:1999:                    "endpoint_support": {},
+sg194/pipeline_v2/runtime_backend_free.py:2154:        endpoint_support = {endpoint_id: list(support["members_by_endpoint"].get(endpoint_id, [])) for endpoint_id in endpoint_ids}
+sg194/pipeline_v2/runtime_backend_free.py:2158:            for rep_id in endpoint_support.get(endpoint_id, []):
+sg194/pipeline_v2/runtime_backend_free.py:2162:        class_members = [rep_id for endpoint_id in endpoint_ids for rep_id in endpoint_support.get(endpoint_id, [])]
+sg194/pipeline_v2/runtime_backend_free.py:2168:            "endpoint_support": endpoint_support,
+
+$ grep -RIn 'class_members' sg194/pipeline_v2 || true
+sg194/pipeline_v2/generic_builders.py:996:                or bool(equation.get("class_members"))
+sg194/pipeline_v2/generic_builders.py:1397:        class_members = [
+sg194/pipeline_v2/generic_builders.py:1417:            for rep_id in class_members
+sg194/pipeline_v2/generic_builders.py:1443:                "class_members": class_members,
+sg194/pipeline_v2/generic_builders.py:1451:                    for rep_id in class_members
+sg194/pipeline_v2/runtime_backend_free.py:1964:                "class_members": [],
+sg194/pipeline_v2/runtime_backend_free.py:2000:                    "class_members": list(equation["restriction_class_rep_ids"]),
+sg194/pipeline_v2/runtime_backend_free.py:2162:        class_members = [rep_id for endpoint_id in endpoint_ids for rep_id in endpoint_support.get(endpoint_id, [])]
+sg194/pipeline_v2/runtime_backend_free.py:2169:            "class_members": class_members,
+sg194/pipeline_v2/runtime_backend_free.py:2173:                for rep_id in class_members
+sg194/pipeline_v2/runtime_backend_free.py:2178:                    for rep_id in class_members
+sg194/pipeline_v2/runtime_backend_free.py:2185:                for rep_id in class_members
+
+$ grep -RIn 'intrinsic_fingerprint_by_rep' sg194/pipeline_v2 || true
+sg194/pipeline_v2/generic_builders.py:997:                or bool(equation.get("intrinsic_fingerprint_by_rep"))
+sg194/pipeline_v2/generic_builders.py:1402:        intrinsic_fingerprint_by_rep = {
+sg194/pipeline_v2/generic_builders.py:1444:                "intrinsic_fingerprint_by_rep": intrinsic_fingerprint_by_rep,
+sg194/pipeline_v2/generic_builders.py:1448:                        "left": intrinsic_fingerprint_by_rep[rep_id]["left_line_basis_decomposition"],
+sg194/pipeline_v2/generic_builders.py:1449:                        "right": intrinsic_fingerprint_by_rep[rep_id]["right_line_basis_decomposition"],
+sg194/pipeline_v2/runtime_backend_free.py:1965:                "intrinsic_fingerprint_by_rep": {},
+sg194/pipeline_v2/runtime_backend_free.py:2001:                    "intrinsic_fingerprint_by_rep": {},
+sg194/pipeline_v2/runtime_backend_free.py:2171:            "intrinsic_fingerprint_by_rep": {
+
+$ grep -RIn 'extrinsic_fingerprint_by_rep' sg194/pipeline_v2 || true
+sg194/pipeline_v2/generic_builders.py:998:                or bool(equation.get("extrinsic_fingerprint_by_rep"))
+sg194/pipeline_v2/generic_builders.py:1445:                "extrinsic_fingerprint_by_rep": {},
+sg194/pipeline_v2/runtime_backend_free.py:1966:                "extrinsic_fingerprint_by_rep": {},
+sg194/pipeline_v2/runtime_backend_free.py:2002:                    "extrinsic_fingerprint_by_rep": {},
+sg194/pipeline_v2/runtime_backend_free.py:2175:            "extrinsic_fingerprint_by_rep": (
