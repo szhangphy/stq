@@ -1,0 +1,156 @@
+{
+  "single": [
+    {
+      "mode": "single",
+      "line_id": "L1__monodromy_P1_01",
+      "family_id": "L1",
+      "canonical_family_key": "L1",
+      "point_id": "P1",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "single",
+      "line_id": "L2__monodromy_P3_01",
+      "family_id": "L2",
+      "canonical_family_key": "L2",
+      "point_id": "P3",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "single",
+      "line_id": "L3__monodromy_P7_01",
+      "family_id": "L3",
+      "canonical_family_key": "L3",
+      "point_id": "P7",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "single",
+      "line_id": "L4__monodromy_P1_01",
+      "family_id": "L4",
+      "canonical_family_key": "L4",
+      "point_id": "P1",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "single",
+      "line_id": "L5__monodromy_P2_01",
+      "family_id": "L5",
+      "canonical_family_key": "L5",
+      "point_id": "P2",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "single",
+      "line_id": "L6__monodromy_P5_01",
+      "family_id": "L6",
+      "canonical_family_key": "L6",
+      "point_id": "P5",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    }
+  ],
+  "double": [
+    {
+      "mode": "double",
+      "line_id": "L1__monodromy_P1_01",
+      "family_id": "L1",
+      "canonical_family_key": "L1",
+      "point_id": "P1",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "double",
+      "line_id": "L2__monodromy_P3_01",
+      "family_id": "L2",
+      "canonical_family_key": "L2",
+      "point_id": "P3",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "double",
+      "line_id": "L3__monodromy_P7_01",
+      "family_id": "L3",
+      "canonical_family_key": "L3",
+      "point_id": "P7",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "double",
+      "line_id": "L4__monodromy_P1_01",
+      "family_id": "L4",
+      "canonical_family_key": "L4",
+      "point_id": "P1",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "double",
+      "line_id": "L5__monodromy_P2_01",
+      "family_id": "L5",
+      "canonical_family_key": "L5",
+      "point_id": "P2",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    },
+    {
+      "mode": "double",
+      "line_id": "L6__monodromy_P5_01",
+      "family_id": "L6",
+      "canonical_family_key": "L6",
+      "point_id": "P5",
+      "builder_variant": "intrinsic",
+      "equation_count": 0,
+      "row_kinds": [],
+      "has_exact_metadata": false
+    }
+  ],
+  "summary": {
+    "single_zero_equation_families": [
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "L6"
+    ],
+    "double_zero_equation_families": [
+      "L1",
+      "L2",
+      "L3",
+      "L4",
+      "L5",
+      "L6"
+    ]
+  }
+}

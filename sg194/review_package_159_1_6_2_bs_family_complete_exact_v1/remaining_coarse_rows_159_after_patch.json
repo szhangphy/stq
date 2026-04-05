@@ -1,0 +1,5 @@
+{
+  "single": [],
+  "double": [],
+  "note": "After this patch, no ordinary target BS rows remain coarse in 159.1.6.2. The remaining gap is monodromy blocks with zero actual equations."
+}

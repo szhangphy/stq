@@ -1,0 +1,6 @@
+git branch --show-current
+git status --short --untracked-files=no
+git log --oneline -n 20
+grep -RIn 'source_letter|recovered_family_special_line|phase_aware_endpoint_class|build_line_block_from_intrinsic_restriction_classes|build_line_block(' sg194/pipeline_v2/runtime_backend_free.py sg194/pipeline_v2/generic_builders.py || true
+python -m sg194.run_group_pipeline --group 159.1.6.2 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/159_1_6_2_bs_family_complete_exact_v1 --build-package
+python -m sg194.run_group_pipeline --group 194.1.12.16 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/194_1_12_16_bs_family_complete_exact_control_v1 --build-package

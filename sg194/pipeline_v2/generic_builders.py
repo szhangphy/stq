@@ -311,6 +311,30 @@ def _build_generic_line_block_compare_coarse(
     return stage1_backend().build_line_block_coarse(line_obj, captures, phase_aware_profile=None)
 
 
+def _canonical_target_line_family_key(source_line: dict[str, Any]) -> str:
+    metadata = source_line.get("metadata", {})
+    representative = metadata.get("source_representative_coordinate")
+    if representative:
+        return str(representative)
+    parametrization = source_line.get("parametrization")
+    if parametrization:
+        return str(parametrization)
+    return str(source_line["id"])
+
+
+def _target_line_family_requires_exact_rows(source_line: dict[str, Any], *, builder_variant: str) -> bool:
+    if builder_variant not in {"authoritative", "intrinsic"}:
+        return False
+    metadata = source_line.get("metadata", {})
+    if int(metadata.get("source_dimension", 0) or 0) != 1:
+        return False
+    return int(metadata.get("source_mult", 0) or 0) == 1
+
+
+def _effective_exact_builder_variant(builder_variant: str) -> str:
+    return "intrinsic" if builder_variant in {"authoritative", "intrinsic"} else builder_variant
+
+
 def _build_generic_plane_block(
     plane_obj: dict[str, Any],
     corner_entries: list[dict[str, Any]],
@@ -767,12 +791,14 @@ def _build_target_restriction_line_block(
     builder_variant: str,
     endpoint_label_key: str = "point_id",
 ) -> dict[str, Any]:
-    use_exact_target_builder = (
-        builder_variant in {"authoritative", "intrinsic"}
-        and source_line.get("metadata", {}).get("source_letter") == "recovered_family_special_line"
+    family_key = _canonical_target_line_family_key(source_line)
+    use_exact_target_builder = _target_line_family_requires_exact_rows(
+        source_line,
+        builder_variant=builder_variant,
     )
     if use_exact_target_builder:
         port = stage1_backend()
+        effective_builder_variant = _effective_exact_builder_variant(builder_variant)
         normalized_endpoints = [
             {
                 "point_id": str(entry[endpoint_label_key]),
@@ -799,11 +825,12 @@ def _build_target_restriction_line_block(
             equations.append(
                 {
                     **equation,
-                    "builder_variant": builder_variant,
+                    "builder_variant": effective_builder_variant,
                     "exact_builder_variant": "intrinsic",
                     "target_line_block_kind": "real_line",
                     "line_window_kind": "ordinary",
                     "source_line_family": source_line["id"],
+                    "canonical_family_key": family_key,
                     "source_line_id": source_line["id"],
                     "endpoint_capture_ids": [
                         entry.get("capture_id", entry[endpoint_label_key])
@@ -827,7 +854,7 @@ def _build_target_restriction_line_block(
             "line_symmetry_summary": source_line.get("symmetry_summary"),
             "equations": equations,
             "matrix_rows": matrix_rows,
-            "builder_variant": builder_variant,
+            "builder_variant": effective_builder_variant,
             "target_line_block_kind": "real_line",
             "compatibility_builder_kind": "generic_same_shell_target_exact_restriction_class_line_builder",
             "restriction_class_builder": {
@@ -877,6 +904,7 @@ def _build_target_restriction_line_block(
                 "target_line_block_kind": "real_line",
                 "line_window_kind": "ordinary",
                 "source_line_family": source_line["id"],
+                "canonical_family_key": family_key,
                 "source_line_id": source_line["id"],
                 "endpoint_capture_ids": [
                     entry.get("capture_id", entry["point_id"])
@@ -1042,10 +1070,7 @@ def _build_target_line_blocks_for_window(
         )
         if window_tag == "ordinary":
             seen_pairs.add(representative_key)
-            if (
-                builder_variant in {"authoritative", "intrinsic"}
-                and line.get("metadata", {}).get("source_letter") == "recovered_family_special_line"
-            ):
+            if _target_line_family_requires_exact_rows(line, builder_variant=builder_variant):
                 blocks.append(
                     _build_target_restriction_line_block(
                         source_line=line,
@@ -1274,6 +1299,7 @@ def _build_target_monodromy_block_from_pair(
     builder_variant: str,
 ) -> dict[str, Any]:
     port = stage1_backend()
+    effective_builder_variant = _effective_exact_builder_variant(builder_variant)
     point_id = str(pair["point_id"])
     left_capture_id = str(pair["left_capture_id"])
     right_capture_id = str(pair["right_capture_id"])
@@ -1421,10 +1447,11 @@ def _build_target_monodromy_block_from_pair(
                 "basis_id": basis_label,
                 "terms": terms,
                 "row_kind": "same_point_monodromy_restriction_delta",
-                "builder_variant": builder_variant,
+                "builder_variant": effective_builder_variant,
                 "target_line_block_kind": "monodromy_line",
                 "line_window_kind": "monodromy",
                 "source_line_family": pair["line_family"],
+                "canonical_family_key": str(pair["line_family"]),
                 "source_line_id": pair["source_line_id"],
                 "endpoint_capture_ids": [left_capture_id, right_capture_id],
                 "monodromy_field": monodromy_field,
@@ -1472,7 +1499,7 @@ def _build_target_monodromy_block_from_pair(
         "equations": equations,
         "matrix_rows": matrix_rows,
         "line_basis_labels": line_basis_labels,
-        "builder_variant": builder_variant,
+        "builder_variant": effective_builder_variant,
         "target_line_block_kind": "monodromy_line",
         "compatibility_builder_kind": "generic_same_shell_target_monodromy_pair_builder",
         "monodromy_field_used": monodromy_field,

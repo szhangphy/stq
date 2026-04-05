@@ -1,0 +1,49 @@
+{
+  "branch": "159-1-6-2-bs-family-complete-exact-v1",
+  "focus": "159.1.6.2 BS family-complete exact semantics",
+  "source_files_changed": [
+    "sg194/pipeline_v2/generic_builders.py"
+  ],
+  "159_results": {
+    "single": {
+      "target_bs_rank": 3,
+      "published_dBS": 3,
+      "published_dAI": 0,
+      "exact_row_count": 25,
+      "remaining_coarse_rows": 0
+    },
+    "double": {
+      "target_bs_rank": 4,
+      "published_dBS": 2,
+      "published_dAI": 0,
+      "exact_row_count": 23,
+      "remaining_coarse_rows": 0
+    }
+  },
+  "family_split_removed": true,
+  "monodromy_exact_gap": {
+    "single_zero_equation_blocks": [
+      "L1__monodromy_P1_01",
+      "L2__monodromy_P3_01",
+      "L3__monodromy_P7_01",
+      "L4__monodromy_P1_01",
+      "L5__monodromy_P2_01",
+      "L6__monodromy_P5_01"
+    ],
+    "double_zero_equation_blocks": [
+      "L1__monodromy_P1_01",
+      "L2__monodromy_P3_01",
+      "L3__monodromy_P7_01",
+      "L4__monodromy_P1_01",
+      "L5__monodromy_P2_01",
+      "L6__monodromy_P5_01"
+    ]
+  },
+  "control_group_194_1_12_16": {
+    "single_target_bs_rank": 13,
+    "double_target_bs_rank": 10
+  },
+  "hardcoded_truth_used": false,
+  "compare_only_truth_pollutes_solver": false,
+  "status": "not_final"
+}
