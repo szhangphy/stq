@@ -1,0 +1,664 @@
+{
+  "raw_count": 3,
+  "raw_text": "orbit_with_moments",
+  "families": [
+    {
+      "mult": 6,
+      "stab": 1,
+      "stab_rotations": [
+        [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ]
+      ],
+      "dim": 3,
+      "ns": [],
+      "c": [],
+      "rep": [
+        [
+          "0",
+          {
+            "x": "1"
+          }
+        ],
+        [
+          "0",
+          {
+            "y": "1"
+          }
+        ],
+        [
+          "0",
+          {
+            "z": "1"
+          }
+        ]
+      ],
+      "orbit": [
+        "-x, -x + y, z + 1/2",
+        "-x + y, -x, z",
+        "-y, x -y, z",
+        "y, x, z + 1/2",
+        "x -y, -y, z + 1/2",
+        "x, y, z"
+      ],
+      "orbit_conv": [
+        "-x, -x + y, z + 1/2",
+        "-x + y, -x, z",
+        "-y, x -y, z",
+        "y, x, z + 1/2",
+        "x -y, -y, z + 1/2",
+        "x, y, z"
+      ],
+      "orbit_moments": [
+        "-1/2mx + 0.866025my, 0.866025mx + 1/2my, -mz",
+        "-1/2mx + 0.866025my, -0.866025mx - 1/2my, mz",
+        "-1/2mx - 0.866025my, 0.866025mx - 1/2my, mz",
+        "mx, -my, -mz",
+        "-1/2mx - 0.866025my, -0.866025mx + 1/2my, -mz",
+        "mx, my, mz"
+      ],
+      "orbit_with_moments": [
+        "(-x, -x + y, z + 1/2 | -1/2mx + 0.866025my, 0.866025mx + 1/2my, -mz)",
+        "(-x + y, -x, z | -1/2mx + 0.866025my, -0.866025mx - 1/2my, mz)",
+        "(-y, x -y, z | -1/2mx - 0.866025my, 0.866025mx - 1/2my, mz)",
+        "(y, x, z + 1/2 | mx, -my, -mz)",
+        "(x -y, -y, z + 1/2 | -1/2mx - 0.866025my, -0.866025mx + 1/2my, -mz)",
+        "(x, y, z | mx, my, mz)"
+      ],
+      "orbit_conv_with_moments": [
+        "(-x, -x + y, z + 1/2 | -1/2mx + 0.866025my, 0.866025mx + 1/2my, -mz)",
+        "(-x + y, -x, z | -1/2mx + 0.866025my, -0.866025mx - 1/2my, mz)",
+        "(-y, x -y, z | -1/2mx - 0.866025my, 0.866025mx - 1/2my, mz)",
+        "(y, x, z + 1/2 | mx, -my, -mz)",
+        "(x -y, -y, z + 1/2 | -1/2mx - 0.866025my, -0.866025mx + 1/2my, -mz)",
+        "(x, y, z | mx, my, mz)"
+      ],
+      "arms": [
+        "-x, -x + y, z + 1/2",
+        "-x + y, -x, z",
+        "-y, x -y, z",
+        "y, x, z + 1/2",
+        "x -y, -y, z + 1/2",
+        "x, y, z"
+      ],
+      "arms_conv": [
+        "-x, -x + y, z + 1/2",
+        "-x + y, -x, z",
+        "-y, x -y, z",
+        "y, x, z + 1/2",
+        "x -y, -y, z + 1/2",
+        "x, y, z"
+      ],
+      "x0": [
+        "0",
+        "0",
+        "0"
+      ],
+      "basis_vecs": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "orbit_coord_score": [
+        0,
+        3,
+        "0",
+        "3/2",
+        3,
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "system": "trigonal",
+      "site_symmetry": "1",
+      "unitary_site_symmetry": "1",
+      "site_symmetry_custom": "1",
+      "site_symmetry_ops": [
+        {
+          "token": "1",
+          "type": "1",
+          "kind": "identity",
+          "axis": null,
+          "axis_direction": null,
+          "time_reversal": false,
+          "spin_matrix": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "spatial_site_symmetry_custom": "1",
+      "spatial_site_symmetry_ops": [],
+      "moment_basis": [
+        "1, 0, 0",
+        "0, 1, 0",
+        "0, 0, 1"
+      ],
+      "moment_dim": 3,
+      "moment_constraints": "mx, my, mz",
+      "has_magnetic_moment": true,
+      "representative_coordinate": "x, y, z",
+      "representative_moment": "mx, my, mz",
+      "representative_with_moment": "(x, y, z | mx, my, mz)",
+      "letter": "c"
+    },
+    {
+      "mult": 2,
+      "stab": 3,
+      "stab_rotations": [
+        [
+          [
+            "-1",
+            "1",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        [
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ]
+      ],
+      "dim": 1,
+      "ns": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ]
+      ],
+      "c": [
+        "2/3",
+        "1/3"
+      ],
+      "rep": [
+        [
+          "2/3",
+          {}
+        ],
+        [
+          "1/3",
+          {}
+        ],
+        [
+          "0",
+          {
+            "z": "1"
+          }
+        ]
+      ],
+      "orbit": [
+        "1/3, 2/3, z + 1/2",
+        "2/3, 1/3, z"
+      ],
+      "orbit_conv": [
+        "1/3, 2/3, z + 1/2",
+        "2/3, 1/3, z"
+      ],
+      "orbit_moments": [
+        "0, 0, -mz",
+        "0, 0, mz"
+      ],
+      "orbit_with_moments": [
+        "(1/3, 2/3, z + 1/2 | 0, 0, -mz)",
+        "(2/3, 1/3, z | 0, 0, mz)"
+      ],
+      "orbit_conv_with_moments": [
+        "(1/3, 2/3, z + 1/2 | 0, 0, -mz)",
+        "(2/3, 1/3, z | 0, 0, mz)"
+      ],
+      "arms": [
+        "1/3, 2/3, z + 1/2",
+        "2/3, 1/3, z"
+      ],
+      "arms_conv": [
+        "1/3, 2/3, z + 1/2",
+        "2/3, 1/3, z"
+      ],
+      "x0": [
+        "2/3",
+        "1/3",
+        "0"
+      ],
+      "basis_vecs": [
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "orbit_coord_score": [
+        2,
+        0,
+        "2/3",
+        "5/6",
+        7,
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          "2/3",
+          "1/3",
+          "0"
+        ]
+      ],
+      "system": "trigonal",
+      "site_symmetry": "3[z]",
+      "unitary_site_symmetry": "?",
+      "site_symmetry_custom": "3[z] * 3[z]",
+      "site_symmetry_ops": [
+        {
+          "token": "3[z]",
+          "type": "3",
+          "kind": "rotation",
+          "axis": "z",
+          "axis_direction": [
+            0,
+            0,
+            1
+          ],
+          "time_reversal": false,
+          "spin_matrix": [
+            [
+              -0.4999999999999998,
+              0.8660254037844388,
+              0.0
+            ],
+            [
+              -0.8660254037844388,
+              -0.4999999999999998,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "token": "3[z]",
+          "type": "3",
+          "kind": "rotation",
+          "axis": "z",
+          "axis_direction": [
+            0,
+            0,
+            1
+          ],
+          "time_reversal": false,
+          "spin_matrix": [
+            [
+              -0.4999999999999998,
+              -0.8660254037844388,
+              0.0
+            ],
+            [
+              0.8660254037844388,
+              -0.4999999999999998,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "spatial_site_symmetry_custom": "3[z]",
+      "spatial_site_symmetry_ops": [
+        {
+          "token": "3[z]",
+          "type": "3",
+          "kind": "rotation",
+          "axis": "z",
+          "axis_direction": [
+            0,
+            0,
+            1
+          ],
+          "time_reversal": false
+        }
+      ],
+      "moment_basis": [
+        "0, 0, 1"
+      ],
+      "moment_dim": 1,
+      "moment_constraints": "0, 0, mz",
+      "has_magnetic_moment": true,
+      "representative_coordinate": "2/3, 1/3, z",
+      "representative_moment": "0, 0, mz",
+      "representative_with_moment": "(2/3, 1/3, z | 0, 0, mz)",
+      "letter": "b"
+    },
+    {
+      "mult": 2,
+      "stab": 3,
+      "stab_rotations": [
+        [
+          [
+            "-1",
+            "1",
+            "0"
+          ],
+          [
+            "-1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        [
+          [
+            "0",
+            "-1",
+            "0"
+          ],
+          [
+            "1",
+            "-1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ]
+      ],
+      "dim": 1,
+      "ns": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ]
+      ],
+      "c": [
+        "0",
+        "0"
+      ],
+      "rep": [
+        [
+          "0",
+          {}
+        ],
+        [
+          "0",
+          {}
+        ],
+        [
+          "0",
+          {
+            "z": "1"
+          }
+        ]
+      ],
+      "orbit": [
+        "0, 0, z + 1/2",
+        "0, 0, z"
+      ],
+      "orbit_conv": [
+        "0, 0, z + 1/2",
+        "0, 0, z"
+      ],
+      "orbit_moments": [
+        "0, 0, -mz",
+        "0, 0, mz"
+      ],
+      "orbit_with_moments": [
+        "(0, 0, z + 1/2 | 0, 0, -mz)",
+        "(0, 0, z | 0, 0, mz)"
+      ],
+      "orbit_conv_with_moments": [
+        "(0, 0, z + 1/2 | 0, 0, -mz)",
+        "(0, 0, z | 0, 0, mz)"
+      ],
+      "arms": [
+        "0, 0, z + 1/2",
+        "0, 0, z"
+      ],
+      "arms_conv": [
+        "0, 0, z + 1/2",
+        "0, 0, z"
+      ],
+      "x0": [
+        "0",
+        "0",
+        "0"
+      ],
+      "basis_vecs": [
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "orbit_coord_score": [
+        0,
+        3,
+        "0",
+        "3/2",
+        3,
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "system": "trigonal",
+      "site_symmetry": "3[z]",
+      "unitary_site_symmetry": "?",
+      "site_symmetry_custom": "3[z] * 3[z]",
+      "site_symmetry_ops": [
+        {
+          "token": "3[z]",
+          "type": "3",
+          "kind": "rotation",
+          "axis": "z",
+          "axis_direction": [
+            0,
+            0,
+            1
+          ],
+          "time_reversal": false,
+          "spin_matrix": [
+            [
+              -0.4999999999999998,
+              0.8660254037844388,
+              0.0
+            ],
+            [
+              -0.8660254037844388,
+              -0.4999999999999998,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "token": "3[z]",
+          "type": "3",
+          "kind": "rotation",
+          "axis": "z",
+          "axis_direction": [
+            0,
+            0,
+            1
+          ],
+          "time_reversal": false,
+          "spin_matrix": [
+            [
+              -0.4999999999999998,
+              -0.8660254037844388,
+              0.0
+            ],
+            [
+              0.8660254037844388,
+              -0.4999999999999998,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "spatial_site_symmetry_custom": "3[z]",
+      "spatial_site_symmetry_ops": [
+        {
+          "token": "3[z]",
+          "type": "3",
+          "kind": "rotation",
+          "axis": "z",
+          "axis_direction": [
+            0,
+            0,
+            1
+          ],
+          "time_reversal": false
+        }
+      ],
+      "moment_basis": [
+        "0, 0, 1"
+      ],
+      "moment_dim": 1,
+      "moment_constraints": "0, 0, mz",
+      "has_magnetic_moment": true,
+      "representative_coordinate": "0, 0, z",
+      "representative_moment": "0, 0, mz",
+      "representative_with_moment": "(0, 0, z | 0, 0, mz)",
+      "letter": "a"
+    }
+  ]
+}

@@ -1,0 +1,440 @@
+{
+  "recovered_family_special_lines": [
+    {
+      "label": "recovered_boundary_04",
+      "type": "line",
+      "dimension": 1,
+      "parametrization": "(v, -2v, 0)",
+      "coordinate_expressions": [
+        "v",
+        "-2v",
+        "0"
+      ],
+      "parameters": [
+        "v"
+      ],
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "constraint_summary": "0 < v, v < 1/2",
+      "sample_point": [
+        "1/5",
+        "3/5",
+        "0"
+      ],
+      "metadata": {
+        "source_letter": "recovered_family_special_line",
+        "source_mult": 1,
+        "source_dimension": 1,
+        "source_orbit": [
+          "v, -2v, 0"
+        ],
+        "source_representative_coordinate": "v, -2v, 0",
+        "source_x0": [
+          "0",
+          "0",
+          "0"
+        ],
+        "source_basis_vecs": [
+          [
+            "1",
+            "-2",
+            "0"
+          ]
+        ],
+        "source_rep": [
+          [
+            "0",
+            {
+              "v": "1"
+            }
+          ],
+          [
+            "0",
+            {
+              "v": "-2"
+            }
+          ],
+          [
+            "0",
+            {}
+          ]
+        ],
+        "recovered_from_plane_boundary": {
+          "plane_id": "S1",
+          "plane_parametrization": "(v, -2v, w)",
+          "boundary_condition": "w = 0"
+        }
+      },
+      "id": "L4",
+      "manifold_role": "separately_listed_special_line_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "3/5",
+          "0"
+        ],
+        "generic_stabilizer_size": 2,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "m[210]",
+        "site_symmetry_custom": "2[(1/2, 0.866025, 0)]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "-2",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        }
+      ],
+      "endpoints": [
+        {
+          "boundary_condition": "v = 0",
+          "point_coordinates": [
+            "0",
+            "0",
+            "0"
+          ],
+          "point_id": "P1"
+        },
+        {
+          "boundary_condition": "v = 1/2",
+          "point_coordinates": [
+            "1/2",
+            "0",
+            "0"
+          ],
+          "point_id": "P5"
+        }
+      ],
+      "containing_planes": [
+        {
+          "plane_id": "S1",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "0"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "recovered_boundary_05",
+      "type": "line",
+      "dimension": 1,
+      "parametrization": "(v, -2v, 1/2)",
+      "coordinate_expressions": [
+        "v",
+        "-2v",
+        "1/2"
+      ],
+      "parameters": [
+        "v"
+      ],
+      "constraints": [
+        "0 < v",
+        "v < 1/2"
+      ],
+      "constraint_summary": "0 < v, v < 1/2",
+      "sample_point": [
+        "1/5",
+        "3/5",
+        "1/2"
+      ],
+      "metadata": {
+        "source_letter": "recovered_family_special_line",
+        "source_mult": 1,
+        "source_dimension": 1,
+        "source_orbit": [
+          "v, -2v, 1/2"
+        ],
+        "source_representative_coordinate": "v, -2v, 1/2",
+        "source_x0": [
+          "0",
+          "0",
+          "1/2"
+        ],
+        "source_basis_vecs": [
+          [
+            "1",
+            "-2",
+            "0"
+          ]
+        ],
+        "source_rep": [
+          [
+            "0",
+            {
+              "v": "1"
+            }
+          ],
+          [
+            "0",
+            {
+              "v": "-2"
+            }
+          ],
+          [
+            "1/2",
+            {}
+          ]
+        ],
+        "recovered_from_plane_boundary": {
+          "plane_id": "S1",
+          "plane_parametrization": "(v, -2v, w)",
+          "boundary_condition": "w = 1/2"
+        }
+      },
+      "id": "L5",
+      "manifold_role": "separately_listed_special_line_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "3/5",
+          "1/2"
+        ],
+        "generic_stabilizer_size": 2,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "m[210]",
+        "site_symmetry_custom": "2[(1/2, 0.866025, 0)]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "-2",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        }
+      ],
+      "endpoints": [
+        {
+          "boundary_condition": "v = 0",
+          "point_coordinates": [
+            "0",
+            "0",
+            "1/2"
+          ],
+          "point_id": "P2"
+        },
+        {
+          "boundary_condition": "v = 1/2",
+          "point_coordinates": [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          "point_id": "P6"
+        }
+      ],
+      "containing_planes": [
+        {
+          "plane_id": "S1",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "0",
+              "1/2"
+            ],
+            "direction_coords": [
+              "1",
+              "0"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "recovered_boundary_06",
+      "type": "line",
+      "dimension": 1,
+      "parametrization": "(1/2, -1, w)",
+      "coordinate_expressions": [
+        "1/2",
+        "-1",
+        "w"
+      ],
+      "parameters": [
+        "w"
+      ],
+      "constraints": [
+        "0 < w",
+        "w < 1/2"
+      ],
+      "constraint_summary": "0 < w, w < 1/2",
+      "sample_point": [
+        "1/2",
+        "0",
+        "1/5"
+      ],
+      "metadata": {
+        "source_letter": "recovered_family_special_line",
+        "source_mult": 1,
+        "source_dimension": 1,
+        "source_orbit": [
+          "1/2, -1, w"
+        ],
+        "source_representative_coordinate": "1/2, -1, w",
+        "source_x0": [
+          "1/2",
+          "-1",
+          "0"
+        ],
+        "source_basis_vecs": [
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "source_rep": [
+          [
+            "1/2",
+            {}
+          ],
+          [
+            "-1",
+            {}
+          ],
+          [
+            "0",
+            {
+              "w": "1"
+            }
+          ]
+        ],
+        "recovered_from_plane_boundary": {
+          "plane_id": "S1",
+          "plane_parametrization": "(v, -2v, w)",
+          "boundary_condition": "v = 1/2"
+        }
+      },
+      "id": "L6",
+      "manifold_role": "separately_listed_special_line_manifold",
+      "symmetry_summary": {
+        "generic_point": [
+          "1/2",
+          "0",
+          "1/5"
+        ],
+        "generic_stabilizer_size": 2,
+        "generic_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "site_symmetry": "m[210]",
+        "site_symmetry_custom": "2[(1/2, 0.866025, 0)]",
+        "unitary_site_symmetry": "?"
+      },
+      "closure_under_pointwise_stabilizer": [
+        {
+          "dimension": 2,
+          "x0": [
+            "0",
+            "0",
+            "0"
+          ],
+          "basis_vecs": [
+            [
+              "1",
+              "-2",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          "line_id": null,
+          "plane_id": "S1"
+        }
+      ],
+      "endpoints": [
+        {
+          "boundary_condition": "w = 0",
+          "point_coordinates": [
+            "1/2",
+            "0",
+            "0"
+          ],
+          "point_id": "P5"
+        },
+        {
+          "boundary_condition": "w = 1/2",
+          "point_coordinates": [
+            "1/2",
+            "0",
+            "1/2"
+          ],
+          "point_id": "P6"
+        }
+      ],
+      "containing_planes": [
+        {
+          "plane_id": "S1",
+          "incidence_role": "boundary",
+          "plane_coordinates": {
+            "anchor_coords": [
+              "1/2",
+              "0"
+            ],
+            "direction_coords": [
+              "0",
+              "1"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "materialized_summary": {
+    "Lambda": "L4",
+    "Q": "L5",
+    "U": "L6",
+    "C": "S1"
+  }
+}

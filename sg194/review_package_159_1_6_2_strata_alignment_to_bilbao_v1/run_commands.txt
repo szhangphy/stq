@@ -1,0 +1,6 @@
+git branch --show-current
+git status --short
+git log --oneline -n 20
+python -m sg194.run_group_pipeline --group 159.1.6.2 --mode both --row-language all --output-dir sg194/pipeline_runs_v2/159_1_6_2_strata_alignment_probe_v3
+python - <<'PY' # generic_mode_progress for 194.1.12.16 single/double dBS evidence
+python - <<'PY' # swyckoff_k.compute_wyckoff_output('159.1.6.2', stars=True, fast=False)

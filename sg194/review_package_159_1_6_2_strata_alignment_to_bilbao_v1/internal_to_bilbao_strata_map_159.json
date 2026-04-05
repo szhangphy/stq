@@ -1,0 +1,49 @@
+{
+  "points": {
+    "GM": "P1",
+    "A": "P2",
+    "K": "P3",
+    "H": "P4",
+    "M": "P5",
+    "L": "P6",
+    "KA": "P7",
+    "HA": "P8"
+  },
+  "lines_and_families": {
+    "DT": {
+      "internal": "L1",
+      "parametrization": "(0,0,w)",
+      "status": "materialized"
+    },
+    "P": {
+      "internal": "L2",
+      "parametrization": "(1/3,1/3,w)",
+      "status": "materialized"
+    },
+    "PC": {
+      "internal": "L3",
+      "parametrization": "(2/3,2/3,w)",
+      "status": "semantic_proxy_via_mod1_and_w_reversal"
+    },
+    "Lambda": {
+      "internal": "L4",
+      "parametrization": "(v,-2v,0)",
+      "status": "materialized"
+    },
+    "Q": {
+      "internal": "L5",
+      "parametrization": "(v,-2v,1/2)",
+      "status": "materialized"
+    },
+    "U": {
+      "internal": "L6",
+      "parametrization": "(1/2,-1,w)",
+      "status": "materialized_mod_lattice_equivalent_to_(1/2,0,w)"
+    },
+    "C": {
+      "internal": "S1",
+      "parametrization": "(v,-2v,w)",
+      "status": "materialized_as_internal_plane_family"
+    }
+  }
+}

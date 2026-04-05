@@ -1,0 +1,83 @@
+{
+  "branch": "159-1-6-2-strata-alignment-to-bilbao-v1\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)",
+  "head_before_commit": "d0c4875f9fb3817836ad075f734002cd07aa57dd\n/bin/sh: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8)",
+  "control_group": "194.1.12.16",
+  "target_group": "159.1.6.2",
+  "round_scope": "strata_alignment_only",
+  "modified_source_files": [
+    "sg194/pipeline_v2/runtime_backend_free.py"
+  ],
+  "159_counts": {
+    "points": 8,
+    "lines": 6,
+    "planes": 1
+  },
+  "194_counts": {
+    "points": 6,
+    "lines": 7,
+    "planes": 4
+  },
+  "materialized_strata_159": {
+    "DT": "L1",
+    "P": "L2",
+    "PC": "L3",
+    "Lambda": "L4",
+    "Q": "L5",
+    "U": "L6",
+    "C": "S1"
+  },
+  "159_target_point_ids_current": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "159_target_capture_ids": [
+    "P1",
+    "P1__0_0_1",
+    "P1__1_m2_0",
+    "P2",
+    "P2__1_m2_1d2",
+    "P3",
+    "P3__1d3_1d3_1",
+    "P4",
+    "P5",
+    "P5__1d2_m1_0",
+    "P5__1d2_m1_1",
+    "P6",
+    "P7",
+    "P7__2d3_2d3_1",
+    "P8"
+  ],
+  "159_published_target_universe_resolved": true,
+  "159_target_bs_rank": {
+    "single": 9,
+    "double": 9
+  },
+  "159_dAI": {
+    "single": 4,
+    "double": 4
+  },
+  "159_quotient_status": {
+    "single": "semantic_fail",
+    "double": "semantic_fail",
+    "blocker": "same-shell target quotient fails the published-target semantic guard because dBS != dAI"
+  },
+  "control_dBS_194_1_12_16": {
+    "single": 13,
+    "double": 10
+  },
+  "hardcoded_truth_in_solver": false,
+  "status": "not_final",
+  "unverified_external_rank_note_159_61": {
+    "source": "user-provided external hint",
+    "dBS": 8,
+    "dAI": 8,
+    "classification": "trivial",
+    "trusted_as_solver_target": false
+  }
+}

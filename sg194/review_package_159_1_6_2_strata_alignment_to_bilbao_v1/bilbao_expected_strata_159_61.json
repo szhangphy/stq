@@ -1,0 +1,31 @@
+{
+  "external_object_label": "P31c (No. 159.61)",
+  "points": [
+    "GM",
+    "A",
+    "K",
+    "H",
+    "KA",
+    "HA",
+    "M",
+    "L"
+  ],
+  "strata": [
+    "DT",
+    "P",
+    "PC",
+    "Lambda",
+    "Q",
+    "U",
+    "C"
+  ],
+  "note": "compare-only reference; not solver input",
+  "rank_note": {
+    "source": "user-provided external hint",
+    "dBS": 8,
+    "dAI": 8,
+    "classification": "trivial",
+    "trusted_as_solver_target": false,
+    "note": "not used as target value in this round; terminal summary follows solver output instead"
+  }
+}

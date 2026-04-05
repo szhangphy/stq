@@ -801,6 +801,10 @@ def infer_plane_connectivity(planes: Sequence[dict], lines: Sequence[dict], ctx:
                     "parameters": [free_param],
                     "constraints": [f"0 < {free_param}", f"{free_param} < 1/2"],
                     "sample_point": [frac_str(mod1_fraction(value)) for value in vector_add_scaled(anchor, free_basis, LINE_SAMPLE)],
+                    "_anchor": list(anchor),
+                    "_basis": [list(free_basis)],
+                    "_exprs": exprs,
+                    "_params": [free_param],
                 }
                 line = line_map.get(line_signature(anchor, free_basis))
                 symmetry_summary = subspace_symmetry_summary(anchor, [free_basis], ctx)
@@ -953,6 +957,116 @@ def annotate_special_line_plane_incidences(planes: Sequence[dict], lines: Sequen
     return incidences
 
 
+def _recover_family_special_lines_from_planes(
+    points: Sequence[dict[str, Any]],
+    lines: list[dict[str, Any]],
+    planes: Sequence[dict[str, Any]],
+    ctx: dict[str, Any],
+) -> list[dict[str, Any]]:
+    point_map = coordinate_to_id_map(points)
+    existing_orbits = {
+        swyckoff_k.subspace_orbit_key(line["_anchor"], line["_basis"], ctx["ops"])
+        for line in lines
+    }
+    recovered_orbits: set[Any] = set()
+    candidates: list[dict[str, Any]] = []
+
+    for plane in planes:
+        for boundary in plane.get("boundary_lines", []):
+            if boundary.get("line_id") is not None:
+                continue
+            anchor = boundary.get("_anchor")
+            basis = boundary.get("_basis")
+            params = boundary.get("_params")
+            if not anchor or not basis or not params:
+                continue
+            endpoint_point_ids: list[str] = []
+            for boundary_value in BOUNDARY_VALUES:
+                endpoint = vector_add_scaled(anchor, basis[0], boundary_value)
+                point_id = point_map.get(vector_key(endpoint))
+                if point_id is None:
+                    endpoint_point_ids = []
+                    break
+                endpoint_point_ids.append(point_id)
+            if len(set(endpoint_point_ids)) != 2:
+                continue
+            closure_plane_ids = [
+                component["plane_id"]
+                for component in boundary.get("closure_under_pointwise_stabilizer", [])
+                if component.get("plane_id")
+            ]
+            if not closure_plane_ids:
+                continue
+            orbit_key = swyckoff_k.subspace_orbit_key(anchor, basis, ctx["ops"])
+            if orbit_key in existing_orbits or orbit_key in recovered_orbits:
+                continue
+            recovered_orbits.add(orbit_key)
+            candidates.append(
+                {
+                    "plane": plane,
+                    "boundary": boundary,
+                    "orbit_key": orbit_key,
+                    "sort_key": (
+                        tuple(Fraction(value) for value in boundary["sample_point"]),
+                        boundary["boundary_condition"],
+                        plane["id"],
+                    ),
+                }
+            )
+
+    candidates.sort(key=lambda item: item["sort_key"])
+    if not candidates:
+        return []
+
+    next_index = len(lines) + 1
+    recovered: list[dict[str, Any]] = []
+    for offset, item in enumerate(candidates):
+        plane = item["plane"]
+        boundary = item["boundary"]
+        anchor = boundary["_anchor"]
+        basis = boundary["_basis"]
+        parameter = boundary["_params"][0]
+        source_rep = []
+        for const, coeff in zip(anchor, basis[0]):
+            coeff_map = {parameter: frac_str(coeff)} if to_fraction(coeff) != 0 else {}
+            source_rep.append([frac_str(const), coeff_map])
+        recovered.append(
+            {
+                "label": f"recovered_boundary_{next_index + offset:02d}",
+                "type": "line",
+                "dimension": 1,
+                "parametrization": boundary["parametrization"],
+                "coordinate_expressions": list(boundary["coordinate_expressions"]),
+                "parameters": list(boundary["parameters"]),
+                "constraints": list(boundary["constraints"]),
+                "constraint_summary": ", ".join(boundary["constraints"]),
+                "sample_point": list(boundary["sample_point"]),
+                "metadata": {
+                    "source_letter": "recovered_family_special_line",
+                    "source_mult": 1,
+                    "source_dimension": 1,
+                    "source_orbit": [", ".join(boundary["coordinate_expressions"])],
+                    "source_representative_coordinate": ", ".join(boundary["coordinate_expressions"]),
+                    "source_x0": [frac_str(value) for value in anchor],
+                    "source_basis_vecs": [[frac_str(value) for value in row] for row in basis],
+                    "source_rep": source_rep,
+                    "recovered_from_plane_boundary": {
+                        "plane_id": plane["id"],
+                        "plane_parametrization": plane["parametrization"],
+                        "boundary_condition": boundary["boundary_condition"],
+                    },
+                },
+                "_anchor": anchor,
+                "_basis": basis,
+                "_exprs": list(boundary["_exprs"]),
+                "_params": list(boundary["_params"]),
+                "id": f"L{next_index + offset}",
+                "manifold_role": "recovered_special_line_from_special_plane_boundary",
+            }
+        )
+    return recovered
+
+
 def _recover_boundary_special_points(
     points: list[dict[str, Any]],
     lines: Sequence[dict[str, Any]],
@@ -1070,6 +1184,13 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
     annotate_special_manifolds(lines, planes, ctx, line_orbit_to_id, plane_orbit_to_id)
     point_line, unmatched_endpoints = infer_line_connectivity(points, lines)
     line_plane, unmatched_plane_boundaries = infer_plane_connectivity(planes, lines, ctx, line_orbit_to_id, plane_orbit_to_id)
+    recovered_family_special_lines = _recover_family_special_lines_from_planes(points, lines, planes, ctx)
+    if recovered_family_special_lines:
+        lines.extend(recovered_family_special_lines)
+        line_orbit_to_id, plane_orbit_to_id = subspace_orbit_id_maps(lines, planes, ctx)
+        annotate_special_manifolds(lines, planes, ctx, line_orbit_to_id, plane_orbit_to_id)
+        point_line, unmatched_endpoints = infer_line_connectivity(points, lines)
+        line_plane, unmatched_plane_boundaries = infer_plane_connectivity(planes, lines, ctx, line_orbit_to_id, plane_orbit_to_id)
     special_line_plane_incidences = annotate_special_line_plane_incidences(planes, lines)
     payload = {
         "group_number": group_number,
@@ -1080,6 +1201,7 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
         "line_plane": line_plane,
         "special_line_plane_incidences": special_line_plane_incidences,
         "unmatched_plane_boundaries": unmatched_plane_boundaries,
+        "recovered_family_special_lines": strip_internal_fields(recovered_family_special_lines),
     }
     return {
         "grouped": grouped,
