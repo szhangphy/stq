@@ -118,13 +118,6 @@ general-extend-159-1-6-2-v1
  D sg194/next_step_prompt_194.1.1.1.txt
  D sg194/next_step_prompt_194.1.1.1_stage2.txt
  D sg194/next_step_prompt_sg194_1941111_bs_ai_bug_audit_v1.txt
- M sg194/pipeline_v2/adapters/generic_diagnostic.py
- M sg194/pipeline_v2/benchmark_oracle_registry.py
- M sg194/pipeline_v2/bs_ai.py
- M sg194/pipeline_v2/group_target_registry.py
- M sg194/pipeline_v2/reporting.py
- M sg194/pipeline_v2/specs.py
- M sg194/pipeline_v2/truth_compare.py
  D sg194/raw_194_1_1_1_double_C.json
  D sg194/raw_194_1_1_1_double_ai_basis.json
  D sg194/raw_194_1_1_1_double_ai_basis_patched.json
@@ -267,6 +260,7 @@ general-extend-159-1-6-2-v1
  D sg194/review_package_fix_nooracle_target_semantics_v1/engine_status/next_step_prompt_194.1.1.1.txt
  D sg194/review_package_fix_nooracle_target_semantics_v1/reports/group_engine_mode_report_194_1_1_1.json
  D sg194/review_package_fix_nooracle_target_semantics_v1/reports/group_engine_mode_report_194_1_1_1.md
+ M sg194/review_package_general_extend_to_159_1_6_2_v1/branch_snapshot.txt
  D sg194/review_package_generic_final_mode_engine_v2/sg194/bs_fix_reaudit_v1/group_engine_mode_report_194_1_1_1.json
  D sg194/review_package_generic_final_mode_engine_v2/sg194/bs_fix_reaudit_v1/group_engine_mode_report_194_1_1_1.md
  D sg194/review_package_generic_final_mode_engine_v2/sg194/current_status_194.1.1.1.json
@@ -436,6 +430,7 @@ general-extend-159-1-6-2-v1
  D sg194/workflow_portability_summary_194.1.1.1.json
 
 ## log --oneline -n 30
+976f364 Register 159.1.6.2 and add compare-only review package
 8651115 Keep latest generic builder changes only
 4cd8698 Fix generic target compatibility path for 194.1.1.1
 7266781 Refactor generic target row language and quotient path for SG194
@@ -465,4 +460,3 @@ ef2299a WIP: fix false-positive BS strong pass and witness, not final
 a6dd3ec WIP: sg194 194.1.1.1 BS strongcheck and AI seed audit, not final
 a821160 WIP: sg194 194.1.1.1 automatic final shell reduction, not final
 a0a3670 WIP: sg194 194.1.1.1 automatic final point-path reduction, not final
-aa27367 WIP: sg194 194.1.1.1 single 42-shell hotfix upload branch, not final
