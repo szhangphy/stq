@@ -34,6 +34,7 @@ COMMON_SSGREPS_ROOT = COMMON_ROOT / "SSGReps"
 COMMON_SSG_DATA_ROOT = COMMON_SSGREPS_ROOT / "ssg_data"
 IDENTIFY_PKL = COMMON_SSG_DATA_ROOT / "identify.pkl"
 IDENTIFY_TAR = COMMON_SSG_DATA_ROOT / "identify.pkl.tar.gz"
+MSG_PKL = Path("/data/work/szhang/ssg/msgid/msg.pkl")
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
@@ -492,10 +493,16 @@ def load_ssgreps_module():
 
 
 def ensure_identify_pkl() -> Path:
+    # if IDENTIFY_PKL.exists():
+    #     return IDENTIFY_PKL
+    if MSG_PKL.exists():
+        return MSG_PKL
     if IDENTIFY_PKL.exists():
         return IDENTIFY_PKL
+    # if not IDENTIFY_TAR.exists():
+    #     raise FileNotFoundError(f"missing {IDENTIFY_PKL} and {IDENTIFY_TAR}")
     if not IDENTIFY_TAR.exists():
-        raise FileNotFoundError(f"missing {IDENTIFY_PKL} and {IDENTIFY_TAR}")
+        raise FileNotFoundError(f"missing {MSG_PKL}, {IDENTIFY_PKL} and {IDENTIFY_TAR}")
     with tarfile_module.open(IDENTIFY_TAR, "r:gz") as tar:
         tar.extract("identify.pkl", path=COMMON_SSG_DATA_ROOT)
     return IDENTIFY_PKL
@@ -1674,6 +1681,42 @@ def identical_restriction_classes(
     return classes
 
 
+def intrinsic_decomposition_restriction_classes(
+    endpoint_id: str,
+    endpoint_raw: dict[str, Any],
+    matched: list[int],
+    *,
+    field: str,
+    intrinsic_fingerprints_by_rep: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    vectors = capture_character_vectors(endpoint_raw, field, matched)
+    classes_by_key: dict[str, dict[str, Any]] = {}
+    for rep_index, restricted_vector in enumerate(vectors, start=1):
+        rep_id = f"{endpoint_id}_R{rep_index}"
+        fingerprint = intrinsic_fingerprints_by_rep[rep_id]
+        class_payload = {
+            "line_basis_decomposition": fingerprint["line_basis_decomposition"],
+            "rep_degree": int(endpoint_raw["rep_degree"][rep_index - 1]),
+            "torsion": int(endpoint_raw["torsion"][rep_index - 1]),
+        }
+        class_key = json.dumps(class_payload, sort_keys=True, separators=(",", ":"))
+        entry = classes_by_key.setdefault(
+            class_key,
+            {
+                "rep_ids": [],
+                "restricted_vector": complex_list_to_json(restricted_vector),
+                "extra_fingerprint": fingerprint,
+                "class_payload": class_payload,
+            },
+        )
+        entry["rep_ids"].append(rep_id)
+    classes: list[dict[str, Any]] = []
+    for entry in classes_by_key.values():
+        entry["class_size"] = len(entry["rep_ids"])
+        classes.append(entry)
+    return classes
+
+
 def _line_decomposition_signature(rep: dict[str, Any]) -> list[list[Any]]:
     return [
         [basis_label, int(coeff)]
@@ -2123,19 +2166,35 @@ def _build_line_block_from_restriction_classes(
                     field=field,
                 )
                 extrinsic_fingerprints_by_rep[rep_id] = extra_fingerprints[rep_id]
-        classes = identical_restriction_classes(
-            endpoint_id,
-            endpoint_raw,
-            matched,
-            field=field,
-            extra_fingerprints=extra_fingerprints,
-        )
+        if builder_variant == "intrinsic":
+            classes = intrinsic_decomposition_restriction_classes(
+                endpoint_id,
+                endpoint_raw,
+                matched,
+                field=field,
+                intrinsic_fingerprints_by_rep=intrinsic_fingerprints_by_rep,
+            )
+        else:
+            classes = identical_restriction_classes(
+                endpoint_id,
+                endpoint_raw,
+                matched,
+                field=field,
+                extra_fingerprints=extra_fingerprints,
+            )
         restriction_classes_by_endpoint[endpoint_id] = classes
         for entry in classes:
-            class_key = _restriction_class_key(
-                entry["restricted_vector"],
-                entry.get("extra_fingerprint") if builder_variant == "extrinsic" else None,
-            )
+            if builder_variant == "intrinsic":
+                class_key = json.dumps(
+                    entry["class_payload"],
+                    sort_keys=True,
+                    separators=(",", ":"),
+                )
+            else:
+                class_key = _restriction_class_key(
+                    entry["restricted_vector"],
+                    entry.get("extra_fingerprint"),
+                )
             support = class_support.setdefault(
                 class_key,
                 {
