@@ -1,0 +1,260 @@
+{
+  "pre_fix_from_previous_package": {
+    "single": {
+      "solver_object_id": "single_target_same_shell",
+      "solver_availability": "blocked",
+      "solver_final_result_mode": "diagnostic_only",
+      "solver_classification_is_published_final": false,
+      "solver_verification_status": "semantic_fail",
+      "solver_same_shell_semantics": "not_yet_published_target_object",
+      "solver_dBS": 9,
+      "solver_dAI": 4,
+      "solver_ai_image_rank_in_bs": 4,
+      "solver_classification": "Z^5",
+      "truth_reference_available": false,
+      "truth_available_fields": [],
+      "truth_dBS": null,
+      "truth_dAI": null,
+      "truth_classification": null,
+      "field_matches": {
+        "dBS": null,
+        "dAI": null,
+        "classification": null
+      },
+      "all_fields_match": null
+    },
+    "double": {
+      "solver_object_id": "double_target_same_shell",
+      "solver_availability": "blocked",
+      "solver_final_result_mode": "diagnostic_only",
+      "solver_classification_is_published_final": false,
+      "solver_verification_status": "semantic_fail",
+      "solver_same_shell_semantics": "not_yet_published_target_object",
+      "solver_dBS": 9,
+      "solver_dAI": 4,
+      "solver_ai_image_rank_in_bs": 4,
+      "solver_classification": "Z^5",
+      "truth_reference_available": true,
+      "truth_available_fields": [
+        "dBS",
+        "dAI",
+        "classification"
+      ],
+      "truth_dBS": 8,
+      "truth_dAI": 8,
+      "truth_classification": "trivial",
+      "field_matches": {
+        "dBS": false,
+        "dAI": false,
+        "classification": false
+      },
+      "all_fields_match": false
+    },
+    "post_fix_row_language_snapshot_from_previous_package": {
+      "group": "159.1.6.2",
+      "mode": "single",
+      "target_point_ids_current": [],
+      "target_global_point_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "target_capture_ids": [],
+      "target_unknown_count": 18,
+      "target_unknown_ordering": [
+        "B1_R1",
+        "B1_R2",
+        "B1_R3",
+        "B2_R1",
+        "B2_R2",
+        "B2_R3",
+        "B3_R1",
+        "B3_R2",
+        "B3_R3",
+        "B4_R1",
+        "B4_R2",
+        "B4_R3",
+        "B5_R1",
+        "B5_R2",
+        "B5_R3",
+        "B6_R1",
+        "B6_R2",
+        "B6_R3"
+      ],
+      "target_compatibility_shape": [],
+      "target_bs_rank": 9,
+      "availability": "available",
+      "blocker_stage": null,
+      "blocker": null,
+      "line_capture_canonicalization": [
+        {
+          "line_id": "L1",
+          "chosen_sample_point": [
+            "0",
+            "0",
+            "1/5"
+          ],
+          "chosen_source": "default_sample_point",
+          "exact_endpoint_subduction": true,
+          "candidate_records": [
+            {
+              "source": "default_sample_point",
+              "sample_point": [
+                "0",
+                "0",
+                "1/5"
+              ],
+              "exact_endpoint_subduction": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "line_id": "L2",
+          "chosen_sample_point": [
+            "1/3",
+            "1/3",
+            "1/5"
+          ],
+          "chosen_source": "default_sample_point",
+          "exact_endpoint_subduction": true,
+          "candidate_records": [
+            {
+              "source": "default_sample_point",
+              "sample_point": [
+                "1/3",
+                "1/3",
+                "1/5"
+              ],
+              "exact_endpoint_subduction": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "line_id": "L3",
+          "chosen_sample_point": [
+            "2/3",
+            "2/3",
+            "1/5"
+          ],
+          "chosen_source": "default_sample_point",
+          "exact_endpoint_subduction": true,
+          "candidate_records": [
+            {
+              "source": "default_sample_point",
+              "sample_point": [
+                "2/3",
+                "2/3",
+                "1/5"
+              ],
+              "exact_endpoint_subduction": true,
+              "error": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "post_fix_current_probe": {
+    "single": {
+      "published_target_point_ids": [],
+      "published_target_global_point_ids": [],
+      "published_target_capture_ids": [],
+      "published_target_universe_resolved": false,
+      "published_target_unknown_ordering": [],
+      "published_target_bs_rank": null,
+      "assembly_global_point_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "assembly_only_point_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "assembly_unknown_ordering": [
+        "B1_R1",
+        "B1_R2",
+        "B1_R3",
+        "B2_R1",
+        "B2_R2",
+        "B2_R3",
+        "B3_R1",
+        "B3_R2",
+        "B3_R3",
+        "B4_R1",
+        "B4_R2",
+        "B4_R3",
+        "B5_R1",
+        "B5_R2",
+        "B5_R3",
+        "B6_R1",
+        "B6_R2",
+        "B6_R3"
+      ],
+      "assembly_bs_rank": 9,
+      "target_row_language_availability": "blocked",
+      "target_row_language_blocker_stage": "generic_published_target_universe_unresolved",
+      "target_row_language_blocker": "assembly universe is available but published target universe is unresolved"
+    },
+    "double": {
+      "published_target_point_ids": [],
+      "published_target_global_point_ids": [],
+      "published_target_capture_ids": [],
+      "published_target_universe_resolved": false,
+      "published_target_unknown_ordering": [],
+      "published_target_bs_rank": null,
+      "assembly_global_point_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "assembly_only_point_ids": [
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6"
+      ],
+      "assembly_unknown_ordering": [
+        "B1_R1",
+        "B1_R2",
+        "B1_R3",
+        "B2_R1",
+        "B2_R2",
+        "B2_R3",
+        "B3_R1",
+        "B3_R2",
+        "B3_R3",
+        "B4_R1",
+        "B4_R2",
+        "B4_R3",
+        "B5_R1",
+        "B5_R2",
+        "B5_R3",
+        "B6_R1",
+        "B6_R2",
+        "B6_R3"
+      ],
+      "assembly_bs_rank": 9,
+      "target_row_language_availability": "blocked",
+      "target_row_language_blocker_stage": "generic_published_target_universe_unresolved",
+      "target_row_language_blocker": "assembly universe is available but published target universe is unresolved"
+    }
+  }
+}

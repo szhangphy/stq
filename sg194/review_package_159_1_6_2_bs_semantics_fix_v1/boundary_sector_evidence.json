@@ -1,0 +1,38 @@
+{
+  "boundary_helper_endpoint_ids": [
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6"
+  ],
+  "boundary_helper_unknown_labels": [
+    "B1_R1",
+    "B1_R2",
+    "B1_R3",
+    "B2_R1",
+    "B2_R2",
+    "B2_R3",
+    "B3_R1",
+    "B3_R2",
+    "B3_R3",
+    "B4_R1",
+    "B4_R2",
+    "B4_R3",
+    "B5_R1",
+    "B5_R2",
+    "B5_R3",
+    "B6_R1",
+    "B6_R2",
+    "B6_R3"
+  ],
+  "boundary_helper_semantics": "assembly-stage synthetic boundary sector used to assemble compatibility rows",
+  "not_published_target_reason": "published target point ids and target capture ids are both empty, so the boundary sector cannot be promoted into published target BS semantics",
+  "source_chain": {
+    "synthetic_boundary_generation": "sg194/pipeline_v2/runtime_backend_free.py:999-1048",
+    "target_line_block_rep_labeling": "sg194/pipeline_v2/generic_builders.py:761-838",
+    "assembly_universe_collection": "sg194/pipeline_v2/generic_builders.py:870-889",
+    "published_target_gate": "sg194/pipeline_v2/generic_builders.py:1457-1527"
+  }
+}

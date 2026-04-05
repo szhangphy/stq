@@ -1,0 +1,7 @@
+git branch --show-current
+git status --short -- sg194/pipeline_v2/generic_builders.py sg194/review_package_159_1_6_2_bs_semantics_fix_v1
+python - <<'PY'  # load previous review package final_summary.json
+python - <<'PY'  # generic_mode_progress('159.1.6.2', mode) for single/double after fix
+python - <<'PY'  # generic_mode_progress('194.1.12.16', mode) for single/double after fix
+rg -n "def build_synthetic_boundary_points|def augment_connectivity_with_boundary_points|unknown_index\[term\[\"unknown\"\]\]" sg194/pipeline_v2/runtime_backend_free.py sg194/pipeline_v2/generic_builders.py
+git diff -- sg194/pipeline_v2/generic_builders.py

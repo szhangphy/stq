@@ -1,0 +1,53 @@
+{
+  "branch": "159-1-6-2-bs-semantics-fix-v1",
+  "group": "159.1.6.2",
+  "control_group": "194.1.12.16",
+  "pre_fix_single_solver_dBS": 9,
+  "pre_fix_double_solver_dBS": 9,
+  "pre_fix_single_solver_dAI": 4,
+  "pre_fix_double_solver_dAI": 4,
+  "post_fix_single": {
+    "target_row_language_availability": "blocked",
+    "target_bs_rank": null,
+    "assembly_bs_rank": 9,
+    "solver_dBS": null,
+    "solver_dAI": null,
+    "current_blocker": "assembly universe is available but published target universe is unresolved"
+  },
+  "post_fix_double": {
+    "target_row_language_availability": "blocked",
+    "target_bs_rank": null,
+    "assembly_bs_rank": 9,
+    "solver_dBS": null,
+    "solver_dAI": null,
+    "current_blocker": "assembly universe is available but published target universe is unresolved"
+  },
+  "control_group_post_fix": {
+    "single": {
+      "target_row_language_availability": "available",
+      "target_bs_rank": 13,
+      "solver_dBS": null,
+      "solver_dAI": null
+    },
+    "double": {
+      "target_row_language_availability": "available",
+      "target_bs_rank": 10,
+      "solver_dBS": null,
+      "solver_dAI": null
+    }
+  },
+  "compare_only_reference": {
+    "target_group": "159.1.6.2",
+    "external_object_label": "P31c (No. 159.61)",
+    "reference_scope": "double_only_rank_reference",
+    "truth_compare_only": true,
+    "note": "These are compare-only external Bilbao-grounded rank facts reconstructed by the user. They must not be used as solver input.",
+    "single_truth": {},
+    "double_truth": {
+      "dBS": 8,
+      "dAI": 8,
+      "classification": "trivial"
+    }
+  },
+  "status": "not_final"
+}

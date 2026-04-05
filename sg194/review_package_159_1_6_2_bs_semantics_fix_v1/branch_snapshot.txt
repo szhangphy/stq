@@ -1,0 +1,17 @@
+branch: 159-1-6-2-bs-semantics-fix-v1
+
+[targeted git status]
+ M sg194/pipeline_v2/generic_builders.py
+
+
+[recent log]
+76bb2a8 Fix 159.1.6.2 target compatibility universe
+fab6e51 Refresh final package snapshot
+976f364 Register 159.1.6.2 and add compare-only review package
+8651115 Keep latest generic builder changes only
+4cd8698 Fix generic target compatibility path for 194.1.1.1
+7266781 Refactor generic target row language and quotient path for SG194
+961cd9a Route SG194 through generic solver and split truth compare
+a8d30f0 Cut wrong no-oracle same-shell promotion
+7cb594c Fix no-oracle BS and dAI semantics
+85792e8 Add no-oracle same-shell target builder

@@ -1,0 +1,151 @@
+{
+  "group": "159.1.6.2",
+  "compare_only_reference": {
+    "target_group": "159.1.6.2",
+    "external_object_label": "P31c (No. 159.61)",
+    "reference_scope": "double_only_rank_reference",
+    "truth_compare_only": true,
+    "note": "These are compare-only external Bilbao-grounded rank facts reconstructed by the user. They must not be used as solver input.",
+    "single_truth": {},
+    "double_truth": {
+      "dBS": 8,
+      "dAI": 8,
+      "classification": "trivial"
+    }
+  },
+  "pre_fix_wrong_semantics_from_previous_package": {
+    "single_solver_dBS": 9,
+    "single_solver_dAI": 4,
+    "single_solver_classification": "Z^5",
+    "double_solver_dBS": 9,
+    "double_solver_dAI": 4,
+    "double_solver_classification": "Z^5",
+    "pre_fix_target_point_ids_current": [],
+    "pre_fix_target_global_point_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "pre_fix_target_capture_ids": [],
+    "pre_fix_target_unknown_ordering": [
+      "B1_R1",
+      "B1_R2",
+      "B1_R3",
+      "B2_R1",
+      "B2_R2",
+      "B2_R3",
+      "B3_R1",
+      "B3_R2",
+      "B3_R3",
+      "B4_R1",
+      "B4_R2",
+      "B4_R3",
+      "B5_R1",
+      "B5_R2",
+      "B5_R3",
+      "B6_R1",
+      "B6_R2",
+      "B6_R3"
+    ],
+    "pre_fix_target_bs_rank": 9
+  },
+  "post_fix_single": {
+    "published_target_point_ids": [],
+    "published_target_global_point_ids": [],
+    "published_target_capture_ids": [],
+    "published_target_universe_resolved": false,
+    "published_target_unknown_ordering": [],
+    "published_target_bs_rank": null,
+    "assembly_global_point_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "assembly_only_point_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "assembly_unknown_ordering": [
+      "B1_R1",
+      "B1_R2",
+      "B1_R3",
+      "B2_R1",
+      "B2_R2",
+      "B2_R3",
+      "B3_R1",
+      "B3_R2",
+      "B3_R3",
+      "B4_R1",
+      "B4_R2",
+      "B4_R3",
+      "B5_R1",
+      "B5_R2",
+      "B5_R3",
+      "B6_R1",
+      "B6_R2",
+      "B6_R3"
+    ],
+    "assembly_bs_rank": 9,
+    "target_row_language_availability": "blocked",
+    "target_row_language_blocker_stage": "generic_published_target_universe_unresolved",
+    "target_row_language_blocker": "assembly universe is available but published target universe is unresolved"
+  },
+  "post_fix_double": {
+    "published_target_point_ids": [],
+    "published_target_global_point_ids": [],
+    "published_target_capture_ids": [],
+    "published_target_universe_resolved": false,
+    "published_target_unknown_ordering": [],
+    "published_target_bs_rank": null,
+    "assembly_global_point_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "assembly_only_point_ids": [
+      "B1",
+      "B2",
+      "B3",
+      "B4",
+      "B5",
+      "B6"
+    ],
+    "assembly_unknown_ordering": [
+      "B1_R1",
+      "B1_R2",
+      "B1_R3",
+      "B2_R1",
+      "B2_R2",
+      "B2_R3",
+      "B3_R1",
+      "B3_R2",
+      "B3_R3",
+      "B4_R1",
+      "B4_R2",
+      "B4_R3",
+      "B5_R1",
+      "B5_R2",
+      "B5_R3",
+      "B6_R1",
+      "B6_R2",
+      "B6_R3"
+    ],
+    "assembly_bs_rank": 9,
+    "target_row_language_availability": "blocked",
+    "target_row_language_blocker_stage": "generic_published_target_universe_unresolved",
+    "target_row_language_blocker": "assembly universe is available but published target universe is unresolved"
+  }
+}

@@ -1455,25 +1455,47 @@ def _build_same_shell_target_row_language(
         point_representatives=point_representatives,
     )
     target_line_blocks = ordinary_line_blocks + monodromy_line_blocks
-    target_global_point_ids = _target_global_point_ids_from_line_blocks(
+    assembly_global_point_ids = _target_global_point_ids_from_line_blocks(
         shared=shared,
         target_line_blocks=target_line_blocks,
     )
     target_capture_ids = _ordered_target_capture_ids(
         shared=shared,
         catalog=catalog,
-        target_point_ids=target_global_point_ids,
+        target_point_ids=target_point_ids,
     )
+    published_target_universe_resolved = bool(target_point_ids) and bool(target_capture_ids)
+    assembly_only_point_ids = [
+        point_id
+        for point_id in assembly_global_point_ids
+        if point_id not in set(target_point_ids)
+    ]
     availability = "available" if target_line_blocks else "blocked"
     blocker_stage = None if target_line_blocks else "generic_target_compatibility_missing_line_blocks"
     blocker = None if target_line_blocks else "generic same-shell published target compatibility could not assemble any target line blocks"
+    assembly_compatibility = None
+    assembly_bs_analysis = None
+    assembly_unknown_ordering: list[str] = []
+    assembly_bs_rank = None
     target_compatibility = None
     target_bs_analysis = None
     target_unknown_ordering: list[str] = []
     if availability == "available":
-        target_compatibility = port.build_global_compatibility(target_line_blocks, target_global_point_ids)
-        target_bs_analysis = port.analyze_kernel(target_compatibility)
-        target_unknown_ordering = list(target_compatibility["global_unknown_ordering"])
+        assembly_compatibility = port.build_global_compatibility(
+            target_line_blocks,
+            assembly_global_point_ids,
+        )
+        assembly_bs_analysis = port.analyze_kernel(assembly_compatibility)
+        assembly_unknown_ordering = list(assembly_compatibility["global_unknown_ordering"])
+        assembly_bs_rank = int(len(assembly_bs_analysis.get("basis_vectors", [])))
+        if published_target_universe_resolved:
+            target_compatibility = assembly_compatibility
+            target_bs_analysis = assembly_bs_analysis
+            target_unknown_ordering = list(assembly_unknown_ordering)
+        else:
+            availability = "blocked"
+            blocker_stage = "generic_published_target_universe_unresolved"
+            blocker = "assembly universe is available but published target universe is unresolved"
     target_bs_rank = None if target_bs_analysis is None else int(len(target_bs_analysis.get("basis_vectors", [])))
     return {
         "group": group_id,
@@ -1486,31 +1508,59 @@ def _build_same_shell_target_row_language(
         "target_unknown_count": len(target_unknown_ordering),
         "target_unknown_ordering": target_unknown_ordering,
         "target_point_ids_current": list(target_point_ids),
-        "target_global_point_ids": list(target_global_point_ids),
+        "target_global_point_ids": list(target_point_ids),
         "target_capture_ids": list(target_capture_ids),
+        "published_target_universe_resolved": published_target_universe_resolved,
+        "assembly_global_point_ids": list(assembly_global_point_ids),
+        "assembly_only_point_ids": list(assembly_only_point_ids),
+        "assembly_unknown_count": len(assembly_unknown_ordering),
+        "assembly_unknown_ordering": list(assembly_unknown_ordering),
         "projection_indices": None,
         "target_projection_matrix_shape": None,
         "target_projection_matrix": None,
         "compatibility_matrix_shape": list(compatibility.get("matrix_shape", [])),
-        "object_semantics": "same_shell_published_target_row_language",
+        "object_semantics": (
+            "same_shell_published_target_row_language"
+            if published_target_universe_resolved and target_bs_analysis is not None
+            else "same_shell_target_row_language_assembly_only"
+            if assembly_compatibility is not None
+            else "same_shell_published_target_row_language"
+        ),
         "blocker_stage": blocker_stage,
         "blocker": blocker,
         "target_compatibility": target_compatibility,
         "target_bs_analysis": target_bs_analysis,
+        "assembly_compatibility": assembly_compatibility,
+        "assembly_bs_analysis": assembly_bs_analysis,
         "target_compatibility_shape": (
             list(target_compatibility.get("matrix_shape", []))
             if target_compatibility is not None
             else None
         ),
         "target_bs_rank": target_bs_rank,
+        "assembly_compatibility_shape": (
+            list(assembly_compatibility.get("matrix_shape", []))
+            if assembly_compatibility is not None
+            else None
+        ),
+        "assembly_bs_rank": assembly_bs_rank,
         "ordinary_line_block_count": len(ordinary_line_blocks),
         "monodromy_line_block_count": len(monodromy_line_blocks),
         "current_unknown_ordering": current_unknown_ordering,
         "evidence": {
             "target_point_ids": list(target_point_ids),
             "target_capture_ids": list(target_capture_ids),
+            "published_target_universe_resolved": published_target_universe_resolved,
+            "assembly_global_point_ids": list(assembly_global_point_ids),
+            "assembly_only_point_ids": list(assembly_only_point_ids),
             "ordinary_line_block_count": len(ordinary_line_blocks),
             "monodromy_line_block_count": len(monodromy_line_blocks),
+            "assembly_compatibility_shape": (
+                list(assembly_compatibility.get("matrix_shape", []))
+                if assembly_compatibility is not None
+                else None
+            ),
+            "assembly_bs_rank": assembly_bs_rank,
             "target_compatibility_shape": (
                 list(target_compatibility.get("matrix_shape", []))
                 if target_compatibility is not None
@@ -1521,8 +1571,8 @@ def _build_same_shell_target_row_language(
             "monodromy_line_records": monodromy_records,
         },
         "_compatibility_rows": (
-            list(target_compatibility.get("global_matrix_rows", []))
-            if target_compatibility is not None
+            list(assembly_compatibility.get("global_matrix_rows", []))
+            if assembly_compatibility is not None
             else []
         ),
     }
