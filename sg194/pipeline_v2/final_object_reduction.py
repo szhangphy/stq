@@ -2,10 +2,11 @@ from __future__ import annotations
 
 from fractions import Fraction
 from itertools import combinations, permutations, product
-from math import factorial
+from math import factorial, gcd
 from typing import Any, Iterable, Sequence
 
 import sympy as sp
+from common import swyckoff_k
 from sympy.matrices.normalforms import smith_normal_form
 from sympy.parsing.sympy_parser import (
     implicit_multiplication_application,
@@ -146,6 +147,9 @@ def _candidate_parameter_values_for_alias(
 def _point_coordinate_alias_records(
     kgeom: dict[str, Any],
 ) -> tuple[list[dict[str, Any]], dict[tuple[str, tuple[str, str, str]], str]]:
+    runtime_ctx = kgeom.get("runtime_ctx") or kgeom.get("ctx") or {}
+    reciprocal_ops = runtime_ctx.get("ops") or []
+
     def symmetry_summary_key(summary: dict[str, Any] | None) -> tuple[Any, ...]:
         summary = summary or {}
         return (
@@ -238,6 +242,24 @@ def _point_coordinate_alias_records(
             source_signature,
         )
 
+    def publication_point_family_key(point: dict[str, Any]) -> tuple[Any, ...]:
+        anchor = point.get("_anchor")
+        if anchor is None:
+            anchor = [_to_fraction(value) for value in point.get("sample_point", [])]
+        else:
+            anchor = [_to_fraction(value) for value in anchor]
+        if reciprocal_ops:
+            orbit_key = swyckoff_k.subspace_orbit_key(anchor, [], reciprocal_ops)
+            return (
+                "publication_point_orbit_family",
+                orbit_key,
+                symmetry_summary_key(point.get("symmetry_summary")),
+            )
+        recovered_key = recovered_boundary_point_family_key(point)
+        if recovered_key is not None:
+            return recovered_key
+        return ("point_id", point["id"])
+
     capture_lookup: dict[tuple[str, tuple[str, str, str]], str] = {}
     point_lookup = {point["id"]: point for point in kgeom["grouped"]["points"]}
     line_lookup = {line["id"]: line for line in kgeom["grouped"]["lines"]}
@@ -256,14 +278,12 @@ def _point_coordinate_alias_records(
             key = (corner["point_id"], tuple(corner["point_coordinates"]))
             capture_lookup[key] = corner.get("capture_id", corner["point_id"])
 
-    canonical_point_id_by_member: dict[str, str] = {}
-    recovered_groups: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    grouped_candidates: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
     for point in kgeom["grouped"]["points"]:
-        family_key = recovered_boundary_point_family_key(point)
-        if family_key is None:
-            continue
-        recovered_groups.setdefault(family_key, []).append(point)
-    for members in recovered_groups.values():
+        grouped_candidates.setdefault(publication_point_family_key(point), []).append(point)
+
+    canonical_point_id_by_member: dict[str, str] = {}
+    for members in grouped_candidates.values():
         canonical_members = sorted(
             members,
             key=lambda item: (
@@ -1279,6 +1299,12 @@ def build_publication_path_classes(
         point["point_id"]: index
         for index, point in enumerate(reduction.get("point_shell", []))
     }
+    unknown_ordering = _candidate_record_unknown_ordering(reduction)
+    point_unknown_ordering = _point_unknown_ordering(unknown_ordering)
+    point_capture_permutations = _build_publication_point_capture_permutations(
+        reduction,
+        point_unknown_ordering,
+    )
     grouped: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
     for payload in reduction.get("path_classes", []):
         representative = payload["candidate_records"][0]
@@ -1303,9 +1329,21 @@ def build_publication_path_classes(
         canonical_signature = canonicalize_line_restriction_signature(representative)
         combined_row_records: list[dict[str, Any]] = []
         combined_rows: list[list[int]] = []
+        member_row_record_sets: list[list[dict[str, Any]]] = []
+        member_row_sets: list[list[list[int]]] = []
         for member in members:
             member_record = member["candidate_records"][0]
-            for row_record in member_record["global_matrix_row_records"]:
+            transformed_member_row_records = _transform_publication_row_records_to_point_family_basis(
+                member_record,
+                member_record["global_matrix_row_records"],
+                point_unknown_ordering,
+                point_capture_permutations,
+            )
+            member_row_record_sets.append(transformed_member_row_records)
+            member_row_sets.append(
+                [list(row_record["matrix_row"]) for row_record in transformed_member_row_records]
+            )
+            for row_record in transformed_member_row_records:
                 payload = {
                     **row_record,
                     "matrix_row": list(row_record["matrix_row"]),
@@ -1337,6 +1375,64 @@ def build_publication_path_classes(
             for row_record in representative["global_matrix_row_records"]
         ]
         representative_rows = [list(row_record["matrix_row"]) for row_record in representative_row_records]
+        common_rows = _row_space_intersection_basis(member_row_sets)
+        if not common_rows:
+            common_rows = representative_rows
+        representative_rank = _row_rank(representative_rows)
+        common_rank = _row_rank(common_rows)
+        aggregate_rank = _row_rank(combined_rows)
+        endpoint_capture_variation = False
+        for endpoint_position, point_id in enumerate(members[0]["endpoint_pair"]):
+            point_entry = next(
+                (item for item in reduction.get("point_shell", []) if item["point_id"] == point_id),
+                None,
+            )
+            if point_entry is None or len(point_entry.get("aliases", [])) <= 1:
+                continue
+            capture_ids = {
+                member["candidate_records"][0]["endpoint_capture_ids"][endpoint_position]
+                for member in members
+                if endpoint_position < len(member["candidate_records"][0].get("endpoint_capture_ids", []))
+            }
+            if len(capture_ids) > 1:
+                endpoint_capture_variation = True
+                break
+        member_row_space_signatures = {
+            _rref_signature(rows)
+            for rows in member_row_sets
+        }
+        same_source_line_family = (
+            len({member["representative_source_line_id"] for member in members}) == 1
+        )
+        alias_only_row_space_variation = (
+            aggregate_rank == representative_rank + 1
+            and common_rank + 1 == representative_rank
+        )
+        use_common_row_language = (
+            endpoint_capture_variation
+            and len(member_row_space_signatures) > 1
+            and same_source_line_family
+            and alias_only_row_space_variation
+        )
+        common_row_records = [
+            {
+                "row_index_within_candidate_block": local_row_index,
+                "basis_id": f"PUBCLASS{class_index:02d}_COMMON_{local_row_index + 1:02d}",
+                "row_kind": "publication_common_path_basis",
+                "matrix_row": list(row),
+                "member_internal_path_class_id": None,
+                "member_candidate_id": None,
+                "member_source_line_id": None,
+                "member_source_kind": "publication_common_intersection",
+                "member_source_id": None,
+                "member_branch_index": 0,
+            }
+            for local_row_index, row in enumerate(common_rows)
+        ]
+        selected_basis_rows = common_rows if use_common_row_language else representative_rows
+        selected_basis_row_records = (
+            common_row_records if use_common_row_language else representative_row_records
+        )
         publication_classes.append(
             {
                 "publication_path_class_id": f"PUBCLASS{class_index:02d}",
@@ -1349,19 +1445,38 @@ def build_publication_path_classes(
                 "member_source_kinds": [member["representative_source_kind"] for member in members],
                 "member_source_ids": [member["representative_source_id"] for member in members],
                 "aggregate_row_count": len(combined_rows),
-                "aggregate_row_rank": _row_rank(combined_rows),
+                "aggregate_row_rank": aggregate_rank,
                 "aggregate_row_space_signature": _row_space_signature(combined_rows),
-                "selected_basis_row_count": len(representative_rows),
-                "selected_basis_row_rank": _row_rank(representative_rows),
-                "selected_basis_row_records": representative_row_records,
-                "selected_basis_rows": representative_rows,
+                "representative_basis_row_count": len(representative_rows),
+                "representative_basis_row_rank": representative_rank,
+                "representative_basis_row_records": representative_row_records,
+                "representative_basis_rows": representative_rows,
+                "selected_basis_row_count": len(selected_basis_rows),
+                "selected_basis_row_rank": _row_rank(selected_basis_rows),
+                "selected_basis_row_records": selected_basis_row_records,
+                "selected_basis_rows": selected_basis_rows,
+                "used_common_publication_row_language": use_common_row_language,
+                "endpoint_capture_variation": endpoint_capture_variation,
+                "member_row_space_signature_count": len(member_row_space_signatures),
+                "same_source_line_family": same_source_line_family,
+                "common_basis_row_rank": common_rank,
+                "alias_only_row_space_variation": alias_only_row_space_variation,
+                "publication_point_basis_permutations_used": {
+                    point_id: {
+                        capture_id: [int(index) for index in permutation]
+                        for capture_id, permutation in capture_map.items()
+                        if any(index != local_index for local_index, index in enumerate(permutation))
+                    }
+                    for point_id, capture_map in point_capture_permutations.items()
+                },
                 "publication_equivalence_reason": (
                     "Raw strong path classes were grouped because they share the same publication-level "
                     "endpoint pair, line little-group type, and canonicalized endpoint restriction signature "
                     "after basis-label permutations and endpoint-side relabel canonicalization. "
-                    "The published path class is represented by the canonical member only; "
-                    "other grouped members are retained as diagnostic provenance rather than "
-                    "added to the published row span."
+                    "All grouped members are first rewritten into a common publication point-family basis. "
+                    "When the grouped members still disagree because they use genuinely different alias-capture "
+                    "frames for the same published point family, the published path class keeps only the common "
+                    "row language across those frames; otherwise it uses the canonical representative row span."
                 ),
                 "selected_as_publication": False,
                 "selection_reason": None,
@@ -2122,6 +2237,285 @@ def _point_unknown_ordering(
         point_id = unknown.split("_", 1)[0]
         per_point.setdefault(point_id, []).append(unknown)
     return per_point
+
+
+def _canonical_basis_permutation_for_record(record: dict[str, Any]) -> tuple[int, ...]:
+    basis_ids = _record_basis_ids(record)
+    basis_count = len(basis_ids)
+    endpoint_rows: list[tuple[str, list[tuple[int, int, tuple[int, ...]]]]] = []
+    for endpoint in record["endpoint_decomposition_signature"]:
+        rows: list[tuple[int, int, tuple[int, ...]]] = []
+        for rep in endpoint["reps"]:
+            vector = tuple(
+                int(rep["decomposition_on_line_basis"].get(basis_id, 0))
+                for basis_id in basis_ids
+            )
+            rows.append((int(rep["rep_degree"]), int(rep["torsion"]), vector))
+        endpoint_rows.append((endpoint["endpoint_id"], rows))
+
+    best_key = None
+    best_permutation: tuple[int, ...] | None = None
+    for permutation in permutations(range(basis_count)):
+        endpoint_key = []
+        for endpoint_id, rows in endpoint_rows:
+            transformed_rows = sorted(
+                (
+                    degree,
+                    torsion,
+                    tuple(vector[index] for index in permutation),
+                )
+                for degree, torsion, vector in rows
+            )
+            endpoint_key.append((endpoint_id, tuple(transformed_rows)))
+        candidate_key = (
+            tuple(record["endpoint_pair"]),
+            _line_group_signature_key(record["line_group_signature"]),
+            tuple(endpoint_key),
+        )
+        if best_key is None or candidate_key < best_key:
+            best_key = candidate_key
+            best_permutation = tuple(permutation)
+    if best_permutation is None:
+        return tuple(range(basis_count))
+    return best_permutation
+
+
+def _endpoint_rep_fingerprints_on_canonical_line_basis(
+    record: dict[str, Any],
+) -> dict[str, list[tuple[tuple[Any, ...], int, int, tuple[int, ...]]]]:
+    basis_permutation = _canonical_basis_permutation_for_record(record)
+    endpoint_pair = list(record["endpoint_pair"])
+    endpoint_capture_ids = list(record.get("endpoint_capture_ids", []))
+    capture_by_point = {
+        endpoint_pair[index]: endpoint_capture_ids[index]
+        for index in range(min(len(endpoint_pair), len(endpoint_capture_ids)))
+    }
+    fingerprints: dict[str, list[tuple[tuple[Any, ...], int, int, tuple[int, ...]]]] = {}
+    for endpoint in record["endpoint_decomposition_signature"]:
+        point_id = endpoint["endpoint_id"]
+        other_endpoint_id = next(item for item in endpoint_pair if item != point_id)
+        capture_id = capture_by_point.get(point_id, point_id)
+        family_key = (
+            other_endpoint_id,
+            _line_group_signature_key(record["line_group_signature"]),
+        )
+        rep_fingerprints: list[tuple[tuple[Any, ...], int, int, tuple[int, ...]]] = []
+        for rep in endpoint["reps"]:
+            vector = tuple(
+                int(rep["decomposition_on_line_basis"].get(basis_id, 0))
+                for basis_id in _record_basis_ids(record)
+            )
+            transformed = tuple(vector[index] for index in basis_permutation)
+            rep_fingerprints.append(
+                (
+                    family_key,
+                    int(rep["rep_degree"]),
+                    int(rep["torsion"]),
+                    transformed,
+                )
+            )
+        fingerprints[capture_id] = rep_fingerprints
+    return fingerprints
+
+
+def _score_capture_permutation(
+    canonical_fingerprints: Sequence[tuple[Any, ...]],
+    alias_fingerprints: Sequence[tuple[Any, ...]],
+    permutation: Sequence[int],
+) -> tuple[int, int]:
+    exact_matches = 0
+    overlap = 0
+    for local_index, canonical_index in enumerate(permutation):
+        alias_fp = alias_fingerprints[local_index]
+        canonical_fp = canonical_fingerprints[canonical_index]
+        if alias_fp == canonical_fp:
+            exact_matches += 1
+            overlap += len(alias_fp)
+            continue
+        overlap += len(set(alias_fp) & set(canonical_fp))
+    return exact_matches, overlap
+
+
+def _build_publication_point_capture_permutations(
+    reduction: dict[str, Any],
+    point_unknown_ordering: dict[str, list[str]],
+) -> dict[str, dict[str, tuple[int, ...]]]:
+    candidate_records = list(reduction.get("candidate_path_records", []))
+    by_point_capture: dict[str, dict[str, dict[int, list[tuple[Any, ...]]]]] = {}
+    for record in candidate_records:
+        endpoint_pair = list(record["endpoint_pair"])
+        endpoint_capture_ids = list(record.get("endpoint_capture_ids", []))
+        fingerprints_by_capture = _endpoint_rep_fingerprints_on_canonical_line_basis(record)
+        for endpoint_index, point_id in enumerate(endpoint_pair):
+            if endpoint_index >= len(endpoint_capture_ids):
+                continue
+            capture_id = endpoint_capture_ids[endpoint_index]
+            rep_fingerprints = fingerprints_by_capture.get(capture_id)
+            if rep_fingerprints is None:
+                continue
+            capture_payload = by_point_capture.setdefault(point_id, {}).setdefault(capture_id, {})
+            for rep_index, rep_fingerprint in enumerate(rep_fingerprints, start=1):
+                capture_payload.setdefault(rep_index, []).append(rep_fingerprint)
+
+    permutations_by_point: dict[str, dict[str, tuple[int, ...]]] = {}
+    for point in reduction.get("point_shell", []):
+        point_id = point["point_id"]
+        rep_unknowns = point_unknown_ordering.get(point_id, [])
+        rep_count = len(rep_unknowns)
+        if rep_count <= 1:
+            continue
+        alias_capture_ids = [alias["capture_id"] for alias in point.get("aliases", [])]
+        canonical_capture_id = point_id if point_id in alias_capture_ids else alias_capture_ids[0]
+        capture_payload = by_point_capture.get(point_id, {})
+        canonical_payload = capture_payload.get(canonical_capture_id, {})
+        canonical_fingerprints = [
+            tuple(sorted(canonical_payload.get(rep_index, [])))
+            for rep_index in range(1, rep_count + 1)
+        ]
+        point_permutations: dict[str, tuple[int, ...]] = {
+            canonical_capture_id: tuple(range(rep_count))
+        }
+        for capture_id in alias_capture_ids:
+            if capture_id == canonical_capture_id:
+                continue
+            alias_payload = capture_payload.get(capture_id, {})
+            alias_fingerprints = [
+                tuple(sorted(alias_payload.get(rep_index, [])))
+                for rep_index in range(1, rep_count + 1)
+            ]
+            best_permutation = tuple(range(rep_count))
+            best_score = _score_capture_permutation(
+                canonical_fingerprints,
+                alias_fingerprints,
+                best_permutation,
+            )
+            for permutation in permutations(range(rep_count)):
+                score = _score_capture_permutation(
+                    canonical_fingerprints,
+                    alias_fingerprints,
+                    permutation,
+                )
+                if score > best_score:
+                    best_score = score
+                    best_permutation = tuple(permutation)
+            point_permutations[capture_id] = best_permutation
+        if point_permutations:
+            permutations_by_point[point_id] = point_permutations
+    return permutations_by_point
+
+
+def _transform_publication_row_records_to_point_family_basis(
+    record: dict[str, Any],
+    row_records: Sequence[dict[str, Any]],
+    point_unknown_ordering: dict[str, list[str]],
+    point_capture_permutations: dict[str, dict[str, tuple[int, ...]]],
+) -> list[dict[str, Any]]:
+    unknown_ordering = list(record["global_unknown_ordering"])
+    unknown_index = {unknown: index for index, unknown in enumerate(unknown_ordering)}
+    endpoint_pair = list(record["endpoint_pair"])
+    endpoint_capture_ids = list(record.get("endpoint_capture_ids", []))
+    capture_by_point = {
+        endpoint_pair[index]: endpoint_capture_ids[index]
+        for index in range(min(len(endpoint_pair), len(endpoint_capture_ids)))
+    }
+    transformed_records: list[dict[str, Any]] = []
+    for row_record in row_records:
+        row = list(row_record["matrix_row"])
+        transformed_row = list(row)
+        transforms_applied: list[dict[str, Any]] = []
+        for point_id, capture_id in capture_by_point.items():
+            permutation = point_capture_permutations.get(point_id, {}).get(capture_id)
+            if permutation is None or all(index == local_index for local_index, index in enumerate(permutation)):
+                continue
+            block_unknowns = point_unknown_ordering.get(point_id, [])
+            if len(block_unknowns) != len(permutation):
+                continue
+            block_values = [row[unknown_index[unknown]] for unknown in block_unknowns]
+            remapped_values = [0] * len(block_values)
+            for local_index, canonical_index in enumerate(permutation):
+                remapped_values[canonical_index] += int(block_values[local_index])
+            for position, unknown in enumerate(block_unknowns):
+                transformed_row[unknown_index[unknown]] = remapped_values[position]
+            transforms_applied.append(
+                {
+                    "point_id": point_id,
+                    "capture_id": capture_id,
+                    "local_to_canonical_permutation": [int(index) for index in permutation],
+                }
+            )
+        transformed_records.append(
+            {
+                **row_record,
+                "matrix_row": transformed_row,
+                "publication_point_basis_transforms": transforms_applied,
+            }
+        )
+    return transformed_records
+
+
+def _primitive_integer_row(row: Sequence[Any]) -> list[int]:
+    exact_row = [sp.nsimplify(value) for value in row]
+    denominator_lcm = 1
+    for value in exact_row:
+        if isinstance(value, sp.Rational):
+            denominator_lcm = sp.ilcm(denominator_lcm, int(value.q))
+    integer_row = [int(sp.nsimplify(value * denominator_lcm)) for value in exact_row]
+    common_divisor = 0
+    for value in integer_row:
+        common_divisor = gcd(common_divisor, abs(int(value)))
+    if common_divisor > 1:
+        integer_row = [int(value // common_divisor) for value in integer_row]
+    for value in integer_row:
+        if value == 0:
+            continue
+        if value < 0:
+            integer_row = [-item for item in integer_row]
+        break
+    return integer_row
+
+
+def _rank_gaining_rows(rows: Sequence[Sequence[int]]) -> list[list[int]]:
+    selected: list[list[int]] = []
+    running_rows: list[list[int]] = []
+    running_rank = 0
+    for row in rows:
+        candidate = [int(value) for value in row]
+        candidate_rank = _row_rank(running_rows + [candidate])
+        if candidate_rank > running_rank:
+            selected.append(candidate)
+            running_rows.append(candidate)
+            running_rank = candidate_rank
+    return selected
+
+
+def _pairwise_row_space_intersection(
+    left_rows: Sequence[Sequence[int]],
+    right_rows: Sequence[Sequence[int]],
+) -> list[list[int]]:
+    if not left_rows or not right_rows:
+        return []
+    left = sp.Matrix(left_rows)
+    right = sp.Matrix(right_rows)
+    complement_basis = left.nullspace() + right.nullspace()
+    if complement_basis:
+        intersection_basis = sp.Matrix.hstack(*complement_basis).T.nullspace()
+        rows = [_primitive_integer_row(vector) for vector in intersection_basis]
+    else:
+        rows = [_primitive_integer_row(row) for row in left.rowspace()]
+    return _rank_gaining_rows(rows)
+
+
+def _row_space_intersection_basis(
+    member_row_sets: Sequence[Sequence[Sequence[int]]],
+) -> list[list[int]]:
+    if not member_row_sets:
+        return []
+    current_rows = _rank_gaining_rows(member_row_sets[0])
+    for rows in member_row_sets[1:]:
+        current_rows = _pairwise_row_space_intersection(current_rows, rows)
+        if not current_rows:
+            break
+    return current_rows
 
 
 def _record_point_rep_signature(
