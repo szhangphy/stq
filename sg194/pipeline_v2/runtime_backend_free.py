@@ -1080,7 +1080,71 @@ def _recover_boundary_special_points(
     planes: Sequence[dict[str, Any]],
     ctx: dict[str, Any],
 ) -> list[dict[str, Any]]:
+    def symmetry_summary_key(summary: dict[str, Any] | None) -> tuple[Any, ...]:
+        summary = summary or {}
+        return (
+            int(summary.get("generic_rotation_stabilizer_size", -1)),
+            int(summary.get("generic_stabilizer_size", -1)),
+            int(summary.get("pointwise_rotation_stabilizer_size", -1)),
+            int(summary.get("pointwise_stabilizer_size", -1)),
+            str(summary.get("site_symmetry") or ""),
+            str(summary.get("unitary_site_symmetry") or ""),
+            str(summary.get("site_symmetry_custom") or ""),
+        )
+
+    def line_family_key(line: dict[str, Any] | None) -> tuple[Any, ...]:
+        if line is None:
+            return ("line", None)
+        return (
+            "line",
+            tuple(line.get("parameters", [])),
+            symmetry_summary_key(line.get("symmetry_summary")),
+        )
+
+    def plane_family_key(plane: dict[str, Any] | None) -> tuple[Any, ...]:
+        if plane is None:
+            return ("plane", None)
+        return (
+            "plane",
+            tuple(plane.get("parameters", [])),
+            symmetry_summary_key(plane.get("symmetry_summary")),
+        )
+
+    def boundary_source_signature(source: dict[str, Any]) -> tuple[Any, ...]:
+        source_kind = str(source.get("source_kind"))
+        if source_kind == "line_endpoint":
+            return (
+                source_kind,
+                line_family_key(line_lookup.get(source.get("line_id"))),
+                str(source.get("boundary_condition") or ""),
+            )
+        if source_kind == "plane_corner":
+            return (
+                source_kind,
+                plane_family_key(plane_lookup.get(source.get("plane_id"))),
+                tuple(str(value) for value in (source.get("boundary_coefficients") or [])),
+            )
+        return (
+            source_kind,
+            tuple(
+                sorted(
+                    (str(key), repr(value))
+                    for key, value in source.items()
+                    if key != "source_kind"
+                )
+            ),
+        )
+
+    def recovered_family_key(item: dict[str, Any]) -> tuple[Any, ...]:
+        anchor = [to_fraction(value) for value in item["coords"]]
+        return (
+            symmetry_summary_key(subspace_symmetry_summary(anchor, [], ctx)),
+            tuple(sorted(boundary_source_signature(source) for source in item["sources"])),
+        )
+
     existing = coordinate_to_id_map(points)
+    line_lookup = {line["id"]: line for line in lines}
+    plane_lookup = {plane["id"]: plane for plane in planes}
     candidate_map: dict[tuple[str, str, str], dict[str, Any]] = {}
 
     def register_candidate(coords: Sequence[str], source: dict[str, Any]) -> None:
@@ -1131,12 +1195,29 @@ def _recover_boundary_special_points(
         candidate_map.values(),
         key=lambda item: tuple(Fraction(value) for value in item["coords"]),
     )
+    grouped_candidates: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    for item in ordered_candidates:
+        grouped_candidates.setdefault(recovered_family_key(item), []).append(item)
     next_index = len(points) + 1
     recovered: list[dict[str, Any]] = []
-    for offset, item in enumerate(ordered_candidates):
-        coords = list(item["coords"])
+    for offset, family_items in enumerate(grouped_candidates.values()):
+        representative = family_items[0]
+        coords = list(representative["coords"])
         anchor = [to_fraction(value) for value in coords]
         source_rep = [[coord, {}] for coord in coords]
+        merged_sources: list[dict[str, Any]] = []
+        seen_sources: set[str] = set()
+        merged_orbit: list[str] = []
+        for item in family_items:
+            orbit_entry = ", ".join(item["coords"])
+            if orbit_entry not in merged_orbit:
+                merged_orbit.append(orbit_entry)
+            for source in item["sources"]:
+                source_key = repr(tuple(sorted((key, repr(value)) for key, value in source.items())))
+                if source_key in seen_sources:
+                    continue
+                seen_sources.add(source_key)
+                merged_sources.append(dict(source))
         recovered_point = {
             "label": f"recovered_{next_index + offset:02d}",
             "type": "point",
@@ -1151,12 +1232,12 @@ def _recover_boundary_special_points(
                 "source_letter": "recovered_boundary_point",
                 "source_mult": 1,
                 "source_dimension": 0,
-                "source_orbit": [", ".join(coords)],
+                "source_orbit": merged_orbit,
                 "source_representative_coordinate": ", ".join(coords),
                 "source_x0": list(coords),
                 "source_basis_vecs": [],
                 "source_rep": source_rep,
-                "recovered_from_boundary_manifolds": list(item["sources"]),
+                "recovered_from_boundary_manifolds": merged_sources,
             },
             "_anchor": anchor,
             "_basis": [],
@@ -1165,7 +1246,7 @@ def _recover_boundary_special_points(
             "id": f"P{next_index + offset}",
             "manifold_role": "recovered_special_point_from_boundary_manifolds",
             "symmetry_summary": subspace_symmetry_summary(anchor, [], ctx),
-            "recovery_sources": list(item["sources"]),
+            "recovery_sources": merged_sources,
             "incident_lines": [],
             "incident_planes": [],
         }
@@ -1184,11 +1265,11 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
     planes = grouped["planes"]
     generic = grouped["generic"]
     ctx = load_reciprocal_context(group_number)
+    line_orbit_to_id, plane_orbit_to_id = subspace_orbit_id_maps(lines, planes, ctx)
+    annotate_special_manifolds(lines, planes, ctx, line_orbit_to_id, plane_orbit_to_id)
     recovered_points = _recover_boundary_special_points(points, lines, planes, ctx)
     if recovered_points:
         points.extend(recovered_points)
-    line_orbit_to_id, plane_orbit_to_id = subspace_orbit_id_maps(lines, planes, ctx)
-    annotate_special_manifolds(lines, planes, ctx, line_orbit_to_id, plane_orbit_to_id)
     point_line, unmatched_endpoints = infer_line_connectivity(points, lines)
     line_plane, unmatched_plane_boundaries = infer_plane_connectivity(planes, lines, ctx, line_orbit_to_id, plane_orbit_to_id)
     recovered_family_special_lines = _recover_family_special_lines_from_planes(points, lines, planes, ctx)

@@ -146,8 +146,102 @@ def _candidate_parameter_values_for_alias(
 def _point_coordinate_alias_records(
     kgeom: dict[str, Any],
 ) -> tuple[list[dict[str, Any]], dict[tuple[str, tuple[str, str, str]], str]]:
+    def symmetry_summary_key(summary: dict[str, Any] | None) -> tuple[Any, ...]:
+        summary = summary or {}
+        return (
+            int(summary.get("generic_rotation_stabilizer_size", -1)),
+            int(summary.get("generic_stabilizer_size", -1)),
+            int(summary.get("pointwise_rotation_stabilizer_size", -1)),
+            int(summary.get("pointwise_stabilizer_size", -1)),
+            str(summary.get("site_symmetry") or ""),
+            str(summary.get("unitary_site_symmetry") or ""),
+            str(summary.get("site_symmetry_custom") or ""),
+        )
+
+    def line_family_key(line: dict[str, Any] | None) -> tuple[Any, ...]:
+        if line is None:
+            return ("line", None)
+        return (
+            "line",
+            tuple(line.get("parameters", [])),
+            symmetry_summary_key(line.get("symmetry_summary")),
+        )
+
+    def plane_family_key(plane: dict[str, Any] | None) -> tuple[Any, ...]:
+        if plane is None:
+            return ("plane", None)
+        return (
+            "plane",
+            tuple(plane.get("parameters", [])),
+            symmetry_summary_key(plane.get("symmetry_summary")),
+        )
+
+    def recovered_boundary_source_signature(point: dict[str, Any]) -> tuple[Any, ...] | None:
+        metadata = point.get("metadata", {})
+        if metadata.get("source_letter") != "recovered_boundary_point":
+            return None
+        source_records = (
+            metadata.get("recovered_from_boundary_manifolds")
+            or point.get("recovery_sources")
+            or []
+        )
+        normalized: list[tuple[Any, ...]] = []
+        for source in source_records:
+            source_kind = str(source.get("source_kind"))
+            if source_kind == "line_endpoint":
+                normalized.append(
+                    (
+                        source_kind,
+                        line_family_key(line_lookup.get(source.get("line_id"))),
+                        str(source.get("boundary_condition") or ""),
+                    )
+                )
+                continue
+            if source_kind == "plane_corner":
+                normalized.append(
+                    (
+                        source_kind,
+                        plane_family_key(plane_lookup.get(source.get("plane_id"))),
+                        tuple(str(value) for value in (source.get("boundary_coefficients") or [])),
+                    )
+                )
+                continue
+            normalized.append(
+                (
+                    source_kind,
+                    tuple(
+                        sorted(
+                            (str(key), repr(value))
+                            for key, value in source.items()
+                            if key != "source_kind"
+                        )
+                    ),
+                )
+            )
+        return tuple(sorted(normalized))
+
+    def recovered_boundary_point_family_key(point: dict[str, Any]) -> tuple[Any, ...] | None:
+        source_signature = recovered_boundary_source_signature(point)
+        if source_signature is None:
+            return None
+        incident_line_signature = tuple(
+            sorted(line_family_key(line_lookup.get(line_id)) for line_id in point.get("incident_lines", []))
+        )
+        incident_plane_signature = tuple(
+            sorted(plane_family_key(plane_lookup.get(plane_id)) for plane_id in point.get("incident_planes", []))
+        )
+        return (
+            "recovered_boundary_point_family",
+            symmetry_summary_key(point.get("symmetry_summary")),
+            incident_line_signature,
+            incident_plane_signature,
+            source_signature,
+        )
+
     capture_lookup: dict[tuple[str, tuple[str, str, str]], str] = {}
     point_lookup = {point["id"]: point for point in kgeom["grouped"]["points"]}
+    line_lookup = {line["id"]: line for line in kgeom["grouped"]["lines"]}
+    plane_lookup = {plane["id"]: plane for plane in kgeom["grouped"]["planes"]}
     for point in kgeom.get("synthetic_boundary_points", []):
         point_lookup[point["id"]] = point
     for point_instance in kgeom.get("point_instance_entries", []):
@@ -162,30 +256,60 @@ def _point_coordinate_alias_records(
             key = (corner["point_id"], tuple(corner["point_coordinates"]))
             capture_lookup[key] = corner.get("capture_id", corner["point_id"])
 
-    point_shell: list[dict[str, Any]] = []
+    canonical_point_id_by_member: dict[str, str] = {}
+    recovered_groups: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
     for point in kgeom["grouped"]["points"]:
+        family_key = recovered_boundary_point_family_key(point)
+        if family_key is None:
+            continue
+        recovered_groups.setdefault(family_key, []).append(point)
+    for members in recovered_groups.values():
+        canonical_members = sorted(
+            members,
+            key=lambda item: (
+                int(item["id"][1:]) if item["id"].startswith("P") and item["id"][1:].isdigit() else item["id"]
+            ),
+        )
+        root_id = canonical_members[0]["id"]
+        for point in canonical_members:
+            canonical_point_id_by_member[point["id"]] = root_id
+
+    grouped_point_members: dict[str, list[dict[str, Any]]] = {}
+    grouped_point_order: list[str] = []
+    for point in kgeom["grouped"]["points"]:
+        root_id = canonical_point_id_by_member.get(point["id"], point["id"])
+        if root_id not in grouped_point_members:
+            grouped_point_members[root_id] = []
+            grouped_point_order.append(root_id)
+        grouped_point_members[root_id].append(point)
+
+    point_shell: list[dict[str, Any]] = []
+    for root_id in grouped_point_order:
+        members = grouped_point_members[root_id]
+        point = next(item for item in members if item["id"] == root_id)
         alias_records: list[dict[str, Any]] = []
         seen_coords: set[tuple[str, str, str]] = set()
-        candidate_aliases = [list(point["sample_point"])]
-        for orbit_entry in point.get("metadata", {}).get("source_orbit", []):
-            candidate_aliases.append(_parse_coordinate_triplet(orbit_entry))
-        for point_instance in kgeom.get("point_instance_entries", []):
-            if point_instance["point_id"] == point["id"]:
-                candidate_aliases.append(list(point_instance["point_coordinates"]))
-        for coords in candidate_aliases:
-            coord_key = tuple(coords)
-            if coord_key in seen_coords:
-                continue
-            seen_coords.add(coord_key)
-            alias_records.append(
-                {
-                    "coordinates": list(coords),
-                    "capture_id": capture_lookup.get((point["id"], coord_key), point["id"]),
-                }
-            )
+        for member in members:
+            candidate_aliases = [list(member["sample_point"])]
+            for orbit_entry in member.get("metadata", {}).get("source_orbit", []):
+                candidate_aliases.append(_parse_coordinate_triplet(orbit_entry))
+            for point_instance in kgeom.get("point_instance_entries", []):
+                if point_instance["point_id"] == member["id"]:
+                    candidate_aliases.append(list(point_instance["point_coordinates"]))
+            for coords in candidate_aliases:
+                coord_key = tuple(coords)
+                if coord_key in seen_coords:
+                    continue
+                seen_coords.add(coord_key)
+                alias_records.append(
+                    {
+                        "coordinates": list(coords),
+                        "capture_id": capture_lookup.get((member["id"], coord_key), member["id"]),
+                    }
+                )
         point_shell.append(
             {
-                "point_id": point["id"],
+                "point_id": root_id,
                 "label": point.get("label"),
                 "representative_coordinates": list(point["sample_point"]),
                 "aliases": alias_records,
@@ -599,11 +723,9 @@ def build_candidate_path_records(
         }
         record["path_type_key"] = (
             tuple(record["endpoint_pair"]),
+            str(record["source_kind"]),
+            str(record["source_line_id"]),
             _line_group_signature_key(record["line_group_signature"]),
-            _endpoint_decomposition_signature_key(block),
-            tuple(tuple(row) for row in local_signature["rref_basis_rows"]),
-            tuple(tuple(row) for row in global_signature["rref_basis_rows"]),
-            _phase_aware_refinement_key(block.get("phase_aware_refinement", {})),
         )
         records.append(record)
     return records
