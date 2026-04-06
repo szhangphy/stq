@@ -1464,6 +1464,8 @@ def build_publication_path_classes(
                 "member_source_line_ids": [member["representative_source_line_id"] for member in members],
                 "member_source_kinds": [member["representative_source_kind"] for member in members],
                 "member_source_ids": [member["representative_source_id"] for member in members],
+                "member_basis_row_record_sets": member_row_record_sets,
+                "member_basis_rows": member_row_sets,
                 "aggregate_row_count": len(combined_rows),
                 "aggregate_row_rank": aggregate_rank,
                 "aggregate_row_space_signature": _row_space_signature(combined_rows),
@@ -1567,14 +1569,46 @@ def build_publication_path_classes(
     }
 
 
+def _publication_shell_bs_invariants_for_selected_rows(
+    publication_shell: dict[str, Any],
+    *,
+    override_rows_by_class_id: dict[str, Sequence[dict[str, Any]]] | None = None,
+) -> dict[str, int]:
+    override_rows_by_class_id = override_rows_by_class_id or {}
+    rows: list[list[int]] = []
+    for payload in publication_shell.get("selected_publication_path_classes", []):
+        class_id = payload["publication_path_class_id"]
+        row_records = override_rows_by_class_id.get(class_id, payload["selected_basis_row_records"])
+        rows.extend([list(row_record["matrix_row"]) for row_record in row_records])
+    row_rank = _row_rank(rows)
+    unknown_count = int(publication_shell.get("publication_unknown_count", 0))
+    return {
+        "row_count": len(rows),
+        "row_rank": row_rank,
+        "nullity": unknown_count - row_rank,
+    }
+
+
+def _publication_member_source_kind_priority(source_kind: str | None) -> int:
+    if source_kind == "listed_line":
+        return 0
+    if source_kind == "plane_boundary_orbit_match":
+        return 1
+    return 2
+
+
 def build_publication_shell_invariance_audit(
     publication_shell: dict[str, Any],
 ) -> dict[str, Any]:
     invariant_class_ids: list[str] = []
     alias_only_common_class_ids: list[str] = []
     canonical_multi_source_class_ids: list[str] = []
+    representative_choice_invariant_class_ids: list[str] = []
+    auxiliary_member_only_class_ids: list[str] = []
     unresolved_class_ids: list[str] = []
     class_reports: list[dict[str, Any]] = []
+
+    baseline_bs = _publication_shell_bs_invariants_for_selected_rows(publication_shell)
 
     for payload in publication_shell.get("selected_publication_path_classes", []):
         source_line_ids = {
@@ -1582,6 +1616,44 @@ def build_publication_shell_invariance_audit(
             for source_line_id in payload.get("member_source_line_ids", [])
             if source_line_id is not None
         }
+        member_substitution_reports: list[dict[str, Any]] = []
+        for member_index, member_row_records in enumerate(payload.get("member_basis_row_record_sets", [])):
+            bs_variant = _publication_shell_bs_invariants_for_selected_rows(
+                publication_shell,
+                override_rows_by_class_id={
+                    payload["publication_path_class_id"]: member_row_records,
+                },
+            )
+            member_substitution_reports.append(
+                {
+                    "member_index": member_index,
+                    "member_internal_path_class_id": payload["member_internal_path_class_ids"][member_index],
+                    "member_source_line_id": payload["member_source_line_ids"][member_index],
+                    "member_source_kind": payload["member_source_kinds"][member_index],
+                    "row_count": bs_variant["row_count"],
+                    "row_rank": bs_variant["row_rank"],
+                    "nullity": bs_variant["nullity"],
+                }
+            )
+        primary_priority = min(
+            _publication_member_source_kind_priority(source_kind)
+            for source_kind in payload.get("member_source_kinds", [])
+        )
+        primary_member_reports = [
+            report
+            for report in member_substitution_reports
+            if _publication_member_source_kind_priority(report["member_source_kind"]) == primary_priority
+        ]
+        representative_choice_invariant = (
+            bool(primary_member_reports)
+            and len({report["row_rank"] for report in primary_member_reports}) == 1
+            and len({report["nullity"] for report in primary_member_reports}) == 1
+        )
+        auxiliary_member_variation_only = (
+            len(primary_member_reports) == 1
+            and len(member_substitution_reports) > len(primary_member_reports)
+            and representative_choice_invariant
+        )
         same_row_space = payload.get("member_row_space_signature_count", 0) <= 1
         alias_only_common = bool(
             payload.get("used_common_publication_row_language")
@@ -1598,6 +1670,12 @@ def build_publication_shell_invariance_audit(
         elif canonical_multi_source:
             verdict = "canonical_multi_source_publication_family"
             canonical_multi_source_class_ids.append(payload["publication_path_class_id"])
+        elif auxiliary_member_variation_only:
+            verdict = "auxiliary_recovery_member_ignored"
+            auxiliary_member_only_class_ids.append(payload["publication_path_class_id"])
+        elif representative_choice_invariant:
+            verdict = "representative_choice_invariant"
+            representative_choice_invariant_class_ids.append(payload["publication_path_class_id"])
         else:
             verdict = "unresolved_publication_row_space_variation"
             unresolved_class_ids.append(payload["publication_path_class_id"])
@@ -1618,6 +1696,11 @@ def build_publication_shell_invariance_audit(
                 "representative_rows_equal_all_members": bool(
                     payload["representative_rows_equal_all_members"]
                 ),
+                "baseline_bs": baseline_bs,
+                "member_substitution_reports": member_substitution_reports,
+                "primary_member_substitution_reports": primary_member_reports,
+                "representative_choice_invariant": representative_choice_invariant,
+                "auxiliary_member_variation_only": auxiliary_member_variation_only,
                 "member_row_space_reports": list(payload["member_row_space_reports"]),
                 "verdict": verdict,
             }
@@ -1628,9 +1711,12 @@ def build_publication_shell_invariance_audit(
         "selected_publication_path_count": int(
             publication_shell.get("selected_publication_path_count", 0)
         ),
+        "baseline_bs": baseline_bs,
         "invariant_class_ids": invariant_class_ids,
         "alias_only_common_class_ids": alias_only_common_class_ids,
         "canonical_multi_source_class_ids": canonical_multi_source_class_ids,
+        "auxiliary_member_only_class_ids": auxiliary_member_only_class_ids,
+        "representative_choice_invariant_class_ids": representative_choice_invariant_class_ids,
         "unresolved_class_ids": unresolved_class_ids,
         "all_selected_classes_internally_resolved": len(unresolved_class_ids) == 0,
         "class_reports": class_reports,
@@ -1643,10 +1729,16 @@ def build_publication_shell_invariance_markdown(audit: dict[str, Any]) -> str:
         "",
         f"- Object kind: `{audit['publication_object_kind']}`.",
         f"- Selected publication path count: `{audit['selected_publication_path_count']}`.",
+        f"- Baseline publication-shell row count / rank / dBS: "
+        f"`{audit['baseline_bs']['row_count']}` / `{audit['baseline_bs']['row_rank']}` / "
+        f"`{audit['baseline_bs']['nullity']}`.",
         f"- All selected classes internally resolved: `{audit['all_selected_classes_internally_resolved']}`.",
         f"- Invariant classes: `{audit['invariant_class_ids']}`.",
         f"- Alias-only common classes: `{audit['alias_only_common_class_ids']}`.",
         f"- Canonical multi-source classes: `{audit['canonical_multi_source_class_ids']}`.",
+        f"- Auxiliary-member-only classes: `{audit['auxiliary_member_only_class_ids']}`.",
+        f"- Representative-choice invariant classes: "
+        f"`{audit['representative_choice_invariant_class_ids']}`.",
         f"- Unresolved classes: `{audit['unresolved_class_ids']}`.",
         "",
         "## Per-Class Verdicts",
@@ -1659,7 +1751,9 @@ def build_publication_shell_invariance_markdown(audit: dict[str, Any]) -> str:
             f"`{report['member_row_space_signature_count']}`, "
             f"used common row language = `{report['used_common_publication_row_language']}`, "
             f"selected rows contained in all members = "
-            f"`{report['selected_rows_contained_in_all_members']}`."
+            f"`{report['selected_rows_contained_in_all_members']}`, "
+            f"auxiliary-member-only = `{report['auxiliary_member_variation_only']}`, "
+            f"representative-choice invariant = `{report['representative_choice_invariant']}`."
         )
     return "\n".join(lines) + "\n"
 
