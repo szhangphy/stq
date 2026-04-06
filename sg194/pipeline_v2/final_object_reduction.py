@@ -307,6 +307,36 @@ def _point_coordinate_alias_records(
     for root_id in grouped_point_order:
         members = grouped_point_members[root_id]
         point = next(item for item in members if item["id"] == root_id)
+        orbit_capture_lookup: dict[tuple[Any, ...], tuple[tuple[Any, ...], str]] = {}
+        if reciprocal_ops:
+            for member in members:
+                known_coord_keys: set[tuple[str, str, str]] = {tuple(member["sample_point"])}
+                for point_instance in kgeom.get("point_instance_entries", []):
+                    if point_instance["point_id"] == member["id"]:
+                        known_coord_keys.add(tuple(point_instance["point_coordinates"]))
+                for line in kgeom["grouped"]["lines"]:
+                    for endpoint in line.get("endpoints", []):
+                        if endpoint["point_id"] == member["id"]:
+                            known_coord_keys.add(tuple(endpoint["point_coordinates"]))
+                for plane in kgeom["grouped"]["planes"]:
+                    for corner in plane.get("corner_entries", []):
+                        if corner["point_id"] == member["id"]:
+                            known_coord_keys.add(tuple(corner["point_coordinates"]))
+                for coord_key in known_coord_keys:
+                    capture_id = capture_lookup.get((member["id"], coord_key), member["id"])
+                    orbit_key = swyckoff_k.subspace_orbit_key(
+                        [_to_fraction(value) for value in coord_key],
+                        [],
+                        reciprocal_ops,
+                    )
+                    priority = (
+                        0 if capture_id != member["id"] else 1,
+                        member["id"],
+                        coord_key,
+                    )
+                    existing = orbit_capture_lookup.get(orbit_key)
+                    if existing is None or priority < existing[0]:
+                        orbit_capture_lookup[orbit_key] = (priority, capture_id)
         alias_records: list[dict[str, Any]] = []
         seen_coords: set[tuple[str, str, str]] = set()
         for member in members:
@@ -321,10 +351,22 @@ def _point_coordinate_alias_records(
                 if coord_key in seen_coords:
                     continue
                 seen_coords.add(coord_key)
+                capture_id = capture_lookup.get((member["id"], coord_key))
+                if capture_id is None and reciprocal_ops:
+                    orbit_key = swyckoff_k.subspace_orbit_key(
+                        [_to_fraction(value) for value in coord_key],
+                        [],
+                        reciprocal_ops,
+                    )
+                    orbit_payload = orbit_capture_lookup.get(orbit_key)
+                    if orbit_payload is not None:
+                        capture_id = orbit_payload[1]
+                if capture_id is None:
+                    capture_id = member["id"]
                 alias_records.append(
                     {
                         "coordinates": list(coords),
-                        "capture_id": capture_lookup.get((member["id"], coord_key), member["id"]),
+                        "capture_id": capture_id,
                     }
                 )
         point_shell.append(
