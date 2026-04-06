@@ -1526,6 +1526,12 @@ def as_exact_char(value: complex) -> sp.Expr:
     return real_expr + sp.I * imag_expr
 
 
+def _entry_str(value: Any) -> str:
+    if isinstance(value, sp.Basic):
+        value = sp.nsimplify(value)
+    return str(value)
+
+
 def _exactify_matrix_entries(matrix: sp.Matrix) -> sp.Matrix:
     return sp.Matrix(
         [
@@ -1704,6 +1710,40 @@ def solve_unique_integer_decomposition(
         list(solution),
         context,
     )
+
+
+def reconstruct_restricted_character_from_integer_decomposition(
+    basis_matrix: sp.Matrix,
+    coeffs_int: Sequence[int],
+) -> sp.Matrix:
+    if basis_matrix.cols != len(coeffs_int):
+        raise ValueError(
+            f"basis/decomposition width mismatch expected={basis_matrix.cols} actual={len(coeffs_int)}"
+        )
+    coeff_vector = sp.Matrix([[int(value)] for value in coeffs_int])
+    return basis_matrix * coeff_vector
+
+
+def audit_restriction_character_decomposition(
+    basis_matrix: sp.Matrix,
+    restricted: sp.Matrix,
+    coeffs_int: Sequence[int],
+) -> dict[str, Any]:
+    reconstructed = reconstruct_restricted_character_from_integer_decomposition(
+        basis_matrix,
+        coeffs_int,
+    )
+    delta = reconstructed - restricted
+    zero_match = all(value == 0 for value in list(delta))
+    return {
+        "basis_width": int(basis_matrix.cols),
+        "restricted_height": int(restricted.rows),
+        "coefficients": [int(value) for value in coeffs_int],
+        "restricted_vector": [_entry_str(value) for value in list(restricted)],
+        "reconstructed_vector": [_entry_str(value) for value in list(reconstructed)],
+        "delta_vector": [_entry_str(value) for value in list(delta)],
+        "exact_reconstruction_pass": bool(zero_match),
+    }
 
 
 def matched_unitary_indices(parent_raw: dict[str, Any], child_raw: dict[str, Any]) -> list[int]:
@@ -2059,12 +2099,18 @@ def build_line_block_coarse(
                 rep_id=rep_id,
                 field=field,
             )
+            decomposition_audit = audit_restriction_character_decomposition(
+                line_basis_matrix,
+                restricted,
+                coeffs_int,
+            )
             reps.append(
                 {
                     "rep_id": rep_id,
                     "rep_degree": int(endpoint_raw["rep_degree"][rep_index - 1]),
                     "torsion": int(endpoint_raw["torsion"][rep_index - 1]),
                     "decomposition_on_line_basis": {basis_label: coeff for basis_label, coeff in zip(line_basis_labels, coeffs_int) if coeff},
+                    "restriction_decomposition_audit": decomposition_audit,
                 }
             )
             local_unknown_ordering.append(rep_id)
@@ -2799,7 +2845,16 @@ def build_plane_block(plane_obj: dict[str, Any], corner_entries: list[dict[str, 
                 rep_id=rep_id,
                 field=field,
             )
-            reps.append({"rep_id": rep_id, "decomposition_on_plane_basis": {label: coeff for label, coeff in zip(plane_basis_labels, coeffs_int) if coeff}})
+            decomposition_audit = audit_restriction_character_decomposition(
+                plane_basis_matrix,
+                restricted,
+                coeffs_int,
+            )
+            reps.append({
+                "rep_id": rep_id,
+                "decomposition_on_plane_basis": {label: coeff for label, coeff in zip(plane_basis_labels, coeffs_int) if coeff},
+                "restriction_decomposition_audit": decomposition_audit,
+            })
             local_unknown_ordering.append(rep_id)
         corner_decompositions[(point_id, tuple(corner_entry["point_coordinates"]))] = reps
     local_unknown_ordering.extend(plane_basis_labels)

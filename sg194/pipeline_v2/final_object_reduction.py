@@ -832,8 +832,9 @@ def analyze_candidate_path_selection(
     for class_index, class_record in enumerate(class_records, start=1):
         path_class_id = f"PCLASS{class_index:02d}"
         class_record["path_class_id"] = path_class_id
-        class_record["representative"]["path_class_id"] = path_class_id
-        class_record["representative"]["path_class_candidate_count"] = len(class_record["candidate_records"])
+        for candidate_record in class_record["candidate_records"]:
+            candidate_record["path_class_id"] = path_class_id
+            candidate_record["path_class_candidate_count"] = len(class_record["candidate_records"])
 
     target_rank = _row_rank(_stack_rows([item["representative"] for item in class_records]))
     by_pair: dict[tuple[str, str], list[dict[str, Any]]] = {}
@@ -1309,10 +1310,17 @@ def build_publication_path_classes(
     for payload in reduction.get("path_classes", []):
         representative = payload["candidate_records"][0]
         publication_signature = canonicalize_line_restriction_signature(representative)
+        representative_rows = _transform_publication_row_records_to_point_family_basis(
+            representative,
+            representative["global_matrix_row_records"],
+            point_unknown_ordering,
+            point_capture_permutations,
+        )
         publication_key = (
             tuple(payload["endpoint_pair"]),
             _line_group_signature_key(payload["line_group_signature"]),
             publication_signature["canonical_signature_key"],
+            _rref_signature([list(row_record["matrix_row"]) for row_record in representative_rows]),
         )
         grouped.setdefault(publication_key, []).append(payload)
 
@@ -1372,7 +1380,7 @@ def build_publication_path_classes(
                 "member_source_id": members[0]["representative_source_id"],
                 "member_branch_index": int(members[0]["representative_branch_index"]),
             }
-            for row_record in representative["global_matrix_row_records"]
+            for row_record in member_row_record_sets[0]
         ]
         representative_rows = [list(row_record["matrix_row"]) for row_record in representative_row_records]
         common_rows = _row_space_intersection_basis(member_row_sets)
@@ -1401,6 +1409,17 @@ def build_publication_path_classes(
             _rref_signature(rows)
             for rows in member_row_sets
         }
+        member_row_space_reports = [
+            {
+                "member_internal_path_class_id": members[index]["path_class_id"],
+                "member_source_line_id": members[index]["representative_source_line_id"],
+                "member_source_kind": members[index]["representative_source_kind"],
+                "member_candidate_id": members[index]["representative_candidate_id"],
+                "row_rank": _row_rank(rows),
+                "row_space_signature": [list(row) for row in _rref_signature(rows)],
+            }
+            for index, rows in enumerate(member_row_sets)
+        ]
         same_source_line_family = (
             len({member["representative_source_line_id"] for member in members}) == 1
         )
@@ -1433,6 +1452,15 @@ def build_publication_path_classes(
         selected_basis_row_records = (
             common_row_records if use_common_row_language else representative_row_records
         )
+        selected_rows_contained_by_member = [
+            _row_rank(rows + selected_basis_rows) == _row_rank(rows)
+            for rows in member_row_sets
+        ]
+        selected_rows_contained_in_all_members = all(selected_rows_contained_by_member)
+        representative_rows_equal_all_members = all(
+            _rref_signature(rows) == _rref_signature(representative_rows)
+            for rows in member_row_sets
+        )
         publication_classes.append(
             {
                 "publication_path_class_id": f"PUBCLASS{class_index:02d}",
@@ -1461,11 +1489,36 @@ def build_publication_path_classes(
                 "same_source_line_family": same_source_line_family,
                 "common_basis_row_rank": common_rank,
                 "alias_only_row_space_variation": alias_only_row_space_variation,
+                "member_row_space_reports": member_row_space_reports,
+                "selected_rows_contained_by_member": selected_rows_contained_by_member,
+                "selected_rows_contained_in_all_members": selected_rows_contained_in_all_members,
+                "representative_rows_equal_all_members": representative_rows_equal_all_members,
                 "publication_point_basis_permutations_used": {
                     point_id: {
-                        capture_id: [int(index) for index in permutation]
-                        for capture_id, permutation in capture_map.items()
-                        if any(index != local_index for local_index, index in enumerate(permutation))
+                        capture_id: {
+                            "default": [int(index) for index in payload.get("default", ())]
+                            if any(
+                                index != local_index
+                                for local_index, index in enumerate(payload.get("default", ()))
+                            )
+                            else None,
+                            "by_context": {
+                                repr(context_key): [int(index) for index in permutation]
+                                for context_key, permutation in payload.get("by_context", {}).items()
+                                if any(index != local_index for local_index, index in enumerate(permutation))
+                            },
+                        }
+                        for capture_id, payload in capture_map.items()
+                        if (
+                            any(
+                                index != local_index
+                                for local_index, index in enumerate(payload.get("default", ()))
+                            )
+                            or any(
+                                any(index != local_index for local_index, index in enumerate(permutation))
+                                for permutation in payload.get("by_context", {}).values()
+                            )
+                        )
                     }
                     for point_id, capture_map in point_capture_permutations.items()
                 },
@@ -1792,6 +1845,92 @@ def build_publication_shell_reduction_markdown(report: dict[str, Any]) -> str:
             + f"`{payload['member_source_line_ids']}`; selected = `{payload['selected_as_publication']}`; "
             + f"aggregate rank `{payload['aggregate_row_rank']}`, selected-basis rank "
             + f"`{payload['selected_basis_row_rank']}`; reason: {payload['selection_reason']}"
+        )
+    return "\n".join(lines)
+
+
+def build_publication_shell_invariance_audit(
+    publication_shell: dict[str, Any],
+) -> dict[str, Any]:
+    class_reports: list[dict[str, Any]] = []
+    unresolved_class_ids: list[str] = []
+    multi_source_class_ids: list[str] = []
+    alias_only_class_ids: list[str] = []
+    invariant_class_ids: list[str] = []
+    for payload in publication_shell["publication_path_classes"]:
+        if payload["member_row_space_signature_count"] == 1:
+            verdict = "member_row_space_invariant"
+            invariant_class_ids.append(payload["publication_path_class_id"])
+        elif (
+            payload["used_common_publication_row_language"]
+            and payload["selected_rows_contained_in_all_members"]
+        ):
+            verdict = "alias_only_common_invariant"
+            alias_only_class_ids.append(payload["publication_path_class_id"])
+        elif not payload["same_source_line_family"]:
+            verdict = "canonical_multi_source_publication_family"
+            multi_source_class_ids.append(payload["publication_path_class_id"])
+        else:
+            verdict = "unresolved_publication_row_space_variation"
+            unresolved_class_ids.append(payload["publication_path_class_id"])
+        class_reports.append(
+            {
+                "publication_path_class_id": payload["publication_path_class_id"],
+                "endpoint_pair": list(payload["endpoint_pair"]),
+                "selected_as_publication": bool(payload["selected_as_publication"]),
+                "member_internal_path_class_ids": list(payload["member_internal_path_class_ids"]),
+                "member_source_line_ids": list(payload["member_source_line_ids"]),
+                "used_common_publication_row_language": bool(payload["used_common_publication_row_language"]),
+                "endpoint_capture_variation": bool(payload["endpoint_capture_variation"]),
+                "member_row_space_signature_count": int(payload["member_row_space_signature_count"]),
+                "same_source_line_family": bool(payload["same_source_line_family"]),
+                "alias_only_row_space_variation": bool(payload["alias_only_row_space_variation"]),
+                "representative_basis_row_rank": int(payload["representative_basis_row_rank"]),
+                "common_basis_row_rank": int(payload["common_basis_row_rank"]),
+                "aggregate_row_rank": int(payload["aggregate_row_rank"]),
+                "selected_basis_row_rank": int(payload["selected_basis_row_rank"]),
+                "selected_rows_contained_in_all_members": bool(payload["selected_rows_contained_in_all_members"]),
+                "representative_rows_equal_all_members": bool(payload["representative_rows_equal_all_members"]),
+                "member_row_space_reports": list(payload["member_row_space_reports"]),
+                "verdict": verdict,
+            }
+        )
+    return {
+        "publication_path_class_count": len(class_reports),
+        "selected_publication_path_count": len(publication_shell["publication_paths"]),
+        "invariant_class_ids": invariant_class_ids,
+        "alias_only_common_class_ids": alias_only_class_ids,
+        "canonical_multi_source_class_ids": multi_source_class_ids,
+        "unresolved_class_ids": unresolved_class_ids,
+        "all_selected_classes_internally_resolved": len(unresolved_class_ids) == 0,
+        "class_reports": class_reports,
+    }
+
+
+def build_publication_shell_invariance_markdown(audit: dict[str, Any]) -> str:
+    lines = [
+        "# Publication Shell Invariance Audit",
+        "",
+        f"- Publication path-class count: `{audit['publication_path_class_count']}`.",
+        f"- Selected publication path count: `{audit['selected_publication_path_count']}`.",
+        f"- Invariant classes: `{audit['invariant_class_ids']}`.",
+        f"- Alias-only common classes: `{audit['alias_only_common_class_ids']}`.",
+        f"- Canonical multi-source classes: `{audit['canonical_multi_source_class_ids']}`.",
+        f"- Unresolved classes: `{audit['unresolved_class_ids']}`.",
+        f"- All selected classes internally resolved: `{audit['all_selected_classes_internally_resolved']}`.",
+        "",
+        "## Class Verdicts",
+        "",
+    ]
+    for payload in audit["class_reports"]:
+        lines.append(
+            "- "
+            + f"`{payload['publication_path_class_id']}` pair `{payload['endpoint_pair']}` "
+            + f"verdict `{payload['verdict']}`; selected=`{payload['selected_as_publication']}`; "
+            + f"source lines `{payload['member_source_line_ids']}`; "
+            + f"member-row signatures `{payload['member_row_space_signature_count']}`; "
+            + f"representative/common/aggregate ranks `{payload['representative_basis_row_rank']}`/"
+            + f"`{payload['common_basis_row_rank']}`/`{payload['aggregate_row_rank']}`."
         )
     return "\n".join(lines)
 
@@ -2296,6 +2435,7 @@ def _endpoint_rep_fingerprints_on_canonical_line_basis(
         other_endpoint_id = next(item for item in endpoint_pair if item != point_id)
         capture_id = capture_by_point.get(point_id, point_id)
         family_key = (
+            str(record["source_line_id"]),
             other_endpoint_id,
             _line_group_signature_key(record["line_group_signature"]),
         )
@@ -2336,12 +2476,29 @@ def _score_capture_permutation(
     return exact_matches, overlap
 
 
+def _publication_point_permutation_context_key(
+    record: dict[str, Any],
+    point_id: str,
+) -> tuple[Any, ...]:
+    endpoint_pair = list(record["endpoint_pair"])
+    other_endpoint_id = next(item for item in endpoint_pair if item != point_id)
+    return (
+        str(record["source_line_id"]),
+        other_endpoint_id,
+        _line_group_signature_key(record["line_group_signature"]),
+    )
+
+
 def _build_publication_point_capture_permutations(
     reduction: dict[str, Any],
     point_unknown_ordering: dict[str, list[str]],
-) -> dict[str, dict[str, tuple[int, ...]]]:
+) -> dict[str, dict[str, dict[str, Any]]]:
     candidate_records = list(reduction.get("candidate_path_records", []))
     by_point_capture: dict[str, dict[str, dict[int, list[tuple[Any, ...]]]]] = {}
+    by_point_capture_context: dict[
+        str,
+        dict[str, dict[tuple[Any, ...], dict[int, list[tuple[Any, ...]]]]],
+    ] = {}
     for record in candidate_records:
         endpoint_pair = list(record["endpoint_pair"])
         endpoint_capture_ids = list(record.get("endpoint_capture_ids", []))
@@ -2354,10 +2511,18 @@ def _build_publication_point_capture_permutations(
             if rep_fingerprints is None:
                 continue
             capture_payload = by_point_capture.setdefault(point_id, {}).setdefault(capture_id, {})
+            context_key = _publication_point_permutation_context_key(record, point_id)
+            context_payload = (
+                by_point_capture_context
+                .setdefault(point_id, {})
+                .setdefault(capture_id, {})
+                .setdefault(context_key, {})
+            )
             for rep_index, rep_fingerprint in enumerate(rep_fingerprints, start=1):
                 capture_payload.setdefault(rep_index, []).append(rep_fingerprint)
+                context_payload.setdefault(rep_index, []).append(rep_fingerprint)
 
-    permutations_by_point: dict[str, dict[str, tuple[int, ...]]] = {}
+    permutations_by_point: dict[str, dict[str, dict[str, Any]]] = {}
     for point in reduction.get("point_shell", []):
         point_id = point["point_id"]
         rep_unknowns = point_unknown_ordering.get(point_id, [])
@@ -2372,43 +2537,100 @@ def _build_publication_point_capture_permutations(
             tuple(sorted(canonical_payload.get(rep_index, [])))
             for rep_index in range(1, rep_count + 1)
         ]
-        point_permutations: dict[str, tuple[int, ...]] = {
-            canonical_capture_id: tuple(range(rep_count))
+        point_permutations: dict[str, dict[str, Any]] = {
+            canonical_capture_id: {
+                "default": tuple(range(rep_count)),
+                "by_context": {},
+            }
         }
         for capture_id in alias_capture_ids:
-            if capture_id == canonical_capture_id:
-                continue
-            alias_payload = capture_payload.get(capture_id, {})
-            alias_fingerprints = [
-                tuple(sorted(alias_payload.get(rep_index, [])))
-                for rep_index in range(1, rep_count + 1)
-            ]
             best_permutation = tuple(range(rep_count))
-            best_score = _score_capture_permutation(
-                canonical_fingerprints,
-                alias_fingerprints,
-                best_permutation,
-            )
-            for permutation in permutations(range(rep_count)):
-                score = _score_capture_permutation(
+            if capture_id != canonical_capture_id:
+                alias_payload = capture_payload.get(capture_id, {})
+                alias_fingerprints = [
+                    tuple(sorted(alias_payload.get(rep_index, [])))
+                    for rep_index in range(1, rep_count + 1)
+                ]
+                best_score = _score_capture_permutation(
                     canonical_fingerprints,
                     alias_fingerprints,
-                    permutation,
+                    best_permutation,
                 )
-                if score > best_score:
-                    best_score = score
-                    best_permutation = tuple(permutation)
-            point_permutations[capture_id] = best_permutation
+                for permutation in permutations(range(rep_count)):
+                    score = _score_capture_permutation(
+                        canonical_fingerprints,
+                        alias_fingerprints,
+                        permutation,
+                    )
+                    if score > best_score:
+                        best_score = score
+                        best_permutation = tuple(permutation)
+            context_permutations: dict[tuple[Any, ...], tuple[int, ...]] = {}
+            capture_context_payload = by_point_capture_context.get(point_id, {})
+            context_keys = set(capture_context_payload.get(capture_id, {}).keys())
+            context_keys.update(capture_context_payload.get(canonical_capture_id, {}).keys())
+            for context_key in context_keys:
+                canonical_context_payload = capture_context_payload.get(canonical_capture_id, {}).get(context_key, {})
+                alias_context_payload = capture_context_payload.get(capture_id, {}).get(context_key, {})
+                if not canonical_context_payload or not alias_context_payload:
+                    continue
+                canonical_context_fingerprints = [
+                    tuple(sorted(canonical_context_payload.get(rep_index, [])))
+                    for rep_index in range(1, rep_count + 1)
+                ]
+                alias_context_fingerprints = [
+                    tuple(sorted(alias_context_payload.get(rep_index, [])))
+                    for rep_index in range(1, rep_count + 1)
+                ]
+                best_context_permutation = tuple(range(rep_count))
+                best_context_score = _score_capture_permutation(
+                    canonical_context_fingerprints,
+                    alias_context_fingerprints,
+                    best_context_permutation,
+                )
+                for permutation in permutations(range(rep_count)):
+                    score = _score_capture_permutation(
+                        canonical_context_fingerprints,
+                        alias_context_fingerprints,
+                        permutation,
+                    )
+                    if score > best_context_score:
+                        best_context_score = score
+                        best_context_permutation = tuple(permutation)
+                context_permutations[context_key] = best_context_permutation
+            point_permutations[capture_id] = {
+                "default": best_permutation,
+                "by_context": context_permutations,
+            }
         if point_permutations:
             permutations_by_point[point_id] = point_permutations
     return permutations_by_point
+
+
+def _lookup_publication_point_capture_permutation(
+    record: dict[str, Any],
+    point_id: str,
+    capture_id: str,
+    point_capture_permutations: dict[str, dict[str, dict[str, Any]]],
+) -> tuple[int, ...] | None:
+    capture_entry = point_capture_permutations.get(point_id, {}).get(capture_id)
+    if capture_entry is None:
+        return None
+    context_key = _publication_point_permutation_context_key(record, point_id)
+    context_permutations = capture_entry.get("by_context", {})
+    if context_key in context_permutations:
+        return tuple(int(index) for index in context_permutations[context_key])
+    default_permutation = capture_entry.get("default")
+    if default_permutation is None:
+        return None
+    return tuple(int(index) for index in default_permutation)
 
 
 def _transform_publication_row_records_to_point_family_basis(
     record: dict[str, Any],
     row_records: Sequence[dict[str, Any]],
     point_unknown_ordering: dict[str, list[str]],
-    point_capture_permutations: dict[str, dict[str, tuple[int, ...]]],
+    point_capture_permutations: dict[str, dict[str, dict[str, Any]]],
 ) -> list[dict[str, Any]]:
     unknown_ordering = list(record["global_unknown_ordering"])
     unknown_index = {unknown: index for index, unknown in enumerate(unknown_ordering)}
@@ -2424,7 +2646,12 @@ def _transform_publication_row_records_to_point_family_basis(
         transformed_row = list(row)
         transforms_applied: list[dict[str, Any]] = []
         for point_id, capture_id in capture_by_point.items():
-            permutation = point_capture_permutations.get(point_id, {}).get(capture_id)
+            permutation = _lookup_publication_point_capture_permutation(
+                record,
+                point_id,
+                capture_id,
+                point_capture_permutations,
+            )
             if permutation is None or all(index == local_index for local_index, index in enumerate(permutation)):
                 continue
             block_unknowns = point_unknown_ordering.get(point_id, [])
@@ -2440,6 +2667,10 @@ def _transform_publication_row_records_to_point_family_basis(
                 {
                     "point_id": point_id,
                     "capture_id": capture_id,
+                    "context_key": [
+                        str(item)
+                        for item in _publication_point_permutation_context_key(record, point_id)
+                    ],
                     "local_to_canonical_permutation": [int(index) for index in permutation],
                 }
             )
