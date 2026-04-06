@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from collections import Counter
 from fractions import Fraction
 from itertools import combinations, permutations, product
 from math import factorial, gcd
@@ -1482,10 +1483,22 @@ def build_publication_path_classes(
             }
             for local_row_index, row in enumerate(common_rows)
         ]
-        selected_basis_rows = common_rows if use_common_row_language else representative_rows
-        selected_basis_row_records = (
-            common_row_records if use_common_row_language else representative_row_records
+        source_line_counts = Counter(member["representative_source_line_id"] for member in members)
+        distinct_source_union_required = (
+            not use_common_row_language
+            and len(source_line_counts) > 1
+            and all(count == 1 for count in source_line_counts.values())
         )
+        aggregate_row_records, aggregate_basis_rows = _rank_gaining_row_records(combined_row_records)
+        if use_common_row_language:
+            selected_basis_rows = common_rows
+            selected_basis_row_records = common_row_records
+        elif distinct_source_union_required:
+            selected_basis_rows = aggregate_basis_rows
+            selected_basis_row_records = aggregate_row_records
+        else:
+            selected_basis_rows = representative_rows
+            selected_basis_row_records = representative_row_records
         selected_rows_contained_by_member = [
             _row_rank(rows + selected_basis_rows) == _row_rank(rows)
             for rows in member_row_sets
@@ -1520,6 +1533,7 @@ def build_publication_path_classes(
                 "selected_basis_row_records": selected_basis_row_records,
                 "selected_basis_rows": selected_basis_rows,
                 "used_common_publication_row_language": use_common_row_language,
+                "used_distinct_source_union_row_language": distinct_source_union_required,
                 "endpoint_capture_variation": endpoint_capture_variation,
                 "member_row_space_signature_count": len(member_row_space_signatures),
                 "same_source_line_family": same_source_line_family,
