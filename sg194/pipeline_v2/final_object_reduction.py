@@ -1401,6 +1401,17 @@ def build_publication_path_classes(
             _rref_signature(rows)
             for rows in member_row_sets
         }
+        member_row_space_reports = [
+            {
+                "member_internal_path_class_id": members[index]["path_class_id"],
+                "member_source_line_id": members[index]["representative_source_line_id"],
+                "member_source_kind": members[index]["representative_source_kind"],
+                "member_candidate_id": members[index]["representative_candidate_id"],
+                "row_rank": _row_rank(rows),
+                "row_space_signature": [list(row) for row in _rref_signature(rows)],
+            }
+            for index, rows in enumerate(member_row_sets)
+        ]
         same_source_line_family = (
             len({member["representative_source_line_id"] for member in members}) == 1
         )
@@ -1433,6 +1444,15 @@ def build_publication_path_classes(
         selected_basis_row_records = (
             common_row_records if use_common_row_language else representative_row_records
         )
+        selected_rows_contained_by_member = [
+            _row_rank(rows + selected_basis_rows) == _row_rank(rows)
+            for rows in member_row_sets
+        ]
+        selected_rows_contained_in_all_members = all(selected_rows_contained_by_member)
+        representative_rows_equal_all_members = all(
+            _rref_signature(rows) == _rref_signature(representative_rows)
+            for rows in member_row_sets
+        )
         publication_classes.append(
             {
                 "publication_path_class_id": f"PUBCLASS{class_index:02d}",
@@ -1461,6 +1481,10 @@ def build_publication_path_classes(
                 "same_source_line_family": same_source_line_family,
                 "common_basis_row_rank": common_rank,
                 "alias_only_row_space_variation": alias_only_row_space_variation,
+                "member_row_space_reports": member_row_space_reports,
+                "selected_rows_contained_by_member": selected_rows_contained_by_member,
+                "selected_rows_contained_in_all_members": selected_rows_contained_in_all_members,
+                "representative_rows_equal_all_members": representative_rows_equal_all_members,
                 "publication_point_basis_permutations_used": {
                     point_id: {
                         capture_id: [int(index) for index in permutation]
@@ -1541,6 +1565,103 @@ def build_publication_path_classes(
         "discarded_publication_path_classes": discarded_classes,
         "publication_paths": publication_paths,
     }
+
+
+def build_publication_shell_invariance_audit(
+    publication_shell: dict[str, Any],
+) -> dict[str, Any]:
+    invariant_class_ids: list[str] = []
+    alias_only_common_class_ids: list[str] = []
+    canonical_multi_source_class_ids: list[str] = []
+    unresolved_class_ids: list[str] = []
+    class_reports: list[dict[str, Any]] = []
+
+    for payload in publication_shell.get("selected_publication_path_classes", []):
+        source_line_ids = {
+            source_line_id
+            for source_line_id in payload.get("member_source_line_ids", [])
+            if source_line_id is not None
+        }
+        same_row_space = payload.get("member_row_space_signature_count", 0) <= 1
+        alias_only_common = bool(
+            payload.get("used_common_publication_row_language")
+            and payload.get("selected_rows_contained_in_all_members")
+        )
+        canonical_multi_source = len(source_line_ids) > 1
+
+        if same_row_space:
+            verdict = "member_row_space_invariant"
+            invariant_class_ids.append(payload["publication_path_class_id"])
+        elif alias_only_common:
+            verdict = "alias_only_common_invariant"
+            alias_only_common_class_ids.append(payload["publication_path_class_id"])
+        elif canonical_multi_source:
+            verdict = "canonical_multi_source_publication_family"
+            canonical_multi_source_class_ids.append(payload["publication_path_class_id"])
+        else:
+            verdict = "unresolved_publication_row_space_variation"
+            unresolved_class_ids.append(payload["publication_path_class_id"])
+
+        class_reports.append(
+            {
+                "publication_path_class_id": payload["publication_path_class_id"],
+                "endpoint_pair": list(payload["endpoint_pair"]),
+                "member_internal_path_class_ids": list(payload["member_internal_path_class_ids"]),
+                "member_source_line_ids": list(payload["member_source_line_ids"]),
+                "member_row_space_signature_count": int(payload["member_row_space_signature_count"]),
+                "used_common_publication_row_language": bool(
+                    payload["used_common_publication_row_language"]
+                ),
+                "selected_rows_contained_in_all_members": bool(
+                    payload["selected_rows_contained_in_all_members"]
+                ),
+                "representative_rows_equal_all_members": bool(
+                    payload["representative_rows_equal_all_members"]
+                ),
+                "member_row_space_reports": list(payload["member_row_space_reports"]),
+                "verdict": verdict,
+            }
+        )
+
+    return {
+        "publication_object_kind": publication_shell.get("object_kind"),
+        "selected_publication_path_count": int(
+            publication_shell.get("selected_publication_path_count", 0)
+        ),
+        "invariant_class_ids": invariant_class_ids,
+        "alias_only_common_class_ids": alias_only_common_class_ids,
+        "canonical_multi_source_class_ids": canonical_multi_source_class_ids,
+        "unresolved_class_ids": unresolved_class_ids,
+        "all_selected_classes_internally_resolved": len(unresolved_class_ids) == 0,
+        "class_reports": class_reports,
+    }
+
+
+def build_publication_shell_invariance_markdown(audit: dict[str, Any]) -> str:
+    lines = [
+        "# Publication-Shell Invariance Audit",
+        "",
+        f"- Object kind: `{audit['publication_object_kind']}`.",
+        f"- Selected publication path count: `{audit['selected_publication_path_count']}`.",
+        f"- All selected classes internally resolved: `{audit['all_selected_classes_internally_resolved']}`.",
+        f"- Invariant classes: `{audit['invariant_class_ids']}`.",
+        f"- Alias-only common classes: `{audit['alias_only_common_class_ids']}`.",
+        f"- Canonical multi-source classes: `{audit['canonical_multi_source_class_ids']}`.",
+        f"- Unresolved classes: `{audit['unresolved_class_ids']}`.",
+        "",
+        "## Per-Class Verdicts",
+        "",
+    ]
+    for report in audit.get("class_reports", []):
+        lines.append(
+            f"- `{report['publication_path_class_id']}` pair `{report['endpoint_pair']}`: "
+            f"`{report['verdict']}`; member row-space signatures = "
+            f"`{report['member_row_space_signature_count']}`, "
+            f"used common row language = `{report['used_common_publication_row_language']}`, "
+            f"selected rows contained in all members = "
+            f"`{report['selected_rows_contained_in_all_members']}`."
+        )
+    return "\n".join(lines) + "\n"
 
 
 def build_publication_shell_candidate(
