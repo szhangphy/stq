@@ -1568,7 +1568,7 @@ def build_publication_path_classes(
         reduction,
         point_unknown_ordering,
     )
-    grouped: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    grouped_by_family: dict[tuple[Any, ...], list[tuple[dict[str, Any], list[dict[str, Any]]]]] = {}
     for payload in reduction.get("path_classes", []):
         representative = payload["candidate_records"][0]
         publication_signature = canonicalize_line_restriction_signature(representative)
@@ -1582,9 +1582,31 @@ def build_publication_path_classes(
             tuple(payload["endpoint_pair"]),
             _line_group_signature_key(payload["line_group_signature"]),
             publication_signature["canonical_signature_key"],
-            _rref_signature([list(row_record["matrix_row"]) for row_record in representative_rows]),
         )
-        grouped.setdefault(publication_key, []).append(payload)
+        grouped_by_family.setdefault(publication_key, []).append((payload, representative_rows))
+
+    grouped: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    for publication_key, entries in grouped_by_family.items():
+        source_line_ids = [
+            entry[0]["representative_source_line_id"]
+            for entry in entries
+        ]
+        source_kinds = {
+            str(entry[0]["representative_source_kind"])
+            for entry in entries
+        }
+        split_by_rowspace = (
+            source_kinds == {"listed_line"}
+            and len(set(source_line_ids)) == len(source_line_ids)
+        )
+        if not split_by_rowspace:
+            grouped[publication_key] = [entry[0] for entry in entries]
+            continue
+        for payload, representative_rows in entries:
+            rowspace_key = publication_key + (
+                _rref_signature([list(row_record["matrix_row"]) for row_record in representative_rows]),
+            )
+            grouped.setdefault(rowspace_key, []).append(payload)
 
     publication_classes: list[dict[str, Any]] = []
     for class_index, key in enumerate(
@@ -2745,58 +2767,56 @@ def _best_capture_permutation_by_exact_matches(
     rep_count = len(alias_fingerprints)
     if rep_count <= 1:
         return tuple(range(rep_count))
+    score_matrix: list[list[tuple[int, int]]] = []
+    for alias_fp in alias_fingerprints:
+        row_scores: list[tuple[int, int]] = []
+        for canonical_fp in canonical_fingerprints:
+            exact_matches = 1 if alias_fp == canonical_fp else 0
+            overlap = len(alias_fp) if exact_matches else 0
+            row_scores.append((exact_matches, overlap))
+        score_matrix.append(row_scores)
 
-    permutation: list[int | None] = [None] * rep_count
-    used_canonical: set[int] = set()
+    memo: dict[tuple[int, int], tuple[tuple[int, int], tuple[int, ...]]] = {}
 
-    # Preserve identity-aligned exact matches first.  This reproduces the
-    # current scorer's preference for slotwise equality without factorial
-    # permutation search.
-    for local_index, alias_fp in enumerate(alias_fingerprints):
-        if (
-            local_index < len(canonical_fingerprints)
-            and alias_fp == canonical_fingerprints[local_index]
-        ):
-            permutation[local_index] = local_index
-            used_canonical.add(local_index)
+    def solve(local_index: int, used_mask: int) -> tuple[tuple[int, int], tuple[int, ...]]:
+        key = (local_index, used_mask)
+        cached = memo.get(key)
+        if cached is not None:
+            return cached
+        if local_index >= rep_count:
+            result = ((0, 0), tuple())
+            memo[key] = result
+            return result
 
-    canonical_by_fingerprint: dict[tuple[Any, ...], list[int]] = {}
-    for canonical_index, canonical_fp in enumerate(canonical_fingerprints):
-        if canonical_index in used_canonical:
-            continue
-        canonical_by_fingerprint.setdefault(canonical_fp, []).append(canonical_index)
+        best_score: tuple[int, int] | None = None
+        best_suffix: tuple[int, ...] | None = None
+        for canonical_index in range(rep_count):
+            if used_mask & (1 << canonical_index):
+                continue
+            tail_score, tail_suffix = solve(local_index + 1, used_mask | (1 << canonical_index))
+            pair_score = score_matrix[local_index][canonical_index]
+            candidate_score = (
+                pair_score[0] + tail_score[0],
+                pair_score[1] + tail_score[1],
+            )
+            candidate_suffix = (canonical_index,) + tail_suffix
+            if (
+                best_score is None
+                or candidate_score > best_score
+                or (
+                    candidate_score == best_score
+                    and best_suffix is not None
+                    and candidate_suffix < best_suffix
+                )
+            ):
+                best_score = candidate_score
+                best_suffix = candidate_suffix
+        assert best_score is not None and best_suffix is not None
+        result = (best_score, best_suffix)
+        memo[key] = result
+        return result
 
-    for fingerprint_indices in canonical_by_fingerprint.values():
-        fingerprint_indices.sort()
-
-    remaining_local_indices = [
-        local_index
-        for local_index, canonical_index in enumerate(permutation)
-        if canonical_index is None
-    ]
-    for local_index in remaining_local_indices:
-        alias_fp = alias_fingerprints[local_index]
-        candidates = canonical_by_fingerprint.get(alias_fp)
-        if candidates:
-            chosen = candidates.pop(0)
-            permutation[local_index] = chosen
-            used_canonical.add(chosen)
-
-    remaining_canonical_indices = [
-        canonical_index
-        for canonical_index in range(rep_count)
-        if canonical_index not in used_canonical
-    ]
-    for local_index in remaining_local_indices:
-        if permutation[local_index] is not None:
-            continue
-        preferred_index = local_index if local_index in remaining_canonical_indices else None
-        if preferred_index is None:
-            preferred_index = remaining_canonical_indices[0]
-        permutation[local_index] = preferred_index
-        remaining_canonical_indices.remove(preferred_index)
-
-    return tuple(int(index) for index in permutation)
+    return tuple(int(index) for index in solve(0, 0)[1])
 
 
 def _permute_fingerprint_slots(
