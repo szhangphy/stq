@@ -423,7 +423,9 @@ def _enumerate_candidate_segments(
         ordered_hits = sorted(hits.values(), key=lambda item: (item["parameter_value"], item["point_id"]))
         if len(ordered_hits) < 2:
             continue
-        for left, right in zip(ordered_hits, ordered_hits[1:]):
+        anchor_hit = ordered_hits[0]
+        for right in ordered_hits[1:]:
+            left = anchor_hit
             if left["parameter_value"] == right["parameter_value"]:
                 continue
             if left["point_id"] == right["point_id"]:
@@ -2843,10 +2845,7 @@ def _build_publication_point_capture_permutations(
         capture_payload = by_point_capture.get(point_id, {})
         capture_context_payload = by_point_capture_context.get(point_id, {})
         canonical_context_payload = capture_context_payload.get(canonical_capture_id, {})
-        canonical_default_permutation = _choose_canonical_capture_default_permutation(
-            canonical_context_payload,
-            rep_count,
-        )
+        canonical_default_permutation = tuple(range(rep_count))
         canonical_payload = capture_payload.get(canonical_capture_id, {})
         canonical_fingerprints = _permute_fingerprint_slots(
             [

@@ -3775,7 +3775,10 @@ def build_point_instance_entries(kgeom: dict[str, Any]) -> list[dict[str, Any]]:
             seen.add(capture_id)
         return capture_id
 
-    for point in point_lookup.values():
+    for point in kgeom["grouped"]["points"]:
+        for coords in point_coordinate_keys(point):
+            ensure_point_instance(point["id"], coords)
+    for point in kgeom.get("synthetic_boundary_points", []):
         ensure_point_instance(point["id"], point["sample_point"])
 
     for line in kgeom["grouped"]["lines"]:
