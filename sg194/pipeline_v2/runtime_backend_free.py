@@ -518,6 +518,47 @@ def load_ssg_dict(group_number: str) -> dict[str, Any]:
     return next(item for item in ssg_list if item["ssgNum"] == group_number)
 
 
+def _canonicalize_ssg_dict_raw_qops(entry: dict[str, Any]) -> dict[str, Any]:
+    qrots = list(entry.get("QRotC", []))
+    qtaus = list(entry.get("QTauC", []))
+    urot_layers = [list(layer) for layer in entry.get("URot", [])]
+    if not qrots or not qtaus or not urot_layers:
+        return entry
+
+    final_urot = urot_layers[-1]
+    if not (len(qrots) == len(qtaus) == len(final_urot)):
+        return entry
+
+    seen: set[tuple[Any, ...]] = set()
+    keep_indices: list[int] = []
+    for index, (qrot, urot) in enumerate(zip(qrots, final_urot)):
+        qrot_key = tuple(
+            tuple(round(float(value), 8) for value in row)
+            for row in np.array(qrot, dtype=float)
+        )
+        urot_key = tuple(
+            tuple(round(float(value), 8) for value in row)
+            for row in np.array(urot, dtype=float)
+        )
+        key = (qrot_key, urot_key)
+        if key in seen:
+            continue
+        seen.add(key)
+        keep_indices.append(index)
+
+    if len(keep_indices) == len(qrots):
+        return entry
+
+    normalized = copy.deepcopy(entry)
+    normalized["QRotC"] = [qrots[index] for index in keep_indices]
+    normalized["QTauC"] = [qtaus[index] for index in keep_indices]
+    normalized["URot"] = [
+        [layer[index] for index in keep_indices]
+        for layer in urot_layers
+    ]
+    return normalized
+
+
 @lru_cache(maxsize=None)
 def _load_realspace_context_payload(group_number: str) -> dict[str, Any]:
     full_data, _ = swyckoff_r.load_irssg_data(group_number, 0)
@@ -541,6 +582,7 @@ def load_context(module: Any, group_number: str, group_label: str, ssg_dict: dic
         "ssg": ssg,
         "ssg_dict": ssg_dict,
         "supercell": np.array(ssg.superCell, dtype=float),
+        "translation_basis": np.column_stack([np.array(vector, dtype=float) for vector in ssg.pure_T]),
         "reciprocal_basis": [np.array(ssg.b1), np.array(ssg.b2), np.array(ssg.b3)],
         "full_data": realspace["full_data"],
         "full_ops": realspace["full_ops"],

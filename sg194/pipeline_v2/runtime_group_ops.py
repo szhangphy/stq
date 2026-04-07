@@ -229,12 +229,13 @@ def raw_ops(ctx: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def match_raw_op(ctx: dict[str, Any], operations: list[dict[str, Any]], rotation: np.ndarray, translation: np.ndarray, time_reversal: bool) -> int:
+    translation_basis = np.array(ctx.get("translation_basis", ctx["supercell"]), dtype=float)
     for op in operations:
         if op["time_reversal"] != time_reversal:
             continue
         if np.linalg.norm(rotation - op["rotation"]) > 1e-8:
             continue
-        is_lattice, _ = bridge.vector_is_lattice(ctx["supercell"], translation - op["translation"])
+        is_lattice, _ = bridge.vector_is_lattice(translation_basis, translation - op["translation"])
         if is_lattice:
             return int(op["index"])
     raise KeyError("no matching raw operation found")
