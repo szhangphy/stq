@@ -2738,6 +2738,67 @@ def _score_capture_permutation(
     return exact_matches, overlap
 
 
+def _best_capture_permutation_by_exact_matches(
+    canonical_fingerprints: Sequence[tuple[Any, ...]],
+    alias_fingerprints: Sequence[tuple[Any, ...]],
+) -> tuple[int, ...]:
+    rep_count = len(alias_fingerprints)
+    if rep_count <= 1:
+        return tuple(range(rep_count))
+
+    permutation: list[int | None] = [None] * rep_count
+    used_canonical: set[int] = set()
+
+    # Preserve identity-aligned exact matches first.  This reproduces the
+    # current scorer's preference for slotwise equality without factorial
+    # permutation search.
+    for local_index, alias_fp in enumerate(alias_fingerprints):
+        if (
+            local_index < len(canonical_fingerprints)
+            and alias_fp == canonical_fingerprints[local_index]
+        ):
+            permutation[local_index] = local_index
+            used_canonical.add(local_index)
+
+    canonical_by_fingerprint: dict[tuple[Any, ...], list[int]] = {}
+    for canonical_index, canonical_fp in enumerate(canonical_fingerprints):
+        if canonical_index in used_canonical:
+            continue
+        canonical_by_fingerprint.setdefault(canonical_fp, []).append(canonical_index)
+
+    for fingerprint_indices in canonical_by_fingerprint.values():
+        fingerprint_indices.sort()
+
+    remaining_local_indices = [
+        local_index
+        for local_index, canonical_index in enumerate(permutation)
+        if canonical_index is None
+    ]
+    for local_index in remaining_local_indices:
+        alias_fp = alias_fingerprints[local_index]
+        candidates = canonical_by_fingerprint.get(alias_fp)
+        if candidates:
+            chosen = candidates.pop(0)
+            permutation[local_index] = chosen
+            used_canonical.add(chosen)
+
+    remaining_canonical_indices = [
+        canonical_index
+        for canonical_index in range(rep_count)
+        if canonical_index not in used_canonical
+    ]
+    for local_index in remaining_local_indices:
+        if permutation[local_index] is not None:
+            continue
+        preferred_index = local_index if local_index in remaining_canonical_indices else None
+        if preferred_index is None:
+            preferred_index = remaining_canonical_indices[0]
+        permutation[local_index] = preferred_index
+        remaining_canonical_indices.remove(preferred_index)
+
+    return tuple(int(index) for index in permutation)
+
+
 def _permute_fingerprint_slots(
     slot_payload: Sequence[Sequence[tuple[Any, ...]]],
     permutation: Sequence[int],
@@ -2868,20 +2929,10 @@ def _build_publication_point_capture_permutations(
                     tuple(sorted(alias_payload.get(rep_index, [])))
                     for rep_index in range(1, rep_count + 1)
                 ]
-                best_score = _score_capture_permutation(
+                best_permutation = _best_capture_permutation_by_exact_matches(
                     canonical_fingerprints,
                     alias_fingerprints,
-                    best_permutation,
                 )
-                for permutation in permutations(range(rep_count)):
-                    score = _score_capture_permutation(
-                        canonical_fingerprints,
-                        alias_fingerprints,
-                        permutation,
-                    )
-                    if score > best_score:
-                        best_score = score
-                        best_permutation = tuple(permutation)
             context_permutations: dict[tuple[Any, ...], tuple[int, ...]] = {}
             context_keys = set(capture_context_payload.get(capture_id, {}).keys())
             context_keys.update(capture_context_payload.get(canonical_capture_id, {}).keys())
@@ -2901,21 +2952,10 @@ def _build_publication_point_capture_permutations(
                     tuple(sorted(alias_context_payload.get(rep_index, [])))
                     for rep_index in range(1, rep_count + 1)
                 ]
-                best_context_permutation = tuple(range(rep_count))
-                best_context_score = _score_capture_permutation(
+                best_context_permutation = _best_capture_permutation_by_exact_matches(
                     canonical_context_fingerprints,
                     alias_context_fingerprints,
-                    best_context_permutation,
                 )
-                for permutation in permutations(range(rep_count)):
-                    score = _score_capture_permutation(
-                        canonical_context_fingerprints,
-                        alias_context_fingerprints,
-                        permutation,
-                    )
-                    if score > best_context_score:
-                        best_context_score = score
-                        best_context_permutation = tuple(permutation)
                 context_permutations[context_key] = best_context_permutation
             point_permutations[capture_id] = {
                 "default": best_permutation,
