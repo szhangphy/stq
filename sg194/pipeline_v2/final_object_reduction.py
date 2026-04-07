@@ -51,6 +51,19 @@ def _jsonable_vector(values: Sequence[Fraction]) -> list[str]:
     return [_jsonable_fraction(value) for value in values]
 
 
+def _symmetry_summary_signature(summary: dict[str, Any] | None) -> tuple[Any, ...]:
+    summary = summary or {}
+    return (
+        int(summary.get("generic_rotation_stabilizer_size", -1)),
+        int(summary.get("generic_stabilizer_size", -1)),
+        int(summary.get("pointwise_rotation_stabilizer_size", -1)),
+        int(summary.get("pointwise_stabilizer_size", -1)),
+        str(summary.get("site_symmetry") or ""),
+        str(summary.get("unitary_site_symmetry") or ""),
+        str(summary.get("site_symmetry_custom") or ""),
+    )
+
+
 def _parse_coordinate_triplet(text: str) -> list[str]:
     return [item.strip() for item in text.split(",")]
 
@@ -410,9 +423,7 @@ def _enumerate_candidate_segments(
         ordered_hits = sorted(hits.values(), key=lambda item: (item["parameter_value"], item["point_id"]))
         if len(ordered_hits) < 2:
             continue
-        anchor_hit = ordered_hits[0]
-        for right in ordered_hits[1:]:
-            left = anchor_hit
+        for left, right in zip(ordered_hits, ordered_hits[1:]):
             if left["parameter_value"] == right["parameter_value"]:
                 continue
             if left["point_id"] == right["point_id"]:
@@ -690,6 +701,222 @@ def _block_rows_on_point_shell(
     return rows
 
 
+def _normalized_line_basis_labels(record: dict[str, Any]) -> list[str]:
+    labels = [str(label) for label in record.get("line_basis_labels", [])]
+    if labels:
+        return labels
+    discovered: list[str] = []
+    seen: set[str] = set()
+    for endpoint in record.get("endpoint_decomposition_signature", []):
+        for rep in endpoint.get("reps", []):
+            for label in rep.get("decomposition_on_line_basis", {}):
+                label = str(label)
+                if label in seen:
+                    continue
+                seen.add(label)
+                discovered.append(label)
+    return discovered
+
+
+def _normalized_line_monodromy_basis_orbits(record: dict[str, Any]) -> list[list[str]]:
+    labels = _normalized_line_basis_labels(record)
+    if not labels:
+        return []
+    raw_orbits = list(record.get("line_monodromy_basis_orbits", []))
+    if not raw_orbits:
+        return [[label] for label in labels]
+    label_set = set(labels)
+    normalized: list[list[str]] = []
+    seen: set[str] = set()
+    for orbit in raw_orbits:
+        cleaned: list[str] = []
+        for label in orbit:
+            label = str(label)
+            if label not in label_set or label in seen:
+                continue
+            seen.add(label)
+            cleaned.append(label)
+        if cleaned:
+            normalized.append(cleaned)
+    for label in labels:
+        if label not in seen:
+            normalized.append([label])
+    return normalized
+
+
+def _nontrivial_monodromy_orbit_count(record: dict[str, Any]) -> int:
+    return sum(
+        1
+        for orbit in _normalized_line_monodromy_basis_orbits(record)
+        if len(orbit) > 1
+    )
+
+
+def _line_basis_rep_degree_map(record: dict[str, Any]) -> dict[str, int]:
+    mapping: dict[str, int] = {}
+    for endpoint in record.get("endpoint_decomposition_signature", []):
+        for rep in endpoint.get("reps", []):
+            degree = int(rep.get("rep_degree", 0))
+            for basis_label, coeff in rep.get("decomposition_on_line_basis", {}).items():
+                if int(coeff) == 0:
+                    continue
+                label = str(basis_label)
+                existing = mapping.get(label)
+                if existing is None or degree > existing:
+                    mapping[label] = degree
+    return mapping
+
+
+def _single_multidimensional_monodromy_orbit_available(record: dict[str, Any]) -> bool:
+    basis_orbits = _normalized_line_monodromy_basis_orbits(record)
+    nontrivial_orbits = [orbit for orbit in basis_orbits if len(orbit) > 1]
+    if len(nontrivial_orbits) != 1:
+        return False
+    if sum(len(orbit) for orbit in basis_orbits) != len(nontrivial_orbits[0]):
+        return False
+    rep_degree_by_label = _line_basis_rep_degree_map(record)
+    orbit = nontrivial_orbits[0]
+    if not orbit:
+        return False
+    return all(int(rep_degree_by_label.get(label, 0)) > 1 for label in orbit)
+
+
+def _raw_rows_are_pure_endpoint_branch_differences(record: dict[str, Any]) -> bool:
+    endpoint_signatures = list(record.get("endpoint_decomposition_signature", []))
+    if len(endpoint_signatures) != 2:
+        return False
+    endpoint_rep_sets = [
+        {str(rep["rep_id"]) for rep in endpoint.get("reps", [])}
+        for endpoint in endpoint_signatures
+    ]
+    unknown_ordering = [str(item) for item in record.get("global_unknown_ordering", [])]
+    if not all(endpoint_rep_sets):
+        return False
+    row_records = list(record.get("global_matrix_row_records", []))
+    if not row_records:
+        return False
+    for row_record in row_records:
+        row = [int(value) for value in row_record.get("matrix_row", [])]
+        support = [
+            (unknown_ordering[column_index], int(value))
+            for column_index, value in enumerate(row)
+            if int(value) != 0
+        ]
+        if len(support) != 2:
+            return False
+        coeffs = {coeff for _, coeff in support}
+        if coeffs != {1, -1}:
+            return False
+        endpoint_hits = [0, 0]
+        for unknown, _ in support:
+            if unknown in endpoint_rep_sets[0]:
+                endpoint_hits[0] += 1
+            elif unknown in endpoint_rep_sets[1]:
+                endpoint_hits[1] += 1
+            else:
+                return False
+        if endpoint_hits != [1, 1]:
+            return False
+    return True
+
+
+def _monodromy_compressed_row_records(
+    record: dict[str, Any],
+) -> list[dict[str, Any]]:
+    basis_labels = _normalized_line_basis_labels(record)
+    basis_orbits = _normalized_line_monodromy_basis_orbits(record)
+    if not basis_labels or not basis_orbits or all(len(orbit) <= 1 for orbit in basis_orbits):
+        return list(record["global_matrix_row_records"])
+    unknown_ordering = list(record["global_unknown_ordering"])
+    unknown_index = {unknown: index for index, unknown in enumerate(unknown_ordering)}
+    basis_unknown_count = len(basis_labels)
+    basis_unknown_index = {
+        label: len(unknown_ordering) + basis_index
+        for basis_index, label in enumerate(basis_labels)
+    }
+    incidence_rows: list[list[int]] = []
+    incidence_metadata: list[dict[str, Any]] = []
+    for endpoint in record["endpoint_decomposition_signature"]:
+        endpoint_id = endpoint["endpoint_id"]
+        for basis_label in basis_labels:
+            row = [0] * (len(unknown_ordering) + basis_unknown_count)
+            support_terms: list[dict[str, Any]] = []
+            for rep in endpoint["reps"]:
+                coeff = int(rep["decomposition_on_line_basis"].get(basis_label, 0))
+                if coeff == 0:
+                    continue
+                row[unknown_index[rep["rep_id"]]] += int(coeff)
+                support_terms.append(
+                    {
+                        "rep_id": rep["rep_id"],
+                        "coeff": int(coeff),
+                    }
+                )
+            if not support_terms:
+                continue
+            row[basis_unknown_index[basis_label]] = -1
+            incidence_rows.append(row)
+            incidence_metadata.append(
+                {
+                    "endpoint_id": endpoint_id,
+                    "basis_label": basis_label,
+                    "support_terms": support_terms,
+                }
+            )
+    for orbit in basis_orbits:
+        if len(orbit) <= 1:
+            continue
+        anchor = orbit[0]
+        for other in orbit[1:]:
+            row = [0] * (len(unknown_ordering) + basis_unknown_count)
+            row[basis_unknown_index[anchor]] = 1
+            row[basis_unknown_index[other]] = -1
+            incidence_rows.append(row)
+            incidence_metadata.append(
+                {
+                    "endpoint_id": None,
+                    "basis_label": f"{anchor}__{other}",
+                    "support_terms": [],
+                    "monodromy_equation": {
+                        "anchor_basis_label": anchor,
+                        "other_basis_label": other,
+                    },
+                }
+            )
+    if not incidence_rows:
+        return list(record["global_matrix_row_records"])
+    incidence_matrix = sp.Matrix(incidence_rows)
+    aux_block = incidence_matrix[:, len(unknown_ordering):]
+    left_nullspace = aux_block.T.nullspace()
+    if not left_nullspace:
+        return list(record["global_matrix_row_records"])
+    candidate_rows: list[dict[str, Any]] = []
+    for relation_index, coefficients in enumerate(left_nullspace, start=1):
+        combined = coefficients.T * incidence_matrix
+        point_row = list(combined.tolist()[0][: len(unknown_ordering)])
+        primitive = _primitive_integer_row(point_row)
+        if not any(primitive):
+            continue
+        support_incidence_rows = [
+            incidence_metadata[row_index]
+            for row_index, value in enumerate(coefficients)
+            if sp.nsimplify(value) != 0
+        ]
+        candidate_rows.append(
+            {
+                "row_index_within_candidate_block": relation_index - 1,
+                "basis_id": f"{record['candidate_id']}_MONO_{relation_index:02d}",
+                "row_kind": "line_monodromy_orbit_compressed_basis",
+                "matrix_row": primitive,
+                "monodromy_basis_orbits": [list(orbit) for orbit in basis_orbits],
+                "monodromy_support_rows": support_incidence_rows,
+            }
+        )
+    candidate_rows.sort(key=lambda item: (tuple(item["matrix_row"]), item["basis_id"]))
+    selected_rows, _ = _rank_gaining_row_records(candidate_rows)
+    return selected_rows or list(record["global_matrix_row_records"])
+
+
 def build_candidate_path_records(
     reduction: dict[str, Any],
     candidate_line_blocks: Sequence[dict[str, Any]],
@@ -729,6 +956,11 @@ def build_candidate_path_records(
         record = {
             **segment,
             "line_group_signature": block["line_group_signature"],
+            "line_basis_labels": list(block.get("line_basis_labels", [])),
+            "line_monodromy_debug": dict(block.get("line_monodromy_debug", {})),
+            "line_monodromy_basis_orbits": [
+                list(item) for item in block.get("line_monodromy_basis_orbits", [])
+            ],
             "endpoint_decomposition_signature": _endpoint_decomposition_signature(block),
             "local_row_space_signature": local_signature,
             "global_row_space_signature": global_signature,
@@ -741,6 +973,26 @@ def build_candidate_path_records(
             "global_matrix_rows": global_rows,
             "global_matrix_row_records": global_row_records,
         }
+        compressed_row_records = _monodromy_compressed_row_records(record)
+        record["monodromy_compressed_global_matrix_row_records"] = compressed_row_records
+        record["monodromy_compressed_global_matrix_rows"] = [
+            list(row_record["matrix_row"]) for row_record in compressed_row_records
+        ]
+        record["monodromy_compressed_global_row_space_signature"] = _row_space_signature(
+            record["monodromy_compressed_global_matrix_rows"]
+        )
+        record["line_monodromy_nontrivial_orbit_count"] = _nontrivial_monodromy_orbit_count(record)
+        record["raw_rows_are_pure_endpoint_branch_differences"] = (
+            _raw_rows_are_pure_endpoint_branch_differences(record)
+        )
+        record["line_monodromy_compression_available"] = (
+            compressed_row_records != global_row_records
+            and record["raw_rows_are_pure_endpoint_branch_differences"]
+            and (
+                record["line_monodromy_nontrivial_orbit_count"] >= 2
+                or _single_multidimensional_monodromy_orbit_available(record)
+            )
+        )
         record["path_type_key"] = (
             tuple(record["endpoint_pair"]),
             str(record["source_kind"]),
@@ -1257,6 +1509,14 @@ def canonicalize_line_restriction_signature(
     }
 
 
+def _publication_source_row_records(record: dict[str, Any]) -> list[dict[str, Any]]:
+    if record.get("line_monodromy_compression_available"):
+        rows = list(record.get("monodromy_compressed_global_matrix_row_records", []))
+        if rows:
+            return rows
+    return list(record["global_matrix_row_records"])
+
+
 def _rank_gaining_row_records(
     row_records: Sequence[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], list[list[int]]]:
@@ -1312,7 +1572,7 @@ def build_publication_path_classes(
         publication_signature = canonicalize_line_restriction_signature(representative)
         representative_rows = _transform_publication_row_records_to_point_family_basis(
             representative,
-            representative["global_matrix_row_records"],
+            _publication_source_row_records(representative),
             point_unknown_ordering,
             point_capture_permutations,
         )
@@ -1343,7 +1603,7 @@ def build_publication_path_classes(
             member_record = member["candidate_records"][0]
             transformed_member_row_records = _transform_publication_row_records_to_point_family_basis(
                 member_record,
-                member_record["global_matrix_row_records"],
+                _publication_source_row_records(member_record),
                 point_unknown_ordering,
                 point_capture_permutations,
             )
@@ -2472,8 +2732,57 @@ def _score_capture_permutation(
             exact_matches += 1
             overlap += len(alias_fp)
             continue
-        overlap += len(set(alias_fp) & set(canonical_fp))
+            overlap += len(set(alias_fp) & set(canonical_fp))
     return exact_matches, overlap
+
+
+def _permute_fingerprint_slots(
+    slot_payload: Sequence[Sequence[tuple[Any, ...]]],
+    permutation: Sequence[int],
+) -> list[tuple[Any, ...]]:
+    remapped: list[tuple[Any, ...]] = [tuple() for _ in range(len(slot_payload))]
+    for local_index, canonical_index in enumerate(permutation):
+        remapped[canonical_index] = tuple(slot_payload[local_index])
+    return remapped
+
+
+def _canonical_context_slot_payload(
+    context_payload: dict[tuple[Any, ...], dict[int, list[tuple[Any, ...]]]],
+    rep_count: int,
+) -> list[tuple[tuple[Any, ...], tuple[Any, ...]]]:
+    canonical_payload: list[tuple[tuple[Any, ...], tuple[Any, ...]]] = []
+    for context_key in sorted(context_payload):
+        slot_payload = [
+            tuple(sorted(context_payload[context_key].get(rep_index, [])))
+            for rep_index in range(1, rep_count + 1)
+        ]
+        canonical_payload.append((context_key, tuple(slot_payload)))
+    return canonical_payload
+
+
+def _choose_canonical_capture_default_permutation(
+    context_payload: dict[tuple[Any, ...], dict[int, list[tuple[Any, ...]]]],
+    rep_count: int,
+) -> tuple[int, ...]:
+    if rep_count <= 1:
+        return tuple(range(rep_count))
+    canonical_payload = _canonical_context_slot_payload(context_payload, rep_count)
+    if not canonical_payload:
+        return tuple(range(rep_count))
+    local_signatures: list[tuple[Any, ...]] = []
+    for local_index in range(rep_count):
+        signature = []
+        for context_key, slot_payload in canonical_payload:
+            signature.append((context_key, slot_payload[local_index]))
+        local_signatures.append(tuple(signature))
+    sorted_local_indices = sorted(
+        range(rep_count),
+        key=lambda local_index: (local_signatures[local_index], local_index),
+    )
+    permutation = [0] * rep_count
+    for canonical_index, local_index in enumerate(sorted_local_indices):
+        permutation[local_index] = canonical_index
+    return tuple(permutation)
 
 
 def _publication_point_permutation_context_key(
@@ -2532,14 +2841,23 @@ def _build_publication_point_capture_permutations(
         alias_capture_ids = [alias["capture_id"] for alias in point.get("aliases", [])]
         canonical_capture_id = point_id if point_id in alias_capture_ids else alias_capture_ids[0]
         capture_payload = by_point_capture.get(point_id, {})
+        capture_context_payload = by_point_capture_context.get(point_id, {})
+        canonical_context_payload = capture_context_payload.get(canonical_capture_id, {})
+        canonical_default_permutation = _choose_canonical_capture_default_permutation(
+            canonical_context_payload,
+            rep_count,
+        )
         canonical_payload = capture_payload.get(canonical_capture_id, {})
-        canonical_fingerprints = [
-            tuple(sorted(canonical_payload.get(rep_index, [])))
-            for rep_index in range(1, rep_count + 1)
-        ]
+        canonical_fingerprints = _permute_fingerprint_slots(
+            [
+                tuple(sorted(canonical_payload.get(rep_index, [])))
+                for rep_index in range(1, rep_count + 1)
+            ],
+            canonical_default_permutation,
+        )
         point_permutations: dict[str, dict[str, Any]] = {
             canonical_capture_id: {
-                "default": tuple(range(rep_count)),
+                "default": canonical_default_permutation,
                 "by_context": {},
             }
         }
@@ -2566,7 +2884,6 @@ def _build_publication_point_capture_permutations(
                         best_score = score
                         best_permutation = tuple(permutation)
             context_permutations: dict[tuple[Any, ...], tuple[int, ...]] = {}
-            capture_context_payload = by_point_capture_context.get(point_id, {})
             context_keys = set(capture_context_payload.get(capture_id, {}).keys())
             context_keys.update(capture_context_payload.get(canonical_capture_id, {}).keys())
             for context_key in context_keys:
@@ -2574,10 +2891,13 @@ def _build_publication_point_capture_permutations(
                 alias_context_payload = capture_context_payload.get(capture_id, {}).get(context_key, {})
                 if not canonical_context_payload or not alias_context_payload:
                     continue
-                canonical_context_fingerprints = [
-                    tuple(sorted(canonical_context_payload.get(rep_index, [])))
-                    for rep_index in range(1, rep_count + 1)
-                ]
+                canonical_context_fingerprints = _permute_fingerprint_slots(
+                    [
+                        tuple(sorted(canonical_context_payload.get(rep_index, [])))
+                        for rep_index in range(1, rep_count + 1)
+                    ],
+                    canonical_default_permutation,
+                )
                 alias_context_fingerprints = [
                     tuple(sorted(alias_context_payload.get(rep_index, [])))
                     for rep_index in range(1, rep_count + 1)
@@ -2682,6 +3002,285 @@ def _transform_publication_row_records_to_point_family_basis(
             }
         )
     return transformed_records
+
+
+def _publication_point_id_by_capture(
+    reduction: dict[str, Any],
+) -> dict[str, str]:
+    capture_to_point: dict[str, str] = {}
+    for point in reduction.get("point_shell", []):
+        point_id = str(point["point_id"])
+        capture_to_point[point_id] = point_id
+        for alias in point.get("aliases", []):
+            capture_id = str(alias.get("capture_id", point_id))
+            capture_to_point[capture_id] = point_id
+    return capture_to_point
+
+
+def _lookup_publication_point_default_permutation(
+    point_id: str,
+    capture_id: str,
+    point_capture_permutations: dict[str, dict[str, dict[str, Any]]],
+    rep_count: int,
+) -> tuple[int, ...]:
+    capture_entry = point_capture_permutations.get(point_id, {}).get(capture_id)
+    if capture_entry is None:
+        return tuple(range(rep_count))
+    default = capture_entry.get("default")
+    if default is None:
+        return tuple(range(rep_count))
+    permutation = tuple(int(index) for index in default)
+    if len(permutation) != rep_count:
+        return tuple(range(rep_count))
+    return permutation
+
+
+def _transform_plane_equation_to_publication_point_row(
+    equation: dict[str, Any],
+    unknown_ordering: Sequence[str],
+    point_unknown_ordering: dict[str, list[str]],
+    capture_to_point: dict[str, str],
+    point_capture_permutations: dict[str, dict[str, dict[str, Any]]],
+) -> dict[str, Any] | None:
+    capture_id = str(equation.get("capture_id", equation["point_id"]))
+    publication_point_id = capture_to_point.get(capture_id) or capture_to_point.get(str(equation["point_id"]))
+    if publication_point_id is None:
+        return None
+    publication_unknowns = point_unknown_ordering.get(publication_point_id, [])
+    if not publication_unknowns:
+        return None
+    permutation = _lookup_publication_point_default_permutation(
+        publication_point_id,
+        capture_id,
+        point_capture_permutations,
+        len(publication_unknowns),
+    )
+    unknown_index = {unknown: index for index, unknown in enumerate(unknown_ordering)}
+    row = [0] * len(unknown_ordering)
+    for term in equation["terms"]:
+        if term.get("side") != "point":
+            continue
+        raw_unknown = str(term["unknown"])
+        local_index = int(raw_unknown.split("_R", 1)[1]) - 1
+        if local_index < 0 or local_index >= len(publication_unknowns):
+            raise ValueError(
+                f"plane equation {equation['basis_id']} references rep index {local_index + 1} "
+                f"outside publication point {publication_point_id} basis size {len(publication_unknowns)}"
+            )
+        canonical_index = permutation[local_index]
+        unknown = publication_unknowns[canonical_index]
+        row[unknown_index[unknown]] += int(term["coeff"])
+    if not any(row):
+        return None
+    return {
+        "basis_id": equation["basis_id"],
+        "row_kind": equation.get("row_kind", "publication_plane_corner_basis"),
+        "publication_point_id": publication_point_id,
+        "raw_point_id": str(equation["point_id"]),
+        "capture_id": capture_id,
+        "point_coordinates": list(equation.get("point_coordinates", [])),
+        "matrix_row": row,
+        "publication_point_basis_permutation": [int(index) for index in permutation],
+    }
+
+
+def _publication_plane_relation_sort_key(
+    row_record: dict[str, Any],
+    point_order: dict[str, int],
+) -> tuple[Any, ...]:
+    left_id = row_record["left_publication_point_id"]
+    right_id = row_record["right_publication_point_id"]
+    return (
+        min(point_order[left_id], point_order[right_id]),
+        max(point_order[left_id], point_order[right_id]),
+        row_record["plane_id"],
+        row_record["plane_basis_id"],
+        row_record["left_capture_id"],
+        row_record["right_capture_id"],
+    )
+
+
+def _publication_plane_group_sort_key(
+    payload: dict[str, Any],
+    point_order: dict[str, int],
+) -> tuple[Any, ...]:
+    corner_ids = list(payload["publication_corner_ids"])
+    ordered_corners = tuple(sorted((point_order[item], item) for item in corner_ids))
+    return (
+        ordered_corners,
+        tuple(payload["member_plane_ids"]),
+        payload["publication_plane_class_id"],
+    )
+
+
+def build_publication_plane_classes(
+    reduction: dict[str, Any],
+    publication_point_shell: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    plane_blocks = list(reduction.get("plane_blocks", []))
+    if not plane_blocks:
+        return {
+            "publication_plane_class_count": 0,
+            "selected_publication_plane_count": 0,
+            "publication_plane_classes": [],
+            "selected_publication_plane_classes": [],
+            "publication_planes": [],
+        }
+    publication_point_shell = publication_point_shell or build_publication_point_shell(reduction)
+    unknown_ordering = list(publication_point_shell["unknown_ordering"])
+    point_unknown_ordering = {
+        point_id: list(unknowns)
+        for point_id, unknowns in publication_point_shell["point_unknown_ordering"].items()
+    }
+    point_order = {
+        point_id: index
+        for index, point_id in enumerate(publication_point_shell["point_ids"])
+    }
+    capture_to_point = _publication_point_id_by_capture(reduction)
+    point_capture_permutations = _build_publication_point_capture_permutations(
+        reduction,
+        point_unknown_ordering,
+    )
+
+    grouped: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    for block in plane_blocks:
+        equations_by_basis: dict[str, list[dict[str, Any]]] = {}
+        publication_corner_ids: set[str] = set()
+        for equation in block.get("equations", []):
+            transformed = _transform_plane_equation_to_publication_point_row(
+                equation,
+                unknown_ordering,
+                point_unknown_ordering,
+                capture_to_point,
+                point_capture_permutations,
+            )
+            if transformed is None:
+                continue
+            equations_by_basis.setdefault(str(equation["basis_id"]), []).append(transformed)
+            publication_corner_ids.add(transformed["publication_point_id"])
+        if len(publication_corner_ids) < 2:
+            continue
+
+        candidate_row_records: list[dict[str, Any]] = []
+        for basis_id, entries in equations_by_basis.items():
+            entries = sorted(
+                entries,
+                key=lambda item: (
+                    point_order[item["publication_point_id"]],
+                    item["capture_id"],
+                    item["raw_point_id"],
+                ),
+            )
+            basis_candidate_rows: list[dict[str, Any]] = []
+            for relation_index, (left, right) in enumerate(combinations(entries, 2), start=1):
+                if left["publication_point_id"] == right["publication_point_id"]:
+                    continue
+                diff_row = [
+                    int(left_value) - int(right_value)
+                    for left_value, right_value in zip(left["matrix_row"], right["matrix_row"])
+                ]
+                if not any(diff_row):
+                    continue
+                basis_candidate_rows.append(
+                    {
+                        "basis_id": f"{block['plane_id']}::{basis_id}::{relation_index:02d}",
+                        "row_kind": "publication_plane_family_basis",
+                        "plane_id": block["plane_id"],
+                        "plane_basis_id": basis_id,
+                        "left_publication_point_id": left["publication_point_id"],
+                        "right_publication_point_id": right["publication_point_id"],
+                        "left_capture_id": left["capture_id"],
+                        "right_capture_id": right["capture_id"],
+                        "left_raw_point_id": left["raw_point_id"],
+                        "right_raw_point_id": right["raw_point_id"],
+                        "matrix_row": diff_row,
+                    }
+                )
+            seen_row_signatures: set[tuple[int, ...]] = set()
+            for row_record in sorted(
+                basis_candidate_rows,
+                key=lambda item: _publication_plane_relation_sort_key(item, point_order),
+            ):
+                row_signature = tuple(_primitive_integer_row(row_record["matrix_row"]))
+                if row_signature in seen_row_signatures:
+                    continue
+                seen_row_signatures.add(row_signature)
+                candidate_row_records.append(
+                    {
+                        **row_record,
+                        "matrix_row": list(row_signature),
+                    }
+                )
+
+        if not candidate_row_records:
+            continue
+
+        candidate_row_records.sort(key=lambda item: _publication_plane_relation_sort_key(item, point_order))
+        selected_rows = [list(item["matrix_row"]) for item in candidate_row_records]
+        group_key = (
+            tuple(sorted(publication_corner_ids, key=point_order.get)),
+            _symmetry_summary_signature(block.get("plane_symmetry_summary")),
+            len(block.get("plane_basis_labels", [])),
+            _rref_signature(selected_rows),
+        )
+        grouped.setdefault(group_key, []).append(
+            {
+                "plane_id": block["plane_id"],
+                "publication_corner_ids": sorted(publication_corner_ids, key=point_order.get),
+                "selected_basis_row_records": candidate_row_records,
+                "selected_basis_rows": selected_rows,
+                "selected_basis_row_rank": _row_rank(selected_rows),
+                "plane_basis_labels": list(block.get("plane_basis_labels", [])),
+                "plane_symmetry_summary": block.get("plane_symmetry_summary"),
+            }
+        )
+
+    publication_plane_classes: list[dict[str, Any]] = []
+    for class_index, group_key in enumerate(
+        sorted(
+            grouped,
+            key=lambda item: (
+                tuple(point_order[point_id] for point_id in grouped[item][0]["publication_corner_ids"]),
+                grouped[item][0]["plane_id"],
+            ),
+        ),
+        start=1,
+    ):
+        members = sorted(grouped[group_key], key=lambda item: item["plane_id"])
+        representative = members[0]
+        publication_plane_classes.append(
+            {
+                "publication_plane_class_id": f"PUBPLANECLASS{class_index:02d}",
+                "member_plane_ids": [member["plane_id"] for member in members],
+                "publication_corner_ids": list(representative["publication_corner_ids"]),
+                "selected_basis_row_count": len(representative["selected_basis_rows"]),
+                "selected_basis_row_rank": int(representative["selected_basis_row_rank"]),
+                "selected_basis_row_records": list(representative["selected_basis_row_records"]),
+                "selected_basis_rows": list(representative["selected_basis_rows"]),
+                "plane_symmetry_summary": representative.get("plane_symmetry_summary"),
+            }
+        )
+
+    publication_plane_classes.sort(key=lambda item: _publication_plane_group_sort_key(item, point_order))
+    publication_planes: list[dict[str, Any]] = []
+    for plane_index, payload in enumerate(publication_plane_classes, start=1):
+        publication_planes.append(
+            {
+                "publication_plane_id": f"PPLANE{plane_index:02d}",
+                "publication_plane_class_id": payload["publication_plane_class_id"],
+                "publication_corner_ids": list(payload["publication_corner_ids"]),
+                "member_plane_ids": list(payload["member_plane_ids"]),
+                "selected_basis_row_records": list(payload["selected_basis_row_records"]),
+                "selected_basis_rows": list(payload["selected_basis_rows"]),
+            }
+        )
+    return {
+        "publication_plane_class_count": len(publication_plane_classes),
+        "selected_publication_plane_count": len(publication_planes),
+        "publication_plane_classes": publication_plane_classes,
+        "selected_publication_plane_classes": publication_plane_classes,
+        "publication_planes": publication_planes,
+    }
 
 
 def _primitive_integer_row(row: Sequence[Any]) -> list[int]:

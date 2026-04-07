@@ -2205,6 +2205,10 @@ def build_line_block_coarse(
             if phase_aware_refinement["profile"] != "legacy"
             else "legacy"
         ),
+        "line_monodromy_debug": dict(line_raw.get("line_monodromy_debug", {})),
+        "line_monodromy_basis_orbits": [
+            list(item) for item in line_raw.get("line_monodromy_basis_orbits", [])
+        ],
     }
 
 
@@ -2872,12 +2876,29 @@ def build_plane_block(plane_obj: dict[str, Any], corner_entries: list[dict[str, 
                     terms.append({"unknown": rep["rep_id"], "coeff": coeff, "side": "point"})
             row[local_index[basis_label]] -= 1
             terms.append({"unknown": basis_label, "coeff": -1, "side": "plane"})
-            equations.append({"point_id": point_id, "basis_id": basis_label, "terms": terms})
+            equations.append(
+                {
+                    "point_id": point_id,
+                    "capture_id": corner_entry.get("capture_id", point_id),
+                    "point_coordinates": list(corner_entry["point_coordinates"]),
+                    "basis_id": basis_label,
+                    "row_kind": "plane_point_decomposition",
+                    "terms": terms,
+                }
+            )
             matrix_rows.append(row)
     return {
         "status": "success",
         "plane_id": plane_id,
         "corner_ids": [entry["point_id"] for entry in corner_entries],
+        "corner_entries": [
+            {
+                "point_id": entry["point_id"],
+                "capture_id": entry.get("capture_id", entry["point_id"]),
+                "point_coordinates": list(entry["point_coordinates"]),
+            }
+            for entry in corner_entries
+        ],
         "plane_sample_point": plane_obj["sample_point"],
         "plane_parametrization": plane_obj["parametrization"],
         "plane_symmetry_summary": plane_obj["symmetry_summary"],
@@ -3837,6 +3858,181 @@ def annotate_final_path_lines(
     return lines
 
 
+def _line_period_scale(line: dict[str, Any]) -> int | None:
+    basis_vectors = list(line.get("_basis", []))
+    if not basis_vectors:
+        return None
+    basis = [to_fraction(value) for value in basis_vectors[0]]
+    if not any(value != 0 for value in basis):
+        return None
+    scale = 1
+    for value in basis:
+        scale = abs(scale * value.denominator) // math.gcd(scale, value.denominator)
+    translated = [value * scale for value in basis]
+    if not all(item.denominator == 1 for item in translated):
+        return None
+    if not any(int(item) != 0 for item in translated):
+        return None
+    return int(scale)
+
+
+def _shift_line_sample_point(line: dict[str, Any], scale: int) -> list[float]:
+    sample = [to_fraction(value) for value in line["sample_point"]]
+    basis = [to_fraction(value) for value in line["_basis"][0]]
+    return [float(sample_coord + scale * basis_coord) for sample_coord, basis_coord in zip(sample, basis)]
+
+
+def _capture_rep_exact_row_signatures(
+    raw: dict[str, Any],
+    *,
+    field: str,
+) -> list[dict[str, Any]]:
+    signatures: list[dict[str, Any]] = []
+    for rep_index, row in enumerate(raw[field], start=1):
+        signatures.append(
+            {
+                "rep_index": rep_index,
+                "rep_degree": int(raw["rep_degree"][rep_index - 1]),
+                "torsion": int(raw["torsion"][rep_index - 1]),
+                "row_exact": [str(as_exact_char(value)) for value in row],
+            }
+        )
+    return signatures
+
+
+def _cycles_from_index_permutation(permutation: list[int]) -> list[list[int]]:
+    cycles: list[list[int]] = []
+    visited: set[int] = set()
+    for start in range(1, len(permutation) + 1):
+        if start in visited:
+            continue
+        cycle: list[int] = []
+        current = start
+        local_seen: set[int] = set()
+        while current not in local_seen and 1 <= current <= len(permutation):
+            local_seen.add(current)
+            cycle.append(current)
+            current = int(permutation[current - 1])
+        visited.update(cycle)
+        if current == start and cycle:
+            cycles.append(cycle)
+        elif cycle:
+            cycles.append([start])
+    return cycles
+
+
+def _match_capture_permutation_by_exact_rows(
+    left_raw: dict[str, Any],
+    right_raw: dict[str, Any],
+    *,
+    field: str,
+) -> dict[str, Any]:
+    left_rows = _capture_rep_exact_row_signatures(left_raw, field=field)
+    right_rows = _capture_rep_exact_row_signatures(right_raw, field=field)
+    right_by_signature: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    for item in right_rows:
+        key = (tuple(item["row_exact"]), item["rep_degree"], item["torsion"])
+        right_by_signature.setdefault(key, []).append(item)
+    permutation: list[int] = [0] * len(left_rows)
+    matched_pairs: list[dict[str, Any]] = []
+    ambiguous = False
+    unmatched_left: list[int] = []
+    used_right: set[int] = set()
+    for item in left_rows:
+        key = (tuple(item["row_exact"]), item["rep_degree"], item["torsion"])
+        candidates = [
+            candidate
+            for candidate in right_by_signature.get(key, [])
+            if candidate["rep_index"] not in used_right
+        ]
+        chosen = None
+        if len(candidates) == 1:
+            chosen = candidates[0]
+        elif len(candidates) > 1:
+            ambiguous = True
+            chosen = next(
+                (candidate for candidate in candidates if candidate["rep_index"] == item["rep_index"]),
+                candidates[0],
+            )
+        if chosen is None:
+            unmatched_left.append(int(item["rep_index"]))
+            continue
+        used_right.add(int(chosen["rep_index"]))
+        permutation[item["rep_index"] - 1] = int(chosen["rep_index"])
+        matched_pairs.append(
+            {
+                "left_rep_index": int(item["rep_index"]),
+                "right_rep_index": int(chosen["rep_index"]),
+                "rep_degree": int(item["rep_degree"]),
+                "torsion": int(item["torsion"]),
+                "identity_match": int(item["rep_index"]) == int(chosen["rep_index"]),
+            }
+        )
+    unmatched_right = [
+        int(item["rep_index"])
+        for item in right_rows
+        if int(item["rep_index"]) not in used_right
+    ]
+    complete = not unmatched_left and not unmatched_right and all(value > 0 for value in permutation)
+    cycles = _cycles_from_index_permutation(permutation) if complete else []
+    return {
+        "field": field,
+        "complete": complete,
+        "ambiguous": ambiguous,
+        "permutation": permutation,
+        "cycles": cycles,
+        "matched_pairs": matched_pairs,
+        "unmatched_left": unmatched_left,
+        "unmatched_right": unmatched_right,
+    }
+
+
+def _line_monodromy_debug_payload(
+    module: Any,
+    group_number: str,
+    ssg_dict: dict[str, Any],
+    ctx: dict[str, Any],
+    group_label: str,
+    line: dict[str, Any],
+    line_raw: dict[str, Any],
+) -> dict[str, Any]:
+    scale = _line_period_scale(line)
+    if scale is None:
+        return {
+            "period_scale": None,
+            "period_shift_vector": None,
+            "shifted_sample_point": None,
+            "linear_character_permutation": [],
+            "linear_character_cycles": [],
+            "complete_linear_character_match": False,
+        }
+    shifted_sample = _shift_line_sample_point(line, scale)
+    shifted_raw = capture_little_group(
+        module,
+        group_number,
+        ssg_dict,
+        ctx,
+        group_label,
+        line["id"],
+        shifted_sample,
+    )
+    permutation_debug = _match_capture_permutation_by_exact_rows(
+        line_raw,
+        shifted_raw,
+        field="linear_character",
+    )
+    shift_vector = [int(to_fraction(value) * scale) for value in line["_basis"][0]]
+    return {
+        "period_scale": int(scale),
+        "period_shift_vector": shift_vector,
+        "shifted_sample_point": [str(Fraction(value).limit_denominator()) for value in shifted_sample],
+        "linear_character_permutation": list(permutation_debug["permutation"]),
+        "linear_character_cycles": [list(cycle) for cycle in permutation_debug["cycles"]],
+        "complete_linear_character_match": bool(permutation_debug["complete"]),
+        "linear_character_match_debug": permutation_debug,
+    }
+
+
 def capture_final_path_lines(
     module: Any,
     group_number: str,
@@ -3847,7 +4043,7 @@ def capture_final_path_lines(
     final_lines: Sequence[dict[str, Any]],
 ) -> None:
     for line in final_lines:
-        captures[line["id"]] = capture_little_group(
+        line_raw = capture_little_group(
             module,
             group_number,
             ssg_dict,
@@ -3856,6 +4052,25 @@ def capture_final_path_lines(
             line["id"],
             [float(Fraction(value)) for value in line["sample_point"]],
         )
+        monodromy_debug = _line_monodromy_debug_payload(
+            module,
+            group_number,
+            ssg_dict,
+            ctx,
+            group_label,
+            line,
+            line_raw,
+        )
+        line["line_monodromy_debug"] = monodromy_debug
+        captures[line["id"]] = {
+            **line_raw,
+            "line_monodromy_debug": monodromy_debug,
+            "line_monodromy_basis_orbits": [
+                [f"{line['id']}_R{rep_index}" for rep_index in cycle]
+                for cycle in monodromy_debug.get("linear_character_cycles", [])
+                if cycle
+            ],
+        }
 
 
 def build_bilbao_equivalent_sanity_check(publication_shell: dict[str, Any]) -> dict[str, Any]:
