@@ -159,7 +159,11 @@ def _candidate_parameter_values_for_alias(
 
 def _point_coordinate_alias_records(
     kgeom: dict[str, Any],
-) -> tuple[list[dict[str, Any]], dict[tuple[str, tuple[str, str, str]], str]]:
+) -> tuple[
+    list[dict[str, Any]],
+    dict[tuple[str, tuple[str, str, str]], str],
+    dict[str, str],
+]:
     runtime_ctx = kgeom.get("runtime_ctx") or kgeom.get("ctx") or {}
     reciprocal_ops = runtime_ctx.get("ops") or []
 
@@ -237,7 +241,10 @@ def _point_coordinate_alias_records(
             )
         return tuple(sorted(normalized))
 
-    def recovered_boundary_point_family_key(point: dict[str, Any]) -> tuple[Any, ...] | None:
+    def recovered_boundary_point_family_key(
+        point: dict[str, Any],
+        orbit_key: tuple[Any, ...] | None,
+    ) -> tuple[Any, ...] | None:
         source_signature = recovered_boundary_source_signature(point)
         if source_signature is None:
             return None
@@ -249,29 +256,81 @@ def _point_coordinate_alias_records(
         )
         return (
             "recovered_boundary_point_family",
+            orbit_key,
             symmetry_summary_key(point.get("symmetry_summary")),
             incident_line_signature,
             incident_plane_signature,
             source_signature,
         )
 
-    def publication_point_family_key(point: dict[str, Any]) -> tuple[Any, ...]:
+    def listed_line_endpoint_signature(point: dict[str, Any]) -> tuple[Any, ...] | None:
+        metadata = point.get("metadata", {})
+        if metadata.get("source_letter") != "recovered_boundary_point":
+            return None
+        source_records = (
+            metadata.get("recovered_from_boundary_manifolds")
+            or point.get("recovery_sources")
+            or []
+        )
+        normalized: list[tuple[Any, ...]] = []
+        for source in source_records:
+            if str(source.get("source_kind")) != "line_endpoint":
+                continue
+            line = line_lookup.get(source.get("line_id"))
+            if line is None:
+                continue
+            line_metadata = line.get("metadata", {})
+            source_letter = str(line_metadata.get("source_letter") or "")
+            if source_letter.startswith("recovered_"):
+                continue
+            normalized.append(
+                (
+                    line_family_key(line),
+                    str(source.get("boundary_condition") or ""),
+                    source_letter,
+                )
+            )
+        if not normalized:
+            return None
+        return tuple(sorted(normalized))
+
+    def publication_point_family_keys(
+        point: dict[str, Any],
+        *,
+        include_orbit_family: bool,
+    ) -> list[tuple[Any, ...]]:
+        keys: list[tuple[Any, ...]] = []
         anchor = point.get("_anchor")
         if anchor is None:
             anchor = [_to_fraction(value) for value in point.get("sample_point", [])]
         else:
             anchor = [_to_fraction(value) for value in anchor]
+        orbit_key: tuple[Any, ...] | None = None
         if reciprocal_ops:
             orbit_key = swyckoff_k.subspace_orbit_key(anchor, [], reciprocal_ops)
-            return (
-                "publication_point_orbit_family",
-                orbit_key,
-                symmetry_summary_key(point.get("symmetry_summary")),
-            )
-        recovered_key = recovered_boundary_point_family_key(point)
+        recovered_key = recovered_boundary_point_family_key(point, orbit_key)
         if recovered_key is not None:
-            return recovered_key
-        return ("point_id", point["id"])
+            keys.append(recovered_key)
+        listed_endpoint_key = listed_line_endpoint_signature(point)
+        if listed_endpoint_key is not None:
+            keys.append(
+                (
+                    "publication_point_listed_line_endpoint_family",
+                    orbit_key,
+                    symmetry_summary_key(point.get("symmetry_summary")),
+                    listed_endpoint_key,
+                )
+            )
+        if include_orbit_family and orbit_key is not None:
+            keys.append(
+                (
+                    "publication_point_orbit_family",
+                    orbit_key,
+                )
+            )
+        if not keys:
+            keys.append(("point_id", point["id"]))
+        return keys
 
     capture_lookup: dict[tuple[str, tuple[str, str, str]], str] = {}
     point_lookup = {point["id"]: point for point in kgeom["grouped"]["points"]}
@@ -291,26 +350,53 @@ def _point_coordinate_alias_records(
             key = (corner["point_id"], tuple(corner["point_coordinates"]))
             capture_lookup[key] = corner.get("capture_id", corner["point_id"])
 
-    grouped_candidates: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
-    for point in kgeom["grouped"]["points"]:
-        grouped_candidates.setdefault(publication_point_family_key(point), []).append(point)
+    point_ids = [point["id"] for point in kgeom["grouped"]["points"]]
+    parent: dict[str, str] = {point_id: point_id for point_id in point_ids}
+    representative_parent: dict[str, str] = {point_id: point_id for point_id in point_ids}
 
-    canonical_point_id_by_member: dict[str, str] = {}
-    for members in grouped_candidates.values():
-        canonical_members = sorted(
-            members,
-            key=lambda item: (
-                int(item["id"][1:]) if item["id"].startswith("P") and item["id"][1:].isdigit() else item["id"]
-            ),
-        )
-        root_id = canonical_members[0]["id"]
-        for point in canonical_members:
-            canonical_point_id_by_member[point["id"]] = root_id
+    def find(point_id: str, parent_map: dict[str, str]) -> str:
+        root = point_id
+        while parent_map[root] != root:
+            root = parent_map[root]
+        while parent_map[point_id] != point_id:
+            next_point_id = parent_map[point_id]
+            parent_map[point_id] = root
+            point_id = next_point_id
+        return root
+
+    def sort_key(point_id: str) -> Any:
+        return int(point_id[1:]) if point_id.startswith("P") and point_id[1:].isdigit() else point_id
+
+    def union(left_id: str, right_id: str, parent_map: dict[str, str]) -> None:
+        left_root = find(left_id, parent_map)
+        right_root = find(right_id, parent_map)
+        if left_root == right_root:
+            return
+        if sort_key(left_root) <= sort_key(right_root):
+            parent_map[right_root] = left_root
+        else:
+            parent_map[left_root] = right_root
+
+    family_owner: dict[tuple[Any, ...], str] = {}
+    representative_family_owner: dict[tuple[Any, ...], str] = {}
+    for point in kgeom["grouped"]["points"]:
+        for family_key in publication_point_family_keys(point, include_orbit_family=True):
+            owner = family_owner.get(family_key)
+            if owner is None:
+                family_owner[family_key] = point["id"]
+                continue
+            union(owner, point["id"], parent)
+        for family_key in publication_point_family_keys(point, include_orbit_family=False):
+            owner = representative_family_owner.get(family_key)
+            if owner is None:
+                representative_family_owner[family_key] = point["id"]
+                continue
+            union(owner, point["id"], representative_parent)
 
     grouped_point_members: dict[str, list[dict[str, Any]]] = {}
     grouped_point_order: list[str] = []
     for point in kgeom["grouped"]["points"]:
-        root_id = canonical_point_id_by_member.get(point["id"], point["id"])
+        root_id = find(point["id"], parent)
         if root_id not in grouped_point_members:
             grouped_point_members[root_id] = []
             grouped_point_order.append(root_id)
@@ -338,6 +424,7 @@ def _point_coordinate_alias_records(
                     {
                         "coordinates": list(coords),
                         "capture_id": capture_lookup.get((member["id"], coord_key), member["id"]),
+                        "member_point_id": member["id"],
                     }
                 )
         point_shell.append(
@@ -348,7 +435,12 @@ def _point_coordinate_alias_records(
                 "aliases": alias_records,
             }
         )
-    return point_shell, capture_lookup
+    representative_point_id_mapping: dict[str, str] = {}
+    for point in kgeom["grouped"]["points"]:
+        actual_root = find(point["id"], parent)
+        representative_root = find(point["id"], representative_parent)
+        representative_point_id_mapping[actual_root] = find(representative_root, parent)
+    return point_shell, capture_lookup, representative_point_id_mapping
 
 
 def _branch_complexity(linear_parts: Sequence[tuple[sp.Expr, sp.Expr]]) -> int:
@@ -399,8 +491,27 @@ def _enumerate_candidate_segments(
     kgeom: dict[str, Any],
     point_shell: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
+    def choose_interior_sample_parameter(
+        left_value: Fraction,
+        right_value: Fraction,
+        blocked_values: set[Fraction],
+    ) -> Fraction:
+        interval = right_value - left_value
+        for denominator in range(2, 17):
+            candidates = list(range(1, denominator))
+            candidates.sort(key=lambda numerator: abs(Fraction(numerator, denominator) - Fraction(1, 2)))
+            for numerator in candidates:
+                sample = left_value + interval * Fraction(numerator, denominator)
+                if left_value < sample < right_value and sample not in blocked_values:
+                    return sample
+        return (left_value + right_value) / 2
+
     candidates: list[dict[str, Any]] = []
     candidate_index = 0
+    point_order = {
+        point["point_id"]: index
+        for index, point in enumerate(point_shell)
+    }
     for source in _iter_branch_sources(kgeom):
         parameter_name = source["parameter_name"]
         expressions, symbol = _parse_branch_expressions(source["coordinate_expressions"], parameter_name)
@@ -423,15 +534,32 @@ def _enumerate_candidate_segments(
         ordered_hits = sorted(hits.values(), key=lambda item: (item["parameter_value"], item["point_id"]))
         if len(ordered_hits) < 2:
             continue
-        anchor_hit = ordered_hits[0]
-        for right in ordered_hits[1:]:
-            left = anchor_hit
+        anchor = min(
+            ordered_hits,
+            key=lambda item: (
+                point_order.get(item["point_id"], 10**9),
+                item["parameter_value"],
+                item["point_id"],
+            ),
+        )
+        blocked_values = {item["parameter_value"] for item in ordered_hits}
+        for other in ordered_hits:
+            if other is anchor:
+                continue
+            left, right = sorted(
+                (anchor, other),
+                key=lambda item: (item["parameter_value"], item["point_id"]),
+            )
             if left["parameter_value"] == right["parameter_value"]:
                 continue
             if left["point_id"] == right["point_id"]:
                 continue
             candidate_index += 1
-            sample_parameter = (left["parameter_value"] + right["parameter_value"]) / 2
+            sample_parameter = choose_interior_sample_parameter(
+                left["parameter_value"],
+                right["parameter_value"],
+                blocked_values,
+            )
             sample_point = _jsonable_vector(_evaluate_branch_mod1(linear_parts, sample_parameter))
             endpoint_pair = tuple(sorted((left["point_id"], right["point_id"])))
             candidates.append(
@@ -1319,7 +1447,11 @@ def finalize_reduction_from_candidate_analysis(
 
 
 def reduce_final_point_path_shell(kgeom: dict[str, Any]) -> dict[str, Any]:
-    point_shell, capture_lookup = _point_coordinate_alias_records(kgeom)
+    (
+        point_shell,
+        capture_lookup,
+        representative_point_id_mapping,
+    ) = _point_coordinate_alias_records(kgeom)
     candidate_segments = _enumerate_candidate_segments(kgeom, point_shell)
     reduction = {
         "reduction_kind": "automatic_reduced_final_point_path_shell_candidates_v2",
@@ -1345,6 +1477,39 @@ def reduce_final_point_path_shell(kgeom: dict[str, Any]) -> dict[str, Any]:
         "discarded_paths": [],
         "final_line_specs": [],
         "capture_lookup_size": len(capture_lookup),
+        "publication_representative_point_id_mapping": representative_point_id_mapping,
+        "publication_geometry_context": {
+            "lines": [
+                {
+                    "id": str(line["id"]),
+                    "coordinate_expressions": [str(value) for value in line.get("coordinate_expressions", [])],
+                    "parameters": [str(value) for value in line.get("parameters", [])],
+                    "constraints": [str(value) for value in line.get("constraints", [])],
+                }
+                for line in kgeom["grouped"]["lines"]
+            ],
+            "planes": [
+                {
+                    "id": str(plane["id"]),
+                    "coordinate_expressions": [str(value) for value in plane.get("coordinate_expressions", [])],
+                    "parameters": [str(value) for value in plane.get("parameters", [])],
+                    "constraints": [str(value) for value in plane.get("constraints", [])],
+                    "source_orbit": [
+                        str(value)
+                        for value in (plane.get("metadata", {}).get("source_orbit") or [])
+                    ],
+                }
+                for plane in kgeom["grouped"]["planes"]
+            ],
+            "generic": [
+                {
+                    "coordinate_expressions": [str(value) for value in generic.get("coordinate_expressions", [])],
+                    "parameters": [str(value) for value in generic.get("parameters", [])],
+                    "constraints": [str(value) for value in generic.get("constraints", [])],
+                }
+                for generic in kgeom["grouped"].get("generic", [])
+            ],
+        },
     }
     return reduction
 
@@ -1360,6 +1525,244 @@ def _candidate_record_unknown_ordering(
         if list(record["global_unknown_ordering"]) != ordering:
             raise ValueError("candidate path records disagree on global unknown ordering")
     return ordering
+
+
+def _closure_parameter_bounds(
+    constraints: Sequence[str],
+    parameter_names: Sequence[str],
+) -> dict[str, tuple[Fraction | None, Fraction | None]]:
+    bounds: dict[str, list[Fraction | None]] = {
+        str(name): [None, None]
+        for name in parameter_names
+    }
+    for raw_constraint in constraints:
+        constraint = str(raw_constraint).strip()
+        if "<" not in constraint:
+            continue
+        left, right = [item.strip() for item in constraint.split("<", 1)]
+        if left in bounds and right not in bounds:
+            upper = _to_fraction(parse_expr(right, transformations=PARSER_TRANSFORMS))
+            current = bounds[left][1]
+            bounds[left][1] = upper if current is None else min(current, upper)
+            continue
+        if right in bounds and left not in bounds:
+            lower = _to_fraction(parse_expr(left, transformations=PARSER_TRANSFORMS))
+            current = bounds[right][0]
+            bounds[right][0] = lower if current is None else max(current, lower)
+    return {
+        name: (limits[0], limits[1])
+        for name, limits in bounds.items()
+    }
+
+
+def _branch_parameter_solution_candidates(
+    coordinate_expressions: Sequence[str],
+    parameter_names: Sequence[str],
+    point_coordinates: Sequence[Fraction],
+    constraints: Sequence[str],
+) -> list[tuple[Fraction, ...]]:
+    if not parameter_names:
+        if [
+            _mod1(_to_fraction(parse_expr(entry, transformations=PARSER_TRANSFORMS)))
+            for entry in coordinate_expressions
+        ] == list(point_coordinates):
+            return [tuple()]
+        return []
+    symbols = [sp.Symbol(str(name)) for name in parameter_names]
+    local_dict = {
+        str(name): symbol
+        for name, symbol in zip(parameter_names, symbols)
+    }
+    expressions = [
+        parse_expr(entry, local_dict=local_dict, transformations=PARSER_TRANSFORMS)
+        for entry in coordinate_expressions
+    ]
+    bounds = _closure_parameter_bounds(constraints, parameter_names)
+    solutions: set[tuple[Fraction, ...]] = set()
+    for shifts in product((-1, 0, 1), repeat=len(expressions)):
+        equations = [
+            sp.Eq(
+                expression,
+                sp.Rational(point_coordinates[index].numerator, point_coordinates[index].denominator)
+                + shifts[index],
+            )
+            for index, expression in enumerate(expressions)
+        ]
+        try:
+            solved = sp.linsolve(equations, symbols)
+        except Exception:
+            continue
+        for candidate in solved:
+            if any(value.free_symbols for value in candidate):
+                continue
+            normalized: list[Fraction] = []
+            valid = True
+            substitutions: dict[sp.Symbol, sp.Rational] = {}
+            for parameter_name, symbol, value in zip(parameter_names, symbols, candidate):
+                if not value.is_rational:
+                    value = sp.nsimplify(value)
+                if not isinstance(value, sp.Rational):
+                    valid = False
+                    break
+                fraction = Fraction(int(value.p), int(value.q))
+                lower, upper = bounds[str(parameter_name)]
+                if lower is not None and fraction < lower:
+                    valid = False
+                    break
+                if upper is not None and fraction > upper:
+                    valid = False
+                    break
+                normalized.append(fraction)
+                substitutions[symbol] = sp.Rational(fraction.numerator, fraction.denominator)
+            if not valid:
+                continue
+            evaluated = []
+            for expression in expressions:
+                value = sp.simplify(expression.subs(substitutions))
+                if not value.is_rational:
+                    value = sp.nsimplify(value)
+                if not isinstance(value, sp.Rational):
+                    valid = False
+                    break
+                evaluated.append(_mod1(Fraction(int(value.p), int(value.q))))
+            if valid and evaluated == list(point_coordinates):
+                solutions.add(tuple(normalized))
+    return sorted(solutions)
+
+
+def _point_matches_manifold_closure(
+    point_coordinates: Sequence[str],
+    *,
+    coordinate_expressions: Sequence[str],
+    parameter_names: Sequence[str],
+    constraints: Sequence[str],
+) -> bool:
+    fractions = [_to_fraction(value) for value in point_coordinates]
+    return bool(
+        _branch_parameter_solution_candidates(
+            coordinate_expressions,
+            parameter_names,
+            fractions,
+            constraints,
+        )
+    )
+
+
+def _build_geometric_publication_kpair_payload(
+    reduction: dict[str, Any],
+) -> dict[str, Any] | None:
+    context = reduction.get("publication_geometry_context") or {}
+    point_shell = list(reduction.get("point_shell", []))
+    if not point_shell:
+        return None
+    point_order = {
+        point["point_id"]: index
+        for index, point in enumerate(point_shell)
+    }
+    point_coordinates: dict[str, list[list[str]]] = {}
+    for point in point_shell:
+        coordinates = [list(point["representative_coordinates"])]
+        coordinates.extend(list(alias["coordinates"]) for alias in point.get("aliases", []))
+        unique_coordinates: list[list[str]] = []
+        seen: set[tuple[str, ...]] = set()
+        for coordinate in coordinates:
+            key = tuple(str(value) for value in coordinate)
+            if key in seen:
+                continue
+            seen.add(key)
+            unique_coordinates.append([str(value) for value in coordinate])
+        point_coordinates[point["point_id"]] = unique_coordinates
+
+    canonical_point_ids: set[str] = set()
+    generic_entries = list(context.get("generic", []))
+    if generic_entries:
+        for generic in generic_entries:
+            coordinate_expressions = [str(value) for value in generic.get("coordinate_expressions", [])]
+            parameter_names = [str(value) for value in generic.get("parameters", [])]
+            constraints = [str(value) for value in generic.get("constraints", [])]
+            for point_id, aliases in point_coordinates.items():
+                if any(
+                    _point_matches_manifold_closure(
+                        coordinate,
+                        coordinate_expressions=coordinate_expressions,
+                        parameter_names=parameter_names,
+                        constraints=constraints,
+                    )
+                    for coordinate in aliases
+                ):
+                    canonical_point_ids.add(point_id)
+    if not canonical_point_ids:
+        canonical_point_ids = set(point_coordinates)
+
+    def ordered_point_ids(member_ids: set[str]) -> list[str]:
+        return sorted(member_ids, key=lambda point_id: point_order[point_id])
+
+    line_pairs: set[tuple[str, str]] = set()
+    for line in context.get("lines", []):
+        member_ids: set[str] = set()
+        for point_id in canonical_point_ids:
+            if any(
+                _point_matches_manifold_closure(
+                    coordinate,
+                    coordinate_expressions=[str(value) for value in line.get("coordinate_expressions", [])],
+                    parameter_names=[str(value) for value in line.get("parameters", [])],
+                    constraints=[str(value) for value in line.get("constraints", [])],
+                )
+                for coordinate in point_coordinates[point_id]
+            ):
+                member_ids.add(point_id)
+        ordered_members = ordered_point_ids(member_ids)
+        for left, right in combinations(ordered_members, 2):
+            line_pairs.add((left, right))
+
+    plane_pairs: set[tuple[str, str]] = set()
+    for plane in context.get("planes", []):
+        source_orbit = list(plane.get("source_orbit") or [])
+        branch_entries = source_orbit or [", ".join(plane.get("coordinate_expressions", []))]
+        for branch in branch_entries:
+            coordinate_expressions = (
+                _parse_coordinate_triplet(branch)
+                if isinstance(branch, str)
+                else [str(value) for value in branch]
+            )
+            member_ids: set[str] = set()
+            for point_id in canonical_point_ids:
+                if any(
+                    _point_matches_manifold_closure(
+                        coordinate,
+                        coordinate_expressions=coordinate_expressions,
+                        parameter_names=[str(value) for value in plane.get("parameters", [])],
+                        constraints=[str(value) for value in plane.get("constraints", [])],
+                    )
+                    for coordinate in point_coordinates[point_id]
+                ):
+                    member_ids.add(point_id)
+            ordered_members = ordered_point_ids(member_ids)
+            for left, right in combinations(ordered_members, 2):
+                plane_pairs.add((left, right))
+
+    generic_pairs: set[tuple[str, str]] = set()
+    ordered_canonical_points = ordered_point_ids(canonical_point_ids)
+    if generic_entries and len(ordered_canonical_points) >= 2:
+        for left, right in combinations(ordered_canonical_points, 2):
+            generic_pairs.add((left, right))
+
+    ordered_pairs = lambda pairs: sorted(
+        pairs,
+        key=lambda pair: (
+            min(point_order[pair[0]], point_order[pair[1]]),
+            max(point_order[pair[0]], point_order[pair[1]]),
+        ),
+    )
+    return {
+        "publication_actual_point_ids": ordered_point_ids(canonical_point_ids),
+        "publication_geometric_line_pairs": [list(pair) for pair in ordered_pairs(line_pairs)],
+        "publication_geometric_plane_pairs": [list(pair) for pair in ordered_pairs(plane_pairs)],
+        "publication_geometric_generic_pairs": [list(pair) for pair in ordered_pairs(generic_pairs)],
+        "publication_geometric_endpoint_pairs": [
+            list(pair) for pair in ordered_pairs(line_pairs | plane_pairs | generic_pairs)
+        ],
+    }
 
 
 def build_publication_point_shell(
@@ -1885,26 +2288,306 @@ def build_publication_shell_candidate(
 ) -> dict[str, Any]:
     publication_point_shell = build_publication_point_shell(reduction)
     publication_path_payload = build_publication_path_classes(reduction)
+    publication_plane_payload = build_publication_plane_classes(
+        reduction,
+        publication_point_shell=publication_point_shell,
+    )
+    publication_row_based_plane_pairs = sorted(
+        {
+            tuple(sorted((row["left_publication_point_id"], row["right_publication_point_id"])))
+            for plane in publication_plane_payload["publication_planes"]
+            for row in plane["selected_basis_row_records"]
+        }
+    )
+    representative_point_id_mapping = {
+        str(point_id): str(representative_id)
+        for point_id, representative_id in (
+            reduction.get("publication_representative_point_id_mapping") or {}
+        ).items()
+    }
+    publication_row_based_endpoint_pairs = sorted(
+        {
+            tuple(
+                sorted(
+                    representative_point_id_mapping.get(point_id, point_id)
+                    for point_id in pair
+                )
+            )
+            for pair in [
+                *[
+                    tuple(path["endpoint_pair"])
+                    for path in publication_path_payload["publication_paths"]
+                ],
+                *publication_row_based_plane_pairs,
+            ]
+            if len(
+                {
+                    representative_point_id_mapping.get(point_id, point_id)
+                    for point_id in pair
+                }
+            ) == 2
+        }
+    )
+    geometric_payload = _build_geometric_publication_kpair_payload(reduction)
+    publication_actual_point_ids = (
+        list(geometric_payload["publication_actual_point_ids"])
+        if geometric_payload is not None
+        else list(publication_point_shell["point_ids"])
+    )
+    actual_point_id_set = set(publication_actual_point_ids)
+    publication_actual_path_pairs = [
+        list(path["endpoint_pair"])
+        for path in publication_path_payload["publication_paths"]
+        if set(path["endpoint_pair"]).issubset(actual_point_id_set)
+    ]
+    publication_filtered_row_based_endpoint_pairs = [
+        list(pair)
+        for pair in publication_row_based_endpoint_pairs
+        if set(pair).issubset(actual_point_id_set)
+    ]
+    publication_actual_plane_pairs = (
+        list(geometric_payload["publication_geometric_plane_pairs"])
+        if geometric_payload is not None
+        else [list(pair) for pair in publication_row_based_plane_pairs]
+    )
+    publication_geometric_generic_pairs = (
+        list(geometric_payload["publication_geometric_generic_pairs"])
+        if geometric_payload is not None
+        else None
+    )
+    publication_actual_endpoint_pairs = (
+        [
+            list(pair)
+            for pair in sorted(
+                {
+                    tuple(sorted(pair))
+                    for pair in [
+                        *publication_filtered_row_based_endpoint_pairs,
+                        *publication_actual_plane_pairs,
+                        *(publication_geometric_generic_pairs or []),
+                    ]
+                }
+            )
+        ]
+        if geometric_payload is not None
+        else [list(pair) for pair in publication_row_based_endpoint_pairs]
+    )
     return {
         "object_kind": "publication_level_point_path_shell_v1",
         "publication_point_shell": publication_point_shell,
         "publication_point_ids": list(publication_point_shell["point_ids"]),
+        "publication_actual_point_ids": publication_actual_point_ids,
         "publication_unknown_ordering": list(publication_point_shell["unknown_ordering"]),
         "publication_unknown_count": int(publication_point_shell["unknown_count"]),
         **publication_path_payload,
-        "publication_actual_path_pairs": [
-            list(path["endpoint_pair"])
-            for path in publication_path_payload["publication_paths"]
-        ],
+        **publication_plane_payload,
+        "publication_actual_path_pairs": publication_actual_path_pairs,
+        "publication_row_based_plane_pairs": [list(pair) for pair in publication_row_based_plane_pairs],
+        "publication_row_based_endpoint_pairs": [list(pair) for pair in publication_row_based_endpoint_pairs],
+        "publication_actual_plane_pairs": publication_actual_plane_pairs,
+        "publication_actual_endpoint_pairs": publication_actual_endpoint_pairs,
+        "publication_geometric_line_pairs": (
+            list(geometric_payload["publication_geometric_line_pairs"])
+            if geometric_payload is not None
+            else None
+        ),
+        "publication_geometric_plane_pairs": (
+            list(geometric_payload["publication_geometric_plane_pairs"])
+            if geometric_payload is not None
+            else None
+        ),
+        "publication_geometric_endpoint_pairs": (
+            list(geometric_payload["publication_geometric_endpoint_pairs"])
+            if geometric_payload is not None
+            else None
+        ),
+        "publication_geometric_generic_pairs": publication_geometric_generic_pairs,
+        "publication_representative_point_id_mapping": representative_point_id_mapping,
     }
 
 
 def build_publication_C_matrix(
     publication_shell: dict[str, Any],
 ) -> dict[str, Any]:
+    def append_point_total_band_count_rows(
+        *,
+        unknown_ordering: list[str],
+        global_matrix: list[list[int]],
+        global_matrix_rows: list[dict[str, Any]],
+        row_provenance: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        row_specs = list(publication_shell.get("publication_point_total_band_row_specs", []))
+        if len(row_specs) <= 1:
+            return []
+        unknown_index = {str(unknown): index for index, unknown in enumerate(unknown_ordering)}
+        point_rows: list[dict[str, Any]] = []
+        for spec in row_specs:
+            matrix_row = [0] * len(unknown_ordering)
+            for term in spec.get("terms", []):
+                unknown = str(term["unknown"])
+                if unknown not in unknown_index:
+                    raise ValueError(
+                        "published point total-band-count row references unknown outside published ordering: "
+                        f"{unknown}"
+                    )
+                matrix_row[unknown_index[unknown]] += int(term["coeff"])
+            point_rows.append(
+                {
+                    "point_id": str(spec["point_id"]),
+                    "row_kind": str(spec.get("row_kind", "published_point_total_band_count")),
+                    "matrix_row": matrix_row,
+                }
+            )
+        if len(point_rows) <= 1:
+            return []
+        appended_rows: list[dict[str, Any]] = []
+        anchor = point_rows[0]
+        running_rows = list(global_matrix)
+        for row_index, other in enumerate(point_rows[1:], start=1):
+            matrix_row = [
+                int(left) - int(right)
+                for left, right in zip(anchor["matrix_row"], other["matrix_row"])
+            ]
+            if not any(matrix_row):
+                continue
+            if _row_rank(running_rows + [matrix_row]) == _row_rank(running_rows):
+                continue
+            basis_id = (
+                f"POINT_TOTAL_BAND_COUNT_{anchor['point_id']}_VS_{other['point_id']}"
+            )
+            equation = {
+                "basis_id": basis_id,
+                "row_kind": "published_point_total_band_count_delta",
+                "terms": [
+                    {"unknown": unknown_ordering[column_index], "coeff": int(value)}
+                    for column_index, value in enumerate(matrix_row)
+                    if int(value) != 0
+                ],
+                "anchor_point_id": anchor["point_id"],
+                "other_point_id": other["point_id"],
+                "row_index_within_publication_point": row_index - 1,
+            }
+            metadata = {key: value for key, value in equation.items() if key != "terms"}
+            global_matrix_rows.append(
+                {
+                    "source_type": "point",
+                    "point_id": anchor["point_id"],
+                    "basis_id": basis_id,
+                    "row_index_within_source": row_index - 1,
+                    "equation_metadata": metadata,
+                    **metadata,
+                    "matrix_row": list(matrix_row),
+                }
+            )
+            row_provenance.append(
+                {
+                    "anchor_point_id": anchor["point_id"],
+                    "other_point_id": other["point_id"],
+                    "basis_id": basis_id,
+                    "row_kind": "published_point_total_band_count_delta",
+                    "matrix_row": list(matrix_row),
+                }
+            )
+            global_matrix.append(list(matrix_row))
+            running_rows.append(list(matrix_row))
+            appended_rows.append(
+                {
+                    "point_id": anchor["point_id"],
+                    "other_point_id": other["point_id"],
+                    "equations": [equation],
+                }
+            )
+        return appended_rows
+
+    def append_explicit_point_rows(
+        *,
+        unknown_ordering: list[str],
+        global_matrix: list[list[int]],
+        global_matrix_rows: list[dict[str, Any]],
+        row_provenance: list[dict[str, Any]],
+        spec_key: str,
+        default_row_kind: str,
+    ) -> list[dict[str, Any]]:
+        row_specs = list(publication_shell.get(spec_key, []))
+        if not row_specs:
+            return []
+        unknown_index = {str(unknown): index for index, unknown in enumerate(unknown_ordering)}
+        appended_rows: list[dict[str, Any]] = []
+        running_rows = list(global_matrix)
+        for row_index, spec in enumerate(row_specs):
+            matrix_row = [0] * len(unknown_ordering)
+            for term in spec.get("terms", []):
+                unknown = str(term["unknown"])
+                if unknown not in unknown_index:
+                    raise ValueError(
+                        f"{default_row_kind} row references unknown outside published ordering: {unknown}"
+                    )
+                matrix_row[unknown_index[unknown]] += int(term["coeff"])
+            if not any(matrix_row):
+                continue
+            if _row_rank(running_rows + [matrix_row]) == _row_rank(running_rows):
+                continue
+            row_kind = str(spec.get("row_kind", default_row_kind))
+            point_id = str(spec.get("point_id", "UNKNOWN"))
+            basis_id = f"{row_kind.upper()}_{point_id}_{row_index + 1:02d}"
+            metadata = {
+                "basis_id": basis_id,
+                "row_kind": row_kind,
+                "point_id": point_id,
+                **{
+                    key: value
+                    for key, value in spec.items()
+                    if key not in {"terms", "row_kind"}
+                },
+            }
+            global_matrix_rows.append(
+                {
+                    "source_type": "point",
+                    "point_id": point_id,
+                    "basis_id": basis_id,
+                    "row_index_within_source": row_index,
+                    "equation_metadata": metadata,
+                    **metadata,
+                    "matrix_row": list(matrix_row),
+                }
+            )
+            row_provenance.append(
+                {
+                    **metadata,
+                    "matrix_row": list(matrix_row),
+                }
+            )
+            global_matrix.append(list(matrix_row))
+            running_rows.append(list(matrix_row))
+            appended_rows.append(
+                {
+                    "point_id": point_id,
+                    "equations": [
+                        {
+                            "basis_id": basis_id,
+                            "row_kind": row_kind,
+                            "terms": [
+                                {"unknown": unknown_ordering[column_index], "coeff": int(value)}
+                                for column_index, value in enumerate(matrix_row)
+                                if int(value) != 0
+                            ],
+                            **{
+                                key: value
+                                for key, value in metadata.items()
+                                if key not in {"basis_id", "row_kind"}
+                            },
+                        }
+                    ],
+                }
+            )
+        return appended_rows
+
     unknown_ordering = list(publication_shell["publication_unknown_ordering"])
     publication_blocks: list[dict[str, Any]] = []
+    publication_plane_blocks: list[dict[str, Any]] = []
+    publication_point_blocks: list[dict[str, Any]] = []
     global_matrix: list[list[int]] = []
+    global_matrix_rows: list[dict[str, Any]] = []
     row_provenance: list[dict[str, Any]] = []
     for path in publication_shell["publication_paths"]:
         equations = []
@@ -1925,6 +2608,18 @@ def build_publication_C_matrix(
                 "member_candidate_id": row_record["member_candidate_id"],
             }
             equations.append(equation)
+            metadata = {key: value for key, value in equation.items() if key != "terms"}
+            global_matrix_rows.append(
+                {
+                    "source_type": "line",
+                    "line_id": path["publication_path_id"],
+                    "basis_id": row_record["basis_id"],
+                    "row_index_within_source": local_row_index,
+                    "equation_metadata": metadata,
+                    **metadata,
+                    "matrix_row": list(row),
+                }
+            )
             row_provenance.append(
                 {
                     "publication_path_id": path["publication_path_id"],
@@ -1950,13 +2645,90 @@ def build_publication_C_matrix(
                 "equations": equations,
             }
         )
+    for plane in publication_shell.get("publication_planes", []):
+        equations = []
+        for local_row_index, row_record in enumerate(plane["selected_basis_row_records"]):
+            row = [int(value) for value in row_record["matrix_row"]]
+            terms = [
+                {"unknown": unknown_ordering[column_index], "coeff": int(value)}
+                for column_index, value in enumerate(row)
+                if int(value) != 0
+            ]
+            equation = {
+                "basis_id": row_record["basis_id"],
+                "row_kind": row_record.get("row_kind", "publication_plane_basis"),
+                "terms": terms,
+                "row_index_within_publication_plane": local_row_index,
+                "plane_id": row_record.get("plane_id"),
+                "plane_basis_id": row_record.get("plane_basis_id"),
+                "left_publication_point_id": row_record.get("left_publication_point_id"),
+                "right_publication_point_id": row_record.get("right_publication_point_id"),
+            }
+            equations.append(equation)
+            metadata = {key: value for key, value in equation.items() if key != "terms"}
+            global_matrix_rows.append(
+                {
+                    "source_type": "plane",
+                    "plane_id": plane["publication_plane_id"],
+                    "basis_id": row_record["basis_id"],
+                    "row_index_within_source": local_row_index,
+                    "equation_metadata": metadata,
+                    **metadata,
+                    "matrix_row": list(row),
+                }
+            )
+            row_provenance.append(
+                {
+                    "publication_plane_id": plane["publication_plane_id"],
+                    "publication_plane_class_id": plane["publication_plane_class_id"],
+                    "publication_corner_ids": list(plane["publication_corner_ids"]),
+                    "plane_id": row_record.get("plane_id"),
+                    "plane_basis_id": row_record.get("plane_basis_id"),
+                    "left_publication_point_id": row_record.get("left_publication_point_id"),
+                    "right_publication_point_id": row_record.get("right_publication_point_id"),
+                    "basis_id": row_record["basis_id"],
+                    "row_kind": row_record.get("row_kind", "publication_plane_basis"),
+                    "matrix_row": list(row),
+                }
+            )
+            global_matrix.append(list(row))
+        publication_plane_blocks.append(
+            {
+                "plane_id": plane["publication_plane_id"],
+                "publication_plane_class_id": plane["publication_plane_class_id"],
+                "publication_corner_ids": list(plane["publication_corner_ids"]),
+                "member_plane_ids": list(plane["member_plane_ids"]),
+                "equations": equations,
+            }
+        )
+    publication_point_blocks = append_point_total_band_count_rows(
+        unknown_ordering=unknown_ordering,
+        global_matrix=global_matrix,
+        global_matrix_rows=global_matrix_rows,
+        row_provenance=row_provenance,
+    )
+    publication_point_blocks.extend(
+        append_explicit_point_rows(
+            unknown_ordering=unknown_ordering,
+            global_matrix=global_matrix,
+            global_matrix_rows=global_matrix_rows,
+            row_provenance=row_provenance,
+            spec_key="publication_point_imported_class_balance_row_specs",
+            default_row_kind="published_point_imported_class_balance",
+        )
+    )
     return {
         "object_role": "publication_level_C_matrix",
         "publication_status": "published_final_object",
         "global_unknown_ordering": unknown_ordering,
+        "global_matrix_rows": global_matrix_rows,
         "global_matrix": global_matrix,
         "line_blocks": publication_blocks,
+        "plane_blocks": publication_plane_blocks,
+        "point_blocks": publication_point_blocks,
         "publication_path_blocks": publication_blocks,
+        "publication_point_blocks": publication_point_blocks,
+        "matrix_shape": [len(global_matrix), len(unknown_ordering)],
         "row_provenance": row_provenance,
     }
 
@@ -1967,8 +2739,16 @@ def compare_publication_shell_to_bilbao_expected(
     expected_point_ids: Sequence[str],
     expected_endpoint_pairs: Sequence[Sequence[str]],
 ) -> dict[str, Any]:
-    actual_point_ids = list(publication_shell["publication_point_ids"])
-    actual_pairs = sorted(tuple(sorted(pair)) for pair in publication_shell["publication_actual_path_pairs"])
+    actual_point_ids = list(
+        publication_shell.get("publication_actual_point_ids", publication_shell["publication_point_ids"])
+    )
+    actual_pairs = sorted(
+        tuple(sorted(pair))
+        for pair in publication_shell.get(
+            "publication_actual_endpoint_pairs",
+            publication_shell["publication_actual_path_pairs"],
+        )
+    )
     expected_pairs_sorted = sorted(tuple(sorted(pair)) for pair in expected_endpoint_pairs)
     bilbao_equivalent_publication_pass = (
         actual_point_ids == list(expected_point_ids)
@@ -2084,7 +2864,9 @@ def build_publication_shell_reduction_report(
             list(path["endpoint_pair"])
             for path in reduction.get("kept_paths", [])
         ],
-        "publication_point_count": len(publication_shell["publication_point_ids"]),
+        "publication_point_count": len(
+            publication_shell.get("publication_actual_point_ids", publication_shell["publication_point_ids"])
+        ),
         "publication_path_class_count": publication_shell["publication_path_class_count"],
         "publication_selected_path_count": publication_shell["selected_publication_path_count"],
         "publication_actual_path_pairs": list(publication_shell["publication_actual_path_pairs"]),
@@ -2747,6 +3529,18 @@ def _score_capture_permutation(
     alias_fingerprints: Sequence[tuple[Any, ...]],
     permutation: Sequence[int],
 ) -> tuple[int, int]:
+    """Score a local-to-canonical permutation between two point-capture orderings.
+
+    Each slot payload is an ordered bucket of restriction fingerprints gathered
+    from every candidate path touching the point.  The score is lexicographic:
+
+    1. maximize the number of slots whose fingerprint buckets match exactly;
+    2. among ties, maximize the fingerprint overlap count.
+
+    The overlap fallback matters in practice because many contexts do not give a
+    perfect one-to-one signature for every slot, but they still carry enough
+    partial coincidence to rule out obviously wrong permutations.
+    """
     exact_matches = 0
     overlap = 0
     for local_index, canonical_index in enumerate(permutation):
@@ -2756,7 +3550,7 @@ def _score_capture_permutation(
             exact_matches += 1
             overlap += len(alias_fp)
             continue
-            overlap += len(set(alias_fp) & set(canonical_fp))
+        overlap += len(set(alias_fp) & set(canonical_fp))
     return exact_matches, overlap
 
 
@@ -2764,6 +3558,14 @@ def _best_capture_permutation_by_exact_matches(
     canonical_fingerprints: Sequence[tuple[Any, ...]],
     alias_fingerprints: Sequence[tuple[Any, ...]],
 ) -> tuple[int, ...]:
+    """Pick the globally best slot permutation from the pairwise score table.
+
+    A greedy match is not reliable here: one early locally-good assignment can
+    block a better global arrangement for the remaining slots.  We therefore run
+    a small dynamic-programming assignment solver over the full permutation
+    space.  The state is `(local_index, used_mask)`, and the objective is the
+    lexicographic score returned by `_score_capture_permutation`.
+    """
     rep_count = len(alias_fingerprints)
     if rep_count <= 1:
         return tuple(range(rep_count))
@@ -2771,9 +3573,10 @@ def _best_capture_permutation_by_exact_matches(
     for alias_fp in alias_fingerprints:
         row_scores: list[tuple[int, int]] = []
         for canonical_fp in canonical_fingerprints:
-            exact_matches = 1 if alias_fp == canonical_fp else 0
-            overlap = len(alias_fp) if exact_matches else 0
-            row_scores.append((exact_matches, overlap))
+            if alias_fp == canonical_fp:
+                row_scores.append((1, len(alias_fp)))
+            else:
+                row_scores.append((0, len(set(alias_fp) & set(canonical_fp))))
         score_matrix.append(row_scores)
 
     memo: dict[tuple[int, int], tuple[tuple[int, int], tuple[int, ...]]] = {}
@@ -2847,6 +3650,13 @@ def _choose_canonical_capture_default_permutation(
     context_payload: dict[tuple[Any, ...], dict[int, list[tuple[Any, ...]]]],
     rep_count: int,
 ) -> tuple[int, ...]:
+    """Derive a deterministic slot order from the full set of context fingerprints.
+
+    We sort local slots by their multi-context signature.  Even when the current
+    publication build keeps the canonical capture in its raw order, this helper
+    is still useful as a stable reference for diagnostics and for experiments on
+    stronger publication-level relabeling policies.
+    """
     if rep_count <= 1:
         return tuple(range(rep_count))
     canonical_payload = _canonical_context_slot_payload(context_payload, rep_count)
@@ -2885,6 +3695,22 @@ def _build_publication_point_capture_permutations(
     reduction: dict[str, Any],
     point_unknown_ordering: dict[str, list[str]],
 ) -> dict[str, dict[str, dict[str, Any]]]:
+    """Infer how every point-capture ordering should be rewritten into publication order.
+
+    Publication points may merge several raw captures of the same geometric
+    point family.  Those captures often enumerate point irreps in different
+    local orders, and the order may even depend on which path context produced
+    the capture.  This helper gathers restriction fingerprints from all candidate
+    paths, then builds two levels of permutations:
+
+    1. `default`: the best global relabeling for a capture across all contexts;
+    2. `by_context`: an override used only for a specific `(source line,
+       opposite endpoint, line-group signature)` context.
+
+    The rest of the publication-shell builder can then transform every path row
+    into one consistent publication point-family basis before comparing row
+    spaces or selecting representative publication paths.
+    """
     candidate_records = list(reduction.get("candidate_path_records", []))
     by_point_capture: dict[str, dict[str, dict[int, list[tuple[Any, ...]]]]] = {}
     by_point_capture_context: dict[

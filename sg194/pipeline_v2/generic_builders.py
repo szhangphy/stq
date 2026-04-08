@@ -116,12 +116,21 @@ def shared_geometry_bundle(group_id: str) -> dict[str, Any]:
     prepared = port.prepare_kgeometry(group_id)
     grouped = prepared["grouped"]
     payload = prepared["payload"]
-    kgeom = {"payload": payload, "grouped": grouped, "connectivity": payload}
+    kgeom = {
+        "payload": payload,
+        "grouped": grouped,
+        "connectivity": payload,
+        "runtime_ctx": prepared["ctx"],
+        "line_orbit_to_id": prepared["line_orbit_to_id"],
+        "plane_orbit_to_id": prepared["plane_orbit_to_id"],
+    }
     synthetic_points = port.build_synthetic_boundary_points(kgeom)
     kgeom["synthetic_boundary_points"] = synthetic_points
     port.augment_connectivity_with_boundary_points(kgeom, synthetic_points)
     port.build_point_instance_entries(kgeom)
+    target_point_shell = port.reduce_final_point_path_shell(kgeom)["point_shell"]
     real_point_ids = [item["id"] for item in grouped["points"]]
+    target_point_ids = [item["point_id"] for item in target_point_shell]
     all_point_ids = real_point_ids + [item["id"] for item in synthetic_points]
     return {
         "group_id": group_id,
@@ -131,7 +140,8 @@ def shared_geometry_bundle(group_id: str) -> dict[str, Any]:
         "synthetic_points": synthetic_points,
         "real_point_ids": real_point_ids,
         "all_point_ids": all_point_ids,
-        "target_point_ids": real_point_ids,
+        "target_point_shell": target_point_shell,
+        "target_point_ids": target_point_ids,
     }
 
 
@@ -341,21 +351,21 @@ def _effective_exact_builder_variant(builder_variant: str) -> str:
 
 def _build_generic_plane_block(
     plane_obj: dict[str, Any],
-    corner_entries: list[dict[str, Any]],
+    point_entries: list[dict[str, Any]],
     captures: dict[str, Any],
 ) -> dict[str, Any]:
-    return stage1_backend().build_plane_block(plane_obj, corner_entries, captures)
+    return stage1_backend().build_plane_block(plane_obj, point_entries, captures)
 
 
 def _build_generic_plane_block_fallback(
     plane_obj: dict[str, Any],
-    corner_entries: list[dict[str, Any]],
+    point_entries: list[dict[str, Any]],
     captures: dict[str, Any],
     reason: str,
 ) -> dict[str, Any]:
     block = _build_restriction_class_rows(
         captures[plane_obj["id"]],
-        corner_entries,
+        point_entries,
         captures,
         source_type="plane",
         field="character",
@@ -370,15 +380,15 @@ def _build_generic_plane_block_fallback(
             }
         )
     local_unknown_ordering = []
-    for corner in corner_entries:
-        point_id = corner["point_id"]
-        point_raw = captures[corner.get("capture_id", point_id)]
+    for point_entry in point_entries:
+        point_id = point_entry["point_id"]
+        point_raw = captures[point_entry.get("capture_id", point_id)]
         for rep_index in range(1, len(point_raw["linear_character"]) + 1):
             local_unknown_ordering.append(f"{point_id}_R{rep_index}")
     return {
         "status": "fallback_restriction_classes",
         "plane_id": plane_obj["id"],
-        "corner_ids": [entry["point_id"] for entry in corner_entries],
+        "corner_ids": [entry["point_id"] for entry in point_entries],
         "plane_sample_point": plane_obj["sample_point"],
         "plane_parametrization": plane_obj["parametrization"],
         "plane_symmetry_summary": plane_obj["symmetry_summary"],
@@ -392,6 +402,64 @@ def _build_generic_plane_block_fallback(
             "n_unitary_ops": captures[plane_obj["id"]]["unitary_operation_count"],
         },
     }
+
+
+def _plane_special_point_entries(
+    grouped: dict[str, Any],
+    plane_obj: dict[str, Any],
+) -> list[dict[str, Any]]:
+    plane_id = str(plane_obj["id"])
+    entries: list[dict[str, Any]] = []
+    seen: set[tuple[str, tuple[str, str, str]]] = set()
+
+    def register(entry: dict[str, Any]) -> None:
+        key = (str(entry["point_id"]), tuple(str(value) for value in entry["point_coordinates"]))
+        if key in seen:
+            return
+        seen.add(key)
+        entries.append(
+            {
+                "point_id": str(entry["point_id"]),
+                "capture_id": str(entry.get("capture_id", entry["point_id"])),
+                "point_coordinates": [str(value) for value in entry["point_coordinates"]],
+                "incident_lines": list(entry.get("incident_lines", [])),
+                "incident_planes": list(entry.get("incident_planes", [])),
+                "plane_incidences": list(entry.get("plane_incidences", [])),
+            }
+        )
+
+    for entry in plane_obj.get("corner_entries", []):
+        register(entry)
+
+    for point in grouped["points"]:
+        if plane_id not in set(point.get("incident_planes", [])):
+            continue
+        plane_incidences = [
+            incidence
+            for incidence in point.get("plane_incidences", [])
+            if str(incidence.get("plane_id")) == plane_id
+        ]
+        if not plane_incidences:
+            continue
+        register(
+            {
+                "point_id": point["id"],
+                "capture_id": point["id"],
+                "point_coordinates": list(point["sample_point"]),
+                "incident_lines": list(point.get("incident_lines", [])),
+                "incident_planes": list(point.get("incident_planes", [])),
+                "plane_incidences": plane_incidences,
+            }
+        )
+
+    entries.sort(
+        key=lambda item: (
+            item["point_id"],
+            tuple(Fraction(value) for value in item["point_coordinates"]),
+            item["capture_id"],
+        )
+    )
+    return entries
 
 
 def _build_generic_compatibility(
@@ -428,10 +496,11 @@ def _build_generic_compatibility(
     plane_blocks = []
     plane_fallbacks = []
     for plane in grouped["planes"]:
+        plane_point_entries = _plane_special_point_entries(grouped, plane)
         try:
-            block = _build_generic_plane_block(plane, plane["corner_entries"], captures)
+            block = _build_generic_plane_block(plane, plane_point_entries, captures)
         except Exception as exc:
-            block = _build_generic_plane_block_fallback(plane, plane["corner_entries"], captures, str(exc))
+            block = _build_generic_plane_block_fallback(plane, plane_point_entries, captures, str(exc))
             plane_fallbacks.append({"plane_id": plane["id"], "reason": str(exc)})
         plane_blocks.append(block)
     with_planes = port.build_with_planes_compatibility(line_full, plane_blocks)
@@ -700,13 +769,30 @@ def _build_target_capture_catalog(
     *,
     shared: dict[str, Any],
 ) -> tuple[dict[tuple[str, str, str], list[dict[str, Any]]], dict[str, list[str]]]:
+    catalog: dict[tuple[str, str, str], list[dict[str, Any]]] = {}
+    target_point_shell = list(shared.get("target_point_shell") or [])
+    if target_point_shell:
+        point_representatives = {
+            point["point_id"]: _normalize_fraction_coordinates(point["representative_coordinates"])
+            for point in target_point_shell
+        }
+        for point in target_point_shell:
+            point_id = str(point["point_id"])
+            for alias in point.get("aliases", []):
+                _register_target_capture_entry(
+                    catalog,
+                    point_id=point_id,
+                    capture_id=str(alias.get("capture_id", point_id)),
+                    point_coordinates=list(alias["coordinates"]),
+                )
+        return catalog, point_representatives
+
     grouped = shared["grouped"]
     point_representatives = {
         point["id"]: _normalize_fraction_coordinates(point["sample_point"])
         for point in grouped["points"]
         if point["id"] in set(shared["target_point_ids"])
     }
-    catalog: dict[tuple[str, str, str], list[dict[str, Any]]] = {}
     for point_id, coords in point_representatives.items():
         _register_target_capture_entry(
             catalog,
@@ -1062,18 +1148,55 @@ def _build_target_line_blocks_for_window(
     blocks: list[dict[str, Any]] = []
     records: list[dict[str, Any]] = []
     seen_pairs: set[tuple[str, str, tuple[tuple[str, str, tuple[str, ...]], ...]]] = set()
+    target_point_ids = set(shared["target_point_ids"])
     for line in shared["grouped"]["lines"]:
-        allowed_point_ids = {endpoint["point_id"] for endpoint in line["endpoints"]}
+        resolved_grouped_endpoints = []
+        for endpoint in line["endpoints"]:
+            resolved = _resolve_target_capture_entry(
+                point_coordinates=list(endpoint["point_coordinates"]),
+                allowed_point_ids=target_point_ids,
+                catalog=catalog,
+                point_representatives=point_representatives,
+                captures=captures,
+                port=stage1_backend(),
+                module=module,
+                group_id=group_id,
+                ssg_dict=ssg_dict,
+                ctx=ctx,
+                mode=mode,
+            )
+            if resolved is None:
+                resolved_grouped_endpoints = []
+                break
+            resolved_grouped_endpoints.append(
+                {
+                    **resolved,
+                    "incident_lines": list(endpoint.get("incident_lines", [])),
+                    "incident_planes": list(endpoint.get("incident_planes", [])),
+                    "plane_incidences": list(endpoint.get("plane_incidences", [])),
+                }
+            )
+        if len(resolved_grouped_endpoints) != len(line["endpoints"]):
+            continue
+        if len({entry["point_id"] for entry in resolved_grouped_endpoints}) != 2:
+            continue
+        target_line_obj = {
+            **line,
+            "endpoints": [
+                {
+                    "point_id": entry["point_id"],
+                    "capture_id": entry["capture_id"],
+                    "point_coordinates": list(entry["point_coordinates"]),
+                    "incident_lines": list(entry.get("incident_lines", [])),
+                    "incident_planes": list(entry.get("incident_planes", [])),
+                    "plane_incidences": list(entry.get("plane_incidences", [])),
+                }
+                for entry in resolved_grouped_endpoints
+            ],
+        }
         representative_key = _unordered_target_line_pair_key(
             line["id"],
-            [
-                {
-                    "point_id": endpoint["point_id"],
-                    "capture_id": endpoint.get("capture_id", endpoint["point_id"]),
-                    "point_coordinates": list(endpoint["point_coordinates"]),
-                }
-                for endpoint in line["endpoints"]
-            ],
+            resolved_grouped_endpoints,
             window_tag="ordinary",
         )
         if window_tag == "ordinary":
@@ -1081,26 +1204,16 @@ def _build_target_line_blocks_for_window(
             if _target_line_family_requires_exact_rows(line, builder_variant=builder_variant):
                 blocks.append(
                     _build_target_restriction_line_block(
-                        source_line=line,
+                        source_line=target_line_obj,
                         block_id=line["id"],
-                        endpoint_entries=[
-                            {
-                                "point_id": endpoint["point_id"],
-                                "capture_id": endpoint.get("capture_id", endpoint["point_id"]),
-                                "point_coordinates": list(endpoint["point_coordinates"]),
-                                "incident_lines": list(endpoint.get("incident_lines", [])),
-                                "incident_planes": list(endpoint.get("incident_planes", [])),
-                                "plane_incidences": list(endpoint.get("plane_incidences", [])),
-                            }
-                            for endpoint in line["endpoints"]
-                        ],
+                        endpoint_entries=resolved_grouped_endpoints,
                         captures=captures,
                         builder_variant=builder_variant,
                         endpoint_label_key="point_id",
                     )
                 )
             else:
-                blocks.append(_build_generic_line_block(line, captures, builder_variant=builder_variant))
+                blocks.append(_build_generic_line_block(target_line_obj, captures, builder_variant=builder_variant))
             records.append(
                 {
                     "line_id": line["id"],
@@ -1109,11 +1222,11 @@ def _build_target_line_blocks_for_window(
                     "kind": "representative_grouped_line",
                     "endpoints": [
                         {
-                            "point_id": endpoint["point_id"],
-                            "capture_id": endpoint.get("capture_id", endpoint["point_id"]),
-                            "point_coordinates": list(endpoint["point_coordinates"]),
+                            "point_id": entry["point_id"],
+                            "capture_id": entry["capture_id"],
+                            "point_coordinates": list(entry["point_coordinates"]),
                         }
-                        for endpoint in line["endpoints"]
+                        for entry in resolved_grouped_endpoints
                     ],
                 }
             )
@@ -1129,7 +1242,7 @@ def _build_target_line_blocks_for_window(
                 ]
                 entry = _resolve_target_capture_entry(
                     point_coordinates=coords,
-                    allowed_point_ids=allowed_point_ids,
+                    allowed_point_ids=target_point_ids,
                     catalog=catalog,
                     point_representatives=point_representatives,
                     captures=captures,
@@ -1215,6 +1328,671 @@ def _build_target_real_line_blocks(
         end_sample=Fraction(1, 1),
         window_tag="ordinary",
     )
+
+
+def _canonical_target_monodromy_blocks(
+    monodromy_line_blocks: list[dict[str, Any]],
+    monodromy_records: list[dict[str, Any]],
+) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+    record_by_line_id = {
+        str(record["line_id"]): record
+        for record in monodromy_records
+        if record.get("kind") == "same_point_monodromy_restriction_class_line"
+    }
+    selected: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    seen_keys: set[tuple[str, str, int]] = set()
+    for block in monodromy_line_blocks:
+        record = record_by_line_id.get(str(block["line_id"]))
+        if record is None:
+            continue
+        pair = record.get("pair") or {}
+        point_id = str(pair.get("point_id") or "")
+        left_capture_id = str(pair.get("left_capture_id") or "")
+        right_capture_id = str(pair.get("right_capture_id") or "")
+        if not point_id or left_capture_id != point_id or left_capture_id == right_capture_id:
+            continue
+        key = (
+            str(pair.get("source_line_id") or block.get("source_line_id") or pair.get("line_family") or ""),
+            point_id,
+            int(pair.get("branch_index") or 0),
+        )
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+        selected.append((block, record))
+    return selected
+
+
+def _build_target_point_basis_relabel(
+    *,
+    publication_unknown_ordering: list[str],
+    captures: dict[str, Any],
+    ordinary_line_blocks: list[dict[str, Any]],
+    monodromy_line_blocks: list[dict[str, Any]],
+    monodromy_records: list[dict[str, Any]],
+) -> tuple[dict[str, str], dict[str, Any]]:
+    point_unknowns: dict[str, list[str]] = {}
+    for unknown in publication_unknown_ordering:
+        match = re.fullmatch(r"(.+)_R(\d+)", str(unknown))
+        if match is None:
+            continue
+        point_unknowns.setdefault(str(match.group(1)), []).append(str(unknown))
+
+    def rep_index(rep_id: str) -> int:
+        return int(str(rep_id).split("_R")[1])
+
+    relabel_map = {str(unknown): str(unknown) for unknown in publication_unknown_ordering}
+    debug_payload: dict[str, Any] = {}
+    point_canonical_orderings: dict[str, list[str]] = {}
+    point_has_nontrivial_basis_fix: dict[str, bool] = {}
+    point_signature: dict[str, tuple[tuple[int, int], ...]] = {}
+
+    for point_id, point_ordering in point_unknowns.items():
+        raw_unknowns = sorted(point_ordering, key=rep_index)
+        point_raw = captures.get(point_id, {})
+        rep_degree = [int(value) for value in point_raw.get("rep_degree", [])]
+        torsion = [int(value) for value in point_raw.get("torsion", [])]
+        point_signature[point_id] = tuple(zip(rep_degree, torsion))
+        parent = {rep_id: rep_id for rep_id in raw_unknowns}
+
+        def find(rep_id: str) -> str:
+            root = parent.setdefault(rep_id, rep_id)
+            while parent[root] != root:
+                parent[root] = parent[parent[root]]
+                root = parent[root]
+            parent[rep_id] = root
+            return root
+
+        def union(left: str, right: str) -> None:
+            left_root = find(left)
+            right_root = find(right)
+            if left_root != right_root:
+                parent[right_root] = left_root
+
+        for block, record in _canonical_target_monodromy_blocks(monodromy_line_blocks, monodromy_records):
+            pair = record.get("pair") or {}
+            if str(pair.get("point_id")) != point_id:
+                continue
+            cycles = (
+                block.get("monodromy_debug", {})
+                .get("permutation_debug", {})
+                .get("cycles", [])
+            )
+            for cycle in cycles:
+                members = [str(rep_id) for rep_id in cycle if str(rep_id) in parent]
+                if len(members) <= 1:
+                    continue
+                anchor = members[0]
+                for member in members[1:]:
+                    union(anchor, member)
+
+        grouped: dict[str, list[str]] = {}
+        for rep_id in raw_unknowns:
+            grouped.setdefault(find(rep_id), []).append(rep_id)
+        classes_by_root = {
+            root: sorted(members, key=rep_index)
+            for root, members in grouped.items()
+        }
+        signature_blocks: dict[tuple[int, int], list[str]] = {}
+        for raw_label, rep_degree_value, torsion_value in zip(raw_unknowns, rep_degree, torsion):
+            signature_blocks.setdefault((rep_degree_value, torsion_value), []).append(raw_label)
+
+        canonical_ordering: list[str] = []
+        nontrivial_basis_fix = False
+        debug_signature_blocks: list[dict[str, Any]] = []
+        for signature_key, block_members in signature_blocks.items():
+            classes = []
+            seen_roots: set[str] = set()
+            for rep_id in block_members:
+                root = find(rep_id)
+                if root in seen_roots:
+                    continue
+                seen_roots.add(root)
+                class_members = [member for member in classes_by_root[root] if member in set(block_members)]
+                classes.append(class_members)
+            classes.sort(key=lambda members: rep_index(members[0]))
+
+            class_discriminators: list[tuple[str, dict[str, tuple[tuple[str, int], ...]]]] = []
+            if any(len(members) > 1 for members in classes):
+                nontrivial_basis_fix = True
+                for block in ordinary_line_blocks:
+                    if point_id not in set(block.get("endpoint_ids", [])):
+                        continue
+                    endpoint_decompositions = block.get("endpoint_decompositions", {}).get(point_id, [])
+                    rep_signature = {
+                        str(rep["rep_id"]): tuple(
+                            (str(label), int(coeff))
+                            for label, coeff in sorted((rep.get("decomposition_on_line_basis") or {}).items())
+                            if int(coeff)
+                        )
+                        for rep in endpoint_decompositions
+                    }
+                    if not rep_signature:
+                        continue
+                    per_class_signature: dict[str, tuple[tuple[str, int], ...]] = {}
+                    used_signatures: set[tuple[tuple[str, int], ...]] = set()
+                    valid = True
+                    for members in classes:
+                        signatures = {rep_signature.get(rep_id) for rep_id in members}
+                        if None in signatures or len(signatures) != 1:
+                            valid = False
+                            break
+                        signature = next(iter(signatures))
+                        if signature in used_signatures:
+                            valid = False
+                            break
+                        used_signatures.add(signature)
+                        per_class_signature[members[0]] = signature
+                    if valid:
+                        class_discriminators.append((str(block["line_id"]), per_class_signature))
+
+            def class_sort_key(members: list[str]) -> tuple[Any, ...]:
+                anchor = members[0]
+                discriminator_key = tuple(
+                    signatures[anchor]
+                    for _, signatures in sorted(class_discriminators, key=lambda item: item[0])
+                )
+                return discriminator_key, rep_index(anchor)
+
+            ordered_classes = sorted(classes, key=class_sort_key)
+            block_canonical_ordering = [rep_id for members in ordered_classes for rep_id in members]
+            canonical_ordering.extend(block_canonical_ordering)
+            debug_signature_blocks.append(
+                {
+                    "signature": {
+                        "rep_degree": int(signature_key[0]),
+                        "torsion": int(signature_key[1]),
+                    },
+                    "raw_ordering": list(block_members),
+                    "monodromy_classes": [list(members) for members in classes],
+                    "class_discriminators": [
+                        {
+                            "line_id": line_id,
+                            "class_signatures": {
+                                class_anchor: [
+                                    {"basis_label": basis_label, "coeff": coeff}
+                                    for basis_label, coeff in signature
+                                ]
+                                for class_anchor, signature in signatures.items()
+                            },
+                        }
+                        for line_id, signatures in sorted(class_discriminators, key=lambda item: item[0])
+                    ],
+                    "canonical_ordering": list(block_canonical_ordering),
+                }
+            )
+
+        point_canonical_orderings[point_id] = canonical_ordering
+        point_has_nontrivial_basis_fix[point_id] = nontrivial_basis_fix
+        debug_payload[point_id] = {
+            "raw_ordering": list(raw_unknowns),
+            "signature_blocks": debug_signature_blocks,
+            "canonical_ordering": list(canonical_ordering),
+            "resolved_by_monodromy": nontrivial_basis_fix,
+        }
+
+    changed = True
+    while changed:
+        changed = False
+        for block in ordinary_line_blocks:
+            endpoint_ids = list(block.get("endpoint_ids", []))
+            if len(endpoint_ids) != 2:
+                continue
+            left_point_id, right_point_id = endpoint_ids
+            if point_signature.get(left_point_id) != point_signature.get(right_point_id):
+                continue
+            left_ordering = point_canonical_orderings.get(left_point_id)
+            right_ordering = point_canonical_orderings.get(right_point_id)
+            if left_ordering is None or right_ordering is None:
+                continue
+
+            left_reps = {
+                str(rep["rep_id"]): tuple(
+                    (str(label), int(coeff))
+                    for label, coeff in sorted((rep.get("decomposition_on_line_basis") or {}).items())
+                    if int(coeff)
+                )
+                for rep in block.get("endpoint_decompositions", {}).get(left_point_id, [])
+            }
+            right_reps = {
+                str(rep["rep_id"]): tuple(
+                    (str(label), int(coeff))
+                    for label, coeff in sorted((rep.get("decomposition_on_line_basis") or {}).items())
+                    if int(coeff)
+                )
+                for rep in block.get("endpoint_decompositions", {}).get(right_point_id, [])
+            }
+            if (
+                len(set(left_reps.values())) != len(left_reps)
+                or len(set(right_reps.values())) != len(right_reps)
+                or set(left_reps.values()) != set(right_reps.values())
+            ):
+                continue
+            right_by_signature = {signature: rep_id for rep_id, signature in right_reps.items()}
+            left_by_signature = {signature: rep_id for rep_id, signature in left_reps.items()}
+
+            if point_has_nontrivial_basis_fix.get(left_point_id) and not point_has_nontrivial_basis_fix.get(right_point_id):
+                point_canonical_orderings[right_point_id] = [
+                    right_by_signature[left_reps[rep_id]]
+                    for rep_id in left_ordering
+                ]
+                point_has_nontrivial_basis_fix[right_point_id] = True
+                debug_payload[right_point_id]["propagated_from_point"] = left_point_id
+                debug_payload[right_point_id]["propagated_via_line"] = str(block["line_id"])
+                debug_payload[right_point_id]["canonical_ordering"] = list(point_canonical_orderings[right_point_id])
+                changed = True
+            elif point_has_nontrivial_basis_fix.get(right_point_id) and not point_has_nontrivial_basis_fix.get(left_point_id):
+                point_canonical_orderings[left_point_id] = [
+                    left_by_signature[right_reps[rep_id]]
+                    for rep_id in right_ordering
+                ]
+                point_has_nontrivial_basis_fix[left_point_id] = True
+                debug_payload[left_point_id]["propagated_from_point"] = right_point_id
+                debug_payload[left_point_id]["propagated_via_line"] = str(block["line_id"])
+                debug_payload[left_point_id]["canonical_ordering"] = list(point_canonical_orderings[left_point_id])
+                changed = True
+
+    for point_id, canonical_ordering in point_canonical_orderings.items():
+        canonical_labels = [f"{point_id}_R{index}" for index in range(1, len(canonical_ordering) + 1)]
+        for raw_label, canonical_label in zip(canonical_ordering, canonical_labels):
+            relabel_map[raw_label] = canonical_label
+        debug_payload[point_id]["canonical_labels_by_raw_unknown"] = {
+            raw_label: relabel_map[raw_label]
+            for raw_label in sorted(point_unknowns[point_id], key=rep_index)
+        }
+
+    return relabel_map, debug_payload
+
+
+def _augment_published_target_compatibility_with_monodromy_rows(
+    *,
+    target_compatibility: dict[str, Any],
+    monodromy_line_blocks: list[dict[str, Any]],
+    monodromy_records: list[dict[str, Any]],
+    unknown_relabel_map: dict[str, str],
+) -> dict[str, Any]:
+    unknown_ordering = list(target_compatibility.get("global_unknown_ordering", []))
+    unknown_index = {str(unknown): index for index, unknown in enumerate(unknown_ordering)}
+    global_matrix = [list(row) for row in target_compatibility.get("global_matrix", [])]
+    global_matrix_rows = list(target_compatibility.get("global_matrix_rows", []))
+    row_provenance = list(target_compatibility.get("row_provenance", []))
+    monodromy_blocks: list[dict[str, Any]] = []
+
+    for block, record in _canonical_target_monodromy_blocks(monodromy_line_blocks, monodromy_records):
+        relabeled_equations: list[dict[str, Any]] = []
+        relabeled_matrix_rows: list[list[int]] = []
+        pair = record.get("pair") or {}
+        for row_index, equation in enumerate(block.get("equations", [])):
+            relabeled_terms = []
+            matrix_row = [0] * len(unknown_ordering)
+            for term in equation.get("terms", []):
+                raw_unknown = str(term["unknown"])
+                relabeled_unknown = str(unknown_relabel_map.get(raw_unknown, raw_unknown))
+                if relabeled_unknown not in unknown_index:
+                    raise ValueError(
+                        f"published target monodromy row references unknown outside published ordering: {relabeled_unknown}"
+                    )
+                coeff = int(term["coeff"])
+                matrix_row[unknown_index[relabeled_unknown]] += coeff
+                relabeled_terms.append({**term, "unknown": relabeled_unknown})
+            relabeled_equation = {**equation, "terms": relabeled_terms}
+            metadata = {key: value for key, value in relabeled_equation.items() if key != "terms"}
+            global_matrix.append(list(matrix_row))
+            global_matrix_rows.append(
+                {
+                    "source_type": "line",
+                    "line_id": block["line_id"],
+                    "basis_id": equation["basis_id"],
+                    "row_index_within_source": row_index,
+                    "builder_variant": block.get("builder_variant", "authoritative"),
+                    "equation_metadata": metadata,
+                    **metadata,
+                    "matrix_row": list(matrix_row),
+                }
+            )
+            row_provenance.append(
+                {
+                    "publication_monodromy_line_id": block["line_id"],
+                    "source_line_id": record.get("source_line_id"),
+                    "point_id": pair.get("point_id"),
+                    "left_capture_id": pair.get("left_capture_id"),
+                    "right_capture_id": pair.get("right_capture_id"),
+                    "basis_id": equation["basis_id"],
+                    "row_kind": equation.get("row_kind", "same_point_monodromy_restriction_delta"),
+                    "matrix_row": list(matrix_row),
+                }
+            )
+            relabeled_equations.append(relabeled_equation)
+            relabeled_matrix_rows.append(list(matrix_row))
+        if relabeled_equations:
+            monodromy_blocks.append(
+                {
+                    "line_id": block["line_id"],
+                    "source_line_id": block.get("source_line_id"),
+                    "endpoint_ids": list(block.get("endpoint_ids", [])),
+                    "equations": relabeled_equations,
+                    "matrix_rows": relabeled_matrix_rows,
+                    "target_line_block_kind": "monodromy_line",
+                    "compatibility_builder_kind": block.get("compatibility_builder_kind"),
+                }
+            )
+
+    return {
+        **target_compatibility,
+        "global_matrix_rows": global_matrix_rows,
+        "global_matrix": global_matrix,
+        "line_blocks": list(target_compatibility.get("line_blocks", [])) + monodromy_blocks,
+        "monodromy_line_blocks": monodromy_blocks,
+        "matrix_shape": [len(global_matrix), len(unknown_ordering)],
+        "row_provenance": row_provenance,
+        "monodromy_appended_row_count": sum(len(block["equations"]) for block in monodromy_blocks),
+    }
+
+
+def _build_publication_point_total_band_row_specs(
+    *,
+    publication_shell: dict[str, Any],
+    captures: dict[str, Any],
+    unknown_relabel_map: dict[str, str],
+) -> list[dict[str, Any]]:
+    publication_unknown_set = {
+        str(unknown) for unknown in publication_shell.get("publication_unknown_ordering", [])
+    }
+    row_specs: list[dict[str, Any]] = []
+    for point_id in publication_shell.get("publication_point_ids", []):
+        capture = captures.get(str(point_id))
+        if capture is None:
+            raise ValueError(
+                f"published point total-band-count row missing capture payload for point {point_id}"
+            )
+        rep_degrees = list(capture.get("rep_degree", []))
+        terms: list[dict[str, int | str]] = []
+        for rep_index, rep_degree in enumerate(rep_degrees, start=1):
+            coeff = int(rep_degree)
+            if coeff == 0:
+                continue
+            raw_unknown = f"{point_id}_R{rep_index}"
+            target_unknown = str(unknown_relabel_map.get(raw_unknown, raw_unknown))
+            if target_unknown not in publication_unknown_set:
+                raise ValueError(
+                    "published point total-band-count row references unknown outside published ordering: "
+                    f"{target_unknown}"
+                )
+            terms.append({"unknown": target_unknown, "coeff": coeff})
+        if terms:
+            row_specs.append(
+                {
+                    "point_id": str(point_id),
+                    "row_kind": "published_point_total_band_count",
+                    "terms": terms,
+                }
+            )
+    return row_specs
+
+
+def _build_publication_imported_point_class_balance_row_specs(
+    *,
+    publication_shell: dict[str, Any],
+    target_point_basis_debug: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Build extra published point rows imported from a neighboring point.
+
+    This helper is intentionally narrow.  It only fires when a published point
+    was formed by merging multiple aliases, the point itself still has an
+    unresolved point-internal naming ambiguity, and an adjacent publication path
+    gives a full one-to-one bijection between the source-point unknowns and the
+    target-point unknowns.
+
+    The core idea is:
+    1. Detect a source point whose point-internal monodromy split is already
+       understood in a clean binary way.
+    2. Transport that split across a fully bijective publication path.
+    3. Materialize the transported split as a point-level balance row on the
+       target point.
+
+    This stays benchmark-free: it only uses the current publication shell and
+    the point-basis debug payload generated by the same build.
+    """
+    publication_point_shell = publication_shell.get("publication_point_shell") or {}
+    point_entries = {
+        str(point["point_id"]): point
+        for point in publication_point_shell.get("points", [])
+    }
+    point_unknown_ordering = {
+        str(point_id): [str(unknown) for unknown in unknowns]
+        for point_id, unknowns in (publication_point_shell.get("point_unknown_ordering") or {}).items()
+    }
+    publication_unknown_ordering = [
+        str(unknown) for unknown in publication_shell.get("publication_unknown_ordering", [])
+    ]
+    publication_unknown_set = set(publication_unknown_ordering)
+
+    def rep_index(rep_id: str) -> int:
+        match = re.fullmatch(r".+_R(\d+)", str(rep_id))
+        if match is None:
+            raise ValueError(f"invalid rep label: {rep_id}")
+        return int(match.group(1))
+
+    def point_id_from_unknown(unknown: str) -> str | None:
+        match = re.fullmatch(r"(.+)_R\d+", str(unknown))
+        return None if match is None else str(match.group(1))
+
+    alias_multiplicity = {
+        point_id: max(1, len(point.get("aliases", [])))
+        for point_id, point in point_entries.items()
+    }
+    canonical_unknown_signatures: dict[str, dict[str, tuple[int, int]]] = {}
+    canonical_block_by_signature: dict[str, dict[tuple[int, int], dict[str, Any]]] = {}
+    direct_binary_class_blocks: dict[str, list[dict[str, Any]]] = {}
+
+    for point_id, point_debug in (target_point_basis_debug or {}).items():
+        canonical_labels = {
+            str(raw_unknown): str(canonical_unknown)
+            for raw_unknown, canonical_unknown in (
+                point_debug.get("canonical_labels_by_raw_unknown") or {}
+            ).items()
+        }
+        point_signatures: dict[str, tuple[int, int]] = {}
+        block_by_signature: dict[tuple[int, int], dict[str, Any]] = {}
+        for block in point_debug.get("signature_blocks", []):
+            signature = block.get("signature") or {}
+            signature_key = (
+                int(signature.get("rep_degree", 0) or 0),
+                int(signature.get("torsion", 0) or 0),
+            )
+            raw_ordering = [str(unknown) for unknown in block.get("raw_ordering", [])]
+            canonical_ordering = [
+                str(canonical_labels.get(raw_unknown, raw_unknown))
+                for raw_unknown in raw_ordering
+            ]
+            for canonical_unknown in canonical_ordering:
+                point_signatures[canonical_unknown] = signature_key
+            block_by_signature[signature_key] = {
+                **block,
+                "canonical_ordering": canonical_ordering,
+            }
+            canonical_classes = [
+                [
+                    str(canonical_labels.get(raw_unknown, raw_unknown))
+                    for raw_unknown in monodromy_class
+                ]
+                for monodromy_class in block.get("monodromy_classes", [])
+            ]
+            if len(canonical_classes) != 2:
+                continue
+            if block.get("class_discriminators"):
+                continue
+            if not all(len(class_members) > 1 for class_members in canonical_classes):
+                continue
+            class_sizes = {len(class_members) for class_members in canonical_classes}
+            if len(class_sizes) != 1:
+                continue
+            flattened = [unknown for class_members in canonical_classes for unknown in class_members]
+            if sorted(flattened, key=rep_index) != sorted(canonical_ordering, key=rep_index):
+                continue
+            direct_binary_class_blocks.setdefault(str(point_id), []).append(
+                {
+                    "signature_key": signature_key,
+                    "rep_degree": int(signature_key[0]),
+                    "canonical_classes": [
+                        sorted(class_members, key=rep_index)
+                        for class_members in canonical_classes
+                    ],
+                }
+            )
+        canonical_unknown_signatures[str(point_id)] = point_signatures
+        canonical_block_by_signature[str(point_id)] = block_by_signature
+
+    def publication_path_full_bijection(
+        path: dict[str, Any],
+    ) -> dict[str, dict[str, str]] | None:
+        """Return a two-way point-to-point unknown bijection when a path is pure matching.
+
+        We only accept publication paths whose selected rows are all two-term
+        `+1/-1` equations.  Such a path behaves like a relabeling edge rather
+        than a genuine many-to-one compatibility collapse, so it is safe to use
+        for importing a point-internal class split from one endpoint to the
+        other.
+        """
+        endpoint_pair = [str(point_id) for point_id in path.get("endpoint_pair", [])]
+        if len(endpoint_pair) != 2:
+            return None
+        left_point_id, right_point_id = endpoint_pair
+        left_unknowns = set(point_unknown_ordering.get(left_point_id, []))
+        right_unknowns = set(point_unknown_ordering.get(right_point_id, []))
+        if not left_unknowns or not right_unknowns:
+            return None
+        left_to_right: dict[str, str] = {}
+        right_to_left: dict[str, str] = {}
+        for row_record in path.get("selected_basis_row_records", []):
+            matrix_row = [int(value) for value in row_record.get("matrix_row", [])]
+            nonzero_terms = [
+                (publication_unknown_ordering[column_index], int(value))
+                for column_index, value in enumerate(matrix_row)
+                if int(value) != 0
+            ]
+            if len(nonzero_terms) != 2 or {abs(coeff) for _, coeff in nonzero_terms} != {1}:
+                return None
+            first_unknown, _ = nonzero_terms[0]
+            second_unknown, _ = nonzero_terms[1]
+            first_point_id = point_id_from_unknown(first_unknown)
+            second_point_id = point_id_from_unknown(second_unknown)
+            if {first_point_id, second_point_id} != {left_point_id, right_point_id}:
+                return None
+            if first_point_id == left_point_id:
+                left_unknown = first_unknown
+                right_unknown = second_unknown
+            else:
+                left_unknown = second_unknown
+                right_unknown = first_unknown
+            if left_unknown not in left_unknowns or right_unknown not in right_unknowns:
+                return None
+            existing_right = left_to_right.get(left_unknown)
+            existing_left = right_to_left.get(right_unknown)
+            if (
+                existing_right is not None
+                and existing_right != right_unknown
+                or existing_left is not None
+                and existing_left != left_unknown
+            ):
+                return None
+            left_to_right[left_unknown] = right_unknown
+            right_to_left[right_unknown] = left_unknown
+        if set(left_to_right) != left_unknowns or set(right_to_left) != right_unknowns:
+            return None
+        return {
+            left_point_id: left_to_right,
+            right_point_id: right_to_left,
+        }
+
+    row_specs: list[dict[str, Any]] = []
+    seen_row_keys: set[tuple[str, tuple[int, int], tuple[str, ...], tuple[str, ...]]] = set()
+    for path in publication_shell.get("publication_paths", []):
+        bijection_by_point = publication_path_full_bijection(path)
+        if bijection_by_point is None:
+            continue
+        endpoint_pair = [str(point_id) for point_id in path.get("endpoint_pair", [])]
+        for source_point_id, target_point_id in (
+            (endpoint_pair[0], endpoint_pair[1]),
+            (endpoint_pair[1], endpoint_pair[0]),
+        ):
+            if alias_multiplicity.get(target_point_id, 1) <= 1:
+                continue
+            target_debug = (target_point_basis_debug or {}).get(target_point_id) or {}
+            if bool(target_debug.get("resolved_by_monodromy")):
+                continue
+            for block in direct_binary_class_blocks.get(source_point_id, []):
+                signature_key = block["signature_key"]
+                target_block = canonical_block_by_signature.get(target_point_id, {}).get(signature_key)
+                if target_block is None:
+                    continue
+                if target_block.get("class_discriminators"):
+                    continue
+                target_monodromy_classes = target_block.get("monodromy_classes", [])
+                if any(len(class_members) > 1 for class_members in target_monodromy_classes):
+                    continue
+                mapped_classes: list[list[str]] = []
+                used_unknowns: set[str] = set()
+                target_signature_map = canonical_unknown_signatures.get(target_point_id, {})
+                point_mapping = bijection_by_point[source_point_id]
+                for source_class in block["canonical_classes"]:
+                    target_class: list[str] = []
+                    for source_unknown in source_class:
+                        target_unknown = point_mapping.get(source_unknown)
+                        if target_unknown is None:
+                            target_class = []
+                            break
+                        if target_signature_map.get(target_unknown) != signature_key:
+                            target_class = []
+                            break
+                        if target_unknown not in publication_unknown_set:
+                            target_class = []
+                            break
+                        target_class.append(target_unknown)
+                    if not target_class:
+                        mapped_classes = []
+                        break
+                    target_class = sorted(target_class, key=rep_index)
+                    if used_unknowns.intersection(target_class):
+                        mapped_classes = []
+                        break
+                    used_unknowns.update(target_class)
+                    mapped_classes.append(target_class)
+                if len(mapped_classes) != 2:
+                    continue
+                row_key = (
+                    str(target_point_id),
+                    signature_key,
+                    tuple(mapped_classes[0]),
+                    tuple(mapped_classes[1]),
+                )
+                if row_key in seen_row_keys:
+                    continue
+                seen_row_keys.add(row_key)
+                anchor_terms = [
+                    {"unknown": str(unknown), "coeff": int(block["rep_degree"])}
+                    for unknown in mapped_classes[0]
+                ]
+                other_terms = [
+                    {"unknown": str(unknown), "coeff": -int(block["rep_degree"])}
+                    for unknown in mapped_classes[1]
+                ]
+                row_specs.append(
+                    {
+                        "point_id": str(target_point_id),
+                        "source_point_id": str(source_point_id),
+                        "publication_path_id": str(path["publication_path_id"]),
+                        "publication_path_class_id": str(path["publication_path_class_id"]),
+                        "signature": {
+                            "rep_degree": int(signature_key[0]),
+                            "torsion": int(signature_key[1]),
+                        },
+                        "imported_classes": [list(class_members) for class_members in mapped_classes],
+                        "row_kind": "published_point_imported_class_balance",
+                        "terms": anchor_terms + other_terms,
+                    }
+                )
+    return row_specs
 
 
 def _collect_same_point_monodromy_pairs(
@@ -1676,6 +2454,18 @@ def _build_target_monodromy_line_blocks(
     records: list[dict[str, Any]] = []
     port = stage1_backend()
     branch_line_raw_cache: dict[tuple[str, int], dict[str, Any]] = {}
+    point_alias_multiplicity = {
+        str(point["point_id"]): max(
+            1,
+            len(
+                {
+                    str(alias.get("member_point_id", point["point_id"]))
+                    for alias in point.get("aliases", [])
+                }
+            ),
+        )
+        for point in shared.get("target_point_shell", [])
+    }
     pairs = _collect_same_point_monodromy_pairs(
         shared=shared,
         captures=captures,
@@ -1688,15 +2478,37 @@ def _build_target_monodromy_line_blocks(
         point_representatives=point_representatives,
     )
     continuation_counts: dict[tuple[str, str], int] = {}
+    canonical_point_level_pair_key: dict[tuple[str, str], tuple[int, str, str]] = {}
     for pair in pairs:
         key = (str(pair["source_line_id"]), str(pair["point_id"]))
         continuation_counts[key] = continuation_counts.get(key, 0) + 1
+        candidate_key = (
+            0 if str(pair["left_capture_id"]) == str(pair["point_id"]) else 1,
+            int(pair["branch_index"]),
+            str(pair["left_capture_id"]),
+            str(pair["right_capture_id"]),
+        )
+        current_key = canonical_point_level_pair_key.get(key)
+        if current_key is None or candidate_key < current_key:
+            canonical_point_level_pair_key[key] = candidate_key
     for pair in pairs:
         key = (str(pair["source_line_id"]), str(pair["point_id"]))
+        pair_key = (
+            0 if str(pair["left_capture_id"]) == str(pair["point_id"]) else 1,
+            int(pair["branch_index"]),
+            str(pair["left_capture_id"]),
+            str(pair["right_capture_id"]),
+        )
         pair = {
             **pair,
             "continuation_multiplicity": continuation_counts[key],
-            "point_level_equation_allowed": continuation_counts[key] == 1,
+            "point_level_equation_allowed": (
+                continuation_counts[key] == 1
+                or (
+                    point_alias_multiplicity.get(str(pair["point_id"]), 1) > 1
+                    and pair_key == canonical_point_level_pair_key.get(key)
+                )
+            ),
         }
         line_cache_key = (pair["source_line_id"], int(pair["branch_index"]))
         line_raw = branch_line_raw_cache.get(line_cache_key)
@@ -1825,6 +2637,9 @@ def _build_same_shell_target_row_language(
     target_compatibility = None
     target_bs_analysis = None
     target_unknown_ordering: list[str] = []
+    publication_shell = None
+    target_unknown_relabel_map: dict[str, str] = {}
+    target_point_basis_debug: dict[str, Any] = {}
     if availability == "available":
         assembly_compatibility = port.build_global_compatibility(
             target_line_blocks,
@@ -1837,11 +2652,103 @@ def _build_same_shell_target_row_language(
             target_compatibility = assembly_compatibility
             target_bs_analysis = assembly_bs_analysis
             target_unknown_ordering = list(assembly_unknown_ordering)
+            reduction = port.reduce_final_point_path_shell(shared["kgeom"])
+            candidate_lines = port.annotate_final_path_lines(
+                reduction["candidate_line_specs"],
+                shared["kgeom"]["runtime_ctx"],
+                shared["kgeom"]["line_orbit_to_id"],
+                shared["kgeom"]["plane_orbit_to_id"],
+            )
+            port.capture_final_path_lines(module, group_id, ssg_dict, ctx, mode, captures, candidate_lines)
+            candidate_blocks = [
+                port.build_line_block(
+                    line,
+                    captures,
+                    phase_aware_profile="legacy",
+                    builder_variant=builder_variant,
+                )
+                for line in candidate_lines
+            ]
+            candidate_analysis = port.analyze_candidate_path_selection(
+                reduction,
+                port.build_candidate_path_records(reduction, candidate_blocks),
+            )
+            reduction = port.finalize_reduction_from_candidate_analysis(reduction, candidate_analysis)
+            # The published target object is a point/path shell. Plane and generic
+            # manifold blocks stay available in the current-shell compatibility,
+            # but they are not re-injected as published target rows.
+            publication_shell = port.build_publication_shell_candidate(reduction)
+            target_unknown_relabel_map, target_point_basis_debug = _build_target_point_basis_relabel(
+                publication_unknown_ordering=list(publication_shell["publication_unknown_ordering"]),
+                captures=captures,
+                ordinary_line_blocks=ordinary_line_blocks,
+                monodromy_line_blocks=monodromy_line_blocks,
+                monodromy_records=monodromy_records,
+            )
+            publication_shell = {
+                **publication_shell,
+                "publication_unknown_ordering": [
+                    str(target_unknown_relabel_map.get(unknown, unknown))
+                    for unknown in publication_shell["publication_unknown_ordering"]
+                ],
+                "target_unknown_relabel_map": dict(target_unknown_relabel_map),
+                "target_point_basis_debug": dict(target_point_basis_debug),
+                "publication_point_total_band_row_specs": _build_publication_point_total_band_row_specs(
+                    publication_shell={
+                        **publication_shell,
+                        "publication_unknown_ordering": [
+                            str(target_unknown_relabel_map.get(unknown, unknown))
+                            for unknown in publication_shell["publication_unknown_ordering"]
+                        ],
+                    },
+                    captures=captures,
+                    unknown_relabel_map=target_unknown_relabel_map,
+                ),
+                "publication_point_imported_class_balance_row_specs": _build_publication_imported_point_class_balance_row_specs(
+                    publication_shell={
+                        **publication_shell,
+                        "publication_unknown_ordering": [
+                            str(target_unknown_relabel_map.get(unknown, unknown))
+                            for unknown in publication_shell["publication_unknown_ordering"]
+                        ],
+                    },
+                    target_point_basis_debug=target_point_basis_debug,
+                ),
+            }
+            target_compatibility = port.build_publication_C_matrix(publication_shell)
+            target_compatibility = _augment_published_target_compatibility_with_monodromy_rows(
+                target_compatibility=target_compatibility,
+                monodromy_line_blocks=monodromy_line_blocks,
+                monodromy_records=monodromy_records,
+                unknown_relabel_map=target_unknown_relabel_map,
+            )
+            target_bs_analysis = port.analyze_kernel(target_compatibility)
+            target_unknown_ordering = list(target_compatibility["global_unknown_ordering"])
         else:
             availability = "blocked"
             blocker_stage = "generic_published_target_universe_unresolved"
             blocker = "assembly universe is available but published target universe is unresolved"
     target_bs_rank = None if target_bs_analysis is None else int(len(target_bs_analysis.get("basis_vectors", [])))
+    alias_to_canonical_point: dict[str, str] = {}
+    for point in shared.get("target_point_shell", []):
+        canonical_point_id = str(point["point_id"])
+        alias_to_canonical_point[canonical_point_id] = canonical_point_id
+        for alias in point.get("aliases", []):
+            alias_to_canonical_point[str(alias.get("member_point_id", canonical_point_id))] = canonical_point_id
+    target_unknown_set = set(target_unknown_ordering)
+    current_to_target_unknown_map: dict[str, str] = {}
+    for unknown in current_unknown_ordering:
+        match = re.fullmatch(r"(.+)_R(\d+)", str(unknown))
+        if match is None:
+            if unknown in target_unknown_set:
+                current_to_target_unknown_map[str(unknown)] = str(unknown)
+            continue
+        point_id, rep_index = match.groups()
+        canonical_point_id = alias_to_canonical_point.get(point_id, point_id)
+        raw_target_unknown = f"{canonical_point_id}_R{rep_index}"
+        target_unknown = str(target_unknown_relabel_map.get(raw_target_unknown, raw_target_unknown))
+        if target_unknown in target_unknown_set:
+            current_to_target_unknown_map[str(unknown)] = target_unknown
     return {
         "group": group_id,
         "mode": mode,
@@ -1892,6 +2799,9 @@ def _build_same_shell_target_row_language(
         "ordinary_line_block_count": len(ordinary_line_blocks),
         "monodromy_line_block_count": len(monodromy_line_blocks),
         "current_unknown_ordering": current_unknown_ordering,
+        "current_to_target_unknown_map": current_to_target_unknown_map,
+        "target_unknown_relabel_map": target_unknown_relabel_map,
+        "publication_shell": publication_shell,
         "evidence": {
             "target_point_ids": list(target_point_ids),
             "target_capture_ids": list(target_capture_ids),
@@ -1912,12 +2822,15 @@ def _build_same_shell_target_row_language(
                 else None
             ),
             "target_bs_rank": target_bs_rank,
+            "current_to_target_unknown_map": current_to_target_unknown_map,
+            "target_unknown_relabel_map": target_unknown_relabel_map,
+            "target_point_basis_debug": target_point_basis_debug,
             "ordinary_target_line_records": ordinary_records,
             "monodromy_line_records": monodromy_records,
         },
         "_compatibility_rows": (
-            list(assembly_compatibility.get("global_matrix_rows", []))
-            if assembly_compatibility is not None
+            list(target_compatibility.get("global_matrix_rows", []))
+            if target_compatibility is not None
             else []
         ),
     }
@@ -1966,11 +2879,16 @@ def _reindex_candidate_to_target_unknown_ordering(
     candidate: dict[str, Any],
     current_unknown_ordering: list[str],
     target_unknown_ordering: list[str],
+    unknown_relabel_map: dict[str, str] | None = None,
 ) -> list[int]:
-    values = {
-        label: int(candidate["unknown_vector"][index])
-        for index, label in enumerate(current_unknown_ordering)
-    }
+    values: dict[str, int] = {}
+    for index, label in enumerate(current_unknown_ordering):
+        target_label = (
+            str(unknown_relabel_map.get(label, label))
+            if unknown_relabel_map is not None
+            else str(label)
+        )
+        values[target_label] = values.get(target_label, 0) + int(candidate["unknown_vector"][index])
     return [int(values.get(label, 0)) for label in target_unknown_ordering]
 
 
@@ -2031,6 +2949,7 @@ def _build_same_shell_target_quotient(
     target_compatibility = target_row_language.get("target_compatibility") or {}
     target_unknown_ordering = list(target_row_language.get("target_unknown_ordering", []))
     current_unknown_ordering = list(target_row_language.get("current_unknown_ordering", []))
+    current_to_target_unknown_map = dict(target_row_language.get("current_to_target_unknown_map") or {})
     compatibility_rows = list(target_compatibility.get("global_matrix_rows", []))
     basis_vectors = [item["vector"] for item in target_bs_analysis.get("basis_vectors", [])]
     target_bs_matrix = (
@@ -2052,6 +2971,7 @@ def _build_same_shell_target_quotient(
             candidate,
             current_unknown_ordering,
             target_unknown_ordering,
+            current_to_target_unknown_map,
         )
         target_residual_rows = []
         for row_index, item in enumerate(compatibility_rows):
@@ -2774,6 +3694,71 @@ def _build_generic_same_shell_target_object(
     }
 
 
+def _build_generic_same_shell_bs_only_object(
+    *,
+    group_id: str,
+    mode: str,
+    target_row_language: dict[str, Any],
+    blocker_stage: str,
+    blocker: str,
+) -> dict[str, Any]:
+    target_bs_rank = target_row_language.get("target_bs_rank")
+    publication_shell = target_row_language.get("publication_shell") or {}
+    evidence = {
+        "target_row_language": target_row_language,
+        "publication_point_ids": list(publication_shell.get("publication_point_ids", [])),
+        "publication_actual_endpoint_pairs": list(publication_shell.get("publication_actual_endpoint_pairs", [])),
+    }
+    return {
+        "object_id": f"{mode}_target_same_shell",
+        "group": group_id,
+        "mode": mode,
+        "row_language_kind": GENERIC_TARGET_ROW_LANGUAGE,
+        "object_kind": GENERIC_TARGET_OBJECT_KIND,
+        "availability": "blocked",
+        "exact_alignment_status": "generic_same_shell_target_bs_only_ready",
+        "generic_builder_ready": target_row_language.get("availability") == "available",
+        "generic_published_classification_ready": False,
+        "target_alignment_builder_status": (
+            "available" if target_row_language.get("availability") == "available" else "blocked"
+        ),
+        "direct_quotient_status": blocker_stage,
+        "local_ai_embedding_status": blocker_stage,
+        "dBS": target_bs_rank,
+        "dAI": None,
+        "ai_image_rank_in_bs": None,
+        "dbs_dai_gap": None,
+        "dbs_minus_ai_image_rank": None,
+        "free_rank": None,
+        "finite_part": [],
+        "classification": None,
+        "smith_diagonal_nonzero": [],
+        "object_semantics": "published_target_row_language_only",
+        "reported_dbs_semantics": "published_target_rank",
+        "reported_dai_semantics": "unavailable_before_local_ai_seed",
+        "classification_derivation_basis": None,
+        "same_shell_semantics": "published_target_row_language_only",
+        "quotient_semantics": "unavailable_before_local_ai_seed",
+        "promotion_reason": "same_shell_target_quotient_not_available",
+        "same_shell_rank_check": {
+            "dBS": target_bs_rank,
+            "dAI": None,
+            "ai_image_rank_in_bs": None,
+        },
+        "verification_status": "bs_only_available",
+        "source": "generic_symmetry_ops_same_shell_target_builder",
+        "blocker_stage": blocker_stage,
+        "blocker": blocker,
+        "target_row_language": target_row_language,
+        "target_quotient": None,
+        "full_current_shell_quotient": None,
+        "projected_point_shell_attempt": None,
+        "evidence": evidence,
+        "blocker_evidence": evidence,
+        "quotient": None,
+    }
+
+
 def _generic_progress_payload(
     group_id: str,
     mode: str,
@@ -2807,6 +3792,40 @@ def _generic_progress_payload(
     family_count = None
     if local_library is not None:
         family_count = len(local_library.get("families", {}))
+    bs_only_target = None
+    bs_only_builder_status = "blocked"
+    bs_only_blocker_stage = None
+    bs_only_blocker = None
+    bs_only_classification_ready = False
+    if target_row_language is not None:
+        publication_shell = target_row_language.get("publication_shell") or {}
+        bs_only_target = {
+            "availability": target_row_language.get("availability"),
+            "blocker_stage": target_row_language.get("blocker_stage"),
+            "blocker": target_row_language.get("blocker"),
+            "object_kind": target_row_language.get("object_kind"),
+            "object_semantics": target_row_language.get("object_semantics"),
+            "target_bs_rank": target_row_language.get("target_bs_rank"),
+            "target_unknown_count": target_row_language.get("target_unknown_count"),
+            "target_unknown_ordering": list(target_row_language.get("target_unknown_ordering", [])),
+            "target_point_ids": list(
+                target_row_language.get("target_global_point_ids")
+                or target_row_language.get("target_point_ids_current")
+                or []
+            ),
+            "publication_point_ids": list(publication_shell.get("publication_point_ids", [])),
+            "publication_path_pairs": list(publication_shell.get("publication_actual_path_pairs", [])),
+            "publication_plane_pairs": list(publication_shell.get("publication_actual_plane_pairs", [])),
+            "publication_endpoint_pairs": list(publication_shell.get("publication_actual_endpoint_pairs", [])),
+            "publication_path_count": len(publication_shell.get("publication_paths", [])),
+            "publication_plane_count": len(publication_shell.get("publication_planes", [])),
+        }
+        bs_only_builder_status = (
+            "available" if target_row_language.get("availability") == "available" else "blocked"
+        )
+        bs_only_blocker_stage = target_row_language.get("blocker_stage")
+        bs_only_blocker = target_row_language.get("blocker")
+        bs_only_classification_ready = target_row_language.get("target_bs_rank") is not None
     return {
         "generated_at": now_iso(),
         "group": group_id,
@@ -2824,6 +3843,11 @@ def _generic_progress_payload(
         "ai_candidate_count": candidate_count,
         "ai_failure_count": failure_count,
         "target_row_language": target_row_language,
+        "bs_only_target": bs_only_target,
+        "bs_only_builder_status": bs_only_builder_status,
+        "bs_only_blocker_stage": bs_only_blocker_stage,
+        "bs_only_blocker": bs_only_blocker,
+        "bs_only_classification_ready": bs_only_classification_ready,
         "same_shell_target": same_shell_target,
         "blocker_stage": blocker_stage,
         "blocker": blocker,
@@ -2916,7 +3940,17 @@ def generic_mode_progress(group_id: str, mode: str, builder_variant: str = "auth
         )
 
     try:
-        local_library = _build_local_irrep_library(ctx, mode)
+        target_row_language = _build_same_shell_target_row_language(
+            shared=shared,
+            compatibility=compatibility,
+            bs_analysis=bs_analysis,
+            captures=captures,
+            module=module,
+            ssg_dict=ssg_dict,
+            ctx=ctx,
+            mode=mode,
+            builder_variant=builder_variant,
+        )
     except Exception as exc:
         return _generic_progress_payload(
             group_id,
@@ -2924,11 +3958,38 @@ def generic_mode_progress(group_id: str, mode: str, builder_variant: str = "auth
             builder_variant,
             shared=shared,
             compatibility=compatibility,
+            blocker_stage="generic_target_row_language_builder_error",
+            blocker=str(exc),
+            current_row_shell_status="available",
+            local_ai_seed_status="available",
+            compatibility_builder_status="available",
+        )
+
+    try:
+        local_library = _build_local_irrep_library(ctx, mode)
+    except Exception as exc:
+        same_shell_target = _build_generic_same_shell_bs_only_object(
+            group_id=group_id,
+            mode=mode,
+            target_row_language=target_row_language,
+            blocker_stage="generic_local_ai_seed_builder_error",
+            blocker=str(exc),
+        )
+        return _generic_progress_payload(
+            group_id,
+            mode,
+            builder_variant,
+            shared=shared,
+            compatibility=compatibility,
+            target_row_language=target_row_language,
+            same_shell_target=same_shell_target,
             blocker_stage="generic_local_ai_seed_builder_error",
             blocker=str(exc),
             current_row_shell_status="available",
             local_ai_seed_status="blocked",
             compatibility_builder_status="available",
+            target_alignment_builder_status=same_shell_target.get("target_alignment_builder_status", "blocked"),
+            generic_builder_ready=bool(same_shell_target.get("generic_builder_ready", False)),
         )
 
     try:
@@ -2961,17 +4022,6 @@ def generic_mode_progress(group_id: str, mode: str, builder_variant: str = "auth
         bs_analysis,
         compatibility,
         induced,
-    )
-    target_row_language = _build_same_shell_target_row_language(
-        shared=shared,
-        compatibility=compatibility,
-        bs_analysis=bs_analysis,
-        captures=captures,
-        module=module,
-        ssg_dict=ssg_dict,
-        ctx=ctx,
-        mode=mode,
-        builder_variant=builder_variant,
     )
     target_quotient = _build_same_shell_target_quotient(
         target_row_language=target_row_language,

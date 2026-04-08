@@ -34,13 +34,21 @@ COMMON_SSGREPS_ROOT = COMMON_ROOT / "SSGReps"
 COMMON_SSG_DATA_ROOT = COMMON_SSGREPS_ROOT / "ssg_data"
 IDENTIFY_PKL = COMMON_SSG_DATA_ROOT / "identify.pkl"
 IDENTIFY_TAR = COMMON_SSG_DATA_ROOT / "identify.pkl.tar.gz"
-MSG_PKL = Path("/data/work/szhang/ssg/msgid/msg.pkl")
+# Prefer a repo-local msg.pkl when present so a checked-out branch can run
+# without depending on an external absolute-path data drop.
+REPO_LOCAL_MSG_PKL = COMMON_SSG_DATA_ROOT / "msg.pkl"
+EXTERNAL_MSG_PKL = Path("/data/work/szhang/ssg/msgid/msg.pkl")
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 import numpy as np
 import sympy as sp
 from sympy.matrices.normalforms import smith_normal_form
+from sympy.parsing.sympy_parser import (
+    implicit_multiplication_application,
+    parse_expr,
+    standard_transformations,
+)
 
 from common import swyckoff_k, swyckoff_r
 
@@ -232,6 +240,7 @@ ZERO = Fraction(0, 1)
 HALF = Fraction(1, 2)
 LINE_SAMPLE = Fraction(1, 5)
 BOUNDARY_VALUES = (ZERO, HALF)
+PARSER_TRANSFORMS = standard_transformations + (implicit_multiplication_application,)
 # Historical SG194-specific refinement profile. Keep it available as an
 # explicit opt-in, but do not treat it as the generic published-BS default.
 AUTHORITATIVE_PHASE_AWARE_PROFILE = "phase_aware_l2_projective_v1"
@@ -498,14 +507,18 @@ def load_ssgreps_module():
 def ensure_identify_pkl() -> Path:
     # if IDENTIFY_PKL.exists():
     #     return IDENTIFY_PKL
-    if MSG_PKL.exists():
-        return MSG_PKL
+    if REPO_LOCAL_MSG_PKL.exists():
+        return REPO_LOCAL_MSG_PKL
+    if EXTERNAL_MSG_PKL.exists():
+        return EXTERNAL_MSG_PKL
     if IDENTIFY_PKL.exists():
         return IDENTIFY_PKL
     # if not IDENTIFY_TAR.exists():
     #     raise FileNotFoundError(f"missing {IDENTIFY_PKL} and {IDENTIFY_TAR}")
     if not IDENTIFY_TAR.exists():
-        raise FileNotFoundError(f"missing {MSG_PKL}, {IDENTIFY_PKL} and {IDENTIFY_TAR}")
+        raise FileNotFoundError(
+            f"missing {REPO_LOCAL_MSG_PKL}, {EXTERNAL_MSG_PKL}, {IDENTIFY_PKL} and {IDENTIFY_TAR}"
+        )
     with tarfile_module.open(IDENTIFY_TAR, "r:gz") as tar:
         tar.extract("identify.pkl", path=COMMON_SSG_DATA_ROOT)
     return IDENTIFY_PKL
@@ -1183,6 +1196,7 @@ def _recover_boundary_special_points(
     def recovered_family_key(item: dict[str, Any]) -> tuple[Any, ...]:
         anchor = [to_fraction(value) for value in item["coords"]]
         return (
+            swyckoff_k.subspace_orbit_key(anchor, [], ctx["ops"]),
             symmetry_summary_key(subspace_symmetry_summary(anchor, [], ctx)),
             tuple(sorted(boundary_source_signature(source) for source in item["sources"])),
         )
@@ -1299,6 +1313,259 @@ def _recover_boundary_special_points(
     return recovered
 
 
+def _parse_line_branch_linear_parts(
+    coordinate_expressions: Sequence[str],
+    parameter_name: str,
+) -> list[tuple[Fraction, Fraction]]:
+    symbol = sp.Symbol(parameter_name)
+    local_dict = {parameter_name: symbol}
+    linear_parts: list[tuple[Fraction, Fraction]] = []
+    for entry in coordinate_expressions:
+        expression = parse_expr(
+            entry,
+            local_dict=local_dict,
+            transformations=PARSER_TRANSFORMS,
+        )
+        expanded = sp.expand(expression)
+        constant = sp.simplify(expanded.subs(symbol, 0))
+        coeff = sp.simplify(sp.diff(expanded, symbol))
+        residual = sp.simplify(expanded - constant - coeff * symbol)
+        if residual != 0:
+            raise ValueError(f"non-linear line orbit expression: {entry}")
+        if not isinstance(constant, sp.Rational):
+            constant = sp.nsimplify(constant)
+        if not isinstance(coeff, sp.Rational):
+            coeff = sp.nsimplify(coeff)
+        if not isinstance(constant, sp.Rational) or not isinstance(coeff, sp.Rational):
+            raise ValueError(f"non-rational line orbit expression: {entry}")
+        linear_parts.append(
+            (
+                Fraction(int(constant.p), int(constant.q)),
+                Fraction(int(coeff.p), int(coeff.q)),
+            )
+        )
+    return linear_parts
+
+
+def _evaluate_line_branch_point(
+    linear_parts: Sequence[tuple[Fraction, Fraction]],
+    parameter_value: Fraction,
+) -> list[Fraction]:
+    return [
+        mod1_fraction(constant + parameter_value * coeff)
+        for constant, coeff in linear_parts
+    ]
+
+
+def _branch_fix_parameter_values(
+    linear_parts: Sequence[tuple[Fraction, Fraction]],
+    op: Any,
+) -> list[Fraction]:
+    transformed_parts: list[tuple[Fraction, Fraction]] = []
+    for row in op.W:
+        transformed_constant = sum(Fraction(row[index]) * linear_parts[index][0] for index in range(3))
+        transformed_coeff = sum(Fraction(row[index]) * linear_parts[index][1] for index in range(3))
+        transformed_parts.append((transformed_constant, transformed_coeff))
+
+    candidate_values: set[Fraction] | None = None
+    informative_constraint = False
+    for (constant, coeff), (target_constant, target_coeff) in zip(linear_parts, transformed_parts):
+        delta_constant = target_constant - constant
+        delta_coeff = target_coeff - coeff
+        if delta_coeff == 0:
+            if delta_constant.denominator != 1:
+                return []
+            continue
+        informative_constraint = True
+        dimension_candidates: set[Fraction] = set()
+        for shift in range(-3, 4):
+            value = (Fraction(shift, 1) - delta_constant) / delta_coeff
+            if ZERO <= value <= HALF:
+                dimension_candidates.add(value)
+        if not dimension_candidates:
+            return []
+        candidate_values = (
+            dimension_candidates
+            if candidate_values is None
+            else candidate_values & dimension_candidates
+        )
+        if not candidate_values:
+            return []
+    if not informative_constraint or candidate_values is None:
+        return []
+    return sorted(candidate_values)
+
+
+def _point_orbit_coordinates(anchor: Sequence[Fraction], ops: Sequence[Any]) -> list[str]:
+    seen: set[tuple[str, str, str]] = set()
+    orbit_coords: list[tuple[str, str, str]] = []
+    for op in ops:
+        coords = tuple(frac_str(mod1_fraction(value)) for value in op.apply(anchor))
+        if coords in seen:
+            continue
+        seen.add(coords)
+        orbit_coords.append(coords)
+    orbit_coords.sort(key=lambda item: tuple(Fraction(value) for value in item))
+    return [", ".join(coords) for coords in orbit_coords]
+
+
+def _recover_line_interior_special_points(
+    points: Sequence[dict[str, Any]],
+    lines: Sequence[dict[str, Any]],
+    ctx: dict[str, Any],
+) -> list[dict[str, Any]]:
+    def symmetry_summary_key(summary: dict[str, Any] | None) -> tuple[Any, ...]:
+        summary = summary or {}
+        return (
+            int(summary.get("generic_rotation_stabilizer_size", -1)),
+            int(summary.get("generic_stabilizer_size", -1)),
+            int(summary.get("pointwise_rotation_stabilizer_size", -1)),
+            int(summary.get("pointwise_stabilizer_size", -1)),
+            str(summary.get("site_symmetry") or ""),
+            str(summary.get("unitary_site_symmetry") or ""),
+            str(summary.get("site_symmetry_custom") or ""),
+        )
+
+    existing_orbit_keys = {
+        swyckoff_k.subspace_orbit_key([to_fraction(value) for value in point["sample_point"]], [], ctx["ops"])
+        for point in points
+    }
+    grouped_candidates: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
+    for line in lines:
+        parameter_name = line["_params"][0]
+        generic_stabilizer_size = int(line.get("symmetry_summary", {}).get("generic_stabilizer_size", 0))
+        source_orbit = line.get("metadata", {}).get("source_orbit") or [
+            ", ".join(line["coordinate_expressions"])
+        ]
+        for branch_index, orbit_entry in enumerate(source_orbit, start=1):
+            coordinate_expressions = [item.strip() for item in orbit_entry.split(",")]
+            linear_parts = _parse_line_branch_linear_parts(coordinate_expressions, parameter_name)
+            boundary_points = {
+                boundary: _evaluate_line_branch_point(linear_parts, boundary)
+                for boundary in BOUNDARY_VALUES
+            }
+            boundary_orbit_keys = {
+                boundary: swyckoff_k.subspace_orbit_key(point, [], ctx["ops"])
+                for boundary, point in boundary_points.items()
+            }
+            if boundary_orbit_keys[ZERO] == boundary_orbit_keys[HALF]:
+                midpoint_parameter = (ZERO + HALF) / 2
+                midpoint_coords = _evaluate_line_branch_point(linear_parts, midpoint_parameter)
+                midpoint_orbit_key = swyckoff_k.subspace_orbit_key(midpoint_coords, [], ctx["ops"])
+                if (
+                    midpoint_orbit_key not in existing_orbit_keys
+                    and midpoint_orbit_key != boundary_orbit_keys[ZERO]
+                ):
+                    midpoint_summary = subspace_symmetry_summary(midpoint_coords, [], ctx)
+                    grouped_candidates.setdefault(
+                        (
+                            midpoint_orbit_key,
+                            symmetry_summary_key(midpoint_summary),
+                        ),
+                        [],
+                    ).append(
+                        {
+                            "coords": [frac_str(value) for value in midpoint_coords],
+                            "source": {
+                                "source_kind": "line_loop_representative_point",
+                                "line_id": line["id"],
+                                "branch_index": branch_index,
+                                "parameter_name": parameter_name,
+                                "parameter_value": frac_str(midpoint_parameter),
+                                "coordinate_expressions": list(coordinate_expressions),
+                            },
+                        }
+                    )
+            candidate_parameters: set[Fraction] = set()
+            for op in ctx["ops"]:
+                candidate_parameters.update(_branch_fix_parameter_values(linear_parts, op))
+            for parameter_value in sorted(candidate_parameters):
+                if parameter_value in BOUNDARY_VALUES:
+                    continue
+                coords = _evaluate_line_branch_point(linear_parts, parameter_value)
+                orbit_key = swyckoff_k.subspace_orbit_key(coords, [], ctx["ops"])
+                if orbit_key in existing_orbit_keys:
+                    continue
+                summary = subspace_symmetry_summary(coords, [], ctx)
+                if int(summary.get("generic_stabilizer_size", 0)) <= generic_stabilizer_size:
+                    continue
+                grouped_candidates.setdefault(
+                    (
+                        orbit_key,
+                        symmetry_summary_key(summary),
+                    ),
+                    [],
+                ).append(
+                    {
+                        "coords": [frac_str(value) for value in coords],
+                        "source": {
+                            "source_kind": "line_interior_special_point",
+                            "line_id": line["id"],
+                            "branch_index": branch_index,
+                            "parameter_name": parameter_name,
+                            "parameter_value": frac_str(parameter_value),
+                            "coordinate_expressions": list(coordinate_expressions),
+                        },
+                    }
+                )
+
+    next_index = len(points) + 1
+    recovered: list[dict[str, Any]] = []
+    for offset, family_items in enumerate(grouped_candidates.values()):
+        representative = family_items[0]
+        orbit_entries = _point_orbit_coordinates(
+            [to_fraction(value) for value in representative["coords"]],
+            ctx["ops"],
+        )
+        coords = orbit_entries[0].split(", ")
+        anchor = [to_fraction(value) for value in coords]
+        source_rep = [[coord, {}] for coord in coords]
+        merged_sources: list[dict[str, Any]] = []
+        seen_sources: set[str] = set()
+        for item in family_items:
+            source = item["source"]
+            source_key = repr(tuple(sorted((key, repr(value)) for key, value in source.items())))
+            if source_key in seen_sources:
+                continue
+            seen_sources.add(source_key)
+            merged_sources.append(dict(source))
+        existing_orbit_keys.add(swyckoff_k.subspace_orbit_key(anchor, [], ctx["ops"]))
+        recovered_point = {
+            "label": f"recovered_{next_index + offset:02d}",
+            "type": "point",
+            "dimension": 0,
+            "parametrization": f"({', '.join(coords)})",
+            "coordinate_expressions": list(coords),
+            "parameters": [],
+            "constraints": [],
+            "constraint_summary": "",
+            "sample_point": list(coords),
+            "metadata": {
+                "source_letter": "recovered_line_interior_point",
+                "source_mult": 1,
+                "source_dimension": 0,
+                "source_orbit": orbit_entries,
+                "source_representative_coordinate": ", ".join(coords),
+                "source_x0": list(coords),
+                "source_basis_vecs": [],
+                "source_rep": source_rep,
+                "recovered_from_line_branches": merged_sources,
+            },
+            "_anchor": anchor,
+            "_basis": [],
+            "_exprs": rep_to_sympy(source_rep),
+            "_params": [],
+            "id": f"P{next_index + offset}",
+            "manifold_role": "recovered_special_point_from_line_interior",
+            "symmetry_summary": subspace_symmetry_summary(anchor, [], ctx),
+            "recovery_sources": merged_sources,
+            "incident_lines": [],
+            "incident_planes": [],
+        }
+        recovered.append(recovered_point)
+    return recovered
+
+
 def strip_internal_fields(entries: Sequence[dict]) -> List[dict]:
     return [{key: value for key, value in entry.items() if not key.startswith("_")} for entry in entries]
 
@@ -1315,6 +1582,9 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
     recovered_points = _recover_boundary_special_points(points, lines, planes, ctx)
     if recovered_points:
         points.extend(recovered_points)
+    recovered_interior_points = _recover_line_interior_special_points(points, lines, ctx)
+    if recovered_interior_points:
+        points.extend(recovered_interior_points)
     point_line, unmatched_endpoints = infer_line_connectivity(points, lines)
     line_plane, unmatched_plane_boundaries = infer_plane_connectivity(planes, lines, ctx, line_orbit_to_id, plane_orbit_to_id)
     recovered_family_special_lines = _recover_family_special_lines_from_planes(points, lines, planes, ctx)
