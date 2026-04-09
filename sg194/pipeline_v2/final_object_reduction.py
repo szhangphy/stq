@@ -294,7 +294,20 @@ def _point_coordinate_alias_records(
             return None
         return tuple(sorted(normalized))
 
-    def publication_point_family_keys(
+    def candidate_point_origin_kind(point: dict[str, Any]) -> str:
+        origin_kind = str(point.get("point_origin_kind") or "")
+        if origin_kind:
+            return origin_kind
+        role = str(point.get("manifold_role") or "")
+        if role == "recovered_special_point_from_line_interior":
+            return "derived_line_interior_special_point"
+        if role == "recovered_special_point_from_boundary_manifolds":
+            return "derived_boundary_special_point"
+        if str(point.get("type") or "") == "boundary_point":
+            return "synthetic_boundary_point"
+        return "listed_fixed_subspace_point"
+
+    def physical_point_type_keys(
         point: dict[str, Any],
         *,
         include_orbit_family: bool,
@@ -308,6 +321,9 @@ def _point_coordinate_alias_records(
         orbit_key: tuple[Any, ...] | None = None
         if reciprocal_ops:
             orbit_key = swyckoff_k.subspace_orbit_key(anchor, [], reciprocal_ops)
+        point_kind = candidate_point_origin_kind(point)
+        point_role = str(point.get("point_role") or "")
+        symmetry_signature = symmetry_summary_key(point.get("symmetry_summary"))
         recovered_key = recovered_boundary_point_family_key(point, orbit_key)
         if recovered_key is not None:
             keys.append(recovered_key)
@@ -315,21 +331,29 @@ def _point_coordinate_alias_records(
         if listed_endpoint_key is not None:
             keys.append(
                 (
-                    "publication_point_listed_line_endpoint_family",
+                    "physical_point_listed_line_endpoint_family",
                     orbit_key,
-                    symmetry_summary_key(point.get("symmetry_summary")),
+                    symmetry_signature,
                     listed_endpoint_key,
                 )
             )
         if include_orbit_family and orbit_key is not None:
             keys.append(
                 (
-                    "publication_point_orbit_family",
+                    "physical_point_orbit_family",
                     orbit_key,
                 )
             )
         if not keys:
-            keys.append(("point_id", point["id"]))
+            keys.append(
+                (
+                    "candidate_point_fallback",
+                    point["id"],
+                    symmetry_signature,
+                    point_role,
+                    point_kind,
+                )
+            )
         return keys
 
     capture_lookup: dict[tuple[str, tuple[str, str, str]], str] = {}
@@ -377,16 +401,16 @@ def _point_coordinate_alias_records(
         else:
             parent_map[left_root] = right_root
 
-    family_owner: dict[tuple[Any, ...], str] = {}
+    physical_family_owner: dict[tuple[Any, ...], str] = {}
     representative_family_owner: dict[tuple[Any, ...], str] = {}
     for point in kgeom["grouped"]["points"]:
-        for family_key in publication_point_family_keys(point, include_orbit_family=True):
-            owner = family_owner.get(family_key)
+        for family_key in physical_point_type_keys(point, include_orbit_family=True):
+            owner = physical_family_owner.get(family_key)
             if owner is None:
-                family_owner[family_key] = point["id"]
+                physical_family_owner[family_key] = point["id"]
                 continue
             union(owner, point["id"], parent)
-        for family_key in publication_point_family_keys(point, include_orbit_family=False):
+        for family_key in physical_point_type_keys(point, include_orbit_family=False):
             owner = representative_family_owner.get(family_key)
             if owner is None:
                 representative_family_owner[family_key] = point["id"]
@@ -831,6 +855,85 @@ def _block_rows_on_point_shell(
     return rows
 
 
+def _exact_project_full_line_block_to_point_rows(
+    block: dict[str, Any],
+) -> dict[str, Any]:
+    """Eliminate explicit line auxiliary variables before path-class analysis."""
+    full_unknown_ordering = [str(unknown) for unknown in block.get("full_local_unknown_ordering", [])]
+    full_equations = list(block.get("full_equations", []))
+    full_matrix_rows = [list(row) for row in block.get("full_matrix_rows", [])]
+    point_unknown_ordering = [str(unknown) for unknown in block.get("local_unknown_ordering", [])]
+    if not full_unknown_ordering or not full_equations or not full_matrix_rows:
+        return block
+
+    point_unknown_set = set(point_unknown_ordering)
+    keep_indices = [
+        index for index, unknown in enumerate(full_unknown_ordering)
+        if unknown in point_unknown_set
+    ]
+    aux_indices = [
+        index for index, unknown in enumerate(full_unknown_ordering)
+        if unknown not in point_unknown_set
+    ]
+    if not aux_indices:
+        return block
+
+    matrix = sp.Matrix(full_matrix_rows)
+    aux_block = matrix[:, aux_indices]
+    left_nullspace = aux_block.T.nullspace()
+    candidate_row_records: list[dict[str, Any]] = []
+    for relation_index, coefficients in enumerate(left_nullspace, start=1):
+        combined = coefficients.T * matrix
+        projected_row = [combined[0, column_index] for column_index in keep_indices]
+        primitive = _primitive_integer_row(projected_row)
+        if not any(primitive):
+            continue
+        support_row_indices = [
+            int(row_index)
+            for row_index, value in enumerate(coefficients)
+            if sp.nsimplify(value) != 0
+        ]
+        candidate_row_records.append(
+            {
+                "basis_id": f"{block['line_id']}_EXACT_{relation_index:02d}",
+                "row_kind": "line_exact_auxiliary_elimination",
+                "matrix_row": primitive,
+                "support_full_row_indices": support_row_indices,
+                "support_full_basis_ids": [
+                    str(full_equations[row_index]["basis_id"])
+                    for row_index in support_row_indices
+                    if row_index < len(full_equations)
+                ],
+            }
+        )
+
+    selected_row_records, _ = _rank_gaining_row_records(candidate_row_records)
+    equations = []
+    for row_record in selected_row_records:
+        row = list(row_record["matrix_row"])
+        equations.append(
+            {
+                "basis_id": row_record["basis_id"],
+                "row_kind": row_record["row_kind"],
+                "terms": [
+                    {"unknown": point_unknown_ordering[column_index], "coeff": int(value)}
+                    for column_index, value in enumerate(row)
+                    if int(value) != 0
+                ],
+                "support_full_row_indices": list(row_record.get("support_full_row_indices", [])),
+                "support_full_basis_ids": list(row_record.get("support_full_basis_ids", [])),
+            }
+        )
+    return {
+        **block,
+        "equations": equations,
+        "matrix_rows": [list(row_record["matrix_row"]) for row_record in selected_row_records],
+        "local_unknown_ordering": list(point_unknown_ordering),
+        "exact_auxiliary_projection_applied": True,
+        "exact_auxiliary_projection_row_records": selected_row_records,
+    }
+
+
 def _normalized_line_basis_labels(record: dict[str, Any]) -> list[str]:
     labels = [str(label) for label in record.get("line_basis_labels", [])]
     if labels:
@@ -1070,7 +1173,7 @@ def build_candidate_path_records(
         global_unknown_ordering.extend(per_point_ids.get(point_id, []))
     records: list[dict[str, Any]] = []
     for segment in reduction["candidate_paths"]:
-        block = block_by_id[segment["candidate_id"]]
+        block = _exact_project_full_line_block_to_point_rows(block_by_id[segment["candidate_id"]])
         global_rows = _block_rows_on_point_shell(block, global_unknown_ordering)
         global_row_records = [
             {
@@ -1102,6 +1205,20 @@ def build_candidate_path_records(
             "global_unknown_ordering": list(global_unknown_ordering),
             "global_matrix_rows": global_rows,
             "global_matrix_row_records": global_row_records,
+            "exact_auxiliary_projection_applied": bool(
+                block.get("exact_auxiliary_projection_applied", False)
+            ),
+            "local_unknown_ordering": [
+                str(unknown) for unknown in block.get("local_unknown_ordering", [])
+            ],
+            "full_local_unknown_ordering": [
+                str(unknown) for unknown in block.get("full_local_unknown_ordering", [])
+            ],
+            "full_auxiliary_unknowns": [
+                str(unknown) for unknown in block.get("full_auxiliary_unknowns", [])
+            ],
+            "full_equations": [dict(equation) for equation in block.get("full_equations", [])],
+            "full_matrix_rows": [list(row) for row in block.get("full_matrix_rows", [])],
         }
         compressed_row_records = _monodromy_compressed_row_records(record)
         record["monodromy_compressed_global_matrix_row_records"] = compressed_row_records
@@ -1767,6 +1884,8 @@ def _build_geometric_publication_kpair_payload(
 
 def build_publication_point_shell(
     reduction: dict[str, Any],
+    *,
+    full_point_unknown_ordering: dict[str, Sequence[str]] | None = None,
 ) -> dict[str, Any]:
     point_shell = [
         {
@@ -1777,17 +1896,54 @@ def build_publication_point_shell(
         }
         for point in reduction.get("point_shell", [])
     ]
-    unknown_ordering = _candidate_record_unknown_ordering(reduction)
-    point_unknown_ordering = _point_unknown_ordering(unknown_ordering)
+    source_unknown_ordering = _candidate_record_unknown_ordering(reduction)
+    source_point_unknown_ordering = _point_unknown_ordering(source_unknown_ordering)
+    if full_point_unknown_ordering is not None:
+        merged_source_point_unknown_ordering = {
+            str(point_id): [str(unknown) for unknown in unknowns]
+            for point_id, unknowns in full_point_unknown_ordering.items()
+        }
+        for point_id, unknowns in source_point_unknown_ordering.items():
+            merged_source_point_unknown_ordering.setdefault(str(point_id), list(unknowns))
+        source_point_unknown_ordering = merged_source_point_unknown_ordering
+        source_unknown_ordering = [
+            unknown
+            for point_id in [point["point_id"] for point in point_shell]
+            for unknown in source_point_unknown_ordering.get(point_id, [])
+        ]
+    point_unknown_ordering, canonical_default_permutation_by_point = (
+        _canonicalize_publication_point_unknown_ordering(
+            reduction,
+            source_point_unknown_ordering,
+        )
+    )
+    unknown_ordering = [
+        unknown
+        for point_id in [point["point_id"] for point in point_shell]
+        for unknown in point_unknown_ordering.get(
+            point_id,
+            source_point_unknown_ordering.get(point_id, []),
+        )
+    ]
     publication_point_ids = [point["point_id"] for point in point_shell]
     return {
         "object_kind": "publication_point_shell",
         "point_ids": publication_point_ids,
         "points": point_shell,
         "unknown_ordering": unknown_ordering,
+        "source_unknown_ordering": source_unknown_ordering,
         "point_unknown_ordering": {
             point_id: list(point_unknown_ordering.get(point_id, []))
             for point_id in publication_point_ids
+        },
+        "source_point_unknown_ordering": {
+            point_id: list(source_point_unknown_ordering.get(point_id, []))
+            for point_id in publication_point_ids
+        },
+        "canonical_default_permutation_by_point": {
+            point_id: [int(index) for index in canonical_default_permutation_by_point.get(point_id, ())]
+            for point_id in publication_point_ids
+            if point_id in canonical_default_permutation_by_point
         },
         "unknown_count": len(unknown_ordering),
     }
@@ -1868,6 +2024,7 @@ def canonicalize_line_restriction_signature(
 
     best_key = None
     best_payload = None
+    best_permutation: tuple[int, ...] | None = None
     for permutation in permutations(range(basis_count)):
         endpoint_payload = []
         endpoint_key = []
@@ -1902,16 +2059,258 @@ def canonicalize_line_restriction_signature(
         if best_key is None or candidate_key < best_key:
             best_key = candidate_key
             best_payload = endpoint_payload
+            best_permutation = tuple(int(index) for index in permutation)
     if best_key is None or best_payload is None:
         raise ValueError("failed to canonicalize line restriction signature")
+    if best_permutation is None:
+        best_permutation = tuple(range(basis_count))
     return {
         "endpoint_pair": list(record["endpoint_pair"]),
         "line_group_signature": record["line_group_signature"],
         "basis_count": basis_count,
+        "source_basis_ids": [str(basis_id) for basis_id in basis_ids],
+        "canonical_basis_ids": [str(basis_ids[index]) for index in best_permutation],
+        "canonical_basis_permutation": [int(index) for index in best_permutation],
         "basis_permutation_count": factorial(basis_count),
         "canonical_endpoint_signatures": best_payload,
         "canonical_signature_key": repr(best_key),
     }
+
+
+def _exact_project_matrix_keep_unknowns(
+    *,
+    unknown_ordering: Sequence[str],
+    matrix_rows: Sequence[Sequence[int]],
+    keep_unknowns: Sequence[str],
+    basis_prefix: str,
+    row_kind: str,
+) -> list[dict[str, Any]]:
+    """Exact-project a full compatibility matrix onto a chosen kept column subset.
+
+    This is the local publication-layer analogue of
+    `runtime_backend_free.exact_project_keep_unknowns`.  We keep it here to avoid
+    importing the runtime backend and to make publication path-family exact
+    elimination self-contained.  Rows are returned as a primitive integer basis
+    for the projected row space.
+    """
+    unknown_ordering = [str(unknown) for unknown in unknown_ordering]
+    keep_unknown_set = {str(unknown) for unknown in keep_unknowns}
+    keep_indices = [
+        index for index, unknown in enumerate(unknown_ordering)
+        if unknown in keep_unknown_set
+    ]
+    aux_indices = [
+        index for index, unknown in enumerate(unknown_ordering)
+        if unknown not in keep_unknown_set
+    ]
+    if not keep_indices:
+        raise ValueError("exact projection requires at least one kept unknown")
+    if not matrix_rows:
+        return []
+
+    matrix = sp.Matrix(matrix_rows)
+    candidate_row_records: list[dict[str, Any]] = []
+    if aux_indices:
+        aux_block = matrix[:, aux_indices]
+        left_nullspace = aux_block.T.nullspace()
+        for relation_index, coefficients in enumerate(left_nullspace, start=1):
+            combined = coefficients.T * matrix
+            projected_row = [combined[0, column_index] for column_index in keep_indices]
+            primitive = _primitive_integer_row(projected_row)
+            if not any(primitive):
+                continue
+            candidate_row_records.append(
+                {
+                    "basis_id": f"{basis_prefix}_{relation_index:02d}",
+                    "row_kind": row_kind,
+                    "matrix_row": primitive,
+                    "support_full_row_indices": [
+                        int(row_index)
+                        for row_index, value in enumerate(coefficients)
+                        if sp.nsimplify(value) != 0
+                    ],
+                }
+            )
+    else:
+        for relation_index, row in enumerate(matrix.rowspace(), start=1):
+            primitive = _primitive_integer_row(row)
+            if not any(primitive):
+                continue
+            candidate_row_records.append(
+                {
+                    "basis_id": f"{basis_prefix}_{relation_index:02d}",
+                    "row_kind": row_kind,
+                    "matrix_row": primitive,
+                    "support_full_row_indices": [relation_index - 1],
+                }
+            )
+
+    candidate_row_records.sort(key=lambda item: (tuple(item["matrix_row"]), item["basis_id"]))
+    selected_rows, _ = _rank_gaining_row_records(candidate_row_records)
+    return selected_rows
+
+
+def _transform_publication_full_line_rows_to_family_basis(
+    *,
+    record: dict[str, Any],
+    point_unknown_ordering: dict[str, list[str]],
+    publication_unknown_ordering: Sequence[str],
+    point_capture_permutations: dict[str, dict[str, dict[str, Any]]],
+    canonical_aux_unknowns: Sequence[str],
+    auxiliary_permutation: Sequence[int],
+) -> list[dict[str, Any]]:
+    """Rewrite a member full line block into a shared publication-family basis.
+
+    Point columns are rewritten into the publication point-family basis using the
+    same capture-dependent relabeling as the projected publication rows.  Line
+    auxiliary columns are then renamed into a shared canonical auxiliary basis so
+    that multiple members of the same physical line family can be stacked before
+    exact elimination.
+    """
+    source_full_unknown_ordering = [
+        str(unknown) for unknown in record.get("full_local_unknown_ordering", [])
+    ]
+    source_point_unknown_ordering = [
+        str(unknown) for unknown in record.get("local_unknown_ordering", [])
+    ]
+    source_full_matrix_rows = [list(row) for row in record.get("full_matrix_rows", [])]
+    source_full_equations = [dict(equation) for equation in record.get("full_equations", [])]
+    if (
+        not source_full_unknown_ordering
+        or not source_full_matrix_rows
+        or len(source_full_unknown_ordering) != len(source_full_matrix_rows[0])
+    ):
+        return []
+
+    publication_unknown_ordering = [str(unknown) for unknown in publication_unknown_ordering]
+    source_full_unknown_index = {
+        unknown: index for index, unknown in enumerate(source_full_unknown_ordering)
+    }
+    publication_unknown_index = {
+        unknown: index for index, unknown in enumerate(publication_unknown_ordering)
+    }
+    source_point_unknown_set = set(source_point_unknown_ordering)
+    source_auxiliary_unknowns = [
+        str(unknown)
+        for unknown in record.get("full_auxiliary_unknowns", [])
+        if str(unknown) in source_full_unknown_index
+    ]
+    if not source_auxiliary_unknowns:
+        source_auxiliary_unknowns = [
+            str(unknown)
+            for unknown in source_full_unknown_ordering
+            if str(unknown) not in source_point_unknown_set
+        ]
+    if len(source_auxiliary_unknowns) != len(canonical_aux_unknowns):
+        raise ValueError(
+            "publication full-line family basis mismatch: "
+            f"{record.get('candidate_id')} has {len(source_auxiliary_unknowns)} auxiliary unknowns, "
+            f"expected {len(canonical_aux_unknowns)}"
+        )
+    if len(auxiliary_permutation) != len(canonical_aux_unknowns):
+        raise ValueError(
+            "publication full-line family basis permutation mismatch: "
+            f"{record.get('candidate_id')} permutation length {len(auxiliary_permutation)} "
+            f"does not match auxiliary rank {len(canonical_aux_unknowns)}"
+        )
+    source_aux_to_canonical = {
+        int(source_index): canonical_index
+        for canonical_index, source_index in enumerate(auxiliary_permutation)
+    }
+
+    point_ids_in_source_order: list[str] = []
+    source_block_unknowns_by_point: dict[str, list[str]] = {}
+    for unknown in source_point_unknown_ordering:
+        point_id = str(unknown).split("_", 1)[0]
+        if point_id not in source_block_unknowns_by_point:
+            point_ids_in_source_order.append(point_id)
+            source_block_unknowns_by_point[point_id] = []
+        source_block_unknowns_by_point[point_id].append(str(unknown))
+
+    endpoint_pair = list(record["endpoint_pair"])
+    endpoint_capture_ids = list(record.get("endpoint_capture_ids", []))
+    capture_by_point = {
+        endpoint_pair[index]: endpoint_capture_ids[index]
+        for index in range(min(len(endpoint_pair), len(endpoint_capture_ids)))
+    }
+
+    family_unknown_ordering = publication_unknown_ordering + [str(item) for item in canonical_aux_unknowns]
+    transformed_row_records: list[dict[str, Any]] = []
+    for row_index, row in enumerate(source_full_matrix_rows):
+        transformed_row = [0] * len(family_unknown_ordering)
+        point_transforms_applied: list[dict[str, Any]] = []
+        for point_id in point_ids_in_source_order:
+            capture_id = capture_by_point.get(point_id, point_id)
+            source_block_unknowns = source_block_unknowns_by_point.get(point_id, [])
+            publication_block_unknowns = point_unknown_ordering.get(point_id, source_block_unknowns)
+            if (
+                not source_block_unknowns
+                or not publication_block_unknowns
+                or len(source_block_unknowns) != len(publication_block_unknowns)
+            ):
+                continue
+            permutation = _lookup_publication_point_capture_permutation(
+                record,
+                point_id,
+                capture_id,
+                point_capture_permutations,
+            )
+            if permutation is None:
+                permutation = tuple(range(len(source_block_unknowns)))
+            if len(permutation) != len(source_block_unknowns):
+                raise ValueError(
+                    f"inconsistent publication point permutation for {record.get('candidate_id')} {point_id}"
+                )
+            block_values = [
+                int(row[source_full_unknown_index[unknown]])
+                for unknown in source_block_unknowns
+            ]
+            remapped_values = [0] * len(publication_block_unknowns)
+            for local_index, canonical_index in enumerate(permutation):
+                remapped_values[int(canonical_index)] += int(block_values[local_index])
+            for position, unknown in enumerate(publication_block_unknowns):
+                transformed_row[publication_unknown_index[unknown]] += int(remapped_values[position])
+            if (
+                list(source_block_unknowns) != list(publication_block_unknowns)
+                or any(index != local_index for local_index, index in enumerate(permutation))
+            ):
+                point_transforms_applied.append(
+                    {
+                        "point_id": point_id,
+                        "capture_id": capture_id,
+                        "context_key": [
+                            str(item)
+                            for item in _publication_point_permutation_context_key(record, point_id)
+                        ],
+                        "source_block_unknowns": list(source_block_unknowns),
+                        "publication_block_unknowns": list(publication_block_unknowns),
+                        "local_to_canonical_permutation": [int(index) for index in permutation],
+                    }
+                )
+
+        for source_aux_index, unknown in enumerate(source_auxiliary_unknowns):
+            canonical_aux_index = source_aux_to_canonical[int(source_aux_index)]
+            transformed_row[len(publication_unknown_ordering) + canonical_aux_index] += int(
+                row[source_full_unknown_index[unknown]]
+            )
+
+        equation = source_full_equations[row_index] if row_index < len(source_full_equations) else {}
+        transformed_row_records.append(
+            {
+                "basis_id": str(
+                    equation.get("basis_id", f"{record.get('candidate_id', 'CANDIDATE')}::FULL::{row_index + 1:02d}")
+                ),
+                "row_kind": str(equation.get("row_kind", "publication_family_full_line_equation")),
+                "matrix_row": transformed_row,
+                "member_candidate_id": record.get("candidate_id"),
+                "member_source_line_id": record.get("source_line_id"),
+                "member_source_id": record.get("source_id"),
+                "member_branch_index": int(record.get("branch_index", 0)),
+                "publication_point_basis_transforms": point_transforms_applied,
+                "canonical_auxiliary_permutation": [int(index) for index in auxiliary_permutation],
+            }
+        )
+    return transformed_row_records
 
 
 def _publication_source_row_records(record: dict[str, Any]) -> list[dict[str, Any]]:
@@ -1960,16 +2359,24 @@ def _publication_group_sort_key(
 
 def build_publication_path_classes(
     reduction: dict[str, Any],
+    publication_point_shell: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    publication_point_shell = publication_point_shell or build_publication_point_shell(reduction)
     point_order = {
         point["point_id"]: index
         for index, point in enumerate(reduction.get("point_shell", []))
     }
-    unknown_ordering = _candidate_record_unknown_ordering(reduction)
-    point_unknown_ordering = _point_unknown_ordering(unknown_ordering)
+    publication_unknown_ordering = [
+        str(unknown) for unknown in publication_point_shell["unknown_ordering"]
+    ]
+    point_unknown_ordering = {
+        str(point_id): [str(unknown) for unknown in unknowns]
+        for point_id, unknowns in publication_point_shell["point_unknown_ordering"].items()
+    }
     point_capture_permutations = _build_publication_point_capture_permutations(
         reduction,
         point_unknown_ordering,
+        publication_point_shell.get("canonical_default_permutation_by_point", {}),
     )
     grouped_by_family: dict[tuple[Any, ...], list[tuple[dict[str, Any], list[dict[str, Any]]]]] = {}
     for payload in reduction.get("path_classes", []):
@@ -1979,6 +2386,7 @@ def build_publication_path_classes(
             representative,
             _publication_source_row_records(representative),
             point_unknown_ordering,
+            publication_unknown_ordering,
             point_capture_permutations,
         )
         publication_key = (
@@ -2022,22 +2430,58 @@ def build_publication_path_classes(
         )
         representative = members[0]["candidate_records"][0]
         canonical_signature = canonicalize_line_restriction_signature(representative)
+        same_source_line_family = (
+            len({member["representative_source_line_id"] for member in members}) == 1
+        )
+        representative_auxiliary_rank = len(
+            [
+                str(unknown)
+                for unknown in representative.get("full_auxiliary_unknowns", [])
+                if str(unknown)
+            ]
+        ) or int(canonical_signature.get("basis_count", 0))
         combined_row_records: list[dict[str, Any]] = []
         combined_rows: list[list[int]] = []
         member_row_record_sets: list[list[dict[str, Any]]] = []
         member_row_sets: list[list[list[int]]] = []
+        family_full_row_records: list[dict[str, Any]] = []
+        family_full_rows: list[list[int]] = []
+        family_full_projection_row_records: list[dict[str, Any]] = []
+        family_full_projection_rows: list[list[int]] = []
+        canonical_aux_unknowns = [
+            f"PUBCLASS{class_index:02d}_AUX_{aux_index + 1:02d}"
+            for aux_index in range(representative_auxiliary_rank)
+        ]
         for member in members:
             member_record = member["candidate_records"][0]
             transformed_member_row_records = _transform_publication_row_records_to_point_family_basis(
                 member_record,
                 _publication_source_row_records(member_record),
                 point_unknown_ordering,
+                publication_unknown_ordering,
                 point_capture_permutations,
             )
             member_row_record_sets.append(transformed_member_row_records)
             member_row_sets.append(
                 [list(row_record["matrix_row"]) for row_record in transformed_member_row_records]
             )
+            if same_source_line_family and len(members) > 1:
+                member_signature = canonicalize_line_restriction_signature(member_record)
+                transformed_member_full_row_records = _transform_publication_full_line_rows_to_family_basis(
+                    record=member_record,
+                    point_unknown_ordering=point_unknown_ordering,
+                    publication_unknown_ordering=publication_unknown_ordering,
+                    point_capture_permutations=point_capture_permutations,
+                    canonical_aux_unknowns=canonical_aux_unknowns,
+                    auxiliary_permutation=member_signature.get(
+                        "canonical_basis_permutation",
+                        tuple(range(len(canonical_aux_unknowns))),
+                    ),
+                )
+                family_full_row_records.extend(transformed_member_full_row_records)
+                family_full_rows.extend(
+                    [list(row_record["matrix_row"]) for row_record in transformed_member_full_row_records]
+                )
             for row_record in transformed_member_row_records:
                 payload = {
                     **row_record,
@@ -2073,9 +2517,40 @@ def build_publication_path_classes(
         common_rows = _row_space_intersection_basis(member_row_sets)
         if not common_rows:
             common_rows = representative_rows
+        if family_full_rows:
+            family_full_projection_row_records = _exact_project_matrix_keep_unknowns(
+                unknown_ordering=publication_unknown_ordering + canonical_aux_unknowns,
+                matrix_rows=family_full_rows,
+                keep_unknowns=publication_unknown_ordering,
+                basis_prefix=f"PUBCLASS{class_index:02d}_FAMILY",
+                row_kind="publication_family_exact_line_elimination",
+            )
+            family_full_projection_row_records = [
+                {
+                    **row_record,
+                    "member_internal_path_class_id": None,
+                    "member_candidate_id": None,
+                    "member_source_line_id": None,
+                    "member_source_kind": "publication_family_full_elimination",
+                    "member_source_id": None,
+                    "member_branch_index": 0,
+                }
+                for row_record in family_full_projection_row_records
+            ]
+            family_full_projection_rows = [
+                list(row_record["matrix_row"]) for row_record in family_full_projection_row_records
+            ]
         representative_rank = _row_rank(representative_rows)
         common_rank = _row_rank(common_rows)
         aggregate_rank = _row_rank(combined_rows)
+        family_full_projection_rank = _row_rank(family_full_projection_rows)
+        family_full_projection_contained_by_member = [
+            _row_rank(rows + family_full_projection_rows) == _row_rank(rows)
+            for rows in member_row_sets
+        ] if family_full_projection_rows else []
+        family_full_projection_contained_in_all_members = all(
+            family_full_projection_contained_by_member
+        ) if family_full_projection_rows else False
         endpoint_capture_variation = False
         for endpoint_position, point_id in enumerate(members[0]["endpoint_pair"]):
             point_entry = next(
@@ -2107,18 +2582,15 @@ def build_publication_path_classes(
             }
             for index, rows in enumerate(member_row_sets)
         ]
-        same_source_line_family = (
-            len({member["representative_source_line_id"] for member in members}) == 1
-        )
         alias_only_row_space_variation = (
             aggregate_rank == representative_rank + 1
             and common_rank + 1 == representative_rank
         )
-        use_common_row_language = (
-            endpoint_capture_variation
+        use_common_row_language = bool(
+            same_source_line_family
+            and len(members) > 1
             and len(member_row_space_signatures) > 1
-            and same_source_line_family
-            and alias_only_row_space_variation
+            and common_rows
         )
         common_row_records = [
             {
@@ -2135,10 +2607,21 @@ def build_publication_path_classes(
             }
             for local_row_index, row in enumerate(common_rows)
         ]
-        selected_basis_rows = common_rows if use_common_row_language else representative_rows
-        selected_basis_row_records = (
-            common_row_records if use_common_row_language else representative_row_records
+        use_family_full_row_language = bool(
+            same_source_line_family
+            and len(members) > 1
+            and family_full_projection_rows
+            and family_full_projection_contained_in_all_members
         )
+        if use_family_full_row_language:
+            selected_basis_rows = family_full_projection_rows
+            selected_basis_row_records = family_full_projection_row_records
+        elif use_common_row_language:
+            selected_basis_rows = common_rows
+            selected_basis_row_records = common_row_records
+        else:
+            selected_basis_rows = representative_rows
+            selected_basis_row_records = representative_row_records
         selected_rows_contained_by_member = [
             _row_rank(rows + selected_basis_rows) == _row_rank(rows)
             for rows in member_row_sets
@@ -2166,10 +2649,23 @@ def build_publication_path_classes(
                 "representative_basis_row_rank": representative_rank,
                 "representative_basis_row_records": representative_row_records,
                 "representative_basis_rows": representative_rows,
+                "common_basis_row_count": len(common_rows),
+                "common_basis_row_records": common_row_records,
+                "common_basis_rows": common_rows,
+                "family_full_row_count": len(family_full_rows),
+                "family_full_row_records": family_full_row_records,
+                "family_full_row_rank": _row_rank(family_full_rows),
+                "family_full_projection_row_count": len(family_full_projection_rows),
+                "family_full_projection_row_records": family_full_projection_row_records,
+                "family_full_projection_rows": family_full_projection_rows,
+                "family_full_projection_row_rank": family_full_projection_rank,
+                "family_full_projection_contained_by_member": family_full_projection_contained_by_member,
+                "family_full_projection_contained_in_all_members": family_full_projection_contained_in_all_members,
                 "selected_basis_row_count": len(selected_basis_rows),
                 "selected_basis_row_rank": _row_rank(selected_basis_rows),
                 "selected_basis_row_records": selected_basis_row_records,
                 "selected_basis_rows": selected_basis_rows,
+                "used_family_full_publication_row_language": use_family_full_row_language,
                 "used_common_publication_row_language": use_common_row_language,
                 "endpoint_capture_variation": endpoint_capture_variation,
                 "member_row_space_signature_count": len(member_row_space_signatures),
@@ -2214,9 +2710,15 @@ def build_publication_path_classes(
                     "endpoint pair, line little-group type, and canonicalized endpoint restriction signature "
                     "after basis-label permutations and endpoint-side relabel canonicalization. "
                     "All grouped members are first rewritten into a common publication point-family basis. "
-                    "When the grouped members still disagree because they use genuinely different alias-capture "
-                    "frames for the same published point family, the published path class keeps only the common "
-                    "row language across those frames; otherwise it uses the canonical representative row span."
+                    "If the grouped members come from the same physical line family, their unreduced full line "
+                    "blocks are also rewritten into a shared line-auxiliary basis and exact elimination is "
+                    "performed only after stacking the whole family. This is the physically correct publication "
+                    "row language because line small-irrep multiplicities are shared by the whole physical line "
+                    "family, not by each raw capture representative separately. "
+                    "When no shared-family full elimination is available but grouped members still disagree "
+                    "because they use genuinely different alias-capture frames for the same published point "
+                    "family, the published path class keeps only the common row language across those frames; "
+                    "otherwise it uses the canonical representative row span."
                 ),
                 "selected_as_publication": False,
                 "selection_reason": None,
@@ -2285,9 +2787,17 @@ def build_publication_path_classes(
 
 def build_publication_shell_candidate(
     reduction: dict[str, Any],
+    *,
+    full_point_unknown_ordering: dict[str, Sequence[str]] | None = None,
 ) -> dict[str, Any]:
-    publication_point_shell = build_publication_point_shell(reduction)
-    publication_path_payload = build_publication_path_classes(reduction)
+    publication_point_shell = build_publication_point_shell(
+        reduction,
+        full_point_unknown_ordering=full_point_unknown_ordering,
+    )
+    publication_path_payload = build_publication_path_classes(
+        reduction,
+        publication_point_shell=publication_point_shell,
+    )
     publication_plane_payload = build_publication_plane_classes(
         reduction,
         publication_point_shell=publication_point_shell,
@@ -3283,7 +3793,13 @@ def _record_by_path_class_id(reduction: dict[str, Any], path_class_id: str) -> d
 
 
 def _record_basis_ids(record: dict[str, Any]) -> list[str]:
-    return [entry["basis_id"] for entry in record.get("global_matrix_row_records", [])]
+    line_basis_labels = [str(label) for label in record.get("line_basis_labels", [])]
+    if line_basis_labels:
+        return line_basis_labels
+    discovered_basis_labels = _normalized_line_basis_labels(record)
+    if discovered_basis_labels:
+        return [str(label) for label in discovered_basis_labels]
+    return [str(entry["basis_id"]) for entry in record.get("global_matrix_row_records", [])]
 
 
 def _endpoint_decomposition_vectors(record: dict[str, Any]) -> dict[str, dict[str, tuple[int, ...]]]:
@@ -3622,6 +4138,36 @@ def _best_capture_permutation_by_exact_matches(
     return tuple(int(index) for index in solve(0, 0)[1])
 
 
+def _all_best_capture_permutations_by_exact_matches(
+    canonical_fingerprints: Sequence[tuple[Any, ...]],
+    alias_fingerprints: Sequence[tuple[Any, ...]],
+    *,
+    max_candidates: int = 720,
+) -> list[tuple[int, ...]]:
+    """Enumerate every permutation tied for the best global fingerprint score."""
+    rep_count = len(alias_fingerprints)
+    if rep_count <= 1:
+        return [tuple(range(rep_count))]
+    if factorial(rep_count) > max_candidates:
+        return [_best_capture_permutation_by_exact_matches(canonical_fingerprints, alias_fingerprints)]
+
+    best_score: tuple[int, int] | None = None
+    best_permutations: list[tuple[int, ...]] = []
+    for permutation in permutations(range(rep_count)):
+        candidate = tuple(int(index) for index in permutation)
+        candidate_score = _score_capture_permutation(
+            canonical_fingerprints,
+            alias_fingerprints,
+            candidate,
+        )
+        if best_score is None or candidate_score > best_score:
+            best_score = candidate_score
+            best_permutations = [candidate]
+        elif candidate_score == best_score:
+            best_permutations.append(candidate)
+    return best_permutations or [tuple(range(rep_count))]
+
+
 def _permute_fingerprint_slots(
     slot_payload: Sequence[Sequence[tuple[Any, ...]]],
     permutation: Sequence[int],
@@ -3644,6 +4190,141 @@ def _canonical_context_slot_payload(
         ]
         canonical_payload.append((context_key, tuple(slot_payload)))
     return canonical_payload
+
+
+def _slot_invariant_signature(
+    slot_payload: Sequence[tuple[Any, ...]],
+) -> tuple[tuple[int, int], ...]:
+    return tuple(
+        sorted(
+            (
+                int(fingerprint[1]),
+                int(fingerprint[2]),
+            )
+            for fingerprint in slot_payload
+            if len(fingerprint) >= 3
+        )
+    )
+
+
+def _block_preserving_canonical_permutations(
+    *,
+    context_payload: dict[tuple[Any, ...], dict[int, list[tuple[Any, ...]]]],
+    rep_count: int,
+    max_candidates: int = 720,
+) -> list[tuple[int, ...]] | None:
+    canonical_payload = _canonical_context_slot_payload(context_payload, rep_count)
+    if rep_count <= 1:
+        return [tuple(range(rep_count))]
+    if not canonical_payload:
+        return [tuple(range(rep_count))]
+
+    slot_invariants: list[tuple[tuple[int, int], ...]] = []
+    for local_index in range(rep_count):
+        merged_slot_payload: list[tuple[Any, ...]] = []
+        for _, slot_payload in canonical_payload:
+            merged_slot_payload.extend(slot_payload[local_index])
+        slot_invariants.append(_slot_invariant_signature(merged_slot_payload))
+
+    groups_by_invariant: dict[tuple[tuple[int, int], ...], list[int]] = {}
+    for local_index, invariant in enumerate(slot_invariants):
+        groups_by_invariant.setdefault(invariant, []).append(local_index)
+
+    candidate_count = 1
+    ordered_groups = [groups_by_invariant[key] for key in sorted(groups_by_invariant)]
+    for group in ordered_groups:
+        candidate_count *= factorial(len(group))
+        if candidate_count > max_candidates:
+            return None
+
+    candidates: list[tuple[int, ...]] = []
+    for permuted_groups in product(*(permutations(group) for group in ordered_groups)):
+        permutation = list(range(rep_count))
+        for source_group, target_group in zip(ordered_groups, permuted_groups):
+            for local_index, canonical_index in zip(source_group, target_group):
+                permutation[local_index] = canonical_index
+        candidates.append(tuple(permutation))
+    return candidates
+
+
+def _score_canonical_capture_default_permutation(
+    *,
+    capture_context_payload_by_capture: dict[
+        str,
+        dict[tuple[Any, ...], dict[int, list[tuple[Any, ...]]]],
+    ],
+    canonical_capture_id: str,
+    rep_count: int,
+    permutation: Sequence[int],
+) -> tuple[int, int]:
+    canonical_context_payload = capture_context_payload_by_capture.get(canonical_capture_id, {})
+    if not canonical_context_payload:
+        return (0, 0)
+
+    total_exact_matches = 0
+    total_overlap = 0
+    ordered_capture_ids = sorted(capture_id for capture_id, payload in capture_context_payload_by_capture.items() if payload)
+    for capture_id in ordered_capture_ids:
+        alias_context_payload = capture_context_payload_by_capture.get(capture_id, {})
+        context_keys = sorted(set(canonical_context_payload) | set(alias_context_payload))
+        for context_key in context_keys:
+            canonical_slot_payload = [
+                tuple(sorted(canonical_context_payload.get(context_key, {}).get(rep_index, [])))
+                for rep_index in range(1, rep_count + 1)
+            ]
+            alias_slot_payload = [
+                tuple(sorted(alias_context_payload.get(context_key, {}).get(rep_index, [])))
+                for rep_index in range(1, rep_count + 1)
+            ]
+            if not any(canonical_slot_payload) or not any(alias_slot_payload):
+                continue
+            permuted_canonical_slot_payload = _permute_fingerprint_slots(
+                canonical_slot_payload,
+                permutation,
+            )
+            if capture_id == canonical_capture_id:
+                best_alignment = tuple(int(index) for index in permutation)
+            else:
+                best_alignment = _best_capture_permutation_by_exact_matches(
+                    permuted_canonical_slot_payload,
+                    alias_slot_payload,
+                )
+            exact_matches, overlap = _score_capture_permutation(
+                permuted_canonical_slot_payload,
+                alias_slot_payload,
+                best_alignment,
+            )
+            total_exact_matches += exact_matches
+            total_overlap += overlap
+    return total_exact_matches, total_overlap
+
+
+def _best_scoring_canonical_default_permutations(
+    *,
+    capture_context_payload_by_capture: dict[
+        str,
+        dict[tuple[Any, ...], dict[int, list[tuple[Any, ...]]]],
+    ],
+    canonical_capture_id: str,
+    rep_count: int,
+    candidate_permutations: Sequence[Sequence[int]],
+) -> list[tuple[int, ...]]:
+    best_score: tuple[int, int] | None = None
+    best_candidates: list[tuple[int, ...]] = []
+    for permutation in candidate_permutations:
+        candidate = tuple(int(index) for index in permutation)
+        candidate_score = _score_canonical_capture_default_permutation(
+            capture_context_payload_by_capture=capture_context_payload_by_capture,
+            canonical_capture_id=canonical_capture_id,
+            rep_count=rep_count,
+            permutation=candidate,
+        )
+        if best_score is None or candidate_score > best_score:
+            best_score = candidate_score
+            best_candidates = [candidate]
+        elif candidate_score == best_score:
+            best_candidates.append(candidate)
+    return best_candidates or [tuple(range(rep_count))]
 
 
 def _choose_canonical_capture_default_permutation(
@@ -3678,38 +4359,18 @@ def _choose_canonical_capture_default_permutation(
     return tuple(permutation)
 
 
-def _publication_point_permutation_context_key(
-    record: dict[str, Any],
-    point_id: str,
-) -> tuple[Any, ...]:
-    endpoint_pair = list(record["endpoint_pair"])
-    other_endpoint_id = next(item for item in endpoint_pair if item != point_id)
-    return (
-        str(record["source_line_id"]),
-        other_endpoint_id,
-        _line_group_signature_key(record["line_group_signature"]),
-    )
-
-
-def _build_publication_point_capture_permutations(
+def _collect_publication_point_capture_fingerprints(
     reduction: dict[str, Any],
-    point_unknown_ordering: dict[str, list[str]],
-) -> dict[str, dict[str, dict[str, Any]]]:
-    """Infer how every point-capture ordering should be rewritten into publication order.
+) -> tuple[
+    dict[str, dict[str, dict[int, list[tuple[Any, ...]]]]],
+    dict[str, dict[str, dict[tuple[Any, ...], dict[int, list[tuple[Any, ...]]]]]],
+]:
+    """Collect per-point, per-capture restriction fingerprints from all candidate paths.
 
-    Publication points may merge several raw captures of the same geometric
-    point family.  Those captures often enumerate point irreps in different
-    local orders, and the order may even depend on which path context produced
-    the capture.  This helper gathers restriction fingerprints from all candidate
-    paths, then builds two levels of permutations:
-
-    1. `default`: the best global relabeling for a capture across all contexts;
-    2. `by_context`: an override used only for a specific `(source line,
-       opposite endpoint, line-group signature)` context.
-
-    The rest of the publication-shell builder can then transform every path row
-    into one consistent publication point-family basis before comparing row
-    spaces or selecting representative publication paths.
+    The returned payload is the raw data used for two related tasks:
+    1. choose a canonical unknown ordering for every published point family;
+    2. infer how each capture, and each capture-context pair, should be
+       rewritten into that canonical publication point basis.
     """
     candidate_records = list(reduction.get("candidate_path_records", []))
     by_point_capture: dict[str, dict[str, dict[int, list[tuple[Any, ...]]]]] = {}
@@ -3739,6 +4400,127 @@ def _build_publication_point_capture_permutations(
             for rep_index, rep_fingerprint in enumerate(rep_fingerprints, start=1):
                 capture_payload.setdefault(rep_index, []).append(rep_fingerprint)
                 context_payload.setdefault(rep_index, []).append(rep_fingerprint)
+    return by_point_capture, by_point_capture_context
+
+
+def _canonicalize_publication_point_unknown_ordering(
+    reduction: dict[str, Any],
+    source_point_unknown_ordering: dict[str, list[str]],
+) -> tuple[dict[str, list[str]], dict[str, tuple[int, ...]]]:
+    """Choose one canonical unknown ordering for each published point family.
+
+    The raw reduction keeps each publication point in the arbitrary irrep order
+    inherited from the chosen representative capture.  That is not stable enough
+    once several captures of the same published point are compared across
+    different path contexts.  We therefore inspect the full context fingerprint
+    set of one canonical capture and sort its local unknown slots by that
+    multi-context signature.
+
+    The returned point ordering is still written in terms of the original raw
+    unknown labels; only the slot order changes.
+    """
+    _, by_point_capture_context = _collect_publication_point_capture_fingerprints(reduction)
+    canonical_point_unknown_ordering: dict[str, list[str]] = {}
+    canonical_default_permutation_by_point: dict[str, tuple[int, ...]] = {}
+    for point in reduction.get("point_shell", []):
+        point_id = str(point["point_id"])
+        raw_unknowns = [str(unknown) for unknown in source_point_unknown_ordering.get(point_id, [])]
+        rep_count = len(raw_unknowns)
+        if rep_count <= 1:
+            canonical_point_unknown_ordering[point_id] = list(raw_unknowns)
+            canonical_default_permutation_by_point[point_id] = tuple(range(rep_count))
+            continue
+        alias_capture_ids = [str(alias["capture_id"]) for alias in point.get("aliases", [])]
+        canonical_capture_id = point_id if point_id in alias_capture_ids else alias_capture_ids[0]
+        capture_context_payload_by_capture = by_point_capture_context.get(point_id, {})
+        observed_capture_ids = [
+            capture_id
+            for capture_id, payload in capture_context_payload_by_capture.items()
+            if payload
+        ]
+        canonical_context_payload = capture_context_payload_by_capture.get(canonical_capture_id, {})
+        identity_permutation = tuple(range(rep_count))
+        fallback_permutation = _choose_canonical_capture_default_permutation(
+            canonical_context_payload,
+            rep_count,
+        )
+        if len(observed_capture_ids) <= 1:
+            canonical_default_permutation = identity_permutation
+        else:
+            candidate_permutations = _block_preserving_canonical_permutations(
+                context_payload=canonical_context_payload,
+                rep_count=rep_count,
+            )
+            if not candidate_permutations:
+                canonical_default_permutation = identity_permutation
+            else:
+                permutation_scores = {
+                    tuple(permutation): _score_canonical_capture_default_permutation(
+                        capture_context_payload_by_capture=capture_context_payload_by_capture,
+                        canonical_capture_id=canonical_capture_id,
+                        rep_count=rep_count,
+                        permutation=permutation,
+                    )
+                    for permutation in candidate_permutations
+                }
+                canonical_default_permutation = min(
+                    candidate_permutations,
+                    key=lambda permutation: (
+                        -permutation_scores[tuple(permutation)][0],
+                        -permutation_scores[tuple(permutation)][1],
+                        0 if tuple(permutation) == tuple(fallback_permutation) else 1,
+                        tuple(int(index) for index in permutation),
+                    ),
+                )
+                if permutation_scores[tuple(canonical_default_permutation)] <= permutation_scores[identity_permutation]:
+                    canonical_default_permutation = identity_permutation
+        canonical_unknowns = [""] * rep_count
+        for local_index, canonical_index in enumerate(canonical_default_permutation):
+            if 0 <= canonical_index < rep_count:
+                canonical_unknowns[canonical_index] = raw_unknowns[local_index]
+        if any(not unknown for unknown in canonical_unknowns):
+            canonical_unknowns = list(raw_unknowns)
+            canonical_default_permutation = tuple(range(rep_count))
+        canonical_point_unknown_ordering[point_id] = canonical_unknowns
+        canonical_default_permutation_by_point[point_id] = canonical_default_permutation
+    return canonical_point_unknown_ordering, canonical_default_permutation_by_point
+
+
+def _publication_point_permutation_context_key(
+    record: dict[str, Any],
+    point_id: str,
+) -> tuple[Any, ...]:
+    endpoint_pair = list(record["endpoint_pair"])
+    other_endpoint_id = next(item for item in endpoint_pair if item != point_id)
+    return (
+        str(record["source_line_id"]),
+        other_endpoint_id,
+        _line_group_signature_key(record["line_group_signature"]),
+    )
+
+
+def _build_publication_point_capture_permutations(
+    reduction: dict[str, Any],
+    point_unknown_ordering: dict[str, list[str]],
+    canonical_default_permutation_by_point: dict[str, tuple[int, ...]] | dict[str, list[int]],
+) -> dict[str, dict[str, dict[str, Any]]]:
+    """Infer how every point-capture ordering should be rewritten into publication order.
+
+    Publication points may merge several raw captures of the same geometric
+    point family.  Those captures often enumerate point irreps in different
+    local orders, and the order may even depend on which path context produced
+    the capture.  This helper gathers restriction fingerprints from all candidate
+    paths, then builds two levels of permutations:
+
+    1. `default`: the best global relabeling for a capture across all contexts;
+    2. `by_context`: an override used only for a specific `(source line,
+       opposite endpoint, line-group signature)` context.
+
+    The rest of the publication-shell builder can then transform every path row
+    into one consistent publication point-family basis before comparing row
+    spaces or selecting representative publication paths.
+    """
+    by_point_capture, by_point_capture_context = _collect_publication_point_capture_fingerprints(reduction)
 
     permutations_by_point: dict[str, dict[str, dict[str, Any]]] = {}
     for point in reduction.get("point_shell", []):
@@ -3749,10 +4531,17 @@ def _build_publication_point_capture_permutations(
             continue
         alias_capture_ids = [alias["capture_id"] for alias in point.get("aliases", [])]
         canonical_capture_id = point_id if point_id in alias_capture_ids else alias_capture_ids[0]
+        canonical_default_permutation = tuple(
+            int(index)
+            for index in canonical_default_permutation_by_point.get(
+                point_id,
+                tuple(range(rep_count)),
+            )
+        )
+        if len(canonical_default_permutation) != rep_count:
+            canonical_default_permutation = tuple(range(rep_count))
         capture_payload = by_point_capture.get(point_id, {})
         capture_context_payload = by_point_capture_context.get(point_id, {})
-        canonical_context_payload = capture_context_payload.get(canonical_capture_id, {})
-        canonical_default_permutation = tuple(range(rep_count))
         canonical_payload = capture_payload.get(canonical_capture_id, {})
         canonical_fingerprints = _permute_fingerprint_slots(
             [
@@ -3761,20 +4550,17 @@ def _build_publication_point_capture_permutations(
             ],
             canonical_default_permutation,
         )
-        point_permutations: dict[str, dict[str, Any]] = {
-            canonical_capture_id: {
-                "default": canonical_default_permutation,
-                "by_context": {},
-            }
-        }
-        for capture_id in alias_capture_ids:
-            best_permutation = tuple(range(rep_count))
-            if capture_id != canonical_capture_id:
-                alias_payload = capture_payload.get(capture_id, {})
-                alias_fingerprints = [
-                    tuple(sorted(alias_payload.get(rep_index, [])))
-                    for rep_index in range(1, rep_count + 1)
-                ]
+        point_permutations: dict[str, dict[str, Any]] = {}
+        capture_ids_in_order = list(dict.fromkeys([canonical_capture_id, *alias_capture_ids]))
+        for capture_id in capture_ids_in_order:
+            alias_payload = capture_payload.get(capture_id, {})
+            alias_fingerprints = [
+                tuple(sorted(alias_payload.get(rep_index, [])))
+                for rep_index in range(1, rep_count + 1)
+            ]
+            if capture_id == canonical_capture_id:
+                best_permutation = canonical_default_permutation
+            else:
                 best_permutation = _best_capture_permutation_by_exact_matches(
                     canonical_fingerprints,
                     alias_fingerprints,
@@ -3798,10 +4584,13 @@ def _build_publication_point_capture_permutations(
                     tuple(sorted(alias_context_payload.get(rep_index, [])))
                     for rep_index in range(1, rep_count + 1)
                 ]
-                best_context_permutation = _best_capture_permutation_by_exact_matches(
-                    canonical_context_fingerprints,
-                    alias_context_fingerprints,
-                )
+                if capture_id == canonical_capture_id:
+                    best_context_permutation = canonical_default_permutation
+                else:
+                    best_context_permutation = _best_capture_permutation_by_exact_matches(
+                        canonical_context_fingerprints,
+                        alias_context_fingerprints,
+                    )
                 context_permutations[context_key] = best_context_permutation
             point_permutations[capture_id] = {
                 "default": best_permutation,
@@ -3831,14 +4620,266 @@ def _lookup_publication_point_capture_permutation(
     return tuple(int(index) for index in default_permutation)
 
 
+def _normalize_permutation_candidates(
+    permutations_in: Sequence[Sequence[int]] | None,
+    rep_count: int,
+) -> list[tuple[int, ...]]:
+    identity = tuple(range(rep_count))
+    if rep_count <= 1:
+        return [identity]
+    if not permutations_in:
+        return [identity]
+    normalized: list[tuple[int, ...]] = []
+    seen: set[tuple[int, ...]] = set()
+    for permutation in permutations_in:
+        candidate = tuple(int(index) for index in permutation)
+        if len(candidate) != rep_count or sorted(candidate) != list(range(rep_count)):
+            continue
+        if candidate in seen:
+            continue
+        seen.add(candidate)
+        normalized.append(candidate)
+    return normalized or [identity]
+
+
+def _lookup_publication_point_capture_permutation_candidates(
+    record: dict[str, Any],
+    point_id: str,
+    capture_id: str,
+    point_capture_permutations: dict[str, dict[str, dict[str, Any]]],
+    rep_count: int,
+) -> list[tuple[int, ...]]:
+    capture_entry = point_capture_permutations.get(point_id, {}).get(capture_id)
+    if capture_entry is None:
+        return [tuple(range(rep_count))]
+    context_key = _publication_point_permutation_context_key(record, point_id)
+    context_candidates = capture_entry.get("by_context_candidates", {})
+    if context_key in context_candidates:
+        return _normalize_permutation_candidates(context_candidates[context_key], rep_count)
+    default_candidates = capture_entry.get("default_candidates")
+    if default_candidates is not None:
+        return _normalize_permutation_candidates(default_candidates, rep_count)
+    default_permutation = capture_entry.get("default")
+    if default_permutation is None:
+        return [tuple(range(rep_count))]
+    return _normalize_permutation_candidates([default_permutation], rep_count)
+
+
+def _invert_permutation(permutation: Sequence[int]) -> tuple[int, ...]:
+    inverse = [0] * len(permutation)
+    for local_index, canonical_index in enumerate(permutation):
+        inverse[int(canonical_index)] = int(local_index)
+    return tuple(inverse)
+
+
+def _relative_publication_point_permutation(
+    current_permutation: Sequence[int],
+    target_permutation: Sequence[int],
+) -> tuple[int, ...]:
+    inverse_current = _invert_permutation(current_permutation)
+    return tuple(
+        int(target_permutation[inverse_current[local_index]])
+        for local_index in range(len(current_permutation))
+    )
+
+
+def _apply_point_block_permutation_to_rows(
+    rows: Sequence[Sequence[int]],
+    block_indices: Sequence[int],
+    permutation: Sequence[int],
+) -> list[list[int]]:
+    transformed_rows: list[list[int]] = []
+    for row in rows:
+        transformed = [int(value) for value in row]
+        block_values = [int(row[index]) for index in block_indices]
+        remapped_values = [0] * len(block_indices)
+        for local_index, canonical_index in enumerate(permutation):
+            remapped_values[int(canonical_index)] += block_values[local_index]
+        for position, column_index in enumerate(block_indices):
+            transformed[column_index] = remapped_values[position]
+        transformed_rows.append(transformed)
+    return transformed_rows
+
+
+def _gauge_invariant_publication_path_row_language(
+    *,
+    representative_record: dict[str, Any],
+    selected_basis_row_records: Sequence[dict[str, Any]],
+    path_class_id: str,
+    point_unknown_ordering: dict[str, list[str]],
+    publication_unknown_ordering: Sequence[str],
+    point_capture_permutations: dict[str, dict[str, dict[str, Any]]],
+    max_variants: int = 4096,
+) -> dict[str, Any]:
+    """Keep only the publication path rows invariant under residual point gauge."""
+    base_rows = [
+        [int(value) for value in row_record["matrix_row"]]
+        for row_record in selected_basis_row_records
+    ]
+    base_rank = _row_rank(base_rows)
+    if base_rank == 0:
+        return {
+            "used": False,
+            "reason": "selected_row_rank_zero",
+            "variant_count": 1,
+            "ambiguous_points": [],
+            "selected_basis_row_records": list(selected_basis_row_records),
+            "selected_basis_rows": base_rows,
+            "selected_basis_row_rank": 0,
+        }
+
+    publication_unknown_index = {
+        str(unknown): index for index, unknown in enumerate(publication_unknown_ordering)
+    }
+    endpoint_pair = list(representative_record["endpoint_pair"])
+    endpoint_capture_ids = list(representative_record.get("endpoint_capture_ids", []))
+    capture_by_point = {
+        endpoint_pair[index]: endpoint_capture_ids[index]
+        for index in range(min(len(endpoint_pair), len(endpoint_capture_ids)))
+    }
+
+    endpoint_relative_candidates: dict[str, list[tuple[int, ...]]] = {}
+    ambiguous_points: list[str] = []
+    search_space_size = 1
+    for point_id in endpoint_pair:
+        block_unknowns = list(point_unknown_ordering.get(point_id, []))
+        rep_count = len(block_unknowns)
+        if rep_count <= 1:
+            continue
+        capture_id = capture_by_point.get(point_id, point_id)
+        current_permutation = _lookup_publication_point_capture_permutation(
+            representative_record,
+            point_id,
+            capture_id,
+            point_capture_permutations,
+        )
+        if current_permutation is None:
+            current_permutation = tuple(range(rep_count))
+        absolute_candidates = _lookup_publication_point_capture_permutation_candidates(
+            representative_record,
+            point_id,
+            capture_id,
+            point_capture_permutations,
+            rep_count,
+        )
+        relative_candidates = _normalize_permutation_candidates(
+            [
+                _relative_publication_point_permutation(current_permutation, candidate)
+                for candidate in absolute_candidates
+            ],
+            rep_count,
+        )
+        endpoint_relative_candidates[point_id] = relative_candidates
+        search_space_size *= len(relative_candidates)
+        if len(relative_candidates) > 1:
+            ambiguous_points.append(point_id)
+
+    if not ambiguous_points:
+        return {
+            "used": False,
+            "reason": "no_residual_point_gauge_ambiguity",
+            "variant_count": 1,
+            "ambiguous_points": [],
+            "selected_basis_row_records": list(selected_basis_row_records),
+            "selected_basis_rows": base_rows,
+            "selected_basis_row_rank": base_rank,
+        }
+    if search_space_size > max_variants:
+        return {
+            "used": False,
+            "reason": f"gauge_variant_search_space_{search_space_size}_exceeds_limit_{max_variants}",
+            "variant_count": search_space_size,
+            "ambiguous_points": ambiguous_points,
+            "selected_basis_row_records": list(selected_basis_row_records),
+            "selected_basis_rows": base_rows,
+            "selected_basis_row_rank": base_rank,
+        }
+
+    point_block_indices = {
+        point_id: [publication_unknown_index[unknown] for unknown in point_unknown_ordering.get(point_id, [])]
+        for point_id in endpoint_pair
+    }
+    ordered_points = [point_id for point_id in endpoint_pair if point_id in endpoint_relative_candidates]
+    candidate_lists = [endpoint_relative_candidates[point_id] for point_id in ordered_points]
+    variant_row_sets: list[list[list[int]]] = []
+    for variant in product(*candidate_lists) if candidate_lists else [()]:
+        transformed_rows = base_rows
+        for point_id, relative_permutation in zip(ordered_points, variant):
+            if all(index == local_index for local_index, index in enumerate(relative_permutation)):
+                continue
+            transformed_rows = _apply_point_block_permutation_to_rows(
+                transformed_rows,
+                point_block_indices[point_id],
+                relative_permutation,
+            )
+        variant_row_sets.append(transformed_rows)
+
+    invariant_rows = _row_space_intersection_basis(variant_row_sets)
+    invariant_rank = _row_rank(invariant_rows)
+    if invariant_rank == 0 or invariant_rank >= base_rank:
+        return {
+            "used": False,
+            "reason": (
+                "gauge_intersection_collapsed_row_language"
+                if invariant_rank == 0
+                else "gauge_intersection_did_not_reduce_rank"
+            ),
+            "variant_count": len(variant_row_sets),
+            "ambiguous_points": ambiguous_points,
+            "selected_basis_row_records": list(selected_basis_row_records),
+            "selected_basis_rows": base_rows,
+            "selected_basis_row_rank": base_rank,
+        }
+
+    invariant_row_records = [
+        {
+            "row_index_within_candidate_block": local_row_index,
+            "basis_id": f"{path_class_id}_GAUGE_{local_row_index + 1:02d}",
+            "row_kind": "publication_path_gauge_invariant_basis",
+            "matrix_row": list(row),
+            "member_internal_path_class_id": None,
+            "member_candidate_id": None,
+            "member_source_line_id": None,
+            "member_source_kind": "publication_point_gauge_intersection",
+            "member_source_id": None,
+            "member_branch_index": 0,
+        }
+        for local_row_index, row in enumerate(invariant_rows)
+    ]
+    return {
+        "used": True,
+        "reason": "selected_row_language_replaced_by_point_gauge_intersection",
+        "variant_count": len(variant_row_sets),
+        "ambiguous_points": ambiguous_points,
+        "selected_basis_row_records": invariant_row_records,
+        "selected_basis_rows": [list(row) for row in invariant_rows],
+        "selected_basis_row_rank": invariant_rank,
+    }
+
+
 def _transform_publication_row_records_to_point_family_basis(
     record: dict[str, Any],
     row_records: Sequence[dict[str, Any]],
     point_unknown_ordering: dict[str, list[str]],
+    publication_unknown_ordering: Sequence[str],
     point_capture_permutations: dict[str, dict[str, dict[str, Any]]],
 ) -> list[dict[str, Any]]:
-    unknown_ordering = list(record["global_unknown_ordering"])
-    unknown_index = {unknown: index for index, unknown in enumerate(unknown_ordering)}
+    source_unknown_ordering = [str(unknown) for unknown in record["global_unknown_ordering"]]
+    source_unknown_index = {
+        unknown: index for index, unknown in enumerate(source_unknown_ordering)
+    }
+    publication_unknown_ordering = [str(unknown) for unknown in publication_unknown_ordering]
+    publication_unknown_index = {
+        unknown: index for index, unknown in enumerate(publication_unknown_ordering)
+    }
+    point_ids_in_source_order: list[str] = []
+    source_block_unknowns_by_point: dict[str, list[str]] = {}
+    for unknown in source_unknown_ordering:
+        point_id = str(unknown).split("_", 1)[0]
+        if point_id not in source_block_unknowns_by_point:
+            point_ids_in_source_order.append(point_id)
+            source_block_unknowns_by_point[point_id] = []
+        source_block_unknowns_by_point[point_id].append(str(unknown))
     endpoint_pair = list(record["endpoint_pair"])
     endpoint_capture_ids = list(record.get("endpoint_capture_ids", []))
     capture_by_point = {
@@ -3848,37 +4889,51 @@ def _transform_publication_row_records_to_point_family_basis(
     transformed_records: list[dict[str, Any]] = []
     for row_record in row_records:
         row = list(row_record["matrix_row"])
-        transformed_row = list(row)
+        transformed_row = [0] * len(publication_unknown_ordering)
         transforms_applied: list[dict[str, Any]] = []
-        for point_id, capture_id in capture_by_point.items():
+        for point_id in point_ids_in_source_order:
+            capture_id = capture_by_point.get(point_id, point_id)
+            source_block_unknowns = source_block_unknowns_by_point.get(point_id, [])
+            publication_block_unknowns = point_unknown_ordering.get(point_id, source_block_unknowns)
+            if (
+                not source_block_unknowns
+                or not publication_block_unknowns
+                or len(source_block_unknowns) != len(publication_block_unknowns)
+            ):
+                continue
             permutation = _lookup_publication_point_capture_permutation(
                 record,
                 point_id,
                 capture_id,
                 point_capture_permutations,
             )
-            if permutation is None or all(index == local_index for local_index, index in enumerate(permutation)):
+            if permutation is None:
+                permutation = tuple(range(len(source_block_unknowns)))
+            if len(source_block_unknowns) != len(permutation):
                 continue
-            block_unknowns = point_unknown_ordering.get(point_id, [])
-            if len(block_unknowns) != len(permutation):
-                continue
-            block_values = [row[unknown_index[unknown]] for unknown in block_unknowns]
-            remapped_values = [0] * len(block_values)
+            block_values = [row[source_unknown_index[unknown]] for unknown in source_block_unknowns]
+            remapped_values = [0] * len(publication_block_unknowns)
             for local_index, canonical_index in enumerate(permutation):
                 remapped_values[canonical_index] += int(block_values[local_index])
-            for position, unknown in enumerate(block_unknowns):
-                transformed_row[unknown_index[unknown]] = remapped_values[position]
-            transforms_applied.append(
-                {
-                    "point_id": point_id,
-                    "capture_id": capture_id,
-                    "context_key": [
-                        str(item)
-                        for item in _publication_point_permutation_context_key(record, point_id)
-                    ],
-                    "local_to_canonical_permutation": [int(index) for index in permutation],
-                }
-            )
+            for position, unknown in enumerate(publication_block_unknowns):
+                transformed_row[publication_unknown_index[unknown]] += remapped_values[position]
+            if (
+                list(source_block_unknowns) != list(publication_block_unknowns)
+                or any(index != local_index for local_index, index in enumerate(permutation))
+            ):
+                transforms_applied.append(
+                    {
+                        "point_id": point_id,
+                        "capture_id": capture_id,
+                        "context_key": [
+                            str(item)
+                            for item in _publication_point_permutation_context_key(record, point_id)
+                        ],
+                        "source_block_unknowns": list(source_block_unknowns),
+                        "publication_block_unknowns": list(publication_block_unknowns),
+                        "local_to_canonical_permutation": [int(index) for index in permutation],
+                    }
+                )
         transformed_records.append(
             {
                 **row_record,
@@ -3998,6 +5053,104 @@ def _publication_plane_group_sort_key(
     )
 
 
+def _plane_basis_permutation_maps(block: dict[str, Any]) -> list[dict[str, str]]:
+    basis_labels = [str(label) for label in block.get("plane_basis_labels", [])]
+    if not basis_labels:
+        return [{}]
+    permutation_blocks = [
+        [str(label) for label in block_labels]
+        for block_labels in block.get("plane_basis_permutation_blocks", [])
+        if len(block_labels) > 1
+    ]
+    identity = {label: label for label in basis_labels}
+    if not permutation_blocks:
+        return [identity]
+    mappings: list[dict[str, str]] = []
+    seen: set[tuple[str, ...]] = set()
+    for block_permutations in product(*[list(permutations(block_labels)) for block_labels in permutation_blocks]):
+        mapping = dict(identity)
+        for source_block, target_block in zip(permutation_blocks, block_permutations):
+            for source_label, target_label in zip(source_block, target_block):
+                mapping[str(source_label)] = str(target_label)
+        signature = tuple(mapping[label] for label in basis_labels)
+        if signature in seen:
+            continue
+        seen.add(signature)
+        mappings.append(mapping)
+    return mappings or [identity]
+
+
+def _build_publication_plane_candidate_row_records(
+    *,
+    block: dict[str, Any],
+    equations_by_basis: dict[str, list[dict[str, Any]]],
+    point_order: dict[str, int],
+    basis_id_map: dict[str, str] | None = None,
+) -> list[dict[str, Any]]:
+    basis_id_map = {
+        str(source): str(target)
+        for source, target in (basis_id_map or {}).items()
+    }
+    permuted_equations_by_basis: dict[str, list[dict[str, Any]]] = {}
+    for basis_id, entries in equations_by_basis.items():
+        permuted_equations_by_basis.setdefault(
+            basis_id_map.get(str(basis_id), str(basis_id)),
+            [],
+        ).extend(entries)
+
+    candidate_row_records: list[dict[str, Any]] = []
+    for basis_id, entries in permuted_equations_by_basis.items():
+        entries = sorted(
+            entries,
+            key=lambda item: (
+                point_order[item["publication_point_id"]],
+                item["capture_id"],
+                item["raw_point_id"],
+            ),
+        )
+        basis_candidate_rows: list[dict[str, Any]] = []
+        for relation_index, (left, right) in enumerate(combinations(entries, 2), start=1):
+            if left["publication_point_id"] == right["publication_point_id"]:
+                continue
+            diff_row = [
+                int(left_value) - int(right_value)
+                for left_value, right_value in zip(left["matrix_row"], right["matrix_row"])
+            ]
+            if not any(diff_row):
+                continue
+            basis_candidate_rows.append(
+                {
+                    "basis_id": f"{block['plane_id']}::{basis_id}::{relation_index:02d}",
+                    "row_kind": "publication_plane_family_basis",
+                    "plane_id": block["plane_id"],
+                    "plane_basis_id": basis_id,
+                    "left_publication_point_id": left["publication_point_id"],
+                    "right_publication_point_id": right["publication_point_id"],
+                    "left_capture_id": left["capture_id"],
+                    "right_capture_id": right["capture_id"],
+                    "left_raw_point_id": left["raw_point_id"],
+                    "right_raw_point_id": right["raw_point_id"],
+                    "matrix_row": diff_row,
+                }
+            )
+        seen_row_signatures: set[tuple[int, ...]] = set()
+        for row_record in sorted(
+            basis_candidate_rows,
+            key=lambda item: _publication_plane_relation_sort_key(item, point_order),
+        ):
+            row_signature = tuple(_primitive_integer_row(row_record["matrix_row"]))
+            if row_signature in seen_row_signatures:
+                continue
+            seen_row_signatures.add(row_signature)
+            candidate_row_records.append(
+                {
+                    **row_record,
+                    "matrix_row": list(row_signature),
+                }
+            )
+    return candidate_row_records
+
+
 def build_publication_plane_classes(
     reduction: dict[str, Any],
     publication_point_shell: dict[str, Any] | None = None,
@@ -4025,6 +5178,7 @@ def build_publication_plane_classes(
     point_capture_permutations = _build_publication_point_capture_permutations(
         reduction,
         point_unknown_ordering,
+        publication_point_shell.get("canonical_default_permutation_by_point", {}),
     )
 
     grouped: dict[tuple[Any, ...], list[dict[str, Any]]] = {}
@@ -4046,56 +5200,40 @@ def build_publication_plane_classes(
         if len(publication_corner_ids) < 2:
             continue
 
-        candidate_row_records: list[dict[str, Any]] = []
-        for basis_id, entries in equations_by_basis.items():
-            entries = sorted(
-                entries,
-                key=lambda item: (
-                    point_order[item["publication_point_id"]],
-                    item["capture_id"],
-                    item["raw_point_id"],
-                ),
-            )
-            basis_candidate_rows: list[dict[str, Any]] = []
-            for relation_index, (left, right) in enumerate(combinations(entries, 2), start=1):
-                if left["publication_point_id"] == right["publication_point_id"]:
-                    continue
-                diff_row = [
-                    int(left_value) - int(right_value)
-                    for left_value, right_value in zip(left["matrix_row"], right["matrix_row"])
-                ]
-                if not any(diff_row):
-                    continue
-                basis_candidate_rows.append(
-                    {
-                        "basis_id": f"{block['plane_id']}::{basis_id}::{relation_index:02d}",
-                        "row_kind": "publication_plane_family_basis",
-                        "plane_id": block["plane_id"],
-                        "plane_basis_id": basis_id,
-                        "left_publication_point_id": left["publication_point_id"],
-                        "right_publication_point_id": right["publication_point_id"],
-                        "left_capture_id": left["capture_id"],
-                        "right_capture_id": right["capture_id"],
-                        "left_raw_point_id": left["raw_point_id"],
-                        "right_raw_point_id": right["raw_point_id"],
-                        "matrix_row": diff_row,
-                    }
-                )
-            seen_row_signatures: set[tuple[int, ...]] = set()
-            for row_record in sorted(
-                basis_candidate_rows,
-                key=lambda item: _publication_plane_relation_sort_key(item, point_order),
-            ):
-                row_signature = tuple(_primitive_integer_row(row_record["matrix_row"]))
-                if row_signature in seen_row_signatures:
-                    continue
-                seen_row_signatures.add(row_signature)
-                candidate_row_records.append(
-                    {
-                        **row_record,
-                        "matrix_row": list(row_signature),
-                    }
-                )
+        candidate_row_records = _build_publication_plane_candidate_row_records(
+            block=block,
+            equations_by_basis=equations_by_basis,
+            point_order=point_order,
+        )
+        plane_basis_permutation_maps = _plane_basis_permutation_maps(block)
+        plane_row_spaces = [
+            [list(row_record["matrix_row"]) for row_record in _build_publication_plane_candidate_row_records(
+                block=block,
+                equations_by_basis=equations_by_basis,
+                point_order=point_order,
+                basis_id_map=basis_id_map,
+            )]
+            for basis_id_map in plane_basis_permutation_maps
+        ]
+        plane_row_space_signatures = {_rref_signature(rows) for rows in plane_row_spaces}
+        if len(plane_row_space_signatures) > 1:
+            invariant_rows = _row_space_intersection_basis(plane_row_spaces)
+            candidate_row_records = [
+                {
+                    "basis_id": f"{block['plane_id']}::COMMON::{row_index + 1:02d}",
+                    "row_kind": "publication_plane_common_basis",
+                    "plane_id": block["plane_id"],
+                    "plane_basis_id": None,
+                    "left_publication_point_id": None,
+                    "right_publication_point_id": None,
+                    "left_capture_id": None,
+                    "right_capture_id": None,
+                    "left_raw_point_id": None,
+                    "right_raw_point_id": None,
+                    "matrix_row": list(row),
+                }
+                for row_index, row in enumerate(invariant_rows)
+            ]
 
         if not candidate_row_records:
             continue

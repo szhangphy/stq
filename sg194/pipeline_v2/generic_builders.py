@@ -1610,6 +1610,7 @@ def _augment_published_target_compatibility_with_monodromy_rows(
     monodromy_line_blocks: list[dict[str, Any]],
     monodromy_records: list[dict[str, Any]],
     unknown_relabel_map: dict[str, str],
+    allowed_source_line_ids: set[str] | None = None,
 ) -> dict[str, Any]:
     unknown_ordering = list(target_compatibility.get("global_unknown_ordering", []))
     unknown_index = {str(unknown): index for index, unknown in enumerate(unknown_ordering)}
@@ -1617,8 +1618,12 @@ def _augment_published_target_compatibility_with_monodromy_rows(
     global_matrix_rows = list(target_compatibility.get("global_matrix_rows", []))
     row_provenance = list(target_compatibility.get("row_provenance", []))
     monodromy_blocks: list[dict[str, Any]] = []
+    running_rank = sp.Matrix(global_matrix).rank() if global_matrix else 0
 
     for block, record in _canonical_target_monodromy_blocks(monodromy_line_blocks, monodromy_records):
+        source_line_id = str(record.get("source_line_id") or block.get("source_line_id") or "")
+        if allowed_source_line_ids is not None and source_line_id not in allowed_source_line_ids:
+            continue
         relabeled_equations: list[dict[str, Any]] = []
         relabeled_matrix_rows: list[list[int]] = []
         pair = record.get("pair") or {}
@@ -1635,9 +1640,13 @@ def _augment_published_target_compatibility_with_monodromy_rows(
                 coeff = int(term["coeff"])
                 matrix_row[unknown_index[relabeled_unknown]] += coeff
                 relabeled_terms.append({**term, "unknown": relabeled_unknown})
+            candidate_rank = sp.Matrix(global_matrix + [matrix_row]).rank()
+            if candidate_rank <= running_rank:
+                continue
             relabeled_equation = {**equation, "terms": relabeled_terms}
             metadata = {key: value for key, value in relabeled_equation.items() if key != "terms"}
             global_matrix.append(list(matrix_row))
+            running_rank = candidate_rank
             global_matrix_rows.append(
                 {
                     "source_type": "line",
@@ -1689,6 +1698,162 @@ def _augment_published_target_compatibility_with_monodromy_rows(
     }
 
 
+def _reorder_publication_shell_to_target_point_basis(
+    *,
+    publication_shell: dict[str, Any],
+    target_point_basis_debug: dict[str, Any],
+) -> dict[str, Any]:
+    """Rewrite the published shell into the point-internal canonical order.
+
+    `build_publication_shell_candidate()` constructs a publication shell in the
+    raw representative ordering inherited from the reduction layer.  Later in the
+    same same-shell build, `_build_target_point_basis_relabel()` derives a
+    physically motivated canonical point order from same-point monodromy and
+    ordinary-line propagation.
+
+    If we only rename unknown labels but keep the publication rows in the old
+    raw point order, we end up with a half-relabelled object: point names refer
+    to the canonical basis while the path/plane rows still live in the raw
+    publication basis.  This helper performs the missing column permutation so
+    the entire publication shell is written in one consistent point-family
+    basis before the final published C-matrix is assembled.
+    """
+    publication_point_shell = publication_shell.get("publication_point_shell") or {}
+    point_ids = [str(point_id) for point_id in publication_point_shell.get("point_ids", [])]
+    current_point_unknown_ordering = {
+        str(point_id): [str(unknown) for unknown in unknowns]
+        for point_id, unknowns in (publication_point_shell.get("point_unknown_ordering") or {}).items()
+    }
+    reordered_point_unknown_ordering: dict[str, list[str]] = {}
+    changed = False
+    for point_id in point_ids:
+        current_order = list(current_point_unknown_ordering.get(point_id, []))
+        debug_entry = (target_point_basis_debug or {}).get(point_id) or {}
+        canonical_order = [str(unknown) for unknown in debug_entry.get("canonical_ordering", [])]
+        if len(canonical_order) != len(current_order) or set(canonical_order) != set(current_order):
+            canonical_order = list(current_order)
+        if canonical_order != current_order:
+            changed = True
+        reordered_point_unknown_ordering[point_id] = canonical_order
+
+    current_unknown_ordering = [
+        str(unknown) for unknown in publication_shell.get("publication_unknown_ordering", [])
+    ]
+    reordered_unknown_ordering = [
+        unknown
+        for point_id in point_ids
+        for unknown in reordered_point_unknown_ordering.get(point_id, [])
+    ]
+    if reordered_unknown_ordering != current_unknown_ordering:
+        changed = True
+    if not changed:
+        return publication_shell
+
+    current_unknown_index = {
+        str(unknown): index for index, unknown in enumerate(current_unknown_ordering)
+    }
+
+    def reorder_matrix_row(row: Sequence[Any]) -> list[int]:
+        return [
+            int(row[current_unknown_index[unknown]])
+            for unknown in reordered_unknown_ordering
+        ]
+
+    def reorder_path_record(path: dict[str, Any]) -> dict[str, Any]:
+        reordered_row_records = [
+            {
+                **row_record,
+                "matrix_row": reorder_matrix_row(row_record.get("matrix_row", [])),
+            }
+            for row_record in path.get("selected_basis_row_records", [])
+        ]
+        return {
+            **path,
+            "selected_basis_row_records": reordered_row_records,
+            "selected_basis_rows": [
+                list(row_record["matrix_row"]) for row_record in reordered_row_records
+            ],
+        }
+
+    def reorder_plane_record(plane: dict[str, Any]) -> dict[str, Any]:
+        reordered_row_records = [
+            {
+                **row_record,
+                "matrix_row": reorder_matrix_row(row_record.get("matrix_row", [])),
+            }
+            for row_record in plane.get("selected_basis_row_records", [])
+        ]
+        return {
+            **plane,
+            "selected_basis_row_records": reordered_row_records,
+            "selected_basis_rows": [
+                list(row_record["matrix_row"]) for row_record in reordered_row_records
+            ],
+        }
+
+    publication_paths = [
+        reorder_path_record(path)
+        for path in publication_shell.get("publication_paths", [])
+    ]
+    publication_planes = [
+        reorder_plane_record(plane)
+        for plane in publication_shell.get("publication_planes", [])
+    ]
+    publication_path_classes = [
+        {
+            **payload,
+            "representative_basis_row_records": [
+                {
+                    **row_record,
+                    "matrix_row": reorder_matrix_row(row_record.get("matrix_row", [])),
+                }
+                for row_record in payload.get("representative_basis_row_records", [])
+            ],
+            "representative_basis_rows": [
+                reorder_matrix_row(row)
+                for row in payload.get("representative_basis_rows", [])
+            ],
+            "selected_basis_row_records": [
+                {
+                    **row_record,
+                    "matrix_row": reorder_matrix_row(row_record.get("matrix_row", [])),
+                }
+                for row_record in payload.get("selected_basis_row_records", [])
+            ],
+            "selected_basis_rows": [
+                reorder_matrix_row(row)
+                for row in payload.get("selected_basis_rows", [])
+            ],
+        }
+        for payload in publication_shell.get("publication_path_classes", [])
+    ]
+
+    updated_publication_point_shell = {
+        **publication_point_shell,
+        "unknown_ordering": list(reordered_unknown_ordering),
+        "point_unknown_ordering": {
+            point_id: list(reordered_point_unknown_ordering.get(point_id, []))
+            for point_id in point_ids
+        },
+    }
+    if "source_point_unknown_ordering" in publication_point_shell:
+        updated_publication_point_shell["source_point_unknown_ordering"] = {
+            point_id: list(
+                (publication_point_shell.get("source_point_unknown_ordering") or {}).get(point_id, [])
+            )
+            for point_id in point_ids
+        }
+
+    return {
+        **publication_shell,
+        "publication_unknown_ordering": list(reordered_unknown_ordering),
+        "publication_point_shell": updated_publication_point_shell,
+        "publication_paths": publication_paths,
+        "publication_planes": publication_planes,
+        "publication_path_classes": publication_path_classes,
+    }
+
+
 def _build_publication_point_total_band_row_specs(
     *,
     publication_shell: dict[str, Any],
@@ -1698,16 +1863,33 @@ def _build_publication_point_total_band_row_specs(
     publication_unknown_set = {
         str(unknown) for unknown in publication_shell.get("publication_unknown_ordering", [])
     }
+    publication_point_shell = publication_shell.get("publication_point_shell", {})
+    active_unknown_count_by_point = {
+        str(point_id): len(list(unknowns))
+        for point_id, unknowns in publication_point_shell.get("point_unknown_ordering", {}).items()
+    }
     row_specs: list[dict[str, Any]] = []
     for point_id in publication_shell.get("publication_point_ids", []):
+        active_unknown_count = int(active_unknown_count_by_point.get(str(point_id), 0))
+        if active_unknown_count <= 0:
+            # Points may survive in the publication geometry shell while their
+            # point-irrep unknown block has been eliminated from the reduced BS
+            # variable layer.  Total-band rows only make sense on points that
+            # still carry published point variables.
+            continue
         capture = captures.get(str(point_id))
         if capture is None:
             raise ValueError(
                 f"published point total-band-count row missing capture payload for point {point_id}"
             )
         rep_degrees = list(capture.get("rep_degree", []))
+        if len(rep_degrees) < active_unknown_count:
+            raise ValueError(
+                "published point total-band-count row has fewer rep degrees than active published unknowns: "
+                f"{point_id} has {len(rep_degrees)} rep degrees but {active_unknown_count} published unknowns"
+            )
         terms: list[dict[str, int | str]] = []
-        for rep_index, rep_degree in enumerate(rep_degrees, start=1):
+        for rep_index, rep_degree in enumerate(rep_degrees[:active_unknown_count], start=1):
             coeff = int(rep_degree)
             if coeff == 0:
                 continue
@@ -2661,7 +2843,7 @@ def _build_same_shell_target_row_language(
             )
             port.capture_final_path_lines(module, group_id, ssg_dict, ctx, mode, captures, candidate_lines)
             candidate_blocks = [
-                port.build_line_block(
+                port.build_line_block_with_auxiliary_unknowns(
                     line,
                     captures,
                     phase_aware_profile="legacy",
@@ -2674,16 +2856,39 @@ def _build_same_shell_target_row_language(
                 port.build_candidate_path_records(reduction, candidate_blocks),
             )
             reduction = port.finalize_reduction_from_candidate_analysis(reduction, candidate_analysis)
-            # The published target object is a point/path shell. Plane and generic
-            # manifold blocks stay available in the current-shell compatibility,
-            # but they are not re-injected as published target rows.
-            publication_shell = port.build_publication_shell_candidate(reduction)
+            reduction = port.attach_physical_plane_blocks_to_reduction(
+                reduction,
+                shared["kgeom"],
+                captures,
+            )
+            full_publication_point_unknown_ordering = {
+                str(point["point_id"]): [
+                    f"{point['point_id']}_R{rep_index}"
+                    for rep_index in range(
+                        1,
+                        len(list(captures.get(str(point["point_id"]), {}).get("rep_degree", []))) + 1,
+                    )
+                ]
+                for point in reduction.get("point_shell", [])
+            }
+            # The published target is obtained by exact elimination from the full
+            # physical manifold system, so any retained 2D physical manifold
+            # blocks must stay attached here and be projected into the published
+            # point-shell row language alongside the path blocks.
+            publication_shell = port.build_publication_shell_candidate(
+                reduction,
+                full_point_unknown_ordering=full_publication_point_unknown_ordering,
+            )
             target_unknown_relabel_map, target_point_basis_debug = _build_target_point_basis_relabel(
                 publication_unknown_ordering=list(publication_shell["publication_unknown_ordering"]),
                 captures=captures,
                 ordinary_line_blocks=ordinary_line_blocks,
                 monodromy_line_blocks=monodromy_line_blocks,
                 monodromy_records=monodromy_records,
+            )
+            publication_shell = _reorder_publication_shell_to_target_point_basis(
+                publication_shell=publication_shell,
+                target_point_basis_debug=target_point_basis_debug,
             )
             publication_shell = {
                 **publication_shell,
@@ -2721,6 +2926,14 @@ def _build_same_shell_target_row_language(
                 monodromy_line_blocks=monodromy_line_blocks,
                 monodromy_records=monodromy_records,
                 unknown_relabel_map=target_unknown_relabel_map,
+                allowed_source_line_ids={
+                    str(line["id"])
+                    for line in shared["kgeom"]["grouped"].get("lines", [])
+                    if not (
+                        (line.get("metadata", {}) or {}).get("recovered_from_plane_boundary")
+                        or (line.get("metadata", {}) or {}).get("recovered_from_point_pairs")
+                    )
+                },
             )
             target_bs_analysis = port.analyze_kernel(target_compatibility)
             target_unknown_ordering = list(target_compatibility["global_unknown_ordering"])

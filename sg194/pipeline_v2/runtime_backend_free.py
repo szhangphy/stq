@@ -13,6 +13,7 @@ import contextlib
 import copy
 import importlib.util
 import io
+from itertools import product
 import json
 import math
 import pickle
@@ -24,6 +25,7 @@ import textwrap
 import tarfile as tarfile_module
 from fractions import Fraction
 from functools import lru_cache
+from math import gcd
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Sequence, Tuple
 
@@ -729,6 +731,10 @@ def pick_group_entries(group_number: str) -> Dict[str, List[dict]]:
     assign_ids(points, "P")
     assign_ids(lines, "L")
     assign_ids(planes, "S")
+    for point in points:
+        point.setdefault("manifold_role", "listed_special_point_manifold")
+        point.setdefault("point_role", "physical_special_point")
+        point.setdefault("point_origin_kind", "listed_fixed_subspace_point")
     return {"points": points, "lines": lines, "planes": planes, "generic": generic}
 
 
@@ -1132,6 +1138,442 @@ def _recover_family_special_lines_from_planes(
     return recovered
 
 
+def _recover_family_special_planes_from_point_shell(
+    points: Sequence[dict[str, Any]],
+    planes: list[dict[str, Any]],
+    ctx: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Recover missing 2D special-manifold families from the physical point shell.
+
+    A parameterized input may list only one representative special plane even
+    though additional physical plane families are required by the point shell.
+    We recover such planes directly from point geometry:
+
+    1. Choose three non-collinear physical special points.
+    2. Build the affine plane whose corner cell uses those points as
+       `(0,0)`, `(1/2,0)`, `(0,1/2)`.
+    3. Require the fourth corner `(1/2,1/2)` to also be a known special point.
+    4. Keep only planes whose generic stabilizer is nontrivial and whose orbit
+       is absent from the listed/recovered plane set.
+
+    This matches the notes workflow: recover physical manifolds first, then let
+    exact elimination decide which reduced BS constraints survive.
+    """
+
+    def _normalized_vector(vector: Sequence[Fraction]) -> tuple[Fraction, Fraction, Fraction]:
+        normalized = [Fraction(value) for value in vector]
+        for value in normalized:
+            if value == 0:
+                continue
+            if value < 0:
+                normalized = [-item for item in normalized]
+            break
+        return tuple(normalized)
+
+    point_aliases = [
+        (point["id"], tuple(Fraction(value) for value in point["sample_point"]))
+        for point in points
+    ]
+
+    point_map = coordinate_to_id_map(points)
+    existing_orbits = {
+        swyckoff_k.subspace_orbit_key(plane["_anchor"], plane["_basis"], ctx["ops"])
+        for plane in planes
+    }
+    recovered_by_orbit: dict[Any, dict[str, Any]] = {}
+
+    for left_index, (left_point_id, left_coords) in enumerate(point_aliases):
+        for middle_index in range(left_index + 1, len(point_aliases)):
+            middle_point_id, middle_coords = point_aliases[middle_index]
+            if middle_point_id == left_point_id:
+                continue
+            for right_point_id, right_coords in point_aliases[middle_index + 1 :]:
+                if len({left_point_id, middle_point_id, right_point_id}) < 3:
+                    continue
+                half_basis_u = [
+                    middle_coords[index] - left_coords[index]
+                    for index in range(3)
+                ]
+                if not any(value != 0 for value in half_basis_u):
+                    continue
+                if any(abs(value) > HALF for value in half_basis_u):
+                    continue
+                basis_u = _normalized_vector([2 * value for value in half_basis_u])
+                half_basis_v = [
+                    right_coords[index] - left_coords[index]
+                    for index in range(3)
+                ]
+                if not any(value != 0 for value in half_basis_v):
+                    continue
+                if any(abs(value) > HALF for value in half_basis_v):
+                    continue
+                basis_v = _normalized_vector([2 * value for value in half_basis_v])
+                if sp.Matrix([list(basis_u), list(basis_v)]).rank() < 2:
+                    continue
+                fourth_corner = [
+                    left_coords[index]
+                    + Fraction(basis_u[index], 2)
+                    + Fraction(basis_v[index], 2)
+                    for index in range(3)
+                ]
+                fourth_point_id = point_map.get(
+                    vector_key([mod1_fraction(value) for value in fourth_corner])
+                )
+                if fourth_point_id is None:
+                    continue
+                orbit_key = swyckoff_k.subspace_orbit_key(
+                    left_coords,
+                    [basis_u, basis_v],
+                    ctx["ops"],
+                )
+                if orbit_key in existing_orbits:
+                    continue
+                summary = subspace_symmetry_summary(
+                    left_coords,
+                    [basis_u, basis_v],
+                    ctx,
+                )
+                expressions = rep_to_sympy(
+                    [
+                        [
+                            Fraction(left_coords[index]),
+                            {
+                                "u": Fraction(basis_u[index]),
+                                "v": Fraction(basis_v[index]),
+                            },
+                        ]
+                        for index in range(3)
+                    ]
+                )
+                source_orbit_entry = ", ".join(expr_str(expr) for expr in expressions)
+                corner_ids = tuple(
+                    sorted(
+                        {
+                            left_point_id,
+                            middle_point_id,
+                            right_point_id,
+                            fourth_point_id,
+                        }
+                    )
+                )
+                candidate = recovered_by_orbit.setdefault(
+                    orbit_key,
+                    {
+                        "representative_anchor": tuple(left_coords),
+                        "representative_basis": (tuple(basis_u), tuple(basis_v)),
+                        "source_orbit_entries": set(),
+                        "corner_id_sets": set(),
+                    },
+                )
+                candidate["source_orbit_entries"].add(source_orbit_entry)
+                candidate["corner_id_sets"].add(corner_ids)
+                representative_sort_key = (
+                    tuple(left_coords),
+                    tuple(basis_u),
+                    tuple(basis_v),
+                    corner_ids,
+                )
+                current_sort_key = (
+                    tuple(candidate["representative_anchor"]),
+                    tuple(candidate["representative_basis"][0]),
+                    tuple(candidate["representative_basis"][1]),
+                    min(candidate["corner_id_sets"]),
+                )
+                if representative_sort_key < current_sort_key:
+                    candidate["representative_anchor"] = tuple(left_coords)
+                    candidate["representative_basis"] = (tuple(basis_u), tuple(basis_v))
+
+    if not recovered_by_orbit:
+        return []
+
+    next_index = len(planes) + 1
+    recovered: list[dict[str, Any]] = []
+    ordered_candidates = sorted(
+        recovered_by_orbit.values(),
+        key=lambda item: (
+            tuple(item["representative_anchor"]),
+            tuple(item["representative_basis"][0]),
+            tuple(item["representative_basis"][1]),
+        ),
+    )
+    for offset, item in enumerate(ordered_candidates):
+        anchor = [Fraction(value) for value in item["representative_anchor"]]
+        basis = [
+            [Fraction(value) for value in item["representative_basis"][0]],
+            [Fraction(value) for value in item["representative_basis"][1]],
+        ]
+        source_rep = []
+        for index in range(3):
+            coeff_map = {}
+            if basis[0][index] != 0:
+                coeff_map["u"] = frac_str(basis[0][index])
+            if basis[1][index] != 0:
+                coeff_map["v"] = frac_str(basis[1][index])
+            source_rep.append([frac_str(anchor[index]), coeff_map])
+        expressions = rep_to_sympy(source_rep)
+        recovered.append(
+            {
+                "label": f"recovered_plane_{next_index + offset:02d}",
+                "type": "plane",
+                "dimension": 2,
+                "parametrization": expr_vector_str(expressions),
+                "coordinate_expressions": [expr_str(expr) for expr in expressions],
+                "parameters": ["u", "v"],
+                "constraints": ["0 < u", "0 < v", "u < 1/2", "v < 1/2"],
+                "constraint_summary": "0 < u, 0 < v, u < 1/2, v < 1/2",
+                "sample_point": [
+                    frac_str(mod1_fraction(anchor_value + LINE_SAMPLE * basis[0][index] + LINE_SAMPLE * basis[1][index]))
+                    for index, anchor_value in enumerate(anchor)
+                ],
+                "metadata": {
+                    "source_letter": "recovered_point_shell_special_plane",
+                    "source_mult": 1,
+                    "source_dimension": 2,
+                    "source_orbit": sorted(item["source_orbit_entries"]),
+                    "source_representative_coordinate": ", ".join(expr_str(expr) for expr in expressions),
+                    "source_x0": [frac_str(value) for value in anchor],
+                    "source_basis_vecs": [[frac_str(value) for value in row] for row in basis],
+                    "source_rep": source_rep,
+                    "recovered_from_corner_sets": [
+                        list(corner_ids) for corner_ids in sorted(item["corner_id_sets"])
+                    ],
+                },
+                "_anchor": anchor,
+                "_basis": basis,
+                "_exprs": list(expressions),
+                "_params": ["u", "v"],
+                "id": f"S{next_index + offset}",
+                "manifold_role": "recovered_special_plane_from_point_shell",
+            }
+        )
+    return recovered
+
+
+def _recover_family_special_lines_from_point_pairs(
+    points: Sequence[dict[str, Any]],
+    lines: list[dict[str, Any]],
+    planes: Sequence[dict[str, Any]],
+    ctx: dict[str, Any],
+) -> list[dict[str, Any]]:
+    """Recover missing 1D special-manifold families directly from point pairs.
+
+    `swyckoff_k.py` provides representative special manifolds, but some physical
+    line families only become visible after the downstream point shell is fully
+    restored.  This happens when two listed/recovered special points determine a
+    1D affine subspace whose generic stabilizer is strictly larger than the
+    generic 3D stabilizer, yet that line orbit is absent from the listed line
+    set.  Such a line is a genuine physical special manifold and should enter the
+    compatibility system before any BS reduction.
+
+    The recovery rule is purely geometric:
+    1. Enumerate affine lines determined by pairs of physical special points.
+    2. Keep only candidates whose generic stabilizer is nontrivial.
+    3. Discard any candidate whose line orbit already exists.
+    4. Discard candidates contained in any already-known special plane.  Those
+       non-maximal 1D objects are handled by the plane layer and should not be
+       duplicated as standalone recovered lines here.
+    5. Discard candidates with additional special points in the open interval,
+       because the current point-path shell models line segments by two boundary
+       endpoints.
+    6. Group surviving candidates by reciprocal-space orbit and keep one
+       representative per orbit family while recording every affine branch in the
+       `source_orbit` metadata.
+    """
+
+    def _parameter_value_on_lifted_line(
+        anchor: Sequence[Fraction],
+        basis: Sequence[Fraction],
+        point_coords: Sequence[Fraction],
+    ) -> Fraction | None:
+        parameter_value: Fraction | None = None
+        for anchor_value, basis_value, point_value in zip(anchor, basis, point_coords):
+            if basis_value == 0:
+                if point_value != anchor_value:
+                    return None
+                continue
+            candidate = (point_value - anchor_value) / basis_value
+            if parameter_value is None:
+                parameter_value = candidate
+            elif candidate != parameter_value:
+                return None
+        return parameter_value
+
+    def _line_contains_open_interval_special_point(
+        *,
+        anchor: Sequence[Fraction],
+        basis: Sequence[Fraction],
+        endpoint_ids: set[str],
+        point_aliases: Sequence[tuple[str, tuple[Fraction, Fraction, Fraction]]],
+    ) -> bool:
+        for point_id, coords in point_aliases:
+            if point_id in endpoint_ids:
+                continue
+            for shifts in product((-1, 0, 1), repeat=3):
+                lifted = tuple(coords[index] + Fraction(shifts[index], 1) for index in range(3))
+                parameter = _parameter_value_on_lifted_line(anchor, basis, lifted)
+                if parameter is None:
+                    continue
+                if ZERO < parameter < HALF:
+                    return True
+        return False
+
+    def _normalized_line_basis(basis: Sequence[Fraction]) -> tuple[Fraction, Fraction, Fraction]:
+        normalized = [Fraction(value) for value in basis]
+        for value in normalized:
+            if value == 0:
+                continue
+            if value < 0:
+                normalized = [-item for item in normalized]
+            break
+        return tuple(normalized)
+
+    existing_orbits = {
+        swyckoff_k.subspace_orbit_key(line["_anchor"], line["_basis"], ctx["ops"])
+        for line in lines
+    }
+    point_aliases: list[tuple[str, tuple[Fraction, Fraction, Fraction]]] = []
+    seen_aliases: set[tuple[str, tuple[Fraction, Fraction, Fraction]]] = set()
+    for point in points:
+        for coord_key in point_coordinate_keys(point):
+            alias = (point["id"], tuple(Fraction(value) for value in coord_key))
+            if alias in seen_aliases:
+                continue
+            seen_aliases.add(alias)
+            point_aliases.append(alias)
+
+    recovered_by_orbit: dict[Any, dict[str, Any]] = {}
+    for left_index, (left_point_id, left_coords) in enumerate(point_aliases):
+        for right_point_id, right_coords in point_aliases[left_index + 1 :]:
+            if left_point_id == right_point_id:
+                continue
+            for shifts in product((-1, 0, 1), repeat=3):
+                lifted_right = tuple(
+                    right_coords[index] + Fraction(shifts[index], 1)
+                    for index in range(3)
+                )
+                half_basis = [
+                    lifted_right[index] - left_coords[index]
+                    for index in range(3)
+                ]
+                if not any(value != 0 for value in half_basis):
+                    continue
+                if any(abs(value) > HALF for value in half_basis):
+                    continue
+                basis = [2 * value for value in half_basis]
+                normalized_basis = _normalized_line_basis(basis)
+                summary = subspace_symmetry_summary(left_coords, [normalized_basis], ctx)
+                if int(summary.get("generic_stabilizer_size", 0)) <= 1:
+                    continue
+                if any(
+                    _line_embedding_in_plane(
+                        left_coords,
+                        normalized_basis,
+                        plane["_anchor"],
+                        plane["_basis"],
+                    )
+                    is not None
+                    for plane in planes
+                ):
+                    continue
+                orbit_key = swyckoff_k.subspace_orbit_key(left_coords, [normalized_basis], ctx["ops"])
+                if orbit_key in existing_orbits:
+                    continue
+                endpoint_ids = {left_point_id, right_point_id}
+                if _line_contains_open_interval_special_point(
+                    anchor=left_coords,
+                    basis=normalized_basis,
+                    endpoint_ids=endpoint_ids,
+                    point_aliases=point_aliases,
+                ):
+                    continue
+                expressions = boundary_line_expressions(left_coords, normalized_basis, "u")
+                source_orbit_entry = ", ".join(expr_str(expr) for expr in expressions)
+                candidate = recovered_by_orbit.setdefault(
+                    orbit_key,
+                    {
+                        "representative_anchor": tuple(left_coords),
+                        "representative_basis": tuple(normalized_basis),
+                        "symmetry_summary": summary,
+                        "source_orbit_entries": set(),
+                        "endpoint_pairs": set(),
+                    },
+                )
+                candidate["source_orbit_entries"].add(source_orbit_entry)
+                candidate["endpoint_pairs"].add(tuple(sorted(endpoint_ids)))
+                representative_sort_key = (
+                    tuple(left_coords),
+                    tuple(normalized_basis),
+                    tuple(sorted(endpoint_ids)),
+                )
+                current_sort_key = (
+                    tuple(candidate["representative_anchor"]),
+                    tuple(candidate["representative_basis"]),
+                    min(candidate["endpoint_pairs"]),
+                )
+                if representative_sort_key < current_sort_key:
+                    candidate["representative_anchor"] = tuple(left_coords)
+                    candidate["representative_basis"] = tuple(normalized_basis)
+
+    if not recovered_by_orbit:
+        return []
+
+    next_index = len(lines) + 1
+    recovered: list[dict[str, Any]] = []
+    ordered_candidates = sorted(
+        recovered_by_orbit.values(),
+        key=lambda item: (
+            tuple(item["representative_anchor"]),
+            tuple(item["representative_basis"]),
+        ),
+    )
+    for offset, item in enumerate(ordered_candidates):
+        anchor = [Fraction(value) for value in item["representative_anchor"]]
+        basis = [[Fraction(value) for value in item["representative_basis"]]]
+        expressions = boundary_line_expressions(anchor, basis[0], "u")
+        source_rep = []
+        for const, coeff in zip(anchor, basis[0]):
+            coeff_map = {"u": frac_str(coeff)} if coeff != 0 else {}
+            source_rep.append([frac_str(const), coeff_map])
+        recovered.append(
+            {
+                "label": f"recovered_pair_{next_index + offset:02d}",
+                "type": "line",
+                "dimension": 1,
+                "parametrization": expr_vector_str(expressions),
+                "coordinate_expressions": [expr_str(expr) for expr in expressions],
+                "parameters": ["u"],
+                "constraints": ["0 < u", "u < 1/2"],
+                "constraint_summary": "0 < u, u < 1/2",
+                "sample_point": [
+                    frac_str(mod1_fraction(value))
+                    for value in vector_add_scaled(anchor, basis[0], LINE_SAMPLE)
+                ],
+                "metadata": {
+                    "source_letter": "recovered_point_pair_special_line",
+                    "source_mult": 1,
+                    "source_dimension": 1,
+                    "source_orbit": sorted(item["source_orbit_entries"]),
+                    "source_representative_coordinate": ", ".join(
+                        expr_str(expr) for expr in expressions
+                    ),
+                    "source_x0": [frac_str(value) for value in anchor],
+                    "source_basis_vecs": [[frac_str(value) for value in row] for row in basis],
+                    "source_rep": source_rep,
+                    "recovered_from_point_pairs": [
+                        list(pair) for pair in sorted(item["endpoint_pairs"])
+                    ],
+                },
+                "_anchor": anchor,
+                "_basis": basis,
+                "_exprs": list(expressions),
+                "_params": ["u"],
+                "id": f"L{next_index + offset}",
+                "manifold_role": "recovered_special_line_from_point_pairs",
+            }
+        )
+    return recovered
+
+
 def _recover_boundary_special_points(
     points: list[dict[str, Any]],
     lines: Sequence[dict[str, Any]],
@@ -1304,6 +1746,8 @@ def _recover_boundary_special_points(
             "_params": [],
             "id": f"P{next_index + offset}",
             "manifold_role": "recovered_special_point_from_boundary_manifolds",
+            "point_role": "derived_special_point",
+            "point_origin_kind": "derived_boundary_special_point",
             "symmetry_summary": subspace_symmetry_summary(anchor, [], ctx),
             "recovery_sources": merged_sources,
             "incident_lines": [],
@@ -1557,6 +2001,8 @@ def _recover_line_interior_special_points(
             "_params": [],
             "id": f"P{next_index + offset}",
             "manifold_role": "recovered_special_point_from_line_interior",
+            "point_role": "derived_special_point",
+            "point_origin_kind": "derived_line_interior_special_point",
             "symmetry_summary": subspace_symmetry_summary(anchor, [], ctx),
             "recovery_sources": merged_sources,
             "incident_lines": [],
@@ -1585,6 +2031,11 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
     recovered_interior_points = _recover_line_interior_special_points(points, lines, ctx)
     if recovered_interior_points:
         points.extend(recovered_interior_points)
+    recovered_special_planes = _recover_family_special_planes_from_point_shell(points, planes, ctx)
+    if recovered_special_planes:
+        planes.extend(recovered_special_planes)
+        line_orbit_to_id, plane_orbit_to_id = subspace_orbit_id_maps(lines, planes, ctx)
+        annotate_special_manifolds(lines, planes, ctx, line_orbit_to_id, plane_orbit_to_id)
     point_line, unmatched_endpoints = infer_line_connectivity(points, lines)
     line_plane, unmatched_plane_boundaries = infer_plane_connectivity(planes, lines, ctx, line_orbit_to_id, plane_orbit_to_id)
     recovered_family_special_lines = _recover_family_special_lines_from_planes(points, lines, planes, ctx)
@@ -1598,12 +2049,13 @@ def prepare_kgeometry(group_number: str) -> dict[str, Any]:
     payload = {
         "group_number": group_number,
         "objects": strip_internal_fields(points + lines + planes),
-        "generic_manifolds_ignored": strip_internal_fields(generic),
+        "generic_manifold_candidates": strip_internal_fields(generic),
         "point_line": point_line,
         "unmatched_line_endpoints": unmatched_endpoints,
         "line_plane": line_plane,
         "special_line_plane_incidences": special_line_plane_incidences,
         "unmatched_plane_boundaries": unmatched_plane_boundaries,
+        "recovered_special_planes": strip_internal_fields(recovered_special_planes),
         "recovered_family_special_lines": strip_internal_fields(recovered_family_special_lines),
     }
     return {
@@ -1645,6 +2097,8 @@ def build_synthetic_boundary_points(kgeom: dict[str, Any]) -> list[dict[str, Any
             "sample_point": list(coords),
             "coordinate_expressions": list(coords),
             "source": source,
+            "point_role": "synthetic_boundary_point",
+            "point_origin_kind": "synthetic_boundary_point",
         }
         synthetic.append(item)
         seen.add(key)
@@ -2784,6 +3238,109 @@ def build_line_block(
     raise ValueError(f"unsupported builder_variant: {builder_variant}")
 
 
+def build_line_block_with_auxiliary_unknowns(
+    line_obj: dict[str, Any],
+    captures: dict[str, Any],
+    phase_aware_profile: str | None = AUTHORITATIVE_PHASE_AWARE_PROFILE,
+    *,
+    builder_variant: str = "authoritative",
+) -> dict[str, Any]:
+    """Build the unreduced line compatibility block with explicit line unknowns.
+
+    The historical line builder returns only point-shell equations: it already
+    subtracts the left and right endpoint decompositions on the line basis, so
+    the line small-irrep multiplicities have been eliminated by hand.
+
+    For the parameter-manifold workflow we instead need the honest full system.
+    This helper keeps one auxiliary unknown for each line small irrep and writes
+    the endpoint-to-line subduction equations explicitly:
+
+        endpoint decomposition on line basis - line multiplicity = 0.
+
+    Phase-aware refinement rows are appended unchanged because they are genuine
+    point-level constraints and do not introduce extra line unknowns.
+    """
+    point_block = build_line_block(
+        line_obj,
+        captures,
+        phase_aware_profile=phase_aware_profile,
+        builder_variant=builder_variant,
+    )
+    line_basis_labels = [str(label) for label in point_block.get("line_basis_labels", [])]
+    full_local_unknown_ordering = list(point_block.get("local_unknown_ordering", []))
+    for basis_label in line_basis_labels:
+        if basis_label not in full_local_unknown_ordering:
+            full_local_unknown_ordering.append(basis_label)
+    full_local_index = {
+        str(unknown): index for index, unknown in enumerate(full_local_unknown_ordering)
+    }
+
+    full_equations: list[dict[str, Any]] = []
+    full_matrix_rows: list[list[int]] = []
+    endpoint_ids = list(point_block.get("endpoint_ids", []))
+    endpoint_decompositions = point_block.get("endpoint_decompositions", {})
+    for endpoint_id in endpoint_ids:
+        endpoint_reps = list(endpoint_decompositions.get(endpoint_id, []))
+        for basis_label in line_basis_labels:
+            row = [0] * len(full_local_unknown_ordering)
+            terms: list[dict[str, Any]] = []
+            for rep in endpoint_reps:
+                coeff = int(rep.get("decomposition_on_line_basis", {}).get(basis_label, 0))
+                if coeff == 0:
+                    continue
+                row[full_local_index[str(rep["rep_id"])]] += coeff
+                terms.append(
+                    {
+                        "unknown": str(rep["rep_id"]),
+                        "coeff": coeff,
+                        "side": "point",
+                    }
+                )
+            row[full_local_index[basis_label]] -= 1
+            terms.append(
+                {
+                    "unknown": basis_label,
+                    "coeff": -1,
+                    "side": "line",
+                }
+            )
+            full_equations.append(
+                {
+                    "basis_id": f"{line_obj['id']}_{endpoint_id}_{basis_label}",
+                    "row_kind": "line_point_decomposition",
+                    "point_id": endpoint_id,
+                    "line_id": point_block["line_id"],
+                    "source_line_id": point_block.get("source_line_id", point_block["line_id"]),
+                    "line_basis_id": basis_label,
+                    "terms": terms,
+                }
+            )
+            full_matrix_rows.append(row)
+
+    for equation in point_block.get("equations", []):
+        if str(equation.get("row_kind")) != "phase_aware_endpoint_class":
+            continue
+        row = [0] * len(full_local_unknown_ordering)
+        for term in equation.get("terms", []):
+            unknown = str(term["unknown"])
+            if unknown not in full_local_index:
+                raise ValueError(
+                    f"phase-aware line row references unknown outside full line ordering: {unknown}"
+                )
+            row[full_local_index[unknown]] += int(term["coeff"])
+        full_equations.append(dict(equation))
+        full_matrix_rows.append(row)
+
+    return {
+        **point_block,
+        "full_local_unknown_ordering": full_local_unknown_ordering,
+        "full_equations": full_equations,
+        "full_matrix_rows": full_matrix_rows,
+        "full_auxiliary_unknowns": list(line_basis_labels),
+        "full_object_semantics": "point_line_full_compatibility_block_with_explicit_line_small_irrep_unknowns",
+    }
+
+
 def build_global_compatibility(line_blocks: list[dict[str, Any]], point_ids: list[str]) -> dict[str, Any]:
     per_point_ids: dict[str, list[str]] = {}
     for block in line_blocks:
@@ -2823,6 +3380,244 @@ def build_global_compatibility(line_blocks: list[dict[str, Any]], point_ids: lis
         "global_matrix": [row["matrix_row"] for row in global_rows],
         "covered_lines": [block["line_id"] for block in line_blocks],
     }
+
+
+def _primitive_integer_row_exact(row: Sequence[Any]) -> list[int]:
+    exact_row = [sp.nsimplify(value) for value in row]
+    denominator_lcm = 1
+    for value in exact_row:
+        if isinstance(value, sp.Rational):
+            denominator_lcm = sp.ilcm(denominator_lcm, int(value.q))
+    integer_row = [int(sp.nsimplify(value * denominator_lcm)) for value in exact_row]
+    common_divisor = 0
+    for value in integer_row:
+        common_divisor = gcd(common_divisor, abs(int(value)))
+    if common_divisor > 1:
+        integer_row = [int(value // common_divisor) for value in integer_row]
+    for value in integer_row:
+        if value == 0:
+            continue
+        if value < 0:
+            integer_row = [-item for item in integer_row]
+        break
+    return integer_row
+
+
+def _row_rank_exact(rows: Sequence[Sequence[int]]) -> int:
+    if not rows:
+        return 0
+    return int(sp.Matrix(rows).rank())
+
+
+def build_global_compatibility_with_auxiliary_manifolds(
+    line_blocks: Sequence[dict[str, Any]],
+    point_ids: Sequence[str],
+) -> dict[str, Any]:
+    """Assemble the unreduced line-level full compatibility matrix.
+
+    Point unknowns are ordered first, following `point_ids`.  Each line block may
+    then append its own auxiliary unknowns, typically the line small-irrep
+    multiplicities `L*_R*`.  This keeps the column ordering compatible with exact
+    elimination of line variables at a later stage.
+    """
+    per_point_ids: dict[str, list[str]] = {}
+    for block in line_blocks:
+        for endpoint_id in block["endpoint_ids"]:
+            rep_ids = [item["rep_id"] for item in block["endpoint_decompositions"][endpoint_id]]
+            existing = per_point_ids.get(endpoint_id)
+            if existing is None:
+                per_point_ids[endpoint_id] = rep_ids
+            elif existing != rep_ids:
+                raise ValueError(f"inconsistent rep ordering for {endpoint_id}")
+
+    ordering: list[str] = []
+    for point_id in point_ids:
+        ordering.extend(per_point_ids.get(str(point_id), []))
+    for block in line_blocks:
+        block_unknowns = list(
+            block.get("full_local_unknown_ordering", block.get("local_unknown_ordering", []))
+        )
+        for unknown in block_unknowns:
+            if unknown not in ordering:
+                ordering.append(str(unknown))
+
+    unknown_index = {unknown: index for index, unknown in enumerate(ordering)}
+    global_rows: list[dict[str, Any]] = []
+    for block in line_blocks:
+        equations = list(block.get("full_equations", block.get("equations", [])))
+        for row_index, equation in enumerate(equations):
+            row = [0] * len(ordering)
+            for term in equation["terms"]:
+                row[unknown_index[str(term["unknown"])]] += int(term["coeff"])
+            metadata = {key: value for key, value in equation.items() if key != "terms"}
+            global_rows.append(
+                {
+                    "source_type": "line",
+                    "line_id": block["line_id"],
+                    "basis_id": equation["basis_id"],
+                    "row_index_within_source": row_index,
+                    "builder_variant": block.get("builder_variant", "coarse"),
+                    "equation_metadata": metadata,
+                    **metadata,
+                    "matrix_row": row,
+                }
+            )
+    return {
+        "global_unknown_ordering": ordering,
+        "global_matrix_rows": global_rows,
+        "global_matrix": [row["matrix_row"] for row in global_rows],
+        "covered_lines": [block["line_id"] for block in line_blocks],
+        "compatibility_semantics": "full_line_level_compatibility_with_explicit_line_auxiliary_unknowns",
+    }
+
+
+def ordered_point_unknowns_from_line_blocks(
+    line_blocks: Sequence[dict[str, Any]],
+    point_ids: Sequence[str],
+) -> list[str]:
+    """Recover the point-only unknown ordering induced by a line-block collection."""
+    per_point_ids: dict[str, list[str]] = {}
+    for block in line_blocks:
+        for endpoint_id in block["endpoint_ids"]:
+            rep_ids = [item["rep_id"] for item in block["endpoint_decompositions"][endpoint_id]]
+            existing = per_point_ids.get(endpoint_id)
+            if existing is None:
+                per_point_ids[endpoint_id] = rep_ids
+            elif existing != rep_ids:
+                raise ValueError(f"inconsistent rep ordering for {endpoint_id}")
+    ordering: list[str] = []
+    for point_id in point_ids:
+        ordering.extend(per_point_ids.get(str(point_id), []))
+    return ordering
+
+
+def exact_project_keep_unknowns(
+    matrix_payload: dict[str, Any],
+    *,
+    keep_unknowns: Sequence[str],
+    source_type: str = "exact_elimination",
+) -> dict[str, Any]:
+    """Project a full compatibility matrix onto a kept unknown subset exactly.
+
+    Let the column ordering be split as `[keep | aux]`.  We compute row
+    combinations lying in the left nullspace of `aux^T`; each such combination
+    cancels every auxiliary variable exactly and yields a constraint involving
+    only the kept columns.  Rank-gaining primitive integer rows are retained.
+    """
+    unknown_ordering = [str(unknown) for unknown in matrix_payload["global_unknown_ordering"]]
+    keep_unknown_set = {str(unknown) for unknown in keep_unknowns}
+    keep_indices = [
+        index for index, unknown in enumerate(unknown_ordering)
+        if unknown in keep_unknown_set
+    ]
+    aux_indices = [
+        index for index, unknown in enumerate(unknown_ordering)
+        if unknown not in keep_unknown_set
+    ]
+    if not keep_indices:
+        raise ValueError("exact_project_keep_unknowns requires at least one kept unknown")
+
+    matrix = sp.Matrix(matrix_payload["global_matrix"])
+    if matrix.rows == 0:
+        return {
+            "global_unknown_ordering": [unknown_ordering[index] for index in keep_indices],
+            "global_matrix_rows": [],
+            "global_matrix": [],
+            "elimination_semantics": "exact_left_nullspace_projection_of_full_compatibility",
+            "eliminated_unknowns": [unknown_ordering[index] for index in aux_indices],
+        }
+
+    candidate_rows: list[dict[str, Any]] = []
+    if aux_indices:
+        aux_block = matrix[:, aux_indices]
+        left_nullspace = aux_block.T.nullspace()
+        for relation_index, coefficients in enumerate(left_nullspace, start=1):
+            combined = coefficients.T * matrix
+            projected_row = [combined[0, column_index] for column_index in keep_indices]
+            primitive = _primitive_integer_row_exact(projected_row)
+            if not any(primitive):
+                continue
+            support_rows = [
+                int(row_index)
+                for row_index, value in enumerate(coefficients)
+                if sp.nsimplify(value) != 0
+            ]
+            candidate_rows.append(
+                {
+                    "basis_id": f"{source_type.upper()}_{relation_index:04d}",
+                    "row_kind": "exact_auxiliary_elimination",
+                    "matrix_row": primitive,
+                    "support_row_indices": support_rows,
+                }
+            )
+    else:
+        for relation_index, row in enumerate(matrix.rowspace(), start=1):
+            primitive = _primitive_integer_row_exact(row)
+            if not any(primitive):
+                continue
+            candidate_rows.append(
+                {
+                    "basis_id": f"{source_type.upper()}_{relation_index:04d}",
+                    "row_kind": "rowspace_basis_without_auxiliary_unknowns",
+                    "matrix_row": primitive,
+                    "support_row_indices": [relation_index - 1],
+                }
+            )
+
+    candidate_rows.sort(key=lambda item: (tuple(item["matrix_row"]), item["basis_id"]))
+    selected_rows: list[dict[str, Any]] = []
+    running_rows: list[list[int]] = []
+    running_rank = 0
+    for row_record in candidate_rows:
+        candidate_row = list(row_record["matrix_row"])
+        candidate_rank = _row_rank_exact(running_rows + [candidate_row])
+        if candidate_rank <= running_rank:
+            continue
+        selected_rows.append(row_record)
+        running_rows.append(candidate_row)
+        running_rank = candidate_rank
+
+    reduced_unknown_ordering = [unknown_ordering[index] for index in keep_indices]
+    reduced_matrix_rows = [
+        {
+            "source_type": source_type,
+            "basis_id": row_record["basis_id"],
+            "row_index_within_source": row_index,
+            "equation_metadata": {
+                key: value
+                for key, value in row_record.items()
+                if key != "matrix_row"
+            },
+            **{
+                key: value
+                for key, value in row_record.items()
+                if key != "matrix_row"
+            },
+            "matrix_row": list(row_record["matrix_row"]),
+        }
+        for row_index, row_record in enumerate(selected_rows)
+    ]
+    return {
+        "global_unknown_ordering": reduced_unknown_ordering,
+        "global_matrix_rows": reduced_matrix_rows,
+        "global_matrix": [list(row["matrix_row"]) for row in reduced_matrix_rows],
+        "elimination_semantics": "exact_left_nullspace_projection_of_full_compatibility",
+        "eliminated_unknowns": [unknown_ordering[index] for index in aux_indices],
+    }
+
+
+def exact_project_point_unknowns(
+    matrix_payload: dict[str, Any],
+    *,
+    point_unknowns: Sequence[str],
+    source_type: str = "exact_point_projection",
+) -> dict[str, Any]:
+    """Convenience wrapper for eliminating every non-point auxiliary unknown."""
+    return exact_project_keep_unknowns(
+        matrix_payload,
+        keep_unknowns=point_unknowns,
+        source_type=source_type,
+    )
 
 
 def build_phase_aware_point_row_translation(
@@ -3124,6 +3919,19 @@ def build_plane_block(plane_obj: dict[str, Any], corner_entries: list[dict[str, 
         field,
         manifold_id=plane_id,
     )
+    plane_basis_permutation_blocks: list[list[str]] = []
+    signature_to_basis_labels: dict[tuple[int, int], list[str]] = {}
+    for basis_index, basis_label in enumerate(plane_basis_labels):
+        signature_to_basis_labels.setdefault(
+            (
+                int(plane_raw["rep_degree"][basis_index]),
+                int(plane_raw["torsion"][basis_index]),
+            ),
+            [],
+        ).append(basis_label)
+    for block_labels in signature_to_basis_labels.values():
+        if len(block_labels) > 1:
+            plane_basis_permutation_blocks.append(list(block_labels))
     local_unknown_ordering: list[str] = []
     corner_decompositions: dict[str, Any] = {}
     equations = []
@@ -3215,6 +4023,7 @@ def build_plane_block(plane_obj: dict[str, Any], corner_entries: list[dict[str, 
         "plane_parametrization": plane_obj["parametrization"],
         "plane_symmetry_summary": plane_obj["symmetry_summary"],
         "plane_basis_labels": plane_basis_labels,
+        "plane_basis_permutation_blocks": plane_basis_permutation_blocks,
         "corner_decompositions": corner_decompositions,
         "local_unknown_ordering": local_unknown_ordering,
         "equations": equations,
@@ -3261,6 +4070,49 @@ def build_with_planes_compatibility(line_full: dict[str, Any], plane_blocks: lis
         "covered_lines": list(line_full["covered_lines"]),
         "covered_planes": [block["plane_id"] for block in plane_blocks],
     }
+
+
+def attach_physical_plane_blocks_to_reduction(
+    reduction: dict[str, Any],
+    kgeom: dict[str, Any],
+    captures: dict[str, Any],
+) -> dict[str, Any]:
+    """Carry physical 2D manifold constraints into the published reduction.
+
+    The regenerated manifold-pipeline notes require the solver to:
+
+    1. recover physical 0D/1D/2D manifolds first,
+    2. build the full compatibility system with auxiliary manifold variables,
+    3. only then exact-eliminate down to reduced BS variables.
+
+    `prepare_kgeometry()` and `build_point_instance_entries()` already restore
+    the physical 2D manifold shell in `kgeom["grouped"]["planes"]` and attach
+    each plane's corner captures.  The previous publication pipeline dropped
+    that plane layer after the line-only path reduction, so the published
+    `C`-matrix was no longer the exact elimination of the full system.
+
+    This helper re-materializes those physical plane blocks on the reduced point
+    shell so downstream publication builders can exact-project them, just as
+    they already do for line auxiliary variables.  No Bilbao/TopMat-specific
+    data enters here: the inputs are purely the restored physical manifolds and
+    their captured little-group data.
+    """
+
+    plane_blocks: list[dict[str, Any]] = []
+    for plane in kgeom["grouped"].get("planes", []):
+        corner_entries = list(plane.get("corner_entries", []))
+        if len(corner_entries) < 2:
+            continue
+        plane_block = build_plane_block(plane, corner_entries, captures)
+        if plane_block.get("plane_basis_permutation_blocks"):
+            continue
+        plane_blocks.append(plane_block)
+
+    augmented_reduction = dict(reduction)
+    augmented_reduction["plane_blocks"] = plane_blocks
+    augmented_reduction["physical_plane_block_count"] = len(plane_blocks)
+    augmented_reduction["physical_plane_ids"] = [block["plane_id"] for block in plane_blocks]
+    return augmented_reduction
 
 
 def smith_diagonal_entries(D: sp.Matrix) -> list[int]:
@@ -7908,7 +8760,7 @@ def build_single_pilot(
     )
     capture_final_path_lines(module, TARGET_GROUP, ssg_dict, ctx, "single", captures, candidate_lines)
     candidate_line_blocks = [
-        build_line_block(
+        build_line_block_with_auxiliary_unknowns(
             line,
             captures,
             phase_aware_profile=line_phase_profile,
@@ -7921,6 +8773,7 @@ def build_single_pilot(
         build_candidate_path_records(reduction, candidate_line_blocks),
     )
     reduction = finalize_reduction_from_candidate_analysis(reduction, reduction_analysis)
+    reduction = attach_physical_plane_blocks_to_reduction(reduction, kgeom, captures)
     final_lines = annotate_final_path_lines(
         reduction["final_line_specs"],
         kgeom["runtime_ctx"],
@@ -8943,7 +9796,7 @@ def build_double_pilot(
     )
     capture_final_path_lines(module, TARGET_GROUP, ssg_dict, ctx, "double", captures, candidate_lines)
     candidate_line_blocks = [
-        build_line_block(
+        build_line_block_with_auxiliary_unknowns(
             line,
             captures,
             phase_aware_profile=line_phase_profile,
@@ -8956,6 +9809,7 @@ def build_double_pilot(
         build_candidate_path_records(reduction, candidate_line_blocks),
     )
     reduction = finalize_reduction_from_candidate_analysis(reduction, reduction_analysis)
+    reduction = attach_physical_plane_blocks_to_reduction(reduction, single_kgeom, captures)
     internal_lines = annotate_final_path_lines(
         reduction["final_line_specs"],
         single_kgeom["runtime_ctx"],
