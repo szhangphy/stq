@@ -1,0 +1,3725 @@
+{
+  "BSBasis": [
+    {
+      "basis_id": "basis_01",
+      "terms": [
+        {
+          "coeff": -1,
+          "unknown": "L1_B1"
+        },
+        {
+          "coeff": -2,
+          "unknown": "L2_B1"
+        }
+      ]
+    },
+    {
+      "basis_id": "basis_02",
+      "terms": [
+        {
+          "coeff": -1,
+          "unknown": "L2_B1"
+        },
+        {
+          "coeff": 1,
+          "unknown": "L2_B2"
+        }
+      ]
+    }
+  ],
+  "BSConstraints": [
+    {
+      "equation_id": "MD_TARGET_REWRITE_PROJECTION_0003",
+      "row_kind": "exact_auxiliary_elimination",
+      "terms": [
+        {
+          "coeff": 2,
+          "unknown": "L1_B1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "L2_B1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "L2_B2"
+        }
+      ]
+    }
+  ],
+  "BSVariableOrdering": [
+    "L1_B1",
+    "L2_B1",
+    "L2_B2"
+  ],
+  "CompatibilityEquations": [
+    {
+      "equation_id": "S1_R1_E01",
+      "row_kind": "plane_line_decomposition",
+      "terms": [
+        {
+          "coeff": 1,
+          "unknown": "L1_B1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "S1_R1"
+        }
+      ]
+    },
+    {
+      "equation_id": "S1_R2_E01",
+      "row_kind": "plane_line_decomposition",
+      "terms": [
+        {
+          "coeff": 1,
+          "unknown": "L1_B1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "S1_R2"
+        }
+      ]
+    },
+    {
+      "equation_id": "S1_MONO_01_01",
+      "row_kind": "plane_linear_monodromy_orbit_delta",
+      "terms": [
+        {
+          "coeff": 1,
+          "unknown": "S1_R1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "S1_R2"
+        }
+      ]
+    },
+    {
+      "equation_id": "S2_R1_E01",
+      "row_kind": "plane_line_decomposition",
+      "terms": [
+        {
+          "coeff": 1,
+          "unknown": "L1_B1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "S2_R1"
+        }
+      ]
+    },
+    {
+      "equation_id": "S2_R2_E01",
+      "row_kind": "plane_line_decomposition",
+      "terms": [
+        {
+          "coeff": 1,
+          "unknown": "L1_B1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "S2_R2"
+        }
+      ]
+    },
+    {
+      "equation_id": "S2_MONO_01_01",
+      "row_kind": "plane_linear_monodromy_orbit_delta",
+      "terms": [
+        {
+          "coeff": 1,
+          "unknown": "S2_R1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "S2_R2"
+        }
+      ]
+    },
+    {
+      "equation_id": "G1__L1_E01_G01",
+      "row_kind": "generic_line_decomposition",
+      "terms": [
+        {
+          "coeff": 2,
+          "unknown": "L1_B1"
+        },
+        {
+          "coeff": -1,
+          "unknown": "G1_R1"
+        }
+      ]
+    },
+    {
+      "equation_id": "G1__L2_E02_G01",
+      "row_kind": "generic_line_decomposition",
+      "terms": [
+        {
+          "coeff": 1,
+          "unknown": "L2_B1"
+        },
+        {
+          "coeff": 1,
+          "unknown": "L2_B2"
+        },
+        {
+          "coeff": -1,
+          "unknown": "G1_R1"
+        }
+      ]
+    }
+  ],
+  "CompatibilityMatrix": [
+    [
+      1,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      -1,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      -1,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ],
+    [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      -1
+    ]
+  ],
+  "CompatibilityVariableBlocks": {
+    "x": [
+      "L1_B1",
+      "L2_B1",
+      "L2_B2"
+    ],
+    "y": [
+      "S1_R1",
+      "S1_R2",
+      "S2_R1",
+      "S2_R2",
+      "G1_R1"
+    ]
+  },
+  "CompatibilityVariableOrdering": [
+    "L1_B1",
+    "L2_B1",
+    "L2_B2",
+    "S1_R1",
+    "S1_R2",
+    "S2_R1",
+    "S2_R2",
+    "G1_R1"
+  ],
+  "Connections": [
+    {
+      "boundary_solution": {
+        "left_parameters": {
+          "u": "0"
+        },
+        "right_parameters": {
+          "u": "0",
+          "v": "0"
+        }
+      },
+      "contact_type": "boundary",
+      "from": "L1",
+      "k_contact": [
+        "0",
+        "0",
+        "0"
+      ],
+      "symmetry_image_used": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "to": "S1"
+    },
+    {
+      "boundary_solution": {
+        "left_parameters": {
+          "u": "0"
+        },
+        "right_parameters": {
+          "u": "0",
+          "v": "0"
+        }
+      },
+      "contact_type": "boundary",
+      "from": "L1",
+      "k_contact": [
+        "0",
+        "0",
+        "0"
+      ],
+      "symmetry_image_used": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "to": "S2"
+    },
+    {
+      "boundary_solution": {
+        "left_parameters": {
+          "u": "0"
+        },
+        "right_parameters": {
+          "u": "0",
+          "v": "0",
+          "w": "0"
+        }
+      },
+      "contact_type": "boundary",
+      "from": "L1",
+      "k_contact": [
+        "0",
+        "0",
+        "0"
+      ],
+      "symmetry_image_used": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "to": "G1"
+    },
+    {
+      "boundary_solution": {
+        "left_parameters": {
+          "u": "1/2"
+        },
+        "right_parameters": {
+          "u": "1/2",
+          "v": "1/2",
+          "w": "0"
+        }
+      },
+      "contact_type": "boundary",
+      "from": "L2",
+      "k_contact": [
+        "0",
+        "0",
+        "1/2"
+      ],
+      "symmetry_image_used": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "to": "G1"
+    },
+    {
+      "boundary_solution": {
+        "left_parameters": {
+          "u": "0",
+          "v": "0"
+        },
+        "right_parameters": {
+          "u": "0",
+          "v": "0"
+        }
+      },
+      "contact_type": "boundary",
+      "from": "S1",
+      "k_contact": [
+        "0",
+        "0",
+        "0"
+      ],
+      "symmetry_image_used": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "to": "S2"
+    },
+    {
+      "boundary_solution": {
+        "left_parameters": {
+          "u": "0",
+          "v": "0"
+        },
+        "right_parameters": {
+          "u": "0",
+          "v": "0",
+          "w": "0"
+        }
+      },
+      "contact_type": "boundary",
+      "from": "S1",
+      "k_contact": [
+        "0",
+        "0",
+        "0"
+      ],
+      "symmetry_image_used": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "to": "G1"
+    },
+    {
+      "boundary_solution": {
+        "left_parameters": {
+          "u": "0",
+          "v": "0"
+        },
+        "right_parameters": {
+          "u": "0",
+          "v": "0",
+          "w": "0"
+        }
+      },
+      "contact_type": "boundary",
+      "from": "S2",
+      "k_contact": [
+        "0",
+        "0",
+        "0"
+      ],
+      "symmetry_image_used": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "to": "G1"
+    }
+  ],
+  "LocalIrrepGlobalBranchTable": [
+    {
+      "generic_local_irreps": [
+        "L1_R1"
+      ],
+      "global_branches": [
+        {
+          "branch_id": "L1_B1",
+          "local_irrep_orbit": [
+            "L1_R1"
+          ]
+        }
+      ],
+      "manifold_id": "L1",
+      "manifold_kind": "line",
+      "monodromy_action": [
+        [
+          "L1_R1"
+        ]
+      ],
+      "monodromy_orbits": [
+        [
+          "L1_R1"
+        ]
+      ]
+    },
+    {
+      "generic_local_irreps": [
+        "L2_R1",
+        "L2_R2"
+      ],
+      "global_branches": [
+        {
+          "branch_id": "L2_B1",
+          "local_irrep_orbit": [
+            "L2_R1"
+          ]
+        },
+        {
+          "branch_id": "L2_B2",
+          "local_irrep_orbit": [
+            "L2_R2"
+          ]
+        }
+      ],
+      "manifold_id": "L2",
+      "manifold_kind": "line",
+      "monodromy_action": [
+        [
+          "L2_R1"
+        ],
+        [
+          "L2_R2"
+        ]
+      ],
+      "monodromy_orbits": [
+        [
+          "L2_R1"
+        ],
+        [
+          "L2_R2"
+        ]
+      ]
+    },
+    {
+      "generic_local_irreps": [
+        "S1_R1",
+        "S1_R2"
+      ],
+      "global_branches": [],
+      "manifold_id": "S1",
+      "manifold_kind": "plane",
+      "monodromy_action": [],
+      "monodromy_orbits": []
+    },
+    {
+      "generic_local_irreps": [
+        "S2_R1",
+        "S2_R2"
+      ],
+      "global_branches": [],
+      "manifold_id": "S2",
+      "manifold_kind": "plane",
+      "monodromy_action": [],
+      "monodromy_orbits": []
+    },
+    {
+      "generic_local_irreps": [
+        "G1_R1"
+      ],
+      "global_branches": [],
+      "manifold_id": "G1",
+      "manifold_kind": "generic",
+      "monodromy_action": [],
+      "monodromy_orbits": []
+    }
+  ],
+  "LocalIrreps": [
+    {
+      "local_irreps": [
+        {
+          "character": [
+            {
+              "imag": 0.0,
+              "real": 2.0
+            },
+            {
+              "imag": 0.0,
+              "real": -0.0
+            },
+            {
+              "imag": 0.0,
+              "real": -0.0
+            },
+            {
+              "imag": 0.0,
+              "real": -0.0
+            }
+          ],
+          "irrep_id": "L1_R1",
+          "linear_character": [
+            {
+              "imag": 0.0,
+              "real": 2.0
+            },
+            {
+              "imag": 0.0,
+              "real": 0.0
+            },
+            {
+              "imag": 0.0,
+              "real": -0.0
+            },
+            {
+              "imag": 0.0,
+              "real": -0.0
+            }
+          ],
+          "rep_degree": 2,
+          "torsion": 0
+        }
+      ],
+      "manifold_id": "L1",
+      "manifold_kind": "line"
+    },
+    {
+      "local_irreps": [
+        {
+          "character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            },
+            {
+              "imag": -1.0,
+              "real": 0.0
+            }
+          ],
+          "irrep_id": "L2_R1",
+          "linear_character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            },
+            {
+              "imag": -1.0,
+              "real": 0.0
+            }
+          ],
+          "rep_degree": 1,
+          "torsion": 0
+        },
+        {
+          "character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            },
+            {
+              "imag": 1.0,
+              "real": 0.0
+            }
+          ],
+          "irrep_id": "L2_R2",
+          "linear_character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            },
+            {
+              "imag": 1.0,
+              "real": 0.0
+            }
+          ],
+          "rep_degree": 1,
+          "torsion": 0
+        }
+      ],
+      "manifold_id": "L2",
+      "manifold_kind": "line"
+    },
+    {
+      "local_irreps": [
+        {
+          "character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            },
+            {
+              "imag": -1.0,
+              "real": 0.0
+            }
+          ],
+          "irrep_id": "S1_R1",
+          "linear_character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            },
+            {
+              "imag": 0.278991106039,
+              "real": -0.960293685677
+            }
+          ],
+          "rep_degree": 1,
+          "torsion": 0
+        },
+        {
+          "character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            },
+            {
+              "imag": 1.0,
+              "real": 0.0
+            }
+          ],
+          "irrep_id": "S1_R2",
+          "linear_character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            },
+            {
+              "imag": -0.278991106039,
+              "real": 0.960293685677
+            }
+          ],
+          "rep_degree": 1,
+          "torsion": 0
+        }
+      ],
+      "manifold_id": "S1",
+      "manifold_kind": "plane"
+    },
+    {
+      "local_irreps": [
+        {
+          "character": [
+            {
+              "imag": -0.0,
+              "real": 1.0
+            },
+            {
+              "imag": -1.0,
+              "real": -0.0
+            }
+          ],
+          "irrep_id": "S2_R1",
+          "linear_character": [
+            {
+              "imag": -0.0,
+              "real": 1.0
+            },
+            {
+              "imag": -0.720309024888,
+              "real": -0.693653305813
+            }
+          ],
+          "rep_degree": 1,
+          "torsion": 0
+        },
+        {
+          "character": [
+            {
+              "imag": -0.0,
+              "real": 1.0
+            },
+            {
+              "imag": 1.0,
+              "real": 0.0
+            }
+          ],
+          "irrep_id": "S2_R2",
+          "linear_character": [
+            {
+              "imag": -0.0,
+              "real": 1.0
+            },
+            {
+              "imag": 0.720309024888,
+              "real": 0.693653305813
+            }
+          ],
+          "rep_degree": 1,
+          "torsion": 0
+        }
+      ],
+      "manifold_id": "S2",
+      "manifold_kind": "plane"
+    },
+    {
+      "local_irreps": [
+        {
+          "character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            }
+          ],
+          "irrep_id": "G1_R1",
+          "linear_character": [
+            {
+              "imag": 0.0,
+              "real": 1.0
+            }
+          ],
+          "rep_degree": 1,
+          "torsion": 0
+        }
+      ],
+      "manifold_id": "G1",
+      "manifold_kind": "generic"
+    }
+  ],
+  "M_all": [
+    {
+      "affine_form": {
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          [
+            "1",
+            "1",
+            "-1"
+          ]
+        ]
+      },
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 1,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ]
+      },
+      "generic_k": [
+        "173/1000",
+        "173/1000",
+        "827/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 4,
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "id": "L1",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "u < 1/2"
+        ]
+      },
+      "kind": "line",
+      "label": "a",
+      "maximal": true,
+      "star_size": 1,
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/5",
+          "4/5"
+        ],
+        "generic_rotation_stabilizer_size": 4,
+        "generic_stabilizer_size": 4,
+        "pointwise_rotation_stabilizer_size": 4,
+        "pointwise_stabilizer_size": 4,
+        "site_symmetry": "m[011] * m[101] * 2[110]",
+        "site_symmetry_custom": "2[x] * 2[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      }
+    },
+    {
+      "affine_form": {
+        "anchor": [
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          [
+            "1",
+            "1",
+            "-1"
+          ]
+        ]
+      },
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 1,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "generic_k": [
+        "673/1000",
+        "673/1000",
+        "827/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 2,
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "id": "L2",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "u < 1/2"
+        ]
+      },
+      "kind": "line",
+      "label": "b",
+      "maximal": true,
+      "star_size": 2,
+      "symmetry_summary": {
+        "generic_point": [
+          "7/10",
+          "7/10",
+          "4/5"
+        ],
+        "generic_rotation_stabilizer_size": 2,
+        "generic_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "site_symmetry": "2[110]",
+        "site_symmetry_custom": "2[z]",
+        "unitary_site_symmetry": "?"
+      }
+    },
+    {
+      "affine_form": {
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          [
+            "0",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        },
+        "v": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 2,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ]
+      },
+      "generic_k": [
+        "173/1000",
+        "417/1000",
+        "583/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 2,
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "id": "S1",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "0 < v",
+          "u < 1/2",
+          "v < 1/2"
+        ]
+      },
+      "kind": "plane",
+      "label": "c",
+      "maximal": false,
+      "star_size": 2,
+      "symmetry_summary": {
+        "generic_point": [
+          "1/7",
+          "1/5",
+          "4/5"
+        ],
+        "generic_rotation_stabilizer_size": 2,
+        "generic_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "site_symmetry": "m[011]",
+        "site_symmetry_custom": "2[x]",
+        "unitary_site_symmetry": "?"
+      }
+    },
+    {
+      "affine_form": {
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          [
+            "1",
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ]
+        ]
+      },
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        },
+        "v": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 2,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ]
+      },
+      "generic_k": [
+        "173/1000",
+        "417/1000",
+        "827/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 2,
+        "rotation_keys": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "id": "S2",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "0 < v",
+          "u < 1/2",
+          "v < 1/2"
+        ]
+      },
+      "kind": "plane",
+      "label": "d",
+      "maximal": false,
+      "star_size": 2,
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/7",
+          "4/5"
+        ],
+        "generic_rotation_stabilizer_size": 2,
+        "generic_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "site_symmetry": "m[101]",
+        "site_symmetry_custom": "2[y]",
+        "unitary_site_symmetry": "?"
+      }
+    },
+    {
+      "affine_form": {
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        },
+        "v": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        },
+        "w": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 3,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "generic_k": [
+        "173/1000",
+        "417/1000",
+        "619/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 1,
+        "rotation_keys": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "id": "G1",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "0 < v",
+          "0 < w",
+          "u < 1/2",
+          "v < 1/2",
+          "w < 1/2"
+        ]
+      },
+      "kind": "generic",
+      "label": "e",
+      "maximal": false,
+      "star_size": 4,
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/7",
+          "1/11"
+        ],
+        "generic_rotation_stabilizer_size": 1,
+        "generic_stabilizer_size": 1,
+        "pointwise_rotation_stabilizer_size": 1,
+        "pointwise_stabilizer_size": 1,
+        "site_symmetry": "1",
+        "site_symmetry_custom": "1",
+        "unitary_site_symmetry": "1"
+      }
+    }
+  ],
+  "M_int": [
+    {
+      "affine_form": {
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          [
+            "0",
+            "1",
+            "-1"
+          ],
+          [
+            "1",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        },
+        "v": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 2,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ]
+        ]
+      },
+      "generic_k": [
+        "173/1000",
+        "417/1000",
+        "583/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 2,
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "id": "S1",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "0 < v",
+          "u < 1/2",
+          "v < 1/2"
+        ]
+      },
+      "kind": "plane",
+      "label": "c",
+      "maximal": false,
+      "role_in_compatibility": "plane_intermediate_manifold",
+      "star_size": 2,
+      "symmetry_summary": {
+        "generic_point": [
+          "1/7",
+          "1/5",
+          "4/5"
+        ],
+        "generic_rotation_stabilizer_size": 2,
+        "generic_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "site_symmetry": "m[011]",
+        "site_symmetry_custom": "2[x]",
+        "unitary_site_symmetry": "?"
+      }
+    },
+    {
+      "affine_form": {
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          [
+            "1",
+            "0",
+            "-1"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ]
+        ]
+      },
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        },
+        "v": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 2,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ]
+      },
+      "generic_k": [
+        "173/1000",
+        "417/1000",
+        "827/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 2,
+        "rotation_keys": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "id": "S2",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "0 < v",
+          "u < 1/2",
+          "v < 1/2"
+        ]
+      },
+      "kind": "plane",
+      "label": "d",
+      "maximal": false,
+      "role_in_compatibility": "plane_intermediate_manifold",
+      "star_size": 2,
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/7",
+          "4/5"
+        ],
+        "generic_rotation_stabilizer_size": 2,
+        "generic_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "site_symmetry": "m[101]",
+        "site_symmetry_custom": "2[y]",
+        "unitary_site_symmetry": "?"
+      }
+    },
+    {
+      "affine_form": {
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        },
+        "v": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        },
+        "w": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 3,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "generic_k": [
+        "173/1000",
+        "417/1000",
+        "619/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 1,
+        "rotation_keys": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "id": "G1",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "0 < v",
+          "0 < w",
+          "u < 1/2",
+          "v < 1/2",
+          "w < 1/2"
+        ]
+      },
+      "kind": "generic",
+      "label": "e",
+      "maximal": false,
+      "role_in_compatibility": "generic_connector_manifold",
+      "star_size": 4,
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/7",
+          "1/11"
+        ],
+        "generic_rotation_stabilizer_size": 1,
+        "generic_stabilizer_size": 1,
+        "pointwise_rotation_stabilizer_size": 1,
+        "pointwise_stabilizer_size": 1,
+        "site_symmetry": "1",
+        "site_symmetry_custom": "1",
+        "unitary_site_symmetry": "1"
+      }
+    }
+  ],
+  "M_max": [
+    {
+      "affine_form": {
+        "anchor": [
+          "0",
+          "0",
+          "0"
+        ],
+        "basis": [
+          [
+            "1",
+            "1",
+            "-1"
+          ]
+        ]
+      },
+      "branch_ids": [
+        "L1_B1"
+      ],
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 1,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1/2"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2",
+            "0"
+          ]
+        ]
+      },
+      "generic_k": [
+        "173/1000",
+        "173/1000",
+        "827/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 4,
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "global_branch_count": 1,
+      "id": "L1",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "u < 1/2"
+        ]
+      },
+      "kind": "line",
+      "label": "a",
+      "maximal": true,
+      "star_size": 1,
+      "symmetry_summary": {
+        "generic_point": [
+          "1/5",
+          "1/5",
+          "4/5"
+        ],
+        "generic_rotation_stabilizer_size": 4,
+        "generic_stabilizer_size": 4,
+        "pointwise_rotation_stabilizer_size": 4,
+        "pointwise_stabilizer_size": 4,
+        "site_symmetry": "m[011] * m[101] * 2[110]",
+        "site_symmetry_custom": "2[x] * 2[y] * 2[z]",
+        "unitary_site_symmetry": "?"
+      }
+    },
+    {
+      "affine_form": {
+        "anchor": [
+          "1/2",
+          "1/2",
+          "0"
+        ],
+        "basis": [
+          [
+            "1",
+            "1",
+            "-1"
+          ]
+        ]
+      },
+      "branch_ids": [
+        "L2_B1",
+        "L2_B2"
+      ],
+      "closure_domain": {
+        "u": {
+          "equal": null,
+          "lower": "0",
+          "lower_inclusive": true,
+          "upper": "1/2",
+          "upper_inclusive": true
+        }
+      },
+      "dim": 1,
+      "full_little_group_generators": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "generic_full_little_group": {
+        "unitary_rotations": [
+          [
+            [
+              "1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ],
+          [
+            [
+              "-1",
+              "0",
+              "0"
+            ],
+            [
+              "0",
+              "-1",
+              "0"
+            ],
+            [
+              "0",
+              "0",
+              "1"
+            ]
+          ]
+        ],
+        "unitary_translations": [
+          [
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "generic_k": [
+        "673/1000",
+        "673/1000",
+        "827/1000"
+      ],
+      "generic_little_cogroup": {
+        "order": 2,
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "generic_little_cogroup_generators": {
+        "rotation_keys": [
+          [
+            [
+              -1,
+              0,
+              0
+            ],
+            [
+              0,
+              -1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        ]
+      },
+      "global_branch_count": 2,
+      "id": "L2",
+      "independent_domain": {
+        "raw_constraints": [
+          "0 < u",
+          "u < 1/2"
+        ]
+      },
+      "kind": "line",
+      "label": "b",
+      "maximal": true,
+      "star_size": 2,
+      "symmetry_summary": {
+        "generic_point": [
+          "7/10",
+          "7/10",
+          "4/5"
+        ],
+        "generic_rotation_stabilizer_size": 2,
+        "generic_stabilizer_size": 2,
+        "pointwise_rotation_stabilizer_size": 2,
+        "pointwise_stabilizer_size": 2,
+        "site_symmetry": "2[110]",
+        "site_symmetry_custom": "2[z]",
+        "unitary_site_symmetry": "?"
+      }
+    }
+  ],
+  "Metadata": {
+    "coordinate_system": "post_supercell_primitive_reciprocal_basis_from_swyckoff_k_construct_std_ssg_operations",
+    "generated_at": "2026-04-14T23:36:19+08:00",
+    "geometry_construction_provenance": {
+      "entrypoint": "compute_wyckoff_output(kspace=True, basis='primitive', fast=False)",
+      "operation_derived_pipeline": [
+        "load_irssg_data",
+        "construct_std_ssg_operations",
+        "derive_wyckoff",
+        "rotation_subgroup_reps_from_point_group",
+        "fixed_subspaces_for_subgroup",
+        "closure_under_stabilizer",
+        "subspace_orbit_key",
+        "generic_point_on_subspace"
+      ],
+      "source_module": "common.swyckoff_k"
+    },
+    "mode": "double",
+    "requested_group": "45",
+    "resolved_group": "45.1.331.1000"
+  },
+  "OperationChecks": {
+    "all_inverses_present": true,
+    "closed_under_composition": true,
+    "has_identity": true,
+    "operation_count": 4
+  },
+  "PointGroup": [
+    [
+      [
+        "0",
+        "0",
+        "-1"
+      ],
+      [
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "-1",
+        "0",
+        "0"
+      ]
+    ],
+    [
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "-1",
+        "-1",
+        "-1"
+      ]
+    ],
+    [
+      [
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1"
+      ]
+    ],
+    [
+      [
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "0",
+        "0",
+        "-1"
+      ],
+      [
+        "0",
+        "-1",
+        "0"
+      ]
+    ]
+  ],
+  "SeitzOperations": [
+    {
+      "op_id": "g001",
+      "rotation": [
+        [
+          "0",
+          "0",
+          "-1"
+        ],
+        [
+          "1",
+          "1",
+          "1"
+        ],
+        [
+          "-1",
+          "0",
+          "0"
+        ]
+      ],
+      "translation": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "op_id": "g002",
+      "rotation": [
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "-1",
+          "-1",
+          "-1"
+        ]
+      ],
+      "translation": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "op_id": "g003",
+      "rotation": [
+        [
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "translation": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "op_id": "g004",
+      "rotation": [
+        [
+          "1",
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "0",
+          "-1"
+        ],
+        [
+          "0",
+          "-1",
+          "0"
+        ]
+      ],
+      "translation": [
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ],
+  "X_BS": [
+    {
+      "host_manifold_kind": "line",
+      "host_maximal_manifold": "L1",
+      "id": "L1_B1",
+      "local_irrep_orbit": [
+        "L1_R1"
+      ],
+      "orbit_size": 1,
+      "representative_local_irrep": "L1_R1"
+    },
+    {
+      "host_manifold_kind": "line",
+      "host_maximal_manifold": "L2",
+      "id": "L2_B1",
+      "local_irrep_orbit": [
+        "L2_R1"
+      ],
+      "orbit_size": 1,
+      "representative_local_irrep": "L2_R1"
+    },
+    {
+      "host_manifold_kind": "line",
+      "host_maximal_manifold": "L2",
+      "id": "L2_B2",
+      "local_irrep_orbit": [
+        "L2_R2"
+      ],
+      "orbit_size": 1,
+      "representative_local_irrep": "L2_R2"
+    }
+  ],
+  "dBS": 2
+}
